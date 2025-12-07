@@ -52,6 +52,24 @@ export class TestScriptSetupActionAssertBuilder extends BackboneElementBuilder<T
   }
 
   /**
+   * Set compareToSourceId
+   * Id of the source fixture to be evaluated
+   */
+  setCompareToSourceId(compareToSourceId: string): this {
+    this.data.compareToSourceId = compareToSourceId;
+    return this;
+  }
+
+  /**
+   * Set compareToSourceExpression
+   * The FHIRPath expression to evaluate against the source fixture
+   */
+  setCompareToSourceExpression(compareToSourceExpression: string): this {
+    this.data.compareToSourceExpression = compareToSourceExpression;
+    return this;
+  }
+
+  /**
    * Set compareToSourcePath
    * XPath or JSONPath expression to evaluate against the source fixture
    */
@@ -202,35 +220,6 @@ export class TestScriptSetupActionAssertBuilder extends BackboneElementBuilder<T
   setWarningOnly(warningOnly: boolean): this {
     this.data.warningOnly = warningOnly;
     return this;
-  }
-
-  // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set compareToSource choice type
-   * @param type - 'Id' | 'Expression'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setCompareToSource('Id', value)
-   */
-  setCompareToSource<T extends 'Id' | 'Expression'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `compareToSource${type}` as keyof ITestScriptSetupActionAssert;
-    const otherKeys: (keyof ITestScriptSetupActionAssert)[] = [];
-    if (type !== 'Id') {
-      otherKeys.push('compareToSourceId' as keyof ITestScriptSetupActionAssert);
-      otherKeys.push('_compareToSourceId' as keyof ITestScriptSetupActionAssert);
-    }
-    if (type !== 'Expression') {
-      otherKeys.push('compareToSourceExpression' as keyof ITestScriptSetupActionAssert);
-      otherKeys.push('_compareToSourceExpression' as keyof ITestScriptSetupActionAssert);
-    }
-    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================

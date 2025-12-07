@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { MedicinalProductInteractionInteractant } from '../../models/backbones/MedicinalProductInteractionInteractant.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IMedicinalProductInteractionInteractant,
@@ -22,7 +23,7 @@ export class MedicinalProductInteractionInteractantBuilder extends BackboneEleme
   // ============================================================================
 
   /**
-   * Set item choice type
+   * Set item choice type (itemReference, itemCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -31,7 +32,7 @@ export class MedicinalProductInteractionInteractantBuilder extends BackboneEleme
    */
   setItem<T extends 'Reference' | 'CodeableConcept'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `item${type}` as keyof IMedicinalProductInteractionInteractant;
     const otherKeys: (keyof IMedicinalProductInteractionInteractant)[] = [];

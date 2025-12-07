@@ -41,7 +41,6 @@ const TEST_REPORT_PROPERTIES = [
  *
  * @example
  * const testReport = new TestReport({
- *   resourceType: 'TestReport',
  *   // ... properties
  * });
  */
@@ -110,7 +109,7 @@ export class TestReport extends DomainResource implements ITestReport {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ITestReport>) {
+  constructor(data?: Omit<Partial<ITestReport>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, TEST_REPORT_PROPERTIES);

@@ -1,5 +1,6 @@
 import { ElementBuilder } from '../base/ElementBuilder.js';
 import { DataRequirement } from '../../models/datatypes/DataRequirement.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IDataRequirement,
@@ -49,7 +50,7 @@ export class DataRequirementBuilder extends ElementBuilder<DataRequirement, IDat
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -58,7 +59,7 @@ export class DataRequirementBuilder extends ElementBuilder<DataRequirement, IDat
    */
   setSubject<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `subject${type}` as keyof IDataRequirement;
     const otherKeys: (keyof IDataRequirement)[] = [];

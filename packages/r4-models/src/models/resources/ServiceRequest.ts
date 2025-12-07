@@ -75,7 +75,6 @@ const SERVICE_REQUEST_PROPERTIES = [
  *
  * @example
  * const serviceRequest = new ServiceRequest({
- *   resourceType: 'ServiceRequest',
  *   // ... properties
  * });
  */
@@ -234,7 +233,7 @@ export class ServiceRequest extends DomainResource implements IServiceRequest {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IServiceRequest>) {
+  constructor(data?: Omit<Partial<IServiceRequest>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SERVICE_REQUEST_PROPERTIES);

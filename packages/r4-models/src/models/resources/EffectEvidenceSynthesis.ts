@@ -72,7 +72,6 @@ const EFFECT_EVIDENCE_SYNTHESIS_PROPERTIES = [
  *
  * @example
  * const effectEvidenceSynthesis = new EffectEvidenceSynthesis({
- *   resourceType: 'EffectEvidenceSynthesis',
  *   // ... properties
  * });
  */
@@ -219,7 +218,7 @@ export class EffectEvidenceSynthesis extends DomainResource implements IEffectEv
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEffectEvidenceSynthesis>) {
+  constructor(data?: Omit<Partial<IEffectEvidenceSynthesis>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, EFFECT_EVIDENCE_SYNTHESIS_PROPERTIES);

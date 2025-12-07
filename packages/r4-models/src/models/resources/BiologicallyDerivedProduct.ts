@@ -39,7 +39,6 @@ into another (possibly the same) biological entity.
  *
  * @example
  * const biologicallyDerivedProduct = new BiologicallyDerivedProduct({
- *   resourceType: 'BiologicallyDerivedProduct',
  *   // ... properties
  * });
  */
@@ -96,7 +95,7 @@ export class BiologicallyDerivedProduct extends DomainResource implements IBiolo
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IBiologicallyDerivedProduct>) {
+  constructor(data?: Omit<Partial<IBiologicallyDerivedProduct>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, BIOLOGICALLY_DERIVED_PRODUCT_PROPERTIES);

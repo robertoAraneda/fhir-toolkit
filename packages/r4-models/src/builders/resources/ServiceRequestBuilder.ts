@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { ServiceRequest } from '../../models/resources/ServiceRequest.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICodeableConcept,
@@ -148,32 +149,7 @@ export class ServiceRequestBuilder extends DomainResourceBuilder<ServiceRequest,
   // ============================================================================
 
   /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof IServiceRequest;
-    const otherKeys: (keyof IServiceRequest)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof IServiceRequest);
-      otherKeys.push('_instantiatesCanonical' as keyof IServiceRequest);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof IServiceRequest);
-      otherKeys.push('_instantiatesUri' as keyof IServiceRequest);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set quantity choice type
+   * Set quantity choice type (quantityQuantity, quantityRatio, quantityRange)
    * @param type - 'Quantity' | 'Ratio' | 'Range'
    * @param value - The value for the chosen type
    *
@@ -182,7 +158,7 @@ export class ServiceRequestBuilder extends DomainResourceBuilder<ServiceRequest,
    */
   setQuantity<T extends 'Quantity' | 'Ratio' | 'Range'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `quantity${type}` as keyof IServiceRequest;
     const otherKeys: (keyof IServiceRequest)[] = [];
@@ -202,7 +178,7 @@ export class ServiceRequestBuilder extends DomainResourceBuilder<ServiceRequest,
   }
 
   /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrencePeriod, occurrenceTiming)
    * @param type - 'DateTime' | 'Period' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -211,7 +187,7 @@ export class ServiceRequestBuilder extends DomainResourceBuilder<ServiceRequest,
    */
   setOccurrence<T extends 'DateTime' | 'Period' | 'Timing'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `occurrence${type}` as keyof IServiceRequest;
     const otherKeys: (keyof IServiceRequest)[] = [];
@@ -231,7 +207,7 @@ export class ServiceRequestBuilder extends DomainResourceBuilder<ServiceRequest,
   }
 
   /**
-   * Set asNeeded choice type
+   * Set asNeeded choice type (asNeededBoolean, asNeededCodeableConcept)
    * @param type - 'Boolean' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -240,7 +216,7 @@ export class ServiceRequestBuilder extends DomainResourceBuilder<ServiceRequest,
    */
   setAsNeeded<T extends 'Boolean' | 'CodeableConcept'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `asNeeded${type}` as keyof IServiceRequest;
     const otherKeys: (keyof IServiceRequest)[] = [];
@@ -255,56 +231,6 @@ export class ServiceRequestBuilder extends DomainResourceBuilder<ServiceRequest,
     return this.setChoiceType(key, value, otherKeys);
   }
 
-  /**
-   * Set location choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setLocation('Code', value)
-   */
-  setLocation<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `location${type}` as keyof IServiceRequest;
-    const otherKeys: (keyof IServiceRequest)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('locationCode' as keyof IServiceRequest);
-      otherKeys.push('_locationCode' as keyof IServiceRequest);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('locationReference' as keyof IServiceRequest);
-      otherKeys.push('_locationReference' as keyof IServiceRequest);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `reason${type}` as keyof IServiceRequest;
-    const otherKeys: (keyof IServiceRequest)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IServiceRequest);
-      otherKeys.push('_reasonCode' as keyof IServiceRequest);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IServiceRequest);
-      otherKeys.push('_reasonReference' as keyof IServiceRequest);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
   // ============================================================================
   // Array Properties
   // ============================================================================
@@ -315,6 +241,22 @@ export class ServiceRequestBuilder extends DomainResourceBuilder<ServiceRequest,
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
   }
 
   /**
@@ -355,6 +297,38 @@ export class ServiceRequestBuilder extends DomainResourceBuilder<ServiceRequest,
    */
   addPerformer(performer: IReference<'Practitioner' | 'PractitionerRole' | 'Organization' | 'CareTeam' | 'HealthcareService' | 'Patient' | 'Device' | 'RelatedPerson'>): this {
     return this.addToArray('performer', performer);
+  }
+
+  /**
+   * Add locationCode
+   * Requested location
+   */
+  addLocationCode(locationCode: ICodeableConcept): this {
+    return this.addToArray('locationCode', locationCode);
+  }
+
+  /**
+   * Add locationReference
+   * Requested location
+   */
+  addLocationReference(locationReference: IReference<'Location'>): this {
+    return this.addToArray('locationReference', locationReference);
+  }
+
+  /**
+   * Add reasonCode
+   * Explanation/Justification for procedure or service
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Explanation/Justification for service or service
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

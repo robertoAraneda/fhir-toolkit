@@ -48,7 +48,6 @@ const REQUEST_ORCHESTRATION_PROPERTIES = [
  *
  * @example
  * const requestOrchestration = new RequestOrchestration({
- *   resourceType: 'RequestOrchestration',
  *   // ... properties
  * });
  */
@@ -135,7 +134,7 @@ export class RequestOrchestration extends DomainResource implements IRequestOrch
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IRequestOrchestration>) {
+  constructor(data?: Omit<Partial<IRequestOrchestration>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, REQUEST_ORCHESTRATION_PROPERTIES);

@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ExplanationOfBenefitItem } from '../../models/backbones/ExplanationOfBenefitItem.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAddress,
   ICodeableConcept,
@@ -115,7 +116,7 @@ export class ExplanationOfBenefitItemBuilder extends BackboneElementBuilder<Expl
   // ============================================================================
 
   /**
-   * Set serviced choice type
+   * Set serviced choice type (servicedDate, servicedPeriod)
    * @param type - 'Date' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -124,7 +125,7 @@ export class ExplanationOfBenefitItemBuilder extends BackboneElementBuilder<Expl
    */
   setServiced<T extends 'Date' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `serviced${type}` as keyof IExplanationOfBenefitItem;
     const otherKeys: (keyof IExplanationOfBenefitItem)[] = [];
@@ -140,7 +141,7 @@ export class ExplanationOfBenefitItemBuilder extends BackboneElementBuilder<Expl
   }
 
   /**
-   * Set location choice type
+   * Set location choice type (locationCodeableConcept, locationAddress, locationReference)
    * @param type - 'CodeableConcept' | 'Address' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -149,7 +150,7 @@ export class ExplanationOfBenefitItemBuilder extends BackboneElementBuilder<Expl
    */
   setLocation<T extends 'CodeableConcept' | 'Address' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `location${type}` as keyof IExplanationOfBenefitItem;
     const otherKeys: (keyof IExplanationOfBenefitItem)[] = [];

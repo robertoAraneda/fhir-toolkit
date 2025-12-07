@@ -69,7 +69,6 @@ const CHARGE_ITEM_DEFINITION_PROPERTIES = [
  *
  * @example
  * const chargeItemDefinition = new ChargeItemDefinition({
- *   resourceType: 'ChargeItemDefinition',
  *   // ... properties
  * });
  */
@@ -219,7 +218,7 @@ export class ChargeItemDefinition extends DomainResource implements IChargeItemD
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IChargeItemDefinition>) {
+  constructor(data?: Omit<Partial<IChargeItemDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CHARGE_ITEM_DEFINITION_PROPERTIES);

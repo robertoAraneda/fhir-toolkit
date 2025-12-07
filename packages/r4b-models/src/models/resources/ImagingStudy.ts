@@ -47,7 +47,6 @@ const IMAGING_STUDY_PROPERTIES = [
  *
  * @example
  * const imagingStudy = new ImagingStudy({
- *   resourceType: 'ImagingStudy',
  *   // ... properties
  * });
  */
@@ -137,7 +136,7 @@ export class ImagingStudy extends DomainResource implements IImagingStudy {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IImagingStudy>) {
+  constructor(data?: Omit<Partial<IImagingStudy>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, IMAGING_STUDY_PROPERTIES);

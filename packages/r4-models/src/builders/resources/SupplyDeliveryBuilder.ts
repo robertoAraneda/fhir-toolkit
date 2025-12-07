@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { SupplyDelivery } from '../../models/resources/SupplyDelivery.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IIdentifier,
@@ -90,7 +91,7 @@ export class SupplyDeliveryBuilder extends DomainResourceBuilder<SupplyDelivery,
   // ============================================================================
 
   /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrencePeriod, occurrenceTiming)
    * @param type - 'DateTime' | 'Period' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -99,7 +100,7 @@ export class SupplyDeliveryBuilder extends DomainResourceBuilder<SupplyDelivery,
    */
   setOccurrence<T extends 'DateTime' | 'Period' | 'Timing'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `occurrence${type}` as keyof ISupplyDelivery;
     const otherKeys: (keyof ISupplyDelivery)[] = [];

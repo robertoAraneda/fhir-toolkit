@@ -41,7 +41,6 @@ const INVENTORY_ITEM_PROPERTIES = [
  *
  * @example
  * const inventoryItem = new InventoryItem({
- *   resourceType: 'InventoryItem',
  *   // ... properties
  * });
  */
@@ -101,7 +100,7 @@ export class InventoryItem extends DomainResource implements IInventoryItem {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IInventoryItem>) {
+  constructor(data?: Omit<Partial<IInventoryItem>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, INVENTORY_ITEM_PROPERTIES);

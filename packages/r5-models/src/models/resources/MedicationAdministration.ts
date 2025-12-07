@@ -52,7 +52,6 @@ const MEDICATION_ADMINISTRATION_PROPERTIES = [
  *
  * @example
  * const medicationAdministration = new MedicationAdministration({
- *   resourceType: 'MedicationAdministration',
  *   // ... properties
  * });
  */
@@ -148,7 +147,7 @@ export class MedicationAdministration extends DomainResource implements IMedicat
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicationAdministration>) {
+  constructor(data?: Omit<Partial<IMedicationAdministration>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICATION_ADMINISTRATION_PROPERTIES);

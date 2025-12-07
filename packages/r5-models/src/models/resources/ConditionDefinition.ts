@@ -72,7 +72,6 @@ const CONDITION_DEFINITION_PROPERTIES = [
  *
  * @example
  * const conditionDefinition = new ConditionDefinition({
- *   resourceType: 'ConditionDefinition',
  *   // ... properties
  * });
  */
@@ -222,7 +221,7 @@ export class ConditionDefinition extends DomainResource implements IConditionDef
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IConditionDefinition>) {
+  constructor(data?: Omit<Partial<IConditionDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CONDITION_DEFINITION_PROPERTIES);

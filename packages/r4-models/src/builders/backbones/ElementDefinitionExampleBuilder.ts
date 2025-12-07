@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ElementDefinitionExample } from '../../models/backbones/ElementDefinitionExample.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAddress,
   IAge,
@@ -60,48 +61,21 @@ export class ElementDefinitionExampleBuilder extends BackboneElementBuilder<Elem
     return this;
   }
 
-  /**
-   * Set valuePositiveInt
-   * Value of Example (one of allowed types)
-   */
-  setValuePositiveInt(valuePositiveInt: number): this {
-    this.data.valuePositiveInt = valuePositiveInt;
-    return this;
-  }
-
-  /**
-   * Set valueUnsignedInt
-   * Value of Example (one of allowed types)
-   */
-  setValueUnsignedInt(valueUnsignedInt: number): this {
-    this.data.valueUnsignedInt = valueUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set valueUuid
-   * Value of Example (one of allowed types)
-   */
-  setValueUuid(valueUuid: string): this {
-    this.data.valueUuid = valueUuid;
-    return this;
-  }
-
   // ============================================================================
   // Choice Types
   // ============================================================================
 
   /**
-   * Set value choice type
-   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
+   * Set value choice type (valueBase64Binary, valueBoolean, valueCanonical, valueCode, valueDate, valueDateTime, valueDecimal, valueId, valueInstant, valueInteger, valueMarkdown, valueOid, valuePositiveInt, valueString, valueTime, valueUnsignedInt, valueUri, valueUrl, valueUuid, valueAddress, valueAge, valueAnnotation, valueAttachment, valueCodeableConcept, valueCoding, valueContactPoint, valueCount, valueDistance, valueDuration, valueHumanName, valueIdentifier, valueMoney, valuePeriod, valueQuantity, valueRange, valueRatio, valueReference, valueSampledData, valueSignature, valueTiming, valueContactDetail, valueContributor, valueDataRequirement, valueExpression, valueParameterDefinition, valueRelatedArtifact, valueTriggerDefinition, valueUsageContext, valueDosage, valueMeta)
+   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
    * @param value - The value for the chosen type
    *
    * @example
    * builder.setValue('Base64Binary', value)
    */
-  setValue<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
+  setValue<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IElementDefinitionExample;
     const otherKeys: (keyof IElementDefinitionExample)[] = [];
@@ -153,6 +127,10 @@ export class ElementDefinitionExampleBuilder extends BackboneElementBuilder<Elem
       otherKeys.push('valueOid' as keyof IElementDefinitionExample);
       otherKeys.push('_valueOid' as keyof IElementDefinitionExample);
     }
+    if (type !== 'PositiveInt') {
+      otherKeys.push('valuePositiveInt' as keyof IElementDefinitionExample);
+      otherKeys.push('_valuePositiveInt' as keyof IElementDefinitionExample);
+    }
     if (type !== 'String') {
       otherKeys.push('valueString' as keyof IElementDefinitionExample);
       otherKeys.push('_valueString' as keyof IElementDefinitionExample);
@@ -161,6 +139,10 @@ export class ElementDefinitionExampleBuilder extends BackboneElementBuilder<Elem
       otherKeys.push('valueTime' as keyof IElementDefinitionExample);
       otherKeys.push('_valueTime' as keyof IElementDefinitionExample);
     }
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('valueUnsignedInt' as keyof IElementDefinitionExample);
+      otherKeys.push('_valueUnsignedInt' as keyof IElementDefinitionExample);
+    }
     if (type !== 'Uri') {
       otherKeys.push('valueUri' as keyof IElementDefinitionExample);
       otherKeys.push('_valueUri' as keyof IElementDefinitionExample);
@@ -168,6 +150,10 @@ export class ElementDefinitionExampleBuilder extends BackboneElementBuilder<Elem
     if (type !== 'Url') {
       otherKeys.push('valueUrl' as keyof IElementDefinitionExample);
       otherKeys.push('_valueUrl' as keyof IElementDefinitionExample);
+    }
+    if (type !== 'Uuid') {
+      otherKeys.push('valueUuid' as keyof IElementDefinitionExample);
+      otherKeys.push('_valueUuid' as keyof IElementDefinitionExample);
     }
     if (type !== 'Address') {
       otherKeys.push('valueAddress' as keyof IElementDefinitionExample);

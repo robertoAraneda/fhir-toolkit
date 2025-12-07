@@ -1,11 +1,11 @@
 /**
- * Type guards for FHIR R4 resources
+ * Type guards for FHIR resources
  *
  * These functions allow type-safe checking of FHIR resource types at runtime.
  *
  * @example
  * ```typescript
- * import { isPatient, isObservation } from '@fhir-toolkit/r4-models';
+ * import { isPatient, isObservation } from '@fhir-toolkit/r4-types-models';
  *
  * function processResource(resource: FhirResource) {
  *   if (isPatient(resource)) {

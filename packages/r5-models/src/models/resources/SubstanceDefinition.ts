@@ -54,7 +54,6 @@ const SUBSTANCE_DEFINITION_PROPERTIES = [
  *
  * @example
  * const substanceDefinition = new SubstanceDefinition({
- *   resourceType: 'SubstanceDefinition',
  *   // ... properties
  * });
  */
@@ -147,7 +146,7 @@ export class SubstanceDefinition extends DomainResource implements ISubstanceDef
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISubstanceDefinition>) {
+  constructor(data?: Omit<Partial<ISubstanceDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUBSTANCE_DEFINITION_PROPERTIES);

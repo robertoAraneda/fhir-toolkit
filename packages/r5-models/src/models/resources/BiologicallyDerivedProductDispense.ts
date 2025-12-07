@@ -42,7 +42,6 @@ const BIOLOGICALLY_DERIVED_PRODUCT_DISPENSE_PROPERTIES = [
  *
  * @example
  * const biologicallyDerivedProductDispense = new BiologicallyDerivedProductDispense({
- *   resourceType: 'BiologicallyDerivedProductDispense',
  *   // ... properties
  * });
  */
@@ -117,7 +116,7 @@ export class BiologicallyDerivedProductDispense extends DomainResource implement
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IBiologicallyDerivedProductDispense>) {
+  constructor(data?: Omit<Partial<IBiologicallyDerivedProductDispense>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, BIOLOGICALLY_DERIVED_PRODUCT_DISPENSE_PROPERTIES);

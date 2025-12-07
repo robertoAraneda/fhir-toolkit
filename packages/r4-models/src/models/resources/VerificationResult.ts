@@ -41,7 +41,6 @@ const VERIFICATION_RESULT_PROPERTIES = [
  *
  * @example
  * const verificationResult = new VerificationResult({
- *   resourceType: 'VerificationResult',
  *   // ... properties
  * });
  */
@@ -113,7 +112,7 @@ export class VerificationResult extends DomainResource implements IVerificationR
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IVerificationResult>) {
+  constructor(data?: Omit<Partial<IVerificationResult>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, VERIFICATION_RESULT_PROPERTIES);

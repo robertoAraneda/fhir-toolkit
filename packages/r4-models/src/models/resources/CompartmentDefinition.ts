@@ -45,7 +45,6 @@ const COMPARTMENT_DEFINITION_PROPERTIES = [
  *
  * @example
  * const compartmentDefinition = new CompartmentDefinition({
- *   resourceType: 'CompartmentDefinition',
  *   // ... properties
  * });
  */
@@ -135,7 +134,7 @@ export class CompartmentDefinition extends DomainResource implements ICompartmen
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICompartmentDefinition>) {
+  constructor(data?: Omit<Partial<ICompartmentDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, COMPARTMENT_DEFINITION_PROPERTIES);

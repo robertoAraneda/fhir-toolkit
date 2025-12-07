@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SupplyDeliverySuppliedItem } from '../../models/backbones/SupplyDeliverySuppliedItem.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IQuantity,
@@ -37,7 +38,7 @@ export class SupplyDeliverySuppliedItemBuilder extends BackboneElementBuilder<Su
   // ============================================================================
 
   /**
-   * Set item choice type
+   * Set item choice type (itemCodeableConcept, itemReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -46,7 +47,7 @@ export class SupplyDeliverySuppliedItemBuilder extends BackboneElementBuilder<Su
    */
   setItem<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `item${type}` as keyof ISupplyDeliverySuppliedItem;
     const otherKeys: (keyof ISupplyDeliverySuppliedItem)[] = [];

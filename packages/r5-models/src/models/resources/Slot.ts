@@ -36,7 +36,6 @@ const SLOT_PROPERTIES = [
  *
  * @example
  * const slot = new Slot({
- *   resourceType: 'Slot',
  *   // ... properties
  * });
  */
@@ -99,7 +98,7 @@ export class Slot extends DomainResource implements ISlot {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISlot>) {
+  constructor(data?: Omit<Partial<ISlot>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SLOT_PROPERTIES);

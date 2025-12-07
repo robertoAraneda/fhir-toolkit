@@ -42,7 +42,6 @@ const GENOMIC_STUDY_PROPERTIES = [
  *
  * @example
  * const genomicStudy = new GenomicStudy({
- *   resourceType: 'GenomicStudy',
  *   // ... properties
  * });
  */
@@ -117,7 +116,7 @@ export class GenomicStudy extends DomainResource implements IGenomicStudy {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IGenomicStudy>) {
+  constructor(data?: Omit<Partial<IGenomicStudy>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, GENOMIC_STUDY_PROPERTIES);

@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { DiagnosticReport } from '../../models/resources/DiagnosticReport.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   DiagnosticReportStatusType,
   IAttachment,
@@ -89,7 +90,7 @@ export class DiagnosticReportBuilder extends DomainResourceBuilder<DiagnosticRep
   // ============================================================================
 
   /**
-   * Set effective choice type
+   * Set effective choice type (effectiveDateTime, effectivePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -98,7 +99,7 @@ export class DiagnosticReportBuilder extends DomainResourceBuilder<DiagnosticRep
    */
   setEffective<T extends 'DateTime' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `effective${type}` as keyof IDiagnosticReport;
     const otherKeys: (keyof IDiagnosticReport)[] = [];

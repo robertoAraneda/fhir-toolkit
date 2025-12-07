@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Provenance } from '../../models/resources/Provenance.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IPeriod,
@@ -61,7 +62,7 @@ export class ProvenanceBuilder extends DomainResourceBuilder<Provenance, IProven
   // ============================================================================
 
   /**
-   * Set occurred choice type
+   * Set occurred choice type (occurredPeriod, occurredDateTime)
    * @param type - 'Period' | 'DateTime'
    * @param value - The value for the chosen type
    *
@@ -70,7 +71,7 @@ export class ProvenanceBuilder extends DomainResourceBuilder<Provenance, IProven
    */
   setOccurred<T extends 'Period' | 'DateTime'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `occurred${type}` as keyof IProvenance;
     const otherKeys: (keyof IProvenance)[] = [];

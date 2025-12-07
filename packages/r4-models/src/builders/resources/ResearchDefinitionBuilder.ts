@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { ResearchDefinition } from '../../models/resources/ResearchDefinition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IContactDetail,
@@ -225,7 +226,7 @@ export class ResearchDefinitionBuilder extends DomainResourceBuilder<ResearchDef
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -234,7 +235,7 @@ export class ResearchDefinitionBuilder extends DomainResourceBuilder<ResearchDef
    */
   setSubject<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `subject${type}` as keyof IResearchDefinition;
     const otherKeys: (keyof IResearchDefinition)[] = [];

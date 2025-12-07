@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Measure } from '../../models/resources/Measure.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IContactDetail,
@@ -264,7 +265,7 @@ export class MeasureBuilder extends DomainResourceBuilder<Measure, IMeasure> {
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -273,7 +274,7 @@ export class MeasureBuilder extends DomainResourceBuilder<Measure, IMeasure> {
    */
   setSubject<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `subject${type}` as keyof IMeasure;
     const otherKeys: (keyof IMeasure)[] = [];

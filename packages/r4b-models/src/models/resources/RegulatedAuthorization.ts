@@ -37,7 +37,6 @@ const REGULATED_AUTHORIZATION_PROPERTIES = [
  *
  * @example
  * const regulatedAuthorization = new RegulatedAuthorization({
- *   resourceType: 'RegulatedAuthorization',
  *   // ... properties
  * });
  */
@@ -100,7 +99,7 @@ export class RegulatedAuthorization extends DomainResource implements IRegulated
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IRegulatedAuthorization>) {
+  constructor(data?: Omit<Partial<IRegulatedAuthorization>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, REGULATED_AUTHORIZATION_PROPERTIES);

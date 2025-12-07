@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { RequestGroupAction } from '../../models/backbones/RequestGroupAction.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ActionCardinalityBehaviorType,
   ActionGroupingBehaviorType,
@@ -150,7 +151,7 @@ export class RequestGroupActionBuilder extends BackboneElementBuilder<RequestGro
   // ============================================================================
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingDateTime, timingAge, timingPeriod, timingDuration, timingRange, timingTiming)
    * @param type - 'DateTime' | 'Age' | 'Period' | 'Duration' | 'Range' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -159,7 +160,7 @@ export class RequestGroupActionBuilder extends BackboneElementBuilder<RequestGro
    */
   setTiming<T extends 'DateTime' | 'Age' | 'Period' | 'Duration' | 'Range' | 'Timing'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `timing${type}` as keyof IRequestGroupAction;
     const otherKeys: (keyof IRequestGroupAction)[] = [];

@@ -54,7 +54,6 @@ const COMMUNICATION_REQUEST_PROPERTIES = [
  *
  * @example
  * const communicationRequest = new CommunicationRequest({
- *   resourceType: 'CommunicationRequest',
  *   // ... properties
  * });
  */
@@ -156,7 +155,7 @@ export class CommunicationRequest extends DomainResource implements ICommunicati
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICommunicationRequest>) {
+  constructor(data?: Omit<Partial<ICommunicationRequest>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, COMMUNICATION_REQUEST_PROPERTIES);

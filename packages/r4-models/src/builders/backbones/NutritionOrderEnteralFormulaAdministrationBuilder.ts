@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { NutritionOrderEnteralFormulaAdministration } from '../../models/backbones/NutritionOrderEnteralFormulaAdministration.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   INutritionOrderEnteralFormulaAdministration,
   IQuantity,
@@ -46,7 +47,7 @@ export class NutritionOrderEnteralFormulaAdministrationBuilder extends BackboneE
   // ============================================================================
 
   /**
-   * Set rate choice type
+   * Set rate choice type (rateQuantity, rateRatio)
    * @param type - 'Quantity' | 'Ratio'
    * @param value - The value for the chosen type
    *
@@ -55,7 +56,7 @@ export class NutritionOrderEnteralFormulaAdministrationBuilder extends BackboneE
    */
   setRate<T extends 'Quantity' | 'Ratio'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `rate${type}` as keyof INutritionOrderEnteralFormulaAdministration;
     const otherKeys: (keyof INutritionOrderEnteralFormulaAdministration)[] = [];

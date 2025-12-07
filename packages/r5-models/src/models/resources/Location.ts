@@ -49,7 +49,6 @@ const LOCATION_PROPERTIES = [
  *
  * @example
  * const location = new Location({
- *   resourceType: 'Location',
  *   // ... properties
  * });
  */
@@ -133,7 +132,7 @@ export class Location extends DomainResource implements ILocation {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ILocation>) {
+  constructor(data?: Omit<Partial<ILocation>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, LOCATION_PROPERTIES);

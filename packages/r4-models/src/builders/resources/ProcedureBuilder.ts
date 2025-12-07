@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Procedure } from '../../models/resources/Procedure.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   EventStatusType,
   IAge,
@@ -128,32 +129,7 @@ export class ProcedureBuilder extends DomainResourceBuilder<Procedure, IProcedur
   // ============================================================================
 
   /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof IProcedure;
-    const otherKeys: (keyof IProcedure)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof IProcedure);
-      otherKeys.push('_instantiatesCanonical' as keyof IProcedure);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof IProcedure);
-      otherKeys.push('_instantiatesUri' as keyof IProcedure);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set performed choice type
+   * Set performed choice type (performedDateTime, performedPeriod, performedString, performedAge, performedRange)
    * @param type - 'DateTime' | 'Period' | 'String' | 'Age' | 'Range'
    * @param value - The value for the chosen type
    *
@@ -162,7 +138,7 @@ export class ProcedureBuilder extends DomainResourceBuilder<Procedure, IProcedur
    */
   setPerformed<T extends 'DateTime' | 'Period' | 'String' | 'Age' | 'Range'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `performed${type}` as keyof IProcedure;
     const otherKeys: (keyof IProcedure)[] = [];
@@ -189,56 +165,6 @@ export class ProcedureBuilder extends DomainResourceBuilder<Procedure, IProcedur
     return this.setChoiceType(key, value, otherKeys);
   }
 
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `reason${type}` as keyof IProcedure;
-    const otherKeys: (keyof IProcedure)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IProcedure);
-      otherKeys.push('_reasonCode' as keyof IProcedure);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IProcedure);
-      otherKeys.push('_reasonReference' as keyof IProcedure);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set used choice type
-   * @param type - 'Reference' | 'Code'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setUsed('Reference', value)
-   */
-  setUsed<T extends 'Reference' | 'Code'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `used${type}` as keyof IProcedure;
-    const otherKeys: (keyof IProcedure)[] = [];
-    if (type !== 'Reference') {
-      otherKeys.push('usedReference' as keyof IProcedure);
-      otherKeys.push('_usedReference' as keyof IProcedure);
-    }
-    if (type !== 'Code') {
-      otherKeys.push('usedCode' as keyof IProcedure);
-      otherKeys.push('_usedCode' as keyof IProcedure);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
   // ============================================================================
   // Array Properties
   // ============================================================================
@@ -249,6 +175,22 @@ export class ProcedureBuilder extends DomainResourceBuilder<Procedure, IProcedur
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
   }
 
   /**
@@ -273,6 +215,22 @@ export class ProcedureBuilder extends DomainResourceBuilder<Procedure, IProcedur
    */
   addPerformer(performer: IProcedurePerformer): this {
     return this.addToArray('performer', performer);
+  }
+
+  /**
+   * Add reasonCode
+   * Coded reason procedure performed
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * The justification that the procedure was performed
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'Procedure' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**
@@ -329,6 +287,22 @@ export class ProcedureBuilder extends DomainResourceBuilder<Procedure, IProcedur
    */
   addFocalDevice(focalDevice: IProcedureFocalDevice): this {
     return this.addToArray('focalDevice', focalDevice);
+  }
+
+  /**
+   * Add usedReference
+   * Items used during procedure
+   */
+  addUsedReference(usedReference: IReference<'Device' | 'Medication' | 'Substance'>): this {
+    return this.addToArray('usedReference', usedReference);
+  }
+
+  /**
+   * Add usedCode
+   * Coded items used during the procedure
+   */
+  addUsedCode(usedCode: ICodeableConcept): this {
+    return this.addToArray('usedCode', usedCode);
   }
 
   // ============================================================================

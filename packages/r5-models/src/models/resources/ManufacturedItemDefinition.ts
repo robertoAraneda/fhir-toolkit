@@ -34,7 +34,6 @@ const MANUFACTURED_ITEM_DEFINITION_PROPERTIES = [
  *
  * @example
  * const manufacturedItemDefinition = new ManufacturedItemDefinition({
- *   resourceType: 'ManufacturedItemDefinition',
  *   // ... properties
  * });
  */
@@ -85,7 +84,7 @@ export class ManufacturedItemDefinition extends DomainResource implements IManuf
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IManufacturedItemDefinition>) {
+  constructor(data?: Omit<Partial<IManufacturedItemDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MANUFACTURED_ITEM_DEFINITION_PROPERTIES);

@@ -42,7 +42,6 @@ const IMMUNIZATION_EVALUATION_PROPERTIES = [
  *
  * @example
  * const immunizationEvaluation = new ImmunizationEvaluation({
- *   resourceType: 'ImmunizationEvaluation',
  *   // ... properties
  * });
  */
@@ -126,7 +125,7 @@ export class ImmunizationEvaluation extends DomainResource implements IImmunizat
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IImmunizationEvaluation>) {
+  constructor(data?: Omit<Partial<IImmunizationEvaluation>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, IMMUNIZATION_EVALUATION_PROPERTIES);

@@ -55,7 +55,6 @@ const MEDICATION_KNOWLEDGE_PROPERTIES = [
  *
  * @example
  * const medicationKnowledge = new MedicationKnowledge({
- *   resourceType: 'MedicationKnowledge',
  *   // ... properties
  * });
  */
@@ -145,7 +144,7 @@ export class MedicationKnowledge extends DomainResource implements IMedicationKn
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicationKnowledge>) {
+  constructor(data?: Omit<Partial<IMedicationKnowledge>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICATION_KNOWLEDGE_PROPERTIES);

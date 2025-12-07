@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { SupplyRequest } from '../../models/resources/SupplyRequest.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IIdentifier,
@@ -109,7 +110,7 @@ export class SupplyRequestBuilder extends DomainResourceBuilder<SupplyRequest, I
   // ============================================================================
 
   /**
-   * Set item choice type
+   * Set item choice type (itemCodeableConcept, itemReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -118,7 +119,7 @@ export class SupplyRequestBuilder extends DomainResourceBuilder<SupplyRequest, I
    */
   setItem<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `item${type}` as keyof ISupplyRequest;
     const otherKeys: (keyof ISupplyRequest)[] = [];
@@ -134,7 +135,7 @@ export class SupplyRequestBuilder extends DomainResourceBuilder<SupplyRequest, I
   }
 
   /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrencePeriod, occurrenceTiming)
    * @param type - 'DateTime' | 'Period' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -143,7 +144,7 @@ export class SupplyRequestBuilder extends DomainResourceBuilder<SupplyRequest, I
    */
   setOccurrence<T extends 'DateTime' | 'Period' | 'Timing'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `occurrence${type}` as keyof ISupplyRequest;
     const otherKeys: (keyof ISupplyRequest)[] = [];
@@ -158,31 +159,6 @@ export class SupplyRequestBuilder extends DomainResourceBuilder<SupplyRequest, I
     if (type !== 'Timing') {
       otherKeys.push('occurrenceTiming' as keyof ISupplyRequest);
       otherKeys.push('_occurrenceTiming' as keyof ISupplyRequest);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `reason${type}` as keyof ISupplyRequest;
-    const otherKeys: (keyof ISupplyRequest)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof ISupplyRequest);
-      otherKeys.push('_reasonCode' as keyof ISupplyRequest);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof ISupplyRequest);
-      otherKeys.push('_reasonReference' as keyof ISupplyRequest);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -213,6 +189,22 @@ export class SupplyRequestBuilder extends DomainResourceBuilder<SupplyRequest, I
    */
   addSupplier(supplier: IReference<'Organization' | 'HealthcareService'>): this {
     return this.addToArray('supplier', supplier);
+  }
+
+  /**
+   * Add reasonCode
+   * The reason why the supply item was requested
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * The reason why the supply item was requested
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   // ============================================================================

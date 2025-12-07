@@ -99,7 +99,6 @@ const MEASURE_PROPERTIES = [
  *
  * @example
  * const measure = new Measure({
- *   resourceType: 'Measure',
  *   // ... properties
  * });
  */
@@ -330,7 +329,7 @@ export class Measure extends DomainResource implements IMeasure {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMeasure>) {
+  constructor(data?: Omit<Partial<IMeasure>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEASURE_PROPERTIES);

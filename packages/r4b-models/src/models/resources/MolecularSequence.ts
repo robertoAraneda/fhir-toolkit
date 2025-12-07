@@ -44,7 +44,6 @@ const MOLECULAR_SEQUENCE_PROPERTIES = [
  *
  * @example
  * const molecularSequence = new MolecularSequence({
- *   resourceType: 'MolecularSequence',
  *   // ... properties
  * });
  */
@@ -119,7 +118,7 @@ export class MolecularSequence extends DomainResource implements IMolecularSeque
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMolecularSequence>) {
+  constructor(data?: Omit<Partial<IMolecularSequence>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MOLECULAR_SEQUENCE_PROPERTIES);

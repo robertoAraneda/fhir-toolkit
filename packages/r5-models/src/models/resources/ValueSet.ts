@@ -73,7 +73,6 @@ const VALUE_SET_PROPERTIES = [
  *
  * @example
  * const valueSet = new ValueSet({
- *   resourceType: 'ValueSet',
  *   // ... properties
  * });
  */
@@ -229,7 +228,7 @@ export class ValueSet extends DomainResource implements IValueSet {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IValueSet>) {
+  constructor(data?: Omit<Partial<IValueSet>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, VALUE_SET_PROPERTIES);

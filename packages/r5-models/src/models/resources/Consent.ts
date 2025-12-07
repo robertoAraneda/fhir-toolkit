@@ -46,7 +46,6 @@ const CONSENT_PROPERTIES = [
  *
  * @example
  * const consent = new Consent({
- *   resourceType: 'Consent',
  *   // ... properties
  * });
  */
@@ -124,7 +123,7 @@ export class Consent extends DomainResource implements IConsent {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IConsent>) {
+  constructor(data?: Omit<Partial<IConsent>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CONSENT_PROPERTIES);

@@ -59,7 +59,6 @@ const MEDICINAL_PRODUCT_DEFINITION_PROPERTIES = [
  *
  * @example
  * const medicinalProductDefinition = new MedicinalProductDefinition({
- *   resourceType: 'MedicinalProductDefinition',
  *   // ... properties
  * });
  */
@@ -173,7 +172,7 @@ export class MedicinalProductDefinition extends DomainResource implements IMedic
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicinalProductDefinition>) {
+  constructor(data?: Omit<Partial<IMedicinalProductDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICINAL_PRODUCT_DEFINITION_PROPERTIES);

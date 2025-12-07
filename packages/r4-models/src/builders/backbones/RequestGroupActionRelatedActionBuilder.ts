@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { RequestGroupActionRelatedAction } from '../../models/backbones/RequestGroupActionRelatedAction.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ActionRelationshipTypeType,
   IDuration,
@@ -46,7 +47,7 @@ export class RequestGroupActionRelatedActionBuilder extends BackboneElementBuild
   // ============================================================================
 
   /**
-   * Set offset choice type
+   * Set offset choice type (offsetDuration, offsetRange)
    * @param type - 'Duration' | 'Range'
    * @param value - The value for the chosen type
    *
@@ -55,7 +56,7 @@ export class RequestGroupActionRelatedActionBuilder extends BackboneElementBuild
    */
   setOffset<T extends 'Duration' | 'Range'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `offset${type}` as keyof IRequestGroupActionRelatedAction;
     const otherKeys: (keyof IRequestGroupActionRelatedAction)[] = [];

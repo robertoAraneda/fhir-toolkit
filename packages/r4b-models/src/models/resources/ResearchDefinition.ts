@@ -76,7 +76,6 @@ const RESEARCH_DEFINITION_PROPERTIES = [
  *
  * @example
  * const researchDefinition = new ResearchDefinition({
- *   resourceType: 'ResearchDefinition',
  *   // ... properties
  * });
  */
@@ -250,7 +249,7 @@ export class ResearchDefinition extends DomainResource implements IResearchDefin
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IResearchDefinition>) {
+  constructor(data?: Omit<Partial<IResearchDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, RESEARCH_DEFINITION_PROPERTIES);

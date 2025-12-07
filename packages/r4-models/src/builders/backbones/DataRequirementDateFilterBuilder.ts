@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { DataRequirementDateFilter } from '../../models/backbones/DataRequirementDateFilter.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IDataRequirementDateFilter,
   IDuration,
@@ -45,7 +46,7 @@ export class DataRequirementDateFilterBuilder extends BackboneElementBuilder<Dat
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueDateTime, valuePeriod, valueDuration)
    * @param type - 'DateTime' | 'Period' | 'Duration'
    * @param value - The value for the chosen type
    *
@@ -54,7 +55,7 @@ export class DataRequirementDateFilterBuilder extends BackboneElementBuilder<Dat
    */
   setValue<T extends 'DateTime' | 'Period' | 'Duration'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IDataRequirementDateFilter;
     const otherKeys: (keyof IDataRequirementDateFilter)[] = [];

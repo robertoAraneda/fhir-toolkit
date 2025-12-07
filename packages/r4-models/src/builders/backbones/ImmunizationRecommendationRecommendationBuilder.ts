@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ImmunizationRecommendationRecommendation } from '../../models/backbones/ImmunizationRecommendationRecommendation.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IImmunizationRecommendationRecommendation,
@@ -60,40 +61,58 @@ export class ImmunizationRecommendationRecommendationBuilder extends BackboneEle
     return this;
   }
 
+  // ============================================================================
+  // Choice Types
+  // ============================================================================
+
   /**
-   * Set doseNumberPositiveInt
-   * Recommended dose number within series
+   * Set doseNumber choice type (doseNumberPositiveInt, doseNumberString)
+   * @param type - 'PositiveInt' | 'String'
+   * @param value - The value for the chosen type
+   *
+   * @example
+   * builder.setDoseNumber('PositiveInt', value)
    */
-  setDoseNumberPositiveInt(doseNumberPositiveInt: number): this {
-    this.data.doseNumberPositiveInt = doseNumberPositiveInt;
-    return this;
+  setDoseNumber<T extends 'PositiveInt' | 'String'>(
+    type: T,
+    value: ChoiceTypeValue<T>
+  ): this {
+    const key = `doseNumber${type}` as keyof IImmunizationRecommendationRecommendation;
+    const otherKeys: (keyof IImmunizationRecommendationRecommendation)[] = [];
+    if (type !== 'PositiveInt') {
+      otherKeys.push('doseNumberPositiveInt' as keyof IImmunizationRecommendationRecommendation);
+      otherKeys.push('_doseNumberPositiveInt' as keyof IImmunizationRecommendationRecommendation);
+    }
+    if (type !== 'String') {
+      otherKeys.push('doseNumberString' as keyof IImmunizationRecommendationRecommendation);
+      otherKeys.push('_doseNumberString' as keyof IImmunizationRecommendationRecommendation);
+    }
+    return this.setChoiceType(key, value, otherKeys);
   }
 
   /**
-   * Set doseNumberString
-   * Recommended dose number within series
+   * Set seriesDoses choice type (seriesDosesPositiveInt, seriesDosesString)
+   * @param type - 'PositiveInt' | 'String'
+   * @param value - The value for the chosen type
+   *
+   * @example
+   * builder.setSeriesDoses('PositiveInt', value)
    */
-  setDoseNumberString(doseNumberString: string): this {
-    this.data.doseNumberString = doseNumberString;
-    return this;
-  }
-
-  /**
-   * Set seriesDosesPositiveInt
-   * Recommended number of doses for immunity
-   */
-  setSeriesDosesPositiveInt(seriesDosesPositiveInt: number): this {
-    this.data.seriesDosesPositiveInt = seriesDosesPositiveInt;
-    return this;
-  }
-
-  /**
-   * Set seriesDosesString
-   * Recommended number of doses for immunity
-   */
-  setSeriesDosesString(seriesDosesString: string): this {
-    this.data.seriesDosesString = seriesDosesString;
-    return this;
+  setSeriesDoses<T extends 'PositiveInt' | 'String'>(
+    type: T,
+    value: ChoiceTypeValue<T>
+  ): this {
+    const key = `seriesDoses${type}` as keyof IImmunizationRecommendationRecommendation;
+    const otherKeys: (keyof IImmunizationRecommendationRecommendation)[] = [];
+    if (type !== 'PositiveInt') {
+      otherKeys.push('seriesDosesPositiveInt' as keyof IImmunizationRecommendationRecommendation);
+      otherKeys.push('_seriesDosesPositiveInt' as keyof IImmunizationRecommendationRecommendation);
+    }
+    if (type !== 'String') {
+      otherKeys.push('seriesDosesString' as keyof IImmunizationRecommendationRecommendation);
+      otherKeys.push('_seriesDosesString' as keyof IImmunizationRecommendationRecommendation);
+    }
+    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================

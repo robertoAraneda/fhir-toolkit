@@ -43,7 +43,6 @@ const AUDIT_EVENT_PROPERTIES = [
  *
  * @example
  * const auditEvent = new AuditEvent({
- *   resourceType: 'AuditEvent',
  *   // ... properties
  * });
  */
@@ -115,7 +114,7 @@ export class AuditEvent extends DomainResource implements IAuditEvent {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IAuditEvent>) {
+  constructor(data?: Omit<Partial<IAuditEvent>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, AUDIT_EVENT_PROPERTIES);

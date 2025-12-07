@@ -53,7 +53,6 @@ const HEALTHCARE_SERVICE_PROPERTIES = [
  *
  * @example
  * const healthcareService = new HealthcareService({
- *   resourceType: 'HealthcareService',
  *   // ... properties
  * });
  */
@@ -158,7 +157,7 @@ export class HealthcareService extends DomainResource implements IHealthcareServ
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IHealthcareService>) {
+  constructor(data?: Omit<Partial<IHealthcareService>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, HEALTHCARE_SERVICE_PROPERTIES);

@@ -30,7 +30,6 @@ const VISION_PRESCRIPTION_PROPERTIES = [
  *
  * @example
  * const visionPrescription = new VisionPrescription({
- *   resourceType: 'VisionPrescription',
  *   // ... properties
  * });
  */
@@ -78,7 +77,7 @@ export class VisionPrescription extends DomainResource implements IVisionPrescri
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IVisionPrescription>) {
+  constructor(data?: Omit<Partial<IVisionPrescription>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, VISION_PRESCRIPTION_PROPERTIES);

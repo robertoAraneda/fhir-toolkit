@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { AllergyIntolerance } from '../../models/resources/AllergyIntolerance.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   AllergyIntoleranceCategoryType,
   AllergyIntoleranceClinicalStatusType,
@@ -140,7 +141,7 @@ export class AllergyIntoleranceBuilder extends DomainResourceBuilder<AllergyInto
   // ============================================================================
 
   /**
-   * Set onset choice type
+   * Set onset choice type (onsetDateTime, onsetAge, onsetPeriod, onsetRange, onsetString)
    * @param type - 'DateTime' | 'Age' | 'Period' | 'Range' | 'String'
    * @param value - The value for the chosen type
    *
@@ -149,7 +150,7 @@ export class AllergyIntoleranceBuilder extends DomainResourceBuilder<AllergyInto
    */
   setOnset<T extends 'DateTime' | 'Age' | 'Period' | 'Range' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `onset${type}` as keyof IAllergyIntolerance;
     const otherKeys: (keyof IAllergyIntolerance)[] = [];

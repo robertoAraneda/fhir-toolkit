@@ -33,7 +33,6 @@ const QUESTIONNAIRE_RESPONSE_PROPERTIES = [
  *
  * @example
  * const questionnaireResponse = new QuestionnaireResponse({
- *   resourceType: 'QuestionnaireResponse',
  *   // ... properties
  * });
  */
@@ -90,7 +89,7 @@ export class QuestionnaireResponse extends DomainResource implements IQuestionna
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IQuestionnaireResponse>) {
+  constructor(data?: Omit<Partial<IQuestionnaireResponse>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, QUESTIONNAIRE_RESPONSE_PROPERTIES);

@@ -85,7 +85,6 @@ const SEARCH_PARAMETER_PROPERTIES = [
  *
  * @example
  * const searchParameter = new SearchParameter({
- *   resourceType: 'SearchParameter',
  *   // ... properties
  * });
  */
@@ -274,7 +273,7 @@ export class SearchParameter extends DomainResource implements ISearchParameter 
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISearchParameter>) {
+  constructor(data?: Omit<Partial<ISearchParameter>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SEARCH_PARAMETER_PROPERTIES);

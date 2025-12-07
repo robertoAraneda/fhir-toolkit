@@ -53,7 +53,6 @@ const DOCUMENT_REFERENCE_PROPERTIES = [
  *
  * @example
  * const documentReference = new DocumentReference({
- *   resourceType: 'DocumentReference',
  *   // ... properties
  * });
  */
@@ -152,7 +151,7 @@ export class DocumentReference extends DomainResource implements IDocumentRefere
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDocumentReference>) {
+  constructor(data?: Omit<Partial<IDocumentReference>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DOCUMENT_REFERENCE_PROPERTIES);

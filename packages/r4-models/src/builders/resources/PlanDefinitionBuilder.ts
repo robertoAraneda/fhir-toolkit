@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { PlanDefinition } from '../../models/resources/PlanDefinition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IContactDetail,
@@ -191,7 +192,7 @@ export class PlanDefinitionBuilder extends DomainResourceBuilder<PlanDefinition,
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -200,7 +201,7 @@ export class PlanDefinitionBuilder extends DomainResourceBuilder<PlanDefinition,
    */
   setSubject<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `subject${type}` as keyof IPlanDefinition;
     const otherKeys: (keyof IPlanDefinition)[] = [];

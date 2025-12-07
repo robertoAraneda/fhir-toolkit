@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Observation } from '../../models/resources/Observation.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICodeableConcept,
@@ -131,7 +132,7 @@ export class ObservationBuilder extends DomainResourceBuilder<Observation, IObse
   // ============================================================================
 
   /**
-   * Set effective choice type
+   * Set effective choice type (effectiveDateTime, effectivePeriod, effectiveTiming, effectiveInstant)
    * @param type - 'DateTime' | 'Period' | 'Timing' | 'Instant'
    * @param value - The value for the chosen type
    *
@@ -140,7 +141,7 @@ export class ObservationBuilder extends DomainResourceBuilder<Observation, IObse
    */
   setEffective<T extends 'DateTime' | 'Period' | 'Timing' | 'Instant'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `effective${type}` as keyof IObservation;
     const otherKeys: (keyof IObservation)[] = [];
@@ -164,7 +165,7 @@ export class ObservationBuilder extends DomainResourceBuilder<Observation, IObse
   }
 
   /**
-   * Set value choice type
+   * Set value choice type (valueQuantity, valueCodeableConcept, valueString, valueBoolean, valueInteger, valueRange, valueRatio, valueSampledData, valueTime, valueDateTime, valuePeriod)
    * @param type - 'Quantity' | 'CodeableConcept' | 'String' | 'Boolean' | 'Integer' | 'Range' | 'Ratio' | 'SampledData' | 'Time' | 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -173,7 +174,7 @@ export class ObservationBuilder extends DomainResourceBuilder<Observation, IObse
    */
   setValue<T extends 'Quantity' | 'CodeableConcept' | 'String' | 'Boolean' | 'Integer' | 'Range' | 'Ratio' | 'SampledData' | 'Time' | 'DateTime' | 'Period'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IObservation;
     const otherKeys: (keyof IObservation)[] = [];

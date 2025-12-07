@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { FamilyMemberHistoryCondition } from '../../models/backbones/FamilyMemberHistoryCondition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAge,
   IAnnotation,
@@ -58,7 +59,7 @@ export class FamilyMemberHistoryConditionBuilder extends BackboneElementBuilder<
   // ============================================================================
 
   /**
-   * Set onset choice type
+   * Set onset choice type (onsetAge, onsetRange, onsetPeriod, onsetString)
    * @param type - 'Age' | 'Range' | 'Period' | 'String'
    * @param value - The value for the chosen type
    *
@@ -67,7 +68,7 @@ export class FamilyMemberHistoryConditionBuilder extends BackboneElementBuilder<
    */
   setOnset<T extends 'Age' | 'Range' | 'Period' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `onset${type}` as keyof IFamilyMemberHistoryCondition;
     const otherKeys: (keyof IFamilyMemberHistoryCondition)[] = [];

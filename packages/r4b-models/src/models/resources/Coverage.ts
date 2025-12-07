@@ -45,7 +45,6 @@ const COVERAGE_PROPERTIES = [
  *
  * @example
  * const coverage = new Coverage({
- *   resourceType: 'Coverage',
  *   // ... properties
  * });
  */
@@ -129,7 +128,7 @@ export class Coverage extends DomainResource implements ICoverage {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICoverage>) {
+  constructor(data?: Omit<Partial<ICoverage>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, COVERAGE_PROPERTIES);

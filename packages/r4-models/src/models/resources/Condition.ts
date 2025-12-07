@@ -56,7 +56,6 @@ const CONDITION_PROPERTIES = [
  *
  * @example
  * const condition = new Condition({
- *   resourceType: 'Condition',
  *   // ... properties
  * });
  */
@@ -161,7 +160,7 @@ export class Condition extends DomainResource implements ICondition {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICondition>) {
+  constructor(data?: Omit<Partial<ICondition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CONDITION_PROPERTIES);

@@ -61,7 +61,6 @@ const CLAIM_PROPERTIES = [
  *
  * @example
  * const claim = new Claim({
- *   resourceType: 'Claim',
  *   // ... properties
  * });
  */
@@ -166,7 +165,7 @@ export class Claim extends DomainResource implements IClaim {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IClaim>) {
+  constructor(data?: Omit<Partial<IClaim>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CLAIM_PROPERTIES);

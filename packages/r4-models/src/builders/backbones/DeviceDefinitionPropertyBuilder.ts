@@ -15,6 +15,7 @@ import type {
  * @example
  * const deviceDefinitionProperty = new DeviceDefinitionPropertyBuilder()
  *   .setType(value)
+ *   .addValueQuantity({ ... })
  *   .build();
  */
 export class DeviceDefinitionPropertyBuilder extends BackboneElementBuilder<DeviceDefinitionProperty, IDeviceDefinitionProperty> {
@@ -32,32 +33,23 @@ export class DeviceDefinitionPropertyBuilder extends BackboneElementBuilder<Devi
   }
 
   // ============================================================================
-  // Choice Types
+  // Array Properties
   // ============================================================================
 
   /**
-   * Set value choice type
-   * @param type - 'Quantity' | 'Code'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setValue('Quantity', value)
+   * Add valueQuantity
+   * Property value as a quantity
    */
-  setValue<T extends 'Quantity' | 'Code'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `value${type}` as keyof IDeviceDefinitionProperty;
-    const otherKeys: (keyof IDeviceDefinitionProperty)[] = [];
-    if (type !== 'Quantity') {
-      otherKeys.push('valueQuantity' as keyof IDeviceDefinitionProperty);
-      otherKeys.push('_valueQuantity' as keyof IDeviceDefinitionProperty);
-    }
-    if (type !== 'Code') {
-      otherKeys.push('valueCode' as keyof IDeviceDefinitionProperty);
-      otherKeys.push('_valueCode' as keyof IDeviceDefinitionProperty);
-    }
-    return this.setChoiceType(key, value, otherKeys);
+  addValueQuantity(valueQuantity: IQuantity): this {
+    return this.addToArray('valueQuantity', valueQuantity);
+  }
+
+  /**
+   * Add valueCode
+   * Property value as a code, e.g., NTP4 (synced to NTP)
+   */
+  addValueCode(valueCode: ICodeableConcept): this {
+    return this.addToArray('valueCode', valueCode);
   }
 
   // ============================================================================

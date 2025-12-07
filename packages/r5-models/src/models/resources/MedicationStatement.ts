@@ -52,7 +52,6 @@ The MedicationStatement resource was previously called MedicationStatement.
  *
  * @example
  * const medicationStatement = new MedicationStatement({
- *   resourceType: 'MedicationStatement',
  *   // ... properties
  * });
  */
@@ -136,7 +135,7 @@ export class MedicationStatement extends DomainResource implements IMedicationSt
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicationStatement>) {
+  constructor(data?: Omit<Partial<IMedicationStatement>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICATION_STATEMENT_PROPERTIES);

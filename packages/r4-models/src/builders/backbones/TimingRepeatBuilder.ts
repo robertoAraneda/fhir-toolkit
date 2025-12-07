@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { TimingRepeat } from '../../models/backbones/TimingRepeat.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   DaysOfWeekType,
   EventTimingType,
@@ -131,7 +132,7 @@ export class TimingRepeatBuilder extends BackboneElementBuilder<TimingRepeat, IT
   // ============================================================================
 
   /**
-   * Set bounds choice type
+   * Set bounds choice type (boundsDuration, boundsRange, boundsPeriod)
    * @param type - 'Duration' | 'Range' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -140,7 +141,7 @@ export class TimingRepeatBuilder extends BackboneElementBuilder<TimingRepeat, IT
    */
   setBounds<T extends 'Duration' | 'Range' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `bounds${type}` as keyof ITimingRepeat;
     const otherKeys: (keyof ITimingRepeat)[] = [];

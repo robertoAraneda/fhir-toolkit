@@ -47,7 +47,6 @@ const COVERAGE_ELIGIBILITY_RESPONSE_PROPERTIES = [
  *
  * @example
  * const coverageEligibilityResponse = new CoverageEligibilityResponse({
- *   resourceType: 'CoverageEligibilityResponse',
  *   // ... properties
  * });
  */
@@ -131,7 +130,7 @@ export class CoverageEligibilityResponse extends DomainResource implements ICove
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICoverageEligibilityResponse>) {
+  constructor(data?: Omit<Partial<ICoverageEligibilityResponse>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, COVERAGE_ELIGIBILITY_RESPONSE_PROPERTIES);

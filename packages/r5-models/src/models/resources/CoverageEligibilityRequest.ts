@@ -45,7 +45,6 @@ const COVERAGE_ELIGIBILITY_REQUEST_PROPERTIES = [
  *
  * @example
  * const coverageEligibilityRequest = new CoverageEligibilityRequest({
- *   resourceType: 'CoverageEligibilityRequest',
  *   // ... properties
  * });
  */
@@ -120,7 +119,7 @@ export class CoverageEligibilityRequest extends DomainResource implements ICover
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICoverageEligibilityRequest>) {
+  constructor(data?: Omit<Partial<ICoverageEligibilityRequest>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, COVERAGE_ELIGIBILITY_REQUEST_PROPERTIES);

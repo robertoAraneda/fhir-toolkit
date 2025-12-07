@@ -24,7 +24,6 @@ const SUBSTANCE_NUCLEIC_ACID_PROPERTIES = [
  *
  * @example
  * const substanceNucleicAcid = new SubstanceNucleicAcid({
- *   resourceType: 'SubstanceNucleicAcid',
  *   // ... properties
  * });
  */
@@ -60,7 +59,7 @@ export class SubstanceNucleicAcid extends DomainResource implements ISubstanceNu
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISubstanceNucleicAcid>) {
+  constructor(data?: Omit<Partial<ISubstanceNucleicAcid>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUBSTANCE_NUCLEIC_ACID_PROPERTIES);

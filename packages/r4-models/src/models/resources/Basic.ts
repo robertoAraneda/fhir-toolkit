@@ -24,7 +24,6 @@ const BASIC_PROPERTIES = [
  *
  * @example
  * const basic = new Basic({
- *   resourceType: 'Basic',
  *   // ... properties
  * });
  */
@@ -57,7 +56,7 @@ export class Basic extends DomainResource implements IBasic {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IBasic>) {
+  constructor(data?: Omit<Partial<IBasic>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, BASIC_PROPERTIES);

@@ -60,7 +60,6 @@ const REQUIREMENTS_PROPERTIES = [
  *
  * @example
  * const requirements = new Requirements({
- *   resourceType: 'Requirements',
  *   // ... properties
  * });
  */
@@ -189,7 +188,7 @@ export class Requirements extends DomainResource implements IRequirements {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IRequirements>) {
+  constructor(data?: Omit<Partial<IRequirements>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, REQUIREMENTS_PROPERTIES);

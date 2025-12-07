@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ObservationComponent } from '../../models/backbones/ObservationComponent.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IObservationComponent,
@@ -51,7 +52,7 @@ export class ObservationComponentBuilder extends BackboneElementBuilder<Observat
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueQuantity, valueCodeableConcept, valueString, valueBoolean, valueInteger, valueRange, valueRatio, valueSampledData, valueTime, valueDateTime, valuePeriod)
    * @param type - 'Quantity' | 'CodeableConcept' | 'String' | 'Boolean' | 'Integer' | 'Range' | 'Ratio' | 'SampledData' | 'Time' | 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -60,7 +61,7 @@ export class ObservationComponentBuilder extends BackboneElementBuilder<Observat
    */
   setValue<T extends 'Quantity' | 'CodeableConcept' | 'String' | 'Boolean' | 'Integer' | 'Range' | 'Ratio' | 'SampledData' | 'Time' | 'DateTime' | 'Period'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IObservationComponent;
     const otherKeys: (keyof IObservationComponent)[] = [];

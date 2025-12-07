@@ -22,7 +22,6 @@ const MEDICINAL_PRODUCT_UNDESIRABLE_EFFECT_PROPERTIES = [
  *
  * @example
  * const medicinalProductUndesirableEffect = new MedicinalProductUndesirableEffect({
- *   resourceType: 'MedicinalProductUndesirableEffect',
  *   // ... properties
  * });
  */
@@ -52,7 +51,7 @@ export class MedicinalProductUndesirableEffect extends DomainResource implements
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicinalProductUndesirableEffect>) {
+  constructor(data?: Omit<Partial<IMedicinalProductUndesirableEffect>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICINAL_PRODUCT_UNDESIRABLE_EFFECT_PROPERTIES);

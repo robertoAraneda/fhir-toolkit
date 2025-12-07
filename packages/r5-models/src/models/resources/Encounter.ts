@@ -59,7 +59,6 @@ const ENCOUNTER_PROPERTIES = [
  *
  * @example
  * const encounter = new Encounter({
- *   resourceType: 'Encounter',
  *   // ... properties
  * });
  */
@@ -167,7 +166,7 @@ export class Encounter extends DomainResource implements IEncounter {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEncounter>) {
+  constructor(data?: Omit<Partial<IEncounter>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ENCOUNTER_PROPERTIES);

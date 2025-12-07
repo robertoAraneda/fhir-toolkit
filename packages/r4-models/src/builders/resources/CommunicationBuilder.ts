@@ -112,60 +112,6 @@ export class CommunicationBuilder extends DomainResourceBuilder<Communication, I
   }
 
   // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof ICommunication;
-    const otherKeys: (keyof ICommunication)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof ICommunication);
-      otherKeys.push('_instantiatesCanonical' as keyof ICommunication);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof ICommunication);
-      otherKeys.push('_instantiatesUri' as keyof ICommunication);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `reason${type}` as keyof ICommunication;
-    const otherKeys: (keyof ICommunication)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof ICommunication);
-      otherKeys.push('_reasonCode' as keyof ICommunication);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof ICommunication);
-      otherKeys.push('_reasonReference' as keyof ICommunication);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  // ============================================================================
   // Array Properties
   // ============================================================================
 
@@ -175,6 +121,22 @@ export class CommunicationBuilder extends DomainResourceBuilder<Communication, I
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
   }
 
   /**
@@ -231,6 +193,22 @@ export class CommunicationBuilder extends DomainResourceBuilder<Communication, I
    */
   addRecipient(recipient: IReference<'Device' | 'Organization' | 'Patient' | 'Practitioner' | 'PractitionerRole' | 'RelatedPerson' | 'Group' | 'CareTeam' | 'HealthcareService'>): this {
     return this.addToArray('recipient', recipient);
+  }
+
+  /**
+   * Add reasonCode
+   * Indication for message
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why was communication done?
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

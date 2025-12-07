@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { QuestionnaireItemAnswerOption } from '../../models/backbones/QuestionnaireItemAnswerOption.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICoding,
   IQuestionnaireItemAnswerOption,
@@ -36,7 +37,7 @@ export class QuestionnaireItemAnswerOptionBuilder extends BackboneElementBuilder
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueInteger, valueDate, valueTime, valueString, valueCoding, valueReference)
    * @param type - 'Integer' | 'Date' | 'Time' | 'String' | 'Coding' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -45,7 +46,7 @@ export class QuestionnaireItemAnswerOptionBuilder extends BackboneElementBuilder
    */
   setValue<T extends 'Integer' | 'Date' | 'Time' | 'String' | 'Coding' | 'Reference'>(
     type: T,
-    value: T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IQuestionnaireItemAnswerOption;
     const otherKeys: (keyof IQuestionnaireItemAnswerOption)[] = [];

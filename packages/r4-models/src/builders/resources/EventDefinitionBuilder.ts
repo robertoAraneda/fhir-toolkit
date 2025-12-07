@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { EventDefinition } from '../../models/resources/EventDefinition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IContactDetail,
@@ -181,7 +182,7 @@ export class EventDefinitionBuilder extends DomainResourceBuilder<EventDefinitio
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -190,7 +191,7 @@ export class EventDefinitionBuilder extends DomainResourceBuilder<EventDefinitio
    */
   setSubject<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `subject${type}` as keyof IEventDefinition;
     const otherKeys: (keyof IEventDefinition)[] = [];

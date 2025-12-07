@@ -63,7 +63,6 @@ const TEST_PLAN_PROPERTIES = [
  *
  * @example
  * const testPlan = new TestPlan({
- *   resourceType: 'TestPlan',
  *   // ... properties
  * });
  */
@@ -195,7 +194,7 @@ export class TestPlan extends DomainResource implements ITestPlan {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ITestPlan>) {
+  constructor(data?: Omit<Partial<ITestPlan>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, TEST_PLAN_PROPERTIES);

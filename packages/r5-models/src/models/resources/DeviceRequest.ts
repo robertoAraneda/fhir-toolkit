@@ -64,7 +64,6 @@ const DEVICE_REQUEST_PROPERTIES = [
  *
  * @example
  * const deviceRequest = new DeviceRequest({
- *   resourceType: 'DeviceRequest',
  *   // ... properties
  * });
  */
@@ -193,7 +192,7 @@ export class DeviceRequest extends DomainResource implements IDeviceRequest {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDeviceRequest>) {
+  constructor(data?: Omit<Partial<IDeviceRequest>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DEVICE_REQUEST_PROPERTIES);

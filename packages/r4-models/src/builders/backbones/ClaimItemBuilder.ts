@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ClaimItem } from '../../models/backbones/ClaimItem.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAddress,
   IClaimItem,
@@ -114,7 +115,7 @@ export class ClaimItemBuilder extends BackboneElementBuilder<ClaimItem, IClaimIt
   // ============================================================================
 
   /**
-   * Set serviced choice type
+   * Set serviced choice type (servicedDate, servicedPeriod)
    * @param type - 'Date' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -123,7 +124,7 @@ export class ClaimItemBuilder extends BackboneElementBuilder<ClaimItem, IClaimIt
    */
   setServiced<T extends 'Date' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `serviced${type}` as keyof IClaimItem;
     const otherKeys: (keyof IClaimItem)[] = [];
@@ -139,7 +140,7 @@ export class ClaimItemBuilder extends BackboneElementBuilder<ClaimItem, IClaimIt
   }
 
   /**
-   * Set location choice type
+   * Set location choice type (locationCodeableConcept, locationAddress, locationReference)
    * @param type - 'CodeableConcept' | 'Address' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -148,7 +149,7 @@ export class ClaimItemBuilder extends BackboneElementBuilder<ClaimItem, IClaimIt
    */
   setLocation<T extends 'CodeableConcept' | 'Address' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `location${type}` as keyof IClaimItem;
     const otherKeys: (keyof IClaimItem)[] = [];

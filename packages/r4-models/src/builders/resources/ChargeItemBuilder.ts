@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { ChargeItem } from '../../models/resources/ChargeItem.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ChargeItemStatusType,
   IAnnotation,
@@ -155,32 +156,7 @@ export class ChargeItemBuilder extends DomainResourceBuilder<ChargeItem, ICharge
   // ============================================================================
 
   /**
-   * Set definition choice type
-   * @param type - 'Uri' | 'Canonical'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setDefinition('Uri', value)
-   */
-  setDefinition<T extends 'Uri' | 'Canonical'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `definition${type}` as keyof IChargeItem;
-    const otherKeys: (keyof IChargeItem)[] = [];
-    if (type !== 'Uri') {
-      otherKeys.push('definitionUri' as keyof IChargeItem);
-      otherKeys.push('_definitionUri' as keyof IChargeItem);
-    }
-    if (type !== 'Canonical') {
-      otherKeys.push('definitionCanonical' as keyof IChargeItem);
-      otherKeys.push('_definitionCanonical' as keyof IChargeItem);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrencePeriod, occurrenceTiming)
    * @param type - 'DateTime' | 'Period' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -189,7 +165,7 @@ export class ChargeItemBuilder extends DomainResourceBuilder<ChargeItem, ICharge
    */
   setOccurrence<T extends 'DateTime' | 'Period' | 'Timing'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `occurrence${type}` as keyof IChargeItem;
     const otherKeys: (keyof IChargeItem)[] = [];
@@ -209,7 +185,7 @@ export class ChargeItemBuilder extends DomainResourceBuilder<ChargeItem, ICharge
   }
 
   /**
-   * Set product choice type
+   * Set product choice type (productReference, productCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -218,7 +194,7 @@ export class ChargeItemBuilder extends DomainResourceBuilder<ChargeItem, ICharge
    */
   setProduct<T extends 'Reference' | 'CodeableConcept'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `product${type}` as keyof IChargeItem;
     const otherKeys: (keyof IChargeItem)[] = [];
@@ -243,6 +219,22 @@ export class ChargeItemBuilder extends DomainResourceBuilder<ChargeItem, ICharge
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add definitionUri
+   * Defining information about the code of this charge item
+   */
+  addDefinitionUri(definitionUri: string): this {
+    return this.addToArray('definitionUri', definitionUri);
+  }
+
+  /**
+   * Add definitionCanonical
+   * Resource defining the code of this ChargeItem
+   */
+  addDefinitionCanonical(definitionCanonical: string): this {
+    return this.addToArray('definitionCanonical', definitionCanonical);
   }
 
   /**

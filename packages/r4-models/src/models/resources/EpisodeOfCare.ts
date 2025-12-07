@@ -35,7 +35,6 @@ const EPISODE_OF_CARE_PROPERTIES = [
  *
  * @example
  * const episodeOfCare = new EpisodeOfCare({
- *   resourceType: 'EpisodeOfCare',
  *   // ... properties
  * });
  */
@@ -89,7 +88,7 @@ export class EpisodeOfCare extends DomainResource implements IEpisodeOfCare {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEpisodeOfCare>) {
+  constructor(data?: Omit<Partial<IEpisodeOfCare>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, EPISODE_OF_CARE_PROPERTIES);

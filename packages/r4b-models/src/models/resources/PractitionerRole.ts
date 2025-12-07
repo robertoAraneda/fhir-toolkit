@@ -38,7 +38,6 @@ const PRACTITIONER_ROLE_PROPERTIES = [
  *
  * @example
  * const practitionerRole = new PractitionerRole({
- *   resourceType: 'PractitionerRole',
  *   // ... properties
  * });
  */
@@ -101,7 +100,7 @@ export class PractitionerRole extends DomainResource implements IPractitionerRol
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IPractitionerRole>) {
+  constructor(data?: Omit<Partial<IPractitionerRole>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PRACTITIONER_ROLE_PROPERTIES);

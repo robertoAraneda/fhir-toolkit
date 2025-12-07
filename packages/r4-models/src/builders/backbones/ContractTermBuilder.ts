@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ContractTerm } from '../../models/backbones/ContractTerm.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IContractTerm,
@@ -97,7 +98,7 @@ export class ContractTermBuilder extends BackboneElementBuilder<ContractTerm, IC
   // ============================================================================
 
   /**
-   * Set topic choice type
+   * Set topic choice type (topicCodeableConcept, topicReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -106,7 +107,7 @@ export class ContractTermBuilder extends BackboneElementBuilder<ContractTerm, IC
    */
   setTopic<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `topic${type}` as keyof IContractTerm;
     const otherKeys: (keyof IContractTerm)[] = [];

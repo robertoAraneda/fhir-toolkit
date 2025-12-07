@@ -43,7 +43,6 @@ const RISK_ASSESSMENT_PROPERTIES = [
  *
  * @example
  * const riskAssessment = new RiskAssessment({
- *   resourceType: 'RiskAssessment',
  *   // ... properties
  * });
  */
@@ -121,7 +120,7 @@ export class RiskAssessment extends DomainResource implements IRiskAssessment {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IRiskAssessment>) {
+  constructor(data?: Omit<Partial<IRiskAssessment>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, RISK_ASSESSMENT_PROPERTIES);

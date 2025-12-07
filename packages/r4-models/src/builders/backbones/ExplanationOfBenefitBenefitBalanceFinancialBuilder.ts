@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ExplanationOfBenefitBenefitBalanceFinancial } from '../../models/backbones/ExplanationOfBenefitBenefitBalanceFinancial.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IExplanationOfBenefitBenefitBalanceFinancial,
@@ -31,51 +32,28 @@ export class ExplanationOfBenefitBenefitBalanceFinancialBuilder extends Backbone
     return this;
   }
 
-  /**
-   * Set allowedUnsignedInt
-   * Benefits allowed
-   */
-  setAllowedUnsignedInt(allowedUnsignedInt: number): this {
-    this.data.allowedUnsignedInt = allowedUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set usedUnsignedInt
-   * Benefits used
-   */
-  setUsedUnsignedInt(usedUnsignedInt: number): this {
-    this.data.usedUnsignedInt = usedUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set usedMoney
-   * Benefits used
-   */
-  setUsedMoney(usedMoney: IMoney): this {
-    this.data.usedMoney = usedMoney;
-    return this;
-  }
-
   // ============================================================================
   // Choice Types
   // ============================================================================
 
   /**
-   * Set allowed choice type
-   * @param type - 'String' | 'Money'
+   * Set allowed choice type (allowedUnsignedInt, allowedString, allowedMoney)
+   * @param type - 'UnsignedInt' | 'String' | 'Money'
    * @param value - The value for the chosen type
    *
    * @example
-   * builder.setAllowed('String', value)
+   * builder.setAllowed('UnsignedInt', value)
    */
-  setAllowed<T extends 'String' | 'Money'>(
+  setAllowed<T extends 'UnsignedInt' | 'String' | 'Money'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `allowed${type}` as keyof IExplanationOfBenefitBenefitBalanceFinancial;
     const otherKeys: (keyof IExplanationOfBenefitBenefitBalanceFinancial)[] = [];
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('allowedUnsignedInt' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
+      otherKeys.push('_allowedUnsignedInt' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
+    }
     if (type !== 'String') {
       otherKeys.push('allowedString' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
       otherKeys.push('_allowedString' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
@@ -83,6 +61,31 @@ export class ExplanationOfBenefitBenefitBalanceFinancialBuilder extends Backbone
     if (type !== 'Money') {
       otherKeys.push('allowedMoney' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
       otherKeys.push('_allowedMoney' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
+    }
+    return this.setChoiceType(key, value, otherKeys);
+  }
+
+  /**
+   * Set used choice type (usedUnsignedInt, usedMoney)
+   * @param type - 'UnsignedInt' | 'Money'
+   * @param value - The value for the chosen type
+   *
+   * @example
+   * builder.setUsed('UnsignedInt', value)
+   */
+  setUsed<T extends 'UnsignedInt' | 'Money'>(
+    type: T,
+    value: ChoiceTypeValue<T>
+  ): this {
+    const key = `used${type}` as keyof IExplanationOfBenefitBenefitBalanceFinancial;
+    const otherKeys: (keyof IExplanationOfBenefitBenefitBalanceFinancial)[] = [];
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('usedUnsignedInt' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
+      otherKeys.push('_usedUnsignedInt' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
+    }
+    if (type !== 'Money') {
+      otherKeys.push('usedMoney' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
+      otherKeys.push('_usedMoney' as keyof IExplanationOfBenefitBenefitBalanceFinancial);
     }
     return this.setChoiceType(key, value, otherKeys);
   }

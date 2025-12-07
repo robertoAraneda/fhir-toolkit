@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { DetectedIssue } from '../../models/resources/DetectedIssue.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   DetectedIssueSeverityType,
   ICodeableConcept,
@@ -99,7 +100,7 @@ export class DetectedIssueBuilder extends DomainResourceBuilder<DetectedIssue, I
   // ============================================================================
 
   /**
-   * Set identified choice type
+   * Set identified choice type (identifiedDateTime, identifiedPeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -108,7 +109,7 @@ export class DetectedIssueBuilder extends DomainResourceBuilder<DetectedIssue, I
    */
   setIdentified<T extends 'DateTime' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `identified${type}` as keyof IDetectedIssue;
     const otherKeys: (keyof IDetectedIssue)[] = [];

@@ -35,7 +35,6 @@ const NUTRITION_PRODUCT_PROPERTIES = [
  *
  * @example
  * const nutritionProduct = new NutritionProduct({
- *   resourceType: 'NutritionProduct',
  *   // ... properties
  * });
  */
@@ -83,7 +82,7 @@ export class NutritionProduct extends DomainResource implements INutritionProduc
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<INutritionProduct>) {
+  constructor(data?: Omit<Partial<INutritionProduct>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, NUTRITION_PRODUCT_PROPERTIES);

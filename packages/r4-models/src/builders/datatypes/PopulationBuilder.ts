@@ -1,5 +1,6 @@
 import { ElementBuilder } from '../base/ElementBuilder.js';
 import { Population } from '../../models/datatypes/Population.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IPopulation,
@@ -54,7 +55,7 @@ export class PopulationBuilder extends ElementBuilder<Population, IPopulation> {
   // ============================================================================
 
   /**
-   * Set age choice type
+   * Set age choice type (ageRange, ageCodeableConcept)
    * @param type - 'Range' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -63,7 +64,7 @@ export class PopulationBuilder extends ElementBuilder<Population, IPopulation> {
    */
   setAge<T extends 'Range' | 'CodeableConcept'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `age${type}` as keyof IPopulation;
     const otherKeys: (keyof IPopulation)[] = [];

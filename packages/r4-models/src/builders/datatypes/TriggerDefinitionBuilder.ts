@@ -1,5 +1,6 @@
 import { ElementBuilder } from '../base/ElementBuilder.js';
 import { TriggerDefinition } from '../../models/datatypes/TriggerDefinition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IDataRequirement,
   IExpression,
@@ -58,7 +59,7 @@ export class TriggerDefinitionBuilder extends ElementBuilder<TriggerDefinition, 
   // ============================================================================
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingTiming, timingReference, timingDate, timingDateTime)
    * @param type - 'Timing' | 'Reference' | 'Date' | 'DateTime'
    * @param value - The value for the chosen type
    *
@@ -67,7 +68,7 @@ export class TriggerDefinitionBuilder extends ElementBuilder<TriggerDefinition, 
    */
   setTiming<T extends 'Timing' | 'Reference' | 'Date' | 'DateTime'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `timing${type}` as keyof ITriggerDefinition;
     const otherKeys: (keyof ITriggerDefinition)[] = [];

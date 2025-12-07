@@ -51,7 +51,6 @@ const COMMUNICATION_PROPERTIES = [
  *
  * @example
  * const communication = new Communication({
- *   resourceType: 'Communication',
  *   // ... properties
  * });
  */
@@ -150,7 +149,7 @@ export class Communication extends DomainResource implements ICommunication {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICommunication>) {
+  constructor(data?: Omit<Partial<ICommunication>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, COMMUNICATION_PROPERTIES);

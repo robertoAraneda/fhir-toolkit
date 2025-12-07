@@ -37,7 +37,6 @@ const CARE_TEAM_PROPERTIES = [
  *
  * @example
  * const careTeam = new CareTeam({
- *   resourceType: 'CareTeam',
  *   // ... properties
  * });
  */
@@ -91,7 +90,7 @@ export class CareTeam extends DomainResource implements ICareTeam {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICareTeam>) {
+  constructor(data?: Omit<Partial<ICareTeam>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CARE_TEAM_PROPERTIES);

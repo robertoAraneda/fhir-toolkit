@@ -40,7 +40,6 @@ const RELATED_PERSON_PROPERTIES = [
  *
  * @example
  * const relatedPerson = new RelatedPerson({
- *   resourceType: 'RelatedPerson',
  *   // ... properties
  * });
  */
@@ -100,7 +99,7 @@ export class RelatedPerson extends DomainResource implements IRelatedPerson {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IRelatedPerson>) {
+  constructor(data?: Omit<Partial<IRelatedPerson>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, RELATED_PERSON_PROPERTIES);

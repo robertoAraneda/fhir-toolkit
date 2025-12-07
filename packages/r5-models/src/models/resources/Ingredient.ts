@@ -34,7 +34,6 @@ const INGREDIENT_PROPERTIES = [
  *
  * @example
  * const ingredient = new Ingredient({
- *   resourceType: 'Ingredient',
  *   // ... properties
  * });
  */
@@ -88,7 +87,7 @@ export class Ingredient extends DomainResource implements IIngredient {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IIngredient>) {
+  constructor(data?: Omit<Partial<IIngredient>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, INGREDIENT_PROPERTIES);

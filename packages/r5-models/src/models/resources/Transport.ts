@@ -67,7 +67,6 @@ const TRANSPORT_PROPERTIES = [
  *
  * @example
  * const transport = new Transport({
- *   resourceType: 'Transport',
  *   // ... properties
  * });
  */
@@ -205,7 +204,7 @@ export class Transport extends DomainResource implements ITransport {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ITransport>) {
+  constructor(data?: Omit<Partial<ITransport>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, TRANSPORT_PROPERTIES);

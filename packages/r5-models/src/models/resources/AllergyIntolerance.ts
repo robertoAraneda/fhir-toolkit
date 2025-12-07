@@ -51,7 +51,6 @@ const ALLERGY_INTOLERANCE_PROPERTIES = [
  *
  * @example
  * const allergyIntolerance = new AllergyIntolerance({
- *   resourceType: 'AllergyIntolerance',
  *   // ... properties
  * });
  */
@@ -141,7 +140,7 @@ export class AllergyIntolerance extends DomainResource implements IAllergyIntole
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IAllergyIntolerance>) {
+  constructor(data?: Omit<Partial<IAllergyIntolerance>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ALLERGY_INTOLERANCE_PROPERTIES);

@@ -29,7 +29,6 @@ const DEVICE_ASSOCIATION_PROPERTIES = [
  *
  * @example
  * const deviceAssociation = new DeviceAssociation({
- *   resourceType: 'DeviceAssociation',
  *   // ... properties
  * });
  */
@@ -71,7 +70,7 @@ export class DeviceAssociation extends DomainResource implements IDeviceAssociat
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDeviceAssociation>) {
+  constructor(data?: Omit<Partial<IDeviceAssociation>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DEVICE_ASSOCIATION_PROPERTIES);

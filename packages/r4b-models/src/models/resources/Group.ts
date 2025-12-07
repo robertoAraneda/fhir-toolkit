@@ -36,7 +36,6 @@ const GROUP_PROPERTIES = [
  *
  * @example
  * const group = new Group({
- *   resourceType: 'Group',
  *   // ... properties
  * });
  */
@@ -96,7 +95,7 @@ export class Group extends DomainResource implements IGroup {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IGroup>) {
+  constructor(data?: Omit<Partial<IGroup>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, GROUP_PROPERTIES);

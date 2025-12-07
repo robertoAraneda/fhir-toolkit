@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { EvidenceVariableCharacteristic } from '../../models/backbones/EvidenceVariableCharacteristic.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   GroupMeasureType,
   ICodeableConcept,
@@ -72,7 +73,7 @@ export class EvidenceVariableCharacteristicBuilder extends BackboneElementBuilde
   // ============================================================================
 
   /**
-   * Set definition choice type
+   * Set definition choice type (definitionReference, definitionCanonical, definitionCodeableConcept, definitionExpression, definitionDataRequirement, definitionTriggerDefinition)
    * @param type - 'Reference' | 'Canonical' | 'CodeableConcept' | 'Expression' | 'DataRequirement' | 'TriggerDefinition'
    * @param value - The value for the chosen type
    *
@@ -81,7 +82,7 @@ export class EvidenceVariableCharacteristicBuilder extends BackboneElementBuilde
    */
   setDefinition<T extends 'Reference' | 'Canonical' | 'CodeableConcept' | 'Expression' | 'DataRequirement' | 'TriggerDefinition'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `definition${type}` as keyof IEvidenceVariableCharacteristic;
     const otherKeys: (keyof IEvidenceVariableCharacteristic)[] = [];
@@ -113,7 +114,7 @@ export class EvidenceVariableCharacteristicBuilder extends BackboneElementBuilde
   }
 
   /**
-   * Set participantEffective choice type
+   * Set participantEffective choice type (participantEffectiveDateTime, participantEffectivePeriod, participantEffectiveDuration, participantEffectiveTiming)
    * @param type - 'DateTime' | 'Period' | 'Duration' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -122,7 +123,7 @@ export class EvidenceVariableCharacteristicBuilder extends BackboneElementBuilde
    */
   setParticipantEffective<T extends 'DateTime' | 'Period' | 'Duration' | 'Timing'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `participantEffective${type}` as keyof IEvidenceVariableCharacteristic;
     const otherKeys: (keyof IEvidenceVariableCharacteristic)[] = [];

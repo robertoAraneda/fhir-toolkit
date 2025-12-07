@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { CodeSystemConceptProperty } from '../../models/backbones/CodeSystemConceptProperty.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeSystemConceptProperty,
   ICoding,
@@ -35,7 +36,7 @@ export class CodeSystemConceptPropertyBuilder extends BackboneElementBuilder<Cod
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCode, valueCoding, valueString, valueInteger, valueBoolean, valueDateTime, valueDecimal)
    * @param type - 'Code' | 'Coding' | 'String' | 'Integer' | 'Boolean' | 'DateTime' | 'Decimal'
    * @param value - The value for the chosen type
    *
@@ -44,7 +45,7 @@ export class CodeSystemConceptPropertyBuilder extends BackboneElementBuilder<Cod
    */
   setValue<T extends 'Code' | 'Coding' | 'String' | 'Integer' | 'Boolean' | 'DateTime' | 'Decimal'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof ICodeSystemConceptProperty;
     const otherKeys: (keyof ICodeSystemConceptProperty)[] = [];

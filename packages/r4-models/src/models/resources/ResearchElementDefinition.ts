@@ -80,7 +80,6 @@ const RESEARCH_ELEMENT_DEFINITION_PROPERTIES = [
  *
  * @example
  * const researchElementDefinition = new ResearchElementDefinition({
- *   resourceType: 'ResearchElementDefinition',
  *   // ... properties
  * });
  */
@@ -257,7 +256,7 @@ export class ResearchElementDefinition extends DomainResource implements IResear
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IResearchElementDefinition>) {
+  constructor(data?: Omit<Partial<IResearchElementDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, RESEARCH_ELEMENT_DEFINITION_PROPERTIES);

@@ -24,7 +24,6 @@ const IMMUNIZATION_RECOMMENDATION_PROPERTIES = [
  *
  * @example
  * const immunizationRecommendation = new ImmunizationRecommendation({
- *   resourceType: 'ImmunizationRecommendation',
  *   // ... properties
  * });
  */
@@ -57,7 +56,7 @@ export class ImmunizationRecommendation extends DomainResource implements IImmun
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IImmunizationRecommendation>) {
+  constructor(data?: Omit<Partial<IImmunizationRecommendation>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, IMMUNIZATION_RECOMMENDATION_PROPERTIES);

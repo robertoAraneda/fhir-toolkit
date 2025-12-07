@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { CompositionRelatesTo } from '../../models/backbones/CompositionRelatesTo.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   DocumentRelationshipTypeType,
   ICompositionRelatesTo,
@@ -37,7 +38,7 @@ export class CompositionRelatesToBuilder extends BackboneElementBuilder<Composit
   // ============================================================================
 
   /**
-   * Set target choice type
+   * Set target choice type (targetIdentifier, targetReference)
    * @param type - 'Identifier' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -46,7 +47,7 @@ export class CompositionRelatesToBuilder extends BackboneElementBuilder<Composit
    */
   setTarget<T extends 'Identifier' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `target${type}` as keyof ICompositionRelatesTo;
     const otherKeys: (keyof ICompositionRelatesTo)[] = [];

@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ResearchElementDefinitionCharacteristic } from '../../models/backbones/ResearchElementDefinitionCharacteristic.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   GroupMeasureType,
   ICodeableConcept,
@@ -106,7 +107,7 @@ export class ResearchElementDefinitionCharacteristicBuilder extends BackboneElem
   // ============================================================================
 
   /**
-   * Set definition choice type
+   * Set definition choice type (definitionCodeableConcept, definitionCanonical, definitionExpression, definitionDataRequirement)
    * @param type - 'CodeableConcept' | 'Canonical' | 'Expression' | 'DataRequirement'
    * @param value - The value for the chosen type
    *
@@ -115,7 +116,7 @@ export class ResearchElementDefinitionCharacteristicBuilder extends BackboneElem
    */
   setDefinition<T extends 'CodeableConcept' | 'Canonical' | 'Expression' | 'DataRequirement'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `definition${type}` as keyof IResearchElementDefinitionCharacteristic;
     const otherKeys: (keyof IResearchElementDefinitionCharacteristic)[] = [];
@@ -139,7 +140,7 @@ export class ResearchElementDefinitionCharacteristicBuilder extends BackboneElem
   }
 
   /**
-   * Set studyEffective choice type
+   * Set studyEffective choice type (studyEffectiveDateTime, studyEffectivePeriod, studyEffectiveDuration, studyEffectiveTiming)
    * @param type - 'DateTime' | 'Period' | 'Duration' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -148,7 +149,7 @@ export class ResearchElementDefinitionCharacteristicBuilder extends BackboneElem
    */
   setStudyEffective<T extends 'DateTime' | 'Period' | 'Duration' | 'Timing'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `studyEffective${type}` as keyof IResearchElementDefinitionCharacteristic;
     const otherKeys: (keyof IResearchElementDefinitionCharacteristic)[] = [];
@@ -172,7 +173,7 @@ export class ResearchElementDefinitionCharacteristicBuilder extends BackboneElem
   }
 
   /**
-   * Set participantEffective choice type
+   * Set participantEffective choice type (participantEffectiveDateTime, participantEffectivePeriod, participantEffectiveDuration, participantEffectiveTiming)
    * @param type - 'DateTime' | 'Period' | 'Duration' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -181,7 +182,7 @@ export class ResearchElementDefinitionCharacteristicBuilder extends BackboneElem
    */
   setParticipantEffective<T extends 'DateTime' | 'Period' | 'Duration' | 'Timing'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `participantEffective${type}` as keyof IResearchElementDefinitionCharacteristic;
     const otherKeys: (keyof IResearchElementDefinitionCharacteristic)[] = [];

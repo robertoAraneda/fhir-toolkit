@@ -40,7 +40,6 @@ const PRACTITIONER_PROPERTIES = [
  *
  * @example
  * const practitioner = new Practitioner({
- *   resourceType: 'Practitioner',
  *   // ... properties
  * });
  */
@@ -106,7 +105,7 @@ export class Practitioner extends DomainResource implements IPractitioner {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IPractitioner>) {
+  constructor(data?: Omit<Partial<IPractitioner>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PRACTITIONER_PROPERTIES);

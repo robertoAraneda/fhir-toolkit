@@ -39,7 +39,6 @@ const LIST_PROPERTIES = [
  *
  * @example
  * const list = new List({
- *   resourceType: 'List',
  *   // ... properties
  * });
  */
@@ -105,7 +104,7 @@ export class List extends DomainResource implements IList {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IList>) {
+  constructor(data?: Omit<Partial<IList>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, LIST_PROPERTIES);

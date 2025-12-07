@@ -34,7 +34,6 @@ const ORGANIZATION_PROPERTIES = [
  *
  * @example
  * const organization = new Organization({
- *   resourceType: 'Organization',
  *   // ... properties
  * });
  */
@@ -88,7 +87,7 @@ export class Organization extends DomainResource implements IOrganization {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IOrganization>) {
+  constructor(data?: Omit<Partial<IOrganization>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ORGANIZATION_PROPERTIES);

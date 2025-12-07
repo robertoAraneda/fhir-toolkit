@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { BiologicallyDerivedProductManipulation } from '../../models/backbones/BiologicallyDerivedProductManipulation.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IBiologicallyDerivedProductManipulation,
   IPeriod,
@@ -35,7 +36,7 @@ export class BiologicallyDerivedProductManipulationBuilder extends BackboneEleme
   // ============================================================================
 
   /**
-   * Set time choice type
+   * Set time choice type (timeDateTime, timePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -44,7 +45,7 @@ export class BiologicallyDerivedProductManipulationBuilder extends BackboneEleme
    */
   setTime<T extends 'DateTime' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `time${type}` as keyof IBiologicallyDerivedProductManipulation;
     const otherKeys: (keyof IBiologicallyDerivedProductManipulation)[] = [];

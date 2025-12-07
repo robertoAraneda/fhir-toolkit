@@ -53,7 +53,6 @@ const CARE_PLAN_PROPERTIES = [
  *
  * @example
  * const carePlan = new CarePlan({
- *   resourceType: 'CarePlan',
  *   // ... properties
  * });
  */
@@ -158,7 +157,7 @@ export class CarePlan extends DomainResource implements ICarePlan {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICarePlan>) {
+  constructor(data?: Omit<Partial<ICarePlan>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CARE_PLAN_PROPERTIES);

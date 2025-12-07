@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { RiskAssessmentPrediction } from '../../models/backbones/RiskAssessmentPrediction.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IPeriod,
@@ -64,7 +65,7 @@ export class RiskAssessmentPredictionBuilder extends BackboneElementBuilder<Risk
   // ============================================================================
 
   /**
-   * Set probability choice type
+   * Set probability choice type (probabilityDecimal, probabilityRange)
    * @param type - 'Decimal' | 'Range'
    * @param value - The value for the chosen type
    *
@@ -73,7 +74,7 @@ export class RiskAssessmentPredictionBuilder extends BackboneElementBuilder<Risk
    */
   setProbability<T extends 'Decimal' | 'Range'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `probability${type}` as keyof IRiskAssessmentPrediction;
     const otherKeys: (keyof IRiskAssessmentPrediction)[] = [];
@@ -89,7 +90,7 @@ export class RiskAssessmentPredictionBuilder extends BackboneElementBuilder<Risk
   }
 
   /**
-   * Set when choice type
+   * Set when choice type (whenPeriod, whenRange)
    * @param type - 'Period' | 'Range'
    * @param value - The value for the chosen type
    *
@@ -98,7 +99,7 @@ export class RiskAssessmentPredictionBuilder extends BackboneElementBuilder<Risk
    */
   setWhen<T extends 'Period' | 'Range'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `when${type}` as keyof IRiskAssessmentPrediction;
     const otherKeys: (keyof IRiskAssessmentPrediction)[] = [];

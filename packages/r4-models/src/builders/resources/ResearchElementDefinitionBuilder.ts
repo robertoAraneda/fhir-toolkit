@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { ResearchElementDefinition } from '../../models/resources/ResearchElementDefinition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   EvidenceVariableTypeType,
   ICodeableConcept,
@@ -210,7 +211,7 @@ export class ResearchElementDefinitionBuilder extends DomainResourceBuilder<Rese
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -219,7 +220,7 @@ export class ResearchElementDefinitionBuilder extends DomainResourceBuilder<Rese
    */
   setSubject<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `subject${type}` as keyof IResearchElementDefinition;
     const otherKeys: (keyof IResearchElementDefinition)[] = [];

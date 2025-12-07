@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Immunization } from '../../models/resources/Immunization.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICodeableConcept,
@@ -191,7 +192,7 @@ export class ImmunizationBuilder extends DomainResourceBuilder<Immunization, IIm
   // ============================================================================
 
   /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrenceString)
    * @param type - 'DateTime' | 'String'
    * @param value - The value for the chosen type
    *
@@ -200,7 +201,7 @@ export class ImmunizationBuilder extends DomainResourceBuilder<Immunization, IIm
    */
   setOccurrence<T extends 'DateTime' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `occurrence${type}` as keyof IImmunization;
     const otherKeys: (keyof IImmunization)[] = [];
@@ -211,31 +212,6 @@ export class ImmunizationBuilder extends DomainResourceBuilder<Immunization, IIm
     if (type !== 'String') {
       otherKeys.push('occurrenceString' as keyof IImmunization);
       otherKeys.push('_occurrenceString' as keyof IImmunization);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `reason${type}` as keyof IImmunization;
-    const otherKeys: (keyof IImmunization)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IImmunization);
-      otherKeys.push('_reasonCode' as keyof IImmunization);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IImmunization);
-      otherKeys.push('_reasonReference' as keyof IImmunization);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -266,6 +242,22 @@ export class ImmunizationBuilder extends DomainResourceBuilder<Immunization, IIm
    */
   addNote(note: IAnnotation): this {
     return this.addToArray('note', note);
+  }
+
+  /**
+   * Add reasonCode
+   * Why immunization occurred
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why immunization occurred
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

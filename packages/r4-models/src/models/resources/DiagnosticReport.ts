@@ -45,7 +45,6 @@ const DIAGNOSTIC_REPORT_PROPERTIES = [
  *
  * @example
  * const diagnosticReport = new DiagnosticReport({
- *   resourceType: 'DiagnosticReport',
  *   // ... properties
  * });
  */
@@ -129,7 +128,7 @@ export class DiagnosticReport extends DomainResource implements IDiagnosticRepor
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDiagnosticReport>) {
+  constructor(data?: Omit<Partial<IDiagnosticReport>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DIAGNOSTIC_REPORT_PROPERTIES);

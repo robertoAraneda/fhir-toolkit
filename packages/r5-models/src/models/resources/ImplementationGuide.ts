@@ -67,7 +67,6 @@ const IMPLEMENTATION_GUIDE_PROPERTIES = [
  *
  * @example
  * const implementationGuide = new ImplementationGuide({
- *   resourceType: 'ImplementationGuide',
  *   // ... properties
  * });
  */
@@ -205,7 +204,7 @@ export class ImplementationGuide extends DomainResource implements IImplementati
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IImplementationGuide>) {
+  constructor(data?: Omit<Partial<IImplementationGuide>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, IMPLEMENTATION_GUIDE_PROPERTIES);

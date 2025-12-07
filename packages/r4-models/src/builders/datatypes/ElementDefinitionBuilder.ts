@@ -1,5 +1,6 @@
 import { ElementBuilder } from '../base/ElementBuilder.js';
 import { ElementDefinition } from '../../models/datatypes/ElementDefinition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAddress,
   IAge,
@@ -178,33 +179,6 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
   }
 
   /**
-   * Set defaultValuePositiveInt
-   * Specified value if missing from instance
-   */
-  setDefaultValuePositiveInt(defaultValuePositiveInt: number): this {
-    this.data.defaultValuePositiveInt = defaultValuePositiveInt;
-    return this;
-  }
-
-  /**
-   * Set defaultValueUnsignedInt
-   * Specified value if missing from instance
-   */
-  setDefaultValueUnsignedInt(defaultValueUnsignedInt: number): this {
-    this.data.defaultValueUnsignedInt = defaultValueUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set defaultValueUuid
-   * Specified value if missing from instance
-   */
-  setDefaultValueUuid(defaultValueUuid: string): this {
-    this.data.defaultValueUuid = defaultValueUuid;
-    return this;
-  }
-
-  /**
    * Set meaningWhenMissing
    * Implicit meaning when this element is missing
    */
@@ -219,96 +193,6 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
    */
   setOrderMeaning(orderMeaning: string): this {
     this.data.orderMeaning = orderMeaning;
-    return this;
-  }
-
-  /**
-   * Set fixedPositiveInt
-   * Value must be exactly this
-   */
-  setFixedPositiveInt(fixedPositiveInt: number): this {
-    this.data.fixedPositiveInt = fixedPositiveInt;
-    return this;
-  }
-
-  /**
-   * Set fixedUnsignedInt
-   * Value must be exactly this
-   */
-  setFixedUnsignedInt(fixedUnsignedInt: number): this {
-    this.data.fixedUnsignedInt = fixedUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set fixedUuid
-   * Value must be exactly this
-   */
-  setFixedUuid(fixedUuid: string): this {
-    this.data.fixedUuid = fixedUuid;
-    return this;
-  }
-
-  /**
-   * Set patternPositiveInt
-   * Value must have at least these property values
-   */
-  setPatternPositiveInt(patternPositiveInt: number): this {
-    this.data.patternPositiveInt = patternPositiveInt;
-    return this;
-  }
-
-  /**
-   * Set patternUnsignedInt
-   * Value must have at least these property values
-   */
-  setPatternUnsignedInt(patternUnsignedInt: number): this {
-    this.data.patternUnsignedInt = patternUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set patternUuid
-   * Value must have at least these property values
-   */
-  setPatternUuid(patternUuid: string): this {
-    this.data.patternUuid = patternUuid;
-    return this;
-  }
-
-  /**
-   * Set minValuePositiveInt
-   * Minimum Allowed Value (for some types)
-   */
-  setMinValuePositiveInt(minValuePositiveInt: number): this {
-    this.data.minValuePositiveInt = minValuePositiveInt;
-    return this;
-  }
-
-  /**
-   * Set minValueUnsignedInt
-   * Minimum Allowed Value (for some types)
-   */
-  setMinValueUnsignedInt(minValueUnsignedInt: number): this {
-    this.data.minValueUnsignedInt = minValueUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set maxValuePositiveInt
-   * Maximum Allowed Value (for some types)
-   */
-  setMaxValuePositiveInt(maxValuePositiveInt: number): this {
-    this.data.maxValuePositiveInt = maxValuePositiveInt;
-    return this;
-  }
-
-  /**
-   * Set maxValueUnsignedInt
-   * Maximum Allowed Value (for some types)
-   */
-  setMaxValueUnsignedInt(maxValueUnsignedInt: number): this {
-    this.data.maxValueUnsignedInt = maxValueUnsignedInt;
     return this;
   }
 
@@ -371,16 +255,16 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
   // ============================================================================
 
   /**
-   * Set defaultValue choice type
-   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
+   * Set defaultValue choice type (defaultValueBase64Binary, defaultValueBoolean, defaultValueCanonical, defaultValueCode, defaultValueDate, defaultValueDateTime, defaultValueDecimal, defaultValueId, defaultValueInstant, defaultValueInteger, defaultValueMarkdown, defaultValueOid, defaultValuePositiveInt, defaultValueString, defaultValueTime, defaultValueUnsignedInt, defaultValueUri, defaultValueUrl, defaultValueUuid, defaultValueAddress, defaultValueAge, defaultValueAnnotation, defaultValueAttachment, defaultValueCodeableConcept, defaultValueCoding, defaultValueContactPoint, defaultValueCount, defaultValueDistance, defaultValueDuration, defaultValueHumanName, defaultValueIdentifier, defaultValueMoney, defaultValuePeriod, defaultValueQuantity, defaultValueRange, defaultValueRatio, defaultValueReference, defaultValueSampledData, defaultValueSignature, defaultValueTiming, defaultValueContactDetail, defaultValueContributor, defaultValueDataRequirement, defaultValueExpression, defaultValueParameterDefinition, defaultValueRelatedArtifact, defaultValueTriggerDefinition, defaultValueUsageContext, defaultValueDosage, defaultValueMeta)
+   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
    * @param value - The value for the chosen type
    *
    * @example
    * builder.setDefaultValue('Base64Binary', value)
    */
-  setDefaultValue<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
+  setDefaultValue<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `defaultValue${type}` as keyof IElementDefinition;
     const otherKeys: (keyof IElementDefinition)[] = [];
@@ -432,6 +316,10 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
       otherKeys.push('defaultValueOid' as keyof IElementDefinition);
       otherKeys.push('_defaultValueOid' as keyof IElementDefinition);
     }
+    if (type !== 'PositiveInt') {
+      otherKeys.push('defaultValuePositiveInt' as keyof IElementDefinition);
+      otherKeys.push('_defaultValuePositiveInt' as keyof IElementDefinition);
+    }
     if (type !== 'String') {
       otherKeys.push('defaultValueString' as keyof IElementDefinition);
       otherKeys.push('_defaultValueString' as keyof IElementDefinition);
@@ -440,6 +328,10 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
       otherKeys.push('defaultValueTime' as keyof IElementDefinition);
       otherKeys.push('_defaultValueTime' as keyof IElementDefinition);
     }
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('defaultValueUnsignedInt' as keyof IElementDefinition);
+      otherKeys.push('_defaultValueUnsignedInt' as keyof IElementDefinition);
+    }
     if (type !== 'Uri') {
       otherKeys.push('defaultValueUri' as keyof IElementDefinition);
       otherKeys.push('_defaultValueUri' as keyof IElementDefinition);
@@ -447,6 +339,10 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
     if (type !== 'Url') {
       otherKeys.push('defaultValueUrl' as keyof IElementDefinition);
       otherKeys.push('_defaultValueUrl' as keyof IElementDefinition);
+    }
+    if (type !== 'Uuid') {
+      otherKeys.push('defaultValueUuid' as keyof IElementDefinition);
+      otherKeys.push('_defaultValueUuid' as keyof IElementDefinition);
     }
     if (type !== 'Address') {
       otherKeys.push('defaultValueAddress' as keyof IElementDefinition);
@@ -576,16 +472,16 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
   }
 
   /**
-   * Set fixed choice type
-   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
+   * Set fixed choice type (fixedBase64Binary, fixedBoolean, fixedCanonical, fixedCode, fixedDate, fixedDateTime, fixedDecimal, fixedId, fixedInstant, fixedInteger, fixedMarkdown, fixedOid, fixedPositiveInt, fixedString, fixedTime, fixedUnsignedInt, fixedUri, fixedUrl, fixedUuid, fixedAddress, fixedAge, fixedAnnotation, fixedAttachment, fixedCodeableConcept, fixedCoding, fixedContactPoint, fixedCount, fixedDistance, fixedDuration, fixedHumanName, fixedIdentifier, fixedMoney, fixedPeriod, fixedQuantity, fixedRange, fixedRatio, fixedReference, fixedSampledData, fixedSignature, fixedTiming, fixedContactDetail, fixedContributor, fixedDataRequirement, fixedExpression, fixedParameterDefinition, fixedRelatedArtifact, fixedTriggerDefinition, fixedUsageContext, fixedDosage, fixedMeta)
+   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
    * @param value - The value for the chosen type
    *
    * @example
    * builder.setFixed('Base64Binary', value)
    */
-  setFixed<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
+  setFixed<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `fixed${type}` as keyof IElementDefinition;
     const otherKeys: (keyof IElementDefinition)[] = [];
@@ -637,6 +533,10 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
       otherKeys.push('fixedOid' as keyof IElementDefinition);
       otherKeys.push('_fixedOid' as keyof IElementDefinition);
     }
+    if (type !== 'PositiveInt') {
+      otherKeys.push('fixedPositiveInt' as keyof IElementDefinition);
+      otherKeys.push('_fixedPositiveInt' as keyof IElementDefinition);
+    }
     if (type !== 'String') {
       otherKeys.push('fixedString' as keyof IElementDefinition);
       otherKeys.push('_fixedString' as keyof IElementDefinition);
@@ -645,6 +545,10 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
       otherKeys.push('fixedTime' as keyof IElementDefinition);
       otherKeys.push('_fixedTime' as keyof IElementDefinition);
     }
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('fixedUnsignedInt' as keyof IElementDefinition);
+      otherKeys.push('_fixedUnsignedInt' as keyof IElementDefinition);
+    }
     if (type !== 'Uri') {
       otherKeys.push('fixedUri' as keyof IElementDefinition);
       otherKeys.push('_fixedUri' as keyof IElementDefinition);
@@ -652,6 +556,10 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
     if (type !== 'Url') {
       otherKeys.push('fixedUrl' as keyof IElementDefinition);
       otherKeys.push('_fixedUrl' as keyof IElementDefinition);
+    }
+    if (type !== 'Uuid') {
+      otherKeys.push('fixedUuid' as keyof IElementDefinition);
+      otherKeys.push('_fixedUuid' as keyof IElementDefinition);
     }
     if (type !== 'Address') {
       otherKeys.push('fixedAddress' as keyof IElementDefinition);
@@ -781,16 +689,16 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
   }
 
   /**
-   * Set pattern choice type
-   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
+   * Set pattern choice type (patternBase64Binary, patternBoolean, patternCanonical, patternCode, patternDate, patternDateTime, patternDecimal, patternId, patternInstant, patternInteger, patternMarkdown, patternOid, patternPositiveInt, patternString, patternTime, patternUnsignedInt, patternUri, patternUrl, patternUuid, patternAddress, patternAge, patternAnnotation, patternAttachment, patternCodeableConcept, patternCoding, patternContactPoint, patternCount, patternDistance, patternDuration, patternHumanName, patternIdentifier, patternMoney, patternPeriod, patternQuantity, patternRange, patternRatio, patternReference, patternSampledData, patternSignature, patternTiming, patternContactDetail, patternContributor, patternDataRequirement, patternExpression, patternParameterDefinition, patternRelatedArtifact, patternTriggerDefinition, patternUsageContext, patternDosage, patternMeta)
+   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
    * @param value - The value for the chosen type
    *
    * @example
    * builder.setPattern('Base64Binary', value)
    */
-  setPattern<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
+  setPattern<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `pattern${type}` as keyof IElementDefinition;
     const otherKeys: (keyof IElementDefinition)[] = [];
@@ -842,6 +750,10 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
       otherKeys.push('patternOid' as keyof IElementDefinition);
       otherKeys.push('_patternOid' as keyof IElementDefinition);
     }
+    if (type !== 'PositiveInt') {
+      otherKeys.push('patternPositiveInt' as keyof IElementDefinition);
+      otherKeys.push('_patternPositiveInt' as keyof IElementDefinition);
+    }
     if (type !== 'String') {
       otherKeys.push('patternString' as keyof IElementDefinition);
       otherKeys.push('_patternString' as keyof IElementDefinition);
@@ -850,6 +762,10 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
       otherKeys.push('patternTime' as keyof IElementDefinition);
       otherKeys.push('_patternTime' as keyof IElementDefinition);
     }
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('patternUnsignedInt' as keyof IElementDefinition);
+      otherKeys.push('_patternUnsignedInt' as keyof IElementDefinition);
+    }
     if (type !== 'Uri') {
       otherKeys.push('patternUri' as keyof IElementDefinition);
       otherKeys.push('_patternUri' as keyof IElementDefinition);
@@ -857,6 +773,10 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
     if (type !== 'Url') {
       otherKeys.push('patternUrl' as keyof IElementDefinition);
       otherKeys.push('_patternUrl' as keyof IElementDefinition);
+    }
+    if (type !== 'Uuid') {
+      otherKeys.push('patternUuid' as keyof IElementDefinition);
+      otherKeys.push('_patternUuid' as keyof IElementDefinition);
     }
     if (type !== 'Address') {
       otherKeys.push('patternAddress' as keyof IElementDefinition);
@@ -986,16 +906,16 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
   }
 
   /**
-   * Set minValue choice type
-   * @param type - 'Date' | 'DateTime' | 'Instant' | 'Time' | 'Decimal' | 'Integer' | 'Quantity'
+   * Set minValue choice type (minValueDate, minValueDateTime, minValueInstant, minValueTime, minValueDecimal, minValueInteger, minValuePositiveInt, minValueUnsignedInt, minValueQuantity)
+   * @param type - 'Date' | 'DateTime' | 'Instant' | 'Time' | 'Decimal' | 'Integer' | 'PositiveInt' | 'UnsignedInt' | 'Quantity'
    * @param value - The value for the chosen type
    *
    * @example
    * builder.setMinValue('Date', value)
    */
-  setMinValue<T extends 'Date' | 'DateTime' | 'Instant' | 'Time' | 'Decimal' | 'Integer' | 'Quantity'>(
+  setMinValue<T extends 'Date' | 'DateTime' | 'Instant' | 'Time' | 'Decimal' | 'Integer' | 'PositiveInt' | 'UnsignedInt' | 'Quantity'>(
     type: T,
-    value: T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `minValue${type}` as keyof IElementDefinition;
     const otherKeys: (keyof IElementDefinition)[] = [];
@@ -1023,6 +943,14 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
       otherKeys.push('minValueInteger' as keyof IElementDefinition);
       otherKeys.push('_minValueInteger' as keyof IElementDefinition);
     }
+    if (type !== 'PositiveInt') {
+      otherKeys.push('minValuePositiveInt' as keyof IElementDefinition);
+      otherKeys.push('_minValuePositiveInt' as keyof IElementDefinition);
+    }
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('minValueUnsignedInt' as keyof IElementDefinition);
+      otherKeys.push('_minValueUnsignedInt' as keyof IElementDefinition);
+    }
     if (type !== 'Quantity') {
       otherKeys.push('minValueQuantity' as keyof IElementDefinition);
       otherKeys.push('_minValueQuantity' as keyof IElementDefinition);
@@ -1031,16 +959,16 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
   }
 
   /**
-   * Set maxValue choice type
-   * @param type - 'Date' | 'DateTime' | 'Instant' | 'Time' | 'Decimal' | 'Integer' | 'Quantity'
+   * Set maxValue choice type (maxValueDate, maxValueDateTime, maxValueInstant, maxValueTime, maxValueDecimal, maxValueInteger, maxValuePositiveInt, maxValueUnsignedInt, maxValueQuantity)
+   * @param type - 'Date' | 'DateTime' | 'Instant' | 'Time' | 'Decimal' | 'Integer' | 'PositiveInt' | 'UnsignedInt' | 'Quantity'
    * @param value - The value for the chosen type
    *
    * @example
    * builder.setMaxValue('Date', value)
    */
-  setMaxValue<T extends 'Date' | 'DateTime' | 'Instant' | 'Time' | 'Decimal' | 'Integer' | 'Quantity'>(
+  setMaxValue<T extends 'Date' | 'DateTime' | 'Instant' | 'Time' | 'Decimal' | 'Integer' | 'PositiveInt' | 'UnsignedInt' | 'Quantity'>(
     type: T,
-    value: T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `maxValue${type}` as keyof IElementDefinition;
     const otherKeys: (keyof IElementDefinition)[] = [];
@@ -1067,6 +995,14 @@ export class ElementDefinitionBuilder extends ElementBuilder<ElementDefinition, 
     if (type !== 'Integer') {
       otherKeys.push('maxValueInteger' as keyof IElementDefinition);
       otherKeys.push('_maxValueInteger' as keyof IElementDefinition);
+    }
+    if (type !== 'PositiveInt') {
+      otherKeys.push('maxValuePositiveInt' as keyof IElementDefinition);
+      otherKeys.push('_maxValuePositiveInt' as keyof IElementDefinition);
+    }
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('maxValueUnsignedInt' as keyof IElementDefinition);
+      otherKeys.push('_maxValueUnsignedInt' as keyof IElementDefinition);
     }
     if (type !== 'Quantity') {
       otherKeys.push('maxValueQuantity' as keyof IElementDefinition);

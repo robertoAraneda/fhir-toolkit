@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { QuestionnaireItemEnableWhen } from '../../models/backbones/QuestionnaireItemEnableWhen.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICoding,
   IQuantity,
@@ -47,7 +48,7 @@ export class QuestionnaireItemEnableWhenBuilder extends BackboneElementBuilder<Q
   // ============================================================================
 
   /**
-   * Set answer choice type
+   * Set answer choice type (answerBoolean, answerDecimal, answerInteger, answerDate, answerDateTime, answerTime, answerString, answerCoding, answerQuantity, answerReference)
    * @param type - 'Boolean' | 'Decimal' | 'Integer' | 'Date' | 'DateTime' | 'Time' | 'String' | 'Coding' | 'Quantity' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -56,7 +57,7 @@ export class QuestionnaireItemEnableWhenBuilder extends BackboneElementBuilder<Q
    */
   setAnswer<T extends 'Boolean' | 'Decimal' | 'Integer' | 'Date' | 'DateTime' | 'Time' | 'String' | 'Coding' | 'Quantity' | 'Reference'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `answer${type}` as keyof IQuestionnaireItemEnableWhen;
     const otherKeys: (keyof IQuestionnaireItemEnableWhen)[] = [];

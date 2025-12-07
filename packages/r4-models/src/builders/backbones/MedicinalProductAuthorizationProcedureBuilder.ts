@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { MedicinalProductAuthorizationProcedure } from '../../models/backbones/MedicinalProductAuthorizationProcedure.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IIdentifier,
@@ -47,7 +48,7 @@ export class MedicinalProductAuthorizationProcedureBuilder extends BackboneEleme
   // ============================================================================
 
   /**
-   * Set date choice type
+   * Set date choice type (datePeriod, dateDateTime)
    * @param type - 'Period' | 'DateTime'
    * @param value - The value for the chosen type
    *
@@ -56,7 +57,7 @@ export class MedicinalProductAuthorizationProcedureBuilder extends BackboneEleme
    */
   setDate<T extends 'Period' | 'DateTime'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `date${type}` as keyof IMedicinalProductAuthorizationProcedure;
     const otherKeys: (keyof IMedicinalProductAuthorizationProcedure)[] = [];

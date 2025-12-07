@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { MedicationRequest } from '../../models/resources/MedicationRequest.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICodeableConcept,
@@ -191,7 +192,7 @@ export class MedicationRequestBuilder extends DomainResourceBuilder<MedicationRe
   // ============================================================================
 
   /**
-   * Set reported choice type
+   * Set reported choice type (reportedBoolean, reportedReference)
    * @param type - 'Boolean' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -200,7 +201,7 @@ export class MedicationRequestBuilder extends DomainResourceBuilder<MedicationRe
    */
   setReported<T extends 'Boolean' | 'Reference'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `reported${type}` as keyof IMedicationRequest;
     const otherKeys: (keyof IMedicationRequest)[] = [];
@@ -216,7 +217,7 @@ export class MedicationRequestBuilder extends DomainResourceBuilder<MedicationRe
   }
 
   /**
-   * Set medication choice type
+   * Set medication choice type (medicationCodeableConcept, medicationReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -225,7 +226,7 @@ export class MedicationRequestBuilder extends DomainResourceBuilder<MedicationRe
    */
   setMedication<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `medication${type}` as keyof IMedicationRequest;
     const otherKeys: (keyof IMedicationRequest)[] = [];
@@ -236,56 +237,6 @@ export class MedicationRequestBuilder extends DomainResourceBuilder<MedicationRe
     if (type !== 'Reference') {
       otherKeys.push('medicationReference' as keyof IMedicationRequest);
       otherKeys.push('_medicationReference' as keyof IMedicationRequest);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `reason${type}` as keyof IMedicationRequest;
-    const otherKeys: (keyof IMedicationRequest)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IMedicationRequest);
-      otherKeys.push('_reasonCode' as keyof IMedicationRequest);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IMedicationRequest);
-      otherKeys.push('_reasonReference' as keyof IMedicationRequest);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof IMedicationRequest;
-    const otherKeys: (keyof IMedicationRequest)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof IMedicationRequest);
-      otherKeys.push('_instantiatesCanonical' as keyof IMedicationRequest);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof IMedicationRequest);
-      otherKeys.push('_instantiatesUri' as keyof IMedicationRequest);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -316,6 +267,38 @@ export class MedicationRequestBuilder extends DomainResourceBuilder<MedicationRe
    */
   addSupportingInformation(supportingInformation: IReference<'Resource'>): this {
     return this.addToArray('supportingInformation', supportingInformation);
+  }
+
+  /**
+   * Add reasonCode
+   * Reason or indication for ordering or not ordering the medication
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Condition or observation that supports why the prescription is being written
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation'>): this {
+    return this.addToArray('reasonReference', reasonReference);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
   }
 
   /**

@@ -21,7 +21,6 @@ const BINARY_PROPERTIES = [
  *
  * @example
  * const binary = new Binary({
- *   resourceType: 'Binary',
  *   // ... properties
  * });
  */
@@ -51,7 +50,7 @@ export class Binary extends DomainResource implements IBinary {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IBinary>) {
+  constructor(data?: Omit<Partial<IBinary>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, BINARY_PROPERTIES);

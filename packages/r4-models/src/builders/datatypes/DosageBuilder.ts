@@ -1,5 +1,6 @@
 import { ElementBuilder } from '../base/ElementBuilder.js';
 import { Dosage } from '../../models/datatypes/Dosage.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IDosage,
@@ -121,7 +122,7 @@ export class DosageBuilder extends ElementBuilder<Dosage, IDosage> {
   // ============================================================================
 
   /**
-   * Set asNeeded choice type
+   * Set asNeeded choice type (asNeededBoolean, asNeededCodeableConcept)
    * @param type - 'Boolean' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -130,7 +131,7 @@ export class DosageBuilder extends ElementBuilder<Dosage, IDosage> {
    */
   setAsNeeded<T extends 'Boolean' | 'CodeableConcept'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `asNeeded${type}` as keyof IDosage;
     const otherKeys: (keyof IDosage)[] = [];

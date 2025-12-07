@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { ConceptMap } from '../../models/resources/ConceptMap.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IConceptMap,
@@ -142,7 +143,7 @@ export class ConceptMapBuilder extends DomainResourceBuilder<ConceptMap, IConcep
   // ============================================================================
 
   /**
-   * Set source choice type
+   * Set source choice type (sourceUri, sourceCanonical)
    * @param type - 'Uri' | 'Canonical'
    * @param value - The value for the chosen type
    *
@@ -151,7 +152,7 @@ export class ConceptMapBuilder extends DomainResourceBuilder<ConceptMap, IConcep
    */
   setSource<T extends 'Uri' | 'Canonical'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `source${type}` as keyof IConceptMap;
     const otherKeys: (keyof IConceptMap)[] = [];
@@ -167,7 +168,7 @@ export class ConceptMapBuilder extends DomainResourceBuilder<ConceptMap, IConcep
   }
 
   /**
-   * Set target choice type
+   * Set target choice type (targetUri, targetCanonical)
    * @param type - 'Uri' | 'Canonical'
    * @param value - The value for the chosen type
    *
@@ -176,7 +177,7 @@ export class ConceptMapBuilder extends DomainResourceBuilder<ConceptMap, IConcep
    */
   setTarget<T extends 'Uri' | 'Canonical'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `target${type}` as keyof IConceptMap;
     const otherKeys: (keyof IConceptMap)[] = [];

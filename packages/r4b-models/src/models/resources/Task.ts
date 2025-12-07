@@ -65,7 +65,6 @@ const TASK_PROPERTIES = [
  *
  * @example
  * const task = new Task({
- *   resourceType: 'Task',
  *   // ... properties
  * });
  */
@@ -197,7 +196,7 @@ export class Task extends DomainResource implements ITask {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ITask>) {
+  constructor(data?: Omit<Partial<ITask>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, TASK_PROPERTIES);

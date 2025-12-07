@@ -74,7 +74,6 @@ const EVENT_DEFINITION_PROPERTIES = [
  *
  * @example
  * const eventDefinition = new EventDefinition({
- *   resourceType: 'EventDefinition',
  *   // ... properties
  * });
  */
@@ -236,7 +235,7 @@ export class EventDefinition extends DomainResource implements IEventDefinition 
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEventDefinition>) {
+  constructor(data?: Omit<Partial<IEventDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, EVENT_DEFINITION_PROPERTIES);

@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { DosageDoseAndRate } from '../../models/backbones/DosageDoseAndRate.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IDosageDoseAndRate,
@@ -38,7 +39,7 @@ export class DosageDoseAndRateBuilder extends BackboneElementBuilder<DosageDoseA
   // ============================================================================
 
   /**
-   * Set dose choice type
+   * Set dose choice type (doseRange, doseQuantity)
    * @param type - 'Range' | 'Quantity'
    * @param value - The value for the chosen type
    *
@@ -47,7 +48,7 @@ export class DosageDoseAndRateBuilder extends BackboneElementBuilder<DosageDoseA
    */
   setDose<T extends 'Range' | 'Quantity'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `dose${type}` as keyof IDosageDoseAndRate;
     const otherKeys: (keyof IDosageDoseAndRate)[] = [];
@@ -63,7 +64,7 @@ export class DosageDoseAndRateBuilder extends BackboneElementBuilder<DosageDoseA
   }
 
   /**
-   * Set rate choice type
+   * Set rate choice type (rateRatio, rateRange, rateQuantity)
    * @param type - 'Ratio' | 'Range' | 'Quantity'
    * @param value - The value for the chosen type
    *
@@ -72,7 +73,7 @@ export class DosageDoseAndRateBuilder extends BackboneElementBuilder<DosageDoseA
    */
   setRate<T extends 'Ratio' | 'Range' | 'Quantity'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `rate${type}` as keyof IDosageDoseAndRate;
     const otherKeys: (keyof IDosageDoseAndRate)[] = [];

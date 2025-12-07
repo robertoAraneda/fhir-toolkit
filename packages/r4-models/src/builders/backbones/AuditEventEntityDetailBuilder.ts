@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { AuditEventEntityDetail } from '../../models/backbones/AuditEventEntityDetail.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAuditEventEntityDetail,
 } from '@fhir-toolkit/r4-types';
@@ -34,7 +35,7 @@ export class AuditEventEntityDetailBuilder extends BackboneElementBuilder<AuditE
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueString, valueBase64Binary)
    * @param type - 'String' | 'Base64Binary'
    * @param value - The value for the chosen type
    *
@@ -43,7 +44,7 @@ export class AuditEventEntityDetailBuilder extends BackboneElementBuilder<AuditE
    */
   setValue<T extends 'String' | 'Base64Binary'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IAuditEventEntityDetail;
     const otherKeys: (keyof IAuditEventEntityDetail)[] = [];

@@ -35,7 +35,6 @@ const PAYMENT_NOTICE_PROPERTIES = [
  *
  * @example
  * const paymentNotice = new PaymentNotice({
- *   resourceType: 'PaymentNotice',
  *   // ... properties
  * });
  */
@@ -95,7 +94,7 @@ export class PaymentNotice extends DomainResource implements IPaymentNotice {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IPaymentNotice>) {
+  constructor(data?: Omit<Partial<IPaymentNotice>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PAYMENT_NOTICE_PROPERTIES);

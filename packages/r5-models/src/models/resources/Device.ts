@@ -71,7 +71,6 @@ const DEVICE_PROPERTIES = [
  *
  * @example
  * const device = new Device({
- *   resourceType: 'Device',
  *   // ... properties
  * });
  */
@@ -212,7 +211,7 @@ export class Device extends DomainResource implements IDevice {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDevice>) {
+  constructor(data?: Omit<Partial<IDevice>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DEVICE_PROPERTIES);

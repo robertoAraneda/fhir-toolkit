@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { MedicationDispense } from '../../models/resources/MedicationDispense.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICodeableConcept,
@@ -145,7 +146,7 @@ export class MedicationDispenseBuilder extends DomainResourceBuilder<MedicationD
   // ============================================================================
 
   /**
-   * Set statusReason choice type
+   * Set statusReason choice type (statusReasonCodeableConcept, statusReasonReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -154,7 +155,7 @@ export class MedicationDispenseBuilder extends DomainResourceBuilder<MedicationD
    */
   setStatusReason<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `statusReason${type}` as keyof IMedicationDispense;
     const otherKeys: (keyof IMedicationDispense)[] = [];
@@ -170,7 +171,7 @@ export class MedicationDispenseBuilder extends DomainResourceBuilder<MedicationD
   }
 
   /**
-   * Set medication choice type
+   * Set medication choice type (medicationCodeableConcept, medicationReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -179,7 +180,7 @@ export class MedicationDispenseBuilder extends DomainResourceBuilder<MedicationD
    */
   setMedication<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `medication${type}` as keyof IMedicationDispense;
     const otherKeys: (keyof IMedicationDispense)[] = [];

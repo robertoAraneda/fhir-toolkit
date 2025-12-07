@@ -25,7 +25,6 @@ const SPECIMEN_DEFINITION_PROPERTIES = [
  *
  * @example
  * const specimenDefinition = new SpecimenDefinition({
- *   resourceType: 'SpecimenDefinition',
  *   // ... properties
  * });
  */
@@ -61,7 +60,7 @@ export class SpecimenDefinition extends DomainResource implements ISpecimenDefin
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISpecimenDefinition>) {
+  constructor(data?: Omit<Partial<ISpecimenDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SPECIMEN_DEFINITION_PROPERTIES);

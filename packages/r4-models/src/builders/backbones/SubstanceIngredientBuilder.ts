@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SubstanceIngredient } from '../../models/backbones/SubstanceIngredient.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IRatio,
@@ -37,7 +38,7 @@ export class SubstanceIngredientBuilder extends BackboneElementBuilder<Substance
   // ============================================================================
 
   /**
-   * Set substance choice type
+   * Set substance choice type (substanceCodeableConcept, substanceReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -46,7 +47,7 @@ export class SubstanceIngredientBuilder extends BackboneElementBuilder<Substance
    */
   setSubstance<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `substance${type}` as keyof ISubstanceIngredient;
     const otherKeys: (keyof ISubstanceIngredient)[] = [];

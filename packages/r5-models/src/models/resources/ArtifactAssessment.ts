@@ -44,7 +44,6 @@ const ARTIFACT_ASSESSMENT_PROPERTIES = [
  *
  * @example
  * const artifactAssessment = new ArtifactAssessment({
- *   resourceType: 'ArtifactAssessment',
  *   // ... properties
  * });
  */
@@ -131,7 +130,7 @@ export class ArtifactAssessment extends DomainResource implements IArtifactAsses
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IArtifactAssessment>) {
+  constructor(data?: Omit<Partial<IArtifactAssessment>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ARTIFACT_ASSESSMENT_PROPERTIES);

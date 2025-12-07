@@ -41,7 +41,6 @@ const MEDICINAL_PRODUCT_AUTHORIZATION_PROPERTIES = [
  *
  * @example
  * const medicinalProductAuthorization = new MedicinalProductAuthorization({
- *   resourceType: 'MedicinalProductAuthorization',
  *   // ... properties
  * });
  */
@@ -116,7 +115,7 @@ export class MedicinalProductAuthorization extends DomainResource implements IMe
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicinalProductAuthorization>) {
+  constructor(data?: Omit<Partial<IMedicinalProductAuthorization>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICINAL_PRODUCT_AUTHORIZATION_PROPERTIES);

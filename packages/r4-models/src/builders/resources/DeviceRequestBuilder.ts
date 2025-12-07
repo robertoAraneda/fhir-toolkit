@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { DeviceRequest } from '../../models/resources/DeviceRequest.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICodeableConcept,
@@ -128,32 +129,7 @@ export class DeviceRequestBuilder extends DomainResourceBuilder<DeviceRequest, I
   // ============================================================================
 
   /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof IDeviceRequest;
-    const otherKeys: (keyof IDeviceRequest)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof IDeviceRequest);
-      otherKeys.push('_instantiatesCanonical' as keyof IDeviceRequest);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof IDeviceRequest);
-      otherKeys.push('_instantiatesUri' as keyof IDeviceRequest);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set code choice type
+   * Set code choice type (codeReference, codeCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -162,7 +138,7 @@ export class DeviceRequestBuilder extends DomainResourceBuilder<DeviceRequest, I
    */
   setCode<T extends 'Reference' | 'CodeableConcept'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `code${type}` as keyof IDeviceRequest;
     const otherKeys: (keyof IDeviceRequest)[] = [];
@@ -178,7 +154,7 @@ export class DeviceRequestBuilder extends DomainResourceBuilder<DeviceRequest, I
   }
 
   /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrencePeriod, occurrenceTiming)
    * @param type - 'DateTime' | 'Period' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -187,7 +163,7 @@ export class DeviceRequestBuilder extends DomainResourceBuilder<DeviceRequest, I
    */
   setOccurrence<T extends 'DateTime' | 'Period' | 'Timing'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `occurrence${type}` as keyof IDeviceRequest;
     const otherKeys: (keyof IDeviceRequest)[] = [];
@@ -206,31 +182,6 @@ export class DeviceRequestBuilder extends DomainResourceBuilder<DeviceRequest, I
     return this.setChoiceType(key, value, otherKeys);
   }
 
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `reason${type}` as keyof IDeviceRequest;
-    const otherKeys: (keyof IDeviceRequest)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IDeviceRequest);
-      otherKeys.push('_reasonCode' as keyof IDeviceRequest);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IDeviceRequest);
-      otherKeys.push('_reasonReference' as keyof IDeviceRequest);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
   // ============================================================================
   // Array Properties
   // ============================================================================
@@ -241,6 +192,22 @@ export class DeviceRequestBuilder extends DomainResourceBuilder<DeviceRequest, I
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
   }
 
   /**
@@ -265,6 +232,22 @@ export class DeviceRequestBuilder extends DomainResourceBuilder<DeviceRequest, I
    */
   addParameter(parameter: IDeviceRequestParameter): this {
     return this.addToArray('parameter', parameter);
+  }
+
+  /**
+   * Add reasonCode
+   * Coded Reason for request
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Linked Reason for request
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

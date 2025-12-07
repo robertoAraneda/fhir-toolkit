@@ -32,7 +32,6 @@ const SCHEDULE_PROPERTIES = [
  *
  * @example
  * const schedule = new Schedule({
- *   resourceType: 'Schedule',
  *   // ... properties
  * });
  */
@@ -83,7 +82,7 @@ export class Schedule extends DomainResource implements ISchedule {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISchedule>) {
+  constructor(data?: Omit<Partial<ISchedule>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SCHEDULE_PROPERTIES);

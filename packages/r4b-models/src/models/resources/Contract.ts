@@ -71,7 +71,6 @@ const CONTRACT_PROPERTIES = [
  *
  * @example
  * const contract = new Contract({
- *   resourceType: 'Contract',
  *   // ... properties
  * });
  */
@@ -218,7 +217,7 @@ export class Contract extends DomainResource implements IContract {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IContract>) {
+  constructor(data?: Omit<Partial<IContract>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CONTRACT_PROPERTIES);

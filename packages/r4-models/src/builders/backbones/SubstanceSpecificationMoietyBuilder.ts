@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SubstanceSpecificationMoiety } from '../../models/backbones/SubstanceSpecificationMoiety.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IIdentifier,
@@ -82,7 +83,7 @@ export class SubstanceSpecificationMoietyBuilder extends BackboneElementBuilder<
   // ============================================================================
 
   /**
-   * Set amount choice type
+   * Set amount choice type (amountQuantity, amountString)
    * @param type - 'Quantity' | 'String'
    * @param value - The value for the chosen type
    *
@@ -91,7 +92,7 @@ export class SubstanceSpecificationMoietyBuilder extends BackboneElementBuilder<
    */
   setAmount<T extends 'Quantity' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `amount${type}` as keyof ISubstanceSpecificationMoiety;
     const otherKeys: (keyof ISubstanceSpecificationMoiety)[] = [];

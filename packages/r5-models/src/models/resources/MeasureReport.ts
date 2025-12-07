@@ -45,7 +45,6 @@ const MEASURE_REPORT_PROPERTIES = [
  *
  * @example
  * const measureReport = new MeasureReport({
- *   resourceType: 'MeasureReport',
  *   // ... properties
  * });
  */
@@ -126,7 +125,7 @@ export class MeasureReport extends DomainResource implements IMeasureReport {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMeasureReport>) {
+  constructor(data?: Omit<Partial<IMeasureReport>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEASURE_REPORT_PROPERTIES);

@@ -51,7 +51,6 @@ const PATIENT_PROPERTIES = [
  *
  * @example
  * const patient = new Patient({
- *   resourceType: 'Patient',
  *   // ... properties
  * });
  */
@@ -141,7 +140,7 @@ export class Patient extends DomainResource implements IPatient {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IPatient>) {
+  constructor(data?: Omit<Partial<IPatient>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PATIENT_PROPERTIES);

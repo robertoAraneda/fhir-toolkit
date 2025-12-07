@@ -47,7 +47,6 @@ const SUPPLY_REQUEST_PROPERTIES = [
  *
  * @example
  * const supplyRequest = new SupplyRequest({
- *   resourceType: 'SupplyRequest',
  *   // ... properties
  * });
  */
@@ -128,7 +127,7 @@ export class SupplyRequest extends DomainResource implements ISupplyRequest {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISupplyRequest>) {
+  constructor(data?: Omit<Partial<ISupplyRequest>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUPPLY_REQUEST_PROPERTIES);

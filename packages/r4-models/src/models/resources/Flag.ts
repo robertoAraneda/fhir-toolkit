@@ -29,7 +29,6 @@ const FLAG_PROPERTIES = [
  *
  * @example
  * const flag = new Flag({
- *   resourceType: 'Flag',
  *   // ... properties
  * });
  */
@@ -71,7 +70,7 @@ export class Flag extends DomainResource implements IFlag {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IFlag>) {
+  constructor(data?: Omit<Partial<IFlag>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, FLAG_PROPERTIES);

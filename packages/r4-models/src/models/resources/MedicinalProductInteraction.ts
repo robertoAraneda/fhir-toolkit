@@ -26,7 +26,6 @@ const MEDICINAL_PRODUCT_INTERACTION_PROPERTIES = [
  *
  * @example
  * const medicinalProductInteraction = new MedicinalProductInteraction({
- *   resourceType: 'MedicinalProductInteraction',
  *   // ... properties
  * });
  */
@@ -65,7 +64,7 @@ export class MedicinalProductInteraction extends DomainResource implements IMedi
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicinalProductInteraction>) {
+  constructor(data?: Omit<Partial<IMedicinalProductInteraction>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICINAL_PRODUCT_INTERACTION_PROPERTIES);

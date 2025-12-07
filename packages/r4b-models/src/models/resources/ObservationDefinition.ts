@@ -37,7 +37,6 @@ const OBSERVATION_DEFINITION_PROPERTIES = [
  *
  * @example
  * const observationDefinition = new ObservationDefinition({
- *   resourceType: 'ObservationDefinition',
  *   // ... properties
  * });
  */
@@ -100,7 +99,7 @@ export class ObservationDefinition extends DomainResource implements IObservatio
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IObservationDefinition>) {
+  constructor(data?: Omit<Partial<IObservationDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, OBSERVATION_DEFINITION_PROPERTIES);

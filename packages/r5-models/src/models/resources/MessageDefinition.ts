@@ -73,7 +73,6 @@ const MESSAGE_DEFINITION_PROPERTIES = [
  *
  * @example
  * const messageDefinition = new MessageDefinition({
- *   resourceType: 'MessageDefinition',
  *   // ... properties
  * });
  */
@@ -232,7 +231,7 @@ export class MessageDefinition extends DomainResource implements IMessageDefinit
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMessageDefinition>) {
+  constructor(data?: Omit<Partial<IMessageDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MESSAGE_DEFINITION_PROPERTIES);

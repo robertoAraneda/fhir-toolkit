@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SubstanceSpecificationProperty } from '../../models/backbones/SubstanceSpecificationProperty.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IQuantity,
@@ -55,7 +56,7 @@ export class SubstanceSpecificationPropertyBuilder extends BackboneElementBuilde
   // ============================================================================
 
   /**
-   * Set definingSubstance choice type
+   * Set definingSubstance choice type (definingSubstanceReference, definingSubstanceCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -64,7 +65,7 @@ export class SubstanceSpecificationPropertyBuilder extends BackboneElementBuilde
    */
   setDefiningSubstance<T extends 'Reference' | 'CodeableConcept'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `definingSubstance${type}` as keyof ISubstanceSpecificationProperty;
     const otherKeys: (keyof ISubstanceSpecificationProperty)[] = [];
@@ -80,7 +81,7 @@ export class SubstanceSpecificationPropertyBuilder extends BackboneElementBuilde
   }
 
   /**
-   * Set amount choice type
+   * Set amount choice type (amountQuantity, amountString)
    * @param type - 'Quantity' | 'String'
    * @param value - The value for the chosen type
    *
@@ -89,7 +90,7 @@ export class SubstanceSpecificationPropertyBuilder extends BackboneElementBuilde
    */
   setAmount<T extends 'Quantity' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `amount${type}` as keyof ISubstanceSpecificationProperty;
     const otherKeys: (keyof ISubstanceSpecificationProperty)[] = [];

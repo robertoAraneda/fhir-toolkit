@@ -31,7 +31,6 @@ const PERMISSION_PROPERTIES = [
  *
  * @example
  * const permission = new Permission({
- *   resourceType: 'Permission',
  *   // ... properties
  * });
  */
@@ -76,7 +75,7 @@ export class Permission extends DomainResource implements IPermission {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IPermission>) {
+  constructor(data?: Omit<Partial<IPermission>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PERMISSION_PROPERTIES);

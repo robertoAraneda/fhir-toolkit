@@ -41,7 +41,6 @@ const DETECTED_ISSUE_PROPERTIES = [
  *
  * @example
  * const detectedIssue = new DetectedIssue({
- *   resourceType: 'DetectedIssue',
  *   // ... properties
  * });
  */
@@ -110,7 +109,7 @@ export class DetectedIssue extends DomainResource implements IDetectedIssue {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDetectedIssue>) {
+  constructor(data?: Omit<Partial<IDetectedIssue>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DETECTED_ISSUE_PROPERTIES);

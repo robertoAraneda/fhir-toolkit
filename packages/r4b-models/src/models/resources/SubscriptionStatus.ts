@@ -31,7 +31,6 @@ const SUBSCRIPTION_STATUS_PROPERTIES = [
  *
  * @example
  * const subscriptionStatus = new SubscriptionStatus({
- *   resourceType: 'SubscriptionStatus',
  *   // ... properties
  * });
  */
@@ -79,7 +78,7 @@ export class SubscriptionStatus extends DomainResource implements ISubscriptionS
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISubscriptionStatus>) {
+  constructor(data?: Omit<Partial<ISubscriptionStatus>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUBSCRIPTION_STATUS_PROPERTIES);

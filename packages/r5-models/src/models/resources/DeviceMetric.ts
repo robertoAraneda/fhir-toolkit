@@ -34,7 +34,6 @@ const DEVICE_METRIC_PROPERTIES = [
  *
  * @example
  * const deviceMetric = new DeviceMetric({
- *   resourceType: 'DeviceMetric',
  *   // ... properties
  * });
  */
@@ -85,7 +84,7 @@ export class DeviceMetric extends DomainResource implements IDeviceMetric {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDeviceMetric>) {
+  constructor(data?: Omit<Partial<IDeviceMetric>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DEVICE_METRIC_PROPERTIES);

@@ -86,7 +86,6 @@ const PLAN_DEFINITION_PROPERTIES = [
  *
  * @example
  * const planDefinition = new PlanDefinition({
- *   resourceType: 'PlanDefinition',
  *   // ... properties
  * });
  */
@@ -278,7 +277,7 @@ export class PlanDefinition extends DomainResource implements IPlanDefinition {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IPlanDefinition>) {
+  constructor(data?: Omit<Partial<IPlanDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PLAN_DEFINITION_PROPERTIES);

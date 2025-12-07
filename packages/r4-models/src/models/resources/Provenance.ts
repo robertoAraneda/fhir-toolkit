@@ -35,7 +35,6 @@ const PROVENANCE_PROPERTIES = [
  *
  * @example
  * const provenance = new Provenance({
- *   resourceType: 'Provenance',
  *   // ... properties
  * });
  */
@@ -92,7 +91,7 @@ export class Provenance extends DomainResource implements IProvenance {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IProvenance>) {
+  constructor(data?: Omit<Partial<IProvenance>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PROVENANCE_PROPERTIES);

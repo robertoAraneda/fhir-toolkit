@@ -72,7 +72,6 @@ const TEST_SCRIPT_PROPERTIES = [
  *
  * @example
  * const testScript = new TestScript({
- *   resourceType: 'TestScript',
  *   // ... properties
  * });
  */
@@ -213,7 +212,7 @@ export class TestScript extends DomainResource implements ITestScript {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ITestScript>) {
+  constructor(data?: Omit<Partial<ITestScript>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, TEST_SCRIPT_PROPERTIES);

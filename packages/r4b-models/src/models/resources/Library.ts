@@ -73,7 +73,6 @@ const LIBRARY_PROPERTIES = [
  *
  * @example
  * const library = new Library({
- *   resourceType: 'Library',
  *   // ... properties
  * });
  */
@@ -229,7 +228,7 @@ export class Library extends DomainResource implements ILibrary {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ILibrary>) {
+  constructor(data?: Omit<Partial<ILibrary>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, LIBRARY_PROPERTIES);

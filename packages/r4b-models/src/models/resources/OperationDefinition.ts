@@ -69,7 +69,6 @@ const OPERATION_DEFINITION_PROPERTIES = [
  *
  * @example
  * const operationDefinition = new OperationDefinition({
- *   resourceType: 'OperationDefinition',
  *   // ... properties
  * });
  */
@@ -225,7 +224,7 @@ export class OperationDefinition extends DomainResource implements IOperationDef
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IOperationDefinition>) {
+  constructor(data?: Omit<Partial<IOperationDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, OPERATION_DEFINITION_PROPERTIES);

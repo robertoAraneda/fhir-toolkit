@@ -31,7 +31,6 @@ const ENROLLMENT_RESPONSE_PROPERTIES = [
  *
  * @example
  * const enrollmentResponse = new EnrollmentResponse({
- *   resourceType: 'EnrollmentResponse',
  *   // ... properties
  * });
  */
@@ -82,7 +81,7 @@ export class EnrollmentResponse extends DomainResource implements IEnrollmentRes
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEnrollmentResponse>) {
+  constructor(data?: Omit<Partial<IEnrollmentResponse>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ENROLLMENT_RESPONSE_PROPERTIES);

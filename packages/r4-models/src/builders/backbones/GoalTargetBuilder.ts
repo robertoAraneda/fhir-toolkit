@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { GoalTarget } from '../../models/backbones/GoalTarget.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IDuration,
@@ -39,7 +40,7 @@ export class GoalTargetBuilder extends BackboneElementBuilder<GoalTarget, IGoalT
   // ============================================================================
 
   /**
-   * Set detail choice type
+   * Set detail choice type (detailQuantity, detailRange, detailCodeableConcept, detailString, detailBoolean, detailInteger, detailRatio)
    * @param type - 'Quantity' | 'Range' | 'CodeableConcept' | 'String' | 'Boolean' | 'Integer' | 'Ratio'
    * @param value - The value for the chosen type
    *
@@ -48,7 +49,7 @@ export class GoalTargetBuilder extends BackboneElementBuilder<GoalTarget, IGoalT
    */
   setDetail<T extends 'Quantity' | 'Range' | 'CodeableConcept' | 'String' | 'Boolean' | 'Integer' | 'Ratio'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `detail${type}` as keyof IGoalTarget;
     const otherKeys: (keyof IGoalTarget)[] = [];
@@ -84,7 +85,7 @@ export class GoalTargetBuilder extends BackboneElementBuilder<GoalTarget, IGoalT
   }
 
   /**
-   * Set due choice type
+   * Set due choice type (dueDate, dueDuration)
    * @param type - 'Date' | 'Duration'
    * @param value - The value for the chosen type
    *
@@ -93,7 +94,7 @@ export class GoalTargetBuilder extends BackboneElementBuilder<GoalTarget, IGoalT
    */
   setDue<T extends 'Date' | 'Duration'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `due${type}` as keyof IGoalTarget;
     const otherKeys: (keyof IGoalTarget)[] = [];

@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SupplyRequestParameter } from '../../models/backbones/SupplyRequestParameter.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IQuantity,
@@ -37,7 +38,7 @@ export class SupplyRequestParameterBuilder extends BackboneElementBuilder<Supply
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueQuantity, valueRange, valueBoolean)
    * @param type - 'CodeableConcept' | 'Quantity' | 'Range' | 'Boolean'
    * @param value - The value for the chosen type
    *
@@ -46,7 +47,7 @@ export class SupplyRequestParameterBuilder extends BackboneElementBuilder<Supply
    */
   setValue<T extends 'CodeableConcept' | 'Quantity' | 'Range' | 'Boolean'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof ISupplyRequestParameter;
     const otherKeys: (keyof ISupplyRequestParameter)[] = [];

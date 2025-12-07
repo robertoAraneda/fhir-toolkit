@@ -46,7 +46,6 @@ const ADVERSE_EVENT_PROPERTIES = [
  *
  * @example
  * const adverseEvent = new AdverseEvent({
- *   resourceType: 'AdverseEvent',
  *   // ... properties
  * });
  */
@@ -133,7 +132,7 @@ export class AdverseEvent extends DomainResource implements IAdverseEvent {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IAdverseEvent>) {
+  constructor(data?: Omit<Partial<IAdverseEvent>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ADVERSE_EVENT_PROPERTIES);

@@ -39,7 +39,6 @@ const ENDPOINT_PROPERTIES = [
  *
  * @example
  * const endpoint = new Endpoint({
- *   resourceType: 'Endpoint',
  *   // ... properties
  * });
  */
@@ -105,7 +104,7 @@ export class Endpoint extends DomainResource implements IEndpoint {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEndpoint>) {
+  constructor(data?: Omit<Partial<IEndpoint>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ENDPOINT_PROPERTIES);

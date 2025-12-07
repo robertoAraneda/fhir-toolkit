@@ -1,5 +1,6 @@
 import { ElementBuilder } from '../base/ElementBuilder.js';
 import { UsageContext } from '../../models/datatypes/UsageContext.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   ICoding,
@@ -39,7 +40,7 @@ export class UsageContextBuilder extends ElementBuilder<UsageContext, IUsageCont
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueQuantity, valueRange, valueReference)
    * @param type - 'CodeableConcept' | 'Quantity' | 'Range' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -48,7 +49,7 @@ export class UsageContextBuilder extends ElementBuilder<UsageContext, IUsageCont
    */
   setValue<T extends 'CodeableConcept' | 'Quantity' | 'Range' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IUsageContext;
     const otherKeys: (keyof IUsageContext)[] = [];

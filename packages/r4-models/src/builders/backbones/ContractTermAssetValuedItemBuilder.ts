@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ContractTermAssetValuedItem } from '../../models/backbones/ContractTermAssetValuedItem.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IContractTermAssetValuedItem,
@@ -130,7 +131,7 @@ export class ContractTermAssetValuedItemBuilder extends BackboneElementBuilder<C
   // ============================================================================
 
   /**
-   * Set entity choice type
+   * Set entity choice type (entityCodeableConcept, entityReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -139,7 +140,7 @@ export class ContractTermAssetValuedItemBuilder extends BackboneElementBuilder<C
    */
   setEntity<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `entity${type}` as keyof IContractTermAssetValuedItem;
     const otherKeys: (keyof IContractTermAssetValuedItem)[] = [];

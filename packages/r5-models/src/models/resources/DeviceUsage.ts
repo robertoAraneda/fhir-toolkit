@@ -46,7 +46,6 @@ const DEVICE_USAGE_PROPERTIES = [
  *
  * @example
  * const deviceUsage = new DeviceUsage({
- *   resourceType: 'DeviceUsage',
  *   // ... properties
  * });
  */
@@ -127,7 +126,7 @@ export class DeviceUsage extends DomainResource implements IDeviceUsage {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDeviceUsage>) {
+  constructor(data?: Omit<Partial<IDeviceUsage>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DEVICE_USAGE_PROPERTIES);

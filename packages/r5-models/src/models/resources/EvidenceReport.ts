@@ -49,7 +49,6 @@ const EVIDENCE_REPORT_PROPERTIES = [
  *
  * @example
  * const evidenceReport = new EvidenceReport({
- *   resourceType: 'EvidenceReport',
  *   // ... properties
  * });
  */
@@ -133,7 +132,7 @@ export class EvidenceReport extends DomainResource implements IEvidenceReport {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEvidenceReport>) {
+  constructor(data?: Omit<Partial<IEvidenceReport>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, EVIDENCE_REPORT_PROPERTIES);

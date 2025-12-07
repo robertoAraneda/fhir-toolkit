@@ -53,7 +53,6 @@ const NUTRITION_INTAKE_PROPERTIES = [
  *
  * @example
  * const nutritionIntake = new NutritionIntake({
- *   resourceType: 'NutritionIntake',
  *   // ... properties
  * });
  */
@@ -152,7 +151,7 @@ export class NutritionIntake extends DomainResource implements INutritionIntake 
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<INutritionIntake>) {
+  constructor(data?: Omit<Partial<INutritionIntake>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, NUTRITION_INTAKE_PROPERTIES);

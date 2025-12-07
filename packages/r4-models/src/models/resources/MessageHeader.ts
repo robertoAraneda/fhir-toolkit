@@ -35,7 +35,6 @@ const MESSAGE_HEADER_PROPERTIES = [
  *
  * @example
  * const messageHeader = new MessageHeader({
- *   resourceType: 'MessageHeader',
  *   // ... properties
  * });
  */
@@ -92,7 +91,7 @@ export class MessageHeader extends DomainResource implements IMessageHeader {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMessageHeader>) {
+  constructor(data?: Omit<Partial<IMessageHeader>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MESSAGE_HEADER_PROPERTIES);

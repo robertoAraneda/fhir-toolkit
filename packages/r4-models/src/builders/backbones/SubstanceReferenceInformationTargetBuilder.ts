@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SubstanceReferenceInformationTarget } from '../../models/backbones/SubstanceReferenceInformationTarget.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IIdentifier,
@@ -85,7 +86,7 @@ export class SubstanceReferenceInformationTargetBuilder extends BackboneElementB
   // ============================================================================
 
   /**
-   * Set amount choice type
+   * Set amount choice type (amountQuantity, amountRange, amountString)
    * @param type - 'Quantity' | 'Range' | 'String'
    * @param value - The value for the chosen type
    *
@@ -94,7 +95,7 @@ export class SubstanceReferenceInformationTargetBuilder extends BackboneElementB
    */
   setAmount<T extends 'Quantity' | 'Range' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `amount${type}` as keyof ISubstanceReferenceInformationTarget;
     const otherKeys: (keyof ISubstanceReferenceInformationTarget)[] = [];

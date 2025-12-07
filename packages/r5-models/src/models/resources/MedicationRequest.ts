@@ -68,7 +68,6 @@ const MEDICATION_REQUEST_PROPERTIES = [
  *
  * @example
  * const medicationRequest = new MedicationRequest({
- *   resourceType: 'MedicationRequest',
  *   // ... properties
  * });
  */
@@ -206,7 +205,7 @@ export class MedicationRequest extends DomainResource implements IMedicationRequ
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicationRequest>) {
+  constructor(data?: Omit<Partial<IMedicationRequest>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICATION_REQUEST_PROPERTIES);

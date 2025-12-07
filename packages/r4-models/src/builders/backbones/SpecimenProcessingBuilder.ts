@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SpecimenProcessing } from '../../models/backbones/SpecimenProcessing.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IPeriod,
@@ -47,7 +48,7 @@ export class SpecimenProcessingBuilder extends BackboneElementBuilder<SpecimenPr
   // ============================================================================
 
   /**
-   * Set time choice type
+   * Set time choice type (timeDateTime, timePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -56,7 +57,7 @@ export class SpecimenProcessingBuilder extends BackboneElementBuilder<SpecimenPr
    */
   setTime<T extends 'DateTime' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `time${type}` as keyof ISpecimenProcessing;
     const otherKeys: (keyof ISpecimenProcessing)[] = [];

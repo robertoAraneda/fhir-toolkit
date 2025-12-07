@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { MedicationAdministrationDosage } from '../../models/backbones/MedicationAdministrationDosage.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IMedicationAdministrationDosage,
@@ -73,7 +74,7 @@ export class MedicationAdministrationDosageBuilder extends BackboneElementBuilde
   // ============================================================================
 
   /**
-   * Set rate choice type
+   * Set rate choice type (rateRatio, rateQuantity)
    * @param type - 'Ratio' | 'Quantity'
    * @param value - The value for the chosen type
    *
@@ -82,7 +83,7 @@ export class MedicationAdministrationDosageBuilder extends BackboneElementBuilde
    */
   setRate<T extends 'Ratio' | 'Quantity'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `rate${type}` as keyof IMedicationAdministrationDosage;
     const otherKeys: (keyof IMedicationAdministrationDosage)[] = [];

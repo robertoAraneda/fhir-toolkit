@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Consent } from '../../models/resources/Consent.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ConsentStateType,
   IAttachment,
@@ -90,7 +91,7 @@ export class ConsentBuilder extends DomainResourceBuilder<Consent, IConsent> {
   // ============================================================================
 
   /**
-   * Set source choice type
+   * Set source choice type (sourceAttachment, sourceReference)
    * @param type - 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -99,7 +100,7 @@ export class ConsentBuilder extends DomainResourceBuilder<Consent, IConsent> {
    */
   setSource<T extends 'Attachment' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `source${type}` as keyof IConsent;
     const otherKeys: (keyof IConsent)[] = [];

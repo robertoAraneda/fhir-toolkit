@@ -36,7 +36,6 @@ const CLINICAL_USE_DEFINITION_PROPERTIES = [
  *
  * @example
  * const clinicalUseDefinition = new ClinicalUseDefinition({
- *   resourceType: 'ClinicalUseDefinition',
  *   // ... properties
  * });
  */
@@ -87,7 +86,7 @@ export class ClinicalUseDefinition extends DomainResource implements IClinicalUs
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IClinicalUseDefinition>) {
+  constructor(data?: Omit<Partial<IClinicalUseDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CLINICAL_USE_DEFINITION_PROPERTIES);

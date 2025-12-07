@@ -38,7 +38,6 @@ const SUPPLY_DELIVERY_PROPERTIES = [
  *
  * @example
  * const supplyDelivery = new SupplyDelivery({
- *   resourceType: 'SupplyDelivery',
  *   // ... properties
  * });
  */
@@ -98,7 +97,7 @@ export class SupplyDelivery extends DomainResource implements ISupplyDelivery {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISupplyDelivery>) {
+  constructor(data?: Omit<Partial<ISupplyDelivery>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUPPLY_DELIVERY_PROPERTIES);

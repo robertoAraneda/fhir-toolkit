@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SpecimenCollection } from '../../models/backbones/SpecimenCollection.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IDuration,
@@ -75,7 +76,7 @@ export class SpecimenCollectionBuilder extends BackboneElementBuilder<SpecimenCo
   // ============================================================================
 
   /**
-   * Set collected choice type
+   * Set collected choice type (collectedDateTime, collectedPeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -84,7 +85,7 @@ export class SpecimenCollectionBuilder extends BackboneElementBuilder<SpecimenCo
    */
   setCollected<T extends 'DateTime' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `collected${type}` as keyof ISpecimenCollection;
     const otherKeys: (keyof ISpecimenCollection)[] = [];
@@ -100,7 +101,7 @@ export class SpecimenCollectionBuilder extends BackboneElementBuilder<SpecimenCo
   }
 
   /**
-   * Set fastingStatus choice type
+   * Set fastingStatus choice type (fastingStatusCodeableConcept, fastingStatusDuration)
    * @param type - 'CodeableConcept' | 'Duration'
    * @param value - The value for the chosen type
    *
@@ -109,7 +110,7 @@ export class SpecimenCollectionBuilder extends BackboneElementBuilder<SpecimenCo
    */
   setFastingStatus<T extends 'CodeableConcept' | 'Duration'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `fastingStatus${type}` as keyof ISpecimenCollection;
     const otherKeys: (keyof ISpecimenCollection)[] = [];

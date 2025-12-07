@@ -36,7 +36,6 @@ const SUBSTANCE_SOURCE_MATERIAL_PROPERTIES = [
  *
  * @example
  * const substanceSourceMaterial = new SubstanceSourceMaterial({
- *   resourceType: 'SubstanceSourceMaterial',
  *   // ... properties
  * });
  */
@@ -99,7 +98,7 @@ export class SubstanceSourceMaterial extends DomainResource implements ISubstanc
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISubstanceSourceMaterial>) {
+  constructor(data?: Omit<Partial<ISubstanceSourceMaterial>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUBSTANCE_SOURCE_MATERIAL_PROPERTIES);

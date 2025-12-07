@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { CommunicationRequestPayload } from '../../models/backbones/CommunicationRequestPayload.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAttachment,
   ICommunicationRequestPayload,
@@ -22,7 +23,7 @@ export class CommunicationRequestPayloadBuilder extends BackboneElementBuilder<C
   // ============================================================================
 
   /**
-   * Set content choice type
+   * Set content choice type (contentString, contentAttachment, contentReference)
    * @param type - 'String' | 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -31,7 +32,7 @@ export class CommunicationRequestPayloadBuilder extends BackboneElementBuilder<C
    */
   setContent<T extends 'String' | 'Attachment' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `content${type}` as keyof ICommunicationRequestPayload;
     const otherKeys: (keyof ICommunicationRequestPayload)[] = [];

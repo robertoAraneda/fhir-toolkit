@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ImplementationGuideDefinitionPage } from '../../models/backbones/ImplementationGuideDefinitionPage.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   GuidePageGenerationType,
   IImplementationGuideDefinitionPage,
@@ -46,7 +47,7 @@ export class ImplementationGuideDefinitionPageBuilder extends BackboneElementBui
   // ============================================================================
 
   /**
-   * Set name choice type
+   * Set name choice type (nameUrl, nameReference)
    * @param type - 'Url' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -55,7 +56,7 @@ export class ImplementationGuideDefinitionPageBuilder extends BackboneElementBui
    */
   setName<T extends 'Url' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `name${type}` as keyof IImplementationGuideDefinitionPage;
     const otherKeys: (keyof IImplementationGuideDefinitionPage)[] = [];

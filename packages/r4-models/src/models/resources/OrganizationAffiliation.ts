@@ -33,7 +33,6 @@ const ORGANIZATION_AFFILIATION_PROPERTIES = [
  *
  * @example
  * const organizationAffiliation = new OrganizationAffiliation({
- *   resourceType: 'OrganizationAffiliation',
  *   // ... properties
  * });
  */
@@ -87,7 +86,7 @@ export class OrganizationAffiliation extends DomainResource implements IOrganiza
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IOrganizationAffiliation>) {
+  constructor(data?: Omit<Partial<IOrganizationAffiliation>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ORGANIZATION_AFFILIATION_PROPERTIES);

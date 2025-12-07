@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { QuestionnaireItemInitial } from '../../models/backbones/QuestionnaireItemInitial.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAttachment,
   ICoding,
@@ -24,7 +25,7 @@ export class QuestionnaireItemInitialBuilder extends BackboneElementBuilder<Ques
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueBoolean, valueDecimal, valueInteger, valueDate, valueDateTime, valueTime, valueString, valueUri, valueAttachment, valueCoding, valueQuantity, valueReference)
    * @param type - 'Boolean' | 'Decimal' | 'Integer' | 'Date' | 'DateTime' | 'Time' | 'String' | 'Uri' | 'Attachment' | 'Coding' | 'Quantity' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -33,7 +34,7 @@ export class QuestionnaireItemInitialBuilder extends BackboneElementBuilder<Ques
    */
   setValue<T extends 'Boolean' | 'Decimal' | 'Integer' | 'Date' | 'DateTime' | 'Time' | 'String' | 'Uri' | 'Attachment' | 'Coding' | 'Quantity' | 'Reference'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IQuestionnaireItemInitial;
     const otherKeys: (keyof IQuestionnaireItemInitial)[] = [];

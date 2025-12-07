@@ -62,7 +62,6 @@ const FAMILY_MEMBER_HISTORY_PROPERTIES = [
  *
  * @example
  * const familyMemberHistory = new FamilyMemberHistory({
- *   resourceType: 'FamilyMemberHistory',
  *   // ... properties
  * });
  */
@@ -191,7 +190,7 @@ export class FamilyMemberHistory extends DomainResource implements IFamilyMember
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IFamilyMemberHistory>) {
+  constructor(data?: Omit<Partial<IFamilyMemberHistory>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, FAMILY_MEMBER_HISTORY_PROPERTIES);

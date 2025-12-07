@@ -58,7 +58,6 @@ const EXAMPLE_SCENARIO_PROPERTIES = [
  *
  * @example
  * const exampleScenario = new ExampleScenario({
- *   resourceType: 'ExampleScenario',
  *   // ... properties
  * });
  */
@@ -175,7 +174,7 @@ export class ExampleScenario extends DomainResource implements IExampleScenario 
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IExampleScenario>) {
+  constructor(data?: Omit<Partial<IExampleScenario>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, EXAMPLE_SCENARIO_PROPERTIES);

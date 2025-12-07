@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { MedicinalProductIndicationOtherTherapy } from '../../models/backbones/MedicinalProductIndicationOtherTherapy.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IMedicinalProductIndicationOtherTherapy,
@@ -36,7 +37,7 @@ export class MedicinalProductIndicationOtherTherapyBuilder extends BackboneEleme
   // ============================================================================
 
   /**
-   * Set medication choice type
+   * Set medication choice type (medicationCodeableConcept, medicationReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -45,7 +46,7 @@ export class MedicinalProductIndicationOtherTherapyBuilder extends BackboneEleme
    */
   setMedication<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `medication${type}` as keyof IMedicinalProductIndicationOtherTherapy;
     const otherKeys: (keyof IMedicinalProductIndicationOtherTherapy)[] = [];

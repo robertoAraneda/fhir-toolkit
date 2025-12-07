@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { MedicationRequestSubstitution } from '../../models/backbones/MedicationRequestSubstitution.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IMedicationRequestSubstitution,
@@ -35,7 +36,7 @@ export class MedicationRequestSubstitutionBuilder extends BackboneElementBuilder
   // ============================================================================
 
   /**
-   * Set allowed choice type
+   * Set allowed choice type (allowedBoolean, allowedCodeableConcept)
    * @param type - 'Boolean' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -44,7 +45,7 @@ export class MedicationRequestSubstitutionBuilder extends BackboneElementBuilder
    */
   setAllowed<T extends 'Boolean' | 'CodeableConcept'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `allowed${type}` as keyof IMedicationRequestSubstitution;
     const otherKeys: (keyof IMedicationRequestSubstitution)[] = [];

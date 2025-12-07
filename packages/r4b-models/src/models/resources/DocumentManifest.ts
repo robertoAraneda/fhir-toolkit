@@ -36,7 +36,6 @@ const DOCUMENT_MANIFEST_PROPERTIES = [
  *
  * @example
  * const documentManifest = new DocumentManifest({
- *   resourceType: 'DocumentManifest',
  *   // ... properties
  * });
  */
@@ -99,7 +98,7 @@ export class DocumentManifest extends DomainResource implements IDocumentManifes
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDocumentManifest>) {
+  constructor(data?: Omit<Partial<IDocumentManifest>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DOCUMENT_MANIFEST_PROPERTIES);

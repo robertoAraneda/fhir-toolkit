@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { CoverageEligibilityResponse } from '../../models/resources/CoverageEligibilityResponse.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ClaimProcessingType,
   EligibilityResponsePurposeType,
@@ -127,7 +128,7 @@ export class CoverageEligibilityResponseBuilder extends DomainResourceBuilder<Co
   // ============================================================================
 
   /**
-   * Set serviced choice type
+   * Set serviced choice type (servicedDate, servicedPeriod)
    * @param type - 'Date' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -136,7 +137,7 @@ export class CoverageEligibilityResponseBuilder extends DomainResourceBuilder<Co
    */
   setServiced<T extends 'Date' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `serviced${type}` as keyof ICoverageEligibilityResponse;
     const otherKeys: (keyof ICoverageEligibilityResponse)[] = [];

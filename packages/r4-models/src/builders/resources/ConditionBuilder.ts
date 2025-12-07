@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Condition } from '../../models/resources/Condition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ConditionClinicalStatusType,
   ConditionVerificationStatusType,
@@ -120,7 +121,7 @@ export class ConditionBuilder extends DomainResourceBuilder<Condition, IConditio
   // ============================================================================
 
   /**
-   * Set onset choice type
+   * Set onset choice type (onsetDateTime, onsetAge, onsetPeriod, onsetRange, onsetString)
    * @param type - 'DateTime' | 'Age' | 'Period' | 'Range' | 'String'
    * @param value - The value for the chosen type
    *
@@ -129,7 +130,7 @@ export class ConditionBuilder extends DomainResourceBuilder<Condition, IConditio
    */
   setOnset<T extends 'DateTime' | 'Age' | 'Period' | 'Range' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `onset${type}` as keyof ICondition;
     const otherKeys: (keyof ICondition)[] = [];
@@ -157,7 +158,7 @@ export class ConditionBuilder extends DomainResourceBuilder<Condition, IConditio
   }
 
   /**
-   * Set abatement choice type
+   * Set abatement choice type (abatementDateTime, abatementAge, abatementPeriod, abatementRange, abatementString)
    * @param type - 'DateTime' | 'Age' | 'Period' | 'Range' | 'String'
    * @param value - The value for the chosen type
    *
@@ -166,7 +167,7 @@ export class ConditionBuilder extends DomainResourceBuilder<Condition, IConditio
    */
   setAbatement<T extends 'DateTime' | 'Age' | 'Period' | 'Range' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `abatement${type}` as keyof ICondition;
     const otherKeys: (keyof ICondition)[] = [];

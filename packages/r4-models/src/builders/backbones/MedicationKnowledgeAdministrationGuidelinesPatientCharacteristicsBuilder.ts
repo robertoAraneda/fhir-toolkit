@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics } from '../../models/backbones/MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IMedicationKnowledgeAdministrationGuidelinesPatientCharacteristics,
@@ -23,7 +24,7 @@ export class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsBu
   // ============================================================================
 
   /**
-   * Set characteristic choice type
+   * Set characteristic choice type (characteristicCodeableConcept, characteristicQuantity)
    * @param type - 'CodeableConcept' | 'Quantity'
    * @param value - The value for the chosen type
    *
@@ -32,7 +33,7 @@ export class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsBu
    */
   setCharacteristic<T extends 'CodeableConcept' | 'Quantity'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `characteristic${type}` as keyof IMedicationKnowledgeAdministrationGuidelinesPatientCharacteristics;
     const otherKeys: (keyof IMedicationKnowledgeAdministrationGuidelinesPatientCharacteristics)[] = [];

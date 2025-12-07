@@ -44,7 +44,6 @@ const MEDICINAL_PRODUCT_PROPERTIES = [
  *
  * @example
  * const medicinalProduct = new MedicinalProduct({
- *   resourceType: 'MedicinalProduct',
  *   // ... properties
  * });
  */
@@ -122,7 +121,7 @@ export class MedicinalProduct extends DomainResource implements IMedicinalProduc
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicinalProduct>) {
+  constructor(data?: Omit<Partial<IMedicinalProduct>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICINAL_PRODUCT_PROPERTIES);

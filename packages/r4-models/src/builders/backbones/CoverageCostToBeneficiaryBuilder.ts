@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { CoverageCostToBeneficiary } from '../../models/backbones/CoverageCostToBeneficiary.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   ICoverageCostToBeneficiary,
@@ -39,7 +40,7 @@ export class CoverageCostToBeneficiaryBuilder extends BackboneElementBuilder<Cov
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueQuantity, valueMoney)
    * @param type - 'Quantity' | 'Money'
    * @param value - The value for the chosen type
    *
@@ -48,7 +49,7 @@ export class CoverageCostToBeneficiaryBuilder extends BackboneElementBuilder<Cov
    */
   setValue<T extends 'Quantity' | 'Money'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof ICoverageCostToBeneficiary;
     const otherKeys: (keyof ICoverageCostToBeneficiary)[] = [];

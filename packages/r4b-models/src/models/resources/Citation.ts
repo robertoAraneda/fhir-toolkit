@@ -69,7 +69,6 @@ const CITATION_PROPERTIES = [
  *
  * @example
  * const citation = new Citation({
- *   resourceType: 'Citation',
  *   // ... properties
  * });
  */
@@ -210,7 +209,7 @@ export class Citation extends DomainResource implements ICitation {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICitation>) {
+  constructor(data?: Omit<Partial<ICitation>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CITATION_PROPERTIES);

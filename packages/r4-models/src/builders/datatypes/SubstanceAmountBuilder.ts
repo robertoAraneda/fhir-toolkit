@@ -1,5 +1,6 @@
 import { ElementBuilder } from '../base/ElementBuilder.js';
 import { SubstanceAmount } from '../../models/datatypes/SubstanceAmount.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IQuantity,
@@ -56,7 +57,7 @@ export class SubstanceAmountBuilder extends ElementBuilder<SubstanceAmount, ISub
   // ============================================================================
 
   /**
-   * Set amount choice type
+   * Set amount choice type (amountQuantity, amountRange, amountString)
    * @param type - 'Quantity' | 'Range' | 'String'
    * @param value - The value for the chosen type
    *
@@ -65,7 +66,7 @@ export class SubstanceAmountBuilder extends ElementBuilder<SubstanceAmount, ISub
    */
   setAmount<T extends 'Quantity' | 'Range' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `amount${type}` as keyof ISubstanceAmount;
     const otherKeys: (keyof ISubstanceAmount)[] = [];

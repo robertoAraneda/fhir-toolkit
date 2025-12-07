@@ -113,60 +113,6 @@ export class RequestGroupBuilder extends DomainResourceBuilder<RequestGroup, IRe
   }
 
   // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof IRequestGroup;
-    const otherKeys: (keyof IRequestGroup)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof IRequestGroup);
-      otherKeys.push('_instantiatesCanonical' as keyof IRequestGroup);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof IRequestGroup);
-      otherKeys.push('_instantiatesUri' as keyof IRequestGroup);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `reason${type}` as keyof IRequestGroup;
-    const otherKeys: (keyof IRequestGroup)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IRequestGroup);
-      otherKeys.push('_reasonCode' as keyof IRequestGroup);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IRequestGroup);
-      otherKeys.push('_reasonReference' as keyof IRequestGroup);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  // ============================================================================
   // Array Properties
   // ============================================================================
 
@@ -176,6 +122,22 @@ export class RequestGroupBuilder extends DomainResourceBuilder<RequestGroup, IRe
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
   }
 
   /**
@@ -192,6 +154,22 @@ export class RequestGroupBuilder extends DomainResourceBuilder<RequestGroup, IRe
    */
   addReplaces(replac: IReference<'Resource'>): this {
     return this.addToArray('replaces', replac);
+  }
+
+  /**
+   * Add reasonCode
+   * Why the request group is needed
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why the request group is needed
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

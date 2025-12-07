@@ -47,7 +47,6 @@ const REQUEST_GROUP_PROPERTIES = [
  *
  * @example
  * const requestGroup = new RequestGroup({
- *   resourceType: 'RequestGroup',
  *   // ... properties
  * });
  */
@@ -134,7 +133,7 @@ export class RequestGroup extends DomainResource implements IRequestGroup {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IRequestGroup>) {
+  constructor(data?: Omit<Partial<IRequestGroup>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, REQUEST_GROUP_PROPERTIES);

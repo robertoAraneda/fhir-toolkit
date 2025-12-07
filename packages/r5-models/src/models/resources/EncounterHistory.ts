@@ -39,7 +39,6 @@ const ENCOUNTER_HISTORY_PROPERTIES = [
  *
  * @example
  * const encounterHistory = new EncounterHistory({
- *   resourceType: 'EncounterHistory',
  *   // ... properties
  * });
  */
@@ -102,7 +101,7 @@ export class EncounterHistory extends DomainResource implements IEncounterHistor
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEncounterHistory>) {
+  constructor(data?: Omit<Partial<IEncounterHistory>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ENCOUNTER_HISTORY_PROPERTIES);

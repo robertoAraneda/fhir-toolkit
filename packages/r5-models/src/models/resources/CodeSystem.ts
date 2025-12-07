@@ -89,7 +89,6 @@ const CODE_SYSTEM_PROPERTIES = [
  *
  * @example
  * const codeSystem = new CodeSystem({
- *   resourceType: 'CodeSystem',
  *   // ... properties
  * });
  */
@@ -287,7 +286,7 @@ export class CodeSystem extends DomainResource implements ICodeSystem {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICodeSystem>) {
+  constructor(data?: Omit<Partial<ICodeSystem>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CODE_SYSTEM_PROPERTIES);

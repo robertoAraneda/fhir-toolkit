@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Library } from '../../models/resources/Library.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAttachment,
   ICodeableConcept,
@@ -192,7 +193,7 @@ export class LibraryBuilder extends DomainResourceBuilder<Library, ILibrary> {
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -201,7 +202,7 @@ export class LibraryBuilder extends DomainResourceBuilder<Library, ILibrary> {
    */
   setSubject<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `subject${type}` as keyof ILibrary;
     const otherKeys: (keyof ILibrary)[] = [];

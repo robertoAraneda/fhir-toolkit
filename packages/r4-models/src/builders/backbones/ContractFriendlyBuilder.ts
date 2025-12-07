@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ContractFriendly } from '../../models/backbones/ContractFriendly.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAttachment,
   IContractFriendly,
@@ -22,7 +23,7 @@ export class ContractFriendlyBuilder extends BackboneElementBuilder<ContractFrie
   // ============================================================================
 
   /**
-   * Set content choice type
+   * Set content choice type (contentAttachment, contentReference)
    * @param type - 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -31,7 +32,7 @@ export class ContractFriendlyBuilder extends BackboneElementBuilder<ContractFrie
    */
   setContent<T extends 'Attachment' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `content${type}` as keyof IContractFriendly;
     const otherKeys: (keyof IContractFriendly)[] = [];

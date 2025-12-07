@@ -64,7 +64,6 @@ const CLAIM_RESPONSE_PROPERTIES = [
  *
  * @example
  * const claimResponse = new ClaimResponse({
- *   resourceType: 'ClaimResponse',
  *   // ... properties
  * });
  */
@@ -178,7 +177,7 @@ export class ClaimResponse extends DomainResource implements IClaimResponse {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IClaimResponse>) {
+  constructor(data?: Omit<Partial<IClaimResponse>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CLAIM_RESPONSE_PROPERTIES);

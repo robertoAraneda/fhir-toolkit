@@ -75,7 +75,6 @@ const NAMING_SYSTEM_PROPERTIES = [
  *
  * @example
  * const namingSystem = new NamingSystem({
- *   resourceType: 'NamingSystem',
  *   // ... properties
  * });
  */
@@ -240,7 +239,7 @@ export class NamingSystem extends DomainResource implements INamingSystem {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<INamingSystem>) {
+  constructor(data?: Omit<Partial<INamingSystem>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, NAMING_SYSTEM_PROPERTIES);

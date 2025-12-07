@@ -64,7 +64,6 @@ const PAYMENT_RECONCILIATION_PROPERTIES = [
  *
  * @example
  * const paymentReconciliation = new PaymentReconciliation({
- *   resourceType: 'PaymentReconciliation',
  *   // ... properties
  * });
  */
@@ -199,7 +198,7 @@ export class PaymentReconciliation extends DomainResource implements IPaymentRec
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IPaymentReconciliation>) {
+  constructor(data?: Omit<Partial<IPaymentReconciliation>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PAYMENT_RECONCILIATION_PROPERTIES);

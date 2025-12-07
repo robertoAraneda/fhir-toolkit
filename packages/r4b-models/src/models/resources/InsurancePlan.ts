@@ -40,7 +40,6 @@ const INSURANCE_PLAN_PROPERTIES = [
  *
  * @example
  * const insurancePlan = new InsurancePlan({
- *   resourceType: 'InsurancePlan',
  *   // ... properties
  * });
  */
@@ -106,7 +105,7 @@ export class InsurancePlan extends DomainResource implements IInsurancePlan {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IInsurancePlan>) {
+  constructor(data?: Omit<Partial<IInsurancePlan>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, INSURANCE_PLAN_PROPERTIES);

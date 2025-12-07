@@ -53,7 +53,6 @@ const MEDIA_PROPERTIES = [
  *
  * @example
  * const media = new Media({
- *   resourceType: 'Media',
  *   // ... properties
  * });
  */
@@ -161,7 +160,7 @@ export class Media extends DomainResource implements IMedia {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedia>) {
+  constructor(data?: Omit<Partial<IMedia>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDIA_PROPERTIES);

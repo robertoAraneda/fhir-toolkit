@@ -22,7 +22,6 @@ const FORMULARY_ITEM_PROPERTIES = [
  *
  * @example
  * const formularyItem = new FormularyItem({
- *   resourceType: 'FormularyItem',
  *   // ... properties
  * });
  */
@@ -49,7 +48,7 @@ export class FormularyItem extends DomainResource implements IFormularyItem {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IFormularyItem>) {
+  constructor(data?: Omit<Partial<IFormularyItem>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, FORMULARY_ITEM_PROPERTIES);

@@ -50,7 +50,6 @@ const COMPOSITION_PROPERTIES = [
  *
  * @example
  * const composition = new Composition({
- *   resourceType: 'Composition',
  *   // ... properties
  * });
  */
@@ -140,7 +139,7 @@ export class Composition extends DomainResource implements IComposition {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IComposition>) {
+  constructor(data?: Omit<Partial<IComposition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, COMPOSITION_PROPERTIES);

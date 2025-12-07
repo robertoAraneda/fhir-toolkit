@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ValueSetExpansionParameter } from '../../models/backbones/ValueSetExpansionParameter.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IValueSetExpansionParameter,
 } from '@fhir-toolkit/r4-types';
@@ -34,7 +35,7 @@ export class ValueSetExpansionParameterBuilder extends BackboneElementBuilder<Va
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueString, valueBoolean, valueInteger, valueDecimal, valueUri, valueCode, valueDateTime)
    * @param type - 'String' | 'Boolean' | 'Integer' | 'Decimal' | 'Uri' | 'Code' | 'DateTime'
    * @param value - The value for the chosen type
    *
@@ -43,7 +44,7 @@ export class ValueSetExpansionParameterBuilder extends BackboneElementBuilder<Va
    */
   setValue<T extends 'String' | 'Boolean' | 'Integer' | 'Decimal' | 'Uri' | 'Code' | 'DateTime'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IValueSetExpansionParameter;
     const otherKeys: (keyof IValueSetExpansionParameter)[] = [];

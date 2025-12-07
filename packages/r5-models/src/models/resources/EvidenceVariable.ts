@@ -75,7 +75,6 @@ const EVIDENCE_VARIABLE_PROPERTIES = [
  *
  * @example
  * const evidenceVariable = new EvidenceVariable({
- *   resourceType: 'EvidenceVariable',
  *   // ... properties
  * });
  */
@@ -237,7 +236,7 @@ export class EvidenceVariable extends DomainResource implements IEvidenceVariabl
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEvidenceVariable>) {
+  constructor(data?: Omit<Partial<IEvidenceVariable>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, EVIDENCE_VARIABLE_PROPERTIES);

@@ -36,7 +36,6 @@ const INVENTORY_REPORT_PROPERTIES = [
  *
  * @example
  * const inventoryReport = new InventoryReport({
- *   resourceType: 'InventoryReport',
  *   // ... properties
  * });
  */
@@ -90,7 +89,7 @@ export class InventoryReport extends DomainResource implements IInventoryReport 
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IInventoryReport>) {
+  constructor(data?: Omit<Partial<IInventoryReport>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, INVENTORY_REPORT_PROPERTIES);

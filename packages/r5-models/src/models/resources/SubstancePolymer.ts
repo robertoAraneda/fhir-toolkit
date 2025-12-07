@@ -27,7 +27,6 @@ const SUBSTANCE_POLYMER_PROPERTIES = [
  *
  * @example
  * const substancePolymer = new SubstancePolymer({
- *   resourceType: 'SubstancePolymer',
  *   // ... properties
  * });
  */
@@ -66,7 +65,7 @@ export class SubstancePolymer extends DomainResource implements ISubstancePolyme
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISubstancePolymer>) {
+  constructor(data?: Omit<Partial<ISubstancePolymer>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUBSTANCE_POLYMER_PROPERTIES);

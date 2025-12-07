@@ -16,7 +16,6 @@ const PARAMETERS_PROPERTIES = [
  *
  * @example
  * const parameters = new Parameters({
- *   resourceType: 'Parameters',
  *   // ... properties
  * });
  */
@@ -34,7 +33,7 @@ export class Parameters extends DomainResource implements IParameters {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IParameters>) {
+  constructor(data?: Omit<Partial<IParameters>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PARAMETERS_PROPERTIES);

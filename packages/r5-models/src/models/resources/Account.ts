@@ -47,7 +47,6 @@ const ACCOUNT_PROPERTIES = [
  *
  * @example
  * const account = new Account({
- *   resourceType: 'Account',
  *   // ... properties
  * });
  */
@@ -125,7 +124,7 @@ export class Account extends DomainResource implements IAccount {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IAccount>) {
+  constructor(data?: Omit<Partial<IAccount>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ACCOUNT_PROPERTIES);

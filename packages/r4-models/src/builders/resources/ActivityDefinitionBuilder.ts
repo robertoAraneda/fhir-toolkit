@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { ActivityDefinition } from '../../models/resources/ActivityDefinition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IActivityDefinition,
   IActivityDefinitionDynamicValue,
@@ -272,7 +273,7 @@ export class ActivityDefinitionBuilder extends DomainResourceBuilder<ActivityDef
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -281,7 +282,7 @@ export class ActivityDefinitionBuilder extends DomainResourceBuilder<ActivityDef
    */
   setSubject<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `subject${type}` as keyof IActivityDefinition;
     const otherKeys: (keyof IActivityDefinition)[] = [];
@@ -297,7 +298,7 @@ export class ActivityDefinitionBuilder extends DomainResourceBuilder<ActivityDef
   }
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingTiming, timingDateTime, timingAge, timingPeriod, timingRange, timingDuration)
    * @param type - 'Timing' | 'DateTime' | 'Age' | 'Period' | 'Range' | 'Duration'
    * @param value - The value for the chosen type
    *
@@ -306,7 +307,7 @@ export class ActivityDefinitionBuilder extends DomainResourceBuilder<ActivityDef
    */
   setTiming<T extends 'Timing' | 'DateTime' | 'Age' | 'Period' | 'Range' | 'Duration'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `timing${type}` as keyof IActivityDefinition;
     const otherKeys: (keyof IActivityDefinition)[] = [];
@@ -338,7 +339,7 @@ export class ActivityDefinitionBuilder extends DomainResourceBuilder<ActivityDef
   }
 
   /**
-   * Set product choice type
+   * Set product choice type (productReference, productCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -347,7 +348,7 @@ export class ActivityDefinitionBuilder extends DomainResourceBuilder<ActivityDef
    */
   setProduct<T extends 'Reference' | 'CodeableConcept'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `product${type}` as keyof IActivityDefinition;
     const otherKeys: (keyof IActivityDefinition)[] = [];

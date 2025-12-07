@@ -56,7 +56,6 @@ const CONCEPT_MAP_PROPERTIES = [
  *
  * @example
  * const conceptMap = new ConceptMap({
- *   resourceType: 'ConceptMap',
  *   // ... properties
  * });
  */
@@ -176,7 +175,7 @@ export class ConceptMap extends DomainResource implements IConceptMap {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IConceptMap>) {
+  constructor(data?: Omit<Partial<IConceptMap>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CONCEPT_MAP_PROPERTIES);

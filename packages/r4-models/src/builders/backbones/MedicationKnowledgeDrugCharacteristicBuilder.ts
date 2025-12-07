@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { MedicationKnowledgeDrugCharacteristic } from '../../models/backbones/MedicationKnowledgeDrugCharacteristic.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IMedicationKnowledgeDrugCharacteristic,
@@ -36,7 +37,7 @@ export class MedicationKnowledgeDrugCharacteristicBuilder extends BackboneElemen
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueString, valueQuantity, valueBase64Binary)
    * @param type - 'CodeableConcept' | 'String' | 'Quantity' | 'Base64Binary'
    * @param value - The value for the chosen type
    *
@@ -45,7 +46,7 @@ export class MedicationKnowledgeDrugCharacteristicBuilder extends BackboneElemen
    */
   setValue<T extends 'CodeableConcept' | 'String' | 'Quantity' | 'Base64Binary'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IMedicationKnowledgeDrugCharacteristic;
     const otherKeys: (keyof IMedicationKnowledgeDrugCharacteristic)[] = [];

@@ -68,7 +68,6 @@ const PROCEDURE_PROPERTIES = [
  *
  * @example
  * const procedure = new Procedure({
- *   resourceType: 'Procedure',
  *   // ... properties
  * });
  */
@@ -206,7 +205,7 @@ export class Procedure extends DomainResource implements IProcedure {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IProcedure>) {
+  constructor(data?: Omit<Partial<IProcedure>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PROCEDURE_PROPERTIES);

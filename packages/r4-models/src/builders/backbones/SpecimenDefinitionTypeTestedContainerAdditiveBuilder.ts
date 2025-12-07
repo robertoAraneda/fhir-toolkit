@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SpecimenDefinitionTypeTestedContainerAdditive } from '../../models/backbones/SpecimenDefinitionTypeTestedContainerAdditive.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IReference,
@@ -22,7 +23,7 @@ export class SpecimenDefinitionTypeTestedContainerAdditiveBuilder extends Backbo
   // ============================================================================
 
   /**
-   * Set additive choice type
+   * Set additive choice type (additiveCodeableConcept, additiveReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -31,7 +32,7 @@ export class SpecimenDefinitionTypeTestedContainerAdditiveBuilder extends Backbo
    */
   setAdditive<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `additive${type}` as keyof ISpecimenDefinitionTypeTestedContainerAdditive;
     const otherKeys: (keyof ISpecimenDefinitionTypeTestedContainerAdditive)[] = [];

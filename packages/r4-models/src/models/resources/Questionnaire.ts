@@ -60,7 +60,6 @@ const QUESTIONNAIRE_PROPERTIES = [
  *
  * @example
  * const questionnaire = new Questionnaire({
- *   resourceType: 'Questionnaire',
  *   // ... properties
  * });
  */
@@ -186,7 +185,7 @@ export class Questionnaire extends DomainResource implements IQuestionnaire {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IQuestionnaire>) {
+  constructor(data?: Omit<Partial<IQuestionnaire>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, QUESTIONNAIRE_PROPERTIES);

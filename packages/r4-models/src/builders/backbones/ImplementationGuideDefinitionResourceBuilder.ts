@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ImplementationGuideDefinitionResource } from '../../models/backbones/ImplementationGuideDefinitionResource.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   FHIRVersionType,
   IImplementationGuideDefinitionResource,
@@ -64,7 +65,7 @@ export class ImplementationGuideDefinitionResourceBuilder extends BackboneElemen
   // ============================================================================
 
   /**
-   * Set example choice type
+   * Set example choice type (exampleBoolean, exampleCanonical)
    * @param type - 'Boolean' | 'Canonical'
    * @param value - The value for the chosen type
    *
@@ -73,7 +74,7 @@ export class ImplementationGuideDefinitionResourceBuilder extends BackboneElemen
    */
   setExample<T extends 'Boolean' | 'Canonical'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `example${type}` as keyof IImplementationGuideDefinitionResource;
     const otherKeys: (keyof IImplementationGuideDefinitionResource)[] = [];

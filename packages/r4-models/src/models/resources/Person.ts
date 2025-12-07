@@ -36,7 +36,6 @@ const PERSON_PROPERTIES = [
  *
  * @example
  * const person = new Person({
- *   resourceType: 'Person',
  *   // ... properties
  * });
  */
@@ -90,7 +89,7 @@ export class Person extends DomainResource implements IPerson {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IPerson>) {
+  constructor(data?: Omit<Partial<IPerson>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PERSON_PROPERTIES);

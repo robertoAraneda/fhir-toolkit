@@ -42,7 +42,6 @@ const PACKAGED_PRODUCT_DEFINITION_PROPERTIES = [
  *
  * @example
  * const packagedProductDefinition = new PackagedProductDefinition({
- *   resourceType: 'PackagedProductDefinition',
  *   // ... properties
  * });
  */
@@ -114,7 +113,7 @@ export class PackagedProductDefinition extends DomainResource implements IPackag
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IPackagedProductDefinition>) {
+  constructor(data?: Omit<Partial<IPackagedProductDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, PACKAGED_PRODUCT_DEFINITION_PROPERTIES);

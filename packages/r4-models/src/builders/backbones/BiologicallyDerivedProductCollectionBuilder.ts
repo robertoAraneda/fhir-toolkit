@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { BiologicallyDerivedProductCollection } from '../../models/backbones/BiologicallyDerivedProductCollection.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IBiologicallyDerivedProductCollection,
   IPeriod,
@@ -45,7 +46,7 @@ export class BiologicallyDerivedProductCollectionBuilder extends BackboneElement
   // ============================================================================
 
   /**
-   * Set collected choice type
+   * Set collected choice type (collectedDateTime, collectedPeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -54,7 +55,7 @@ export class BiologicallyDerivedProductCollectionBuilder extends BackboneElement
    */
   setCollected<T extends 'DateTime' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `collected${type}` as keyof IBiologicallyDerivedProductCollection;
     const otherKeys: (keyof IBiologicallyDerivedProductCollection)[] = [];

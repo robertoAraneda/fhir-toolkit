@@ -70,7 +70,6 @@ const RESEARCH_STUDY_PROPERTIES = [
  *
  * @example
  * const researchStudy = new ResearchStudy({
- *   resourceType: 'ResearchStudy',
  *   // ... properties
  * });
  */
@@ -205,7 +204,7 @@ export class ResearchStudy extends DomainResource implements IResearchStudy {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IResearchStudy>) {
+  constructor(data?: Omit<Partial<IResearchStudy>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, RESEARCH_STUDY_PROPERTIES);

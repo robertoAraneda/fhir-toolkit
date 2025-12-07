@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ExplanationOfBenefitProcedure } from '../../models/backbones/ExplanationOfBenefitProcedure.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IExplanationOfBenefitProcedure,
@@ -46,7 +47,7 @@ export class ExplanationOfBenefitProcedureBuilder extends BackboneElementBuilder
   // ============================================================================
 
   /**
-   * Set procedure choice type
+   * Set procedure choice type (procedureCodeableConcept, procedureReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -55,7 +56,7 @@ export class ExplanationOfBenefitProcedureBuilder extends BackboneElementBuilder
    */
   setProcedure<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `procedure${type}` as keyof IExplanationOfBenefitProcedure;
     const otherKeys: (keyof IExplanationOfBenefitProcedure)[] = [];

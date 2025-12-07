@@ -31,7 +31,6 @@ const MEDICATION_PROPERTIES = [
  *
  * @example
  * const medication = new Medication({
- *   resourceType: 'Medication',
  *   // ... properties
  * });
  */
@@ -73,7 +72,7 @@ export class Medication extends DomainResource implements IMedication {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedication>) {
+  constructor(data?: Omit<Partial<IMedication>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICATION_PROPERTIES);

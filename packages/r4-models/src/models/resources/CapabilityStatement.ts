@@ -70,7 +70,6 @@ const CAPABILITY_STATEMENT_PROPERTIES = [
  *
  * @example
  * const capabilityStatement = new CapabilityStatement({
- *   resourceType: 'CapabilityStatement',
  *   // ... properties
  * });
  */
@@ -217,7 +216,7 @@ export class CapabilityStatement extends DomainResource implements ICapabilitySt
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICapabilityStatement>) {
+  constructor(data?: Omit<Partial<ICapabilityStatement>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CAPABILITY_STATEMENT_PROPERTIES);

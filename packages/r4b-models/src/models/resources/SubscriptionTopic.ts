@@ -60,7 +60,6 @@ const SUBSCRIPTION_TOPIC_PROPERTIES = [
  *
  * @example
  * const subscriptionTopic = new SubscriptionTopic({
- *   resourceType: 'SubscriptionTopic',
  *   // ... properties
  * });
  */
@@ -180,7 +179,7 @@ export class SubscriptionTopic extends DomainResource implements ISubscriptionTo
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISubscriptionTopic>) {
+  constructor(data?: Omit<Partial<ISubscriptionTopic>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUBSCRIPTION_TOPIC_PROPERTIES);

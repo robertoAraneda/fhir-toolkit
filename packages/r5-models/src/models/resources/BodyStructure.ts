@@ -30,7 +30,6 @@ const BODY_STRUCTURE_PROPERTIES = [
  *
  * @example
  * const bodyStructure = new BodyStructure({
- *   resourceType: 'BodyStructure',
  *   // ... properties
  * });
  */
@@ -75,7 +74,7 @@ export class BodyStructure extends DomainResource implements IBodyStructure {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IBodyStructure>) {
+  constructor(data?: Omit<Partial<IBodyStructure>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, BODY_STRUCTURE_PROPERTIES);

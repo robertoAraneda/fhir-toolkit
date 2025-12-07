@@ -52,7 +52,6 @@ const STRUCTURE_MAP_PROPERTIES = [
  *
  * @example
  * const structureMap = new StructureMap({
- *   resourceType: 'StructureMap',
  *   // ... properties
  * });
  */
@@ -157,7 +156,7 @@ export class StructureMap extends DomainResource implements IStructureMap {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IStructureMap>) {
+  constructor(data?: Omit<Partial<IStructureMap>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, STRUCTURE_MAP_PROPERTIES);

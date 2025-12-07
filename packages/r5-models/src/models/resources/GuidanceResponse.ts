@@ -42,7 +42,6 @@ const GUIDANCE_RESPONSE_PROPERTIES = [
  *
  * @example
  * const guidanceResponse = new GuidanceResponse({
- *   resourceType: 'GuidanceResponse',
  *   // ... properties
  * });
  */
@@ -117,7 +116,7 @@ export class GuidanceResponse extends DomainResource implements IGuidanceRespons
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IGuidanceResponse>) {
+  constructor(data?: Omit<Partial<IGuidanceResponse>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, GUIDANCE_RESPONSE_PROPERTIES);

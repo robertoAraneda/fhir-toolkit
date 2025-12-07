@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ExplanationOfBenefitSupportingInfo } from '../../models/backbones/ExplanationOfBenefitSupportingInfo.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAttachment,
   ICodeableConcept,
@@ -67,7 +68,7 @@ export class ExplanationOfBenefitSupportingInfoBuilder extends BackboneElementBu
   // ============================================================================
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingDate, timingPeriod)
    * @param type - 'Date' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -76,7 +77,7 @@ export class ExplanationOfBenefitSupportingInfoBuilder extends BackboneElementBu
    */
   setTiming<T extends 'Date' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `timing${type}` as keyof IExplanationOfBenefitSupportingInfo;
     const otherKeys: (keyof IExplanationOfBenefitSupportingInfo)[] = [];
@@ -92,7 +93,7 @@ export class ExplanationOfBenefitSupportingInfoBuilder extends BackboneElementBu
   }
 
   /**
-   * Set value choice type
+   * Set value choice type (valueBoolean, valueString, valueQuantity, valueAttachment, valueReference)
    * @param type - 'Boolean' | 'String' | 'Quantity' | 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -101,7 +102,7 @@ export class ExplanationOfBenefitSupportingInfoBuilder extends BackboneElementBu
    */
   setValue<T extends 'Boolean' | 'String' | 'Quantity' | 'Attachment' | 'Reference'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IExplanationOfBenefitSupportingInfo;
     const otherKeys: (keyof IExplanationOfBenefitSupportingInfo)[] = [];

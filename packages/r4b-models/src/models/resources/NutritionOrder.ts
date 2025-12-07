@@ -47,7 +47,6 @@ const NUTRITION_ORDER_PROPERTIES = [
  *
  * @example
  * const nutritionOrder = new NutritionOrder({
- *   resourceType: 'NutritionOrder',
  *   // ... properties
  * });
  */
@@ -131,7 +130,7 @@ export class NutritionOrder extends DomainResource implements INutritionOrder {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<INutritionOrder>) {
+  constructor(data?: Omit<Partial<INutritionOrder>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, NUTRITION_ORDER_PROPERTIES);

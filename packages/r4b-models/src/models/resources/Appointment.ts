@@ -52,7 +52,6 @@ const APPOINTMENT_PROPERTIES = [
  *
  * @example
  * const appointment = new Appointment({
- *   resourceType: 'Appointment',
  *   // ... properties
  * });
  */
@@ -160,7 +159,7 @@ export class Appointment extends DomainResource implements IAppointment {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IAppointment>) {
+  constructor(data?: Omit<Partial<IAppointment>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, APPOINTMENT_PROPERTIES);

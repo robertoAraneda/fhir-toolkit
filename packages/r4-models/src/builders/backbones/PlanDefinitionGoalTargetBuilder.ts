@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { PlanDefinitionGoalTarget } from '../../models/backbones/PlanDefinitionGoalTarget.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IDuration,
@@ -47,7 +48,7 @@ export class PlanDefinitionGoalTargetBuilder extends BackboneElementBuilder<Plan
   // ============================================================================
 
   /**
-   * Set detail choice type
+   * Set detail choice type (detailQuantity, detailRange, detailCodeableConcept)
    * @param type - 'Quantity' | 'Range' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -56,7 +57,7 @@ export class PlanDefinitionGoalTargetBuilder extends BackboneElementBuilder<Plan
    */
   setDetail<T extends 'Quantity' | 'Range' | 'CodeableConcept'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `detail${type}` as keyof IPlanDefinitionGoalTarget;
     const otherKeys: (keyof IPlanDefinitionGoalTarget)[] = [];

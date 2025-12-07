@@ -34,7 +34,6 @@ const ADMINISTRABLE_PRODUCT_DEFINITION_PROPERTIES = [
  *
  * @example
  * const administrableProductDefinition = new AdministrableProductDefinition({
- *   resourceType: 'AdministrableProductDefinition',
  *   // ... properties
  * });
  */
@@ -88,7 +87,7 @@ export class AdministrableProductDefinition extends DomainResource implements IA
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IAdministrableProductDefinition>) {
+  constructor(data?: Omit<Partial<IAdministrableProductDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ADMINISTRABLE_PRODUCT_DEFINITION_PROPERTIES);

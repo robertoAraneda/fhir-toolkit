@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { SpecimenDefinitionTypeTestedContainer } from '../../models/backbones/SpecimenDefinitionTypeTestedContainer.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IQuantity,
@@ -83,7 +84,7 @@ export class SpecimenDefinitionTypeTestedContainerBuilder extends BackboneElemen
   // ============================================================================
 
   /**
-   * Set minimumVolume choice type
+   * Set minimumVolume choice type (minimumVolumeQuantity, minimumVolumeString)
    * @param type - 'Quantity' | 'String'
    * @param value - The value for the chosen type
    *
@@ -92,7 +93,7 @@ export class SpecimenDefinitionTypeTestedContainerBuilder extends BackboneElemen
    */
   setMinimumVolume<T extends 'Quantity' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `minimumVolume${type}` as keyof ISpecimenDefinitionTypeTestedContainer;
     const otherKeys: (keyof ISpecimenDefinitionTypeTestedContainer)[] = [];

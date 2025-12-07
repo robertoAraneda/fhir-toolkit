@@ -1,5 +1,6 @@
 import { ElementBuilder } from '../base/ElementBuilder.js';
 import { Annotation } from '../../models/datatypes/Annotation.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   IReference,
@@ -44,7 +45,7 @@ export class AnnotationBuilder extends ElementBuilder<Annotation, IAnnotation> {
   // ============================================================================
 
   /**
-   * Set author choice type
+   * Set author choice type (authorReference, authorString)
    * @param type - 'Reference' | 'String'
    * @param value - The value for the chosen type
    *
@@ -53,7 +54,7 @@ export class AnnotationBuilder extends ElementBuilder<Annotation, IAnnotation> {
    */
   setAuthor<T extends 'Reference' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `author${type}` as keyof IAnnotation;
     const otherKeys: (keyof IAnnotation)[] = [];

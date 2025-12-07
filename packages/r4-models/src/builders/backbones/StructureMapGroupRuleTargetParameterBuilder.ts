@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { StructureMapGroupRuleTargetParameter } from '../../models/backbones/StructureMapGroupRuleTargetParameter.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IStructureMapGroupRuleTargetParameter,
 } from '@fhir-toolkit/r4-types';
@@ -20,7 +21,7 @@ export class StructureMapGroupRuleTargetParameterBuilder extends BackboneElement
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueId, valueString, valueBoolean, valueInteger, valueDecimal)
    * @param type - 'Id' | 'String' | 'Boolean' | 'Integer' | 'Decimal'
    * @param value - The value for the chosen type
    *
@@ -29,7 +30,7 @@ export class StructureMapGroupRuleTargetParameterBuilder extends BackboneElement
    */
   setValue<T extends 'Id' | 'String' | 'Boolean' | 'Integer' | 'Decimal'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IStructureMapGroupRuleTargetParameter;
     const otherKeys: (keyof IStructureMapGroupRuleTargetParameter)[] = [];

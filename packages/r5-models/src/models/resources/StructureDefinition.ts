@@ -78,7 +78,6 @@ const STRUCTURE_DEFINITION_PROPERTIES = [
  *
  * @example
  * const structureDefinition = new StructureDefinition({
- *   resourceType: 'StructureDefinition',
  *   // ... properties
  * });
  */
@@ -243,7 +242,7 @@ export class StructureDefinition extends DomainResource implements IStructureDef
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IStructureDefinition>) {
+  constructor(data?: Omit<Partial<IStructureDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, STRUCTURE_DEFINITION_PROPERTIES);

@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { TaskInput } from '../../models/backbones/TaskInput.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAddress,
   IAge,
@@ -60,48 +61,21 @@ export class TaskInputBuilder extends BackboneElementBuilder<TaskInput, ITaskInp
     return this;
   }
 
-  /**
-   * Set valuePositiveInt
-   * Content to use in performing the task
-   */
-  setValuePositiveInt(valuePositiveInt: number): this {
-    this.data.valuePositiveInt = valuePositiveInt;
-    return this;
-  }
-
-  /**
-   * Set valueUnsignedInt
-   * Content to use in performing the task
-   */
-  setValueUnsignedInt(valueUnsignedInt: number): this {
-    this.data.valueUnsignedInt = valueUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set valueUuid
-   * Content to use in performing the task
-   */
-  setValueUuid(valueUuid: string): this {
-    this.data.valueUuid = valueUuid;
-    return this;
-  }
-
   // ============================================================================
   // Choice Types
   // ============================================================================
 
   /**
-   * Set value choice type
-   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
+   * Set value choice type (valueBase64Binary, valueBoolean, valueCanonical, valueCode, valueDate, valueDateTime, valueDecimal, valueId, valueInstant, valueInteger, valueMarkdown, valueOid, valuePositiveInt, valueString, valueTime, valueUnsignedInt, valueUri, valueUrl, valueUuid, valueAddress, valueAge, valueAnnotation, valueAttachment, valueCodeableConcept, valueCoding, valueContactPoint, valueCount, valueDistance, valueDuration, valueHumanName, valueIdentifier, valueMoney, valuePeriod, valueQuantity, valueRange, valueRatio, valueReference, valueSampledData, valueSignature, valueTiming, valueContactDetail, valueContributor, valueDataRequirement, valueExpression, valueParameterDefinition, valueRelatedArtifact, valueTriggerDefinition, valueUsageContext, valueDosage, valueMeta)
+   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
    * @param value - The value for the chosen type
    *
    * @example
    * builder.setValue('Base64Binary', value)
    */
-  setValue<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
+  setValue<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof ITaskInput;
     const otherKeys: (keyof ITaskInput)[] = [];
@@ -153,6 +127,10 @@ export class TaskInputBuilder extends BackboneElementBuilder<TaskInput, ITaskInp
       otherKeys.push('valueOid' as keyof ITaskInput);
       otherKeys.push('_valueOid' as keyof ITaskInput);
     }
+    if (type !== 'PositiveInt') {
+      otherKeys.push('valuePositiveInt' as keyof ITaskInput);
+      otherKeys.push('_valuePositiveInt' as keyof ITaskInput);
+    }
     if (type !== 'String') {
       otherKeys.push('valueString' as keyof ITaskInput);
       otherKeys.push('_valueString' as keyof ITaskInput);
@@ -161,6 +139,10 @@ export class TaskInputBuilder extends BackboneElementBuilder<TaskInput, ITaskInp
       otherKeys.push('valueTime' as keyof ITaskInput);
       otherKeys.push('_valueTime' as keyof ITaskInput);
     }
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('valueUnsignedInt' as keyof ITaskInput);
+      otherKeys.push('_valueUnsignedInt' as keyof ITaskInput);
+    }
     if (type !== 'Uri') {
       otherKeys.push('valueUri' as keyof ITaskInput);
       otherKeys.push('_valueUri' as keyof ITaskInput);
@@ -168,6 +150,10 @@ export class TaskInputBuilder extends BackboneElementBuilder<TaskInput, ITaskInp
     if (type !== 'Url') {
       otherKeys.push('valueUrl' as keyof ITaskInput);
       otherKeys.push('_valueUrl' as keyof ITaskInput);
+    }
+    if (type !== 'Uuid') {
+      otherKeys.push('valueUuid' as keyof ITaskInput);
+      otherKeys.push('_valueUuid' as keyof ITaskInput);
     }
     if (type !== 'Address') {
       otherKeys.push('valueAddress' as keyof ITaskInput);

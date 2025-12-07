@@ -21,7 +21,6 @@ const LINKAGE_PROPERTIES = [
  *
  * @example
  * const linkage = new Linkage({
- *   resourceType: 'Linkage',
  *   // ... properties
  * });
  */
@@ -48,7 +47,7 @@ export class Linkage extends DomainResource implements ILinkage {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ILinkage>) {
+  constructor(data?: Omit<Partial<ILinkage>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, LINKAGE_PROPERTIES);

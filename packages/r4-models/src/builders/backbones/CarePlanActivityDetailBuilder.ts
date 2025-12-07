@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { CarePlanActivityDetail } from '../../models/backbones/CarePlanActivityDetail.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   CarePlanActivityKindType,
   CarePlanActivityStatusType,
@@ -20,7 +21,7 @@ import type {
  * @example
  * const carePlanActivityDetail = new CarePlanActivityDetailBuilder()
  *   .setKind(value)
- *   .addGoal({ ... })
+ *   .addInstantiatesCanonical({ ... })
  *   .build();
  */
 export class CarePlanActivityDetailBuilder extends BackboneElementBuilder<CarePlanActivityDetail, ICarePlanActivityDetail> {
@@ -114,57 +115,7 @@ export class CarePlanActivityDetailBuilder extends BackboneElementBuilder<CarePl
   // ============================================================================
 
   /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof ICarePlanActivityDetail;
-    const otherKeys: (keyof ICarePlanActivityDetail)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof ICarePlanActivityDetail);
-      otherKeys.push('_instantiatesCanonical' as keyof ICarePlanActivityDetail);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof ICarePlanActivityDetail);
-      otherKeys.push('_instantiatesUri' as keyof ICarePlanActivityDetail);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `reason${type}` as keyof ICarePlanActivityDetail;
-    const otherKeys: (keyof ICarePlanActivityDetail)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof ICarePlanActivityDetail);
-      otherKeys.push('_reasonCode' as keyof ICarePlanActivityDetail);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof ICarePlanActivityDetail);
-      otherKeys.push('_reasonReference' as keyof ICarePlanActivityDetail);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set scheduled choice type
+   * Set scheduled choice type (scheduledTiming, scheduledPeriod, scheduledString)
    * @param type - 'Timing' | 'Period' | 'String'
    * @param value - The value for the chosen type
    *
@@ -173,7 +124,7 @@ export class CarePlanActivityDetailBuilder extends BackboneElementBuilder<CarePl
    */
   setScheduled<T extends 'Timing' | 'Period' | 'String'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `scheduled${type}` as keyof ICarePlanActivityDetail;
     const otherKeys: (keyof ICarePlanActivityDetail)[] = [];
@@ -193,7 +144,7 @@ export class CarePlanActivityDetailBuilder extends BackboneElementBuilder<CarePl
   }
 
   /**
-   * Set product choice type
+   * Set product choice type (productCodeableConcept, productReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -202,7 +153,7 @@ export class CarePlanActivityDetailBuilder extends BackboneElementBuilder<CarePl
    */
   setProduct<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `product${type}` as keyof ICarePlanActivityDetail;
     const otherKeys: (keyof ICarePlanActivityDetail)[] = [];
@@ -220,6 +171,38 @@ export class CarePlanActivityDetailBuilder extends BackboneElementBuilder<CarePl
   // ============================================================================
   // Array Properties
   // ============================================================================
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
+  }
+
+  /**
+   * Add reasonCode
+   * Why activity should be done or why activity was prohibited
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why activity is needed
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
+  }
 
   /**
    * Add goal

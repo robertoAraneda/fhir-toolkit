@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { InvoiceLineItem } from '../../models/backbones/InvoiceLineItem.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IInvoiceLineItem,
@@ -38,7 +39,7 @@ export class InvoiceLineItemBuilder extends BackboneElementBuilder<InvoiceLineIt
   // ============================================================================
 
   /**
-   * Set chargeItem choice type
+   * Set chargeItem choice type (chargeItemReference, chargeItemCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -47,7 +48,7 @@ export class InvoiceLineItemBuilder extends BackboneElementBuilder<InvoiceLineIt
    */
   setChargeItem<T extends 'Reference' | 'CodeableConcept'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `chargeItem${type}` as keyof IInvoiceLineItem;
     const otherKeys: (keyof IInvoiceLineItem)[] = [];

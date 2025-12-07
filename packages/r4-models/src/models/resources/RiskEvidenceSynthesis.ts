@@ -69,7 +69,6 @@ const RISK_EVIDENCE_SYNTHESIS_PROPERTIES = [
  *
  * @example
  * const riskEvidenceSynthesis = new RiskEvidenceSynthesis({
- *   resourceType: 'RiskEvidenceSynthesis',
  *   // ... properties
  * });
  */
@@ -210,7 +209,7 @@ export class RiskEvidenceSynthesis extends DomainResource implements IRiskEviden
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IRiskEvidenceSynthesis>) {
+  constructor(data?: Omit<Partial<IRiskEvidenceSynthesis>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, RISK_EVIDENCE_SYNTHESIS_PROPERTIES);

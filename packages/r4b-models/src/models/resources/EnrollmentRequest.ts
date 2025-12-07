@@ -27,7 +27,6 @@ const ENROLLMENT_REQUEST_PROPERTIES = [
  *
  * @example
  * const enrollmentRequest = new EnrollmentRequest({
- *   resourceType: 'EnrollmentRequest',
  *   // ... properties
  * });
  */
@@ -69,7 +68,7 @@ export class EnrollmentRequest extends DomainResource implements IEnrollmentRequ
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IEnrollmentRequest>) {
+  constructor(data?: Omit<Partial<IEnrollmentRequest>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ENROLLMENT_REQUEST_PROPERTIES);

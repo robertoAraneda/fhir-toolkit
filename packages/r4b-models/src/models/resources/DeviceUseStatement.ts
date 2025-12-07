@@ -40,7 +40,6 @@ const DEVICE_USE_STATEMENT_PROPERTIES = [
  *
  * @example
  * const deviceUseStatement = new DeviceUseStatement({
- *   resourceType: 'DeviceUseStatement',
  *   // ... properties
  * });
  */
@@ -109,7 +108,7 @@ export class DeviceUseStatement extends DomainResource implements IDeviceUseStat
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IDeviceUseStatement>) {
+  constructor(data?: Omit<Partial<IDeviceUseStatement>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, DEVICE_USE_STATEMENT_PROPERTIES);

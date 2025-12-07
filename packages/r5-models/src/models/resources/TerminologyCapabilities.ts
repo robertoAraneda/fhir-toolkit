@@ -74,7 +74,6 @@ const TERMINOLOGY_CAPABILITIES_PROPERTIES = [
  *
  * @example
  * const terminologyCapabilities = new TerminologyCapabilities({
- *   resourceType: 'TerminologyCapabilities',
  *   // ... properties
  * });
  */
@@ -221,7 +220,7 @@ export class TerminologyCapabilities extends DomainResource implements ITerminol
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ITerminologyCapabilities>) {
+  constructor(data?: Omit<Partial<ITerminologyCapabilities>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, TERMINOLOGY_CAPABILITIES_PROPERTIES);

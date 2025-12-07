@@ -44,7 +44,6 @@ const INVOICE_PROPERTIES = [
  *
  * @example
  * const invoice = new Invoice({
- *   resourceType: 'Invoice',
  *   // ... properties
  * });
  */
@@ -119,7 +118,7 @@ export class Invoice extends DomainResource implements IInvoice {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IInvoice>) {
+  constructor(data?: Omit<Partial<IInvoice>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, INVOICE_PROPERTIES);

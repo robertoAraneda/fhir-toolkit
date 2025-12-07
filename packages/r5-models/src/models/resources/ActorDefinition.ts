@@ -63,7 +63,6 @@ const ACTOR_DEFINITION_PROPERTIES = [
  *
  * @example
  * const actorDefinition = new ActorDefinition({
- *   resourceType: 'ActorDefinition',
  *   // ... properties
  * });
  */
@@ -201,7 +200,7 @@ export class ActorDefinition extends DomainResource implements IActorDefinition 
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IActorDefinition>) {
+  constructor(data?: Omit<Partial<IActorDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ACTOR_DEFINITION_PROPERTIES);

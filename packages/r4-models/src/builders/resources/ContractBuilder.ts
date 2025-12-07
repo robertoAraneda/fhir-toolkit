@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Contract } from '../../models/resources/Contract.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ContractResourceStatusType,
   IAttachment,
@@ -68,6 +69,24 @@ export class ContractBuilder extends DomainResourceBuilder<Contract, IContract> 
    */
   setLegalState(legalState: ICodeableConcept): this {
     this.data.legalState = legalState;
+    return this;
+  }
+
+  /**
+   * Set instantiatesCanonical
+   * Source Contract Definition
+   */
+  setInstantiatesCanonical(instantiatesCanonical: IReference<'Contract'>): this {
+    this.data.instantiatesCanonical = instantiatesCanonical;
+    return this;
+  }
+
+  /**
+   * Set instantiatesUri
+   * External Contract Definition
+   */
+  setInstantiatesUri(instantiatesUri: string): this {
+    this.data.instantiatesUri = instantiatesUri;
     return this;
   }
 
@@ -175,32 +194,7 @@ export class ContractBuilder extends DomainResourceBuilder<Contract, IContract> 
   // ============================================================================
 
   /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof IContract;
-    const otherKeys: (keyof IContract)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof IContract);
-      otherKeys.push('_instantiatesCanonical' as keyof IContract);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof IContract);
-      otherKeys.push('_instantiatesUri' as keyof IContract);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set topic choice type
+   * Set topic choice type (topicCodeableConcept, topicReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -209,7 +203,7 @@ export class ContractBuilder extends DomainResourceBuilder<Contract, IContract> 
    */
   setTopic<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `topic${type}` as keyof IContract;
     const otherKeys: (keyof IContract)[] = [];
@@ -225,7 +219,7 @@ export class ContractBuilder extends DomainResourceBuilder<Contract, IContract> 
   }
 
   /**
-   * Set legallyBinding choice type
+   * Set legallyBinding choice type (legallyBindingAttachment, legallyBindingReference)
    * @param type - 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -234,7 +228,7 @@ export class ContractBuilder extends DomainResourceBuilder<Contract, IContract> 
    */
   setLegallyBinding<T extends 'Attachment' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `legallyBinding${type}` as keyof IContract;
     const otherKeys: (keyof IContract)[] = [];

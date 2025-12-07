@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ClaimDiagnosis } from '../../models/backbones/ClaimDiagnosis.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IClaimDiagnosis,
   ICodeableConcept,
@@ -55,7 +56,7 @@ export class ClaimDiagnosisBuilder extends BackboneElementBuilder<ClaimDiagnosis
   // ============================================================================
 
   /**
-   * Set diagnosis choice type
+   * Set diagnosis choice type (diagnosisCodeableConcept, diagnosisReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -64,7 +65,7 @@ export class ClaimDiagnosisBuilder extends BackboneElementBuilder<ClaimDiagnosis
    */
   setDiagnosis<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `diagnosis${type}` as keyof IClaimDiagnosis;
     const otherKeys: (keyof IClaimDiagnosis)[] = [];

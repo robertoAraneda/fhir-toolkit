@@ -42,7 +42,6 @@ const GOAL_PROPERTIES = [
  *
  * @example
  * const goal = new Goal({
- *   resourceType: 'Goal',
  *   // ... properties
  * });
  */
@@ -120,7 +119,7 @@ export class Goal extends DomainResource implements IGoal {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IGoal>) {
+  constructor(data?: Omit<Partial<IGoal>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, GOAL_PROPERTIES);

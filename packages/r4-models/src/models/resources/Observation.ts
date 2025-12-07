@@ -74,7 +74,6 @@ const OBSERVATION_PROPERTIES = [
  *
  * @example
  * const observation = new Observation({
- *   resourceType: 'Observation',
  *   // ... properties
  * });
  */
@@ -227,7 +226,7 @@ export class Observation extends DomainResource implements IObservation {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IObservation>) {
+  constructor(data?: Omit<Partial<IObservation>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, OBSERVATION_PROPERTIES);

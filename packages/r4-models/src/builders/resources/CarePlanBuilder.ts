@@ -113,35 +113,6 @@ export class CarePlanBuilder extends DomainResourceBuilder<CarePlan, ICarePlan> 
   }
 
   // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof ICarePlan;
-    const otherKeys: (keyof ICarePlan)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof ICarePlan);
-      otherKeys.push('_instantiatesCanonical' as keyof ICarePlan);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof ICarePlan);
-      otherKeys.push('_instantiatesUri' as keyof ICarePlan);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  // ============================================================================
   // Array Properties
   // ============================================================================
 
@@ -151,6 +122,22 @@ export class CarePlanBuilder extends DomainResourceBuilder<CarePlan, ICarePlan> 
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
   }
 
   /**

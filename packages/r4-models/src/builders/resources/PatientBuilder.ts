@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Patient } from '../../models/resources/Patient.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   AdministrativeGenderType,
   IAddress,
@@ -84,7 +85,7 @@ export class PatientBuilder extends DomainResourceBuilder<Patient, IPatient> {
   // ============================================================================
 
   /**
-   * Set deceased choice type
+   * Set deceased choice type (deceasedBoolean, deceasedDateTime)
    * @param type - 'Boolean' | 'DateTime'
    * @param value - The value for the chosen type
    *
@@ -93,7 +94,7 @@ export class PatientBuilder extends DomainResourceBuilder<Patient, IPatient> {
    */
   setDeceased<T extends 'Boolean' | 'DateTime'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `deceased${type}` as keyof IPatient;
     const otherKeys: (keyof IPatient)[] = [];
@@ -109,7 +110,7 @@ export class PatientBuilder extends DomainResourceBuilder<Patient, IPatient> {
   }
 
   /**
-   * Set multipleBirth choice type
+   * Set multipleBirth choice type (multipleBirthBoolean, multipleBirthInteger)
    * @param type - 'Boolean' | 'Integer'
    * @param value - The value for the chosen type
    *
@@ -118,7 +119,7 @@ export class PatientBuilder extends DomainResourceBuilder<Patient, IPatient> {
    */
   setMultipleBirth<T extends 'Boolean' | 'Integer'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : T extends 'Integer' ? number : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `multipleBirth${type}` as keyof IPatient;
     const otherKeys: (keyof IPatient)[] = [];

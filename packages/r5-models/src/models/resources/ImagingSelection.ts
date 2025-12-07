@@ -45,7 +45,6 @@ const IMAGING_SELECTION_PROPERTIES = [
  *
  * @example
  * const imagingSelection = new ImagingSelection({
- *   resourceType: 'ImagingSelection',
  *   // ... properties
  * });
  */
@@ -129,7 +128,7 @@ export class ImagingSelection extends DomainResource implements IImagingSelectio
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IImagingSelection>) {
+  constructor(data?: Omit<Partial<IImagingSelection>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, IMAGING_SELECTION_PROPERTIES);

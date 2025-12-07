@@ -34,7 +34,6 @@ const SUBSTANCE_PROPERTIES = [
  *
  * @example
  * const substance = new Substance({
- *   resourceType: 'Substance',
  *   // ... properties
  * });
  */
@@ -88,7 +87,7 @@ export class Substance extends DomainResource implements ISubstance {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISubstance>) {
+  constructor(data?: Omit<Partial<ISubstance>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUBSTANCE_PROPERTIES);

@@ -105,11 +105,29 @@ export class PaymentReconciliationBuilder extends DomainResourceBuilder<PaymentR
   }
 
   /**
+   * Set paymentDate
+   * When payment issued
+   */
+  setPaymentDate(paymentDate: string): this {
+    this.data.paymentDate = paymentDate;
+    return this;
+  }
+
+  /**
    * Set paymentAmount
    * Total amount of Payment
    */
   setPaymentAmount(paymentAmount: IMoney): this {
     this.data.paymentAmount = paymentAmount;
+    return this;
+  }
+
+  /**
+   * Set paymentIdentifier
+   * Business identifier for the payment
+   */
+  setPaymentIdentifier(paymentIdentifier: IIdentifier): this {
+    this.data.paymentIdentifier = paymentIdentifier;
     return this;
   }
 
@@ -120,35 +138,6 @@ export class PaymentReconciliationBuilder extends DomainResourceBuilder<PaymentR
   setFormCode(formCode: ICodeableConcept): this {
     this.data.formCode = formCode;
     return this;
-  }
-
-  // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set payment choice type
-   * @param type - 'Date' | 'Identifier'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setPayment('Date', value)
-   */
-  setPayment<T extends 'Date' | 'Identifier'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `payment${type}` as keyof IPaymentReconciliation;
-    const otherKeys: (keyof IPaymentReconciliation)[] = [];
-    if (type !== 'Date') {
-      otherKeys.push('paymentDate' as keyof IPaymentReconciliation);
-      otherKeys.push('_paymentDate' as keyof IPaymentReconciliation);
-    }
-    if (type !== 'Identifier') {
-      otherKeys.push('paymentIdentifier' as keyof IPaymentReconciliation);
-      otherKeys.push('_paymentIdentifier' as keyof IPaymentReconciliation);
-    }
-    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================

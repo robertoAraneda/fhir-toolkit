@@ -16,7 +16,6 @@ const OPERATION_OUTCOME_PROPERTIES = [
  *
  * @example
  * const operationOutcome = new OperationOutcome({
- *   resourceType: 'OperationOutcome',
  *   // ... properties
  * });
  */
@@ -34,7 +33,7 @@ export class OperationOutcome extends DomainResource implements IOperationOutcom
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IOperationOutcome>) {
+  constructor(data?: Omit<Partial<IOperationOutcome>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, OPERATION_OUTCOME_PROPERTIES);

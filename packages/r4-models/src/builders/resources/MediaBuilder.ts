@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Media } from '../../models/resources/Media.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   EventStatusType,
   IAnnotation,
@@ -179,7 +180,7 @@ export class MediaBuilder extends DomainResourceBuilder<Media, IMedia> {
   // ============================================================================
 
   /**
-   * Set created choice type
+   * Set created choice type (createdDateTime, createdPeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -188,7 +189,7 @@ export class MediaBuilder extends DomainResourceBuilder<Media, IMedia> {
    */
   setCreated<T extends 'DateTime' | 'Period'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `created${type}` as keyof IMedia;
     const otherKeys: (keyof IMedia)[] = [];

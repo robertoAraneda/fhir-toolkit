@@ -50,7 +50,6 @@ const CLINICAL_IMPRESSION_PROPERTIES = [
  *
  * @example
  * const clinicalImpression = new ClinicalImpression({
- *   resourceType: 'ClinicalImpression',
  *   // ... properties
  * });
  */
@@ -146,7 +145,7 @@ export class ClinicalImpression extends DomainResource implements IClinicalImpre
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IClinicalImpression>) {
+  constructor(data?: Omit<Partial<IClinicalImpression>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CLINICAL_IMPRESSION_PROPERTIES);

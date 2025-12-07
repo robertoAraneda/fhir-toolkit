@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { CoverageEligibilityRequestItemDiagnosis } from '../../models/backbones/CoverageEligibilityRequestItemDiagnosis.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   ICoverageEligibilityRequestItemDiagnosis,
@@ -22,7 +23,7 @@ export class CoverageEligibilityRequestItemDiagnosisBuilder extends BackboneElem
   // ============================================================================
 
   /**
-   * Set diagnosis choice type
+   * Set diagnosis choice type (diagnosisCodeableConcept, diagnosisReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -31,7 +32,7 @@ export class CoverageEligibilityRequestItemDiagnosisBuilder extends BackboneElem
    */
   setDiagnosis<T extends 'CodeableConcept' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `diagnosis${type}` as keyof ICoverageEligibilityRequestItemDiagnosis;
     const otherKeys: (keyof ICoverageEligibilityRequestItemDiagnosis)[] = [];

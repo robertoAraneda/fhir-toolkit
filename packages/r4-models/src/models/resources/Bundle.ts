@@ -30,7 +30,6 @@ const BUNDLE_PROPERTIES = [
  *
  * @example
  * const bundle = new Bundle({
- *   resourceType: 'Bundle',
  *   // ... properties
  * });
  */
@@ -75,7 +74,7 @@ export class Bundle extends DomainResource implements IBundle {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IBundle>) {
+  constructor(data?: Omit<Partial<IBundle>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, BUNDLE_PROPERTIES);

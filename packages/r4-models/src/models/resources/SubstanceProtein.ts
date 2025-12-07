@@ -23,7 +23,6 @@ const SUBSTANCE_PROTEIN_PROPERTIES = [
  *
  * @example
  * const substanceProtein = new SubstanceProtein({
- *   resourceType: 'SubstanceProtein',
  *   // ... properties
  * });
  */
@@ -56,7 +55,7 @@ export class SubstanceProtein extends DomainResource implements ISubstanceProtei
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISubstanceProtein>) {
+  constructor(data?: Omit<Partial<ISubstanceProtein>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUBSTANCE_PROTEIN_PROPERTIES);

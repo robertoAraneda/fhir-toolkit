@@ -105,35 +105,6 @@ export class NutritionOrderBuilder extends DomainResourceBuilder<NutritionOrder,
   }
 
   // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `instantiates${type}` as keyof INutritionOrder;
-    const otherKeys: (keyof INutritionOrder)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof INutritionOrder);
-      otherKeys.push('_instantiatesCanonical' as keyof INutritionOrder);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof INutritionOrder);
-      otherKeys.push('_instantiatesUri' as keyof INutritionOrder);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  // ============================================================================
   // Array Properties
   // ============================================================================
 
@@ -143,6 +114,22 @@ export class NutritionOrderBuilder extends DomainResourceBuilder<NutritionOrder,
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
   }
 
   /**

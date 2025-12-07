@@ -112,7 +112,6 @@ const ACTIVITY_DEFINITION_PROPERTIES = [
  *
  * @example
  * const activityDefinition = new ActivityDefinition({
- *   resourceType: 'ActivityDefinition',
  *   // ... properties
  * });
  */
@@ -361,7 +360,7 @@ export class ActivityDefinition extends DomainResource implements IActivityDefin
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IActivityDefinition>) {
+  constructor(data?: Omit<Partial<IActivityDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, ACTIVITY_DEFINITION_PROPERTIES);

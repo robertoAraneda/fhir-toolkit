@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { GroupCharacteristic } from '../../models/backbones/GroupCharacteristic.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IGroupCharacteristic,
@@ -57,7 +58,7 @@ export class GroupCharacteristicBuilder extends BackboneElementBuilder<GroupChar
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueBoolean, valueQuantity, valueRange, valueReference)
    * @param type - 'CodeableConcept' | 'Boolean' | 'Quantity' | 'Range' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -66,7 +67,7 @@ export class GroupCharacteristicBuilder extends BackboneElementBuilder<GroupChar
    */
   setValue<T extends 'CodeableConcept' | 'Boolean' | 'Quantity' | 'Range' | 'Reference'>(
     type: T,
-    value: T extends 'Boolean' ? boolean : string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `value${type}` as keyof IGroupCharacteristic;
     const otherKeys: (keyof IGroupCharacteristic)[] = [];

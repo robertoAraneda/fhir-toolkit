@@ -25,7 +25,6 @@ const SUBSTANCE_REFERENCE_INFORMATION_PROPERTIES = [
  *
  * @example
  * const substanceReferenceInformation = new SubstanceReferenceInformation({
- *   resourceType: 'SubstanceReferenceInformation',
  *   // ... properties
  * });
  */
@@ -58,7 +57,7 @@ export class SubstanceReferenceInformation extends DomainResource implements ISu
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ISubstanceReferenceInformation>) {
+  constructor(data?: Omit<Partial<ISubstanceReferenceInformation>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, SUBSTANCE_REFERENCE_INFORMATION_PROPERTIES);

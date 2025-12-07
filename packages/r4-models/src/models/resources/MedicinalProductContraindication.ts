@@ -25,7 +25,6 @@ const MEDICINAL_PRODUCT_CONTRAINDICATION_PROPERTIES = [
  *
  * @example
  * const medicinalProductContraindication = new MedicinalProductContraindication({
- *   resourceType: 'MedicinalProductContraindication',
  *   // ... properties
  * });
  */
@@ -61,7 +60,7 @@ export class MedicinalProductContraindication extends DomainResource implements 
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicinalProductContraindication>) {
+  constructor(data?: Omit<Partial<IMedicinalProductContraindication>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICINAL_PRODUCT_CONTRAINDICATION_PROPERTIES);

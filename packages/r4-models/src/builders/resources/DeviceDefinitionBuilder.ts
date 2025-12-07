@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { DeviceDefinition } from '../../models/resources/DeviceDefinition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICodeableConcept,
@@ -114,7 +115,7 @@ export class DeviceDefinitionBuilder extends DomainResourceBuilder<DeviceDefinit
   // ============================================================================
 
   /**
-   * Set manufacturer choice type
+   * Set manufacturer choice type (manufacturerString, manufacturerReference)
    * @param type - 'String' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -123,7 +124,7 @@ export class DeviceDefinitionBuilder extends DomainResourceBuilder<DeviceDefinit
    */
   setManufacturer<T extends 'String' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `manufacturer${type}` as keyof IDeviceDefinition;
     const otherKeys: (keyof IDeviceDefinition)[] = [];

@@ -25,7 +25,6 @@ const MEDICINAL_PRODUCT_MANUFACTURED_PROPERTIES = [
  *
  * @example
  * const medicinalProductManufactured = new MedicinalProductManufactured({
- *   resourceType: 'MedicinalProductManufactured',
  *   // ... properties
  * });
  */
@@ -61,7 +60,7 @@ export class MedicinalProductManufactured extends DomainResource implements IMed
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IMedicinalProductManufactured>) {
+  constructor(data?: Omit<Partial<IMedicinalProductManufactured>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, MEDICINAL_PRODUCT_MANUFACTURED_PROPERTIES);

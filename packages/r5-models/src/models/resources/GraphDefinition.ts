@@ -58,7 +58,6 @@ const GRAPH_DEFINITION_PROPERTIES = [
  *
  * @example
  * const graphDefinition = new GraphDefinition({
- *   resourceType: 'GraphDefinition',
  *   // ... properties
  * });
  */
@@ -178,7 +177,7 @@ export class GraphDefinition extends DomainResource implements IGraphDefinition 
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IGraphDefinition>) {
+  constructor(data?: Omit<Partial<IGraphDefinition>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, GRAPH_DEFINITION_PROPERTIES);

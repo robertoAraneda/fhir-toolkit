@@ -38,7 +38,6 @@ const CATALOG_ENTRY_PROPERTIES = [
  *
  * @example
  * const catalogEntry = new CatalogEntry({
- *   resourceType: 'CatalogEntry',
  *   // ... properties
  * });
  */
@@ -104,7 +103,7 @@ export class CatalogEntry extends DomainResource implements ICatalogEntry {
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<ICatalogEntry>) {
+  constructor(data?: Omit<Partial<ICatalogEntry>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, CATALOG_ENTRY_PROPERTIES);

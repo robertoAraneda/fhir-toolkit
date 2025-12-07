@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { MessageDefinition } from '../../models/resources/MessageDefinition.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   ICoding,
@@ -164,7 +165,7 @@ export class MessageDefinitionBuilder extends DomainResourceBuilder<MessageDefin
   // ============================================================================
 
   /**
-   * Set event choice type
+   * Set event choice type (eventCoding, eventUri)
    * @param type - 'Coding' | 'Uri'
    * @param value - The value for the chosen type
    *
@@ -173,7 +174,7 @@ export class MessageDefinitionBuilder extends DomainResourceBuilder<MessageDefin
    */
   setEvent<T extends 'Coding' | 'Uri'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `event${type}` as keyof IMessageDefinition;
     const otherKeys: (keyof IMessageDefinition)[] = [];

@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { PlanDefinitionActionRelatedAction } from '../../models/backbones/PlanDefinitionActionRelatedAction.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ActionRelationshipTypeType,
   IDuration,
@@ -46,7 +47,7 @@ export class PlanDefinitionActionRelatedActionBuilder extends BackboneElementBui
   // ============================================================================
 
   /**
-   * Set offset choice type
+   * Set offset choice type (offsetDuration, offsetRange)
    * @param type - 'Duration' | 'Range'
    * @param value - The value for the chosen type
    *
@@ -55,7 +56,7 @@ export class PlanDefinitionActionRelatedActionBuilder extends BackboneElementBui
    */
   setOffset<T extends 'Duration' | 'Range'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `offset${type}` as keyof IPlanDefinitionActionRelatedAction;
     const otherKeys: (keyof IPlanDefinitionActionRelatedAction)[] = [];

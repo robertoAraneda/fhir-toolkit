@@ -1,5 +1,6 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Goal } from '../../models/resources/Goal.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   GoalLifecycleStatusType,
   IAnnotation,
@@ -106,7 +107,7 @@ export class GoalBuilder extends DomainResourceBuilder<Goal, IGoal> {
   // ============================================================================
 
   /**
-   * Set start choice type
+   * Set start choice type (startDate, startCodeableConcept)
    * @param type - 'Date' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -115,7 +116,7 @@ export class GoalBuilder extends DomainResourceBuilder<Goal, IGoal> {
    */
   setStart<T extends 'Date' | 'CodeableConcept'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `start${type}` as keyof IGoal;
     const otherKeys: (keyof IGoal)[] = [];
@@ -126,31 +127,6 @@ export class GoalBuilder extends DomainResourceBuilder<Goal, IGoal> {
     if (type !== 'CodeableConcept') {
       otherKeys.push('startCodeableConcept' as keyof IGoal);
       otherKeys.push('_startCodeableConcept' as keyof IGoal);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set outcome choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setOutcome('Code', value)
-   */
-  setOutcome<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: string
-  ): this {
-    const key = `outcome${type}` as keyof IGoal;
-    const otherKeys: (keyof IGoal)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('outcomeCode' as keyof IGoal);
-      otherKeys.push('_outcomeCode' as keyof IGoal);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('outcomeReference' as keyof IGoal);
-      otherKeys.push('_outcomeReference' as keyof IGoal);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -197,6 +173,22 @@ export class GoalBuilder extends DomainResourceBuilder<Goal, IGoal> {
    */
   addNote(note: IAnnotation): this {
     return this.addToArray('note', note);
+  }
+
+  /**
+   * Add outcomeCode
+   * What result was achieved regarding the goal?
+   */
+  addOutcomeCode(outcomeCode: ICodeableConcept): this {
+    return this.addToArray('outcomeCode', outcomeCode);
+  }
+
+  /**
+   * Add outcomeReference
+   * Observation that resulted from goal
+   */
+  addOutcomeReference(outcomeReference: IReference<'Observation'>): this {
+    return this.addToArray('outcomeReference', outcomeReference);
   }
 
   // ============================================================================

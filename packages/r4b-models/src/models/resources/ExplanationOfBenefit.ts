@@ -88,7 +88,6 @@ const EXPLANATION_OF_BENEFIT_PROPERTIES = [
  *
  * @example
  * const explanationOfBenefit = new ExplanationOfBenefit({
- *   resourceType: 'ExplanationOfBenefit',
  *   // ... properties
  * });
  */
@@ -253,7 +252,7 @@ export class ExplanationOfBenefit extends DomainResource implements IExplanation
   // Constructor
   // ============================================================================
 
-  constructor(data?: Partial<IExplanationOfBenefit>) {
+  constructor(data?: Omit<Partial<IExplanationOfBenefit>, 'resourceType'>) {
     super(data);
     if (data) {
       this.assignProps(data, EXPLANATION_OF_BENEFIT_PROPERTIES);

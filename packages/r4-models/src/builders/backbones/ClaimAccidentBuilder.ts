@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ClaimAccident } from '../../models/backbones/ClaimAccident.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAddress,
   IClaimAccident,
@@ -46,7 +47,7 @@ export class ClaimAccidentBuilder extends BackboneElementBuilder<ClaimAccident, 
   // ============================================================================
 
   /**
-   * Set location choice type
+   * Set location choice type (locationAddress, locationReference)
    * @param type - 'Address' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -55,7 +56,7 @@ export class ClaimAccidentBuilder extends BackboneElementBuilder<ClaimAccident, 
    */
   setLocation<T extends 'Address' | 'Reference'>(
     type: T,
-    value: string
+    value: ChoiceTypeValue<T>
   ): this {
     const key = `location${type}` as keyof IClaimAccident;
     const otherKeys: (keyof IClaimAccident)[] = [];
