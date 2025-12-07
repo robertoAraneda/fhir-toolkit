@@ -1,6 +1,6 @@
 {
   "name": "@fhir-toolkit/yafv",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Yet Another FHIR Validator - FHIR validator with FHIRPath, terminology, and profile support",
   "keywords": [
     "fhir",
