@@ -1752,19 +1752,25 @@ export class FhirValidator {
         const isExtensionConstraint = constraint.source === 'http://hl7.org/fhir/StructureDefinition/Extension' ||
           (element.type && element.type.some(t => t.code === 'Extension'));
 
+        // Constraints on nested elements (not root) should be evaluated in the context of each element
+        const isNestedElement = pathParts.length > 1;
+
         let constraintPassed = true;
         let constraintError: string | undefined;
 
-        if (isExtensionConstraint && pathParts.length > 1) {
-          // Get the actual extension values and evaluate constraint on each
+        if (isNestedElement) {
+          // Get the actual element values and evaluate constraint on each
           const elementValue = this.getValueAtPath(data, elementPath, context.path);
           const values = Array.isArray(elementValue) ? elementValue : (elementValue ? [elementValue] : []);
 
-          for (const extValue of values) {
-            // Add resourceType hint for fhirpath.js to resolve value[x] correctly
-            const extWithType = { ...extValue, resourceType: 'Extension' };
-            const result = evaluateConstraint(constraint.expression, extWithType, {
-              resource: extWithType,
+          for (let idx = 0; idx < values.length; idx++) {
+            const elemValue = values[idx];
+            // For extensions, add resourceType hint for fhirpath.js to resolve value[x] correctly
+            const evalContext = isExtensionConstraint
+              ? { ...elemValue, resourceType: 'Extension' }
+              : elemValue;
+            const result = evaluateConstraint(constraint.expression, evalContext, {
+              resource: evalContext,
               rootResource: context.rootResource,
             });
             if (!result.passed) {
@@ -1809,9 +1815,12 @@ export class FhirValidator {
   /**
    * Check if a constraint should be skipped
    */
-  private shouldSkipConstraint(_key: string): boolean {
-    // Currently no constraints are skipped
-    // ele-1 applies to JSON too (elements must have value or children)
+  private shouldSkipConstraint(key: string): boolean {
+    // Skip ele-1 here - it's handled by the invariant-validator which implements
+    // it directly without FHIRPath (fhirpath.js has issues with children() on untyped elements)
+    if (key === 'ele-1') {
+      return true;
+    }
     return false;
   }
 

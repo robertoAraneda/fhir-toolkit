@@ -1,0 +1,221 @@
+import { DomainResource } from '../base/DomainResource.js';
+import type {
+  ICodeableConcept,
+  IElement,
+  IMedicationKnowledge,
+  IMedicationKnowledgeAdministrationGuidelines,
+  IMedicationKnowledgeCost,
+  IMedicationKnowledgeDrugCharacteristic,
+  IMedicationKnowledgeIngredient,
+  IMedicationKnowledgeKinetics,
+  IMedicationKnowledgeMedicineClassification,
+  IMedicationKnowledgeMonitoringProgram,
+  IMedicationKnowledgeMonograph,
+  IMedicationKnowledgePackaging,
+  IMedicationKnowledgeRegulatory,
+  IMedicationKnowledgeRelatedMedicationKnowledge,
+  IQuantity,
+  IReference,
+  MedicationKnowledgeStatusType,
+} from '@fhir-toolkit/r4b-types';
+
+/** Properties specific to MedicationKnowledge */
+const MEDICATION_KNOWLEDGE_PROPERTIES = [
+  'code',
+  'status',
+  '_status',
+  'manufacturer',
+  'doseForm',
+  'amount',
+  'synonym',
+  '_synonym',
+  'relatedMedicationKnowledge',
+  'associatedMedication',
+  'productType',
+  'monograph',
+  'ingredient',
+  'preparationInstruction',
+  '_preparationInstruction',
+  'intendedRoute',
+  'cost',
+  'monitoringProgram',
+  'administrationGuidelines',
+  'medicineClassification',
+  'packaging',
+  'drugCharacteristic',
+  'contraindication',
+  'regulatory',
+  'kinetics',
+] as const;
+
+/**
+ * MedicationKnowledge - Information about a medication that is used to support knowledge.
+ *
+ * @see https://hl7.org/fhir/R4/medicationknowledge.html
+ *
+ * @example
+ * const medicationKnowledge = new MedicationKnowledge({
+ *   resourceType: 'MedicationKnowledge',
+ *   // ... properties
+ * });
+ */
+export class MedicationKnowledge extends DomainResource implements IMedicationKnowledge {
+  readonly resourceType = 'MedicationKnowledge' as const;
+
+  // ============================================================================
+  // Properties
+  // ============================================================================
+
+  /** Code that identifies this medication */
+  code?: ICodeableConcept;
+
+  /** active | inactive | entered-in-error */
+  status?: MedicationKnowledgeStatusType;
+
+  /** Extension for status */
+  _status?: IElement;
+
+  /** Manufacturer of the item */
+  manufacturer?: IReference<'Organization'>;
+
+  /** powder | tablets | capsule + */
+  doseForm?: ICodeableConcept;
+
+  /** Amount of drug in package */
+  amount?: IQuantity;
+
+  /** Additional names for a medication */
+  synonym?: string[];
+
+  /** Extension for synonym */
+  _synonym?: IElement;
+
+  /** Associated or related medication information */
+  relatedMedicationKnowledge?: IMedicationKnowledgeRelatedMedicationKnowledge[];
+
+  /** A medication resource that is associated with this medication */
+  associatedMedication?: IReference<'Medication'>[];
+
+  /** Category of the medication or product */
+  productType?: ICodeableConcept[];
+
+  /** Associated documentation about the medication */
+  monograph?: IMedicationKnowledgeMonograph[];
+
+  /** Active or inactive ingredient */
+  ingredient?: IMedicationKnowledgeIngredient[];
+
+  /** The instructions for preparing the medication */
+  preparationInstruction?: string;
+
+  /** Extension for preparationInstruction */
+  _preparationInstruction?: IElement;
+
+  /** The intended or approved route of administration */
+  intendedRoute?: ICodeableConcept[];
+
+  /** The pricing of the medication */
+  cost?: IMedicationKnowledgeCost[];
+
+  /** Program under which a medication is reviewed */
+  monitoringProgram?: IMedicationKnowledgeMonitoringProgram[];
+
+  /** Guidelines for administration of the medication */
+  administrationGuidelines?: IMedicationKnowledgeAdministrationGuidelines[];
+
+  /** Categorization of the medication within a formulary or classification system */
+  medicineClassification?: IMedicationKnowledgeMedicineClassification[];
+
+  /** Details about packaged medications */
+  packaging?: IMedicationKnowledgePackaging;
+
+  /** Specifies descriptive properties of the medicine */
+  drugCharacteristic?: IMedicationKnowledgeDrugCharacteristic[];
+
+  /** Potential clinical issue with or between medication(s) */
+  contraindication?: IReference<'DetectedIssue'>[];
+
+  /** Regulatory information about a medication */
+  regulatory?: IMedicationKnowledgeRegulatory[];
+
+  /** The time course of drug absorption, distribution, metabolism and excretion of a medication from the body */
+  kinetics?: IMedicationKnowledgeKinetics[];
+
+  // ============================================================================
+  // Constructor
+  // ============================================================================
+
+  constructor(data?: Partial<IMedicationKnowledge>) {
+    super(data);
+    if (data) {
+      this.assignProps(data, MEDICATION_KNOWLEDGE_PROPERTIES);
+    }
+  }
+
+  // ============================================================================
+  // Factory Methods
+  // ============================================================================
+
+  /**
+   * Create MedicationKnowledge from a JSON object
+   */
+  static fromJSON(json: IMedicationKnowledge): MedicationKnowledge {
+    return new MedicationKnowledge(json);
+  }
+
+  // ============================================================================
+  // Functional Methods (Immutable Operations)
+  // ============================================================================
+
+  /**
+   * Create a new MedicationKnowledge with the specified changes (immutable)
+   * Does not modify the original instance
+   */
+  with(changes: Partial<IMedicationKnowledge>): MedicationKnowledge {
+    return new MedicationKnowledge({ ...this.toJSON(), ...changes });
+  }
+
+  /**
+   * Create a new MedicationKnowledge by applying a transformation function (immutable)
+   * Does not modify the original instance
+   */
+  applyTransform(fn: (data: IMedicationKnowledge) => Partial<IMedicationKnowledge>): MedicationKnowledge {
+    const currentData = this.toJSON();
+    return new MedicationKnowledge({ ...currentData, ...fn(currentData) });
+  }
+
+  // ============================================================================
+  // Serialization Methods
+  // ============================================================================
+
+  /**
+   * Convert to plain JSON object (IMedicationKnowledge)
+   * Properties are serialized in FHIR-defined order
+   */
+  toJSON(): IMedicationKnowledge {
+    const result: Record<string, any> = { resourceType: this.resourceType };
+    this.serializeDomainResourceTo(result);
+    this.serializePropsTo(result, MEDICATION_KNOWLEDGE_PROPERTIES);
+    return result as IMedicationKnowledge;
+  }
+
+  /**
+   * Create a deep clone of this MedicationKnowledge
+   */
+  clone(): MedicationKnowledge {
+    return new MedicationKnowledge(this.deepClone(this.toJSON()));
+  }
+
+  // ============================================================================
+  // String Representation
+  // ============================================================================
+
+  /**
+   * Get a string representation of the MedicationKnowledge
+   */
+  toString(): string {
+    const parts: string[] = ['MedicationKnowledge'];
+    if (this.id) parts.push(`id=${this.id}`);
+    return parts.join(', ');
+  }
+}

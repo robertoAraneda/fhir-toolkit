@@ -1,6 +1,6 @@
 {
   "name": "@fhir-toolkit/yafv",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Yet Another FHIR Validator - FHIR validator with FHIRPath, terminology, and profile support",
   "keywords": [
     "fhir",
@@ -49,15 +49,20 @@
     "tar": "^7.4.0"
   },
   "peerDependencies": {
-    "@fhir-toolkit/r4-specs": ">=0.1.0"
+    "@fhir-toolkit/r4-specs": ">=0.1.0",
+    "@fhir-toolkit/r4b-specs": ">=0.1.0"
   },
   "peerDependenciesMeta": {
     "@fhir-toolkit/r4-specs": {
+      "optional": true
+    },
+    "@fhir-toolkit/r4b-specs": {
       "optional": true
     }
   },
   "devDependencies": {
     "@fhir-toolkit/r4-specs": "workspace:*",
+    "@fhir-toolkit/r4b-specs": "workspace:*",
     "@types/node": "^20.11.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.0",

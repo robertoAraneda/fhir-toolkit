@@ -1,5 +1,21 @@
 # @fhir-toolkit/yafv
 
+## 1.1.0
+
+### Minor Changes
+
+- Add FHIR R4B validation support:
+  - Support for R4B version via `fhirVersion: 'R4B'` option
+  - Auto-loading of @fhir-toolkit/r4b-specs when available
+  - Fixed constraint evaluation on nested elements (e.g., Bundle.entry)
+  - Skip ele-1 constraint in FHIRPath evaluation (handled by invariant-validator)
+  - Reorganized tests into version-specific folders (test/r4/, test/r4b/)
+
+### Patch Changes
+
+- Updated dependencies
+  - @fhir-toolkit/r4b-specs@0.1.0
+
 ## 1.0.0
 
 ### Minor Changes
