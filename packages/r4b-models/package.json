@@ -45,6 +45,14 @@
   "dependencies": {
     "@fhir-toolkit/r4b-types": "workspace:*"
   },
+  "peerDependencies": {
+    "@fhir-toolkit/yafv": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@fhir-toolkit/yafv": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@fhir-toolkit/yafv": "workspace:*",
     "tsup": "^8.0.2",
