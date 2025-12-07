@@ -1,0 +1,107 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "imagingselection-3dgraphictype",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/imagingselection-3dgraphictype</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">point<a name=\"imagingselection-3dgraphictype-point\"> </a></td><td>POINT</td><td>A single location denoted by a single (x,y,z) triplet.</td></tr><tr><td style=\"white-space:nowrap\">multipoint<a name=\"imagingselection-3dgraphictype-multipoint\"> </a></td><td>MULTIPOINT</td><td>multiple locations each denoted by an (x,y,z) triplet; the points need not be coplanar.</td></tr><tr><td style=\"white-space:nowrap\">polyline<a name=\"imagingselection-3dgraphictype-polyline\"> </a></td><td>POLYLINE</td><td>a series of connected line segments with ordered vertices denoted by (x,y,z) triplets; the points need not be coplanar.</td></tr><tr><td style=\"white-space:nowrap\">polygon<a name=\"imagingselection-3dgraphictype-polygon\"> </a></td><td>POLYGON</td><td>a series of connected line segments with ordered vertices denoted by (x,y,z) triplets, where the first and last vertices shall be the same forming a polygon; the points shall be coplanar.</td></tr><tr><td style=\"white-space:nowrap\">ellipse<a name=\"imagingselection-3dgraphictype-ellipse\"> </a></td><td>ELLIPSE</td><td>an ellipse defined by four (x,y,z) triplets, the first two triplets specifying the endpoints of the major axis and the second two triplets specifying the endpoints of the minor axis.</td></tr><tr><td style=\"white-space:nowrap\">ellipsoid<a name=\"imagingselection-3dgraphictype-ellipsoid\"> </a></td><td>ELLIPSOID</td><td>a three-dimensional geometric surface whose plane sections are either ellipses or circles and contains three intersecting orthogonal axes, &quot;a&quot;, &quot;b&quot;, and &quot;c&quot;; the ellipsoid is defined by six (x,y,z) triplets, the first and second triplets specifying the endpoints of axis &quot;a&quot;, the third and fourth triplets specifying the endpoints of axis &quot;b&quot;, and the fifth and sixth triplets specifying the endpoints of axis &quot;c&quot;.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "ii"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 3
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "ii"
+    }
+  ],
+  "url": "http://hl7.org/fhir/imagingselection-3dgraphictype",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1983"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ImagingSelection3DGraphicType",
+  "title": "Imaging Selection3 D Graphic Type",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "The type of coordinates describing an image region.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/imagingselection-3dgraphictype",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "point",
+      "display": "POINT",
+      "definition": "A single location denoted by a single (x,y,z) triplet."
+    },
+    {
+      "code": "multipoint",
+      "display": "MULTIPOINT",
+      "definition": "multiple locations each denoted by an (x,y,z) triplet; the points need not be coplanar."
+    },
+    {
+      "code": "polyline",
+      "display": "POLYLINE",
+      "definition": "a series of connected line segments with ordered vertices denoted by (x,y,z) triplets; the points need not be coplanar."
+    },
+    {
+      "code": "polygon",
+      "display": "POLYGON",
+      "definition": "a series of connected line segments with ordered vertices denoted by (x,y,z) triplets, where the first and last vertices shall be the same forming a polygon; the points shall be coplanar."
+    },
+    {
+      "code": "ellipse",
+      "display": "ELLIPSE",
+      "definition": "an ellipse defined by four (x,y,z) triplets, the first two triplets specifying the endpoints of the major axis and the second two triplets specifying the endpoints of the minor axis."
+    },
+    {
+      "code": "ellipsoid",
+      "display": "ELLIPSOID",
+      "definition": "a three-dimensional geometric surface whose plane sections are either ellipses or circles and contains three intersecting orthogonal axes, \"a\", \"b\", and \"c\"; the ellipsoid is defined by six (x,y,z) triplets, the first and second triplets specifying the endpoints of axis \"a\", the third and fourth triplets specifying the endpoints of axis \"b\", and the fifth and sixth triplets specifying the endpoints of axis \"c\"."
+    }
+  ]
+}

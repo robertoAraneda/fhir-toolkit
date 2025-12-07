@@ -1,0 +1,295 @@
+import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
+import { ClaimResponseAddItem } from '../../models/backbones/ClaimResponseAddItem.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
+import type {
+  IAddress,
+  IClaimResponseAddItem,
+  IClaimResponseAddItemBodySite,
+  IClaimResponseAddItemDetail,
+  IClaimResponseItemAdjudication,
+  IClaimResponseItemReviewOutcome,
+  ICodeableConcept,
+  IIdentifier,
+  IMoney,
+  IPeriod,
+  IQuantity,
+  IReference,
+} from '@fhir-toolkit/r5-types';
+
+/**
+ * ClaimResponseAddItemBuilder - Fluent builder for ClaimResponseAddItem backbone elements
+ *
+ * Extends BackboneElementBuilder which provides common setters:
+ * - setId(), addExtension(), addModifierExtension()
+ *
+ * @example
+ * const claimResponseAddItem = new ClaimResponseAddItemBuilder()
+ *   .setRevenue(value)
+ *   .addItemSequence({ ... })
+ *   .build();
+ */
+export class ClaimResponseAddItemBuilder extends BackboneElementBuilder<ClaimResponseAddItem, IClaimResponseAddItem> {
+  // ============================================================================
+  // Scalar Properties
+  // ============================================================================
+
+  /**
+   * Set revenue
+   * Revenue or cost center code
+   */
+  setRevenue(revenue: ICodeableConcept): this {
+    this.data.revenue = revenue;
+    return this;
+  }
+
+  /**
+   * Set productOrService
+   * Billing, service, product, or drug code
+   */
+  setProductOrService(productOrService: ICodeableConcept): this {
+    this.data.productOrService = productOrService;
+    return this;
+  }
+
+  /**
+   * Set productOrServiceEnd
+   * End of a range of codes
+   */
+  setProductOrServiceEnd(productOrServiceEnd: ICodeableConcept): this {
+    this.data.productOrServiceEnd = productOrServiceEnd;
+    return this;
+  }
+
+  /**
+   * Set quantity
+   * Count of products or services
+   */
+  setQuantity(quantity: IQuantity): this {
+    this.data.quantity = quantity;
+    return this;
+  }
+
+  /**
+   * Set unitPrice
+   * Fee, charge or cost per item
+   */
+  setUnitPrice(unitPrice: IMoney): this {
+    this.data.unitPrice = unitPrice;
+    return this;
+  }
+
+  /**
+   * Set factor
+   * Price scaling factor
+   */
+  setFactor(factor: number): this {
+    this.data.factor = factor;
+    return this;
+  }
+
+  /**
+   * Set tax
+   * Total tax
+   */
+  setTax(tax: IMoney): this {
+    this.data.tax = tax;
+    return this;
+  }
+
+  /**
+   * Set net
+   * Total item cost
+   */
+  setNet(net: IMoney): this {
+    this.data.net = net;
+    return this;
+  }
+
+  /**
+   * Set reviewOutcome
+   * Added items adjudication results
+   */
+  setReviewOutcome(reviewOutcome: IClaimResponseItemReviewOutcome): this {
+    this.data.reviewOutcome = reviewOutcome;
+    return this;
+  }
+
+  // ============================================================================
+  // Choice Types
+  // ============================================================================
+
+  /**
+   * Set serviced choice type (servicedDate, servicedPeriod)
+   * @param type - 'Date' | 'Period'
+   * @param value - The value for the chosen type
+   *
+   * @example
+   * builder.setServiced('Date', value)
+   */
+  setServiced<T extends 'Date' | 'Period'>(
+    type: T,
+    value: ChoiceTypeValue<T>
+  ): this {
+    const key = `serviced${type}` as keyof IClaimResponseAddItem;
+    const otherKeys: (keyof IClaimResponseAddItem)[] = [];
+    if (type !== 'Date') {
+      otherKeys.push('servicedDate' as keyof IClaimResponseAddItem);
+      otherKeys.push('_servicedDate' as keyof IClaimResponseAddItem);
+    }
+    if (type !== 'Period') {
+      otherKeys.push('servicedPeriod' as keyof IClaimResponseAddItem);
+      otherKeys.push('_servicedPeriod' as keyof IClaimResponseAddItem);
+    }
+    return this.setChoiceType(key, value, otherKeys);
+  }
+
+  /**
+   * Set location choice type (locationCodeableConcept, locationAddress, locationReference)
+   * @param type - 'CodeableConcept' | 'Address' | 'Reference'
+   * @param value - The value for the chosen type
+   *
+   * @example
+   * builder.setLocation('CodeableConcept', value)
+   */
+  setLocation<T extends 'CodeableConcept' | 'Address' | 'Reference'>(
+    type: T,
+    value: ChoiceTypeValue<T>
+  ): this {
+    const key = `location${type}` as keyof IClaimResponseAddItem;
+    const otherKeys: (keyof IClaimResponseAddItem)[] = [];
+    if (type !== 'CodeableConcept') {
+      otherKeys.push('locationCodeableConcept' as keyof IClaimResponseAddItem);
+      otherKeys.push('_locationCodeableConcept' as keyof IClaimResponseAddItem);
+    }
+    if (type !== 'Address') {
+      otherKeys.push('locationAddress' as keyof IClaimResponseAddItem);
+      otherKeys.push('_locationAddress' as keyof IClaimResponseAddItem);
+    }
+    if (type !== 'Reference') {
+      otherKeys.push('locationReference' as keyof IClaimResponseAddItem);
+      otherKeys.push('_locationReference' as keyof IClaimResponseAddItem);
+    }
+    return this.setChoiceType(key, value, otherKeys);
+  }
+
+  // ============================================================================
+  // Array Properties
+  // ============================================================================
+
+  /**
+   * Add itemSequence
+   * Item sequence number
+   */
+  addItemSequence(itemSequence: number): this {
+    return this.addToArray('itemSequence', itemSequence);
+  }
+
+  /**
+   * Add detailSequence
+   * Detail sequence number
+   */
+  addDetailSequence(detailSequence: number): this {
+    return this.addToArray('detailSequence', detailSequence);
+  }
+
+  /**
+   * Add subdetailSequence
+   * Subdetail sequence number
+   */
+  addSubdetailSequence(subdetailSequence: number): this {
+    return this.addToArray('subdetailSequence', subdetailSequence);
+  }
+
+  /**
+   * Add traceNumber
+   * Number for tracking
+   */
+  addTraceNumber(traceNumber: IIdentifier): this {
+    return this.addToArray('traceNumber', traceNumber);
+  }
+
+  /**
+   * Add provider
+   * Authorized providers
+   */
+  addProvider(provider: IReference<'Practitioner' | 'PractitionerRole' | 'Organization'>): this {
+    return this.addToArray('provider', provider);
+  }
+
+  /**
+   * Add request
+   * Request or Referral for Service
+   */
+  addRequest(request: IReference<'DeviceRequest' | 'MedicationRequest' | 'NutritionOrder' | 'ServiceRequest' | 'SupplyRequest' | 'VisionPrescription'>): this {
+    return this.addToArray('request', request);
+  }
+
+  /**
+   * Add modifier
+   * Service/Product billing modifiers
+   */
+  addModifier(modifier: ICodeableConcept): this {
+    return this.addToArray('modifier', modifier);
+  }
+
+  /**
+   * Add programCode
+   * Program the product or service is provided under
+   */
+  addProgramCode(programCode: ICodeableConcept): this {
+    return this.addToArray('programCode', programCode);
+  }
+
+  /**
+   * Add bodySite
+   * Anatomical location
+   */
+  addBodySite(bodySite: IClaimResponseAddItemBodySite): this {
+    return this.addToArray('bodySite', bodySite);
+  }
+
+  /**
+   * Add noteNumber
+   * Applicable note numbers
+   */
+  addNoteNumber(noteNumber: number): this {
+    return this.addToArray('noteNumber', noteNumber);
+  }
+
+  /**
+   * Add adjudication
+   * Added items adjudication
+   */
+  addAdjudication(adjudication: IClaimResponseItemAdjudication): this {
+    return this.addToArray('adjudication', adjudication);
+  }
+
+  /**
+   * Add detail
+   * Insurer added line details
+   */
+  addDetail(detail: IClaimResponseAddItemDetail): this {
+    return this.addToArray('detail', detail);
+  }
+
+  // ============================================================================
+  // Build Methods
+  // ============================================================================
+
+  /**
+   * Build the ClaimResponseAddItem instance
+   */
+  build(): ClaimResponseAddItem {
+    return new ClaimResponseAddItem(this.data);
+  }
+
+  /**
+   * Build and validate the ClaimResponseAddItem instance
+   * @throws Error if validation fails
+   */
+  async buildOrThrow(): Promise<ClaimResponseAddItem> {
+    const claimResponseAddItem = this.build();
+    await claimResponseAddItem.validateOrThrow();
+    return claimResponseAddItem;
+  }
+}

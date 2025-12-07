@@ -1,0 +1,118 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "cited-artifact-part-type",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/cited-artifact-part-type</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">pages<a name=\"cited-artifact-part-type-pages\"> </a></td><td>pages</td><td>Denotes specific page or pages of an article or artifact.</td></tr><tr><td style=\"white-space:nowrap\">sections<a name=\"cited-artifact-part-type-sections\"> </a></td><td>sections</td><td>Denotes specific section or sections of an article or artifact.</td></tr><tr><td style=\"white-space:nowrap\">paragraphs<a name=\"cited-artifact-part-type-paragraphs\"> </a></td><td>paragraphs</td><td>Denotes specific paragraph or paragraphs of an article or artifact.</td></tr><tr><td style=\"white-space:nowrap\">lines<a name=\"cited-artifact-part-type-lines\"> </a></td><td>lines</td><td>Denotes specific line or lines of an article or artifact.</td></tr><tr><td style=\"white-space:nowrap\">tables<a name=\"cited-artifact-part-type-tables\"> </a></td><td>tables</td><td>Denotes specific table or tables of an article or artifact.</td></tr><tr><td style=\"white-space:nowrap\">figures<a name=\"cited-artifact-part-type-figures\"> </a></td><td>figures</td><td>Denotes specific figure or figures of an article or artifact.</td></tr><tr><td style=\"white-space:nowrap\">supplement<a name=\"cited-artifact-part-type-supplement\"> </a></td><td>Supplement or Appendix</td><td>Used to denote a supplementary file, appendix, or additional part that is not a subpart of the primary article.</td></tr><tr><td style=\"white-space:nowrap\">supplement-subpart<a name=\"cited-artifact-part-type-supplement-subpart\"> </a></td><td>Supplement or Appendix Subpart</td><td>Used to denote a subpart within a supplementary file or appendix.</td></tr><tr><td style=\"white-space:nowrap\">article-set<a name=\"cited-artifact-part-type-article-set\"> </a></td><td>Part of an article set</td><td>Used to distinguish an individual article within an article set where the article set is a base citation.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "cds"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/cited-artifact-part-type",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1877"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "CitedArtifactPartType",
+  "title": "Cited Artifact Part Type",
+  "status": "active",
+  "experimental": false,
+  "date": "2020-12-28T16:55:11+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "To describe the reason for the variant citation, such as version number or subpart specification.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/cited-artifact-part-type",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "pages",
+      "display": "pages",
+      "definition": "Denotes specific page or pages of an article or artifact."
+    },
+    {
+      "code": "sections",
+      "display": "sections",
+      "definition": "Denotes specific section or sections of an article or artifact."
+    },
+    {
+      "code": "paragraphs",
+      "display": "paragraphs",
+      "definition": "Denotes specific paragraph or paragraphs of an article or artifact."
+    },
+    {
+      "code": "lines",
+      "display": "lines",
+      "definition": "Denotes specific line or lines of an article or artifact."
+    },
+    {
+      "code": "tables",
+      "display": "tables",
+      "definition": "Denotes specific table or tables of an article or artifact."
+    },
+    {
+      "code": "figures",
+      "display": "figures",
+      "definition": "Denotes specific figure or figures of an article or artifact."
+    },
+    {
+      "code": "supplement",
+      "display": "Supplement or Appendix",
+      "definition": "Used to denote a supplementary file, appendix, or additional part that is not a subpart of the primary article."
+    },
+    {
+      "code": "supplement-subpart",
+      "display": "Supplement or Appendix Subpart",
+      "definition": "Used to denote a subpart within a supplementary file or appendix."
+    },
+    {
+      "code": "article-set",
+      "display": "Part of an article set",
+      "definition": "Used to distinguish an individual article within an article set where the article set is a base citation."
+    }
+  ]
+}

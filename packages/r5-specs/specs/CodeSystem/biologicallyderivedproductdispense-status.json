@@ -1,0 +1,84 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "biologicallyderivedproductdispense-status",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/biologicallyderivedproductdispense-status</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">preparation<a name=\"biologicallyderivedproductdispense-status-preparation\"> </a></td><td>Preparation</td><td>The dispense process has started but not yet completed.</td></tr><tr><td style=\"white-space:nowrap\">in-progress<a name=\"biologicallyderivedproductdispense-status-in-progress\"> </a></td><td>In Progress</td><td>The dispense process is in progress.</td></tr><tr><td style=\"white-space:nowrap\">allocated<a name=\"biologicallyderivedproductdispense-status-allocated\"> </a></td><td>Allocated</td><td>The requested product has been allocated and is ready for transport.</td></tr><tr><td style=\"white-space:nowrap\">issued<a name=\"biologicallyderivedproductdispense-status-issued\"> </a></td><td>Issued</td><td>The dispensed product has been picked up.</td></tr><tr><td style=\"white-space:nowrap\">unfulfilled<a name=\"biologicallyderivedproductdispense-status-unfulfilled\"> </a></td><td>Unfulfilled</td><td>The dispense could not be completed.</td></tr><tr><td style=\"white-space:nowrap\">returned<a name=\"biologicallyderivedproductdispense-status-returned\"> </a></td><td>Returned</td><td>The dispensed product was returned.</td></tr><tr><td style=\"white-space:nowrap\">entered-in-error<a name=\"biologicallyderivedproductdispense-status-entered-in-error\"> </a></td><td>Entered in Error</td><td>The dispense was entered in error and therefore nullified.</td></tr><tr><td style=\"white-space:nowrap\">unknown<a name=\"biologicallyderivedproductdispense-status-unknown\"> </a></td><td>Unknown</td><td>The authoring system does not know which of the status values applies for this dispense. Note: this concept is not to be used for other - one of the listed statuses is presumed to apply, it's just not known which one.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "oo"
+    }
+  ],
+  "url": "http://hl7.org/fhir/biologicallyderivedproductdispense-status",
+  "version": "5.0.0",
+  "name": "BiologicallyDerivedProductDispense",
+  "title": "BiologicallyDerivedProductDispense Status Codes",
+  "status": "active",
+  "experimental": false,
+  "publisher": "HL7 International",
+  "description": "BiologicallyDerivedProductDispense Status Codes",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/biologicallyderivedproductdispense-status",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "preparation",
+      "display": "Preparation",
+      "definition": "The dispense process has started but not yet completed."
+    },
+    {
+      "code": "in-progress",
+      "display": "In Progress",
+      "definition": "The dispense process is in progress."
+    },
+    {
+      "code": "allocated",
+      "display": "Allocated",
+      "definition": "The requested product has been allocated and is ready for transport."
+    },
+    {
+      "code": "issued",
+      "display": "Issued",
+      "definition": "The dispensed product has been picked up."
+    },
+    {
+      "code": "unfulfilled",
+      "display": "Unfulfilled",
+      "definition": "The dispense could not be completed."
+    },
+    {
+      "code": "returned",
+      "display": "Returned",
+      "definition": "The dispensed product was returned."
+    },
+    {
+      "code": "entered-in-error",
+      "display": "Entered in Error",
+      "definition": "The dispense was entered in error and therefore nullified."
+    },
+    {
+      "code": "unknown",
+      "display": "Unknown",
+      "definition": "The authoring system does not know which of the status values applies for this dispense. Note: this concept is not to be used for other - one of the listed statuses is presumed to apply, it's just not known which one."
+    }
+  ]
+}

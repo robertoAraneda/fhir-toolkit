@@ -1,0 +1,109 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "provenance-entity-role",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/provenance-entity-role</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">revision<a name=\"provenance-entity-role-revision\"> </a></td><td>Revision</td><td>An entity that is used by the activity to produce a new version of that entity.</td></tr><tr><td style=\"white-space:nowrap\">quotation<a name=\"provenance-entity-role-quotation\"> </a></td><td>Quotation</td><td>An entity that is copied in full or part by an agent that is not the author of the entity.</td></tr><tr><td style=\"white-space:nowrap\">source<a name=\"provenance-entity-role-source\"> </a></td><td>Source</td><td>An entity that is used as input to the activity that produced the target.</td></tr><tr><td style=\"white-space:nowrap\">instantiates<a name=\"provenance-entity-role-instantiates\"> </a></td><td>Instantiates</td><td>The record resulting from this event adheres to the protocol, guideline, order set or other definition represented by this entity.</td></tr><tr><td style=\"white-space:nowrap\">removal<a name=\"provenance-entity-role-removal\"> </a></td><td>Removal</td><td>An entity that is removed from accessibility, usually through the DELETE operator.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "sec"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 3
+    }
+  ],
+  "url": "http://hl7.org/fhir/provenance-entity-role",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.437"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.1.428"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.2.247"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ProvenanceEntityRole",
+  "title": "Provenance Entity Role",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-10-01T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "How an entity was used in an activity.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/provenance-entity-role",
+  "hierarchyMeaning": "is-a",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "revision",
+      "display": "Revision",
+      "definition": "An entity that is used by the activity to produce a new version of that entity."
+    },
+    {
+      "code": "quotation",
+      "display": "Quotation",
+      "definition": "An entity that is copied in full or part by an agent that is not the author of the entity."
+    },
+    {
+      "code": "source",
+      "display": "Source",
+      "definition": "An entity that is used as input to the activity that produced the target."
+    },
+    {
+      "code": "instantiates",
+      "display": "Instantiates",
+      "definition": "The record resulting from this event adheres to the protocol, guideline, order set or other definition represented by this entity."
+    },
+    {
+      "code": "removal",
+      "display": "Removal",
+      "definition": "An entity that is removed from accessibility, usually through the DELETE operator."
+    }
+  ]
+}

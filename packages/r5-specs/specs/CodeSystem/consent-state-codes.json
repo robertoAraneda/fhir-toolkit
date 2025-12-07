@@ -1,0 +1,108 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "consent-state-codes",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/consent-state-codes</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">draft<a name=\"consent-state-codes-draft\"> </a></td><td>Pending</td><td>The consent is in development or awaiting use but is not yet intended to be acted upon.</td></tr><tr><td style=\"white-space:nowrap\">active<a name=\"consent-state-codes-active\"> </a></td><td>Active</td><td>The consent is to be followed and enforced.</td></tr><tr><td style=\"white-space:nowrap\">inactive<a name=\"consent-state-codes-inactive\"> </a></td><td>Inactive</td><td>The consent is terminated or replaced.</td></tr><tr><td style=\"white-space:nowrap\">not-done<a name=\"consent-state-codes-not-done\"> </a></td><td>Abandoned</td><td>The consent development has been terminated prior to completion.</td></tr><tr><td style=\"white-space:nowrap\">entered-in-error<a name=\"consent-state-codes-entered-in-error\"> </a></td><td>Entered in Error</td><td>The consent was created wrongly (e.g. wrong patient) and should be ignored.</td></tr><tr><td style=\"white-space:nowrap\">unknown<a name=\"consent-state-codes-unknown\"> </a></td><td>Unknown</td><td>The resource is in an indeterminate state.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "cbcc"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    }
+  ],
+  "url": "http://hl7.org/fhir/consent-state-codes",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.756"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.1.740"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ConsentState",
+  "title": "Consent State",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Indicates the state of the consent.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/consent-state-codes",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "draft",
+      "display": "Pending",
+      "definition": "The consent is in development or awaiting use but is not yet intended to be acted upon."
+    },
+    {
+      "code": "active",
+      "display": "Active",
+      "definition": "The consent is to be followed and enforced."
+    },
+    {
+      "code": "inactive",
+      "display": "Inactive",
+      "definition": "The consent is terminated or replaced."
+    },
+    {
+      "code": "not-done",
+      "display": "Abandoned",
+      "definition": "The consent development has been terminated prior to completion."
+    },
+    {
+      "code": "entered-in-error",
+      "display": "Entered in Error",
+      "definition": "The consent was created wrongly (e.g. wrong patient) and should be ignored."
+    },
+    {
+      "code": "unknown",
+      "display": "Unknown",
+      "definition": "The resource is in an indeterminate state."
+    }
+  ]
+}

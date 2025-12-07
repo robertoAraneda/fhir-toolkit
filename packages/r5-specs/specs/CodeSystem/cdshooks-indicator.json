@@ -1,0 +1,75 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "cdshooks-indicator",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://cds-hooks.hl7.org/CodeSystem/indicator</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">info<a name=\"cdshooks-indicator-info\"> </a></td><td>Information</td><td>The response is informational and indicates that it contains additional information or relevant guidance that may be of interest</td></tr><tr><td style=\"white-space:nowrap\">warning<a name=\"cdshooks-indicator-warning\"> </a></td><td>Warning</td><td>The response is a warning and indicates that it contains urgent or highly relevant information that should be considered</td></tr><tr><td style=\"white-space:nowrap\">critical<a name=\"cdshooks-indicator-critical\"> </a></td><td>Critical</td><td>The response is critical and indicates that it contains information or activities that have high urgency and importance that should be immediately addressed</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "vocab"
+    }
+  ],
+  "url": "http://cds-hooks.hl7.org/CodeSystem/indicator",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1066"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "Indicator",
+  "title": "CDS Hooks Indicator",
+  "status": "draft",
+  "experimental": false,
+  "publisher": "FHIR Project team",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        }
+      ]
+    }
+  ],
+  "description": "This codesystem captures the indicator codes defined by the CDS Hooks specification. The indicator is included as an element of the cards in a CDS Hooks response and conveys the urgency and/or importance of the information in each card. See [Card Attributes](https://cds-hooks.hl7.org/1.0/#card-attributes) in the CDS Hooks specification for more information.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/cdshooks-indicator",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "info",
+      "display": "Information",
+      "definition": "The response is informational and indicates that it contains additional information or relevant guidance that may be of interest"
+    },
+    {
+      "code": "warning",
+      "display": "Warning",
+      "definition": "The response is a warning and indicates that it contains urgent or highly relevant information that should be considered"
+    },
+    {
+      "code": "critical",
+      "display": "Critical",
+      "definition": "The response is critical and indicates that it contains information or activities that have high urgency and importance that should be immediately addressed"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "message-transport",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/message-transport</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">http<a name=\"message-transport-http\"> </a></td><td>HTTP</td><td>The application sends or receives messages using HTTP POST (may be over http: or https:).</td></tr><tr><td style=\"white-space:nowrap\">ftp<a name=\"message-transport-ftp\"> </a></td><td>FTP</td><td>The application sends or receives messages using File Transfer Protocol.</td></tr><tr><td style=\"white-space:nowrap\">mllp<a name=\"message-transport-mllp\"> </a></td><td>MLLP</td><td>The application sends or receives messages using HL7's Minimal Lower Level Protocol.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fhir"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "normative"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version",
+      "valueCode": "4.0.0"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 5
+    }
+  ],
+  "url": "http://hl7.org/fhir/message-transport",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1080"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "MessageTransport",
+  "title": "Message Transport",
+  "status": "active",
+  "experimental": false,
+  "date": "2020-12-28T16:55:11+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "The protocol used for message transport.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/message-transport",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "http",
+      "display": "HTTP",
+      "definition": "The application sends or receives messages using HTTP POST (may be over http: or https:)."
+    },
+    {
+      "code": "ftp",
+      "display": "FTP",
+      "definition": "The application sends or receives messages using File Transfer Protocol."
+    },
+    {
+      "code": "mllp",
+      "display": "MLLP",
+      "definition": "The application sends or receives messages using HL7's Minimal Lower Level Protocol."
+    }
+  ]
+}

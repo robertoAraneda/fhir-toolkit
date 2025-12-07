@@ -1,0 +1,98 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "genomicstudy-changetype",
+  "meta": {
+    "lastUpdated": "2023-03-25T23:21:02.749-05:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/genomicstudy-changetype</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">DNA<a name=\"genomicstudy-changetype-DNA\"> </a></td><td>DNA change</td><td>Change that involves Deoxyribonucleic acid (DNA) sequences.</td></tr><tr><td style=\"white-space:nowrap\">RNA<a name=\"genomicstudy-changetype-RNA\"> </a></td><td>RNA change</td><td>Change that involves Ribonucleic Acid (RNA) sequences.</td></tr><tr><td style=\"white-space:nowrap\">AA<a name=\"genomicstudy-changetype-AA\"> </a></td><td>Protein/amino Acids change </td><td>Change that involves Amino Acid (AA) or protein sequences.</td></tr><tr><td style=\"white-space:nowrap\">CHR<a name=\"genomicstudy-changetype-CHR\"> </a></td><td>Chromosomal changes</td><td>Change that involves number or strcture of chromosomes.</td></tr><tr><td style=\"white-space:nowrap\">CNV<a name=\"genomicstudy-changetype-CNV\"> </a></td><td>Copy number variations</td><td>Change that involves copy number variations among various genomes.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "cg"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
+  "url": "http://hl7.org/fhir/genomicstudy-changetype",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1977"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "GenomicStudyChangeType",
+  "title": "Genomic Study Change Type",
+  "status": "active",
+  "experimental": true,
+  "date": "2022-08-17T15:48:24-05:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "The change type relevant to GenomicStudy analysis.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/genomicstudy-changetype",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "DNA",
+      "display": "DNA change",
+      "definition": "Change that involves Deoxyribonucleic acid (DNA) sequences."
+    },
+    {
+      "code": "RNA",
+      "display": "RNA change",
+      "definition": "Change that involves Ribonucleic Acid (RNA) sequences."
+    },
+    {
+      "code": "AA",
+      "display": "Protein/amino Acids change ",
+      "definition": "Change that involves Amino Acid (AA) or protein sequences."
+    },
+    {
+      "code": "CHR",
+      "display": "Chromosomal changes",
+      "definition": "Change that involves number or strcture of chromosomes."
+    },
+    {
+      "code": "CNV",
+      "display": "Copy number variations",
+      "definition": "Change that involves copy number variations among various genomes."
+    }
+  ]
+}

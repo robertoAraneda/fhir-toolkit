@@ -1,0 +1,53 @@
+{
+  "name": "@fhir-toolkit/r5-specs",
+  "version": "0.0.1",
+  "description": "FHIR R5 StructureDefinitions, ValueSets, and CodeSystems for validation",
+  "keywords": [
+    "fhir",
+    "r5",
+    "hl7",
+    "healthcare",
+    "structuredefinition",
+    "valueset",
+    "codesystem",
+    "specs"
+  ],
+  "author": "Roberto Araneda <robaraneda@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "specs"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "extract-specs": "tsx scripts/extract-specs.ts",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertoAraneda/fhir-toolkit.git",
+    "directory": "packages/r5-specs"
+  },
+  "bugs": {
+    "url": "https://github.com/robertoAraneda/fhir-toolkit/issues"
+  },
+  "fhirVersion": "5.0.0",
+  "sideEffects": false
+}

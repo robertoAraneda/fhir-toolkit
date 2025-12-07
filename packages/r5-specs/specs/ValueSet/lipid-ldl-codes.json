@@ -1,0 +1,98 @@
+{
+  "resourceType": "ValueSet",
+  "id": "lipid-ldl-codes",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Include these codes as defined in <a href=\"http://loinc.org\"><code>http://loinc.org</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Fully specified name</b></td></tr><tr><td><a href=\"https://loinc.org/18262-6/\">18262-6</a></td><td>LDL Cholesterol (Assay)</td><td>Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay</td></tr><tr><td><a href=\"https://loinc.org/13457-7/\">13457-7</a></td><td>Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation</td><td>Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation</td></tr></table></li></ul></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "oo"
+    }
+  ],
+  "url": "http://hl7.org/fhir/ValueSet/lipid-ldl-codes",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.3.3211"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "LDLCodes",
+  "title": "L D L Codes",
+  "status": "draft",
+  "experimental": false,
+  "date": "2015-06-23T10:59:44+10:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "LDL Cholesterol codes - measured or calculated",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "copyright": "This content from LOINC© is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://loinc.org",
+        "concept": [
+          {
+            "code": "18262-6",
+            "display": "LDL Cholesterol (Assay)",
+            "designation": [
+              {
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000003001",
+                  "display": "Fully specified name"
+                },
+                "value": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay"
+              }
+            ]
+          },
+          {
+            "code": "13457-7",
+            "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation",
+            "designation": [
+              {
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000003001",
+                  "display": "Fully specified name"
+                },
+                "value": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "questionnaire-disabled-display",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/questionnaire-disabled-display</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">hidden<a name=\"questionnaire-disabled-display-hidden\"> </a></td><td>Hidden</td><td>The item (and its children) should not be visible to the user at all.</td></tr><tr><td style=\"white-space:nowrap\">protected<a name=\"questionnaire-disabled-display-protected\"> </a></td><td>Protected</td><td>The item (and possibly its children) should not be selectable or editable but should still be visible - to allow the user to see what questions *could* have been completed had other answers caused the item to be enabled.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fhir"
+    }
+  ],
+  "url": "http://hl7.org/fhir/questionnaire-disabled-display",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2016"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "QuestionnaireItemDisabledDisplay",
+  "title": "Questionnaire Item Disabled Display",
+  "status": "active",
+  "experimental": true,
+  "publisher": "HL7 International",
+  "description": "QuestionnaireItemDisabledDisplay",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "content": "complete",
+  "concept": [
+    {
+      "code": "hidden",
+      "display": "Hidden",
+      "definition": "The item (and its children) should not be visible to the user at all."
+    },
+    {
+      "code": "protected",
+      "display": "Protected",
+      "definition": "The item (and possibly its children) should not be selectable or editable but should still be visible - to allow the user to see what questions *could* have been completed had other answers caused the item to be enabled."
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "service-mode",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/service-mode</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">in-person<a name=\"service-mode-in-person\"> </a></td><td>In Person</td><td>The service will be provided in person</td></tr><tr><td style=\"white-space:nowrap\">telephone<a name=\"service-mode-telephone\"> </a></td><td>Telephone</td><td>The service will be provided by a teleconferencing facility or regular telephone</td></tr><tr><td style=\"white-space:nowrap\">videoconference<a name=\"service-mode-videoconference\"> </a></td><td>Video Conference</td><td>The service will be provided over a video-conference facility</td></tr><tr><td style=\"white-space:nowrap\">chat<a name=\"service-mode-chat\"> </a></td><td>Chat/Messaging</td><td>This service will be provided via a realtime chat/messaging conversation</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "pa"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/service-mode",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2116"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ServiceMode",
+  "title": "Service Mode",
+  "status": "active",
+  "experimental": true,
+  "date": "2023-02-20",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "An example set of Service Modes that could be applicable to use to characterize HealthcareServices or PractitionerRoles while searching",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/service-mode",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "in-person",
+      "display": "In Person",
+      "definition": "The service will be provided in person"
+    },
+    {
+      "code": "telephone",
+      "display": "Telephone",
+      "definition": "The service will be provided by a teleconferencing facility or regular telephone"
+    },
+    {
+      "code": "videoconference",
+      "display": "Video Conference",
+      "definition": "The service will be provided over a video-conference facility"
+    },
+    {
+      "code": "chat",
+      "display": "Chat/Messaging",
+      "definition": "This service will be provided via a realtime chat/messaging conversation"
+    }
+  ]
+}

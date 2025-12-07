@@ -1,0 +1,108 @@
+{
+  "resourceType": "ValueSet",
+  "id": "participant-resource-types",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Include these codes as defined in <a href=\"codesystem-fhir-types.html\"><code>http://hl7.org/fhir/fhir-types</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-CareTeam\">CareTeam</a></td><td>CareTeam</td><td>The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care.</td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-Device\">Device</a></td><td>Device</td><td>This resource describes the properties (regulated, has real time clock, etc.), adminstrative (manufacturer name, model number, serial number, firmware, etc.), and type (knee replacement, blood pressure cuff, MRI, etc.) of a physical unit (these values do not change much within a given module, for example the serail number, manufacturer name, and model number). An actual unit may consist of several modules in a distinct hierarchy and these are represented by multiple Device resources and bound through the 'parent' element.</td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-Group\">Group</a></td><td>Group</td><td>Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.</td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-HealthcareService\">HealthcareService</a></td><td>HealthcareService</td><td>The details of a healthcare service available at a location or in a catalog.  In the case where there is a hierarchy of services (for example, Lab -&gt; Pathology -&gt; Wound Cultures), this can be represented using a set of linked HealthcareServices.</td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-Location\">Location</a></td><td>Location</td><td>Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated.</td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-Organization\">Organization</a></td><td>Organization</td><td>A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.</td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-Patient\">Patient</a></td><td>Patient</td><td>Demographics and other administrative information about an individual or animal receiving care or other health-related services.</td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-Practitioner\">Practitioner</a></td><td>Practitioner</td><td>A person who is directly or indirectly involved in the provisioning of healthcare or related services.</td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-PractitionerRole\">PractitionerRole</a></td><td>PractitionerRole</td><td>A specific set of Roles/Locations/specialties/services that a practitioner may perform, or has performed at an organization during a period of time.</td></tr><tr><td><a href=\"codesystem-fhir-types.html#fhir-types-RelatedPerson\">RelatedPerson</a></td><td>RelatedPerson</td><td>Information about a person that is involved in a patient's health or the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.</td></tr></table></li></ul></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fhir"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "normative"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 5
+    }
+  ],
+  "url": "http://hl7.org/fhir/ValueSet/participant-resource-types",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.3.3301"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ParticipantResourceTypes",
+  "title": "Participant Resource Types",
+  "status": "active",
+  "experimental": true,
+  "date": "2023-03-26T15:21:02+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "All Resource Types that represent participant resources",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "immutable": true,
+  "compose": {
+    "include": [
+      {
+        "system": "http://hl7.org/fhir/fhir-types",
+        "concept": [
+          {
+            "code": "CareTeam"
+          },
+          {
+            "code": "Device"
+          },
+          {
+            "code": "Group"
+          },
+          {
+            "code": "HealthcareService"
+          },
+          {
+            "code": "Location"
+          },
+          {
+            "code": "Organization"
+          },
+          {
+            "code": "Patient"
+          },
+          {
+            "code": "Practitioner"
+          },
+          {
+            "code": "PractitionerRole"
+          },
+          {
+            "code": "RelatedPerson"
+          }
+        ]
+      }
+    ]
+  }
+}

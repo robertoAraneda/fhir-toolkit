@@ -1,0 +1,114 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "medication-statement-adherence",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/CodeSystem/medication-statement-adherence</code> defines the following codes:</p><table class=\"codes\"><tr><td><b>Lvl</b></td><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td>1</td><td style=\"white-space:nowrap\">taking<a name=\"medication-statement-adherence-taking\"> </a></td><td>Taking</td><td>The medication is being taken.</td></tr><tr><td>2</td><td style=\"white-space:nowrap\">  taking-as-directed<a name=\"medication-statement-adherence-taking-as-directed\"> </a></td><td>Taking As Directed</td><td>The medication is being taken as directed.</td></tr><tr><td>2</td><td style=\"white-space:nowrap\">  taking-not-as-directed<a name=\"medication-statement-adherence-taking-not-as-directed\"> </a></td><td>Taking Not As Directed</td><td>The medication is not being taken as directed.</td></tr><tr><td>1</td><td style=\"white-space:nowrap\">not-taking<a name=\"medication-statement-adherence-not-taking\"> </a></td><td>Not Taking</td><td>The medication is not being taken.</td></tr><tr><td>2</td><td style=\"white-space:nowrap\">  on-hold<a name=\"medication-statement-adherence-on-hold\"> </a></td><td>On Hold</td><td>The medication is on hold.</td></tr><tr><td>3</td><td style=\"white-space:nowrap\">    on-hold-as-directed<a name=\"medication-statement-adherence-on-hold-as-directed\"> </a></td><td>On Hold As Directed</td><td>The medication is on hold as directed.</td></tr><tr><td>3</td><td style=\"white-space:nowrap\">    on-hold-not-as-directed<a name=\"medication-statement-adherence-on-hold-not-as-directed\"> </a></td><td>On Hold Not As Directed</td><td>The medication is on hold not as directed.</td></tr><tr><td>2</td><td style=\"white-space:nowrap\">  stopped<a name=\"medication-statement-adherence-stopped\"> </a></td><td>Stopped</td><td>The medication is stopped.</td></tr><tr><td>3</td><td style=\"white-space:nowrap\">    stopped-as-directed<a name=\"medication-statement-adherence-stopped-as-directed\"> </a></td><td>Stopped As Directed</td><td>The medication is stopped as directed.</td></tr><tr><td>3</td><td style=\"white-space:nowrap\">    stopped-not-as-directed<a name=\"medication-statement-adherence-stopped-not-as-directed\"> </a></td><td>Stopped Not As Directed</td><td>The medication is stopped not as directed.</td></tr><tr><td>1</td><td style=\"white-space:nowrap\">unknown<a name=\"medication-statement-adherence-unknown\"> </a></td><td>Unknown</td><td>Whether the medication is being taken or not is not currently known.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "phx"
+    }
+  ],
+  "url": "http://hl7.org/fhir/CodeSystem/medication-statement-adherence",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1981"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "MedicationStatementAdherenceCodes",
+  "title": "MedicationStatement Adherence Codes",
+  "status": "active",
+  "experimental": false,
+  "publisher": "HL7 International",
+  "description": "MedicationStatement Adherence Codes",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/medication-statement-adherence",
+  "hierarchyMeaning": "is-a",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "taking",
+      "display": "Taking",
+      "definition": "The medication is being taken.",
+      "concept": [
+        {
+          "code": "taking-as-directed",
+          "display": "Taking As Directed",
+          "definition": "The medication is being taken as directed."
+        },
+        {
+          "code": "taking-not-as-directed",
+          "display": "Taking Not As Directed",
+          "definition": "The medication is not being taken as directed."
+        }
+      ]
+    },
+    {
+      "code": "not-taking",
+      "display": "Not Taking",
+      "definition": "The medication is not being taken.",
+      "concept": [
+        {
+          "code": "on-hold",
+          "display": "On Hold",
+          "definition": "The medication is on hold.",
+          "concept": [
+            {
+              "code": "on-hold-as-directed",
+              "display": "On Hold As Directed",
+              "definition": "The medication is on hold as directed."
+            },
+            {
+              "code": "on-hold-not-as-directed",
+              "display": "On Hold Not As Directed",
+              "definition": "The medication is on hold not as directed."
+            }
+          ]
+        },
+        {
+          "code": "stopped",
+          "display": "Stopped",
+          "definition": "The medication is stopped.",
+          "concept": [
+            {
+              "code": "stopped-as-directed",
+              "display": "Stopped As Directed",
+              "definition": "The medication is stopped as directed."
+            },
+            {
+              "code": "stopped-not-as-directed",
+              "display": "Stopped Not As Directed",
+              "definition": "The medication is stopped not as directed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "unknown",
+      "display": "Unknown",
+      "definition": "Whether the medication is being taken or not is not currently known."
+    }
+  ]
+}

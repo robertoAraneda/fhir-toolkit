@@ -1,0 +1,90 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "usage-context-agreement-scope",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/CodeSystem/usage-context-agreement-scope</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">realm-base<a name=\"usage-context-agreement-scope-realm-base\"> </a></td><td>Realm Base</td><td>Defines use-case independent foundational expectations for exchange within a particular country or jurisdiction.  Should be accompanied by a jurisdiction.  Commonly used as a 'base' for more restrictive artifacts.</td></tr><tr><td style=\"white-space:nowrap\">knowledge<a name=\"usage-context-agreement-scope-knowledge\"> </a></td><td>Knowledge</td><td>Defines use-case-specific information or guidance that is relevant to a specific business or health domain but is not mandated for particular use.</td></tr><tr><td style=\"white-space:nowrap\">domain<a name=\"usage-context-agreement-scope-domain\"> </a></td><td>Domain</td><td>Defines use-case-specific requirements for a specific business or health domain.  May vary in jurisdictional scope from international to small region and in business scope from broad to narrow.</td></tr><tr><td style=\"white-space:nowrap\">community<a name=\"usage-context-agreement-scope-community\"> </a></td><td>Community</td><td>Sets contractual or business expectations for systems participating in a particular exchange community.</td></tr><tr><td style=\"white-space:nowrap\">system-design<a name=\"usage-context-agreement-scope-system-design\"> </a></td><td>System Design</td><td>Documents the specific capabilities of a single system as 'available' for purchase or use.  May have some variability reflecting options that can be configured.</td></tr><tr><td style=\"white-space:nowrap\">system-implementation<a name=\"usage-context-agreement-scope-system-implementation\"> </a></td><td>System Implementation</td><td>Documents the specific points of a single production system or endpoint.  This may be time-specific - i.e. reflecting the system 'as it is now' or 'as it was at some point in the past'.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fhir"
+    }
+  ],
+  "url": "http://hl7.org/fhir/CodeSystem/usage-context-agreement-scope",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1798"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "UsageContextAgreementScope",
+  "title": "Usage Context Agreement Scope",
+  "status": "draft",
+  "experimental": false,
+  "publisher": "FHIR Infrastructure",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        }
+      ]
+    }
+  ],
+  "description": "This codesystem defines codes describing the type of agreement represented by an artifact, for example for use in CanonicalResource.usageContext.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/usage-context-agreement-scope",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "realm-base",
+      "display": "Realm Base",
+      "definition": "Defines use-case independent foundational expectations for exchange within a particular country or jurisdiction.  Should be accompanied by a jurisdiction.  Commonly used as a 'base' for more restrictive artifacts."
+    },
+    {
+      "code": "knowledge",
+      "display": "Knowledge",
+      "definition": "Defines use-case-specific information or guidance that is relevant to a specific business or health domain but is not mandated for particular use."
+    },
+    {
+      "code": "domain",
+      "display": "Domain",
+      "definition": "Defines use-case-specific requirements for a specific business or health domain.  May vary in jurisdictional scope from international to small region and in business scope from broad to narrow."
+    },
+    {
+      "code": "community",
+      "display": "Community",
+      "definition": "Sets contractual or business expectations for systems participating in a particular exchange community."
+    },
+    {
+      "code": "system-design",
+      "display": "System Design",
+      "definition": "Documents the specific capabilities of a single system as 'available' for purchase or use.  May have some variability reflecting options that can be configured."
+    },
+    {
+      "code": "system-implementation",
+      "display": "System Implementation",
+      "definition": "Documents the specific points of a single production system or endpoint.  This may be time-specific - i.e. reflecting the system 'as it is now' or 'as it was at some point in the past'."
+    }
+  ]
+}

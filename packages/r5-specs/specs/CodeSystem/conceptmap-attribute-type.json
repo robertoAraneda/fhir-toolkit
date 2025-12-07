@@ -1,0 +1,102 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "conceptmap-attribute-type",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/conceptmap-attribute-type</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">code<a name=\"conceptmap-attribute-type-code\"> </a></td><td>The attribute value is a code defined in the code system in context.</td></tr><tr><td style=\"white-space:nowrap\">Coding<a name=\"conceptmap-attribute-type-Coding\"> </a></td><td>The attribute value is a code defined in a code system.</td></tr><tr><td style=\"white-space:nowrap\">string<a name=\"conceptmap-attribute-type-string\"> </a></td><td>The attribute value is a string.</td></tr><tr><td style=\"white-space:nowrap\">boolean<a name=\"conceptmap-attribute-type-boolean\"> </a></td><td>The attribute value is a boolean true | false.</td></tr><tr><td style=\"white-space:nowrap\">Quantity<a name=\"conceptmap-attribute-type-Quantity\"> </a></td><td>The attribute is a Quantity (may represent an integer or a decimal with no units).</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "vocab"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "normative"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version",
+      "valueCode": "4.0.0"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 5
+    }
+  ],
+  "url": "http://hl7.org/fhir/conceptmap-attribute-type",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2119"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ConceptMapAttributeType",
+  "title": "ConceptMap Attribute Type",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "The type of a ConceptMap map attribute value.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/conceptmap-attribute-type",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "code",
+      "display": "code",
+      "definition": "The attribute value is a code defined in the code system in context."
+    },
+    {
+      "code": "Coding",
+      "display": "Coding",
+      "definition": "The attribute value is a code defined in a code system."
+    },
+    {
+      "code": "string",
+      "display": "string",
+      "definition": "The attribute value is a string."
+    },
+    {
+      "code": "boolean",
+      "display": "boolean",
+      "definition": "The attribute value is a boolean true | false."
+    },
+    {
+      "code": "Quantity",
+      "display": "Quantity",
+      "definition": "The attribute is a Quantity (may represent an integer or a decimal with no units)."
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "product-intended-use",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/product-intended-use</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td></tr><tr><td style=\"white-space:nowrap\">Prevention<a name=\"product-intended-use-Prevention\"> </a></td></tr><tr><td style=\"white-space:nowrap\">Treatment<a name=\"product-intended-use-Treatment\"> </a></td></tr><tr><td style=\"white-space:nowrap\">Alleviation<a name=\"product-intended-use-Alleviation\"> </a></td></tr><tr><td style=\"white-space:nowrap\">Diagnosis<a name=\"product-intended-use-Diagnosis\"> </a></td></tr><tr><td style=\"white-space:nowrap\">Monitoring<a name=\"product-intended-use-Monitoring\"> </a></td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "brr"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
+  "url": "http://hl7.org/fhir/product-intended-use",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1908"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ProductIntendedUse",
+  "title": "Product Intended Use",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "ProductIntendedUse",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/product-intended-use",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "Prevention",
+      "display": "Prevention"
+    },
+    {
+      "code": "Treatment",
+      "display": "Treatment"
+    },
+    {
+      "code": "Alleviation",
+      "display": "Alleviation"
+    },
+    {
+      "code": "Diagnosis",
+      "display": "Diagnosis"
+    },
+    {
+      "code": "Monitoring",
+      "display": "Monitoring"
+    }
+  ]
+}

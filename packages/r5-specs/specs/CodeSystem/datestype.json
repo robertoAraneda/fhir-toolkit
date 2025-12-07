@@ -1,0 +1,59 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "datestype",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/datestype</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">card-issued<a name=\"datestype-card-issued\"> </a></td><td>Card Issued</td><td>The date when an insurance card was issued.</td></tr><tr><td style=\"white-space:nowrap\">claim-received<a name=\"datestype-claim-received\"> </a></td><td>Claim Received</td><td>The date when an insurer nreceived a claim, pre-authorization or predetermination.</td></tr><tr><td style=\"white-space:nowrap\">service-expected<a name=\"datestype-service-expected\"> </a></td><td>Service Expected</td><td>The date or period on or during which the services are expected to be performed.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fm"
+    }
+  ],
+  "url": "http://hl7.org/fhir/datestype",
+  "version": "5.0.0",
+  "name": "DatesEventTypeCodes",
+  "title": "Dates Event Type Codes",
+  "status": "active",
+  "experimental": false,
+  "publisher": "HL7 International",
+  "description": "This value set includes sample Dates Event Type codes.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "copyright": "This is an example set.",
+  "caseSensitive": true,
+  "content": "complete",
+  "concept": [
+    {
+      "code": "card-issued",
+      "display": "Card Issued",
+      "definition": "The date when an insurance card was issued."
+    },
+    {
+      "code": "claim-received",
+      "display": "Claim Received",
+      "definition": "The date when an insurer nreceived a claim, pre-authorization or predetermination."
+    },
+    {
+      "code": "service-expected",
+      "display": "Service Expected",
+      "definition": "The date or period on or during which the services are expected to be performed."
+    }
+  ]
+}

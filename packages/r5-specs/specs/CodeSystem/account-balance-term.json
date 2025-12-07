@@ -1,0 +1,84 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "account-balance-term",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/account-balance-term</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">current<a name=\"account-balance-term-current\"> </a></td><td>Current</td><td>This balance is the current balance</td></tr><tr><td style=\"white-space:nowrap\">30<a name=\"account-balance-term-30\"> </a></td><td>30 day</td><td>This balance is outstanding over 30 days</td></tr><tr><td style=\"white-space:nowrap\">60<a name=\"account-balance-term-60\"> </a></td><td>60 day</td><td>This balance is outstanding over 60 days</td></tr><tr><td style=\"white-space:nowrap\">90<a name=\"account-balance-term-90\"> </a></td><td>90 day</td><td>This balance is outstanding over 90 days</td></tr><tr><td style=\"white-space:nowrap\">120<a name=\"account-balance-term-120\"> </a></td><td>120 day</td><td>This balance is outstanding over 120 days</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "pa"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/account-balance-term",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2064"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "AccountBalanceTerm",
+  "title": "Account Balance Term",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "description": "Indicates the account balance's age",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/account-payment-terms",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "current",
+      "display": "Current",
+      "definition": "This balance is the current balance"
+    },
+    {
+      "code": "30",
+      "display": "30 day",
+      "definition": "This balance is outstanding over 30 days"
+    },
+    {
+      "code": "60",
+      "display": "60 day",
+      "definition": "This balance is outstanding over 60 days"
+    },
+    {
+      "code": "90",
+      "display": "90 day",
+      "definition": "This balance is outstanding over 90 days"
+    },
+    {
+      "code": "120",
+      "display": "120 day",
+      "definition": "This balance is outstanding over 120 days"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "conceptmap-properties",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/conceptmap-properties</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">relationshipRefinement<a name=\"conceptmap-properties-relationshipRefinement\"> </a></td><td>Relationship Refinement</td><td>Property of type coding that indicates a specific refined relationship such as categorized by or grouped</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "vocab"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
+  "url": "http://hl7.org/fhir/conceptmap-properties",
+  "version": "5.0.0",
+  "name": "ConceptMapProperties",
+  "title": "FHIR Defined ConceptMap Properties",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "FHIR Project",
+  "description": "A set of common concept properties for use on ConceptMap",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "content": "complete",
+  "concept": [
+    {
+      "code": "relationshipRefinement",
+      "display": "Relationship Refinement",
+      "definition": "Property of type coding that indicates a specific refined relationship such as categorized by or grouped"
+    }
+  ]
+}

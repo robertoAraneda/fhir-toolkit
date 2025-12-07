@@ -1,0 +1,65 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "medication-dose-aid",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/CodeSystem/medication-dose-aid</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">blisterpack<a name=\"medication-dose-aid-blisterpack\"> </a></td><td>Blister Pack</td><td>A type of packaging in which a medication is sealed in plastic, often with a cardboard backing.</td></tr><tr><td style=\"white-space:nowrap\">dosette<a name=\"medication-dose-aid-dosette\"> </a></td><td>Dosette</td><td>A box or tray that organizes mediations into separate compartments</td></tr><tr><td style=\"white-space:nowrap\">sachets<a name=\"medication-dose-aid-sachets\"> </a></td><td>Sachets</td><td>A small packet that contains medication for individual use.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "phx"
+    }
+  ],
+  "url": "http://hl7.org/fhir/CodeSystem/medication-dose-aid",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2075"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "MedicationDoseAid",
+  "title": "Medication dose aid",
+  "status": "active",
+  "experimental": false,
+  "publisher": "HL7 International",
+  "description": "Medication dose aid",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/medication-dose-aid",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "blisterpack",
+      "display": "Blister Pack",
+      "definition": "A type of packaging in which a medication is sealed in plastic, often with a cardboard backing."
+    },
+    {
+      "code": "dosette",
+      "display": "Dosette",
+      "definition": "A box or tray that organizes mediations into separate compartments"
+    },
+    {
+      "code": "sachets",
+      "display": "Sachets",
+      "definition": "A small packet that contains medication for individual use."
+    }
+  ]
+}

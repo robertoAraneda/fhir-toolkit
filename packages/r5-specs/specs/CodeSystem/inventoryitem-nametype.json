@@ -1,0 +1,64 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "inventoryitem-nametype",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/inventoryitem-nametype</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">trade-name<a name=\"inventoryitem-nametype-trade-name\"> </a></td><td>Trade Name</td><td>The official trade name of the item.</td></tr><tr><td style=\"white-space:nowrap\">alias<a name=\"inventoryitem-nametype-alias\"> </a></td><td>Alias</td><td>An alias or common name for the item.</td></tr><tr><td style=\"white-space:nowrap\">original-name<a name=\"inventoryitem-nametype-original-name\"> </a></td><td>Original Name</td><td>The original name of the item.</td></tr><tr><td style=\"white-space:nowrap\">preferred<a name=\"inventoryitem-nametype-preferred\"> </a></td><td>Preferred</td><td>The preferred name of the item.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "oo"
+    }
+  ],
+  "url": "http://hl7.org/fhir/inventoryitem-nametype",
+  "version": "5.0.0",
+  "name": "InventoryItemNameType",
+  "title": "InventoryItem Name Type",
+  "status": "active",
+  "experimental": false,
+  "publisher": "HL7 International",
+  "description": "InventoryItem Name Type",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/inventoryitem-nametype",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "trade-name",
+      "display": "Trade Name",
+      "definition": "The official trade name of the item."
+    },
+    {
+      "code": "alias",
+      "display": "Alias",
+      "definition": "An alias or common name for the item."
+    },
+    {
+      "code": "original-name",
+      "display": "Original Name",
+      "definition": "The original name of the item."
+    },
+    {
+      "code": "preferred",
+      "display": "Preferred",
+      "definition": "The preferred name of the item."
+    }
+  ]
+}

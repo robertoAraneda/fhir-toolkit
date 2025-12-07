@@ -1,0 +1,107 @@
+{
+  "resourceType": "ValueSet",
+  "id": "provenance-activity-type",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Include these codes as defined in <a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-iso-21089-lifecycle.html\"><code>http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-iso-21089-lifecycle.html#iso-21089-lifecycle-amend\">amend</a></td><td>Amend (Update) Record Lifecycle Event</td><td>Occurs when an agent makes any change to record entry content currently residing in storage considered permanent (persistent).</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-iso-21089-lifecycle.html#iso-21089-lifecycle-originate\">originate</a></td><td>Originate/Retain Record Lifecycle Event</td><td>Occurs when an agent causes the system to: a) initiate capture of potential record content, and b) incorporate that content into the storage considered a permanent part of the health record.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-iso-21089-lifecycle.html#iso-21089-lifecycle-merge\">merge</a></td><td>Merge Record Lifecycle Event</td><td>Occurs when an agent causes the system to combine or join content from two or more record entries, resulting in a single logical record entry.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-iso-21089-lifecycle.html#iso-21089-lifecycle-deidentify\">deidentify</a></td><td>De-Identify (Anononymize) Record Lifecycle Event</td><td>Occurs when an agent causes the system to scrub record entry content to reduce the association between a set of identifying data and the data subject in a way that might or might not be reversible.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-iso-21089-lifecycle.html#iso-21089-lifecycle-receive\">receive</a></td><td>Receive/Retain Record Lifecycle Event</td><td>Occurs when an agent causes the system to a) initiate capture of data content from elsewhere, and b) incorporate that content into the storage considered a permanent part of the health record.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-iso-21089-lifecycle.html#iso-21089-lifecycle-transform\">transform</a></td><td>Transform/Translate Record Lifecycle Event</td><td>Occurs when an agent causes the system to change the form, language or code system used to represent record entry content.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-iso-21089-lifecycle.html#iso-21089-lifecycle-verify\">verify</a></td><td>Verify Record Lifecycle Event</td><td>Occurs when an agent causes the system to confirm compliance of data or data objects with regulations, requirements, specifications, or other imposed conditions based on organizational policy.</td></tr></table></li></ul></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/valueset-extensible",
+      "valueBoolean": true
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "sec"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
+  "url": "http://hl7.org/fhir/ValueSet/provenance-activity-type",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.3.438"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.3.429"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ProvenanceActivityType",
+  "title": "ValueSet of sample of representative activity type codes.",
+  "status": "draft",
+  "experimental": true,
+  "date": "2022-05-10T18:00:00+01:00",
+  "publisher": "HL7 Security Work Group",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Some potential code systems are:\n- [v3-DocumentCompletion](http://terminology.hl7.org/3.0.0/CodeSystem-v3-DocumentCompletion.html)\n- [v3-DataOperation](http://terminology.hl7.org/3.0.0/CodeSystem-v3-DataOperation.html)\n- [v3-ActCode](http://hl7.org/fhir/v3/ActCode/cs.html)\n- [ISO Lifecycle](http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle)",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle",
+        "concept": [
+          {
+            "code": "amend"
+          },
+          {
+            "code": "originate"
+          },
+          {
+            "code": "merge"
+          },
+          {
+            "code": "deidentify"
+          },
+          {
+            "code": "receive"
+          },
+          {
+            "code": "transform"
+          },
+          {
+            "code": "verify"
+          }
+        ]
+      }
+    ]
+  }
+}

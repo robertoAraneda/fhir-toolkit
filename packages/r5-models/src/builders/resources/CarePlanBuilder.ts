@@ -1,0 +1,252 @@
+import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
+import { CarePlan } from '../../models/resources/CarePlan.js';
+import type {
+  CarePlanIntentType,
+  IAnnotation,
+  ICarePlan,
+  ICarePlanActivity,
+  ICodeableConcept,
+  ICodeableReference,
+  IIdentifier,
+  IPeriod,
+  IReference,
+  RequestStatusType,
+} from '@fhir-toolkit/r5-types';
+
+/**
+ * CarePlanBuilder - Fluent builder for CarePlan resources
+ *
+ * Extends DomainResourceBuilder which provides common setters:
+ * - setId(), setMeta(), setImplicitRules(), setLanguage()
+ * - setText(), addContained(), addExtension(), addModifierExtension()
+ *
+ * @example
+ * const carePlan = new CarePlanBuilder()
+ *   .setId('123')
+ *   .setStatus(value)
+ *   .addIdentifier({ ... })
+ *   .build();
+ */
+export class CarePlanBuilder extends DomainResourceBuilder<CarePlan, ICarePlan> {
+  // ============================================================================
+  // Scalar Properties
+  // ============================================================================
+
+  /**
+   * Set status
+   * draft | active | on-hold | revoked | completed | entered-in-error | unknown
+   */
+  setStatus(status: RequestStatusType): this {
+    this.data.status = status;
+    return this;
+  }
+
+  /**
+   * Set intent
+   * proposal | plan | order | option | directive
+   */
+  setIntent(intent: CarePlanIntentType): this {
+    this.data.intent = intent;
+    return this;
+  }
+
+  /**
+   * Set title
+   * Human-friendly name for the care plan
+   */
+  setTitle(title: string): this {
+    this.data.title = title;
+    return this;
+  }
+
+  /**
+   * Set description
+   * Summary of nature of plan
+   */
+  setDescription(description: string): this {
+    this.data.description = description;
+    return this;
+  }
+
+  /**
+   * Set subject
+   * Who the care plan is for
+   */
+  setSubject(subject: IReference<'Patient' | 'Group'>): this {
+    this.data.subject = subject;
+    return this;
+  }
+
+  /**
+   * Set encounter
+   * The Encounter during which this CarePlan was created
+   */
+  setEncounter(encounter: IReference<'Encounter'>): this {
+    this.data.encounter = encounter;
+    return this;
+  }
+
+  /**
+   * Set period
+   * Time period plan covers
+   */
+  setPeriod(period: IPeriod): this {
+    this.data.period = period;
+    return this;
+  }
+
+  /**
+   * Set created
+   * Date record was first recorded
+   */
+  setCreated(created: string): this {
+    this.data.created = created;
+    return this;
+  }
+
+  /**
+   * Set custodian
+   * Who is the designated responsible party
+   */
+  setCustodian(custodian: IReference<'Patient' | 'Practitioner' | 'PractitionerRole' | 'Device' | 'RelatedPerson' | 'Organization' | 'CareTeam'>): this {
+    this.data.custodian = custodian;
+    return this;
+  }
+
+  // ============================================================================
+  // Array Properties
+  // ============================================================================
+
+  /**
+   * Add identifier
+   * External Ids for this plan
+   */
+  addIdentifier(identifier: IIdentifier): this {
+    return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
+  }
+
+  /**
+   * Add basedOn
+   * Fulfills plan, proposal or order
+   */
+  addBasedOn(basedOn: IReference<'CarePlan' | 'ServiceRequest' | 'RequestOrchestration' | 'NutritionOrder'>): this {
+    return this.addToArray('basedOn', basedOn);
+  }
+
+  /**
+   * Add replaces
+   * CarePlan replaced by this CarePlan
+   */
+  addReplaces(replac: IReference<'CarePlan'>): this {
+    return this.addToArray('replaces', replac);
+  }
+
+  /**
+   * Add partOf
+   * Part of referenced CarePlan
+   */
+  addPartOf(partOf: IReference<'CarePlan'>): this {
+    return this.addToArray('partOf', partOf);
+  }
+
+  /**
+   * Add category
+   * Type of plan
+   */
+  addCategory(category: ICodeableConcept): this {
+    return this.addToArray('category', category);
+  }
+
+  /**
+   * Add contributor
+   * Who provided the content of the care plan
+   */
+  addContributor(contributor: IReference<'Patient' | 'Practitioner' | 'PractitionerRole' | 'Device' | 'RelatedPerson' | 'Organization' | 'CareTeam'>): this {
+    return this.addToArray('contributor', contributor);
+  }
+
+  /**
+   * Add careTeam
+   * Who's involved in plan?
+   */
+  addCareTeam(careTeam: IReference<'CareTeam'>): this {
+    return this.addToArray('careTeam', careTeam);
+  }
+
+  /**
+   * Add addresses
+   * Health issues this plan addresses
+   */
+  addAddresses(addresse: ICodeableReference): this {
+    return this.addToArray('addresses', addresse);
+  }
+
+  /**
+   * Add supportingInfo
+   * Information considered as part of plan
+   */
+  addSupportingInfo(supportingInfo: IReference<'Resource'>): this {
+    return this.addToArray('supportingInfo', supportingInfo);
+  }
+
+  /**
+   * Add goal
+   * Desired outcome of plan
+   */
+  addGoal(goal: IReference<'Goal'>): this {
+    return this.addToArray('goal', goal);
+  }
+
+  /**
+   * Add activity
+   * Action to occur or has occurred as part of plan
+   */
+  addActivity(activity: ICarePlanActivity): this {
+    return this.addToArray('activity', activity);
+  }
+
+  /**
+   * Add note
+   * Comments about the plan
+   */
+  addNote(note: IAnnotation): this {
+    return this.addToArray('note', note);
+  }
+
+  // ============================================================================
+  // Build Methods
+  // ============================================================================
+
+  /**
+   * Build the CarePlan instance
+   */
+  build(): CarePlan {
+    return new CarePlan(this.data);
+  }
+
+  /**
+   * Build and validate the CarePlan instance
+   * @throws Error if validation fails
+   */
+  async buildOrThrow(): Promise<CarePlan> {
+    const carePlan = this.build();
+    await carePlan.validateOrThrow();
+    return carePlan;
+  }
+}

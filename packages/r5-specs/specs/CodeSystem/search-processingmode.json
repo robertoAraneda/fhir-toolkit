@@ -1,0 +1,82 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "search-processingmode",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/search-processingmode</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">normal<a name=\"search-processingmode-normal\"> </a></td><td>Normal</td><td>The search parameter is derived directly from the selected nodes based on the type definitions.</td></tr><tr><td style=\"white-space:nowrap\">phonetic<a name=\"search-processingmode-phonetic\"> </a></td><td>Phonetic</td><td>The search parameter is derived by a phonetic transform from the selected nodes.</td></tr><tr><td style=\"white-space:nowrap\">other<a name=\"search-processingmode-other\"> </a></td><td>Other</td><td>The interpretation of the xpath statement is unknown (and can't be automated).</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fhir"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 3
+    }
+  ],
+  "url": "http://hl7.org/fhir/search-processingmode",
+  "version": "5.0.0",
+  "name": "SearchProcessingModeType",
+  "title": "Search Processing Mode Type",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "How a search parameter relates to the set of elements returned by evaluating its expression query.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/search-processingmode",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "normal",
+      "display": "Normal",
+      "definition": "The search parameter is derived directly from the selected nodes based on the type definitions."
+    },
+    {
+      "code": "phonetic",
+      "display": "Phonetic",
+      "definition": "The search parameter is derived by a phonetic transform from the selected nodes."
+    },
+    {
+      "code": "other",
+      "display": "Other",
+      "definition": "The interpretation of the xpath statement is unknown (and can't be automated)."
+    }
+  ]
+}

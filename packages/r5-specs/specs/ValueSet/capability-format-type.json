@@ -1,0 +1,78 @@
+{
+  "resourceType": "ValueSet",
+  "id": "capability-format-type",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This value set includes codes based on the following rules:</p><ul><li>Include all codes defined in <a href=\"codesystem-fhir-format-type.html\"><code>http://hl7.org/fhir/fhir-format-type</code></a></li><li>Include these codes as defined in <code>urn:ietf:bcp:13</code><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td>application/fhir+json</td><td>application/fhir+json</td></tr><tr><td>application/fhir+xml</td><td>application/fhir+xml</td></tr><tr><td>application/fhir+ttl</td><td>application/fhir+ttl</td></tr></table></li></ul></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fhir"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "normative"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version",
+      "valueCode": "4.0.0"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 5
+    }
+  ],
+  "url": "http://hl7.org/fhir/ValueSet/capability-format-type",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.3.2987"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "CapabilityFormatType",
+  "title": "Capability Format Type",
+  "status": "active",
+  "experimental": false,
+  "publisher": "HL7 International",
+  "description": "Common format types for FHIR.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://hl7.org/fhir/fhir-format-type"
+      },
+      {
+        "system": "urn:ietf:bcp:13",
+        "concept": [
+          {
+            "code": "application/fhir+json"
+          },
+          {
+            "code": "application/fhir+xml"
+          },
+          {
+            "code": "application/fhir+ttl"
+          }
+        ]
+      }
+    ]
+  }
+}

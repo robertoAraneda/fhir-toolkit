@@ -1,0 +1,237 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "fhir-old-types",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/fhir-old-types</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td></tr><tr><td style=\"white-space:nowrap\">BodySite<a name=\"fhir-old-types-BodySite\"> </a></td></tr><tr><td style=\"white-space:nowrap\">CatalogEntry<a name=\"fhir-old-types-CatalogEntry\"> </a></td></tr><tr><td style=\"white-space:nowrap\">Conformance<a name=\"fhir-old-types-Conformance\"> </a></td></tr><tr><td style=\"white-space:nowrap\">DataElement<a name=\"fhir-old-types-DataElement\"> </a></td></tr><tr><td style=\"white-space:nowrap\">DeviceComponent<a name=\"fhir-old-types-DeviceComponent\"> </a></td></tr><tr><td style=\"white-space:nowrap\">DeviceUseRequest<a name=\"fhir-old-types-DeviceUseRequest\"> </a></td></tr><tr><td style=\"white-space:nowrap\">DeviceUseStatement<a name=\"fhir-old-types-DeviceUseStatement\"> </a></td></tr><tr><td style=\"white-space:nowrap\">DiagnosticOrder<a name=\"fhir-old-types-DiagnosticOrder\"> </a></td></tr><tr><td style=\"white-space:nowrap\">DocumentManifest<a name=\"fhir-old-types-DocumentManifest\"> </a></td></tr><tr><td style=\"white-space:nowrap\">EffectEvidenceSynthesis<a name=\"fhir-old-types-EffectEvidenceSynthesis\"> </a></td></tr><tr><td style=\"white-space:nowrap\">EligibilityRequest<a name=\"fhir-old-types-EligibilityRequest\"> </a></td></tr><tr><td style=\"white-space:nowrap\">EligibilityResponse<a name=\"fhir-old-types-EligibilityResponse\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ExpansionProfile<a name=\"fhir-old-types-ExpansionProfile\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ImagingManifest<a name=\"fhir-old-types-ImagingManifest\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ImagingObjectSelection<a name=\"fhir-old-types-ImagingObjectSelection\"> </a></td></tr><tr><td style=\"white-space:nowrap\">Media<a name=\"fhir-old-types-Media\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicationOrder<a name=\"fhir-old-types-MedicationOrder\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicationUsage<a name=\"fhir-old-types-MedicationUsage\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProduct<a name=\"fhir-old-types-MedicinalProduct\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProductAuthorization<a name=\"fhir-old-types-MedicinalProductAuthorization\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProductContraindication<a name=\"fhir-old-types-MedicinalProductContraindication\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProductIndication<a name=\"fhir-old-types-MedicinalProductIndication\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProductIngredient<a name=\"fhir-old-types-MedicinalProductIngredient\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProductInteraction<a name=\"fhir-old-types-MedicinalProductInteraction\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProductManufactured<a name=\"fhir-old-types-MedicinalProductManufactured\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProductPackaged<a name=\"fhir-old-types-MedicinalProductPackaged\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProductPharmaceutical<a name=\"fhir-old-types-MedicinalProductPharmaceutical\"> </a></td></tr><tr><td style=\"white-space:nowrap\">MedicinalProductUndesirableEffect<a name=\"fhir-old-types-MedicinalProductUndesirableEffect\"> </a></td></tr><tr><td style=\"white-space:nowrap\">Order<a name=\"fhir-old-types-Order\"> </a></td></tr><tr><td style=\"white-space:nowrap\">OrderResponse<a name=\"fhir-old-types-OrderResponse\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ProcedureRequest<a name=\"fhir-old-types-ProcedureRequest\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ProcessRequest<a name=\"fhir-old-types-ProcessRequest\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ProcessResponse<a name=\"fhir-old-types-ProcessResponse\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ReferralRequest<a name=\"fhir-old-types-ReferralRequest\"> </a></td></tr><tr><td style=\"white-space:nowrap\">RequestGroup<a name=\"fhir-old-types-RequestGroup\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ResearchDefinition<a name=\"fhir-old-types-ResearchDefinition\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ResearchElementDefinition<a name=\"fhir-old-types-ResearchElementDefinition\"> </a></td></tr><tr><td style=\"white-space:nowrap\">RiskEvidenceSynthesis<a name=\"fhir-old-types-RiskEvidenceSynthesis\"> </a></td></tr><tr><td style=\"white-space:nowrap\">Sequence<a name=\"fhir-old-types-Sequence\"> </a></td></tr><tr><td style=\"white-space:nowrap\">ServiceDefinition<a name=\"fhir-old-types-ServiceDefinition\"> </a></td></tr><tr><td style=\"white-space:nowrap\">SubstanceSpecification<a name=\"fhir-old-types-SubstanceSpecification\"> </a></td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fhir"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "normative"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version",
+      "valueCode": "4.0.0"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 5
+    }
+  ],
+  "url": "http://hl7.org/fhir/fhir-old-types",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2113"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "FHIROldTypes",
+  "title": "Old FHIR Types",
+  "status": "active",
+  "experimental": false,
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "An old resource name no longer used in this version of FHIR (deleted or renamed).",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/fhir-old-types",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "BodySite",
+      "display": "BodySite"
+    },
+    {
+      "code": "CatalogEntry",
+      "display": "CatalogEntry"
+    },
+    {
+      "code": "Conformance",
+      "display": "Conformance"
+    },
+    {
+      "code": "DataElement",
+      "display": "DataElement"
+    },
+    {
+      "code": "DeviceComponent",
+      "display": "DeviceComponent"
+    },
+    {
+      "code": "DeviceUseRequest",
+      "display": "DeviceUseRequest"
+    },
+    {
+      "code": "DeviceUseStatement",
+      "display": "DeviceUseStatement"
+    },
+    {
+      "code": "DiagnosticOrder",
+      "display": "DiagnosticOrder"
+    },
+    {
+      "code": "DocumentManifest",
+      "display": "DocumentManifest"
+    },
+    {
+      "code": "EffectEvidenceSynthesis",
+      "display": "EffectEvidenceSynthesis"
+    },
+    {
+      "code": "EligibilityRequest",
+      "display": "EligibilityRequest"
+    },
+    {
+      "code": "EligibilityResponse",
+      "display": "EligibilityResponse"
+    },
+    {
+      "code": "ExpansionProfile",
+      "display": "ExpansionProfile"
+    },
+    {
+      "code": "ImagingManifest",
+      "display": "ImagingManifest"
+    },
+    {
+      "code": "ImagingObjectSelection",
+      "display": "ImagingObjectSelection"
+    },
+    {
+      "code": "Media",
+      "display": "Media"
+    },
+    {
+      "code": "MedicationOrder",
+      "display": "MedicationOrder"
+    },
+    {
+      "code": "MedicationUsage",
+      "display": "MedicationUsage"
+    },
+    {
+      "code": "MedicinalProduct",
+      "display": "MedicinalProduct"
+    },
+    {
+      "code": "MedicinalProductAuthorization",
+      "display": "MedicinalProductAuthorization"
+    },
+    {
+      "code": "MedicinalProductContraindication",
+      "display": "MedicinalProductContraindication"
+    },
+    {
+      "code": "MedicinalProductIndication",
+      "display": "MedicinalProductIndication"
+    },
+    {
+      "code": "MedicinalProductIngredient",
+      "display": "MedicinalProductIngredient"
+    },
+    {
+      "code": "MedicinalProductInteraction",
+      "display": "MedicinalProductInteraction"
+    },
+    {
+      "code": "MedicinalProductManufactured",
+      "display": "MedicinalProductManufactured"
+    },
+    {
+      "code": "MedicinalProductPackaged",
+      "display": "MedicinalProductPackaged"
+    },
+    {
+      "code": "MedicinalProductPharmaceutical",
+      "display": "MedicinalProductPharmaceutical"
+    },
+    {
+      "code": "MedicinalProductUndesirableEffect",
+      "display": "MedicinalProductUndesirableEffect"
+    },
+    {
+      "code": "Order",
+      "display": "Order"
+    },
+    {
+      "code": "OrderResponse",
+      "display": "OrderResponse"
+    },
+    {
+      "code": "ProcedureRequest",
+      "display": "ProcedureRequest"
+    },
+    {
+      "code": "ProcessRequest",
+      "display": "ProcessRequest"
+    },
+    {
+      "code": "ProcessResponse",
+      "display": "ProcessResponse"
+    },
+    {
+      "code": "ReferralRequest",
+      "display": "ReferralRequest"
+    },
+    {
+      "code": "RequestGroup",
+      "display": "RequestGroup"
+    },
+    {
+      "code": "ResearchDefinition",
+      "display": "ResearchDefinition"
+    },
+    {
+      "code": "ResearchElementDefinition",
+      "display": "ResearchElementDefinition"
+    },
+    {
+      "code": "RiskEvidenceSynthesis",
+      "display": "RiskEvidenceSynthesis"
+    },
+    {
+      "code": "Sequence",
+      "display": "Sequence"
+    },
+    {
+      "code": "ServiceDefinition",
+      "display": "ServiceDefinition"
+    },
+    {
+      "code": "SubstanceSpecification",
+      "display": "SubstanceSpecification"
+    }
+  ]
+}

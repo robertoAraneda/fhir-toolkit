@@ -1,0 +1,82 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "research-study-objective-type",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/research-study-objective-type</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">primary<a name=\"research-study-objective-type-primary\"> </a></td><td>Primary</td><td>The main question to be answered, and the one that drives any statistical planning for the study—e.g., calculation of the sample size to provide the appropriate power for statistical testing.</td></tr><tr><td style=\"white-space:nowrap\">secondary<a name=\"research-study-objective-type-secondary\"> </a></td><td>Secondary</td><td>Question to be answered in the study that is of lesser importance than the primary objective.</td></tr><tr><td style=\"white-space:nowrap\">exploratory<a name=\"research-study-objective-type-exploratory\"> </a></td><td>Exploratory</td><td>Exploratory questions to be answered in the study.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "brr"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/research-study-objective-type",
+  "version": "5.0.0",
+  "name": "ResearchStudyObjectiveType",
+  "title": "ResearchStudy Objective Type Code System",
+  "status": "active",
+  "experimental": false,
+  "date": "2022-05-15T16:55:11.085+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Codes for the kind of study objective.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/research-study-objective-type",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "primary",
+      "display": "Primary",
+      "definition": "The main question to be answered, and the one that drives any statistical planning for the study—e.g., calculation of the sample size to provide the appropriate power for statistical testing."
+    },
+    {
+      "code": "secondary",
+      "display": "Secondary",
+      "definition": "Question to be answered in the study that is of lesser importance than the primary objective."
+    },
+    {
+      "code": "exploratory",
+      "display": "Exploratory",
+      "definition": "Exploratory questions to be answered in the study."
+    }
+  ]
+}

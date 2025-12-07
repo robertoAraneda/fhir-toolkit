@@ -1,0 +1,148 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "artifact-url-classifier",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/artifact-url-classifier</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">abstract<a name=\"artifact-url-classifier-abstract\"> </a></td><td>Abstract</td><td>The URL will reach a brief summary for the article.</td></tr><tr><td style=\"white-space:nowrap\">full-text<a name=\"artifact-url-classifier-full-text\"> </a></td><td>Full-Text</td><td>The URL will reach the full-text of the article.</td></tr><tr><td style=\"white-space:nowrap\">supplement<a name=\"artifact-url-classifier-supplement\"> </a></td><td>Supplement</td><td>The URL will reach a supplement, appendix, or additional supporting information for the article.</td></tr><tr><td style=\"white-space:nowrap\">webpage<a name=\"artifact-url-classifier-webpage\"> </a></td><td>Webpage</td><td>The URL will reach a webpage related to the article, where the content is not easily classified as abstract, full-text or supplement.</td></tr><tr><td style=\"white-space:nowrap\">file-directory<a name=\"artifact-url-classifier-file-directory\"> </a></td><td>File directory</td><td>The URL will reach a file directory.</td></tr><tr><td style=\"white-space:nowrap\">code-repository<a name=\"artifact-url-classifier-code-repository\"> </a></td><td>Code repository</td><td>File archive and web hosting facility for source code of software, documentation, web pages, and other works.</td></tr><tr><td style=\"white-space:nowrap\">restricted<a name=\"artifact-url-classifier-restricted\"> </a></td><td>Restricted</td><td>The URL content has restricted access (e.g. subcription required).</td></tr><tr><td style=\"white-space:nowrap\">compressed-file<a name=\"artifact-url-classifier-compressed-file\"> </a></td><td>Compressed file</td><td>Compressed archive file (e.g. a zip file) that contains multiple files</td></tr><tr><td style=\"white-space:nowrap\">doi-based<a name=\"artifact-url-classifier-doi-based\"> </a></td><td>DOI Based</td><td>The URL is derived from the Digital Object Identifier (DOI).</td></tr><tr><td style=\"white-space:nowrap\">pdf<a name=\"artifact-url-classifier-pdf\"> </a></td><td>PDF</td><td>The URL will reach content in PDF form.</td></tr><tr><td style=\"white-space:nowrap\">json<a name=\"artifact-url-classifier-json\"> </a></td><td>JSON</td><td>The URL will reach content in JSON format.</td></tr><tr><td style=\"white-space:nowrap\">xml<a name=\"artifact-url-classifier-xml\"> </a></td><td>XML</td><td>The URL will reach content in XML format.</td></tr><tr><td style=\"white-space:nowrap\">version-specific<a name=\"artifact-url-classifier-version-specific\"> </a></td><td>Version Specific</td><td>The URL will reach content that is a specific version of the article.</td></tr><tr><td style=\"white-space:nowrap\">computable-resource<a name=\"artifact-url-classifier-computable-resource\"> </a></td><td>Computable resource</td><td>The URL will reach content that is machine-interpretable.</td></tr><tr><td style=\"white-space:nowrap\">not-specified<a name=\"artifact-url-classifier-not-specified\"> </a></td><td>Not Specified</td><td>Used when URL classifier is not specified but expected in a system.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "cds"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/artifact-url-classifier",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1876"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ArtifactUrlClassifier",
+  "title": "Artifact Url Classifier",
+  "status": "active",
+  "experimental": false,
+  "date": "2020-12-28T16:55:11+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Code the reason for different URLs, eg abstract and full-text.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/artifact-url-classifier",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "abstract",
+      "display": "Abstract",
+      "definition": "The URL will reach a brief summary for the article."
+    },
+    {
+      "code": "full-text",
+      "display": "Full-Text",
+      "definition": "The URL will reach the full-text of the article."
+    },
+    {
+      "code": "supplement",
+      "display": "Supplement",
+      "definition": "The URL will reach a supplement, appendix, or additional supporting information for the article."
+    },
+    {
+      "code": "webpage",
+      "display": "Webpage",
+      "definition": "The URL will reach a webpage related to the article, where the content is not easily classified as abstract, full-text or supplement."
+    },
+    {
+      "code": "file-directory",
+      "display": "File directory",
+      "definition": "The URL will reach a file directory."
+    },
+    {
+      "code": "code-repository",
+      "display": "Code repository",
+      "definition": "File archive and web hosting facility for source code of software, documentation, web pages, and other works."
+    },
+    {
+      "code": "restricted",
+      "display": "Restricted",
+      "definition": "The URL content has restricted access (e.g. subcription required)."
+    },
+    {
+      "code": "compressed-file",
+      "display": "Compressed file",
+      "definition": "Compressed archive file (e.g. a zip file) that contains multiple files"
+    },
+    {
+      "code": "doi-based",
+      "display": "DOI Based",
+      "definition": "The URL is derived from the Digital Object Identifier (DOI)."
+    },
+    {
+      "code": "pdf",
+      "display": "PDF",
+      "definition": "The URL will reach content in PDF form."
+    },
+    {
+      "code": "json",
+      "display": "JSON",
+      "definition": "The URL will reach content in JSON format."
+    },
+    {
+      "code": "xml",
+      "display": "XML",
+      "definition": "The URL will reach content in XML format."
+    },
+    {
+      "code": "version-specific",
+      "display": "Version Specific",
+      "definition": "The URL will reach content that is a specific version of the article."
+    },
+    {
+      "code": "computable-resource",
+      "display": "Computable resource",
+      "definition": "The URL will reach content that is machine-interpretable."
+    },
+    {
+      "code": "not-specified",
+      "display": "Not Specified",
+      "definition": "Used when URL classifier is not specified but expected in a system."
+    }
+  ]
+}

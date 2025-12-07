@@ -1,0 +1,87 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "servicerequest-orderdetail-parameter-code",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/servicerequest-orderdetail-parameter-code</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">catheter-insertion<a name=\"servicerequest-orderdetail-parameter-code-catheter-insertion\"> </a></td><td>Catheter Insertion</td><td>Describes insertion instructions.</td></tr><tr><td style=\"white-space:nowrap\">body-elevation<a name=\"servicerequest-orderdetail-parameter-code-body-elevation\"> </a></td><td>Body Elevation</td><td>Describes elevation instructions.</td></tr><tr><td style=\"white-space:nowrap\">device-configuration<a name=\"servicerequest-orderdetail-parameter-code-device-configuration\"> </a></td><td>Device Configuration</td><td>Describes configuration details</td></tr><tr><td style=\"white-space:nowrap\">device-settings<a name=\"servicerequest-orderdetail-parameter-code-device-settings\"> </a></td><td>Device Settings</td><td>Describes setting details.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "oo"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/servicerequest-orderdetail-parameter-code",
+  "version": "5.0.0",
+  "name": "ServiceRequestOrderDetailParameterCode",
+  "title": "Service Request Order Detail Parameter Code",
+  "status": "active",
+  "experimental": true,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Codes providing the parameter codes for service request details.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/servicerequest-orderdetail-parameter-code",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "catheter-insertion",
+      "display": "Catheter Insertion",
+      "definition": "Describes insertion instructions."
+    },
+    {
+      "code": "body-elevation",
+      "display": "Body Elevation",
+      "definition": "Describes elevation instructions."
+    },
+    {
+      "code": "device-configuration",
+      "display": "Device Configuration",
+      "definition": "Describes configuration details"
+    },
+    {
+      "code": "device-settings",
+      "display": "Device Settings",
+      "definition": "Describes setting details."
+    }
+  ]
+}

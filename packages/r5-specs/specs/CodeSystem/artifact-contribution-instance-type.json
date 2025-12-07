@@ -1,0 +1,88 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "artifact-contribution-instance-type",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/artifact-contribution-instance-type</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">reviewed<a name=\"artifact-contribution-instance-type-reviewed\"> </a></td><td>Reviewed</td><td>Reviewed</td></tr><tr><td style=\"white-space:nowrap\">approved<a name=\"artifact-contribution-instance-type-approved\"> </a></td><td>Approved</td><td>Approved</td></tr><tr><td style=\"white-space:nowrap\">edited<a name=\"artifact-contribution-instance-type-edited\"> </a></td><td>Edited</td><td>Edited</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "cds"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/artifact-contribution-instance-type",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1874"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "ArtifactContributionInstanceType",
+  "title": "Artifact Contribution Instance Type",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-03-11T10:55:11.085+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Artifact Contribution Instance Type",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/artifact-contribution-instance-type",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "reviewed",
+      "display": "Reviewed",
+      "definition": "Reviewed"
+    },
+    {
+      "code": "approved",
+      "display": "Approved",
+      "definition": "Approved"
+    },
+    {
+      "code": "edited",
+      "display": "Edited",
+      "definition": "Edited"
+    }
+  ]
+}

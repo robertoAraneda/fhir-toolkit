@@ -1,0 +1,89 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "payment-kind",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/payment-kind</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">deposit<a name=\"payment-kind-deposit\"> </a></td><td>Deposit on Account</td><td>The payment or adjustment is to an indicated account not to a specific charge.</td></tr><tr><td style=\"white-space:nowrap\">periodic-payment<a name=\"payment-kind-periodic-payment\"> </a></td><td>Periodic Payment</td><td>The payment is one of a set of previously agreed payments, for example in fullfilment of a payment plan.</td></tr><tr><td style=\"white-space:nowrap\">online<a name=\"payment-kind-online\"> </a></td><td>Online Bill Payment</td><td>Payment, full or partial, of an invoice or statement provided to the payment issuer.</td></tr><tr><td style=\"white-space:nowrap\">kiosk<a name=\"payment-kind-kiosk\"> </a></td><td>Kiosk Payment</td><td>Payment made at an authorized Kiosk.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fm"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    }
+  ],
+  "url": "http://hl7.org/fhir/payment-kind",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2056"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "PaymentKindCodes",
+  "title": "Payment Kind Codes",
+  "status": "active",
+  "experimental": false,
+  "publisher": "FHIR Project team",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        }
+      ]
+    }
+  ],
+  "description": "This value set contains codes for the type of workflow from which payments arise.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "copyright": "HL7 Inc.",
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/payment-kind",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "deposit",
+      "display": "Deposit on Account",
+      "definition": "The payment or adjustment is to an indicated account not to a specific charge."
+    },
+    {
+      "code": "periodic-payment",
+      "display": "Periodic Payment",
+      "definition": "The payment is one of a set of previously agreed payments, for example in fullfilment of a payment plan."
+    },
+    {
+      "code": "online",
+      "display": "Online Bill Payment",
+      "definition": "Payment, full or partial, of an invoice or statement provided to the payment issuer."
+    },
+    {
+      "code": "kiosk",
+      "display": "Kiosk Payment",
+      "definition": "Payment made at an authorized Kiosk."
+    }
+  ]
+}

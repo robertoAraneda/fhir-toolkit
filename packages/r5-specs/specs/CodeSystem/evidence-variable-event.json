@@ -1,0 +1,108 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "evidence-variable-event",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/evidence-variable-event</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">study-start<a name=\"evidence-variable-event-study-start\"> </a></td><td>Study Start</td><td>The time of enrollment for the study participant</td></tr><tr><td style=\"white-space:nowrap\">treatment-start<a name=\"evidence-variable-event-treatment-start\"> </a></td><td>Start of Treatment</td><td>The time of initiation of the treatment</td></tr><tr><td style=\"white-space:nowrap\">condition-detection<a name=\"evidence-variable-event-condition-detection\"> </a></td><td>Detection of Condition</td><td>The time of first detection of the condition</td></tr><tr><td style=\"white-space:nowrap\">condition-treatment<a name=\"evidence-variable-event-condition-treatment\"> </a></td><td>Treatment of Condition</td><td>The time of first treatment of the condition</td></tr><tr><td style=\"white-space:nowrap\">hospital-admission<a name=\"evidence-variable-event-hospital-admission\"> </a></td><td>Hospital Admission</td><td>The time of admission to the hospital</td></tr><tr><td style=\"white-space:nowrap\">hospital-discharge<a name=\"evidence-variable-event-hospital-discharge\"> </a></td><td>Hospital Discharge</td><td>The time of discharge from the hospital</td></tr><tr><td style=\"white-space:nowrap\">operative-procedure<a name=\"evidence-variable-event-operative-procedure\"> </a></td><td>Operative Procedure</td><td>The time of surgery</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "cds"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 5
+    }
+  ],
+  "url": "http://hl7.org/fhir/evidence-variable-event",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1955"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "EvidenceVariableEvent",
+  "title": "Evidence Variable Event",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "The event used as a base point (reference point) in time.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/evidence-variable-event",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "study-start",
+      "display": "Study Start",
+      "definition": "The time of enrollment for the study participant"
+    },
+    {
+      "code": "treatment-start",
+      "display": "Start of Treatment",
+      "definition": "The time of initiation of the treatment"
+    },
+    {
+      "code": "condition-detection",
+      "display": "Detection of Condition",
+      "definition": "The time of first detection of the condition"
+    },
+    {
+      "code": "condition-treatment",
+      "display": "Treatment of Condition",
+      "definition": "The time of first treatment of the condition"
+    },
+    {
+      "code": "hospital-admission",
+      "display": "Hospital Admission",
+      "definition": "The time of admission to the hospital"
+    },
+    {
+      "code": "hospital-discharge",
+      "display": "Hospital Discharge",
+      "definition": "The time of discharge from the hospital"
+    },
+    {
+      "code": "operative-procedure",
+      "display": "Operative Procedure",
+      "definition": "The time of surgery"
+    }
+  ]
+}

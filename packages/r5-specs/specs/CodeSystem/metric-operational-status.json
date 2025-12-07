@@ -1,0 +1,103 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "metric-operational-status",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/metric-operational-status</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">on<a name=\"metric-operational-status-on\"> </a></td><td>On</td><td>The DeviceMetric is operating and will generate Observations.</td></tr><tr><td style=\"white-space:nowrap\">off<a name=\"metric-operational-status-off\"> </a></td><td>Off</td><td>The DeviceMetric is not operating.</td></tr><tr><td style=\"white-space:nowrap\">standby<a name=\"metric-operational-status-standby\"> </a></td><td>Standby</td><td>The DeviceMetric is operating, but will not generate any Observations.</td></tr><tr><td style=\"white-space:nowrap\">entered-in-error<a name=\"metric-operational-status-entered-in-error\"> </a></td><td>Entered In Error</td><td>The DeviceMetric was entered in error.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "dev"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
+  "url": "http://hl7.org/fhir/metric-operational-status",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.647"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.1.631"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.2.337"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "DeviceMetricOperationalStatus",
+  "title": "Device Metric Operational Status",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Describes the operational status of the DeviceMetric.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/metric-operational-status",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "on",
+      "display": "On",
+      "definition": "The DeviceMetric is operating and will generate Observations."
+    },
+    {
+      "code": "off",
+      "display": "Off",
+      "definition": "The DeviceMetric is not operating."
+    },
+    {
+      "code": "standby",
+      "display": "Standby",
+      "definition": "The DeviceMetric is operating, but will not generate any Observations."
+    },
+    {
+      "code": "entered-in-error",
+      "display": "Entered In Error",
+      "definition": "The DeviceMetric was entered in error."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "measure-stratifier-example",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/measure-stratifier-example</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">age<a name=\"measure-stratifier-example-age\"> </a></td><td>Age</td><td>Age Stratification.</td></tr><tr><td style=\"white-space:nowrap\">gender<a name=\"measure-stratifier-example-gender\"> </a></td><td>Gender</td><td>Gender Stratification.</td></tr><tr><td style=\"white-space:nowrap\">region<a name=\"measure-stratifier-example-region\"> </a></td><td>Region</td><td>Region Stratification.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "cqi"
+    }
+  ],
+  "url": "http://hl7.org/fhir/measure-stratifier-example",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2047"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "MeasureStratifierExample",
+  "title": "Measure Stratifier Example",
+  "status": "active",
+  "experimental": true,
+  "publisher": "Clinical Quality Information Workgroup",
+  "description": "Identifier subgroups in a population for measuring purposes.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/measure-stratifier-example",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "age",
+      "display": "Age",
+      "definition": "Age Stratification."
+    },
+    {
+      "code": "gender",
+      "display": "Gender",
+      "definition": "Gender Stratification."
+    },
+    {
+      "code": "region",
+      "display": "Region",
+      "definition": "Region Stratification."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "medication-cost-category",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/medication-cost-category</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">banda<a name=\"medication-cost-category-banda\"> </a></td><td>Band A</td><td>Tier A cost for this medication</td></tr><tr><td style=\"white-space:nowrap\">bandb<a name=\"medication-cost-category-bandb\"> </a></td><td>Band B</td><td>Tier B cost for this medication</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "phx"
+    }
+  ],
+  "url": "http://hl7.org/fhir/medication-cost-category",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2068"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "MedicationCostCategoryCodes",
+  "title": "Medication Cost Category Codes",
+  "status": "active",
+  "experimental": false,
+  "publisher": "HL7 International",
+  "description": "Medication Cost Category Codes",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/medication-cost-category",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "banda",
+      "display": "Band A",
+      "definition": "Tier A cost for this medication"
+    },
+    {
+      "code": "bandb",
+      "display": "Band B",
+      "definition": "Tier B cost for this medication"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "transport-status-reason",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/transport-status-reason</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">declined-by-patient<a name=\"transport-status-reason-declined-by-patient\"> </a></td><td>Declined by patient</td><td>Patient declined transport.</td></tr><tr><td style=\"white-space:nowrap\">refused-by-recipient<a name=\"transport-status-reason-refused-by-recipient\"> </a></td><td>Refused by recipient</td><td>Transport was refused by recipient.</td></tr><tr><td style=\"white-space:nowrap\">patient-not-available<a name=\"transport-status-reason-patient-not-available\"> </a></td><td>Patient not available</td><td>The patient was not available for transport.</td></tr><tr><td style=\"white-space:nowrap\">specimen-not-available<a name=\"transport-status-reason-specimen-not-available\"> </a></td><td>Specimen not available</td><td>The specimen was not available for transport.</td></tr><tr><td style=\"white-space:nowrap\">wrong-request-data<a name=\"transport-status-reason-wrong-request-data\"> </a></td><td>Wrong request data</td><td>Wrong data in the transport request.</td></tr><tr><td style=\"white-space:nowrap\">in-route-accident<a name=\"transport-status-reason-in-route-accident\"> </a></td><td>In route accident</td><td>An accident has occurred in route.</td></tr><tr><td style=\"white-space:nowrap\">request-not-acknowledged<a name=\"transport-status-reason-request-not-acknowledged\"> </a></td><td>Request not acknowledged</td><td>The transport request was not acknowledged.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "oo"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
+  "url": "http://hl7.org/fhir/transport-status-reason",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1930"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "TransportStatus",
+  "title": "Transport Status",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Status of transport.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/transport-status-reason",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "declined-by-patient",
+      "display": "Declined by patient",
+      "definition": "Patient declined transport."
+    },
+    {
+      "code": "refused-by-recipient",
+      "display": "Refused by recipient",
+      "definition": "Transport was refused by recipient."
+    },
+    {
+      "code": "patient-not-available",
+      "display": "Patient not available",
+      "definition": "The patient was not available for transport."
+    },
+    {
+      "code": "specimen-not-available",
+      "display": "Specimen not available",
+      "definition": "The specimen was not available for transport."
+    },
+    {
+      "code": "wrong-request-data",
+      "display": "Wrong request data",
+      "definition": "Wrong data in the transport request."
+    },
+    {
+      "code": "in-route-accident",
+      "display": "In route accident",
+      "definition": "An accident has occurred in route."
+    },
+    {
+      "code": "request-not-acknowledged",
+      "display": "Request not acknowledged",
+      "definition": "The transport request was not acknowledged."
+    }
+  ]
+}

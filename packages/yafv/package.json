@@ -50,7 +50,8 @@
   },
   "peerDependencies": {
     "@fhir-toolkit/r4-specs": ">=0.1.0",
-    "@fhir-toolkit/r4b-specs": ">=0.1.0"
+    "@fhir-toolkit/r4b-specs": ">=0.1.0",
+    "@fhir-toolkit/r5-specs": ">=0.0.1"
   },
   "peerDependenciesMeta": {
     "@fhir-toolkit/r4-specs": {
@@ -58,11 +59,15 @@
     },
     "@fhir-toolkit/r4b-specs": {
       "optional": true
+    },
+    "@fhir-toolkit/r5-specs": {
+      "optional": true
     }
   },
   "devDependencies": {
     "@fhir-toolkit/r4-specs": "workspace:*",
     "@fhir-toolkit/r4b-specs": "workspace:*",
+    "@fhir-toolkit/r5-specs": "workspace:*",
     "@types/node": "^20.11.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.0",

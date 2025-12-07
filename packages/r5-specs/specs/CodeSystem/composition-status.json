@@ -1,0 +1,143 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "composition-status",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/composition-status</code> defines the following codes:</p><table class=\"codes\"><tr><td><b>Lvl</b></td><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td>1</td><td style=\"white-space:nowrap\">registered<a name=\"composition-status-registered\"> </a></td><td>Registered</td><td>The existence of the composition is registered, but there is nothing yet available.</td></tr><tr><td>1</td><td style=\"white-space:nowrap\">partial<a name=\"composition-status-partial\"> </a></td><td>Partial</td><td>This is a partial (e.g. initial, interim or preliminary) composition: data in the composition may be incomplete or unverified.</td></tr><tr><td>2</td><td style=\"white-space:nowrap\">  preliminary<a name=\"composition-status-preliminary\"> </a></td><td>Preliminary</td><td>Verified early results are available, but not all results are final.</td></tr><tr><td>1</td><td style=\"white-space:nowrap\">final<a name=\"composition-status-final\"> </a></td><td>Final</td><td>This version of the composition is complete and verified by an appropriate person and no further work is planned. Any subsequent updates would be on a new version of the composition.</td></tr><tr><td>1</td><td style=\"white-space:nowrap\">amended<a name=\"composition-status-amended\"> </a></td><td>Amended</td><td>The composition content or the referenced resources have been modified (edited or added to) subsequent to being released as &quot;final&quot; and the composition is complete and verified by an authorized person.</td></tr><tr><td>2</td><td style=\"white-space:nowrap\">  corrected<a name=\"composition-status-corrected\"> </a></td><td>Corrected</td><td>Subsequent to being final, the composition content has been modified to correct an error in the composition or referenced results.</td></tr><tr><td>2</td><td style=\"white-space:nowrap\">  appended<a name=\"composition-status-appended\"> </a></td><td>Appended</td><td>Subsequent to being final, the composition content has been modified by adding new content. The existing content is unchanged.</td></tr><tr><td>1</td><td style=\"white-space:nowrap\">cancelled<a name=\"composition-status-cancelled\"> </a></td><td>Cancelled</td><td>The composition is unavailable because the measurement was not started or not completed (also sometimes called &quot;aborted&quot;).</td></tr><tr><td>1</td><td style=\"white-space:nowrap\">entered-in-error<a name=\"composition-status-entered-in-error\"> </a></td><td>Entered in Error</td><td>The composition or document was originally created/issued in error, and this is an amendment that marks that the entire series should not be considered as valid.</td></tr><tr><td>1</td><td style=\"white-space:nowrap\">deprecated<a name=\"composition-status-deprecated\"> </a></td><td>Deprecated</td><td>This composition has been withdrawn or superseded and should no longer be used.</td></tr><tr><td>1</td><td style=\"white-space:nowrap\">unknown<a name=\"composition-status-unknown\"> </a></td><td>Unknown</td><td>The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for &quot;other&quot; - one of the listed statuses is presumed to apply, but the authoring/source system does not know which.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "sd"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 3
+    }
+  ],
+  "url": "http://hl7.org/fhir/composition-status",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.242"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.1.237"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.2.123"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "CompositionStatus",
+  "title": "Composition Status",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "The workflow/clinical status of the composition.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/composition-status",
+  "hierarchyMeaning": "is-a",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "registered",
+      "display": "Registered",
+      "definition": "The existence of the composition is registered, but there is nothing yet available."
+    },
+    {
+      "code": "partial",
+      "display": "Partial",
+      "definition": "This is a partial (e.g. initial, interim or preliminary) composition: data in the composition may be incomplete or unverified.",
+      "concept": [
+        {
+          "code": "preliminary",
+          "display": "Preliminary",
+          "definition": "Verified early results are available, but not all results are final."
+        }
+      ]
+    },
+    {
+      "code": "final",
+      "display": "Final",
+      "definition": "This version of the composition is complete and verified by an appropriate person and no further work is planned. Any subsequent updates would be on a new version of the composition."
+    },
+    {
+      "code": "amended",
+      "display": "Amended",
+      "definition": "The composition content or the referenced resources have been modified (edited or added to) subsequent to being released as \"final\" and the composition is complete and verified by an authorized person.",
+      "concept": [
+        {
+          "code": "corrected",
+          "display": "Corrected",
+          "definition": "Subsequent to being final, the composition content has been modified to correct an error in the composition or referenced results."
+        },
+        {
+          "code": "appended",
+          "display": "Appended",
+          "definition": "Subsequent to being final, the composition content has been modified by adding new content. The existing content is unchanged."
+        }
+      ]
+    },
+    {
+      "code": "cancelled",
+      "display": "Cancelled",
+      "definition": "The composition is unavailable because the measurement was not started or not completed (also sometimes called \"aborted\")."
+    },
+    {
+      "code": "entered-in-error",
+      "display": "Entered in Error",
+      "definition": "The composition or document was originally created/issued in error, and this is an amendment that marks that the entire series should not be considered as valid."
+    },
+    {
+      "code": "deprecated",
+      "display": "Deprecated",
+      "definition": "This composition has been withdrawn or superseded and should no longer be used."
+    },
+    {
+      "code": "unknown",
+      "display": "Unknown",
+      "definition": "The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which."
+    }
+  ]
+}

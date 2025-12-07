@@ -173,6 +173,46 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  packages/r5-models:
+    dependencies:
+      '@fhir-toolkit/r5-types':
+        specifier: workspace:*
+        version: link:../r5-types
+    devDependencies:
+      '@fhir-toolkit/yafv':
+        specifier: workspace:*
+        version: link:../yafv
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.1(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)
+      vitest:
+        specifier: ^1.4.0
+        version: 1.6.1(@types/node@20.19.25)
+
+  packages/r5-specs:
+    devDependencies:
+      '@types/node':
+        specifier: ^20.11.0
+        version: 20.19.25
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.1(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)
+      tsx:
+        specifier: ^4.7.1
+        version: 4.20.6
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+
+  packages/r5-types:
+    devDependencies:
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   packages/yafv:
     dependencies:
       commander:
@@ -197,6 +237,9 @@ importers:
       '@fhir-toolkit/r4b-specs':
         specifier: workspace:*
         version: link:../r4b-specs
+      '@fhir-toolkit/r5-specs':
+        specifier: workspace:*
+        version: link:../r5-specs
       '@types/node':
         specifier: ^20.11.0
         version: 20.19.25

@@ -1,0 +1,83 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "research-study-focus-type",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/research-study-focus-type</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td style=\"white-space:nowrap\">medication<a name=\"research-study-focus-type-medication\"> </a></td><td>Medication</td></tr><tr><td style=\"white-space:nowrap\">device<a name=\"research-study-focus-type-device\"> </a></td><td>Device</td></tr><tr><td style=\"white-space:nowrap\">intervention<a name=\"research-study-focus-type-intervention\"> </a></td><td>Intervention</td></tr><tr><td style=\"white-space:nowrap\">factor<a name=\"research-study-focus-type-factor\"> </a></td><td>Factor</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "brr"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/research-study-focus-type",
+  "version": "5.0.0",
+  "name": "ResearchStudyFocusType",
+  "title": "ResearchStudy Focus Type Code System",
+  "status": "active",
+  "experimental": false,
+  "date": "2022-05-15T16:55:11.085+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Codes for the main intent of the study.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/research-study-focus-type",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "medication",
+      "display": "Medication"
+    },
+    {
+      "code": "device",
+      "display": "Device"
+    },
+    {
+      "code": "intervention",
+      "display": "Intervention"
+    },
+    {
+      "code": "factor",
+      "display": "Factor"
+    }
+  ]
+}

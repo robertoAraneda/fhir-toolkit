@@ -1,0 +1,143 @@
+{
+  "resourceType": "ValueSet",
+  "id": "relatedperson-relationshiptype",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This value set includes codes based on the following rules:</p><ul><li>Include these codes as defined in <a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-ParticipationType.html\"><code>http://terminology.hl7.org/CodeSystem/v3-ParticipationType</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-ParticipationType.html#v3-ParticipationType-WIT\">WIT</a></td><td>witness</td><td>Only with service events. A person witnessing the action happening without doing anything. A witness is not necessarily aware, much less approves of anything stated in the service event. Example for a witness is students watching an operation or an advanced directive witness.</td></tr></table></li><li>Include these codes as defined in <a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html\"><code>http://terminology.hl7.org/CodeSystem/v3-RoleClass</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html#v3-RoleClass-NOT\">NOT</a></td><td>notary public</td><td/></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html#v3-RoleClass-ECON\">ECON</a></td><td>emergency contact</td><td>An entity to be contacted in the event of an emergency.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html#v3-RoleClass-NOK\">NOK</a></td><td>next of kin</td><td>An individual designated for notification as the next of kin for a given entity.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html#v3-RoleClass-GUARD\">GUARD</a></td><td>guardian</td><td>Guardian of a ward</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html#v3-RoleClass-DEPEN\">DEPEN</a></td><td>dependent</td><td>**Description:** A role played by a person covered under a policy or program based on an association with a subscriber, which is recognized by the policy holder.<br/><br/>**Note:** The party playing the role of a dependent is not a claimant in the sense conveyed by the RoleClassCoveredParty CLAIM (claimant). However, a dependent may make a claim under a policy, e.g., a dependent under a health insurance policy may become the claimant for coverage under that policy for wellness examines or if injured and there is no liable third party. In the case of a dependent making a claim, a role type code INSCLM (insured claimant) subtypes the class to indicate that the dependent has filed a claim for services covered under the health insurance policy.<br/><br/>**Example:** The dependent has an association with the subscriber such as a financial dependency or personal relationship such as that of a spouse, or a natural or adopted child. The policy holder may be required by law to recognize certain associations or may have discretion about the associations. For example, a policy holder may dictate the criteria for the dependent status of adult children who are students, such as requiring full time enrollment, or may recognize domestic partners as dependents. Under certain circumstances, the dependent may be under the indirect authority of a responsible party acting as a surrogate for the subscriber, for example, if the subscriber is differently abled or deceased, a guardian ad Lidem or estate executor may be appointed to assume the subscriberaTMs legal standing in the relationship with the dependent.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html#v3-RoleClass-EMP\">EMP</a></td><td>employee</td><td>A relationship between a person or organization and a person or organization formed for the purpose of exchanging work for compensation. The purpose of the role is to identify the type of relationship the employee has to the employer, rather than the nature of the work actually performed. (Contrast with AssignedEntity.)</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html#v3-RoleClass-GUAR\">GUAR</a></td><td>guarantor</td><td>A person or organization (player) that serves as a financial guarantor for another person or organization (scoper).</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleClass.html#v3-RoleClass-CAREGIVER\">CAREGIVER</a></td><td>caregiver</td><td>A person responsible for the primary care of a patient at home.</td></tr></table></li><li>Include these codes as defined in <a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v2-0131.html\"><code>http://terminology.hl7.org/CodeSystem/v2-0131</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v2-0131.html#v2-0131-E\">E</a></td><td>Employer</td><td>Employer</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v2-0131.html#v2-0131-O\">O</a></td><td>Other</td><td>Other</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v2-0131.html#v2-0131-U\">U</a></td><td>Unknown</td><td>Unknown</td></tr></table></li><li>Include these codes as defined in <a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleCode.html\"><code>http://terminology.hl7.org/CodeSystem/v3-RoleCode</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleCode.html#v3-RoleCode-INTPRTER\">INTPRTER</a></td><td>interpreter</td><td>An entity which converts spoken or written language into the language of key participants in an event such as when a provider is obtaining a patient's consent to treatment or permission to disclose information.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleCode.html#v3-RoleCode-POWATT\">POWATT</a></td><td>power of attorney</td><td>A relationship between two people in which one person authorizes another to act for him in a manner which is a legally binding upon the person giving such authority as if he or she personally were to do the acts.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleCode.html#v3-RoleCode-DPOWATT\">DPOWATT</a></td><td>durable power of attorney</td><td>A relationship between two people in which one person authorizes another, usually a family member or relative, to act for him or her in a manner which is a legally binding upon the person giving such authority as if he or she personally were to do the acts that is often limited in the kinds of powers that can be assigned. Unlike ordinary powers of attorney, durable powers can survive for long periods of time, and again, unlike standard powers of attorney, durable powers can continue after incompetency.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleCode.html#v3-RoleCode-HPOWATT\">HPOWATT</a></td><td>healthcare power of attorney</td><td>A relationship between two people in which one person authorizes another to act for him or her in a manner which is a legally binding upon the person giving such authority as if he or she personally were to do the acts that continues (by its terms) to be effective even though the grantor has become mentally incompetent after signing the document.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleCode.html#v3-RoleCode-SPOWATT\">SPOWATT</a></td><td>special power of attorney</td><td>A relationship between two people in which one person authorizes another to act for him or her in a manner which is a legally binding upon the person giving such authority as if he or she personally were to do the acts that is often limited in the kinds of powers that can be assigned.</td></tr><tr><td><a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-RoleCode.html#v3-RoleCode-BILL\">BILL</a></td><td>Billing Contact</td><td>A contact role used to identify a person within a Provider organization that can be contacted for billing purposes (e.g. about the content of the Invoice).</td></tr></table></li></ul></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "pa"
+    }
+  ],
+  "url": "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.3.449"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.3.442"
+    },
+    {
+      "use": "old",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.2.259"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "PatientRelationshipType",
+  "title": "Patient Relationship Type",
+  "status": "draft",
+  "experimental": false,
+  "publisher": "FHIR Project team",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        }
+      ]
+    }
+  ],
+  "description": "A set of codes that can be used to indicate the relationship between a Patient and a Related Person.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+        "concept": [
+          {
+            "code": "WIT"
+          }
+        ]
+      },
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RoleClass",
+        "concept": [
+          {
+            "code": "NOT"
+          },
+          {
+            "code": "ECON"
+          },
+          {
+            "code": "NOK"
+          },
+          {
+            "code": "GUARD"
+          },
+          {
+            "code": "DEPEN"
+          },
+          {
+            "code": "EMP"
+          },
+          {
+            "code": "GUAR"
+          },
+          {
+            "code": "CAREGIVER"
+          }
+        ]
+      },
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+        "concept": [
+          {
+            "code": "E"
+          },
+          {
+            "code": "O"
+          },
+          {
+            "code": "U"
+          }
+        ]
+      },
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+        "concept": [
+          {
+            "code": "INTPRTER"
+          },
+          {
+            "code": "POWATT"
+          },
+          {
+            "code": "DPOWATT"
+          },
+          {
+            "code": "HPOWATT"
+          },
+          {
+            "code": "SPOWATT"
+          },
+          {
+            "code": "BILL"
+          }
+        ]
+      }
+    ]
+  }
+}

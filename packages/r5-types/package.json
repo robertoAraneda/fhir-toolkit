@@ -1,0 +1,36 @@
+{
+  "name": "@fhir-toolkit/r5-types",
+  "version": "0.0.1",
+  "description": "FHIR R5 TypeScript type definitions and valuesets",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "fhir",
+    "r5",
+    "typescript",
+    "types",
+    "healthcare"
+  ],
+  "author": "Roberto Araneda",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

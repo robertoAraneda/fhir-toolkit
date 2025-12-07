@@ -1,0 +1,82 @@
+{
+  "resourceType": "OperationDefinition",
+  "id": "Resource-add",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00"
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>URL: [base]/Resource/[id]/$add</p><p>Parameters</p><table class=\"grid\"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Scope</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr><tr><td>IN</td><td>additions</td><td/><td>1..1</td><td><a href=\"resource.html\">Resource</a></td><td/><td><div><p>Resource containing content to add. See <a href=\"operations-for-large-resources.html\">Operations for Large Resources</a>.</p>\n</div></td></tr><tr><td>OUT</td><td>return</td><td/><td>0..1</td><td><a href=\"resource.html\">Resource</a></td><td/><td><div><p>Resource containing content added. See <a href=\"operations-for-large-resources.html\">Operations for Large Resources</a>.</p>\n</div></td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    }
+  ],
+  "url": "http://hl7.org/fhir/OperationDefinition/Resource-add",
+  "version": "5.0.0",
+  "name": "Add",
+  "title": "Add to an array in a large resource",
+  "status": "draft",
+  "kind": "operation",
+  "experimental": false,
+  "date": "2023-03-26T15:21:02+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/fhir"
+        },
+        {
+          "system": "email",
+          "value": "fhir@lists.hl7.org"
+        }
+      ]
+    }
+  ],
+  "description": "Add content to an array in a large resource such as List or Group. See [Operations for Large Resources](operations-for-large-resources.html).",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "affectsState": true,
+  "code": "add",
+  "resource": [
+    "Resource"
+  ],
+  "system": false,
+  "type": false,
+  "instance": true,
+  "parameter": [
+    {
+      "name": "additions",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "documentation": "Resource containing content to add. See [Operations for Large Resources](operations-for-large-resources.html).",
+      "type": "Resource"
+    },
+    {
+      "name": "return",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "documentation": "Resource containing content added. See [Operations for Large Resources](operations-for-large-resources.html).",
+      "type": "Resource"
+    }
+  ]
+}

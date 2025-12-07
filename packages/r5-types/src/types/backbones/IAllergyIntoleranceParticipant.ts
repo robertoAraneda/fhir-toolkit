@@ -1,0 +1,22 @@
+import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/index.js';
+
+/**
+ * AllergyIntoleranceParticipant Interface
+ * 
+ * Who or what participated in the activities related to the allergy or intolerance and how they were involved
+ * 
+ *
+ * @see https://hl7.org/fhir/R4/allergyintoleranceparticipant.html
+ */
+export interface IAllergyIntoleranceParticipant extends IBackboneElement {
+  /**
+   * Type of involvement
+   */
+  function?: ICodeableConcept;
+
+  /**
+   * Who or what participated in the activities related to the allergy or intolerance
+   */
+  actor: IReference<'Practitioner' | 'PractitionerRole' | 'Patient' | 'RelatedPerson' | 'Device' | 'Organization' | 'CareTeam'>;
+
+}

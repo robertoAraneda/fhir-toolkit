@@ -1,0 +1,84 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "endpoint-environment",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/endpoint-environment</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">prod<a name=\"endpoint-environment-prod\"> </a></td><td>Production</td><td>Production environment and is expected to contain real data and should be protected appropriately</td></tr><tr><td style=\"white-space:nowrap\">staging<a name=\"endpoint-environment-staging\"> </a></td><td>Staging</td><td>Staging environment typically used while preparing for a release to production</td></tr><tr><td style=\"white-space:nowrap\">dev<a name=\"endpoint-environment-dev\"> </a></td><td>Development</td><td>Development environment used while building systems</td></tr><tr><td style=\"white-space:nowrap\">test<a name=\"endpoint-environment-test\"> </a></td><td>Test</td><td>Test environment, it is not intended for production usage.</td></tr><tr><td style=\"white-space:nowrap\">train<a name=\"endpoint-environment-train\"> </a></td><td>Training</td><td>Training environment, it is not intended for production usage and typically contains data specifically prepared for training usage.</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "pa"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/endpoint-environment",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2041"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "EndpointEnvironment",
+  "title": "Endpoint Environment",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "description": "The environment type of the endpoint.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/endpoint-environment",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "prod",
+      "display": "Production",
+      "definition": "Production environment and is expected to contain real data and should be protected appropriately"
+    },
+    {
+      "code": "staging",
+      "display": "Staging",
+      "definition": "Staging environment typically used while preparing for a release to production"
+    },
+    {
+      "code": "dev",
+      "display": "Development",
+      "definition": "Development environment used while building systems"
+    },
+    {
+      "code": "test",
+      "display": "Test",
+      "definition": "Test environment, it is not intended for production usage."
+    },
+    {
+      "code": "train",
+      "display": "Training",
+      "definition": "Training environment, it is not intended for production usage and typically contains data specifically prepared for training usage."
+    }
+  ]
+}

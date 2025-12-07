@@ -1,0 +1,89 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "location-characteristic",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/location-characteristic</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">wheelchair<a name=\"location-characteristic-wheelchair\"> </a></td><td>Wheelchair accessible</td><td>The location is accessible to thosre requiring wheelchair access</td></tr><tr><td style=\"white-space:nowrap\">has-translation<a name=\"location-characteristic-has-translation\"> </a></td><td>translation services available</td><td>The location has translation services available</td></tr><tr><td style=\"white-space:nowrap\">has-oxy-nitro<a name=\"location-characteristic-has-oxy-nitro\"> </a></td><td>oxygen/nitrogen available</td><td>The location has oxygen and nitrogen services available</td></tr><tr><td style=\"white-space:nowrap\">has-neg-press<a name=\"location-characteristic-has-neg-press\"> </a></td><td>negative pressure rooms available</td><td>The location has negative pressure rooms available</td></tr><tr><td style=\"white-space:nowrap\">has-iso-ward<a name=\"location-characteristic-has-iso-ward\"> </a></td><td>isolation ward</td><td>The location is or has an isolation ward</td></tr><tr><td style=\"white-space:nowrap\">has-icu<a name=\"location-characteristic-has-icu\"> </a></td><td>has ICU</td><td>The location is or has an intensive care unit</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "pa"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 3
+    }
+  ],
+  "url": "http://hl7.org/fhir/location-characteristic",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.1970"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "LocationCharacteristic",
+  "title": "Location Characteristic",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "description": "Example Set of Location Characteristics.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/location-characteristic",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "wheelchair",
+      "display": "Wheelchair accessible",
+      "definition": "The location is accessible to thosre requiring wheelchair access"
+    },
+    {
+      "code": "has-translation",
+      "display": "translation services available",
+      "definition": "The location has translation services available"
+    },
+    {
+      "code": "has-oxy-nitro",
+      "display": "oxygen/nitrogen available",
+      "definition": "The location has oxygen and nitrogen services available"
+    },
+    {
+      "code": "has-neg-press",
+      "display": "negative pressure rooms available",
+      "definition": "The location has negative pressure rooms available"
+    },
+    {
+      "code": "has-iso-ward",
+      "display": "isolation ward",
+      "definition": "The location is or has an isolation ward"
+    },
+    {
+      "code": "has-icu",
+      "display": "has ICU",
+      "definition": "The location is or has an intensive care unit"
+    }
+  ]
+}

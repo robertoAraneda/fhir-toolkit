@@ -1,0 +1,74 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "account-aggregate",
+  "meta": {
+    "lastUpdated": "2023-03-26T15:21:02.749+11:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system <code>http://hl7.org/fhir/account-aggregate</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">patient<a name=\"account-aggregate-patient\"> </a></td><td>Patient</td><td>This (aggregated) balance is expected to be paid by the Patient</td></tr><tr><td style=\"white-space:nowrap\">insurance<a name=\"account-aggregate-insurance\"> </a></td><td>Insurance</td><td>This (aggregated) balance is expected to be paid by Insurance coverage(s)</td></tr><tr><td style=\"white-space:nowrap\">total<a name=\"account-aggregate-total\"> </a></td><td>Total</td><td>There is no aggregation on this balance</td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "pa"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 0
+    }
+  ],
+  "url": "http://hl7.org/fhir/account-aggregate",
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.4.642.4.2065"
+    }
+  ],
+  "version": "5.0.0",
+  "name": "AccountAggregate",
+  "title": "Account Aggregate",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-01-05T10:01:24+11:00",
+  "publisher": "HL7 (FHIR Project)",
+  "description": "Indicates who is expected to pay a part of the account balance.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "code": "001",
+          "display": "World"
+        }
+      ]
+    }
+  ],
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/account-aggregate",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "patient",
+      "display": "Patient",
+      "definition": "This (aggregated) balance is expected to be paid by the Patient"
+    },
+    {
+      "code": "insurance",
+      "display": "Insurance",
+      "definition": "This (aggregated) balance is expected to be paid by Insurance coverage(s)"
+    },
+    {
+      "code": "total",
+      "display": "Total",
+      "definition": "There is no aggregation on this balance"
+    }
+  ]
+}
