@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@fhir-toolkit/codegen", "@fhir-toolkit/examples"]
+  "ignore": ["@fhir-toolkit/examples"]
 }
