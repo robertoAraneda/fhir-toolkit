@@ -1,5 +1,15 @@
 # @fhir-toolkit/r4b-models
 
+## 0.2.1
+
+### Patch Changes
+
+- 1da3c4d: Move yafv to optional peerDependency
+
+  The `@fhir-toolkit/yafv` package is now an optional peer dependency instead of a dev dependency.
+  This makes it clear that validation features (`validateOrThrow()`) require yafv to be installed,
+  while basic model/builder functionality works without it.
+
 ## 0.2.0
 
 ### Minor Changes
