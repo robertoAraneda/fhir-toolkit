@@ -51,6 +51,21 @@ export function validateExtension(
     return { valid: false, issues };
   }
 
+  // Basic structural validation: extension can only have one value[x]
+  // This applies to ALL extensions, even unknown ones
+  const valueKeys = Object.keys(extension).filter((key) => key.startsWith('value'));
+  if (valueKeys.length > 1) {
+    issues.push(
+      createIssue(
+        'error',
+        'structure',
+        `Extension can only have one value[x] element, but found: ${valueKeys.join(', ')}`,
+        path
+      )
+    );
+    return { valid: false, issues };
+  }
+
   // Get the extension definition
   const extensionDef = registry.getStructureDefinition(extension.url);
 
