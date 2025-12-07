@@ -1,5 +1,11 @@
 # @fhir-toolkit/r4b-models
 
+## 0.1.1
+
+### Patch Changes
+
+- b8d2bce: Fix workspace protocol dependencies for npm compatibility
+
 ## 0.1.0
 
 ### Minor Changes

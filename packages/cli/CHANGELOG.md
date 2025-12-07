@@ -1,5 +1,14 @@
 # @fhir-toolkit/cli
 
+## 0.1.2
+
+### Patch Changes
+
+- b8d2bce: Fix workspace protocol dependencies for npm compatibility
+- Updated dependencies [b8d2bce]
+  - @fhir-toolkit/r4-models@0.1.1
+  - @fhir-toolkit/yafv@1.1.1
+
 ## 0.1.1
 
 ### Patch Changes

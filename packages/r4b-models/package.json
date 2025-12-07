@@ -1,6 +1,6 @@
 {
   "name": "@fhir-toolkit/r4b-models",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "FHIR R4B models and builders for TypeScript",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

@@ -1,5 +1,13 @@
 # @fhir-toolkit/yafv
 
+## 1.1.1
+
+### Patch Changes
+
+- b8d2bce: Fix workspace protocol dependencies for npm compatibility
+- Updated dependencies [9439d95]
+  - @fhir-toolkit/r5-specs@0.1.0
+
 ## 1.1.0
 
 ### Minor Changes
