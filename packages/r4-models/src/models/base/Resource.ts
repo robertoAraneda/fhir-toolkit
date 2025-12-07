@@ -72,21 +72,37 @@ export abstract class Resource {
   }
 
   /**
+   * Import yafv with a helpful error message if not installed
+   */
+  private async importYafv(): Promise<typeof import('@fhir-toolkit/yafv')> {
+    try {
+      return await import('@fhir-toolkit/yafv');
+    } catch {
+      throw new Error(
+        'Validation requires @fhir-toolkit/yafv to be installed. ' +
+          'Run: npm install @fhir-toolkit/yafv @fhir-toolkit/r4-specs'
+      );
+    }
+  }
+
+  /**
    * Validate the resource against FHIR StructureDefinitions
    * @returns OperationOutcome with validation results
+   * @throws Error if @fhir-toolkit/yafv is not installed
    */
   async validate(): Promise<any> {
-    const { validate } = await import('@fhir-toolkit/yafv');
+    const { validate } = await this.importYafv();
     // Use toJSON() to get only defined properties for validation
     return validate((this as any).toJSON());
   }
 
   /**
    * Validate the resource and throw if invalid
+   * @throws Error if @fhir-toolkit/yafv is not installed
    * @throws Error with validation details if validation fails
    */
   async validateOrThrow(): Promise<void> {
-    const { isValid } = await import('@fhir-toolkit/yafv');
+    const { isValid } = await this.importYafv();
     const outcome = await this.validate();
 
     if (!isValid(outcome)) {
