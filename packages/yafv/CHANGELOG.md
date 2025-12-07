@@ -1,5 +1,13 @@
 # @fhir-toolkit/yafv
 
+## 1.1.2
+
+### Patch Changes
+
+- e052ff7: Fix primitive extension validation for choice types
+  - Skip undefined/null primitive extension values during validation
+  - Support choice type variants in primitive extension validation (e.g., `_deceasedDateTime` for `deceased[x]`)
+
 ## 1.1.1
 
 ### Patch Changes
