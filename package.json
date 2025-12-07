@@ -20,7 +20,7 @@
     "generate:all": "pnpm --filter @fhir-toolkit/codegen generate:r4 && pnpm --filter @fhir-toolkit/codegen generate:r4b && pnpm --filter @fhir-toolkit/codegen generate:r5",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish"
+    "release": "turbo run build && pnpm publish -r --access public"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
