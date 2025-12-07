@@ -127,7 +127,7 @@ export class CommunicationRequestBuilder extends DomainResourceBuilder<Communica
   // ============================================================================
 
   /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrencePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -147,31 +147,6 @@ export class CommunicationRequestBuilder extends DomainResourceBuilder<Communica
     if (type !== 'Period') {
       otherKeys.push('occurrencePeriod' as keyof ICommunicationRequest);
       otherKeys.push('_occurrencePeriod' as keyof ICommunicationRequest);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof ICommunicationRequest;
-    const otherKeys: (keyof ICommunicationRequest)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof ICommunicationRequest);
-      otherKeys.push('_reasonCode' as keyof ICommunicationRequest);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof ICommunicationRequest);
-      otherKeys.push('_reasonReference' as keyof ICommunicationRequest);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -242,6 +217,22 @@ export class CommunicationRequestBuilder extends DomainResourceBuilder<Communica
    */
   addRecipient(recipient: IReference<'Device' | 'Organization' | 'Patient' | 'Practitioner' | 'PractitionerRole' | 'RelatedPerson' | 'Group' | 'CareTeam' | 'HealthcareService'>): this {
     return this.addToArray('recipient', recipient);
+  }
+
+  /**
+   * Add reasonCode
+   * Why is communication needed?
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why is communication needed?
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

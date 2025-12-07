@@ -56,7 +56,7 @@ export class BiologicallyDerivedProductProcessingBuilder extends BackboneElement
   // ============================================================================
 
   /**
-   * Set time choice type
+   * Set time choice type (timeDateTime, timePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *

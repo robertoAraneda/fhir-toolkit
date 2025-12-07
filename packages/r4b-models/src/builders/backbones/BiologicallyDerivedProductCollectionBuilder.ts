@@ -46,7 +46,7 @@ export class BiologicallyDerivedProductCollectionBuilder extends BackboneElement
   // ============================================================================
 
   /**
-   * Set collected choice type
+   * Set collected choice type (collectedDateTime, collectedPeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *

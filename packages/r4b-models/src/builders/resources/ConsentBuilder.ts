@@ -91,7 +91,7 @@ export class ConsentBuilder extends DomainResourceBuilder<Consent, IConsent> {
   // ============================================================================
 
   /**
-   * Set source choice type
+   * Set source choice type (sourceAttachment, sourceReference)
    * @param type - 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *

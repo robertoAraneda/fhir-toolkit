@@ -90,7 +90,7 @@ export class MedicationStatementBuilder extends DomainResourceBuilder<Medication
   // ============================================================================
 
   /**
-   * Set medication choice type
+   * Set medication choice type (medicationCodeableConcept, medicationReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -115,7 +115,7 @@ export class MedicationStatementBuilder extends DomainResourceBuilder<Medication
   }
 
   /**
-   * Set effective choice type
+   * Set effective choice type (effectiveDateTime, effectivePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -135,31 +135,6 @@ export class MedicationStatementBuilder extends DomainResourceBuilder<Medication
     if (type !== 'Period') {
       otherKeys.push('effectivePeriod' as keyof IMedicationStatement);
       otherKeys.push('_effectivePeriod' as keyof IMedicationStatement);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof IMedicationStatement;
-    const otherKeys: (keyof IMedicationStatement)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IMedicationStatement);
-      otherKeys.push('_reasonCode' as keyof IMedicationStatement);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IMedicationStatement);
-      otherKeys.push('_reasonReference' as keyof IMedicationStatement);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -206,6 +181,22 @@ export class MedicationStatementBuilder extends DomainResourceBuilder<Medication
    */
   addDerivedFrom(derivedFrom: IReference<'Resource'>): this {
     return this.addToArray('derivedFrom', derivedFrom);
+  }
+
+  /**
+   * Add reasonCode
+   * Reason for why the medication is being/was taken
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Condition or observation that supports why the medication is being/was taken
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

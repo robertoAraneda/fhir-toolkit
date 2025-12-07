@@ -47,7 +47,7 @@ export class ClaimAccidentBuilder extends BackboneElementBuilder<ClaimAccident, 
   // ============================================================================
 
   /**
-   * Set location choice type
+   * Set location choice type (locationAddress, locationReference)
    * @param type - 'Address' | 'Reference'
    * @param value - The value for the chosen type
    *

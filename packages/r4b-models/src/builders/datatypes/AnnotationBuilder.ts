@@ -45,7 +45,7 @@ export class AnnotationBuilder extends ElementBuilder<Annotation, IAnnotation> {
   // ============================================================================
 
   /**
-   * Set author choice type
+   * Set author choice type (authorReference, authorString)
    * @param type - 'Reference' | 'String'
    * @param value - The value for the chosen type
    *

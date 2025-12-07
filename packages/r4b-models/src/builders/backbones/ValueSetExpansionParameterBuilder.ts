@@ -35,7 +35,7 @@ export class ValueSetExpansionParameterBuilder extends BackboneElementBuilder<Va
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueString, valueBoolean, valueInteger, valueDecimal, valueUri, valueCode, valueDateTime)
    * @param type - 'String' | 'Boolean' | 'Integer' | 'Decimal' | 'Uri' | 'Code' | 'DateTime'
    * @param value - The value for the chosen type
    *

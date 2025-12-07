@@ -151,7 +151,7 @@ export class RequestGroupActionBuilder extends BackboneElementBuilder<RequestGro
   // ============================================================================
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingDateTime, timingAge, timingPeriod, timingDuration, timingRange, timingTiming)
    * @param type - 'DateTime' | 'Age' | 'Period' | 'Duration' | 'Range' | 'Timing'
    * @param value - The value for the chosen type
    *

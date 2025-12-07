@@ -56,7 +56,7 @@ export class ClaimDiagnosisBuilder extends BackboneElementBuilder<ClaimDiagnosis
   // ============================================================================
 
   /**
-   * Set diagnosis choice type
+   * Set diagnosis choice type (diagnosisCodeableConcept, diagnosisReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

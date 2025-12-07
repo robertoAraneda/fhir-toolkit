@@ -132,7 +132,7 @@ export class ObservationBuilder extends DomainResourceBuilder<Observation, IObse
   // ============================================================================
 
   /**
-   * Set effective choice type
+   * Set effective choice type (effectiveDateTime, effectivePeriod, effectiveTiming, effectiveInstant)
    * @param type - 'DateTime' | 'Period' | 'Timing' | 'Instant'
    * @param value - The value for the chosen type
    *
@@ -165,7 +165,7 @@ export class ObservationBuilder extends DomainResourceBuilder<Observation, IObse
   }
 
   /**
-   * Set value choice type
+   * Set value choice type (valueQuantity, valueCodeableConcept, valueString, valueBoolean, valueInteger, valueRange, valueRatio, valueSampledData, valueTime, valueDateTime, valuePeriod)
    * @param type - 'Quantity' | 'CodeableConcept' | 'String' | 'Boolean' | 'Integer' | 'Range' | 'Ratio' | 'SampledData' | 'Time' | 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *

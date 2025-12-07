@@ -126,7 +126,7 @@ export class RiskAssessmentBuilder extends DomainResourceBuilder<RiskAssessment,
   // ============================================================================
 
   /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrencePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -150,31 +150,6 @@ export class RiskAssessmentBuilder extends DomainResourceBuilder<RiskAssessment,
     return this.setChoiceType(key, value, otherKeys);
   }
 
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof IRiskAssessment;
-    const otherKeys: (keyof IRiskAssessment)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IRiskAssessment);
-      otherKeys.push('_reasonCode' as keyof IRiskAssessment);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IRiskAssessment);
-      otherKeys.push('_reasonReference' as keyof IRiskAssessment);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
   // ============================================================================
   // Array Properties
   // ============================================================================
@@ -185,6 +160,22 @@ export class RiskAssessmentBuilder extends DomainResourceBuilder<RiskAssessment,
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add reasonCode
+   * Why the assessment was necessary?
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why the assessment was necessary?
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

@@ -85,7 +85,7 @@ export class EvidenceVariableCharacteristicBuilder extends BackboneElementBuilde
   // ============================================================================
 
   /**
-   * Set definition choice type
+   * Set definition choice type (definitionReference, definitionCanonical, definitionCodeableConcept, definitionExpression)
    * @param type - 'Reference' | 'Canonical' | 'CodeableConcept' | 'Expression'
    * @param value - The value for the chosen type
    *

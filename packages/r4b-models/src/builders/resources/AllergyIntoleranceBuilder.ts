@@ -141,7 +141,7 @@ export class AllergyIntoleranceBuilder extends DomainResourceBuilder<AllergyInto
   // ============================================================================
 
   /**
-   * Set onset choice type
+   * Set onset choice type (onsetDateTime, onsetAge, onsetPeriod, onsetRange, onsetString)
    * @param type - 'DateTime' | 'Age' | 'Period' | 'Range' | 'String'
    * @param value - The value for the chosen type
    *

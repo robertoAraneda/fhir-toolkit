@@ -23,7 +23,7 @@ export class CoverageEligibilityRequestItemDiagnosisBuilder extends BackboneElem
   // ============================================================================
 
   /**
-   * Set diagnosis choice type
+   * Set diagnosis choice type (diagnosisCodeableConcept, diagnosisReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

@@ -65,7 +65,7 @@ export class RiskAssessmentPredictionBuilder extends BackboneElementBuilder<Risk
   // ============================================================================
 
   /**
-   * Set probability choice type
+   * Set probability choice type (probabilityDecimal, probabilityRange)
    * @param type - 'Decimal' | 'Range'
    * @param value - The value for the chosen type
    *
@@ -90,7 +90,7 @@ export class RiskAssessmentPredictionBuilder extends BackboneElementBuilder<Risk
   }
 
   /**
-   * Set when choice type
+   * Set when choice type (whenPeriod, whenRange)
    * @param type - 'Period' | 'Range'
    * @param value - The value for the chosen type
    *

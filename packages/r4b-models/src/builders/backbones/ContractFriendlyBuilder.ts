@@ -23,7 +23,7 @@ export class ContractFriendlyBuilder extends BackboneElementBuilder<ContractFrie
   // ============================================================================
 
   /**
-   * Set content choice type
+   * Set content choice type (contentAttachment, contentReference)
    * @param type - 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *

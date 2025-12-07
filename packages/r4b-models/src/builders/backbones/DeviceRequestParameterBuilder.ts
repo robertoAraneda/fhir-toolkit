@@ -38,7 +38,7 @@ export class DeviceRequestParameterBuilder extends BackboneElementBuilder<Device
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueQuantity, valueRange, valueBoolean)
    * @param type - 'CodeableConcept' | 'Quantity' | 'Range' | 'Boolean'
    * @param value - The value for the chosen type
    *

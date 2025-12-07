@@ -52,7 +52,7 @@ export class ObservationComponentBuilder extends BackboneElementBuilder<Observat
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueQuantity, valueCodeableConcept, valueString, valueBoolean, valueInteger, valueRange, valueRatio, valueSampledData, valueTime, valueDateTime, valuePeriod)
    * @param type - 'Quantity' | 'CodeableConcept' | 'String' | 'Boolean' | 'Integer' | 'Range' | 'Ratio' | 'SampledData' | 'Time' | 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *

@@ -84,7 +84,7 @@ export class SpecimenDefinitionTypeTestedContainerBuilder extends BackboneElemen
   // ============================================================================
 
   /**
-   * Set minimumVolume choice type
+   * Set minimumVolume choice type (minimumVolumeQuantity, minimumVolumeString)
    * @param type - 'Quantity' | 'String'
    * @param value - The value for the chosen type
    *

@@ -58,7 +58,7 @@ export class EvidenceReportSubjectCharacteristicBuilder extends BackboneElementB
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueReference, valueCodeableConcept, valueBoolean, valueQuantity, valueRange)
    * @param type - 'Reference' | 'CodeableConcept' | 'Boolean' | 'Quantity' | 'Range'
    * @param value - The value for the chosen type
    *

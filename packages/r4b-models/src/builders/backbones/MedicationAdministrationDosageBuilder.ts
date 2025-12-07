@@ -74,7 +74,7 @@ export class MedicationAdministrationDosageBuilder extends BackboneElementBuilde
   // ============================================================================
 
   /**
-   * Set rate choice type
+   * Set rate choice type (rateRatio, rateQuantity)
    * @param type - 'Ratio' | 'Quantity'
    * @param value - The value for the chosen type
    *

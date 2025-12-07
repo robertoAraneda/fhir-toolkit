@@ -115,7 +115,7 @@ export class DeviceDefinitionBuilder extends DomainResourceBuilder<DeviceDefinit
   // ============================================================================
 
   /**
-   * Set manufacturer choice type
+   * Set manufacturer choice type (manufacturerString, manufacturerReference)
    * @param type - 'String' | 'Reference'
    * @param value - The value for the chosen type
    *

@@ -35,7 +35,7 @@ export class AuditEventEntityDetailBuilder extends BackboneElementBuilder<AuditE
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueString, valueBase64Binary)
    * @param type - 'String' | 'Base64Binary'
    * @param value - The value for the chosen type
    *

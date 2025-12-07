@@ -1,6 +1,5 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { ImagingStudy } from '../../models/resources/ImagingStudy.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICodeableConcept,
@@ -95,6 +94,15 @@ export class ImagingStudyBuilder extends DomainResourceBuilder<ImagingStudy, IIm
   }
 
   /**
+   * Set procedureReference
+   * The performed Procedure reference
+   */
+  setProcedureReference(procedureReference: IReference<'Procedure'>): this {
+    this.data.procedureReference = procedureReference;
+    return this;
+  }
+
+  /**
    * Set location
    * Where ImagingStudy occurred
    */
@@ -110,60 +118,6 @@ export class ImagingStudyBuilder extends DomainResourceBuilder<ImagingStudy, IIm
   setDescription(description: string): this {
     this.data.description = description;
     return this;
-  }
-
-  // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set procedure choice type
-   * @param type - 'Reference' | 'Code'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setProcedure('Reference', value)
-   */
-  setProcedure<T extends 'Reference' | 'Code'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `procedure${type}` as keyof IImagingStudy;
-    const otherKeys: (keyof IImagingStudy)[] = [];
-    if (type !== 'Reference') {
-      otherKeys.push('procedureReference' as keyof IImagingStudy);
-      otherKeys.push('_procedureReference' as keyof IImagingStudy);
-    }
-    if (type !== 'Code') {
-      otherKeys.push('procedureCode' as keyof IImagingStudy);
-      otherKeys.push('_procedureCode' as keyof IImagingStudy);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof IImagingStudy;
-    const otherKeys: (keyof IImagingStudy)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IImagingStudy);
-      otherKeys.push('_reasonCode' as keyof IImagingStudy);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IImagingStudy);
-      otherKeys.push('_reasonReference' as keyof IImagingStudy);
-    }
-    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================
@@ -208,6 +162,30 @@ export class ImagingStudyBuilder extends DomainResourceBuilder<ImagingStudy, IIm
    */
   addEndpoint(endpoint: IReference<'Endpoint'>): this {
     return this.addToArray('endpoint', endpoint);
+  }
+
+  /**
+   * Add procedureCode
+   * The performed procedure code
+   */
+  addProcedureCode(procedureCode: ICodeableConcept): this {
+    return this.addToArray('procedureCode', procedureCode);
+  }
+
+  /**
+   * Add reasonCode
+   * Why the study was requested
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why was study performed
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'Media' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

@@ -1,6 +1,5 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { MolecularSequenceReferenceSeq } from '../../models/backbones/MolecularSequenceReferenceSeq.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IMolecularSequenceReferenceSeq,
@@ -53,11 +52,29 @@ export class MolecularSequenceReferenceSeqBuilder extends BackboneElementBuilder
   }
 
   /**
+   * Set referenceSeqId
+   * Reference identifier
+   */
+  setReferenceSeqId(referenceSeqId: ICodeableConcept): this {
+    this.data.referenceSeqId = referenceSeqId;
+    return this;
+  }
+
+  /**
    * Set referenceSeqPointer
    * A pointer to another MolecularSequence entity as reference sequence
    */
   setReferenceSeqPointer(referenceSeqPointer: IReference<'MolecularSequence'>): this {
     this.data.referenceSeqPointer = referenceSeqPointer;
+    return this;
+  }
+
+  /**
+   * Set referenceSeqString
+   * A string to represent reference sequence
+   */
+  setReferenceSeqString(referenceSeqString: string): this {
+    this.data.referenceSeqString = referenceSeqString;
     return this;
   }
 
@@ -86,35 +103,6 @@ export class MolecularSequenceReferenceSeqBuilder extends BackboneElementBuilder
   setWindowEnd(windowEnd: number): this {
     this.data.windowEnd = windowEnd;
     return this;
-  }
-
-  // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set referenceSeq choice type
-   * @param type - 'Id' | 'String'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReferenceSeq('Id', value)
-   */
-  setReferenceSeq<T extends 'Id' | 'String'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `referenceSeq${type}` as keyof IMolecularSequenceReferenceSeq;
-    const otherKeys: (keyof IMolecularSequenceReferenceSeq)[] = [];
-    if (type !== 'Id') {
-      otherKeys.push('referenceSeqId' as keyof IMolecularSequenceReferenceSeq);
-      otherKeys.push('_referenceSeqId' as keyof IMolecularSequenceReferenceSeq);
-    }
-    if (type !== 'String') {
-      otherKeys.push('referenceSeqString' as keyof IMolecularSequenceReferenceSeq);
-      otherKeys.push('_referenceSeqString' as keyof IMolecularSequenceReferenceSeq);
-    }
-    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================

@@ -38,7 +38,7 @@ export class CompositionRelatesToBuilder extends BackboneElementBuilder<Composit
   // ============================================================================
 
   /**
-   * Set target choice type
+   * Set target choice type (targetIdentifier, targetReference)
    * @param type - 'Identifier' | 'Reference'
    * @param value - The value for the chosen type
    *

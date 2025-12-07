@@ -107,7 +107,7 @@ export class ResearchElementDefinitionCharacteristicBuilder extends BackboneElem
   // ============================================================================
 
   /**
-   * Set definition choice type
+   * Set definition choice type (definitionCodeableConcept, definitionCanonical, definitionExpression, definitionDataRequirement)
    * @param type - 'CodeableConcept' | 'Canonical' | 'Expression' | 'DataRequirement'
    * @param value - The value for the chosen type
    *
@@ -140,7 +140,7 @@ export class ResearchElementDefinitionCharacteristicBuilder extends BackboneElem
   }
 
   /**
-   * Set studyEffective choice type
+   * Set studyEffective choice type (studyEffectiveDateTime, studyEffectivePeriod, studyEffectiveDuration, studyEffectiveTiming)
    * @param type - 'DateTime' | 'Period' | 'Duration' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -173,7 +173,7 @@ export class ResearchElementDefinitionCharacteristicBuilder extends BackboneElem
   }
 
   /**
-   * Set participantEffective choice type
+   * Set participantEffective choice type (participantEffectiveDateTime, participantEffectivePeriod, participantEffectiveDuration, participantEffectiveTiming)
    * @param type - 'DateTime' | 'Period' | 'Duration' | 'Timing'
    * @param value - The value for the chosen type
    *

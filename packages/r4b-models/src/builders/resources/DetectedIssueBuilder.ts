@@ -100,7 +100,7 @@ export class DetectedIssueBuilder extends DomainResourceBuilder<DetectedIssue, I
   // ============================================================================
 
   /**
-   * Set identified choice type
+   * Set identified choice type (identifiedDateTime, identifiedPeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *

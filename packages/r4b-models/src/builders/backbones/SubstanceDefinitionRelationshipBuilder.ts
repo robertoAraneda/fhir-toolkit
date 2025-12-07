@@ -67,7 +67,7 @@ export class SubstanceDefinitionRelationshipBuilder extends BackboneElementBuild
   // ============================================================================
 
   /**
-   * Set substanceDefinition choice type
+   * Set substanceDefinition choice type (substanceDefinitionReference, substanceDefinitionCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *
@@ -92,7 +92,7 @@ export class SubstanceDefinitionRelationshipBuilder extends BackboneElementBuild
   }
 
   /**
-   * Set amount choice type
+   * Set amount choice type (amountQuantity, amountRatio, amountString)
    * @param type - 'Quantity' | 'Ratio' | 'String'
    * @param value - The value for the chosen type
    *

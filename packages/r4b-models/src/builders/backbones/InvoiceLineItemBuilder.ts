@@ -39,7 +39,7 @@ export class InvoiceLineItemBuilder extends BackboneElementBuilder<InvoiceLineIt
   // ============================================================================
 
   /**
-   * Set chargeItem choice type
+   * Set chargeItem choice type (chargeItemReference, chargeItemCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *

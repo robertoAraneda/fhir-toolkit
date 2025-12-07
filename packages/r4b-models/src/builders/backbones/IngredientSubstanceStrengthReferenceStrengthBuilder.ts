@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { IngredientSubstanceStrengthReferenceStrength } from '../../models/backbones/IngredientSubstanceStrengthReferenceStrength.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   ICodeableReference,
@@ -35,30 +36,41 @@ export class IngredientSubstanceStrengthReferenceStrengthBuilder extends Backbon
   }
 
   /**
-   * Set strengthRatio
-   * Strength expressed in terms of a reference substance
-   */
-  setStrengthRatio(strengthRatio: IRatio): this {
-    this.data.strengthRatio = strengthRatio;
-    return this;
-  }
-
-  /**
-   * Set strengthRatioRange
-   * Strength expressed in terms of a reference substance
-   */
-  setStrengthRatioRange(strengthRatioRange: IRatioRange): this {
-    this.data.strengthRatioRange = strengthRatioRange;
-    return this;
-  }
-
-  /**
    * Set measurementPoint
    * When strength is measured at a particular point or distance
    */
   setMeasurementPoint(measurementPoint: string): this {
     this.data.measurementPoint = measurementPoint;
     return this;
+  }
+
+  // ============================================================================
+  // Choice Types
+  // ============================================================================
+
+  /**
+   * Set strength choice type (strengthRatio, strengthRatioRange)
+   * @param type - 'Ratio' | 'RatioRange'
+   * @param value - The value for the chosen type
+   *
+   * @example
+   * builder.setStrength('Ratio', value)
+   */
+  setStrength<T extends 'Ratio' | 'RatioRange'>(
+    type: T,
+    value: ChoiceTypeValue<T>
+  ): this {
+    const key = `strength${type}` as keyof IIngredientSubstanceStrengthReferenceStrength;
+    const otherKeys: (keyof IIngredientSubstanceStrengthReferenceStrength)[] = [];
+    if (type !== 'Ratio') {
+      otherKeys.push('strengthRatio' as keyof IIngredientSubstanceStrengthReferenceStrength);
+      otherKeys.push('_strengthRatio' as keyof IIngredientSubstanceStrengthReferenceStrength);
+    }
+    if (type !== 'RatioRange') {
+      otherKeys.push('strengthRatioRange' as keyof IIngredientSubstanceStrengthReferenceStrength);
+      otherKeys.push('_strengthRatioRange' as keyof IIngredientSubstanceStrengthReferenceStrength);
+    }
+    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================

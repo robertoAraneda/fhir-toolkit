@@ -73,6 +73,24 @@ export class ContractBuilder extends DomainResourceBuilder<Contract, IContract> 
   }
 
   /**
+   * Set instantiatesCanonical
+   * Source Contract Definition
+   */
+  setInstantiatesCanonical(instantiatesCanonical: IReference<'Contract'>): this {
+    this.data.instantiatesCanonical = instantiatesCanonical;
+    return this;
+  }
+
+  /**
+   * Set instantiatesUri
+   * External Contract Definition
+   */
+  setInstantiatesUri(instantiatesUri: string): this {
+    this.data.instantiatesUri = instantiatesUri;
+    return this;
+  }
+
+  /**
    * Set contentDerivative
    * Content derived from the basal information
    */
@@ -176,32 +194,7 @@ export class ContractBuilder extends DomainResourceBuilder<Contract, IContract> 
   // ============================================================================
 
   /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `instantiates${type}` as keyof IContract;
-    const otherKeys: (keyof IContract)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof IContract);
-      otherKeys.push('_instantiatesCanonical' as keyof IContract);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof IContract);
-      otherKeys.push('_instantiatesUri' as keyof IContract);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set topic choice type
+   * Set topic choice type (topicCodeableConcept, topicReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -226,7 +219,7 @@ export class ContractBuilder extends DomainResourceBuilder<Contract, IContract> 
   }
 
   /**
-   * Set legallyBinding choice type
+   * Set legallyBinding choice type (legallyBindingAttachment, legallyBindingReference)
    * @param type - 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *

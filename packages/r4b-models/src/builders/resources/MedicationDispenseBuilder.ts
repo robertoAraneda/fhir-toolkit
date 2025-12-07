@@ -146,7 +146,7 @@ export class MedicationDispenseBuilder extends DomainResourceBuilder<MedicationD
   // ============================================================================
 
   /**
-   * Set statusReason choice type
+   * Set statusReason choice type (statusReasonCodeableConcept, statusReasonReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -171,7 +171,7 @@ export class MedicationDispenseBuilder extends DomainResourceBuilder<MedicationD
   }
 
   /**
-   * Set medication choice type
+   * Set medication choice type (medicationCodeableConcept, medicationReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

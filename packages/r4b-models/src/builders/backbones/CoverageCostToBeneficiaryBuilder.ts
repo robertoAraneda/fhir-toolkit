@@ -40,7 +40,7 @@ export class CoverageCostToBeneficiaryBuilder extends BackboneElementBuilder<Cov
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueQuantity, valueMoney)
    * @param type - 'Quantity' | 'Money'
    * @param value - The value for the chosen type
    *

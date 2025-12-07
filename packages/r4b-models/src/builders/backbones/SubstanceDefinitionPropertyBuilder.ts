@@ -38,7 +38,7 @@ export class SubstanceDefinitionPropertyBuilder extends BackboneElementBuilder<S
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueQuantity, valueDate, valueBoolean, valueAttachment)
    * @param type - 'CodeableConcept' | 'Quantity' | 'Date' | 'Boolean' | 'Attachment'
    * @param value - The value for the chosen type
    *

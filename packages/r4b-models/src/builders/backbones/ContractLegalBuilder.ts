@@ -23,7 +23,7 @@ export class ContractLegalBuilder extends BackboneElementBuilder<ContractLegal, 
   // ============================================================================
 
   /**
-   * Set content choice type
+   * Set content choice type (contentAttachment, contentReference)
    * @param type - 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *

@@ -40,7 +40,7 @@ export class CitationCitedArtifactRelatesToBuilder extends BackboneElementBuilde
   // ============================================================================
 
   /**
-   * Set target choice type
+   * Set target choice type (targetUri, targetIdentifier, targetReference, targetAttachment)
    * @param type - 'Uri' | 'Identifier' | 'Reference' | 'Attachment'
    * @param value - The value for the chosen type
    *

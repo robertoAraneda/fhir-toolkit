@@ -1,6 +1,5 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { CarePlanActivity } from '../../models/backbones/CarePlanActivity.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICarePlanActivity,
@@ -18,7 +17,7 @@ import type {
  * @example
  * const carePlanActivity = new CarePlanActivityBuilder()
  *   .setReference(value)
- *   .addProgress({ ... })
+ *   .addOutcomeCodeableConcept({ ... })
  *   .build();
  */
 export class CarePlanActivityBuilder extends BackboneElementBuilder<CarePlanActivity, ICarePlanActivity> {
@@ -45,37 +44,24 @@ export class CarePlanActivityBuilder extends BackboneElementBuilder<CarePlanActi
   }
 
   // ============================================================================
-  // Choice Types
+  // Array Properties
   // ============================================================================
 
   /**
-   * Set outcome choice type
-   * @param type - 'CodeableConcept' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setOutcome('CodeableConcept', value)
+   * Add outcomeCodeableConcept
+   * Results of the activity
    */
-  setOutcome<T extends 'CodeableConcept' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `outcome${type}` as keyof ICarePlanActivity;
-    const otherKeys: (keyof ICarePlanActivity)[] = [];
-    if (type !== 'CodeableConcept') {
-      otherKeys.push('outcomeCodeableConcept' as keyof ICarePlanActivity);
-      otherKeys.push('_outcomeCodeableConcept' as keyof ICarePlanActivity);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('outcomeReference' as keyof ICarePlanActivity);
-      otherKeys.push('_outcomeReference' as keyof ICarePlanActivity);
-    }
-    return this.setChoiceType(key, value, otherKeys);
+  addOutcomeCodeableConcept(outcomeCodeableConcept: ICodeableConcept): this {
+    return this.addToArray('outcomeCodeableConcept', outcomeCodeableConcept);
   }
 
-  // ============================================================================
-  // Array Properties
-  // ============================================================================
+  /**
+   * Add outcomeReference
+   * Appointment, Encounter, Procedure, etc.
+   */
+  addOutcomeReference(outcomeReference: IReference<'Resource'>): this {
+    return this.addToArray('outcomeReference', outcomeReference);
+  }
 
   /**
    * Add progress

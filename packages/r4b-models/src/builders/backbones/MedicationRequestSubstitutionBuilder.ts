@@ -36,7 +36,7 @@ export class MedicationRequestSubstitutionBuilder extends BackboneElementBuilder
   // ============================================================================
 
   /**
-   * Set allowed choice type
+   * Set allowed choice type (allowedBoolean, allowedCodeableConcept)
    * @param type - 'Boolean' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *

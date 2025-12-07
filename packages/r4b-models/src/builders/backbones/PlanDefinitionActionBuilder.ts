@@ -155,7 +155,7 @@ export class PlanDefinitionActionBuilder extends BackboneElementBuilder<PlanDefi
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference, subjectCanonical)
    * @param type - 'CodeableConcept' | 'Reference' | 'Canonical'
    * @param value - The value for the chosen type
    *
@@ -184,7 +184,7 @@ export class PlanDefinitionActionBuilder extends BackboneElementBuilder<PlanDefi
   }
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingDateTime, timingAge, timingPeriod, timingDuration, timingRange, timingTiming)
    * @param type - 'DateTime' | 'Age' | 'Period' | 'Duration' | 'Range' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -225,7 +225,7 @@ export class PlanDefinitionActionBuilder extends BackboneElementBuilder<PlanDefi
   }
 
   /**
-   * Set definition choice type
+   * Set definition choice type (definitionCanonical, definitionUri)
    * @param type - 'Canonical' | 'Uri'
    * @param value - The value for the chosen type
    *

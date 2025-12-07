@@ -25,7 +25,7 @@ export class QuestionnaireItemInitialBuilder extends BackboneElementBuilder<Ques
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueBoolean, valueDecimal, valueInteger, valueDate, valueDateTime, valueTime, valueString, valueUri, valueAttachment, valueCoding, valueQuantity, valueReference)
    * @param type - 'Boolean' | 'Decimal' | 'Integer' | 'Date' | 'DateTime' | 'Time' | 'String' | 'Uri' | 'Attachment' | 'Coding' | 'Quantity' | 'Reference'
    * @param value - The value for the chosen type
    *

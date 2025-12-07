@@ -47,7 +47,7 @@ export class PlanDefinitionActionRelatedActionBuilder extends BackboneElementBui
   // ============================================================================
 
   /**
-   * Set offset choice type
+   * Set offset choice type (offsetDuration, offsetRange)
    * @param type - 'Duration' | 'Range'
    * @param value - The value for the chosen type
    *

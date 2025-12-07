@@ -115,7 +115,7 @@ export class ClaimItemBuilder extends BackboneElementBuilder<ClaimItem, IClaimIt
   // ============================================================================
 
   /**
-   * Set serviced choice type
+   * Set serviced choice type (servicedDate, servicedPeriod)
    * @param type - 'Date' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -140,7 +140,7 @@ export class ClaimItemBuilder extends BackboneElementBuilder<ClaimItem, IClaimIt
   }
 
   /**
-   * Set location choice type
+   * Set location choice type (locationCodeableConcept, locationAddress, locationReference)
    * @param type - 'CodeableConcept' | 'Address' | 'Reference'
    * @param value - The value for the chosen type
    *

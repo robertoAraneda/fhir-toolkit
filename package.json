@@ -13,9 +13,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "test": "turbo run test",
+    "test:coverage": "vitest run --coverage",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "clean": "turbo run clean && rm -rf node_modules",
+    "generate:all": "pnpm --filter @fhir-toolkit/codegen generate:r4 && pnpm --filter @fhir-toolkit/codegen generate:r4b && pnpm --filter @fhir-toolkit/codegen generate:r5",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build && changeset publish"

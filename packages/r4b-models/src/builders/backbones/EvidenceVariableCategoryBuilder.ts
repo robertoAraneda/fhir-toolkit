@@ -38,7 +38,7 @@ export class EvidenceVariableCategoryBuilder extends BackboneElementBuilder<Evid
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueQuantity, valueRange)
    * @param type - 'CodeableConcept' | 'Quantity' | 'Range'
    * @param value - The value for the chosen type
    *

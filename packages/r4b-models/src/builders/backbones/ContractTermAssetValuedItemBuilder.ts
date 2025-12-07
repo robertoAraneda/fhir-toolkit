@@ -131,7 +131,7 @@ export class ContractTermAssetValuedItemBuilder extends BackboneElementBuilder<C
   // ============================================================================
 
   /**
-   * Set entity choice type
+   * Set entity choice type (entityCodeableConcept, entityReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

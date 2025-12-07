@@ -1,6 +1,5 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { ClinicalImpressionFinding } from '../../models/backbones/ClinicalImpressionFinding.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IClinicalImpressionFinding,
   ICodeableConcept,
@@ -15,7 +14,7 @@ import type {
  *
  * @example
  * const clinicalImpressionFinding = new ClinicalImpressionFindingBuilder()
- *   .setBasis(value)
+ *   .setItemCodeableConcept(value)
  *   .build();
  */
 export class ClinicalImpressionFindingBuilder extends BackboneElementBuilder<ClinicalImpressionFinding, IClinicalImpressionFinding> {
@@ -24,41 +23,30 @@ export class ClinicalImpressionFindingBuilder extends BackboneElementBuilder<Cli
   // ============================================================================
 
   /**
+   * Set itemCodeableConcept
+   * What was found
+   */
+  setItemCodeableConcept(itemCodeableConcept: ICodeableConcept): this {
+    this.data.itemCodeableConcept = itemCodeableConcept;
+    return this;
+  }
+
+  /**
+   * Set itemReference
+   * What was found
+   */
+  setItemReference(itemReference: IReference<'Condition' | 'Observation' | 'Media'>): this {
+    this.data.itemReference = itemReference;
+    return this;
+  }
+
+  /**
    * Set basis
    * Which investigations support finding
    */
   setBasis(basis: string): this {
     this.data.basis = basis;
     return this;
-  }
-
-  // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set item choice type
-   * @param type - 'CodeableConcept' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setItem('CodeableConcept', value)
-   */
-  setItem<T extends 'CodeableConcept' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `item${type}` as keyof IClinicalImpressionFinding;
-    const otherKeys: (keyof IClinicalImpressionFinding)[] = [];
-    if (type !== 'CodeableConcept') {
-      otherKeys.push('itemCodeableConcept' as keyof IClinicalImpressionFinding);
-      otherKeys.push('_itemCodeableConcept' as keyof IClinicalImpressionFinding);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('itemReference' as keyof IClinicalImpressionFinding);
-      otherKeys.push('_itemReference' as keyof IClinicalImpressionFinding);
-    }
-    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================

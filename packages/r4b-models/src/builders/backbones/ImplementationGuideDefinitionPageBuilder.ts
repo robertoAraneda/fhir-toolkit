@@ -47,7 +47,7 @@ export class ImplementationGuideDefinitionPageBuilder extends BackboneElementBui
   // ============================================================================
 
   /**
-   * Set name choice type
+   * Set name choice type (nameUrl, nameReference)
    * @param type - 'Url' | 'Reference'
    * @param value - The value for the chosen type
    *

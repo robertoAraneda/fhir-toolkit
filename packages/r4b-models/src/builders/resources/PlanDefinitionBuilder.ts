@@ -192,7 +192,7 @@ export class PlanDefinitionBuilder extends DomainResourceBuilder<PlanDefinition,
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference, subjectCanonical)
    * @param type - 'CodeableConcept' | 'Reference' | 'Canonical'
    * @param value - The value for the chosen type
    *

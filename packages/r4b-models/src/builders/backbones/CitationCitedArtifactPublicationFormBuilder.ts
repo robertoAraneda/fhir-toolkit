@@ -1,6 +1,5 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { CitationCitedArtifactPublicationForm } from '../../models/backbones/CitationCitedArtifactPublicationForm.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICitationCitedArtifactPublicationForm,
   ICitationCitedArtifactPublicationFormPeriodicRelease,
@@ -71,6 +70,15 @@ export class CitationCitedArtifactPublicationFormBuilder extends BackboneElement
   }
 
   /**
+   * Set pageString
+   * Used for full display of pagination
+   */
+  setPageString(pageString: string): this {
+    this.data.pageString = pageString;
+    return this;
+  }
+
+  /**
    * Set firstPage
    * Used for isolated representation of first page
    */
@@ -89,41 +97,21 @@ export class CitationCitedArtifactPublicationFormBuilder extends BackboneElement
   }
 
   /**
+   * Set pageCount
+   * Number of pages or screens
+   */
+  setPageCount(pageCount: string): this {
+    this.data.pageCount = pageCount;
+    return this;
+  }
+
+  /**
    * Set copyright
    * Copyright notice for the full article or artifact
    */
   setCopyright(copyright: string): this {
     this.data.copyright = copyright;
     return this;
-  }
-
-  // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set page choice type
-   * @param type - 'String' | 'Count'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setPage('String', value)
-   */
-  setPage<T extends 'String' | 'Count'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `page${type}` as keyof ICitationCitedArtifactPublicationForm;
-    const otherKeys: (keyof ICitationCitedArtifactPublicationForm)[] = [];
-    if (type !== 'String') {
-      otherKeys.push('pageString' as keyof ICitationCitedArtifactPublicationForm);
-      otherKeys.push('_pageString' as keyof ICitationCitedArtifactPublicationForm);
-    }
-    if (type !== 'Count') {
-      otherKeys.push('pageCount' as keyof ICitationCitedArtifactPublicationForm);
-      otherKeys.push('_pageCount' as keyof ICitationCitedArtifactPublicationForm);
-    }
-    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================

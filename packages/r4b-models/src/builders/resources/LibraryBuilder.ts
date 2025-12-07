@@ -193,7 +193,7 @@ export class LibraryBuilder extends DomainResourceBuilder<Library, ILibrary> {
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

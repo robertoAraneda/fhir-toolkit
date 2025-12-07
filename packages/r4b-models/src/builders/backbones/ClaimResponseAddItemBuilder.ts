@@ -89,7 +89,7 @@ export class ClaimResponseAddItemBuilder extends BackboneElementBuilder<ClaimRes
   // ============================================================================
 
   /**
-   * Set serviced choice type
+   * Set serviced choice type (servicedDate, servicedPeriod)
    * @param type - 'Date' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -114,7 +114,7 @@ export class ClaimResponseAddItemBuilder extends BackboneElementBuilder<ClaimRes
   }
 
   /**
-   * Set location choice type
+   * Set location choice type (locationCodeableConcept, locationAddress, locationReference)
    * @param type - 'CodeableConcept' | 'Address' | 'Reference'
    * @param value - The value for the chosen type
    *

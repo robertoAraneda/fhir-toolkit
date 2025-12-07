@@ -68,7 +68,7 @@ export class ExplanationOfBenefitSupportingInfoBuilder extends BackboneElementBu
   // ============================================================================
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingDate, timingPeriod)
    * @param type - 'Date' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -93,7 +93,7 @@ export class ExplanationOfBenefitSupportingInfoBuilder extends BackboneElementBu
   }
 
   /**
-   * Set value choice type
+   * Set value choice type (valueBoolean, valueString, valueQuantity, valueAttachment, valueReference)
    * @param type - 'Boolean' | 'String' | 'Quantity' | 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *

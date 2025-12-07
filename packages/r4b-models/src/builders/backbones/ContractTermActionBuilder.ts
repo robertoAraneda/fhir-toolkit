@@ -96,7 +96,7 @@ export class ContractTermActionBuilder extends BackboneElementBuilder<ContractTe
   // ============================================================================
 
   /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrencePeriod, occurrenceTiming)
    * @param type - 'DateTime' | 'Period' | 'Timing'
    * @param value - The value for the chosen type
    *
@@ -120,31 +120,6 @@ export class ContractTermActionBuilder extends BackboneElementBuilder<ContractTe
     if (type !== 'Timing') {
       otherKeys.push('occurrenceTiming' as keyof IContractTermAction);
       otherKeys.push('_occurrenceTiming' as keyof IContractTermAction);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof IContractTermAction;
-    const otherKeys: (keyof IContractTermAction)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IContractTermAction);
-      otherKeys.push('_reasonCode' as keyof IContractTermAction);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IContractTermAction);
-      otherKeys.push('_reasonReference' as keyof IContractTermAction);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -207,6 +182,22 @@ export class ContractTermActionBuilder extends BackboneElementBuilder<ContractTe
    */
   addPerformerLinkId(performerLinkId: string): this {
     return this.addToArray('performerLinkId', performerLinkId);
+  }
+
+  /**
+   * Add reasonCode
+   * Why is action (not) needed?
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why is action (not) needed?
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference' | 'Questionnaire' | 'QuestionnaireResponse'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

@@ -132,7 +132,7 @@ export class TimingRepeatBuilder extends BackboneElementBuilder<TimingRepeat, IT
   // ============================================================================
 
   /**
-   * Set bounds choice type
+   * Set bounds choice type (boundsDuration, boundsRange, boundsPeriod)
    * @param type - 'Duration' | 'Range' | 'Period'
    * @param value - The value for the chosen type
    *

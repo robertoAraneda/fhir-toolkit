@@ -48,7 +48,7 @@ export class QuestionnaireItemEnableWhenBuilder extends BackboneElementBuilder<Q
   // ============================================================================
 
   /**
-   * Set answer choice type
+   * Set answer choice type (answerBoolean, answerDecimal, answerInteger, answerDate, answerDateTime, answerTime, answerString, answerCoding, answerQuantity, answerReference)
    * @param type - 'Boolean' | 'Decimal' | 'Integer' | 'Date' | 'DateTime' | 'Time' | 'String' | 'Coding' | 'Quantity' | 'Reference'
    * @param value - The value for the chosen type
    *

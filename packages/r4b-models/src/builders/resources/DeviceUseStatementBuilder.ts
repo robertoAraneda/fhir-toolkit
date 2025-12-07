@@ -90,7 +90,7 @@ export class DeviceUseStatementBuilder extends DomainResourceBuilder<DeviceUseSt
   // ============================================================================
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingTiming, timingPeriod, timingDateTime)
    * @param type - 'Timing' | 'Period' | 'DateTime'
    * @param value - The value for the chosen type
    *
@@ -114,31 +114,6 @@ export class DeviceUseStatementBuilder extends DomainResourceBuilder<DeviceUseSt
     if (type !== 'DateTime') {
       otherKeys.push('timingDateTime' as keyof IDeviceUseStatement);
       otherKeys.push('_timingDateTime' as keyof IDeviceUseStatement);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof IDeviceUseStatement;
-    const otherKeys: (keyof IDeviceUseStatement)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IDeviceUseStatement);
-      otherKeys.push('_reasonCode' as keyof IDeviceUseStatement);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IDeviceUseStatement);
-      otherKeys.push('_reasonReference' as keyof IDeviceUseStatement);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -169,6 +144,22 @@ export class DeviceUseStatementBuilder extends DomainResourceBuilder<DeviceUseSt
    */
   addDerivedFrom(derivedFrom: IReference<'ServiceRequest' | 'Procedure' | 'Claim' | 'Observation' | 'QuestionnaireResponse' | 'DocumentReference'>): this {
     return this.addToArray('derivedFrom', derivedFrom);
+  }
+
+  /**
+   * Add reasonCode
+   * Why device was used
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why was DeviceUseStatement performed?
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport' | 'DocumentReference' | 'Media'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

@@ -1,6 +1,5 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { EvidenceReportSection } from '../../models/backbones/EvidenceReportSection.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IEvidenceReportSection,
@@ -91,35 +90,6 @@ export class EvidenceReportSectionBuilder extends BackboneElementBuilder<Evidenc
   }
 
   // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set entry choice type
-   * @param type - 'Reference' | 'Quantity'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setEntry('Reference', value)
-   */
-  setEntry<T extends 'Reference' | 'Quantity'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `entry${type}` as keyof IEvidenceReportSection;
-    const otherKeys: (keyof IEvidenceReportSection)[] = [];
-    if (type !== 'Reference') {
-      otherKeys.push('entryReference' as keyof IEvidenceReportSection);
-      otherKeys.push('_entryReference' as keyof IEvidenceReportSection);
-    }
-    if (type !== 'Quantity') {
-      otherKeys.push('entryQuantity' as keyof IEvidenceReportSection);
-      otherKeys.push('_entryQuantity' as keyof IEvidenceReportSection);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  // ============================================================================
   // Array Properties
   // ============================================================================
 
@@ -137,6 +107,22 @@ export class EvidenceReportSectionBuilder extends BackboneElementBuilder<Evidenc
    */
   addEntryClassifier(entryClassifier: ICodeableConcept): this {
     return this.addToArray('entryClassifier', entryClassifier);
+  }
+
+  /**
+   * Add entryReference
+   * Reference to resources as content
+   */
+  addEntryReference(entryReference: IReference<'Resource'>): this {
+    return this.addToArray('entryReference', entryReference);
+  }
+
+  /**
+   * Add entryQuantity
+   * Quantity as content
+   */
+  addEntryQuantity(entryQuantity: IQuantity): this {
+    return this.addToArray('entryQuantity', entryQuantity);
   }
 
   /**

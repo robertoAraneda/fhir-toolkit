@@ -1,6 +1,5 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { CareTeam } from '../../models/resources/CareTeam.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   CareTeamStatusType,
   IAnnotation,
@@ -78,35 +77,6 @@ export class CareTeamBuilder extends DomainResourceBuilder<CareTeam, ICareTeam> 
   }
 
   // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof ICareTeam;
-    const otherKeys: (keyof ICareTeam)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof ICareTeam);
-      otherKeys.push('_reasonCode' as keyof ICareTeam);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof ICareTeam);
-      otherKeys.push('_reasonReference' as keyof ICareTeam);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  // ============================================================================
   // Array Properties
   // ============================================================================
 
@@ -132,6 +102,22 @@ export class CareTeamBuilder extends DomainResourceBuilder<CareTeam, ICareTeam> 
    */
   addParticipant(participant: ICareTeamParticipant): this {
     return this.addToArray('participant', participant);
+  }
+
+  /**
+   * Add reasonCode
+   * Why the care team exists
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why the care team exists
+   */
+  addReasonReference(reasonReference: IReference<'Condition'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

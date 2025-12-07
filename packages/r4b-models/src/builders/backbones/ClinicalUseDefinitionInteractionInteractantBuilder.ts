@@ -23,7 +23,7 @@ export class ClinicalUseDefinitionInteractionInteractantBuilder extends Backbone
   // ============================================================================
 
   /**
-   * Set item choice type
+   * Set item choice type (itemReference, itemCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *

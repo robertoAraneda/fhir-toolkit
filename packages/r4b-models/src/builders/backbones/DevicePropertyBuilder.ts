@@ -1,6 +1,5 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { DeviceProperty } from '../../models/backbones/DeviceProperty.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IDeviceProperty,
@@ -16,6 +15,7 @@ import type {
  * @example
  * const deviceProperty = new DevicePropertyBuilder()
  *   .setType(value)
+ *   .addValueQuantity({ ... })
  *   .build();
  */
 export class DevicePropertyBuilder extends BackboneElementBuilder<DeviceProperty, IDeviceProperty> {
@@ -33,32 +33,23 @@ export class DevicePropertyBuilder extends BackboneElementBuilder<DeviceProperty
   }
 
   // ============================================================================
-  // Choice Types
+  // Array Properties
   // ============================================================================
 
   /**
-   * Set value choice type
-   * @param type - 'Quantity' | 'Code'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setValue('Quantity', value)
+   * Add valueQuantity
+   * Property value as a quantity
    */
-  setValue<T extends 'Quantity' | 'Code'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `value${type}` as keyof IDeviceProperty;
-    const otherKeys: (keyof IDeviceProperty)[] = [];
-    if (type !== 'Quantity') {
-      otherKeys.push('valueQuantity' as keyof IDeviceProperty);
-      otherKeys.push('_valueQuantity' as keyof IDeviceProperty);
-    }
-    if (type !== 'Code') {
-      otherKeys.push('valueCode' as keyof IDeviceProperty);
-      otherKeys.push('_valueCode' as keyof IDeviceProperty);
-    }
-    return this.setChoiceType(key, value, otherKeys);
+  addValueQuantity(valueQuantity: IQuantity): this {
+    return this.addToArray('valueQuantity', valueQuantity);
+  }
+
+  /**
+   * Add valueCode
+   * Property value as a code, e.g., NTP4 (synced to NTP)
+   */
+  addValueCode(valueCode: ICodeableConcept): this {
+    return this.addToArray('valueCode', valueCode);
   }
 
   // ============================================================================

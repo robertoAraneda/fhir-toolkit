@@ -85,7 +85,7 @@ export class PatientBuilder extends DomainResourceBuilder<Patient, IPatient> {
   // ============================================================================
 
   /**
-   * Set deceased choice type
+   * Set deceased choice type (deceasedBoolean, deceasedDateTime)
    * @param type - 'Boolean' | 'DateTime'
    * @param value - The value for the chosen type
    *
@@ -110,7 +110,7 @@ export class PatientBuilder extends DomainResourceBuilder<Patient, IPatient> {
   }
 
   /**
-   * Set multipleBirth choice type
+   * Set multipleBirth choice type (multipleBirthBoolean, multipleBirthInteger)
    * @param type - 'Boolean' | 'Integer'
    * @param value - The value for the chosen type
    *

@@ -38,7 +38,7 @@ export class SubstanceIngredientBuilder extends BackboneElementBuilder<Substance
   // ============================================================================
 
   /**
-   * Set substance choice type
+   * Set substance choice type (substanceCodeableConcept, substanceReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

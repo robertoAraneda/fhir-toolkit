@@ -121,7 +121,7 @@ export class ConditionBuilder extends DomainResourceBuilder<Condition, IConditio
   // ============================================================================
 
   /**
-   * Set onset choice type
+   * Set onset choice type (onsetDateTime, onsetAge, onsetPeriod, onsetRange, onsetString)
    * @param type - 'DateTime' | 'Age' | 'Period' | 'Range' | 'String'
    * @param value - The value for the chosen type
    *
@@ -158,7 +158,7 @@ export class ConditionBuilder extends DomainResourceBuilder<Condition, IConditio
   }
 
   /**
-   * Set abatement choice type
+   * Set abatement choice type (abatementDateTime, abatementAge, abatementPeriod, abatementRange, abatementString)
    * @param type - 'DateTime' | 'Age' | 'Period' | 'Range' | 'String'
    * @param value - The value for the chosen type
    *

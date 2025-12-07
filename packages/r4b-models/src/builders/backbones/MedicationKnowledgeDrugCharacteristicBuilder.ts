@@ -37,7 +37,7 @@ export class MedicationKnowledgeDrugCharacteristicBuilder extends BackboneElemen
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueString, valueQuantity, valueBase64Binary)
    * @param type - 'CodeableConcept' | 'String' | 'Quantity' | 'Base64Binary'
    * @param value - The value for the chosen type
    *

@@ -45,7 +45,7 @@ export class ImplementationGuideManifestResourceBuilder extends BackboneElementB
   // ============================================================================
 
   /**
-   * Set example choice type
+   * Set example choice type (exampleBoolean, exampleCanonical)
    * @param type - 'Boolean' | 'Canonical'
    * @param value - The value for the chosen type
    *

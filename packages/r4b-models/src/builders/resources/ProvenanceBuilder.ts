@@ -62,7 +62,7 @@ export class ProvenanceBuilder extends DomainResourceBuilder<Provenance, IProven
   // ============================================================================
 
   /**
-   * Set occurred choice type
+   * Set occurred choice type (occurredPeriod, occurredDateTime)
    * @param type - 'Period' | 'DateTime'
    * @param value - The value for the chosen type
    *

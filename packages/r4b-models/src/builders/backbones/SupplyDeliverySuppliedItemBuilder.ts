@@ -38,7 +38,7 @@ export class SupplyDeliverySuppliedItemBuilder extends BackboneElementBuilder<Su
   // ============================================================================
 
   /**
-   * Set item choice type
+   * Set item choice type (itemCodeableConcept, itemReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

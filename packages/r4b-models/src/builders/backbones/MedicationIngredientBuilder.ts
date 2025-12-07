@@ -47,7 +47,7 @@ export class MedicationIngredientBuilder extends BackboneElementBuilder<Medicati
   // ============================================================================
 
   /**
-   * Set item choice type
+   * Set item choice type (itemCodeableConcept, itemReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

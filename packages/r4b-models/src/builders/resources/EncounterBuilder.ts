@@ -1,6 +1,5 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Encounter } from '../../models/resources/Encounter.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   EncounterStatusType,
   ICodeableConcept,
@@ -128,35 +127,6 @@ export class EncounterBuilder extends DomainResourceBuilder<Encounter, IEncounte
   }
 
   // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof IEncounter;
-    const otherKeys: (keyof IEncounter)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IEncounter);
-      otherKeys.push('_reasonCode' as keyof IEncounter);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IEncounter);
-      otherKeys.push('_reasonReference' as keyof IEncounter);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  // ============================================================================
   // Array Properties
   // ============================================================================
 
@@ -222,6 +192,22 @@ export class EncounterBuilder extends DomainResourceBuilder<Encounter, IEncounte
    */
   addAppointment(appointment: IReference<'Appointment'>): this {
     return this.addToArray('appointment', appointment);
+  }
+
+  /**
+   * Add reasonCode
+   * Coded reason the encounter takes place
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Reason the encounter takes place (reference)
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Procedure' | 'Observation' | 'ImmunizationRecommendation'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

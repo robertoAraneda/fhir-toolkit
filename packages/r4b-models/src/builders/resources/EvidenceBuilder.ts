@@ -148,7 +148,7 @@ export class EvidenceBuilder extends DomainResourceBuilder<Evidence, IEvidence> 
   // ============================================================================
 
   /**
-   * Set citeAs choice type
+   * Set citeAs choice type (citeAsReference, citeAsMarkdown)
    * @param type - 'Reference' | 'Markdown'
    * @param value - The value for the chosen type
    *

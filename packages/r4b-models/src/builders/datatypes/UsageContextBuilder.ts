@@ -40,7 +40,7 @@ export class UsageContextBuilder extends ElementBuilder<UsageContext, IUsageCont
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueQuantity, valueRange, valueReference)
    * @param type - 'CodeableConcept' | 'Quantity' | 'Range' | 'Reference'
    * @param value - The value for the chosen type
    *

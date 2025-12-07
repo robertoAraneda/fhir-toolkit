@@ -47,7 +47,7 @@ export class ExplanationOfBenefitProcedureBuilder extends BackboneElementBuilder
   // ============================================================================
 
   /**
-   * Set procedure choice type
+   * Set procedure choice type (procedureCodeableConcept, procedureReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

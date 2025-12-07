@@ -91,7 +91,7 @@ export class MedicationAdministrationBuilder extends DomainResourceBuilder<Medic
   // ============================================================================
 
   /**
-   * Set medication choice type
+   * Set medication choice type (medicationCodeableConcept, medicationReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *
@@ -116,7 +116,7 @@ export class MedicationAdministrationBuilder extends DomainResourceBuilder<Medic
   }
 
   /**
-   * Set effective choice type
+   * Set effective choice type (effectiveDateTime, effectivePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -136,31 +136,6 @@ export class MedicationAdministrationBuilder extends DomainResourceBuilder<Medic
     if (type !== 'Period') {
       otherKeys.push('effectivePeriod' as keyof IMedicationAdministration);
       otherKeys.push('_effectivePeriod' as keyof IMedicationAdministration);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof IMedicationAdministration;
-    const otherKeys: (keyof IMedicationAdministration)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IMedicationAdministration);
-      otherKeys.push('_reasonCode' as keyof IMedicationAdministration);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IMedicationAdministration);
-      otherKeys.push('_reasonReference' as keyof IMedicationAdministration);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -215,6 +190,22 @@ export class MedicationAdministrationBuilder extends DomainResourceBuilder<Medic
    */
   addPerformer(performer: IMedicationAdministrationPerformer): this {
     return this.addToArray('performer', performer);
+  }
+
+  /**
+   * Add reasonCode
+   * Reason administration performed
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Condition or observation that supports why the medication was administered
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'DiagnosticReport'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

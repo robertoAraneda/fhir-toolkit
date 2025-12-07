@@ -24,7 +24,7 @@ export class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsBu
   // ============================================================================
 
   /**
-   * Set characteristic choice type
+   * Set characteristic choice type (characteristicCodeableConcept, characteristicQuantity)
    * @param type - 'CodeableConcept' | 'Quantity'
    * @param value - The value for the chosen type
    *

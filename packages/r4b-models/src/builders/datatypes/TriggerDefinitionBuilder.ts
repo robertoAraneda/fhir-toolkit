@@ -59,7 +59,7 @@ export class TriggerDefinitionBuilder extends ElementBuilder<TriggerDefinition, 
   // ============================================================================
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingTiming, timingReference, timingDate, timingDateTime)
    * @param type - 'Timing' | 'Reference' | 'Date' | 'DateTime'
    * @param value - The value for the chosen type
    *

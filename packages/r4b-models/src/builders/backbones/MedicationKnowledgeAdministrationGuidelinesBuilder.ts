@@ -26,7 +26,7 @@ export class MedicationKnowledgeAdministrationGuidelinesBuilder extends Backbone
   // ============================================================================
 
   /**
-   * Set indication choice type
+   * Set indication choice type (indicationCodeableConcept, indicationReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

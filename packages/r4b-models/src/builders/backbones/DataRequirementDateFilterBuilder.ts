@@ -46,7 +46,7 @@ export class DataRequirementDateFilterBuilder extends BackboneElementBuilder<Dat
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueDateTime, valuePeriod, valueDuration)
    * @param type - 'DateTime' | 'Period' | 'Duration'
    * @param value - The value for the chosen type
    *

@@ -143,7 +143,7 @@ export class ConceptMapBuilder extends DomainResourceBuilder<ConceptMap, IConcep
   // ============================================================================
 
   /**
-   * Set source choice type
+   * Set source choice type (sourceUri, sourceCanonical)
    * @param type - 'Uri' | 'Canonical'
    * @param value - The value for the chosen type
    *
@@ -168,7 +168,7 @@ export class ConceptMapBuilder extends DomainResourceBuilder<ConceptMap, IConcep
   }
 
   /**
-   * Set target choice type
+   * Set target choice type (targetUri, targetCanonical)
    * @param type - 'Uri' | 'Canonical'
    * @param value - The value for the chosen type
    *

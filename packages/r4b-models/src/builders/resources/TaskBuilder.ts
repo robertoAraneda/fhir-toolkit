@@ -1,6 +1,5 @@
 import { DomainResourceBuilder } from '../base/DomainResourceBuilder.js';
 import { Task } from '../../models/resources/Task.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   IAnnotation,
   ICodeableConcept,
@@ -26,7 +25,7 @@ import type {
  * @example
  * const task = new TaskBuilder()
  *   .setId('123')
- *   .setGroupIdentifier(value)
+ *   .setInstantiatesCanonical(value)
  *   .addIdentifier({ ... })
  *   .build();
  */
@@ -34,6 +33,24 @@ export class TaskBuilder extends DomainResourceBuilder<Task, ITask> {
   // ============================================================================
   // Scalar Properties
   // ============================================================================
+
+  /**
+   * Set instantiatesCanonical
+   * Formal definition of task
+   */
+  setInstantiatesCanonical(instantiatesCanonical: string): this {
+    this.data.instantiatesCanonical = instantiatesCanonical;
+    return this;
+  }
+
+  /**
+   * Set instantiatesUri
+   * Formal definition of task
+   */
+  setInstantiatesUri(instantiatesUri: string): this {
+    this.data.instantiatesUri = instantiatesUri;
+    return this;
+  }
 
   /**
    * Set groupIdentifier
@@ -189,66 +206,30 @@ export class TaskBuilder extends DomainResourceBuilder<Task, ITask> {
   }
 
   /**
+   * Set reasonCode
+   * Why task is needed
+   */
+  setReasonCode(reasonCode: ICodeableConcept): this {
+    this.data.reasonCode = reasonCode;
+    return this;
+  }
+
+  /**
+   * Set reasonReference
+   * Why task is needed
+   */
+  setReasonReference(reasonReference: IReference<'Resource'>): this {
+    this.data.reasonReference = reasonReference;
+    return this;
+  }
+
+  /**
    * Set restriction
    * Constraints on fulfillment tasks
    */
   setRestriction(restriction: ITaskRestriction): this {
     this.data.restriction = restriction;
     return this;
-  }
-
-  // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `instantiates${type}` as keyof ITask;
-    const otherKeys: (keyof ITask)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof ITask);
-      otherKeys.push('_instantiatesCanonical' as keyof ITask);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof ITask);
-      otherKeys.push('_instantiatesUri' as keyof ITask);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof ITask;
-    const otherKeys: (keyof ITask)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof ITask);
-      otherKeys.push('_reasonCode' as keyof ITask);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof ITask);
-      otherKeys.push('_reasonReference' as keyof ITask);
-    }
-    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================

@@ -91,7 +91,7 @@ export class SupplyDeliveryBuilder extends DomainResourceBuilder<SupplyDelivery,
   // ============================================================================
 
   /**
-   * Set occurrence choice type
+   * Set occurrence choice type (occurrenceDateTime, occurrencePeriod, occurrenceTiming)
    * @param type - 'DateTime' | 'Period' | 'Timing'
    * @param value - The value for the chosen type
    *

@@ -90,33 +90,6 @@ export class StructureMapGroupRuleSourceBuilder extends BackboneElementBuilder<S
   }
 
   /**
-   * Set defaultValuePositiveInt
-   * Default value if no value exists
-   */
-  setDefaultValuePositiveInt(defaultValuePositiveInt: number): this {
-    this.data.defaultValuePositiveInt = defaultValuePositiveInt;
-    return this;
-  }
-
-  /**
-   * Set defaultValueUnsignedInt
-   * Default value if no value exists
-   */
-  setDefaultValueUnsignedInt(defaultValueUnsignedInt: number): this {
-    this.data.defaultValueUnsignedInt = defaultValueUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set defaultValueUuid
-   * Default value if no value exists
-   */
-  setDefaultValueUuid(defaultValueUuid: string): this {
-    this.data.defaultValueUuid = defaultValueUuid;
-    return this;
-  }
-
-  /**
    * Set element
    * Optional field for this source
    */
@@ -175,14 +148,14 @@ export class StructureMapGroupRuleSourceBuilder extends BackboneElementBuilder<S
   // ============================================================================
 
   /**
-   * Set defaultValue choice type
-   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
+   * Set defaultValue choice type (defaultValueBase64Binary, defaultValueBoolean, defaultValueCanonical, defaultValueCode, defaultValueDate, defaultValueDateTime, defaultValueDecimal, defaultValueId, defaultValueInstant, defaultValueInteger, defaultValueMarkdown, defaultValueOid, defaultValuePositiveInt, defaultValueString, defaultValueTime, defaultValueUnsignedInt, defaultValueUri, defaultValueUrl, defaultValueUuid, defaultValueAddress, defaultValueAge, defaultValueAnnotation, defaultValueAttachment, defaultValueCodeableConcept, defaultValueCoding, defaultValueContactPoint, defaultValueCount, defaultValueDistance, defaultValueDuration, defaultValueHumanName, defaultValueIdentifier, defaultValueMoney, defaultValuePeriod, defaultValueQuantity, defaultValueRange, defaultValueRatio, defaultValueReference, defaultValueSampledData, defaultValueSignature, defaultValueTiming, defaultValueContactDetail, defaultValueContributor, defaultValueDataRequirement, defaultValueExpression, defaultValueParameterDefinition, defaultValueRelatedArtifact, defaultValueTriggerDefinition, defaultValueUsageContext, defaultValueDosage, defaultValueMeta)
+   * @param type - 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'
    * @param value - The value for the chosen type
    *
    * @example
    * builder.setDefaultValue('Base64Binary', value)
    */
-  setDefaultValue<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'String' | 'Time' | 'Uri' | 'Url' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
+  setDefaultValue<T extends 'Base64Binary' | 'Boolean' | 'Canonical' | 'Code' | 'Date' | 'DateTime' | 'Decimal' | 'Id' | 'Instant' | 'Integer' | 'Markdown' | 'Oid' | 'PositiveInt' | 'String' | 'Time' | 'UnsignedInt' | 'Uri' | 'Url' | 'Uuid' | 'Address' | 'Age' | 'Annotation' | 'Attachment' | 'CodeableConcept' | 'Coding' | 'ContactPoint' | 'Count' | 'Distance' | 'Duration' | 'HumanName' | 'Identifier' | 'Money' | 'Period' | 'Quantity' | 'Range' | 'Ratio' | 'Reference' | 'SampledData' | 'Signature' | 'Timing' | 'ContactDetail' | 'Contributor' | 'DataRequirement' | 'Expression' | 'ParameterDefinition' | 'RelatedArtifact' | 'TriggerDefinition' | 'UsageContext' | 'Dosage' | 'Meta'>(
     type: T,
     value: ChoiceTypeValue<T>
   ): this {
@@ -236,6 +209,10 @@ export class StructureMapGroupRuleSourceBuilder extends BackboneElementBuilder<S
       otherKeys.push('defaultValueOid' as keyof IStructureMapGroupRuleSource);
       otherKeys.push('_defaultValueOid' as keyof IStructureMapGroupRuleSource);
     }
+    if (type !== 'PositiveInt') {
+      otherKeys.push('defaultValuePositiveInt' as keyof IStructureMapGroupRuleSource);
+      otherKeys.push('_defaultValuePositiveInt' as keyof IStructureMapGroupRuleSource);
+    }
     if (type !== 'String') {
       otherKeys.push('defaultValueString' as keyof IStructureMapGroupRuleSource);
       otherKeys.push('_defaultValueString' as keyof IStructureMapGroupRuleSource);
@@ -244,6 +221,10 @@ export class StructureMapGroupRuleSourceBuilder extends BackboneElementBuilder<S
       otherKeys.push('defaultValueTime' as keyof IStructureMapGroupRuleSource);
       otherKeys.push('_defaultValueTime' as keyof IStructureMapGroupRuleSource);
     }
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('defaultValueUnsignedInt' as keyof IStructureMapGroupRuleSource);
+      otherKeys.push('_defaultValueUnsignedInt' as keyof IStructureMapGroupRuleSource);
+    }
     if (type !== 'Uri') {
       otherKeys.push('defaultValueUri' as keyof IStructureMapGroupRuleSource);
       otherKeys.push('_defaultValueUri' as keyof IStructureMapGroupRuleSource);
@@ -251,6 +232,10 @@ export class StructureMapGroupRuleSourceBuilder extends BackboneElementBuilder<S
     if (type !== 'Url') {
       otherKeys.push('defaultValueUrl' as keyof IStructureMapGroupRuleSource);
       otherKeys.push('_defaultValueUrl' as keyof IStructureMapGroupRuleSource);
+    }
+    if (type !== 'Uuid') {
+      otherKeys.push('defaultValueUuid' as keyof IStructureMapGroupRuleSource);
+      otherKeys.push('_defaultValueUuid' as keyof IStructureMapGroupRuleSource);
     }
     if (type !== 'Address') {
       otherKeys.push('defaultValueAddress' as keyof IStructureMapGroupRuleSource);

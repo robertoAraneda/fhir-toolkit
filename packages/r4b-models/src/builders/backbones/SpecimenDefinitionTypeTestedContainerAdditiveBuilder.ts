@@ -23,7 +23,7 @@ export class SpecimenDefinitionTypeTestedContainerAdditiveBuilder extends Backbo
   // ============================================================================
 
   /**
-   * Set additive choice type
+   * Set additive choice type (additiveCodeableConcept, additiveReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

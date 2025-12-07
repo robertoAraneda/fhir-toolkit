@@ -37,7 +37,7 @@ export class QuestionnaireItemAnswerOptionBuilder extends BackboneElementBuilder
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueInteger, valueDate, valueTime, valueString, valueCoding, valueReference)
    * @param type - 'Integer' | 'Date' | 'Time' | 'String' | 'Coding' | 'Reference'
    * @param value - The value for the chosen type
    *

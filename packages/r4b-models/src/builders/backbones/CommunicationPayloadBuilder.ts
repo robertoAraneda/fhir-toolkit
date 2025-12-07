@@ -23,7 +23,7 @@ export class CommunicationPayloadBuilder extends BackboneElementBuilder<Communic
   // ============================================================================
 
   /**
-   * Set content choice type
+   * Set content choice type (contentString, contentAttachment, contentReference)
    * @param type - 'String' | 'Attachment' | 'Reference'
    * @param value - The value for the chosen type
    *

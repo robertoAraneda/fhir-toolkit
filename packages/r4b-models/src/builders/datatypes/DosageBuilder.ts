@@ -122,7 +122,7 @@ export class DosageBuilder extends ElementBuilder<Dosage, IDosage> {
   // ============================================================================
 
   /**
-   * Set asNeeded choice type
+   * Set asNeeded choice type (asNeededBoolean, asNeededCodeableConcept)
    * @param type - 'Boolean' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *

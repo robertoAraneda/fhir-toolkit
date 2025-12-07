@@ -128,7 +128,7 @@ export class CoverageEligibilityResponseBuilder extends DomainResourceBuilder<Co
   // ============================================================================
 
   /**
-   * Set serviced choice type
+   * Set serviced choice type (servicedDate, servicedPeriod)
    * @param type - 'Date' | 'Period'
    * @param value - The value for the chosen type
    *

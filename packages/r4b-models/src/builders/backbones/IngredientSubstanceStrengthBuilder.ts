@@ -1,5 +1,6 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { IngredientSubstanceStrength } from '../../models/backbones/IngredientSubstanceStrength.js';
+import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   ICodeableConcept,
   IIngredientSubstanceStrength,
@@ -16,7 +17,7 @@ import type {
  *
  * @example
  * const ingredientSubstanceStrength = new IngredientSubstanceStrengthBuilder()
- *   .setPresentationRatio(value)
+ *   .setTextPresentation(value)
  *   .addCountry({ ... })
  *   .build();
  */
@@ -26,47 +27,11 @@ export class IngredientSubstanceStrengthBuilder extends BackboneElementBuilder<I
   // ============================================================================
 
   /**
-   * Set presentationRatio
-   * The quantity of substance in the unit of presentation
-   */
-  setPresentationRatio(presentationRatio: IRatio): this {
-    this.data.presentationRatio = presentationRatio;
-    return this;
-  }
-
-  /**
-   * Set presentationRatioRange
-   * The quantity of substance in the unit of presentation
-   */
-  setPresentationRatioRange(presentationRatioRange: IRatioRange): this {
-    this.data.presentationRatioRange = presentationRatioRange;
-    return this;
-  }
-
-  /**
    * Set textPresentation
    * Text of either the whole presentation strength or a part of it (rest being in Strength.presentation as a ratio)
    */
   setTextPresentation(textPresentation: string): this {
     this.data.textPresentation = textPresentation;
-    return this;
-  }
-
-  /**
-   * Set concentrationRatio
-   * The strength per unitary volume (or mass)
-   */
-  setConcentrationRatio(concentrationRatio: IRatio): this {
-    this.data.concentrationRatio = concentrationRatio;
-    return this;
-  }
-
-  /**
-   * Set concentrationRatioRange
-   * The strength per unitary volume (or mass)
-   */
-  setConcentrationRatioRange(concentrationRatioRange: IRatioRange): this {
-    this.data.concentrationRatioRange = concentrationRatioRange;
     return this;
   }
 
@@ -86,6 +51,60 @@ export class IngredientSubstanceStrengthBuilder extends BackboneElementBuilder<I
   setMeasurementPoint(measurementPoint: string): this {
     this.data.measurementPoint = measurementPoint;
     return this;
+  }
+
+  // ============================================================================
+  // Choice Types
+  // ============================================================================
+
+  /**
+   * Set presentation choice type (presentationRatio, presentationRatioRange)
+   * @param type - 'Ratio' | 'RatioRange'
+   * @param value - The value for the chosen type
+   *
+   * @example
+   * builder.setPresentation('Ratio', value)
+   */
+  setPresentation<T extends 'Ratio' | 'RatioRange'>(
+    type: T,
+    value: ChoiceTypeValue<T>
+  ): this {
+    const key = `presentation${type}` as keyof IIngredientSubstanceStrength;
+    const otherKeys: (keyof IIngredientSubstanceStrength)[] = [];
+    if (type !== 'Ratio') {
+      otherKeys.push('presentationRatio' as keyof IIngredientSubstanceStrength);
+      otherKeys.push('_presentationRatio' as keyof IIngredientSubstanceStrength);
+    }
+    if (type !== 'RatioRange') {
+      otherKeys.push('presentationRatioRange' as keyof IIngredientSubstanceStrength);
+      otherKeys.push('_presentationRatioRange' as keyof IIngredientSubstanceStrength);
+    }
+    return this.setChoiceType(key, value, otherKeys);
+  }
+
+  /**
+   * Set concentration choice type (concentrationRatio, concentrationRatioRange)
+   * @param type - 'Ratio' | 'RatioRange'
+   * @param value - The value for the chosen type
+   *
+   * @example
+   * builder.setConcentration('Ratio', value)
+   */
+  setConcentration<T extends 'Ratio' | 'RatioRange'>(
+    type: T,
+    value: ChoiceTypeValue<T>
+  ): this {
+    const key = `concentration${type}` as keyof IIngredientSubstanceStrength;
+    const otherKeys: (keyof IIngredientSubstanceStrength)[] = [];
+    if (type !== 'Ratio') {
+      otherKeys.push('concentrationRatio' as keyof IIngredientSubstanceStrength);
+      otherKeys.push('_concentrationRatio' as keyof IIngredientSubstanceStrength);
+    }
+    if (type !== 'RatioRange') {
+      otherKeys.push('concentrationRatioRange' as keyof IIngredientSubstanceStrength);
+      otherKeys.push('_concentrationRatioRange' as keyof IIngredientSubstanceStrength);
+    }
+    return this.setChoiceType(key, value, otherKeys);
   }
 
   // ============================================================================

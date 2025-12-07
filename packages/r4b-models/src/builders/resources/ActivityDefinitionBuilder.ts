@@ -273,7 +273,7 @@ export class ActivityDefinitionBuilder extends DomainResourceBuilder<ActivityDef
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference, subjectCanonical)
    * @param type - 'CodeableConcept' | 'Reference' | 'Canonical'
    * @param value - The value for the chosen type
    *
@@ -302,7 +302,7 @@ export class ActivityDefinitionBuilder extends DomainResourceBuilder<ActivityDef
   }
 
   /**
-   * Set timing choice type
+   * Set timing choice type (timingTiming, timingDateTime, timingAge, timingPeriod, timingRange, timingDuration)
    * @param type - 'Timing' | 'DateTime' | 'Age' | 'Period' | 'Range' | 'Duration'
    * @param value - The value for the chosen type
    *
@@ -343,7 +343,7 @@ export class ActivityDefinitionBuilder extends DomainResourceBuilder<ActivityDef
   }
 
   /**
-   * Set product choice type
+   * Set product choice type (productReference, productCodeableConcept)
    * @param type - 'Reference' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *

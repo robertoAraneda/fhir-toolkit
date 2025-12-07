@@ -57,7 +57,7 @@ export class RegulatedAuthorizationCaseBuilder extends BackboneElementBuilder<Re
   // ============================================================================
 
   /**
-   * Set date choice type
+   * Set date choice type (datePeriod, dateDateTime)
    * @param type - 'Period' | 'DateTime'
    * @param value - The value for the chosen type
    *

@@ -107,7 +107,7 @@ export class MessageHeaderBuilder extends DomainResourceBuilder<MessageHeader, I
   // ============================================================================
 
   /**
-   * Set event choice type
+   * Set event choice type (eventCoding, eventUri)
    * @param type - 'Coding' | 'Uri'
    * @param value - The value for the chosen type
    *

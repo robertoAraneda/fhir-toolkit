@@ -48,7 +48,7 @@ export class PlanDefinitionGoalTargetBuilder extends BackboneElementBuilder<Plan
   // ============================================================================
 
   /**
-   * Set detail choice type
+   * Set detail choice type (detailQuantity, detailRange, detailCodeableConcept)
    * @param type - 'Quantity' | 'Range' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *

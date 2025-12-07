@@ -67,7 +67,7 @@ export class SpecimenContainerBuilder extends BackboneElementBuilder<SpecimenCon
   // ============================================================================
 
   /**
-   * Set additive choice type
+   * Set additive choice type (additiveCodeableConcept, additiveReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

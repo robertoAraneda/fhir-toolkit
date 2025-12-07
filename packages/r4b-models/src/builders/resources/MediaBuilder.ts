@@ -180,7 +180,7 @@ export class MediaBuilder extends DomainResourceBuilder<Media, IMedia> {
   // ============================================================================
 
   /**
-   * Set created choice type
+   * Set created choice type (createdDateTime, createdPeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *

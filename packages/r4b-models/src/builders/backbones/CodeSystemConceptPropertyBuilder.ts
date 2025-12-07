@@ -36,7 +36,7 @@ export class CodeSystemConceptPropertyBuilder extends BackboneElementBuilder<Cod
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCode, valueCoding, valueString, valueInteger, valueBoolean, valueDateTime, valueDecimal)
    * @param type - 'Code' | 'Coding' | 'String' | 'Integer' | 'Boolean' | 'DateTime' | 'Decimal'
    * @param value - The value for the chosen type
    *

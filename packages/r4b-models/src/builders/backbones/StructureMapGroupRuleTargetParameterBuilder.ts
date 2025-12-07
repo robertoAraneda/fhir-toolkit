@@ -21,7 +21,7 @@ export class StructureMapGroupRuleTargetParameterBuilder extends BackboneElement
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueId, valueString, valueBoolean, valueInteger, valueDecimal)
    * @param type - 'Id' | 'String' | 'Boolean' | 'Integer' | 'Decimal'
    * @param value - The value for the chosen type
    *

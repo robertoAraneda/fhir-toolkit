@@ -265,7 +265,7 @@ export class MeasureBuilder extends DomainResourceBuilder<Measure, IMeasure> {
   // ============================================================================
 
   /**
-   * Set subject choice type
+   * Set subject choice type (subjectCodeableConcept, subjectReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

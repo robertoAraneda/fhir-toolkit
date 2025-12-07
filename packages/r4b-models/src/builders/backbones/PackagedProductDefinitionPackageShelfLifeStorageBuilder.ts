@@ -38,7 +38,7 @@ export class PackagedProductDefinitionPackageShelfLifeStorageBuilder extends Bac
   // ============================================================================
 
   /**
-   * Set period choice type
+   * Set period choice type (periodDuration, periodString)
    * @param type - 'Duration' | 'String'
    * @param value - The value for the chosen type
    *

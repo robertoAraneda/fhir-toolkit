@@ -39,7 +39,7 @@ export class DosageDoseAndRateBuilder extends BackboneElementBuilder<DosageDoseA
   // ============================================================================
 
   /**
-   * Set dose choice type
+   * Set dose choice type (doseRange, doseQuantity)
    * @param type - 'Range' | 'Quantity'
    * @param value - The value for the chosen type
    *
@@ -64,7 +64,7 @@ export class DosageDoseAndRateBuilder extends BackboneElementBuilder<DosageDoseA
   }
 
   /**
-   * Set rate choice type
+   * Set rate choice type (rateRatio, rateRange, rateQuantity)
    * @param type - 'Ratio' | 'Range' | 'Quantity'
    * @param value - The value for the chosen type
    *

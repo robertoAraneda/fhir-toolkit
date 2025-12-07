@@ -55,7 +55,7 @@ export class PopulationBuilder extends ElementBuilder<Population, IPopulation> {
   // ============================================================================
 
   /**
-   * Set age choice type
+   * Set age choice type (ageRange, ageCodeableConcept)
    * @param type - 'Range' | 'CodeableConcept'
    * @param value - The value for the chosen type
    *

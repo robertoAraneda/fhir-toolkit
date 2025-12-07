@@ -59,7 +59,7 @@ export class FamilyMemberHistoryConditionBuilder extends BackboneElementBuilder<
   // ============================================================================
 
   /**
-   * Set onset choice type
+   * Set onset choice type (onsetAge, onsetRange, onsetPeriod, onsetString)
    * @param type - 'Age' | 'Range' | 'Period' | 'String'
    * @param value - The value for the chosen type
    *

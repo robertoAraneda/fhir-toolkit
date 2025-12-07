@@ -58,7 +58,7 @@ export class ClinicalUseDefinitionIndicationBuilder extends BackboneElementBuild
   // ============================================================================
 
   /**
-   * Set duration choice type
+   * Set duration choice type (durationRange, durationString)
    * @param type - 'Range' | 'String'
    * @param value - The value for the chosen type
    *

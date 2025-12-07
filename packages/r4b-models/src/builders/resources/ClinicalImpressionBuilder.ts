@@ -127,7 +127,7 @@ export class ClinicalImpressionBuilder extends DomainResourceBuilder<ClinicalImp
   // ============================================================================
 
   /**
-   * Set effective choice type
+   * Set effective choice type (effectiveDateTime, effectivePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -147,31 +147,6 @@ export class ClinicalImpressionBuilder extends DomainResourceBuilder<ClinicalImp
     if (type !== 'Period') {
       otherKeys.push('effectivePeriod' as keyof IClinicalImpression);
       otherKeys.push('_effectivePeriod' as keyof IClinicalImpression);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set prognosis choice type
-   * @param type - 'CodeableConcept' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setPrognosis('CodeableConcept', value)
-   */
-  setPrognosis<T extends 'CodeableConcept' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `prognosis${type}` as keyof IClinicalImpression;
-    const otherKeys: (keyof IClinicalImpression)[] = [];
-    if (type !== 'CodeableConcept') {
-      otherKeys.push('prognosisCodeableConcept' as keyof IClinicalImpression);
-      otherKeys.push('_prognosisCodeableConcept' as keyof IClinicalImpression);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('prognosisReference' as keyof IClinicalImpression);
-      otherKeys.push('_prognosisReference' as keyof IClinicalImpression);
     }
     return this.setChoiceType(key, value, otherKeys);
   }
@@ -218,6 +193,22 @@ export class ClinicalImpressionBuilder extends DomainResourceBuilder<ClinicalImp
    */
   addFinding(finding: IClinicalImpressionFinding): this {
     return this.addToArray('finding', finding);
+  }
+
+  /**
+   * Add prognosisCodeableConcept
+   * Estimate of likely outcome
+   */
+  addPrognosisCodeableConcept(prognosisCodeableConcept: ICodeableConcept): this {
+    return this.addToArray('prognosisCodeableConcept', prognosisCodeableConcept);
+  }
+
+  /**
+   * Add prognosisReference
+   * RiskAssessment expressing likely outcome
+   */
+  addPrognosisReference(prognosisReference: IReference<'RiskAssessment'>): this {
+    return this.addToArray('prognosisReference', prognosisReference);
   }
 
   /**

@@ -1,6 +1,5 @@
 import { BackboneElementBuilder } from '../base/BackboneElementBuilder.js';
 import { EvidenceStatisticModelCharacteristicVariable } from '../../models/backbones/EvidenceStatisticModelCharacteristicVariable.js';
-import type { ChoiceTypeValue } from '../base/ChoiceTypeValue.js';
 import type {
   EvidenceVariableHandlingType,
   ICodeableConcept,
@@ -46,35 +45,6 @@ export class EvidenceStatisticModelCharacteristicVariableBuilder extends Backbon
   }
 
   // ============================================================================
-  // Choice Types
-  // ============================================================================
-
-  /**
-   * Set value choice type
-   * @param type - 'Quantity' | 'Range'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setValue('Quantity', value)
-   */
-  setValue<T extends 'Quantity' | 'Range'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `value${type}` as keyof IEvidenceStatisticModelCharacteristicVariable;
-    const otherKeys: (keyof IEvidenceStatisticModelCharacteristicVariable)[] = [];
-    if (type !== 'Quantity') {
-      otherKeys.push('valueQuantity' as keyof IEvidenceStatisticModelCharacteristicVariable);
-      otherKeys.push('_valueQuantity' as keyof IEvidenceStatisticModelCharacteristicVariable);
-    }
-    if (type !== 'Range') {
-      otherKeys.push('valueRange' as keyof IEvidenceStatisticModelCharacteristicVariable);
-      otherKeys.push('_valueRange' as keyof IEvidenceStatisticModelCharacteristicVariable);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  // ============================================================================
   // Array Properties
   // ============================================================================
 
@@ -84,6 +54,22 @@ export class EvidenceStatisticModelCharacteristicVariableBuilder extends Backbon
    */
   addValueCategory(valueCategory: ICodeableConcept): this {
     return this.addToArray('valueCategory', valueCategory);
+  }
+
+  /**
+   * Add valueQuantity
+   * Discrete value for grouping of ordinal or polychotomous variables
+   */
+  addValueQuantity(valueQuantity: IQuantity): this {
+    return this.addToArray('valueQuantity', valueQuantity);
+  }
+
+  /**
+   * Add valueRange
+   * Range of values for grouping of ordinal or polychotomous variables
+   */
+  addValueRange(valueRange: IRange): this {
+    return this.addToArray('valueRange', valueRange);
   }
 
   // ============================================================================

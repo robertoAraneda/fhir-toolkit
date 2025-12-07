@@ -165,7 +165,7 @@ export class MessageDefinitionBuilder extends DomainResourceBuilder<MessageDefin
   // ============================================================================
 
   /**
-   * Set event choice type
+   * Set event choice type (eventCoding, eventUri)
    * @param type - 'Coding' | 'Uri'
    * @param value - The value for the chosen type
    *

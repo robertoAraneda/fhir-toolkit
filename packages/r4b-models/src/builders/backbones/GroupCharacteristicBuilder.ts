@@ -58,7 +58,7 @@ export class GroupCharacteristicBuilder extends BackboneElementBuilder<GroupChar
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueBoolean, valueQuantity, valueRange, valueReference)
    * @param type - 'CodeableConcept' | 'Boolean' | 'Quantity' | 'Range' | 'Reference'
    * @param value - The value for the chosen type
    *

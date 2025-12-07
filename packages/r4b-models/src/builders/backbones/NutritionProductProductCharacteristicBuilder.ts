@@ -38,7 +38,7 @@ export class NutritionProductProductCharacteristicBuilder extends BackboneElemen
   // ============================================================================
 
   /**
-   * Set value choice type
+   * Set value choice type (valueCodeableConcept, valueString, valueQuantity, valueBase64Binary, valueAttachment, valueBoolean)
    * @param type - 'CodeableConcept' | 'String' | 'Quantity' | 'Base64Binary' | 'Attachment' | 'Boolean'
    * @param value - The value for the chosen type
    *

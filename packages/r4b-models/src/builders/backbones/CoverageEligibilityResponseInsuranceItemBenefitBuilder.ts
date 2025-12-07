@@ -32,42 +32,28 @@ export class CoverageEligibilityResponseInsuranceItemBenefitBuilder extends Back
     return this;
   }
 
-  /**
-   * Set allowedUnsignedInt
-   * Benefits allowed
-   */
-  setAllowedUnsignedInt(allowedUnsignedInt: number): this {
-    this.data.allowedUnsignedInt = allowedUnsignedInt;
-    return this;
-  }
-
-  /**
-   * Set usedUnsignedInt
-   * Benefits used
-   */
-  setUsedUnsignedInt(usedUnsignedInt: number): this {
-    this.data.usedUnsignedInt = usedUnsignedInt;
-    return this;
-  }
-
   // ============================================================================
   // Choice Types
   // ============================================================================
 
   /**
-   * Set allowed choice type
-   * @param type - 'String' | 'Money'
+   * Set allowed choice type (allowedUnsignedInt, allowedString, allowedMoney)
+   * @param type - 'UnsignedInt' | 'String' | 'Money'
    * @param value - The value for the chosen type
    *
    * @example
-   * builder.setAllowed('String', value)
+   * builder.setAllowed('UnsignedInt', value)
    */
-  setAllowed<T extends 'String' | 'Money'>(
+  setAllowed<T extends 'UnsignedInt' | 'String' | 'Money'>(
     type: T,
     value: ChoiceTypeValue<T>
   ): this {
     const key = `allowed${type}` as keyof ICoverageEligibilityResponseInsuranceItemBenefit;
     const otherKeys: (keyof ICoverageEligibilityResponseInsuranceItemBenefit)[] = [];
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('allowedUnsignedInt' as keyof ICoverageEligibilityResponseInsuranceItemBenefit);
+      otherKeys.push('_allowedUnsignedInt' as keyof ICoverageEligibilityResponseInsuranceItemBenefit);
+    }
     if (type !== 'String') {
       otherKeys.push('allowedString' as keyof ICoverageEligibilityResponseInsuranceItemBenefit);
       otherKeys.push('_allowedString' as keyof ICoverageEligibilityResponseInsuranceItemBenefit);
@@ -80,19 +66,23 @@ export class CoverageEligibilityResponseInsuranceItemBenefitBuilder extends Back
   }
 
   /**
-   * Set used choice type
-   * @param type - 'String' | 'Money'
+   * Set used choice type (usedUnsignedInt, usedString, usedMoney)
+   * @param type - 'UnsignedInt' | 'String' | 'Money'
    * @param value - The value for the chosen type
    *
    * @example
-   * builder.setUsed('String', value)
+   * builder.setUsed('UnsignedInt', value)
    */
-  setUsed<T extends 'String' | 'Money'>(
+  setUsed<T extends 'UnsignedInt' | 'String' | 'Money'>(
     type: T,
     value: ChoiceTypeValue<T>
   ): this {
     const key = `used${type}` as keyof ICoverageEligibilityResponseInsuranceItemBenefit;
     const otherKeys: (keyof ICoverageEligibilityResponseInsuranceItemBenefit)[] = [];
+    if (type !== 'UnsignedInt') {
+      otherKeys.push('usedUnsignedInt' as keyof ICoverageEligibilityResponseInsuranceItemBenefit);
+      otherKeys.push('_usedUnsignedInt' as keyof ICoverageEligibilityResponseInsuranceItemBenefit);
+    }
     if (type !== 'String') {
       otherKeys.push('usedString' as keyof ICoverageEligibilityResponseInsuranceItemBenefit);
       otherKeys.push('_usedString' as keyof ICoverageEligibilityResponseInsuranceItemBenefit);

@@ -110,7 +110,7 @@ export class CoverageEligibilityRequestBuilder extends DomainResourceBuilder<Cov
   // ============================================================================
 
   /**
-   * Set serviced choice type
+   * Set serviced choice type (servicedDate, servicedPeriod)
    * @param type - 'Date' | 'Period'
    * @param value - The value for the chosen type
    *

@@ -38,7 +38,7 @@ export class EvidenceReportRelatesToBuilder extends BackboneElementBuilder<Evide
   // ============================================================================
 
   /**
-   * Set target choice type
+   * Set target choice type (targetIdentifier, targetReference)
    * @param type - 'Identifier' | 'Reference'
    * @param value - The value for the chosen type
    *

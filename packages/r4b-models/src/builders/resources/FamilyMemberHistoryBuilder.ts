@@ -110,32 +110,7 @@ export class FamilyMemberHistoryBuilder extends DomainResourceBuilder<FamilyMemb
   // ============================================================================
 
   /**
-   * Set instantiates choice type
-   * @param type - 'Canonical' | 'Uri'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setInstantiates('Canonical', value)
-   */
-  setInstantiates<T extends 'Canonical' | 'Uri'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `instantiates${type}` as keyof IFamilyMemberHistory;
-    const otherKeys: (keyof IFamilyMemberHistory)[] = [];
-    if (type !== 'Canonical') {
-      otherKeys.push('instantiatesCanonical' as keyof IFamilyMemberHistory);
-      otherKeys.push('_instantiatesCanonical' as keyof IFamilyMemberHistory);
-    }
-    if (type !== 'Uri') {
-      otherKeys.push('instantiatesUri' as keyof IFamilyMemberHistory);
-      otherKeys.push('_instantiatesUri' as keyof IFamilyMemberHistory);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
-  /**
-   * Set born choice type
+   * Set born choice type (bornPeriod, bornDate, bornString)
    * @param type - 'Period' | 'Date' | 'String'
    * @param value - The value for the chosen type
    *
@@ -164,7 +139,7 @@ export class FamilyMemberHistoryBuilder extends DomainResourceBuilder<FamilyMemb
   }
 
   /**
-   * Set age choice type
+   * Set age choice type (ageAge, ageRange, ageString)
    * @param type - 'Age' | 'Range' | 'String'
    * @param value - The value for the chosen type
    *
@@ -193,7 +168,7 @@ export class FamilyMemberHistoryBuilder extends DomainResourceBuilder<FamilyMemb
   }
 
   /**
-   * Set deceased choice type
+   * Set deceased choice type (deceasedBoolean, deceasedAge, deceasedRange, deceasedDate, deceasedString)
    * @param type - 'Boolean' | 'Age' | 'Range' | 'Date' | 'String'
    * @param value - The value for the chosen type
    *
@@ -229,31 +204,6 @@ export class FamilyMemberHistoryBuilder extends DomainResourceBuilder<FamilyMemb
     return this.setChoiceType(key, value, otherKeys);
   }
 
-  /**
-   * Set reason choice type
-   * @param type - 'Code' | 'Reference'
-   * @param value - The value for the chosen type
-   *
-   * @example
-   * builder.setReason('Code', value)
-   */
-  setReason<T extends 'Code' | 'Reference'>(
-    type: T,
-    value: ChoiceTypeValue<T>
-  ): this {
-    const key = `reason${type}` as keyof IFamilyMemberHistory;
-    const otherKeys: (keyof IFamilyMemberHistory)[] = [];
-    if (type !== 'Code') {
-      otherKeys.push('reasonCode' as keyof IFamilyMemberHistory);
-      otherKeys.push('_reasonCode' as keyof IFamilyMemberHistory);
-    }
-    if (type !== 'Reference') {
-      otherKeys.push('reasonReference' as keyof IFamilyMemberHistory);
-      otherKeys.push('_reasonReference' as keyof IFamilyMemberHistory);
-    }
-    return this.setChoiceType(key, value, otherKeys);
-  }
-
   // ============================================================================
   // Array Properties
   // ============================================================================
@@ -264,6 +214,38 @@ export class FamilyMemberHistoryBuilder extends DomainResourceBuilder<FamilyMemb
    */
   addIdentifier(identifier: IIdentifier): this {
     return this.addToArray('identifier', identifier);
+  }
+
+  /**
+   * Add instantiatesCanonical
+   * Instantiates FHIR protocol or definition
+   */
+  addInstantiatesCanonical(instantiatesCanonical: string): this {
+    return this.addToArray('instantiatesCanonical', instantiatesCanonical);
+  }
+
+  /**
+   * Add instantiatesUri
+   * Instantiates external protocol or definition
+   */
+  addInstantiatesUri(instantiatesUri: string): this {
+    return this.addToArray('instantiatesUri', instantiatesUri);
+  }
+
+  /**
+   * Add reasonCode
+   * Why was family member history performed?
+   */
+  addReasonCode(reasonCode: ICodeableConcept): this {
+    return this.addToArray('reasonCode', reasonCode);
+  }
+
+  /**
+   * Add reasonReference
+   * Why was family member history performed?
+   */
+  addReasonReference(reasonReference: IReference<'Condition' | 'Observation' | 'AllergyIntolerance' | 'QuestionnaireResponse' | 'DiagnosticReport' | 'DocumentReference'>): this {
+    return this.addToArray('reasonReference', reasonReference);
   }
 
   /**

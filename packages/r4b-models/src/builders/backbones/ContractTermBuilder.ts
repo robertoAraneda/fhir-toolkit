@@ -98,7 +98,7 @@ export class ContractTermBuilder extends BackboneElementBuilder<ContractTerm, IC
   // ============================================================================
 
   /**
-   * Set topic choice type
+   * Set topic choice type (topicCodeableConcept, topicReference)
    * @param type - 'CodeableConcept' | 'Reference'
    * @param value - The value for the chosen type
    *

@@ -76,7 +76,7 @@ export class SpecimenCollectionBuilder extends BackboneElementBuilder<SpecimenCo
   // ============================================================================
 
   /**
-   * Set collected choice type
+   * Set collected choice type (collectedDateTime, collectedPeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *
@@ -101,7 +101,7 @@ export class SpecimenCollectionBuilder extends BackboneElementBuilder<SpecimenCo
   }
 
   /**
-   * Set fastingStatus choice type
+   * Set fastingStatus choice type (fastingStatusCodeableConcept, fastingStatusDuration)
    * @param type - 'CodeableConcept' | 'Duration'
    * @param value - The value for the chosen type
    *

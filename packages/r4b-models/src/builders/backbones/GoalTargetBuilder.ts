@@ -40,7 +40,7 @@ export class GoalTargetBuilder extends BackboneElementBuilder<GoalTarget, IGoalT
   // ============================================================================
 
   /**
-   * Set detail choice type
+   * Set detail choice type (detailQuantity, detailRange, detailCodeableConcept, detailString, detailBoolean, detailInteger, detailRatio)
    * @param type - 'Quantity' | 'Range' | 'CodeableConcept' | 'String' | 'Boolean' | 'Integer' | 'Ratio'
    * @param value - The value for the chosen type
    *
@@ -85,7 +85,7 @@ export class GoalTargetBuilder extends BackboneElementBuilder<GoalTarget, IGoalT
   }
 
   /**
-   * Set due choice type
+   * Set due choice type (dueDate, dueDuration)
    * @param type - 'Date' | 'Duration'
    * @param value - The value for the chosen type
    *

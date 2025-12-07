@@ -47,7 +47,7 @@ export class ExplanationOfBenefitAccidentBuilder extends BackboneElementBuilder<
   // ============================================================================
 
   /**
-   * Set location choice type
+   * Set location choice type (locationAddress, locationReference)
    * @param type - 'Address' | 'Reference'
    * @param value - The value for the chosen type
    *

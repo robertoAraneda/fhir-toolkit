@@ -90,7 +90,7 @@ export class DiagnosticReportBuilder extends DomainResourceBuilder<DiagnosticRep
   // ============================================================================
 
   /**
-   * Set effective choice type
+   * Set effective choice type (effectiveDateTime, effectivePeriod)
    * @param type - 'DateTime' | 'Period'
    * @param value - The value for the chosen type
    *

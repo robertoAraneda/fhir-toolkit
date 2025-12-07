@@ -92,7 +92,7 @@ export class SubstanceDefinitionMoietyBuilder extends BackboneElementBuilder<Sub
   // ============================================================================
 
   /**
-   * Set amount choice type
+   * Set amount choice type (amountQuantity, amountString)
    * @param type - 'Quantity' | 'String'
    * @param value - The value for the chosen type
    *

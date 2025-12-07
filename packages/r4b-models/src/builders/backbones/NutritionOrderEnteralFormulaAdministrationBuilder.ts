@@ -47,7 +47,7 @@ export class NutritionOrderEnteralFormulaAdministrationBuilder extends BackboneE
   // ============================================================================
 
   /**
-   * Set rate choice type
+   * Set rate choice type (rateQuantity, rateRatio)
    * @param type - 'Quantity' | 'Ratio'
    * @param value - The value for the chosen type
    *
