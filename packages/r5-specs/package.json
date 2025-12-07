@@ -31,13 +31,11 @@
   ],
   "scripts": {
     "build": "tsup",
-    "extract-specs": "tsx scripts/extract-specs.ts",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
     "tsup": "^8.0.2",
-    "tsx": "^4.7.1",
     "typescript": "^5.4.0"
   },
   "repository": {
