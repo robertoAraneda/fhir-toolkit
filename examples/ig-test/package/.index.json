@@ -1,0 +1,666 @@
+{
+  "index-version" : 2,
+  "files" : [
+    {
+      "filename" : "ImplementationGuide-hl7.fhir.cl.clcore.json",
+      "resourceType" : "ImplementationGuide",
+      "id" : "hl7.fhir.cl.clcore",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ImplementationGuide/hl7.fhir.cl.clcore",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "CodeSystem-CSCodComunasCL.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSCodComunasCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSCodComunasCL",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSCodMadurez.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSCodMadurez",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSCodMadurez",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSCodProvinciasCL.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSCodProvinciasCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSCodProvinciasCL",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSCodRegionCL.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSCodRegionCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSCodRegionCL",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSCodSSalud.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSCodSSalud",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSCodSSalud",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSCodigoDNI.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSCodigoDNI",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSCodigoDNI",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSCodigoServicio.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSCodigoServicio",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSCodigoServicio",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSCodigoVacunas.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSCodigoVacunas",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSCodigoVacunas",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSCodigoslenguaje.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSCodigoslenguaje",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSCodigoslenguaje",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSEspecialidadesDeisCL.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSEspecialidadesDeisCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSEspecialidadesDeisCL",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSIdentidaddeGenero.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSIdentidaddeGenero",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSIdentidaddeGenero",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSIdentificadores.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSIdentificadores",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSIdentificadores",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSNombreCampana.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSNombreCampana",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSNombreCampana",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSRazonNOT.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSRazonNOT",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSRazonNOT",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSRazonNOTinm.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSRazonNOTinm",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSRazonNOTinm",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSSexoListadoDeis.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSSexoListadoDeis",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSSexoListadoDeis",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSTipoIdentificador.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSTipoIdentificador",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSTipoIdentificador",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CSTiposEncuentroCL.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CSTiposEncuentroCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CSTiposEncuentroCL",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-CodPais.json",
+      "resourceType" : "CodeSystem",
+      "id" : "CodPais",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/CodPais",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "CodeSystem-csrazonnoencuentro.json",
+      "resourceType" : "CodeSystem",
+      "id" : "csrazonnoencuentro",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/CodeSystem/csrazonnoencuentro",
+      "version" : "1.8.5",
+      "content" : "complete"
+    },
+    {
+      "filename" : "StructureDefinition-AuditEventCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "AuditEventCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/AuditEventCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "AuditEvent",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-BundleCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "BundleCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/BundleCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Bundle",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-CodigoPaises.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "CodigoPaises",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/CodigoPaises",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-ComunasCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "ComunasCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/ComunasCl",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-ContactoParticipantes.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "ContactoParticipantes",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/ContactoParticipantes",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-CoreDiagnosticoCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "CoreDiagnosticoCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/CoreDiagnosticoCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Condition",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-CoreEspecialidadCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "CoreEspecialidadCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/CoreEspecialidadCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "PractitionerRole",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-CoreLocalizacionCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "CoreLocalizacionCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/CoreLocalizacionCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Location",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-CoreMedicamentoCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "CoreMedicamentoCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/CoreMedicamentoCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Medication",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-CoreOrganizacionCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "CoreOrganizacionCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/CoreOrganizacionCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Organization",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-CorePacienteCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "CorePacienteCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/CorePacienteCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Patient",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-CorePrestadorCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "CorePrestadorCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/CorePrestadorCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Practitioner",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-DocumentoCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "DocumentoCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/DocumentoCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Composition",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-EncounterCL.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "EncounterCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/EncounterCL",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Encounter",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-IdContacto.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "IdContacto",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/IdContacto",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-IdentidadDeGenero.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "IdentidadDeGenero",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/IdentidadDeGenero",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-ImmunizationCL.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "ImmunizationCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/ImmunizationCL",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Immunization",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-NombreCampana.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "NombreCampana",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/NombreCampana",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-NotasEncuentro.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "NotasEncuentro",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/NotasEncuentro",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-ObservacionesDiagnostico.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "ObservacionesDiagnostico",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/ObservacionesDiagnostico",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-ProvenanceCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "ProvenanceCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/ProvenanceCl",
+      "version" : "1.8.5",
+      "kind" : "resource",
+      "type" : "Provenance",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-ProvinciasCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "ProvinciasCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/ProvinciasCl",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-RazonNOrealizarse.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "RazonNOrealizarse",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/RazonNOrealizarse",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-RazonNOrealizarseInm.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "RazonNOrealizarseInm",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/RazonNOrealizarseInm",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-RegionesCl.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "RegionesCl",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/RegionesCl",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-SegundoApellido.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "SegundoApellido",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/SegundoApellido",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-ServicioSalud.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "ServicioSalud",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/ServicioSalud",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-SexoBiologico.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "SexoBiologico",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/SexoBiologico",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-SexoRegistral.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "SexoRegistral",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/SexoRegistral",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-TiposEncuentro.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "TiposEncuentro",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/TiposEncuentro",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-TiposServicio.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "TiposServicio",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/TiposServicio",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-TiposVacunaRNI.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "TiposVacunaRNI",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/TiposVacunaRNI",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-VSEspecialidadesDeisCL.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "VSEspecialidadesDeisCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/VSEspecialidadesDeisCL",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "StructureDefinition-cl-address.json",
+      "resourceType" : "StructureDefinition",
+      "id" : "cl-address",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/cl-address",
+      "version" : "1.8.5",
+      "kind" : "complex-type",
+      "type" : "Address",
+      "derivation" : "constraint"
+    },
+    {
+      "filename" : "ValueSet-CodPais.json",
+      "resourceType" : "ValueSet",
+      "id" : "CodPais",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/CodPais",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSCodMadurez.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSCodMadurez",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSCodMadurez",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSCodigosComunaCL.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSCodigosComunaCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSCodigosComunaCL",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSCodigosProvinciasCL.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSCodigosProvinciasCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSCodigosProvinciasCL",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSCodigosRegionesCL.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSCodigosRegionesCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSCodigosRegionesCL",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSCodigosServiciosSalud.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSCodigosServiciosSalud",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSCodigosServiciosSalud",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSCodigoslenguaje.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSCodigoslenguaje",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSCodigoslenguaje",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSContactosec.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSContactosec",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSContactosec",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSDiagnosticosSCT.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSDiagnosticosSCT",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSDiagnosticosSCT",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSEspecialidadesDeisCL.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSEspecialidadesDeisCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSEspecialidadesDeisCL",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSIdentidaddeGenero.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSIdentidaddeGenero",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSIdentidaddeGenero",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSIdentificadores.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSIdentificadores",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSIdentificadores",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSNombreCampana.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSNombreCampana",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSNombreCampana",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSRazonNOT.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSRazonNOT",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSRazonNOT",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSRazonNOTinm.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSRazonNOTinm",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSRazonNOTinm",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSSexoListadoDeis.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSSexoListadoDeis",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSSexoListadoDeis",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSTipoIdentificador.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSTipoIdentificador",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSTipoIdentificador",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSTiposDocClinic.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSTiposDocClinic",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSTiposDocClinic",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSTiposDocumentos.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSTiposDocumentos",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSTiposDocumentos",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSTiposEncuentroCL.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSTiposEncuentroCL",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSTiposEncuentroCL",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSTiposServicio.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSTiposServicio",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSTiposServicio",
+      "version" : "1.8.5"
+    },
+    {
+      "filename" : "ValueSet-VSTiposVacunas.json",
+      "resourceType" : "ValueSet",
+      "id" : "VSTiposVacunas",
+      "url" : "https://hl7chile.cl/fhir/ig/clcore/ValueSet/VSTiposVacunas",
+      "version" : "1.8.5"
+    }
+  ]
+}

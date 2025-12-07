@@ -1,0 +1,1 @@
+{"resourceType":"Patient","id":"11","text":{"status":"generated","div":"<div xmlns=\"http://www.w3.org/1999/xhtml\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>Yanara Salinas </b> female, DoB: 1990-01-02</p><hr/></div>"},"name":[{"given":["Yanara Salinas"]}],"gender":"female","birthDate":"1990-01-02"}

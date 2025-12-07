@@ -1,0 +1,26 @@
+{
+  "name": "@fhir-toolkit/examples",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "example:validation": "tsx validation-examples.ts",
+    "example:type-guards": "tsx type-guards-examples.ts",
+    "example:builders": "tsx builder-examples.ts",
+    "example:models": "tsx models-examples.ts",
+    "example:datatypes": "tsx datatypes-examples.ts",
+    "example:backbones": "tsx backbones-examples.ts",
+    "example:validation-cjs": "node validation-example.cjs",
+    "example:ig-clcore": "tsx ig-clcore-example.ts",
+    "example:all": "pnpm example:models && pnpm example:datatypes && pnpm example:backbones && pnpm example:builders && pnpm example:validation && pnpm example:type-guards"
+  },
+  "dependencies": {
+    "@fhir-toolkit/r4-models": "workspace:*",
+    "@fhir-toolkit/yafv": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.8.3"
+  }
+}

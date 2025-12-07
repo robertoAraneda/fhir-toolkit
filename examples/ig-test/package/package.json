@@ -1,0 +1,31 @@
+{
+  "name" : "hl7.fhir.cl.clcore",
+  "version" : "1.8.5",
+  "tools-version" : 3,
+  "type" : "IG",
+  "date" : "20231102094333",
+  "license" : "CC0-1.0",
+  "canonical" : "https://hl7chile.cl/fhir/ig/clcore",
+  "url" : "https://hl7chile.cl/fhir/ig/clcore/1.8.5",
+  "title" : "Guía de Implementación \"cl core\" FHIR R4, (Versión Evolutiva)",
+  "description" : "Guía de Implementación Versión de Desarrollo Sobre STU 1, para los perfiles Core que se van a requerir a nivel de desarrollo Nacional para Sistemas que Intercambien datos en estandar FHIR-R4 (built Thu, Nov 2, 2023 09:43-0300-03:00)",
+  "fhirVersions" : ["4.0.1"],
+  "dependencies" : {
+    "hl7.fhir.r4.core" : "4.0.1",
+    "hl7.terminology.r4" : "5.3.0",
+    "hl7.fhir.uv.extensions.r4" : "1.0.0",
+    "hl7.fhir.uv.ips" : "1.0.0"
+  },
+  "author" : "HL7 Chile",
+  "maintainers" : [
+    {
+      "name" : "HL7 Chile",
+      "email" : "chair@hl7chile.cl",
+      "url" : "http://hl7chile.cl"
+    }
+  ],
+  "directories" : {
+    "lib" : "package",
+    "example" : "example"
+  }
+}
