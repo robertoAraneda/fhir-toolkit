@@ -1532,8 +1532,26 @@ export class FhirValidator {
       // Check for primitive extensions (_element syntax)
       if (key.startsWith('_')) {
         const baseElement = key.substring(1);
+
+        // Skip if the value is undefined or null (property exists but has no value)
+        if (value[key] === undefined || value[key] === null) {
+          continue;
+        }
+
         // Primitive extension is valid if the base element is allowed and is a primitive type
-        if (allowedFields.has(baseElement)) {
+        // For choice types, check if it's a variant (e.g., valueString for value[x])
+        let isValidPrimitiveExt = allowedFields.has(baseElement);
+        if (!isValidPrimitiveExt) {
+          // Check if it's a choice type variant
+          for (const allowed of allowedFields) {
+            if (baseElement.startsWith(allowed) && baseElement.length > allowed.length) {
+              isValidPrimitiveExt = true;
+              break;
+            }
+          }
+        }
+
+        if (isValidPrimitiveExt) {
           // Validate the primitive extension structure
           const primitiveExtIssues = this.validatePrimitiveExtension(
             value[key],
@@ -2273,8 +2291,26 @@ export class FhirValidator {
       // Check for primitive extensions (_element syntax)
       if (key.startsWith('_')) {
         const baseElement = key.substring(1);
+
+        // Skip if the value is undefined or null (property exists but has no value)
+        if (data[key] === undefined || data[key] === null) {
+          continue;
+        }
+
         // Primitive extension is valid if the base element is allowed
-        if (allowedElements.has(baseElement)) {
+        // For choice types, check if it's a variant (e.g., deceasedBoolean for deceased[x])
+        let isValidPrimitiveExt = allowedElements.has(baseElement);
+        if (!isValidPrimitiveExt) {
+          // Check if it's a choice type variant
+          for (const allowed of allowedElements) {
+            if (baseElement.startsWith(allowed) && baseElement.length > allowed.length) {
+              isValidPrimitiveExt = true;
+              break;
+            }
+          }
+        }
+
+        if (isValidPrimitiveExt) {
           // Validate the primitive extension structure
           const primitiveExtIssues = this.validatePrimitiveExtension(
             data[key],
