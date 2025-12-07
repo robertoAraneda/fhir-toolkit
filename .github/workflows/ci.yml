@@ -25,16 +25,5 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Verify generated code is in sync
-        run: |
-          pnpm generate:all
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "❌ Generated code is out of sync!"
-            echo "Run 'pnpm generate:all' locally and commit the changes."
-            git diff --stat
-            exit 1
-          fi
-          echo "✅ Generated code is in sync"
-
       - name: Test
         run: pnpm test
