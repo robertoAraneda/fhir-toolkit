@@ -1,5 +1,12 @@
 # @fhir-toolkit/yafv
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [9439d95]
+  - @fhir-toolkit/r5-specs@0.1.0
+
 ## 1.1.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@fhir-toolkit/r5-specs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "FHIR R5 StructureDefinitions, ValueSets, and CodeSystems for validation",
   "keywords": [
     "fhir",

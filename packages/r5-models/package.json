@@ -1,6 +1,6 @@
 {
   "name": "@fhir-toolkit/r5-models",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "FHIR R5 models and builders for TypeScript",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
