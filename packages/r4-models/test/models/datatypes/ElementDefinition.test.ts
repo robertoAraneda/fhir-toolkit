@@ -873,7 +873,7 @@ describe('ElementDefinition', () => {
         .setPath('Identifier.type.coding.code')
         .setMin(1)
         .setMax('1')
-        .setFixedPositiveInt(1) // Using a numeric fixed value
+        .setFixed('PositiveInt', 1) // Using a numeric fixed value
         .build();
 
       expect(typeCodeElement.fixedPositiveInt).toBe(1);
@@ -884,7 +884,7 @@ describe('ElementDefinition', () => {
         .setPath('Identifier.type')
         .setMin(1)
         .setMax('1')
-        .setPatternPositiveInt(1)
+        .setPattern('PositiveInt', 1)
         .build();
 
       expect(typeElement.patternPositiveInt).toBe(1);

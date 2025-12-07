@@ -368,7 +368,7 @@ describe('Extension', () => {
       it('should set positive int value', () => {
         const ext = new ExtensionBuilder()
           .setUrl('http://example.org/ext')
-          .setValuePositiveInt(5)
+          .setValue('PositiveInt', 5)
           .build();
 
         expect(ext.valuePositiveInt).toBe(5);
@@ -377,7 +377,7 @@ describe('Extension', () => {
       it('should set unsigned int value', () => {
         const ext = new ExtensionBuilder()
           .setUrl('http://example.org/ext')
-          .setValueUnsignedInt(100)
+          .setValue('UnsignedInt', 100)
           .build();
 
         expect(ext.valueUnsignedInt).toBe(100);
@@ -386,7 +386,7 @@ describe('Extension', () => {
       it('should set uuid value', () => {
         const ext = new ExtensionBuilder()
           .setUrl('http://example.org/ext')
-          .setValueUuid('urn:uuid:12345678-1234-1234-1234-123456789012')
+          .setValue('Uuid', 'urn:uuid:12345678-1234-1234-1234-123456789012')
           .build();
 
         expect(ext.valueUuid).toBe('urn:uuid:12345678-1234-1234-1234-123456789012');
