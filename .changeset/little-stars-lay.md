@@ -1,5 +1,4 @@
 ---
-'@fhir-toolkit/examples': minor
 '@fhir-toolkit/cli': minor
 '@fhir-toolkit/r4-models': minor
 '@fhir-toolkit/r4-specs': minor
