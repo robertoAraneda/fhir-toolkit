@@ -9,7 +9,7 @@ import type { QualityTypeType } from '../../valuesets/index.js';
  * An set of value as quality of sequence
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequencequality.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencequality.html
  */
 export interface IMolecularSequenceQuality extends IBackboneElement {
   /**

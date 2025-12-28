@@ -12,7 +12,7 @@ import type { SpecimenStatusType } from '../../valuesets/index.js';
  * A sample to be used for analysis.
  * 
  *
- * @see https://hl7.org/fhir/R4/specimen.html
+ * @see https://hl7.org/fhir/R4B/specimen.html
  */
 export interface ISpecimen extends IDomainResource {
   /**

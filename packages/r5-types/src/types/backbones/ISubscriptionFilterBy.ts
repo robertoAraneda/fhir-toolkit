@@ -7,7 +7,7 @@ import type { SearchComparatorType, SearchModifierCodeType } from '../../valuese
  * Criteria for narrowing the subscription topic stream
  * 
  *
- * @see https://hl7.org/fhir/R4/subscriptionfilterby.html
+ * @see https://hl7.org/fhir/R5/subscriptionfilterby.html
  */
 export interface ISubscriptionFilterBy extends IBackboneElement {
   /**

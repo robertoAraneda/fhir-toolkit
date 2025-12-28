@@ -9,7 +9,7 @@ import type { IMeasureReportGroupStratifierStratumPopulation } from './IMeasureR
  * Stratum results, one for each unique value, or set of values, in the stratifier, or stratifier components
  * 
  *
- * @see https://hl7.org/fhir/R4/measurereportgroupstratifierstratum.html
+ * @see https://hl7.org/fhir/R4B/measurereportgroupstratifierstratum.html
  */
 export interface IMeasureReportGroupStratifierStratum extends IBackboneElement {
   /**

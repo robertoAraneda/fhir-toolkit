@@ -28,7 +28,7 @@ const PLAN_DEFINITION_GOAL_TARGET_PROPERTIES = [
 /**
  * PlanDefinitionGoalTarget - Target outcome for the goal
  *
- * @see https://hl7.org/fhir/R4/plandefinitiongoaltarget.html
+ * @see https://hl7.org/fhir/R5/plandefinitiongoaltarget.html
  *
  * @example
  * const planDefinitionGoalTarget = new PlanDefinitionGoalTarget({

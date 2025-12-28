@@ -27,7 +27,7 @@ import type { ClaimProcessingType, ExplanationOfBenefitStatusType, UseType } fro
  * This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided.
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefit.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefit.html
  */
 export interface IExplanationOfBenefit extends IDomainResource {
   /**

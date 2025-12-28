@@ -15,7 +15,7 @@ const PROCEDURE_PERFORMER_PROPERTIES = [
 /**
  * ProcedurePerformer - The people who performed the procedure
  *
- * @see https://hl7.org/fhir/R4/procedureperformer.html
+ * @see https://hl7.org/fhir/R4B/procedureperformer.html
  *
  * @example
  * const procedurePerformer = new ProcedurePerformer({

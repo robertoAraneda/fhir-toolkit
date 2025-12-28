@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * The asserted justification for using the data
  * 
  *
- * @see https://hl7.org/fhir/R4/permissionjustification.html
+ * @see https://hl7.org/fhir/R5/permissionjustification.html
  */
 export interface IPermissionJustification extends IBackboneElement {
   /**

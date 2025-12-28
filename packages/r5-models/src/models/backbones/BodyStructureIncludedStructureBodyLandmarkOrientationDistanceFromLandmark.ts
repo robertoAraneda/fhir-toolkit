@@ -14,7 +14,7 @@ const BODY_STRUCTURE_INCLUDED_STRUCTURE_BODY_LANDMARK_ORIENTATION_DISTANCE_FROM_
 /**
  * BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark - Landmark relative location
  *
- * @see https://hl7.org/fhir/R4/bodystructureincludedstructurebodylandmarkorientationdistancefromlandmark.html
+ * @see https://hl7.org/fhir/R5/bodystructureincludedstructurebodylandmarkorientationdistancefromlandmark.html
  *
  * @example
  * const bodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark = new BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark({

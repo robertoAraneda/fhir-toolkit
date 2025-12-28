@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * The list of medical reasons that are expected to be addressed during the episode of care
  * 
  *
- * @see https://hl7.org/fhir/R4/episodeofcarereason.html
+ * @see https://hl7.org/fhir/R5/episodeofcarereason.html
  */
 export interface IEpisodeOfCareReason extends IBackboneElement {
   /**

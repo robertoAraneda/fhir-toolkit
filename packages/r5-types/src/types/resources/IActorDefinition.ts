@@ -10,7 +10,7 @@ import type { ExampleScenarioActorTypeType, PublicationStatusType } from '../../
  * Describes an actor - a human or an application that plays a role in data exchange, and that may have obligations associated with the role the actor plays.
  * 
  *
- * @see https://hl7.org/fhir/R4/actordefinition.html
+ * @see https://hl7.org/fhir/R5/actordefinition.html
  */
 export interface IActorDefinition extends IDomainResource {
   /**

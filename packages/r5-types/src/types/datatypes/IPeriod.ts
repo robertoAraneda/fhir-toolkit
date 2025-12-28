@@ -6,7 +6,7 @@ import type { IDataType, IElement } from '../../base/index.js';
  * A time period defined by a start and end date and optionally time.
  * 
  *
- * @see https://hl7.org/fhir/R4/period.html
+ * @see https://hl7.org/fhir/R5/period.html
  */
 export interface IPeriod extends IDataType {
   /**

@@ -44,7 +44,7 @@ const DEVICE_DISPENSE_PROPERTIES = [
 /**
  * DeviceDispense - A record of dispensation of a device - i.e., assigning a device to a patient, or to a professional for their use.
  *
- * @see https://hl7.org/fhir/R4/devicedispense.html
+ * @see https://hl7.org/fhir/R5/devicedispense.html
  *
  * @example
  * const deviceDispense = new DeviceDispense({

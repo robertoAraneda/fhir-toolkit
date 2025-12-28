@@ -28,7 +28,7 @@ const MOLECULAR_SEQUENCE_PROPERTIES = [
 /**
  * MolecularSequence - Representation of a molecular sequence.
  *
- * @see https://hl7.org/fhir/R4/molecularsequence.html
+ * @see https://hl7.org/fhir/R5/molecularsequence.html
  *
  * @example
  * const molecularSequence = new MolecularSequence({

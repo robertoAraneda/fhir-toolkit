@@ -21,7 +21,7 @@ const EXAMPLE_SCENARIO_PROCESS_PROPERTIES = [
 /**
  * ExampleScenarioProcess - Each major process - a group of operations
  *
- * @see https://hl7.org/fhir/R4/examplescenarioprocess.html
+ * @see https://hl7.org/fhir/R4B/examplescenarioprocess.html
  *
  * @example
  * const exampleScenarioProcess = new ExampleScenarioProcess({

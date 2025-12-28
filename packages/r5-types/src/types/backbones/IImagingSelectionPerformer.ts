@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Selector of the instances (human or machine)
  * 
  *
- * @see https://hl7.org/fhir/R4/imagingselectionperformer.html
+ * @see https://hl7.org/fhir/R5/imagingselectionperformer.html
  */
 export interface IImagingSelectionPerformer extends IBackboneElement {
   /**

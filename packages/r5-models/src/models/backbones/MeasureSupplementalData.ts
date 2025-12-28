@@ -20,7 +20,7 @@ const MEASURE_SUPPLEMENTAL_DATA_PROPERTIES = [
 /**
  * MeasureSupplementalData - What other data should be reported with the measure
  *
- * @see https://hl7.org/fhir/R4/measuresupplementaldata.html
+ * @see https://hl7.org/fhir/R5/measuresupplementaldata.html
  *
  * @example
  * const measureSupplementalData = new MeasureSupplementalData({

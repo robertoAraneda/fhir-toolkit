@@ -8,7 +8,7 @@ import type { InteractionTriggerType } from '../../valuesets/index.js';
  * Definition of a resource-based trigger for the subscription topic
  * 
  *
- * @see https://hl7.org/fhir/R4/subscriptiontopicresourcetrigger.html
+ * @see https://hl7.org/fhir/R5/subscriptiontopicresourcetrigger.html
  */
 export interface ISubscriptionTopicResourceTrigger extends IBackboneElement {
   /**

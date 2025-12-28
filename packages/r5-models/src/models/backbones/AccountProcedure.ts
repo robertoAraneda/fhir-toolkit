@@ -22,7 +22,7 @@ const ACCOUNT_PROCEDURE_PROPERTIES = [
 /**
  * AccountProcedure - The list of procedures relevant to this account
  *
- * @see https://hl7.org/fhir/R4/accountprocedure.html
+ * @see https://hl7.org/fhir/R5/accountprocedure.html
  *
  * @example
  * const accountProcedure = new AccountProcedure({

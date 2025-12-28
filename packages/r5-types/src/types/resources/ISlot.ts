@@ -9,7 +9,7 @@ import type { SlotStatusType } from '../../valuesets/index.js';
  * A slot of time on a schedule that may be available for booking appointments.
  * 
  *
- * @see https://hl7.org/fhir/R4/slot.html
+ * @see https://hl7.org/fhir/R5/slot.html
  */
 export interface ISlot extends IDomainResource {
   /**

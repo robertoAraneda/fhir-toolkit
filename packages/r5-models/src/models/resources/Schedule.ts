@@ -28,7 +28,7 @@ const SCHEDULE_PROPERTIES = [
 /**
  * Schedule - A container for slots of time that may be available for booking appointments.
  *
- * @see https://hl7.org/fhir/R4/schedule.html
+ * @see https://hl7.org/fhir/R5/schedule.html
  *
  * @example
  * const schedule = new Schedule({

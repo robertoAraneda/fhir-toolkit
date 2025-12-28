@@ -65,7 +65,7 @@ const OPERATION_DEFINITION_PROPERTIES = [
 /**
  * OperationDefinition - A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).
  *
- * @see https://hl7.org/fhir/R4/operationdefinition.html
+ * @see https://hl7.org/fhir/R4B/operationdefinition.html
  *
  * @example
  * const operationDefinition = new OperationDefinition({

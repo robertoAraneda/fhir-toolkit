@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * The required criteria to execute the test plan - e.g. preconditions, previous tests
  * 
  *
- * @see https://hl7.org/fhir/R4/testplandependency.html
+ * @see https://hl7.org/fhir/R5/testplandependency.html
  */
 export interface ITestPlanDependency extends IBackboneElement {
   /**

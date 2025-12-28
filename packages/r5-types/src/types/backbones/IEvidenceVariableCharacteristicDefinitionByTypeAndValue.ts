@@ -8,7 +8,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Defines the characteristic using type and value
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristicdefinitionbytypeandvalue.html
+ * @see https://hl7.org/fhir/R5/evidencevariablecharacteristicdefinitionbytypeandvalue.html
  */
 export interface IEvidenceVariableCharacteristicDefinitionByTypeAndValue extends IBackboneElement {
   /**

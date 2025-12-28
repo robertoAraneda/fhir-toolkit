@@ -10,7 +10,7 @@ import type { IConsentProvisionData } from './IConsentProvisionData.js';
  * Constraints to the base Consent.policyRule/Consent.policy
  * 
  *
- * @see https://hl7.org/fhir/R4/consentprovision.html
+ * @see https://hl7.org/fhir/R5/consentprovision.html
  */
 export interface IConsentProvision extends IBackboneElement {
   /**

@@ -11,7 +11,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models.
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmap.html
+ * @see https://hl7.org/fhir/R4B/conceptmap.html
  */
 export interface IConceptMap extends IDomainResource {
   /**

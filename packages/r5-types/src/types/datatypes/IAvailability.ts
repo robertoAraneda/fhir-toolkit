@@ -8,7 +8,7 @@ import type { IAvailabilityNotAvailableTime } from '../backbones/IAvailabilityNo
  * Availability data for an {item}.
  * 
  *
- * @see https://hl7.org/fhir/R4/availability.html
+ * @see https://hl7.org/fhir/R5/availability.html
  */
 export interface IAvailability extends IDataType {
   /**

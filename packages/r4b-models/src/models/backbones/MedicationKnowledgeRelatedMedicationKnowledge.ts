@@ -14,7 +14,7 @@ const MEDICATION_KNOWLEDGE_RELATED_MEDICATION_KNOWLEDGE_PROPERTIES = [
 /**
  * MedicationKnowledgeRelatedMedicationKnowledge - Associated or related medication information
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgerelatedmedicationknowledge.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgerelatedmedicationknowledge.html
  *
  * @example
  * const medicationKnowledgeRelatedMedicationKnowledge = new MedicationKnowledgeRelatedMedicationKnowledge({

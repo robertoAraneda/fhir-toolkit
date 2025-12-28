@@ -18,7 +18,7 @@ const VALUE_SET_COMPOSE_INCLUDE_FILTER_PROPERTIES = [
 /**
  * ValueSetComposeIncludeFilter - Select codes/concepts by their properties (including relationships)
  *
- * @see https://hl7.org/fhir/R4/valuesetcomposeincludefilter.html
+ * @see https://hl7.org/fhir/R4B/valuesetcomposeincludefilter.html
  *
  * @example
  * const valueSetComposeIncludeFilter = new ValueSetComposeIncludeFilter({

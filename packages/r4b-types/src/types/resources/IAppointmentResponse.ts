@@ -8,7 +8,7 @@ import type { ParticipationStatusType } from '../../valuesets/index.js';
  * A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.
  * 
  *
- * @see https://hl7.org/fhir/R4/appointmentresponse.html
+ * @see https://hl7.org/fhir/R4B/appointmentresponse.html
  */
 export interface IAppointmentResponse extends IDomainResource {
   /**

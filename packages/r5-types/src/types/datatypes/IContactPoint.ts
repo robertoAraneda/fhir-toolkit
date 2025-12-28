@@ -8,7 +8,7 @@ import type { ContactPointSystemType, ContactPointUseType } from '../../valueset
  * Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
  * 
  *
- * @see https://hl7.org/fhir/R4/contactpoint.html
+ * @see https://hl7.org/fhir/R5/contactpoint.html
  */
 export interface IContactPoint extends IDataType {
   /**

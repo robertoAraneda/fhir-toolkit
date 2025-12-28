@@ -7,7 +7,7 @@ import type { StructureMapInputModeType } from '../../valuesets/index.js';
  * Named instance provided when invoking the map
  * 
  *
- * @see https://hl7.org/fhir/R4/structuremapgroupinput.html
+ * @see https://hl7.org/fhir/R5/structuremapgroupinput.html
  */
 export interface IStructureMapGroupInput extends IBackboneElement {
   /**

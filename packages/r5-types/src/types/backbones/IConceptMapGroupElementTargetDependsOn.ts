@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Other properties required for this mapping
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupelementtargetdependson.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupelementtargetdependson.html
  */
 export interface IConceptMapGroupElementTargetDependsOn extends IBackboneElement {
   /**

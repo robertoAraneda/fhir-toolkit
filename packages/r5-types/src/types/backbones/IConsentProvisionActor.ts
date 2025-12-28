@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who|what controlled by this provision (or group, by role)
  * 
  *
- * @see https://hl7.org/fhir/R4/consentprovisionactor.html
+ * @see https://hl7.org/fhir/R5/consentprovisionactor.html
  */
 export interface IConsentProvisionActor extends IBackboneElement {
   /**

@@ -18,7 +18,7 @@ import type { IDeviceDefinitionUdiDeviceIdentifier } from '../backbones/IDeviceD
  * The characteristics, operational status and capabilities of a medical-related component of a medical device.
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinition.html
+ * @see https://hl7.org/fhir/R4B/devicedefinition.html
  */
 export interface IDeviceDefinition extends IDomainResource {
   /**

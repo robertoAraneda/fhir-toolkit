@@ -20,7 +20,7 @@ const OBSERVATION_DEFINITION_COMPONENT_PROPERTIES = [
 /**
  * ObservationDefinitionComponent - Component results
  *
- * @see https://hl7.org/fhir/R4/observationdefinitioncomponent.html
+ * @see https://hl7.org/fhir/R5/observationdefinitioncomponent.html
  *
  * @example
  * const observationDefinitionComponent = new ObservationDefinitionComponent({

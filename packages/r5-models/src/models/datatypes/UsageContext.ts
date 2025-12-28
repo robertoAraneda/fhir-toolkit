@@ -20,7 +20,7 @@ const USAGE_CONTEXT_PROPERTIES = [
 /**
  * UsageContext - Specifies clinical/business/etc. metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care).
  *
- * @see https://hl7.org/fhir/R4/usagecontext.html
+ * @see https://hl7.org/fhir/R5/usagecontext.html
  *
  * @example
  * const usageContext = new UsageContext({

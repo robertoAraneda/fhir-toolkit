@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * The details about the device when it is in use to describe its operation
  * 
  *
- * @see https://hl7.org/fhir/R4/deviceassociationoperation.html
+ * @see https://hl7.org/fhir/R5/deviceassociationoperation.html
  */
 export interface IDeviceAssociationOperation extends IBackboneElement {
   /**

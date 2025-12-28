@@ -15,7 +15,7 @@ const CONDITION_STAGE_PROPERTIES = [
 /**
  * ConditionStage - Stage/grade, usually assessed formally
  *
- * @see https://hl7.org/fhir/R4/conditionstage.html
+ * @see https://hl7.org/fhir/R5/conditionstage.html
  *
  * @example
  * const conditionStage = new ConditionStage({

@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * The starting materials - monomer(s) used in the synthesis of the polymer
  * 
  *
- * @see https://hl7.org/fhir/R4/substancepolymermonomersetstartingmaterial.html
+ * @see https://hl7.org/fhir/R5/substancepolymermonomersetstartingmaterial.html
  */
 export interface ISubstancePolymerMonomerSetStartingMaterial extends IBackboneElement {
   /**

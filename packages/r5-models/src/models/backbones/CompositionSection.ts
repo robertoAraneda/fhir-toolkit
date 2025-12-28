@@ -24,7 +24,7 @@ const COMPOSITION_SECTION_PROPERTIES = [
 /**
  * CompositionSection - Composition is broken into sections
  *
- * @see https://hl7.org/fhir/R4/compositionsection.html
+ * @see https://hl7.org/fhir/R5/compositionsection.html
  *
  * @example
  * const compositionSection = new CompositionSection({

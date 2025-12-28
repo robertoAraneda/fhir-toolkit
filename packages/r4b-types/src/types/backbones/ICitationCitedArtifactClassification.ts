@@ -7,7 +7,7 @@ import type { ICitationCitedArtifactClassificationWhoClassified } from './ICitat
  * The assignment to an organizing scheme
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactclassification.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactclassification.html
  */
 export interface ICitationCitedArtifactClassification extends IBackboneElement {
   /**

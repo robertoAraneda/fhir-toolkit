@@ -8,7 +8,7 @@ import type { IDocumentReferenceContentProfile } from './IDocumentReferenceConte
  * Document referenced
  * 
  *
- * @see https://hl7.org/fhir/R4/documentreferencecontent.html
+ * @see https://hl7.org/fhir/R5/documentreferencecontent.html
  */
 export interface IDocumentReferenceContent extends IBackboneElement {
   /**

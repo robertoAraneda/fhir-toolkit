@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Benefit limits
  * 
  *
- * @see https://hl7.org/fhir/R4/insuranceplancoveragebenefitlimit.html
+ * @see https://hl7.org/fhir/R4B/insuranceplancoveragebenefitlimit.html
  */
 export interface IInsurancePlanCoverageBenefitLimit extends IBackboneElement {
   /**

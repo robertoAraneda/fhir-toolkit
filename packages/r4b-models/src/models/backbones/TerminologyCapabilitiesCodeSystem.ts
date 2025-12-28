@@ -17,7 +17,7 @@ const TERMINOLOGY_CAPABILITIES_CODE_SYSTEM_PROPERTIES = [
 /**
  * TerminologyCapabilitiesCodeSystem - A code system supported by the server
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiescodesystem.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiescodesystem.html
  *
  * @example
  * const terminologyCapabilitiesCodeSystem = new TerminologyCapabilitiesCodeSystem({

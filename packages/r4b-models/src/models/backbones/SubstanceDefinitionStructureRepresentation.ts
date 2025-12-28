@@ -18,7 +18,7 @@ const SUBSTANCE_DEFINITION_STRUCTURE_REPRESENTATION_PROPERTIES = [
 /**
  * SubstanceDefinitionStructureRepresentation - A depiction of the structure or characterization of the substance
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionstructurerepresentation.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionstructurerepresentation.html
  *
  * @example
  * const substanceDefinitionStructureRepresentation = new SubstanceDefinitionStructureRepresentation({

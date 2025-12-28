@@ -14,7 +14,7 @@ const BIOLOGICALLY_DERIVED_PRODUCT_DISPENSE_PERFORMER_PROPERTIES = [
 /**
  * BiologicallyDerivedProductDispensePerformer - Indicates who or what performed an action
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductdispenseperformer.html
+ * @see https://hl7.org/fhir/R5/biologicallyderivedproductdispenseperformer.html
  *
  * @example
  * const biologicallyDerivedProductDispensePerformer = new BiologicallyDerivedProductDispensePerformer({

@@ -19,7 +19,7 @@ const MEASURE_GROUP_STRATIFIER_PROPERTIES = [
 /**
  * MeasureGroupStratifier - Stratifier criteria for the measure
  *
- * @see https://hl7.org/fhir/R4/measuregroupstratifier.html
+ * @see https://hl7.org/fhir/R4B/measuregroupstratifier.html
  *
  * @example
  * const measureGroupStratifier = new MeasureGroupStratifier({

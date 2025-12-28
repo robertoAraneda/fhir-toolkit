@@ -8,7 +8,7 @@ import type { QuantityComparatorType } from '../../valuesets/index.js';
  * A length - a value with a unit that is a physical distance.
  * 
  *
- * @see https://hl7.org/fhir/R4/distance.html
+ * @see https://hl7.org/fhir/R5/distance.html
  */
 export interface IDistance extends IQuantity {
   /**

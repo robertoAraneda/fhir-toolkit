@@ -15,7 +15,7 @@ const IMPLEMENTATION_GUIDE_DEFINITION_GROUPING_PROPERTIES = [
 /**
  * ImplementationGuideDefinitionGrouping - Grouping used to present related resources in the IG
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitiongrouping.html
+ * @see https://hl7.org/fhir/R4B/implementationguidedefinitiongrouping.html
  *
  * @example
  * const implementationGuideDefinitionGrouping = new ImplementationGuideDefinitionGrouping({

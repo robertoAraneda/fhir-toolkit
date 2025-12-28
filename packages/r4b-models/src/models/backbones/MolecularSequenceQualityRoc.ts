@@ -25,7 +25,7 @@ const MOLECULAR_SEQUENCE_QUALITY_ROC_PROPERTIES = [
 /**
  * MolecularSequenceQualityRoc - Receiver Operator Characteristic (ROC) Curve
  *
- * @see https://hl7.org/fhir/R4/molecularsequencequalityroc.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencequalityroc.html
  *
  * @example
  * const molecularSequenceQualityRoc = new MolecularSequenceQualityRoc({

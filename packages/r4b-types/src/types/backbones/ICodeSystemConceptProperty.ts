@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement } from '../../base/index.js';
  * Property value for the concept
  * 
  *
- * @see https://hl7.org/fhir/R4/codesystemconceptproperty.html
+ * @see https://hl7.org/fhir/R4B/codesystemconceptproperty.html
  */
 export interface ICodeSystemConceptProperty extends IBackboneElement {
   /**

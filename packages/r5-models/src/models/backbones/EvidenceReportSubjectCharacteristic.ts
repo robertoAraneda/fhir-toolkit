@@ -26,7 +26,7 @@ const EVIDENCE_REPORT_SUBJECT_CHARACTERISTIC_PROPERTIES = [
 /**
  * EvidenceReportSubjectCharacteristic - Characteristic
  *
- * @see https://hl7.org/fhir/R4/evidencereportsubjectcharacteristic.html
+ * @see https://hl7.org/fhir/R5/evidencereportsubjectcharacteristic.html
  *
  * @example
  * const evidenceReportSubjectCharacteristic = new EvidenceReportSubjectCharacteristic({

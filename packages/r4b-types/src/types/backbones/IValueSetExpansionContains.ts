@@ -7,7 +7,7 @@ import type { IValueSetComposeIncludeConceptDesignation } from './IValueSetCompo
  * Codes in the value set
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansioncontains.html
+ * @see https://hl7.org/fhir/R4B/valuesetexpansioncontains.html
  */
 export interface IValueSetExpansionContains extends IBackboneElement {
   /**

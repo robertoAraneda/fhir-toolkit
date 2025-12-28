@@ -14,7 +14,7 @@ const MEDICINAL_PRODUCT_DEFINITION_NAME_USAGE_PROPERTIES = [
 /**
  * MedicinalProductDefinitionNameUsage - Country and jurisdiction where the name applies
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitionnameusage.html
+ * @see https://hl7.org/fhir/R5/medicinalproductdefinitionnameusage.html
  *
  * @example
  * const medicinalProductDefinitionNameUsage = new MedicinalProductDefinitionNameUsage({

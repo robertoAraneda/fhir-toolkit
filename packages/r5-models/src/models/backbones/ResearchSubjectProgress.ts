@@ -20,7 +20,7 @@ const RESEARCH_SUBJECT_PROGRESS_PROPERTIES = [
 /**
  * ResearchSubjectProgress - Subject status
  *
- * @see https://hl7.org/fhir/R4/researchsubjectprogress.html
+ * @see https://hl7.org/fhir/R5/researchsubjectprogress.html
  *
  * @example
  * const researchSubjectProgress = new ResearchSubjectProgress({

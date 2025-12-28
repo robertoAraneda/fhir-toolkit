@@ -14,7 +14,7 @@ const INVOICE_PARTICIPANT_PROPERTIES = [
 /**
  * InvoiceParticipant - Participant in creation of this Invoice
  *
- * @see https://hl7.org/fhir/R4/invoiceparticipant.html
+ * @see https://hl7.org/fhir/R4B/invoiceparticipant.html
  *
  * @example
  * const invoiceParticipant = new InvoiceParticipant({

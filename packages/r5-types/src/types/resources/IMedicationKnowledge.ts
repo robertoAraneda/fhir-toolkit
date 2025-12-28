@@ -18,7 +18,7 @@ import type { MedicationKnowledgeStatusType } from '../../valuesets/index.js';
  * Information about a medication that is used to support knowledge.
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledge.html
+ * @see https://hl7.org/fhir/R5/medicationknowledge.html
  */
 export interface IMedicationKnowledge extends IDomainResource {
   /**

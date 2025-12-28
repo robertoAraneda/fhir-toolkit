@@ -24,7 +24,7 @@ const EVIDENCE_STATISTIC_ATTRIBUTE_ESTIMATE_PROPERTIES = [
 /**
  * EvidenceStatisticAttributeEstimate - An attribute of the Statistic
  *
- * @see https://hl7.org/fhir/R4/evidencestatisticattributeestimate.html
+ * @see https://hl7.org/fhir/R4B/evidencestatisticattributeestimate.html
  *
  * @example
  * const evidenceStatisticAttributeEstimate = new EvidenceStatisticAttributeEstimate({

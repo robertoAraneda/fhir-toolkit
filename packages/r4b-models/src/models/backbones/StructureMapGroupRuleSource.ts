@@ -132,7 +132,7 @@ const STRUCTURE_MAP_GROUP_RULE_SOURCE_PROPERTIES = [
 /**
  * StructureMapGroupRuleSource - Source inputs to the mapping
  *
- * @see https://hl7.org/fhir/R4/structuremapgrouprulesource.html
+ * @see https://hl7.org/fhir/R4B/structuremapgrouprulesource.html
  *
  * @example
  * const structureMapGroupRuleSource = new StructureMapGroupRuleSource({

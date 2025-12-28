@@ -19,7 +19,7 @@ const IMMUNIZATION_EDUCATION_PROPERTIES = [
 /**
  * ImmunizationEducation - Educational material presented to patient
  *
- * @see https://hl7.org/fhir/R4/immunizationeducation.html
+ * @see https://hl7.org/fhir/R4B/immunizationeducation.html
  *
  * @example
  * const immunizationEducation = new ImmunizationEducation({

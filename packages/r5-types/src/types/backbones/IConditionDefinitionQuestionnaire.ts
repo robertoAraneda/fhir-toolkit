@@ -7,7 +7,7 @@ import type { ConditionQuestionnairePurposeType } from '../../valuesets/index.js
  * Questionnaire for this condition
  * 
  *
- * @see https://hl7.org/fhir/R4/conditiondefinitionquestionnaire.html
+ * @see https://hl7.org/fhir/R5/conditiondefinitionquestionnaire.html
  */
 export interface IConditionDefinitionQuestionnaire extends IBackboneElement {
   /**

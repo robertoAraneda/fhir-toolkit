@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * The average mass of a molecule of a compound
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionmolecularweight.html
+ * @see https://hl7.org/fhir/R5/substancedefinitionmolecularweight.html
  */
 export interface ISubstanceDefinitionMolecularWeight extends IBackboneElement {
   /**

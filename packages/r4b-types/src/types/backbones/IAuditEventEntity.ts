@@ -7,7 +7,7 @@ import type { IAuditEventEntityDetail } from './IAuditEventEntityDetail.js';
  * Data or objects used
  * 
  *
- * @see https://hl7.org/fhir/R4/auditevententity.html
+ * @see https://hl7.org/fhir/R4B/auditevententity.html
  */
 export interface IAuditEventEntity extends IBackboneElement {
   /**

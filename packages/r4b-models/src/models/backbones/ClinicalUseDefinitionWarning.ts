@@ -15,7 +15,7 @@ const CLINICAL_USE_DEFINITION_WARNING_PROPERTIES = [
 /**
  * ClinicalUseDefinitionWarning - Critical environmental, health or physical risks or hazards. For example 'Do not operate heavy machinery', 'May cause drowsiness'
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitionwarning.html
+ * @see https://hl7.org/fhir/R4B/clinicalusedefinitionwarning.html
  *
  * @example
  * const clinicalUseDefinitionWarning = new ClinicalUseDefinitionWarning({

@@ -16,7 +16,7 @@ const VISION_PRESCRIPTION_LENS_SPECIFICATION_PRISM_PROPERTIES = [
 /**
  * VisionPrescriptionLensSpecificationPrism - Eye alignment compensation
  *
- * @see https://hl7.org/fhir/R4/visionprescriptionlensspecificationprism.html
+ * @see https://hl7.org/fhir/R4B/visionprescriptionlensspecificationprism.html
  *
  * @example
  * const visionPrescriptionLensSpecificationPrism = new VisionPrescriptionLensSpecificationPrism({

@@ -7,7 +7,7 @@ import type { IInsurancePlanCoverageBenefit } from './IInsurancePlanCoverageBene
  * Coverage details
  * 
  *
- * @see https://hl7.org/fhir/R4/insuranceplancoverage.html
+ * @see https://hl7.org/fhir/R5/insuranceplancoverage.html
  */
 export interface IInsurancePlanCoverage extends IBackboneElement {
   /**

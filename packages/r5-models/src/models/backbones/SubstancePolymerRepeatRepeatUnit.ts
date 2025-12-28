@@ -21,7 +21,7 @@ const SUBSTANCE_POLYMER_REPEAT_REPEAT_UNIT_PROPERTIES = [
 /**
  * SubstancePolymerRepeatRepeatUnit - An SRU - Structural Repeat Unit
  *
- * @see https://hl7.org/fhir/R4/substancepolymerrepeatrepeatunit.html
+ * @see https://hl7.org/fhir/R5/substancepolymerrepeatrepeatunit.html
  *
  * @example
  * const substancePolymerRepeatRepeatUnit = new SubstancePolymerRepeatRepeatUnit({

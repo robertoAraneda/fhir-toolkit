@@ -16,7 +16,7 @@ const CLAIM_RELATED_PROPERTIES = [
 /**
  * ClaimRelated - Prior or corollary claims
  *
- * @see https://hl7.org/fhir/R4/claimrelated.html
+ * @see https://hl7.org/fhir/R4B/claimrelated.html
  *
  * @example
  * const claimRelated = new ClaimRelated({

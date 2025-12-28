@@ -19,7 +19,7 @@ const IMPLEMENTATION_GUIDE_MANIFEST_RESOURCE_PROPERTIES = [
 /**
  * ImplementationGuideManifestResource - Resource in the implementation guide
  *
- * @see https://hl7.org/fhir/R4/implementationguidemanifestresource.html
+ * @see https://hl7.org/fhir/R5/implementationguidemanifestresource.html
  *
  * @example
  * const implementationGuideManifestResource = new ImplementationGuideManifestResource({

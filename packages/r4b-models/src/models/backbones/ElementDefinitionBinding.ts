@@ -18,7 +18,7 @@ const ELEMENT_DEFINITION_BINDING_PROPERTIES = [
 /**
  * ElementDefinitionBinding - ValueSet details if this is coded
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionbinding.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitionbinding.html
  *
  * @example
  * const elementDefinitionBinding = new ElementDefinitionBinding({

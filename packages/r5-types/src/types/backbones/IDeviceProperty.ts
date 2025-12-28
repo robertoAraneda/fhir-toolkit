@@ -9,7 +9,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Inherent, essentially fixed, characteristics of the device.  e.g., time properties, size, material, etc.
  * 
  *
- * @see https://hl7.org/fhir/R4/deviceproperty.html
+ * @see https://hl7.org/fhir/R5/deviceproperty.html
  */
 export interface IDeviceProperty extends IBackboneElement {
   /**

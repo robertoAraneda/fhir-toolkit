@@ -10,7 +10,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * The parameter details for the service being requested
  * 
  *
- * @see https://hl7.org/fhir/R4/servicerequestorderdetailparameter.html
+ * @see https://hl7.org/fhir/R5/servicerequestorderdetailparameter.html
  */
 export interface IServiceRequestOrderDetailParameter extends IBackboneElement {
   /**

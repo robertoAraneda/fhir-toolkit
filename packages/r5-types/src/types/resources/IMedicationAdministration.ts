@@ -14,7 +14,7 @@ import type { MedicationAdministrationStatusType } from '../../valuesets/index.j
  * Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner.
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationadministration.html
+ * @see https://hl7.org/fhir/R5/medicationadministration.html
  */
 export interface IMedicationAdministration extends IDomainResource {
   /**

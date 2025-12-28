@@ -12,7 +12,7 @@ const TEST_SCRIPT_TEARDOWN_ACTION_PROPERTIES = [
 /**
  * TestScriptTeardownAction - One or more teardown operations to perform
  *
- * @see https://hl7.org/fhir/R4/testscriptteardownaction.html
+ * @see https://hl7.org/fhir/R4B/testscriptteardownaction.html
  *
  * @example
  * const testScriptTeardownAction = new TestScriptTeardownAction({

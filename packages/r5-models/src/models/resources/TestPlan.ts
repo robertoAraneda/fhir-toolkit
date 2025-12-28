@@ -59,7 +59,7 @@ const TEST_PLAN_PROPERTIES = [
 /**
  * TestPlan - A plan for executing testing on an artifact or specifications.
  *
- * @see https://hl7.org/fhir/R4/testplan.html
+ * @see https://hl7.org/fhir/R5/testplan.html
  *
  * @example
  * const testPlan = new TestPlan({

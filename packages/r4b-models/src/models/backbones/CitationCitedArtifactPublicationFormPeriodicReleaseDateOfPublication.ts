@@ -23,7 +23,7 @@ const CITATION_CITED_ARTIFACT_PUBLICATION_FORM_PERIODIC_RELEASE_DATE_OF_PUBLICAT
 /**
  * CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication - Defining the date on which the issue of the journal was published
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpublicationformperiodicreleasedateofpublication.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactpublicationformperiodicreleasedateofpublication.html
  *
  * @example
  * const citationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication = new CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication({

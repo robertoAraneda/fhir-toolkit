@@ -15,7 +15,7 @@ const RELATED_PERSON_COMMUNICATION_PROPERTIES = [
 /**
  * RelatedPersonCommunication - A language which may be used to communicate with the related person about the patient's health
  *
- * @see https://hl7.org/fhir/R4/relatedpersoncommunication.html
+ * @see https://hl7.org/fhir/R5/relatedpersoncommunication.html
  *
  * @example
  * const relatedPersonCommunication = new RelatedPersonCommunication({

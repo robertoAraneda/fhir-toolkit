@@ -31,7 +31,7 @@ const EXAMPLE_SCENARIO_INSTANCE_PROPERTIES = [
 /**
  * ExampleScenarioInstance - Data used in the scenario
  *
- * @see https://hl7.org/fhir/R4/examplescenarioinstance.html
+ * @see https://hl7.org/fhir/R5/examplescenarioinstance.html
  *
  * @example
  * const exampleScenarioInstance = new ExampleScenarioInstance({

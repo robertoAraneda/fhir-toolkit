@@ -23,7 +23,7 @@ const GRAPH_DEFINITION_LINK_PROPERTIES = [
 /**
  * GraphDefinitionLink - Links this graph makes rules about
  *
- * @see https://hl7.org/fhir/R4/graphdefinitionlink.html
+ * @see https://hl7.org/fhir/R4B/graphdefinitionlink.html
  *
  * @example
  * const graphDefinitionLink = new GraphDefinitionLink({

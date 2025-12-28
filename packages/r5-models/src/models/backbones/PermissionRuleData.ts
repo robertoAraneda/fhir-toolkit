@@ -18,7 +18,7 @@ const PERMISSION_RULE_DATA_PROPERTIES = [
 /**
  * PermissionRuleData - The selection criteria to identify data that is within scope of this provision
  *
- * @see https://hl7.org/fhir/R4/permissionruledata.html
+ * @see https://hl7.org/fhir/R5/permissionruledata.html
  *
  * @example
  * const permissionRuleData = new PermissionRuleData({

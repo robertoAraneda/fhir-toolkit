@@ -7,7 +7,7 @@ import type { IAttachment } from '../datatypes/IAttachment.js';
  * Computable Contract Language
  * 
  *
- * @see https://hl7.org/fhir/R4/contractrule.html
+ * @see https://hl7.org/fhir/R5/contractrule.html
  */
 export interface IContractRule extends IBackboneElement {
   /**

@@ -15,7 +15,7 @@ const DEVICE_DEFINITION_HAS_PART_PROPERTIES = [
 /**
  * DeviceDefinitionHasPart - A device, part of the current one
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionhaspart.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionhaspart.html
  *
  * @example
  * const deviceDefinitionHasPart = new DeviceDefinitionHasPart({

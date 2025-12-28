@@ -27,7 +27,7 @@ const SUBSTANCE_REFERENCE_INFORMATION_TARGET_PROPERTIES = [
 /**
  * SubstanceReferenceInformationTarget - Todo
  *
- * @see https://hl7.org/fhir/R4/substancereferenceinformationtarget.html
+ * @see https://hl7.org/fhir/R5/substancereferenceinformationtarget.html
  *
  * @example
  * const substanceReferenceInformationTarget = new SubstanceReferenceInformationTarget({

@@ -11,7 +11,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * A property that is specific to this BiologicallyDerviedProduct instance
  * 
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductproperty.html
+ * @see https://hl7.org/fhir/R5/biologicallyderivedproductproperty.html
  */
 export interface IBiologicallyDerivedProductProperty extends IBackboneElement {
   /**

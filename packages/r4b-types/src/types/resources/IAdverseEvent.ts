@@ -9,7 +9,7 @@ import type { AdverseEventActualityType, AdverseEventOutcomeType, AdverseEventSe
  * Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
  * 
  *
- * @see https://hl7.org/fhir/R4/adverseevent.html
+ * @see https://hl7.org/fhir/R4B/adverseevent.html
  */
 export interface IAdverseEvent extends IDomainResource {
   /**

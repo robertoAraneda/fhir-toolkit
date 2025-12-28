@@ -15,7 +15,7 @@ const DEVICE_DEFINITION_UDI_DEVICE_IDENTIFIER_MARKET_DISTRIBUTION_PROPERTIES = [
 /**
  * DeviceDefinitionUdiDeviceIdentifierMarketDistribution - Indicates whether and when the device is available on the market
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionudideviceidentifiermarketdistribution.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionudideviceidentifiermarketdistribution.html
  *
  * @example
  * const deviceDefinitionUdiDeviceIdentifierMarketDistribution = new DeviceDefinitionUdiDeviceIdentifierMarketDistribution({

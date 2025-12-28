@@ -14,7 +14,7 @@ const CONTRACT_RULE_PROPERTIES = [
 /**
  * ContractRule - Computable Contract Language
  *
- * @see https://hl7.org/fhir/R4/contractrule.html
+ * @see https://hl7.org/fhir/R4B/contractrule.html
  *
  * @example
  * const contractRule = new ContractRule({

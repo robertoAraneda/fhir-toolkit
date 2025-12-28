@@ -21,7 +21,7 @@ const CLAIM_RESPONSE_PAYMENT_PROPERTIES = [
 /**
  * ClaimResponsePayment - Payment Details
  *
- * @see https://hl7.org/fhir/R4/claimresponsepayment.html
+ * @see https://hl7.org/fhir/R4B/claimresponsepayment.html
  *
  * @example
  * const claimResponsePayment = new ClaimResponsePayment({

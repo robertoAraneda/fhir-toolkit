@@ -11,7 +11,7 @@ import type { EpisodeOfCareStatusType } from '../../valuesets/index.js';
  * An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.
  * 
  *
- * @see https://hl7.org/fhir/R4/episodeofcare.html
+ * @see https://hl7.org/fhir/R4B/episodeofcare.html
  */
 export interface IEpisodeOfCare extends IDomainResource {
   /**

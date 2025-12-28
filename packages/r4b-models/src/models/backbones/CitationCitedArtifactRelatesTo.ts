@@ -22,7 +22,7 @@ const CITATION_CITED_ARTIFACT_RELATES_TO_PROPERTIES = [
 /**
  * CitationCitedArtifactRelatesTo - The artifact related to the cited artifact
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactrelatesto.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactrelatesto.html
  *
  * @example
  * const citationCitedArtifactRelatesTo = new CitationCitedArtifactRelatesTo({

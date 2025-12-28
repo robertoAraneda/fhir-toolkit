@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Adjudication details
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponseitemadjudication.html
+ * @see https://hl7.org/fhir/R5/claimresponseitemadjudication.html
  */
 export interface IClaimResponseItemAdjudication extends IBackboneElement {
   /**

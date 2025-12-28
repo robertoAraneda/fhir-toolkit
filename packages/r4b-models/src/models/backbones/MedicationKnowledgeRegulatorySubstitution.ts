@@ -15,7 +15,7 @@ const MEDICATION_KNOWLEDGE_REGULATORY_SUBSTITUTION_PROPERTIES = [
 /**
  * MedicationKnowledgeRegulatorySubstitution - Specifies if changes are allowed when dispensing a medication from a regulatory perspective
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeregulatorysubstitution.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgeregulatorysubstitution.html
  *
  * @example
  * const medicationKnowledgeRegulatorySubstitution = new MedicationKnowledgeRegulatorySubstitution({

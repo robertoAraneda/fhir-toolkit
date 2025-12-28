@@ -20,7 +20,7 @@ const AVAILABILITY_AVAILABLE_TIME_PROPERTIES = [
 /**
  * AvailabilityAvailableTime - Times the {item} is available
  *
- * @see https://hl7.org/fhir/R4/availabilityavailabletime.html
+ * @see https://hl7.org/fhir/R5/availabilityavailabletime.html
  *
  * @example
  * const availabilityAvailableTime = new AvailabilityAvailableTime({

@@ -7,7 +7,7 @@ import type { OrientationTypeType, StrandTypeType } from '../../valuesets/index.
  * A sequence used as starting sequence
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequencerelativestartingsequence.html
+ * @see https://hl7.org/fhir/R5/molecularsequencerelativestartingsequence.html
  */
 export interface IMolecularSequenceRelativeStartingSequence extends IBackboneElement {
   /**

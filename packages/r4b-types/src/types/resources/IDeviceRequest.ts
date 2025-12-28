@@ -12,7 +12,7 @@ import type { RequestIntentType, RequestPriorityType, RequestStatusType } from '
  * Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
  * 
  *
- * @see https://hl7.org/fhir/R4/devicerequest.html
+ * @see https://hl7.org/fhir/R4B/devicerequest.html
  */
 export interface IDeviceRequest extends IDomainResource {
   /**

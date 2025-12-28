@@ -7,7 +7,7 @@ import type { NoteTypeType } from '../../valuesets/index.js';
  * Note concerning adjudication
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitprocessnote.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitprocessnote.html
  */
 export interface IExplanationOfBenefitProcessNote extends IBackboneElement {
   /**

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * A goal for the study
  * 
  *
- * @see https://hl7.org/fhir/R4/researchstudyobjective.html
+ * @see https://hl7.org/fhir/R5/researchstudyobjective.html
  */
 export interface IResearchStudyObjective extends IBackboneElement {
   /**

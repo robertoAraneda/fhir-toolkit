@@ -16,7 +16,7 @@ const OPERATION_DEFINITION_PARAMETER_BINDING_PROPERTIES = [
 /**
  * OperationDefinitionParameterBinding - ValueSet details if this is coded
  *
- * @see https://hl7.org/fhir/R4/operationdefinitionparameterbinding.html
+ * @see https://hl7.org/fhir/R4B/operationdefinitionparameterbinding.html
  *
  * @example
  * const operationDefinitionParameterBinding = new OperationDefinitionParameterBinding({

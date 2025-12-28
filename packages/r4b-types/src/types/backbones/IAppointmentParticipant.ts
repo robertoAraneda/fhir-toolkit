@@ -8,7 +8,7 @@ import type { ParticipantRequiredType, ParticipationStatusType } from '../../val
  * Participants involved in appointment
  * 
  *
- * @see https://hl7.org/fhir/R4/appointmentparticipant.html
+ * @see https://hl7.org/fhir/R4B/appointmentparticipant.html
  */
 export interface IAppointmentParticipant extends IBackboneElement {
   /**

@@ -8,7 +8,7 @@ import type { IImagingSelectionInstanceImageRegion3D } from './IImagingSelection
  * The selected instances
  * 
  *
- * @see https://hl7.org/fhir/R4/imagingselectioninstance.html
+ * @see https://hl7.org/fhir/R5/imagingselectioninstance.html
  */
 export interface IImagingSelectionInstance extends IBackboneElement {
   /**

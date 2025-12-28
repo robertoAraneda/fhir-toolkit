@@ -22,7 +22,7 @@ const COUNT_PROPERTIES = [
 /**
  * Count - A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
  *
- * @see https://hl7.org/fhir/R4/count.html
+ * @see https://hl7.org/fhir/R4B/count.html
  *
  * @example
  * const count = new Count({

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Additional coverage classifications
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageclass.html
+ * @see https://hl7.org/fhir/R4B/coverageclass.html
  */
 export interface ICoverageClass extends IBackboneElement {
   /**

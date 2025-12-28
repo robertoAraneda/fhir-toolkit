@@ -15,7 +15,7 @@ import type { AdministrativeGenderType } from '../../valuesets/index.js';
  * Demographics and other administrative information about an individual or animal receiving care or other health-related services.
  * 
  *
- * @see https://hl7.org/fhir/R4/patient.html
+ * @see https://hl7.org/fhir/R4B/patient.html
  */
 export interface IPatient extends IDomainResource {
   /**

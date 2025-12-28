@@ -25,7 +25,7 @@ const SUBSTANCE_PROPERTIES = [
 /**
  * Substance - A homogeneous material with a definite composition.
  *
- * @see https://hl7.org/fhir/R4/substance.html
+ * @see https://hl7.org/fhir/R4B/substance.html
  *
  * @example
  * const substance = new Substance({

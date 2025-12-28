@@ -29,7 +29,7 @@ const QUESTIONNAIRE_RESPONSE_PROPERTIES = [
 /**
  * QuestionnaireResponse - A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.
  *
- * @see https://hl7.org/fhir/R4/questionnaireresponse.html
+ * @see https://hl7.org/fhir/R4B/questionnaireresponse.html
  *
  * @example
  * const questionnaireResponse = new QuestionnaireResponse({

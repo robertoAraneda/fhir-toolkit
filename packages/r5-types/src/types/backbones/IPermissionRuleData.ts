@@ -9,7 +9,7 @@ import type { IPermissionRuleDataResource } from './IPermissionRuleDataResource.
  * The selection criteria to identify data that is within scope of this provision
  * 
  *
- * @see https://hl7.org/fhir/R4/permissionruledata.html
+ * @see https://hl7.org/fhir/R5/permissionruledata.html
  */
 export interface IPermissionRuleData extends IBackboneElement {
   /**

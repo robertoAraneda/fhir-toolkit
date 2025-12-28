@@ -26,7 +26,7 @@ const DEVICE_DEFINITION_PROPERTY_PROPERTIES = [
 /**
  * DeviceDefinitionProperty - Inherent, essentially fixed, characteristics of this kind of device, e.g., time properties, size, etc
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionproperty.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionproperty.html
  *
  * @example
  * const deviceDefinitionProperty = new DeviceDefinitionProperty({

@@ -11,7 +11,7 @@ import type { StatusType } from '../../valuesets/index.js';
  * Describes validation requirements, source(s), status and dates for one or more elements.
  * 
  *
- * @see https://hl7.org/fhir/R4/verificationresult.html
+ * @see https://hl7.org/fhir/R4B/verificationresult.html
  */
 export interface IVerificationResult extends IDomainResource {
   /**

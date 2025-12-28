@@ -7,7 +7,7 @@ import type { IDuration } from './IDuration.js';
  * The shelf-life and storage information for a medicinal product item or container can be described using this class.
  * 
  *
- * @see https://hl7.org/fhir/R4/productshelflife.html
+ * @see https://hl7.org/fhir/R5/productshelflife.html
  */
 export interface IProductShelfLife extends IBackboneType {
   /**

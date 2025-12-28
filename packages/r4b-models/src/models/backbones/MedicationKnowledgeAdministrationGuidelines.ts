@@ -18,7 +18,7 @@ const MEDICATION_KNOWLEDGE_ADMINISTRATION_GUIDELINES_PROPERTIES = [
 /**
  * MedicationKnowledgeAdministrationGuidelines - Guidelines for administration of the medication
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeadministrationguidelines.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgeadministrationguidelines.html
  *
  * @example
  * const medicationKnowledgeAdministrationGuidelines = new MedicationKnowledgeAdministrationGuidelines({

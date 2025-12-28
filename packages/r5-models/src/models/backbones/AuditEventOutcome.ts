@@ -14,7 +14,7 @@ const AUDIT_EVENT_OUTCOME_PROPERTIES = [
 /**
  * AuditEventOutcome - Whether the event succeeded or failed
  *
- * @see https://hl7.org/fhir/R4/auditeventoutcome.html
+ * @see https://hl7.org/fhir/R5/auditeventoutcome.html
  *
  * @example
  * const auditEventOutcome = new AuditEventOutcome({

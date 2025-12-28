@@ -22,7 +22,7 @@ const EXTENDED_CONTACT_DETAIL_PROPERTIES = [
 /**
  * ExtendedContactDetail - Specifies contact information for a specific purpose over a period of time, might be handled/monitored by a specific named person or organization.
  *
- * @see https://hl7.org/fhir/R4/extendedcontactdetail.html
+ * @see https://hl7.org/fhir/R5/extendedcontactdetail.html
  *
  * @example
  * const extendedContactDetail = new ExtendedContactDetail({

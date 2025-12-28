@@ -17,7 +17,7 @@ const LOCATION_POSITION_PROPERTIES = [
 /**
  * LocationPosition - The absolute geographic location
  *
- * @see https://hl7.org/fhir/R4/locationposition.html
+ * @see https://hl7.org/fhir/R5/locationposition.html
  *
  * @example
  * const locationPosition = new LocationPosition({

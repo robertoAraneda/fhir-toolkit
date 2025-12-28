@@ -14,7 +14,7 @@ const EXPLANATION_OF_BENEFIT_ADD_ITEM_BODY_SITE_PROPERTIES = [
 /**
  * ExplanationOfBenefitAddItemBodySite - Anatomical location
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitadditembodysite.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitadditembodysite.html
  *
  * @example
  * const explanationOfBenefitAddItemBodySite = new ExplanationOfBenefitAddItemBodySite({

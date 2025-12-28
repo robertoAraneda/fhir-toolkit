@@ -17,7 +17,7 @@ const TEST_SCRIPT_TEST_PROPERTIES = [
 /**
  * TestScriptTest - A test in this script
  *
- * @see https://hl7.org/fhir/R4/testscripttest.html
+ * @see https://hl7.org/fhir/R5/testscripttest.html
  *
  * @example
  * const testScriptTest = new TestScriptTest({

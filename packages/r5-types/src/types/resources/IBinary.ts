@@ -6,7 +6,7 @@ import type { IElement, IReference, IResource } from '../../base/index.js';
  * A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.
  * 
  *
- * @see https://hl7.org/fhir/R4/binary.html
+ * @see https://hl7.org/fhir/R5/binary.html
  */
 export interface IBinary extends IResource {
   /**

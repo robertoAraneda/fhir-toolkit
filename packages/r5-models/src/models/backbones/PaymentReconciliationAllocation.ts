@@ -33,7 +33,7 @@ const PAYMENT_RECONCILIATION_ALLOCATION_PROPERTIES = [
 /**
  * PaymentReconciliationAllocation - Settlement particulars
  *
- * @see https://hl7.org/fhir/R4/paymentreconciliationallocation.html
+ * @see https://hl7.org/fhir/R5/paymentreconciliationallocation.html
  *
  * @example
  * const paymentReconciliationAllocation = new PaymentReconciliationAllocation({

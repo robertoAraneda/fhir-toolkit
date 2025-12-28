@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Observations particularly relevant to this condition
  * 
  *
- * @see https://hl7.org/fhir/R4/conditiondefinitionobservation.html
+ * @see https://hl7.org/fhir/R5/conditiondefinitionobservation.html
  */
 export interface IConditionDefinitionObservation extends IBackboneElement {
   /**

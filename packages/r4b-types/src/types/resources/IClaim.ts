@@ -19,7 +19,7 @@ import type { FinancialResourceStatusType, UseType } from '../../valuesets/index
  * A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.
  * 
  *
- * @see https://hl7.org/fhir/R4/claim.html
+ * @see https://hl7.org/fhir/R4B/claim.html
  */
 export interface IClaim extends IDomainResource {
   /**

@@ -76,7 +76,7 @@ const RESEARCH_ELEMENT_DEFINITION_PROPERTIES = [
 /**
  * ResearchElementDefinition - The ResearchElementDefinition resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
  *
- * @see https://hl7.org/fhir/R4/researchelementdefinition.html
+ * @see https://hl7.org/fhir/R4B/researchelementdefinition.html
  *
  * @example
  * const researchElementDefinition = new ResearchElementDefinition({

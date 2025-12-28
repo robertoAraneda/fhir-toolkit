@@ -12,7 +12,7 @@ import type { IExplanationOfBenefitItemAdjudication } from './IExplanationOfBene
  * Insurer added line items
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitadditem.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitadditem.html
  */
 export interface IExplanationOfBenefitAddItem extends IBackboneElement {
   /**

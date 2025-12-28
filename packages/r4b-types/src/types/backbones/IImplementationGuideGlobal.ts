@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Profiles that apply globally
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguideglobal.html
+ * @see https://hl7.org/fhir/R4B/implementationguideglobal.html
  */
 export interface IImplementationGuideGlobal extends IBackboneElement {
   /**

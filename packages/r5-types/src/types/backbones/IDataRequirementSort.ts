@@ -7,7 +7,7 @@ import type { SortDirectionType } from '../../valuesets/index.js';
  * Order of the results
  * 
  *
- * @see https://hl7.org/fhir/R4/datarequirementsort.html
+ * @see https://hl7.org/fhir/R5/datarequirementsort.html
  */
 export interface IDataRequirementSort extends IElement {
   /**

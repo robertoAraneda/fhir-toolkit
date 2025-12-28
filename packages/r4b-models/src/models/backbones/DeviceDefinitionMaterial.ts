@@ -17,7 +17,7 @@ const DEVICE_DEFINITION_MATERIAL_PROPERTIES = [
 /**
  * DeviceDefinitionMaterial - A substance used to create the material(s) of which the device is made
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionmaterial.html
+ * @see https://hl7.org/fhir/R4B/devicedefinitionmaterial.html
  *
  * @example
  * const deviceDefinitionMaterial = new DeviceDefinitionMaterial({

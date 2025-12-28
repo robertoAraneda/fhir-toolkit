@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Not available during this time due to provided reason
  * 
  *
- * @see https://hl7.org/fhir/R4/availabilitynotavailabletime.html
+ * @see https://hl7.org/fhir/R5/availabilitynotavailabletime.html
  */
 export interface IAvailabilityNotAvailableTime extends IElement {
   /**

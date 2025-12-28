@@ -33,7 +33,7 @@ const COVERAGE_ELIGIBILITY_RESPONSE_INSURANCE_ITEM_PROPERTIES = [
 /**
  * CoverageEligibilityResponseInsuranceItem - Benefits and authorization details
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponseinsuranceitem.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityresponseinsuranceitem.html
  *
  * @example
  * const coverageEligibilityResponseInsuranceItem = new CoverageEligibilityResponseInsuranceItem({

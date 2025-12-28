@@ -14,7 +14,7 @@ const PROCEDURE_FOCAL_DEVICE_PROPERTIES = [
 /**
  * ProcedureFocalDevice - Manipulated, implanted, or removed device
  *
- * @see https://hl7.org/fhir/R4/procedurefocaldevice.html
+ * @see https://hl7.org/fhir/R5/procedurefocaldevice.html
  *
  * @example
  * const procedureFocalDevice = new ProcedureFocalDevice({

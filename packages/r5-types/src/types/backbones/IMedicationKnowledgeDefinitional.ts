@@ -8,7 +8,7 @@ import type { IMedicationKnowledgeDefinitionalIngredient } from './IMedicationKn
  * Minimal definition information about the medication
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgedefinitional.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgedefinitional.html
  */
 export interface IMedicationKnowledgeDefinitional extends IBackboneElement {
   /**

@@ -14,7 +14,7 @@ const MEDICINAL_PRODUCT_DEFINITION_NAME_COUNTRY_LANGUAGE_PROPERTIES = [
 /**
  * MedicinalProductDefinitionNameCountryLanguage - Country and jurisdiction where the name applies
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitionnamecountrylanguage.html
+ * @see https://hl7.org/fhir/R4B/medicinalproductdefinitionnamecountrylanguage.html
  *
  * @example
  * const medicinalProductDefinitionNameCountryLanguage = new MedicinalProductDefinitionNameCountryLanguage({

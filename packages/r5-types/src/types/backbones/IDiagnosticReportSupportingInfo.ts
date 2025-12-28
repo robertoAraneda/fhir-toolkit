@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Additional information supporting the diagnostic report
  * 
  *
- * @see https://hl7.org/fhir/R4/diagnosticreportsupportinginfo.html
+ * @see https://hl7.org/fhir/R5/diagnosticreportsupportinginfo.html
  */
 export interface IDiagnosticReportSupportingInfo extends IBackboneElement {
   /**

@@ -15,7 +15,7 @@ import type { InventoryItemStatusType } from '../../valuesets/index.js';
  * A functional description of an inventory item used in inventory and supply-related workflows.
  * 
  *
- * @see https://hl7.org/fhir/R4/inventoryitem.html
+ * @see https://hl7.org/fhir/R5/inventoryitem.html
  */
 export interface IInventoryItem extends IDomainResource {
   /**

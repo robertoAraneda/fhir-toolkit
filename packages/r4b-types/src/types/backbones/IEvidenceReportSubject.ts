@@ -8,7 +8,7 @@ import type { IEvidenceReportSubjectCharacteristic } from './IEvidenceReportSubj
  * Focus of the report
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencereportsubject.html
+ * @see https://hl7.org/fhir/R4B/evidencereportsubject.html
  */
 export interface IEvidenceReportSubject extends IBackboneElement {
   /**

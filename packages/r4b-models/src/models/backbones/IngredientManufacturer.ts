@@ -16,7 +16,7 @@ const INGREDIENT_MANUFACTURER_PROPERTIES = [
 /**
  * IngredientManufacturer - An organization that manufactures this ingredient
  *
- * @see https://hl7.org/fhir/R4/ingredientmanufacturer.html
+ * @see https://hl7.org/fhir/R4B/ingredientmanufacturer.html
  *
  * @example
  * const ingredientManufacturer = new IngredientManufacturer({

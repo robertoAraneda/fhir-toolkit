@@ -22,7 +22,7 @@ const ENCOUNTER_HOSPITALIZATION_PROPERTIES = [
 /**
  * EncounterHospitalization - Details about the admission to a healthcare service
  *
- * @see https://hl7.org/fhir/R4/encounterhospitalization.html
+ * @see https://hl7.org/fhir/R4B/encounterhospitalization.html
  *
  * @example
  * const encounterHospitalization = new EncounterHospitalization({

@@ -8,7 +8,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Specimen handling before testing
  * 
  *
- * @see https://hl7.org/fhir/R4/specimendefinitiontypetestedhandling.html
+ * @see https://hl7.org/fhir/R4B/specimendefinitiontypetestedhandling.html
  */
 export interface ISpecimenDefinitionTypeTestedHandling extends IBackboneElement {
   /**

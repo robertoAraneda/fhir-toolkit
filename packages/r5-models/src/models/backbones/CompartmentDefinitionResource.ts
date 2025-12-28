@@ -21,7 +21,7 @@ const COMPARTMENT_DEFINITION_RESOURCE_PROPERTIES = [
 /**
  * CompartmentDefinitionResource - How a resource is related to the compartment
  *
- * @see https://hl7.org/fhir/R4/compartmentdefinitionresource.html
+ * @see https://hl7.org/fhir/R5/compartmentdefinitionresource.html
  *
  * @example
  * const compartmentDefinitionResource = new CompartmentDefinitionResource({

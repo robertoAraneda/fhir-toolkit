@@ -11,7 +11,7 @@ import type { EventStatusType } from '../../valuesets/index.js';
  * A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference.
  * 
  *
- * @see https://hl7.org/fhir/R4/media.html
+ * @see https://hl7.org/fhir/R4B/media.html
  */
 export interface IMedia extends IDomainResource {
   /**

@@ -7,7 +7,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * Overall costs
  * 
  *
- * @see https://hl7.org/fhir/R4/insuranceplanplangeneralcost.html
+ * @see https://hl7.org/fhir/R4B/insuranceplanplangeneralcost.html
  */
 export interface IInsurancePlanPlanGeneralCost extends IBackboneElement {
   /**

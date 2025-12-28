@@ -10,7 +10,7 @@ import type { DeviceMetricCategoryType, DeviceMetricColorType, DeviceMetricOpera
  * Describes a measurement, calculation or setting capability of a medical device.
  * 
  *
- * @see https://hl7.org/fhir/R4/devicemetric.html
+ * @see https://hl7.org/fhir/R4B/devicemetric.html
  */
 export interface IDeviceMetric extends IDomainResource {
   /**

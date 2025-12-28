@@ -8,7 +8,7 @@ import type { IMedicationKnowledgeRegulatorySubstitution } from './IMedicationKn
  * Regulatory information about a medication
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeregulatory.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgeregulatory.html
  */
 export interface IMedicationKnowledgeRegulatory extends IBackboneElement {
   /**

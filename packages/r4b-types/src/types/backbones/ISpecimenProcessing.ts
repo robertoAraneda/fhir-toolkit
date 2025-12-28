@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Processing and processing step details
  * 
  *
- * @see https://hl7.org/fhir/R4/specimenprocessing.html
+ * @see https://hl7.org/fhir/R4B/specimenprocessing.html
  */
 export interface ISpecimenProcessing extends IBackboneElement {
   /**

@@ -16,7 +16,7 @@ const CONDITION_DEFINITION_QUESTIONNAIRE_PROPERTIES = [
 /**
  * ConditionDefinitionQuestionnaire - Questionnaire for this condition
  *
- * @see https://hl7.org/fhir/R4/conditiondefinitionquestionnaire.html
+ * @see https://hl7.org/fhir/R5/conditiondefinitionquestionnaire.html
  *
  * @example
  * const conditionDefinitionQuestionnaire = new ConditionDefinitionQuestionnaire({

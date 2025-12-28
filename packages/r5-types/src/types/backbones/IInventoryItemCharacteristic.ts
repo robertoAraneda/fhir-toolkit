@@ -12,7 +12,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * Characteristic of the item
  * 
  *
- * @see https://hl7.org/fhir/R4/inventoryitemcharacteristic.html
+ * @see https://hl7.org/fhir/R5/inventoryitemcharacteristic.html
  */
 export interface IInventoryItemCharacteristic extends IBackboneElement {
   /**

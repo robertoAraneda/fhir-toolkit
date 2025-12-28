@@ -20,7 +20,7 @@ const MONETARY_COMPONENT_PROPERTIES = [
 /**
  * MonetaryComponent - Availability data for an {item}.
  *
- * @see https://hl7.org/fhir/R4/monetarycomponent.html
+ * @see https://hl7.org/fhir/R5/monetarycomponent.html
  *
  * @example
  * const monetaryComponent = new MonetaryComponent({

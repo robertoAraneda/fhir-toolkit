@@ -7,7 +7,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * Adjudication totals
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponsetotal.html
+ * @see https://hl7.org/fhir/R5/claimresponsetotal.html
  */
 export interface IClaimResponseTotal extends IBackboneElement {
   /**

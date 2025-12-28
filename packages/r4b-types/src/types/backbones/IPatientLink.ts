@@ -7,7 +7,7 @@ import type { LinkTypeType } from '../../valuesets/index.js';
  * Link to another patient resource that concerns the same actual person
  * 
  *
- * @see https://hl7.org/fhir/R4/patientlink.html
+ * @see https://hl7.org/fhir/R4B/patientlink.html
  */
 export interface IPatientLink extends IBackboneElement {
   /**

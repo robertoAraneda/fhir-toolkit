@@ -14,7 +14,7 @@ const IMAGING_SELECTION_PERFORMER_PROPERTIES = [
 /**
  * ImagingSelectionPerformer - Selector of the instances (human or machine)
  *
- * @see https://hl7.org/fhir/R4/imagingselectionperformer.html
+ * @see https://hl7.org/fhir/R5/imagingselectionperformer.html
  *
  * @example
  * const imagingSelectionPerformer = new ImagingSelectionPerformer({

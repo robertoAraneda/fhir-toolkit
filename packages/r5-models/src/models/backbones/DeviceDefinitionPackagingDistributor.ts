@@ -15,7 +15,7 @@ const DEVICE_DEFINITION_PACKAGING_DISTRIBUTOR_PROPERTIES = [
 /**
  * DeviceDefinitionPackagingDistributor - An organization that distributes the packaged device
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionpackagingdistributor.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionpackagingdistributor.html
  *
  * @example
  * const deviceDefinitionPackagingDistributor = new DeviceDefinitionPackagingDistributor({

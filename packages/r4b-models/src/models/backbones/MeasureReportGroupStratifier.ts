@@ -14,7 +14,7 @@ const MEASURE_REPORT_GROUP_STRATIFIER_PROPERTIES = [
 /**
  * MeasureReportGroupStratifier - Stratification results
  *
- * @see https://hl7.org/fhir/R4/measurereportgroupstratifier.html
+ * @see https://hl7.org/fhir/R4B/measurereportgroupstratifier.html
  *
  * @example
  * const measureReportGroupStratifier = new MeasureReportGroupStratifier({

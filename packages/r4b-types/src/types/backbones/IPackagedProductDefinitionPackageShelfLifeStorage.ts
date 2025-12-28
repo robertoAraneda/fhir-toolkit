@@ -7,7 +7,7 @@ import type { IDuration } from '../datatypes/IDuration.js';
  * Shelf Life and storage information
  * 
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionpackageshelflifestorage.html
+ * @see https://hl7.org/fhir/R4B/packagedproductdefinitionpackageshelflifestorage.html
  */
 export interface IPackagedProductDefinitionPackageShelfLifeStorage extends IBackboneElement {
   /**

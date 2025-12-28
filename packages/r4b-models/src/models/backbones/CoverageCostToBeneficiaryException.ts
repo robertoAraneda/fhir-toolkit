@@ -14,7 +14,7 @@ const COVERAGE_COST_TO_BENEFICIARY_EXCEPTION_PROPERTIES = [
 /**
  * CoverageCostToBeneficiaryException - Exceptions for patient payments
  *
- * @see https://hl7.org/fhir/R4/coveragecosttobeneficiaryexception.html
+ * @see https://hl7.org/fhir/R4B/coveragecosttobeneficiaryexception.html
  *
  * @example
  * const coverageCostToBeneficiaryException = new CoverageCostToBeneficiaryException({

@@ -40,7 +40,7 @@ const CITATION_CITED_ARTIFACT_PROPERTIES = [
 /**
  * CitationCitedArtifact - The article or artifact being described
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifact.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifact.html
  *
  * @example
  * const citationCitedArtifact = new CitationCitedArtifact({

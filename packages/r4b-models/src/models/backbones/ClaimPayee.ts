@@ -14,7 +14,7 @@ const CLAIM_PAYEE_PROPERTIES = [
 /**
  * ClaimPayee - Recipient of benefits payable
  *
- * @see https://hl7.org/fhir/R4/claimpayee.html
+ * @see https://hl7.org/fhir/R4B/claimpayee.html
  *
  * @example
  * const claimPayee = new ClaimPayee({

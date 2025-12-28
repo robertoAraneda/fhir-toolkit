@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * An organization that distributes the packaged device
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionpackagingdistributor.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionpackagingdistributor.html
  */
 export interface IDeviceDefinitionPackagingDistributor extends IBackboneElement {
   /**

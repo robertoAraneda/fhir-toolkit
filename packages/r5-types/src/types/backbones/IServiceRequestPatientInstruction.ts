@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Patient or consumer-oriented instructions
  * 
  *
- * @see https://hl7.org/fhir/R4/servicerequestpatientinstruction.html
+ * @see https://hl7.org/fhir/R5/servicerequestpatientinstruction.html
  */
 export interface IServiceRequestPatientInstruction extends IBackboneElement {
   /**

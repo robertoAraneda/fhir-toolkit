@@ -11,7 +11,7 @@ import type { AuditEventActionType, AuditEventOutcomeType } from '../../valueset
  * A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
  * 
  *
- * @see https://hl7.org/fhir/R4/auditevent.html
+ * @see https://hl7.org/fhir/R4B/auditevent.html
  */
 export interface IAuditEvent extends IDomainResource {
   /**

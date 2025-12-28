@@ -20,7 +20,7 @@ const APPOINTMENT_RECURRENCE_TEMPLATE_MONTHLY_TEMPLATE_PROPERTIES = [
 /**
  * AppointmentRecurrenceTemplateMonthlyTemplate - Information about monthly recurring appointments
  *
- * @see https://hl7.org/fhir/R4/appointmentrecurrencetemplatemonthlytemplate.html
+ * @see https://hl7.org/fhir/R5/appointmentrecurrencetemplatemonthlytemplate.html
  *
  * @example
  * const appointmentRecurrenceTemplateMonthlyTemplate = new AppointmentRecurrenceTemplateMonthlyTemplate({

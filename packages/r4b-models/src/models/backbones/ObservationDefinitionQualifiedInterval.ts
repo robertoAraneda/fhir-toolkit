@@ -26,7 +26,7 @@ const OBSERVATION_DEFINITION_QUALIFIED_INTERVAL_PROPERTIES = [
 /**
  * ObservationDefinitionQualifiedInterval - Qualified range for continuous and ordinal observation results
  *
- * @see https://hl7.org/fhir/R4/observationdefinitionqualifiedinterval.html
+ * @see https://hl7.org/fhir/R4B/observationdefinitionqualifiedinterval.html
  *
  * @example
  * const observationDefinitionQualifiedInterval = new ObservationDefinitionQualifiedInterval({

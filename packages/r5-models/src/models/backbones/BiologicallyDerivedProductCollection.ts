@@ -18,7 +18,7 @@ const BIOLOGICALLY_DERIVED_PRODUCT_COLLECTION_PROPERTIES = [
 /**
  * BiologicallyDerivedProductCollection - How this product was collected
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductcollection.html
+ * @see https://hl7.org/fhir/R5/biologicallyderivedproductcollection.html
  *
  * @example
  * const biologicallyDerivedProductCollection = new BiologicallyDerivedProductCollection({

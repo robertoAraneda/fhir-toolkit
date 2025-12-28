@@ -21,7 +21,7 @@ const EXPLANATION_OF_BENEFIT_PROCEDURE_PROPERTIES = [
 /**
  * ExplanationOfBenefitProcedure - Clinical procedures performed
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitprocedure.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitprocedure.html
  *
  * @example
  * const explanationOfBenefitProcedure = new ExplanationOfBenefitProcedure({

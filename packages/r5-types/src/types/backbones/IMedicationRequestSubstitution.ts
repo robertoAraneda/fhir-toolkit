@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Any restrictions on medication substitution
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationrequestsubstitution.html
+ * @see https://hl7.org/fhir/R5/medicationrequestsubstitution.html
  */
 export interface IMedicationRequestSubstitution extends IBackboneElement {
   /**

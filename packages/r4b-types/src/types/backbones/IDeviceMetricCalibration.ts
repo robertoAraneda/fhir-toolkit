@@ -7,7 +7,7 @@ import type { DeviceMetricCalibrationStateType, DeviceMetricCalibrationTypeType 
  * Describes the calibrations that have been performed or that are required to be performed
  * 
  *
- * @see https://hl7.org/fhir/R4/devicemetriccalibration.html
+ * @see https://hl7.org/fhir/R4B/devicemetriccalibration.html
  */
 export interface IDeviceMetricCalibration extends IBackboneElement {
   /**

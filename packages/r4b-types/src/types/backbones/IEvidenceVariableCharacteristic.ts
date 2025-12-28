@@ -9,7 +9,7 @@ import type { GroupMeasureType } from '../../valuesets/index.js';
  * What defines the members of the evidence element
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristic.html
+ * @see https://hl7.org/fhir/R4B/evidencevariablecharacteristic.html
  */
 export interface IEvidenceVariableCharacteristic extends IBackboneElement {
   /**

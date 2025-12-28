@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Supported expansion parameter
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesexpansionparameter.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiesexpansionparameter.html
  */
 export interface ITerminologyCapabilitiesExpansionParameter extends IBackboneElement {
   /**

@@ -23,7 +23,7 @@ const BUNDLE_ENTRY_PROPERTIES = [
 /**
  * BundleEntry - Entry in the bundle - will have a resource or information
  *
- * @see https://hl7.org/fhir/R4/bundleentry.html
+ * @see https://hl7.org/fhir/R4B/bundleentry.html
  *
  * @example
  * const bundleEntry = new BundleEntry({

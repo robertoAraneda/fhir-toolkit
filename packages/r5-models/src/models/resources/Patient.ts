@@ -47,7 +47,7 @@ const PATIENT_PROPERTIES = [
 /**
  * Patient - Demographics and other administrative information about an individual or animal receiving care or other health-related services.
  *
- * @see https://hl7.org/fhir/R4/patient.html
+ * @see https://hl7.org/fhir/R5/patient.html
  *
  * @example
  * const patient = new Patient({

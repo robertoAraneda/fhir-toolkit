@@ -7,7 +7,7 @@ import type { IAdministrableProductDefinitionRouteOfAdministrationTargetSpeciesW
  * A species for which this route applies
  * 
  *
- * @see https://hl7.org/fhir/R4/administrableproductdefinitionrouteofadministrationtargetspecies.html
+ * @see https://hl7.org/fhir/R4B/administrableproductdefinitionrouteofadministrationtargetspecies.html
  */
 export interface IAdministrableProductDefinitionRouteOfAdministrationTargetSpecies extends IBackboneElement {
   /**

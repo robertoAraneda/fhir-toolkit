@@ -14,7 +14,7 @@ const MEDICATION_REQUEST_DISPENSE_REQUEST_INITIAL_FILL_PROPERTIES = [
 /**
  * MedicationRequestDispenseRequestInitialFill - First fill details
  *
- * @see https://hl7.org/fhir/R4/medicationrequestdispenserequestinitialfill.html
+ * @see https://hl7.org/fhir/R4B/medicationrequestdispenserequestinitialfill.html
  *
  * @example
  * const medicationRequestDispenseRequestInitialFill = new MedicationRequestDispenseRequestInitialFill({

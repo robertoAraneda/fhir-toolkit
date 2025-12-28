@@ -13,7 +13,7 @@ const TERMINOLOGY_CAPABILITIES_CLOSURE_PROPERTIES = [
 /**
  * TerminologyCapabilitiesClosure - Information about the [ConceptMap/$closure](conceptmap-operation-closure.html) operation
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesclosure.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiesclosure.html
  *
  * @example
  * const terminologyCapabilitiesClosure = new TerminologyCapabilitiesClosure({

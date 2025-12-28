@@ -21,7 +21,7 @@ const VERIFICATION_RESULT_PRIMARY_SOURCE_PROPERTIES = [
 /**
  * VerificationResultPrimarySource - Information about the primary source(s) involved in validation
  *
- * @see https://hl7.org/fhir/R4/verificationresultprimarysource.html
+ * @see https://hl7.org/fhir/R4B/verificationresultprimarysource.html
  *
  * @example
  * const verificationResultPrimarySource = new VerificationResultPrimarySource({

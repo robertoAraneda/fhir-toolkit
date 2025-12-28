@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Attests to accuracy of the document
  * 
  *
- * @see https://hl7.org/fhir/R4/documentreferenceattester.html
+ * @see https://hl7.org/fhir/R5/documentreferenceattester.html
  */
 export interface IDocumentReferenceAttester extends IBackboneElement {
   /**

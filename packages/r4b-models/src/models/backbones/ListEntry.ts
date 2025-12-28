@@ -19,7 +19,7 @@ const LIST_ENTRY_PROPERTIES = [
 /**
  * ListEntry - Entries in the list
  *
- * @see https://hl7.org/fhir/R4/listentry.html
+ * @see https://hl7.org/fhir/R4B/listentry.html
  *
  * @example
  * const listEntry = new ListEntry({

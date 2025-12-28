@@ -21,7 +21,7 @@ const DATA_REQUIREMENT_DATE_FILTER_PROPERTIES = [
 /**
  * DataRequirementDateFilter - What dates/date ranges are expected
  *
- * @see https://hl7.org/fhir/R4/datarequirementdatefilter.html
+ * @see https://hl7.org/fhir/R4B/datarequirementdatefilter.html
  *
  * @example
  * const dataRequirementDateFilter = new DataRequirementDateFilter({

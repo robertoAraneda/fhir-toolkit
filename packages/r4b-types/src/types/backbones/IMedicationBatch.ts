@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Details about packaged medications
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationbatch.html
+ * @see https://hl7.org/fhir/R4B/medicationbatch.html
  */
 export interface IMedicationBatch extends IBackboneElement {
   /**

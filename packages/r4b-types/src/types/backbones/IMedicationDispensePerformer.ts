@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who performed event
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationdispenseperformer.html
+ * @see https://hl7.org/fhir/R4B/medicationdispenseperformer.html
  */
 export interface IMedicationDispensePerformer extends IBackboneElement {
   /**

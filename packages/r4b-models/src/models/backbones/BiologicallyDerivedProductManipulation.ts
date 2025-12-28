@@ -17,7 +17,7 @@ const BIOLOGICALLY_DERIVED_PRODUCT_MANIPULATION_PROPERTIES = [
 /**
  * BiologicallyDerivedProductManipulation - Any manipulation of product post-collection
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductmanipulation.html
+ * @see https://hl7.org/fhir/R4B/biologicallyderivedproductmanipulation.html
  *
  * @example
  * const biologicallyDerivedProductManipulation = new BiologicallyDerivedProductManipulation({

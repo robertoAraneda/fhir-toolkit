@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Offer Recipient
  * 
  *
- * @see https://hl7.org/fhir/R4/contracttermofferparty.html
+ * @see https://hl7.org/fhir/R5/contracttermofferparty.html
  */
 export interface IContractTermOfferParty extends IBackboneElement {
   /**

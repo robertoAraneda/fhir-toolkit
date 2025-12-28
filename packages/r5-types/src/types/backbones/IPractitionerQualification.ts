@@ -8,7 +8,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Qualifications, certifications, accreditations, licenses, training, etc. pertaining to the provision of care
  * 
  *
- * @see https://hl7.org/fhir/R4/practitionerqualification.html
+ * @see https://hl7.org/fhir/R5/practitionerqualification.html
  */
 export interface IPractitionerQualification extends IBackboneElement {
   /**

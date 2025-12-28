@@ -16,7 +16,7 @@ const SUBSTANCE_INGREDIENT_PROPERTIES = [
 /**
  * SubstanceIngredient - Composition information about the substance
  *
- * @see https://hl7.org/fhir/R4/substanceingredient.html
+ * @see https://hl7.org/fhir/R4B/substanceingredient.html
  *
  * @example
  * const substanceIngredient = new SubstanceIngredient({

@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * The item or items in this listing
  * 
  *
- * @see https://hl7.org/fhir/R4/inventoryreportinventorylistingitem.html
+ * @see https://hl7.org/fhir/R5/inventoryreportinventorylistingitem.html
  */
 export interface IInventoryReportInventoryListingItem extends IBackboneElement {
   /**

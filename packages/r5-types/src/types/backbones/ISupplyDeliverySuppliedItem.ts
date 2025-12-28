@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * The item that is delivered or supplied
  * 
  *
- * @see https://hl7.org/fhir/R4/supplydeliverysupplieditem.html
+ * @see https://hl7.org/fhir/R5/supplydeliverysupplieditem.html
  */
 export interface ISupplyDeliverySuppliedItem extends IBackboneElement {
   /**

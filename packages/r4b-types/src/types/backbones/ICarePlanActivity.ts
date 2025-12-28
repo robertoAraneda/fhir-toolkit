@@ -8,7 +8,7 @@ import type { ICarePlanActivityDetail } from './ICarePlanActivityDetail.js';
  * Action to occur as part of plan
  * 
  *
- * @see https://hl7.org/fhir/R4/careplanactivity.html
+ * @see https://hl7.org/fhir/R4B/careplanactivity.html
  */
 export interface ICarePlanActivity extends IBackboneElement {
   /**

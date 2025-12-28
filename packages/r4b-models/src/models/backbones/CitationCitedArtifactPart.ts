@@ -17,7 +17,7 @@ const CITATION_CITED_ARTIFACT_PART_PROPERTIES = [
 /**
  * CitationCitedArtifactPart - The component of the article or artifact
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpart.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactpart.html
  *
  * @example
  * const citationCitedArtifactPart = new CitationCitedArtifactPart({

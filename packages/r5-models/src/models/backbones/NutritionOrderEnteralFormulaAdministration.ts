@@ -17,7 +17,7 @@ const NUTRITION_ORDER_ENTERAL_FORMULA_ADMINISTRATION_PROPERTIES = [
 /**
  * NutritionOrderEnteralFormulaAdministration - Formula feeding instruction as structured data
  *
- * @see https://hl7.org/fhir/R4/nutritionorderenteralformulaadministration.html
+ * @see https://hl7.org/fhir/R5/nutritionorderenteralformulaadministration.html
  *
  * @example
  * const nutritionOrderEnteralFormulaAdministration = new NutritionOrderEnteralFormulaAdministration({

@@ -16,7 +16,7 @@ const IMAGING_SELECTION_INSTANCE_IMAGE_REGION3D_PROPERTIES = [
 /**
  * ImagingSelectionInstanceImageRegion3D - A specific 3D region in a DICOM frame of reference
  *
- * @see https://hl7.org/fhir/R4/imagingselectioninstanceimageregion3d.html
+ * @see https://hl7.org/fhir/R5/imagingselectioninstanceimageregion3d.html
  *
  * @example
  * const imagingSelectionInstanceImageRegion3D = new ImagingSelectionInstanceImageRegion3D({

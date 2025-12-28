@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * A human-readable display of key concepts to represent the citation
  * 
  *
- * @see https://hl7.org/fhir/R4/citationsummary.html
+ * @see https://hl7.org/fhir/R5/citationsummary.html
  */
 export interface ICitationSummary extends IBackboneElement {
   /**

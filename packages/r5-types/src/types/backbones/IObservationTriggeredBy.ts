@@ -7,7 +7,7 @@ import type { TriggeredBytypeType } from '../../valuesets/index.js';
  * Triggering observation(s)
  * 
  *
- * @see https://hl7.org/fhir/R4/observationtriggeredby.html
+ * @see https://hl7.org/fhir/R5/observationtriggeredby.html
  */
 export interface IObservationTriggeredBy extends IBackboneElement {
   /**

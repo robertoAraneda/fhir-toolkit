@@ -7,7 +7,7 @@ import type { NarrativeStatusType } from '../../valuesets/index.js';
  * A human-readable summary of the resource conveying the essential clinical and business information for the resource.
  * 
  *
- * @see https://hl7.org/fhir/R4/narrative.html
+ * @see https://hl7.org/fhir/R5/narrative.html
  */
 export interface INarrative extends IDataType {
   /**

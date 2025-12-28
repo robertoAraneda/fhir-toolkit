@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Additional Information about the entity
  * 
  *
- * @see https://hl7.org/fhir/R4/auditevententitydetail.html
+ * @see https://hl7.org/fhir/R4B/auditevententitydetail.html
  */
 export interface IAuditEventEntityDetail extends IBackboneElement {
   /**

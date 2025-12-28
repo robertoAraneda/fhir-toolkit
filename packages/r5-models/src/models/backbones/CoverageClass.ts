@@ -17,7 +17,7 @@ const COVERAGE_CLASS_PROPERTIES = [
 /**
  * CoverageClass - Additional coverage classifications
  *
- * @see https://hl7.org/fhir/R4/coverageclass.html
+ * @see https://hl7.org/fhir/R5/coverageclass.html
  *
  * @example
  * const coverageClass = new CoverageClass({

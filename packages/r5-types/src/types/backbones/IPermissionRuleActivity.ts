@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * A description or definition of which activities are allowed to be done on the data
  * 
  *
- * @see https://hl7.org/fhir/R4/permissionruleactivity.html
+ * @see https://hl7.org/fhir/R5/permissionruleactivity.html
  */
 export interface IPermissionRuleActivity extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { IssueSeverityType, IssueTypeType } from '../../valuesets/index.js'
  * A single issue associated with the action
  * 
  *
- * @see https://hl7.org/fhir/R4/operationoutcomeissue.html
+ * @see https://hl7.org/fhir/R4B/operationoutcomeissue.html
  */
 export interface IOperationOutcomeIssue extends IBackboneElement {
   /**

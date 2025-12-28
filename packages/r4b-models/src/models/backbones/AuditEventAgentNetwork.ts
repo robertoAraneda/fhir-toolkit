@@ -16,7 +16,7 @@ const AUDIT_EVENT_AGENT_NETWORK_PROPERTIES = [
 /**
  * AuditEventAgentNetwork - Logical network location for application activity
  *
- * @see https://hl7.org/fhir/R4/auditeventagentnetwork.html
+ * @see https://hl7.org/fhir/R4B/auditeventagentnetwork.html
  *
  * @example
  * const auditEventAgentNetwork = new AuditEventAgentNetwork({

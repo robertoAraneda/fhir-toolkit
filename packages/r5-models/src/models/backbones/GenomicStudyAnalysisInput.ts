@@ -17,7 +17,7 @@ const GENOMIC_STUDY_ANALYSIS_INPUT_PROPERTIES = [
 /**
  * GenomicStudyAnalysisInput - Inputs for the analysis event
  *
- * @see https://hl7.org/fhir/R4/genomicstudyanalysisinput.html
+ * @see https://hl7.org/fhir/R5/genomicstudyanalysisinput.html
  *
  * @example
  * const genomicStudyAnalysisInput = new GenomicStudyAnalysisInput({

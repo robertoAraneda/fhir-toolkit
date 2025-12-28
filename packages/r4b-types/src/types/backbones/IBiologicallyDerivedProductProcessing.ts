@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Any processing of the product during collection
  * 
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductprocessing.html
+ * @see https://hl7.org/fhir/R4B/biologicallyderivedproductprocessing.html
  */
 export interface IBiologicallyDerivedProductProcessing extends IBackboneElement {
   /**

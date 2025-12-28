@@ -7,7 +7,7 @@ import type { ImagingSelection2DGraphicTypeType } from '../../valuesets/index.js
  * A specific 2D region in a DICOM image / frame
  * 
  *
- * @see https://hl7.org/fhir/R4/imagingselectioninstanceimageregion2d.html
+ * @see https://hl7.org/fhir/R5/imagingselectioninstanceimageregion2d.html
  */
 export interface IImagingSelectionInstanceImageRegion2D extends IBackboneElement {
   /**

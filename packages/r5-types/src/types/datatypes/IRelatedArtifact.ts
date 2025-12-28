@@ -8,7 +8,7 @@ import type { PublicationStatusType, RelatedArtifactTypeType } from '../../value
  * Related artifacts such as additional documentation, justification, or bibliographic references.
  * 
  *
- * @see https://hl7.org/fhir/R4/relatedartifact.html
+ * @see https://hl7.org/fhir/R5/relatedartifact.html
  */
 export interface IRelatedArtifact extends IDataType {
   /**

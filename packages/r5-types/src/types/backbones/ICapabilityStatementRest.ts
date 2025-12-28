@@ -12,7 +12,7 @@ import type { RestfulCapabilityModeType } from '../../valuesets/index.js';
  * If the endpoint is a RESTful one
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrest.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementrest.html
  */
 export interface ICapabilityStatementRest extends IBackboneElement {
   /**

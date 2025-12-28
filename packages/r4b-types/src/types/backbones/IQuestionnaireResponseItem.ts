@@ -7,7 +7,7 @@ import type { IQuestionnaireResponseItemAnswer } from './IQuestionnaireResponseI
  * Groups and questions
  * 
  *
- * @see https://hl7.org/fhir/R4/questionnaireresponseitem.html
+ * @see https://hl7.org/fhir/R4B/questionnaireresponseitem.html
  */
 export interface IQuestionnaireResponseItem extends IBackboneElement {
   /**

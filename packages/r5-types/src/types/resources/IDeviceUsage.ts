@@ -13,7 +13,7 @@ import type { DeviceUsageStatusType } from '../../valuesets/index.js';
  * A record of a device being used by a patient where the record is the result of a report from the patient or a clinician.
  * 
  *
- * @see https://hl7.org/fhir/R4/deviceusage.html
+ * @see https://hl7.org/fhir/R5/deviceusage.html
  */
 export interface IDeviceUsage extends IDomainResource {
   /**

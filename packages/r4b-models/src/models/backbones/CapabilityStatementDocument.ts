@@ -18,7 +18,7 @@ const CAPABILITY_STATEMENT_DOCUMENT_PROPERTIES = [
 /**
  * CapabilityStatementDocument - Document definition
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementdocument.html
+ * @see https://hl7.org/fhir/R4B/capabilitystatementdocument.html
  *
  * @example
  * const capabilityStatementDocument = new CapabilityStatementDocument({

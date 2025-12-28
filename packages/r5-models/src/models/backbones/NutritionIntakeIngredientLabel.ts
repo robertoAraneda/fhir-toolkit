@@ -14,7 +14,7 @@ const NUTRITION_INTAKE_INGREDIENT_LABEL_PROPERTIES = [
 /**
  * NutritionIntakeIngredientLabel - Total nutrient for the whole meal, product, serving
  *
- * @see https://hl7.org/fhir/R4/nutritionintakeingredientlabel.html
+ * @see https://hl7.org/fhir/R5/nutritionintakeingredientlabel.html
  *
  * @example
  * const nutritionIntakeIngredientLabel = new NutritionIntakeIngredientLabel({

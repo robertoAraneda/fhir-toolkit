@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Manipulated, implanted, or removed device
  * 
  *
- * @see https://hl7.org/fhir/R4/procedurefocaldevice.html
+ * @see https://hl7.org/fhir/R4B/procedurefocaldevice.html
  */
 export interface IProcedureFocalDevice extends IBackboneElement {
   /**

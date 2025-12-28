@@ -14,7 +14,7 @@ const ALLERGY_INTOLERANCE_PARTICIPANT_PROPERTIES = [
 /**
  * AllergyIntoleranceParticipant - Who or what participated in the activities related to the allergy or intolerance and how they were involved
  *
- * @see https://hl7.org/fhir/R4/allergyintoleranceparticipant.html
+ * @see https://hl7.org/fhir/R5/allergyintoleranceparticipant.html
  *
  * @example
  * const allergyIntoleranceParticipant = new AllergyIntoleranceParticipant({

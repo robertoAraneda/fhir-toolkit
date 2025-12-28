@@ -34,7 +34,7 @@ const BIOLOGICALLY_DERIVED_PRODUCT_PROPERTIES = [
  * BiologicallyDerivedProduct - This resource reflects an instance of a biologically derived product. A material substance originating from a biological entity intended to be transplanted or infused
 into another (possibly the same) biological entity.
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproduct.html
+ * @see https://hl7.org/fhir/R5/biologicallyderivedproduct.html
  *
  * @example
  * const biologicallyDerivedProduct = new BiologicallyDerivedProduct({

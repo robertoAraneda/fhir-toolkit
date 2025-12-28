@@ -7,7 +7,7 @@ import type { IInvoiceLineItemPriceComponent } from './IInvoiceLineItemPriceComp
  * Line items of this Invoice
  * 
  *
- * @see https://hl7.org/fhir/R4/invoicelineitem.html
+ * @see https://hl7.org/fhir/R4B/invoicelineitem.html
  */
 export interface IInvoiceLineItem extends IBackboneElement {
   /**

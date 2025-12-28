@@ -7,7 +7,7 @@ import type { AggregationModeType, ReferenceVersionRulesType } from '../../value
  * Data type and Profile for this element
  * 
  *
- * @see https://hl7.org/fhir/R4/elementdefinitiontype.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitiontype.html
  */
 export interface IElementDefinitionType extends IElement {
   /**

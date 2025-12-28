@@ -15,7 +15,7 @@ const OPERATION_DEFINITION_PARAMETER_REFERENCED_FROM_PROPERTIES = [
 /**
  * OperationDefinitionParameterReferencedFrom - References to this parameter
  *
- * @see https://hl7.org/fhir/R4/operationdefinitionparameterreferencedfrom.html
+ * @see https://hl7.org/fhir/R5/operationdefinitionparameterreferencedfrom.html
  *
  * @example
  * const operationDefinitionParameterReferencedFrom = new OperationDefinitionParameterReferencedFrom({

@@ -17,7 +17,7 @@ const PLAN_DEFINITION_ACTION_INPUT_PROPERTIES = [
 /**
  * PlanDefinitionActionInput - Input data requirements
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactioninput.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactioninput.html
  *
  * @example
  * const planDefinitionActionInput = new PlanDefinitionActionInput({

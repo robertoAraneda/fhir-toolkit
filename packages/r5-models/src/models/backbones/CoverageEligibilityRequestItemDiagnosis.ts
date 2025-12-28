@@ -14,7 +14,7 @@ const COVERAGE_ELIGIBILITY_REQUEST_ITEM_DIAGNOSIS_PROPERTIES = [
 /**
  * CoverageEligibilityRequestItemDiagnosis - Applicable diagnosis
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityrequestitemdiagnosis.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityrequestitemdiagnosis.html
  *
  * @example
  * const coverageEligibilityRequestItemDiagnosis = new CoverageEligibilityRequestItemDiagnosis({

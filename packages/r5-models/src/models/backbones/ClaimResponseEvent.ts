@@ -17,7 +17,7 @@ const CLAIM_RESPONSE_EVENT_PROPERTIES = [
 /**
  * ClaimResponseEvent - Event information
  *
- * @see https://hl7.org/fhir/R4/claimresponseevent.html
+ * @see https://hl7.org/fhir/R5/claimresponseevent.html
  *
  * @example
  * const claimResponseEvent = new ClaimResponseEvent({

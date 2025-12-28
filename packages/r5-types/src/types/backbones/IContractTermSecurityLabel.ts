@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement } from '../../base/index.js';
  * Protection for the Term
  * 
  *
- * @see https://hl7.org/fhir/R4/contracttermsecuritylabel.html
+ * @see https://hl7.org/fhir/R5/contracttermsecuritylabel.html
  */
 export interface IContractTermSecurityLabel extends IBackboneElement {
   /**

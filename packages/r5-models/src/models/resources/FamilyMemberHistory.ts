@@ -62,7 +62,7 @@ const FAMILY_MEMBER_HISTORY_PROPERTIES = [
 /**
  * FamilyMemberHistory - Significant health conditions for a person related to the patient relevant in the context of care for the patient.
  *
- * @see https://hl7.org/fhir/R4/familymemberhistory.html
+ * @see https://hl7.org/fhir/R5/familymemberhistory.html
  *
  * @example
  * const familyMemberHistory = new FamilyMemberHistory({

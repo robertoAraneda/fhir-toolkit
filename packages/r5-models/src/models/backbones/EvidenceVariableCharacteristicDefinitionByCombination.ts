@@ -18,7 +18,7 @@ const EVIDENCE_VARIABLE_CHARACTERISTIC_DEFINITION_BY_COMBINATION_PROPERTIES = [
 /**
  * EvidenceVariableCharacteristicDefinitionByCombination - Used to specify how two or more characteristics are combined
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristicdefinitionbycombination.html
+ * @see https://hl7.org/fhir/R5/evidencevariablecharacteristicdefinitionbycombination.html
  *
  * @example
  * const evidenceVariableCharacteristicDefinitionByCombination = new EvidenceVariableCharacteristicDefinitionByCombination({

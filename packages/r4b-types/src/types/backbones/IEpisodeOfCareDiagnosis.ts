@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * The list of diagnosis relevant to this episode of care
  * 
  *
- * @see https://hl7.org/fhir/R4/episodeofcarediagnosis.html
+ * @see https://hl7.org/fhir/R4B/episodeofcarediagnosis.html
  */
 export interface IEpisodeOfCareDiagnosis extends IBackboneElement {
   /**

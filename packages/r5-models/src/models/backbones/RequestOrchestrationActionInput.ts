@@ -17,7 +17,7 @@ const REQUEST_ORCHESTRATION_ACTION_INPUT_PROPERTIES = [
 /**
  * RequestOrchestrationActionInput - Input data requirements
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationactioninput.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationactioninput.html
  *
  * @example
  * const requestOrchestrationActionInput = new RequestOrchestrationActionInput({

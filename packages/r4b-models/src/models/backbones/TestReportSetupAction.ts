@@ -14,7 +14,7 @@ const TEST_REPORT_SETUP_ACTION_PROPERTIES = [
 /**
  * TestReportSetupAction - A setup operation or assert that was executed
  *
- * @see https://hl7.org/fhir/R4/testreportsetupaction.html
+ * @see https://hl7.org/fhir/R4B/testreportsetupaction.html
  *
  * @example
  * const testReportSetupAction = new TestReportSetupAction({

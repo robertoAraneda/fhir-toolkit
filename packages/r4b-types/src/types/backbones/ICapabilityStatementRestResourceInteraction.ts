@@ -7,7 +7,7 @@ import type { TypeRestfulInteractionType } from '../../valuesets/index.js';
  * What operations are supported?
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrestresourceinteraction.html
+ * @see https://hl7.org/fhir/R4B/capabilitystatementrestresourceinteraction.html
  */
 export interface ICapabilityStatementRestResourceInteraction extends IBackboneElement {
   /**

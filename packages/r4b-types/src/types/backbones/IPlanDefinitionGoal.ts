@@ -8,7 +8,7 @@ import type { IPlanDefinitionGoalTarget } from './IPlanDefinitionGoalTarget.js';
  * What the plan is trying to accomplish
  * 
  *
- * @see https://hl7.org/fhir/R4/plandefinitiongoal.html
+ * @see https://hl7.org/fhir/R4B/plandefinitiongoal.html
  */
 export interface IPlanDefinitionGoal extends IBackboneElement {
   /**

@@ -16,7 +16,7 @@ const EXPLANATION_OF_BENEFIT_RELATED_PROPERTIES = [
 /**
  * ExplanationOfBenefitRelated - Prior or corollary claims
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitrelated.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitrelated.html
  *
  * @example
  * const explanationOfBenefitRelated = new ExplanationOfBenefitRelated({

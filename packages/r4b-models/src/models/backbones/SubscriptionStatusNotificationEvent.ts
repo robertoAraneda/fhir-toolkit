@@ -18,7 +18,7 @@ const SUBSCRIPTION_STATUS_NOTIFICATION_EVENT_PROPERTIES = [
 /**
  * SubscriptionStatusNotificationEvent - Detailed information about any events relevant to this notification
  *
- * @see https://hl7.org/fhir/R4/subscriptionstatusnotificationevent.html
+ * @see https://hl7.org/fhir/R4B/subscriptionstatusnotificationevent.html
  *
  * @example
  * const subscriptionStatusNotificationEvent = new SubscriptionStatusNotificationEvent({

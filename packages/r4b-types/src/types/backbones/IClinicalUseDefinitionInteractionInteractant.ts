@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * The specific medication, food, substance or laboratory test that interacts
  * 
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitioninteractioninteractant.html
+ * @see https://hl7.org/fhir/R4B/clinicalusedefinitioninteractioninteractant.html
  */
 export interface IClinicalUseDefinitionInteractionInteractant extends IBackboneElement {
   /**

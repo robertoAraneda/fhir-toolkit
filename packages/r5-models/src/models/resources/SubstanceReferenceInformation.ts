@@ -19,7 +19,7 @@ const SUBSTANCE_REFERENCE_INFORMATION_PROPERTIES = [
 /**
  * SubstanceReferenceInformation - Todo.
  *
- * @see https://hl7.org/fhir/R4/substancereferenceinformation.html
+ * @see https://hl7.org/fhir/R5/substancereferenceinformation.html
  *
  * @example
  * const substanceReferenceInformation = new SubstanceReferenceInformation({

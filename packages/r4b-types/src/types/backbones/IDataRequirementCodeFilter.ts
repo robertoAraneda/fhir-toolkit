@@ -6,7 +6,7 @@ import type { ICoding, IElement } from '../../base/index.js';
  * What codes are expected
  * 
  *
- * @see https://hl7.org/fhir/R4/datarequirementcodefilter.html
+ * @see https://hl7.org/fhir/R4B/datarequirementcodefilter.html
  */
 export interface IDataRequirementCodeFilter extends IElement {
   /**

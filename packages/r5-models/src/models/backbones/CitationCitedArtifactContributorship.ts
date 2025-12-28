@@ -17,7 +17,7 @@ const CITATION_CITED_ARTIFACT_CONTRIBUTORSHIP_PROPERTIES = [
 /**
  * CitationCitedArtifactContributorship - Attribution of authors and other contributors
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorship.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactcontributorship.html
  *
  * @example
  * const citationCitedArtifactContributorship = new CitationCitedArtifactContributorship({

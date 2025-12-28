@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Members of the care team
  * 
  *
- * @see https://hl7.org/fhir/R4/claimcareteam.html
+ * @see https://hl7.org/fhir/R4B/claimcareteam.html
  */
 export interface IClaimCareTeam extends IBackboneElement {
   /**

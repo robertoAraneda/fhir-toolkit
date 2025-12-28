@@ -27,7 +27,7 @@ const VALUE_SET_EXPANSION_PARAMETER_PROPERTIES = [
 /**
  * ValueSetExpansionParameter - Parameter that controlled the expansion process
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansionparameter.html
+ * @see https://hl7.org/fhir/R5/valuesetexpansionparameter.html
  *
  * @example
  * const valueSetExpansionParameter = new ValueSetExpansionParameter({

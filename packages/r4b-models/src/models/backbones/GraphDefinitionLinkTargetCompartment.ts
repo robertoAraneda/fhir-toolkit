@@ -24,7 +24,7 @@ const GRAPH_DEFINITION_LINK_TARGET_COMPARTMENT_PROPERTIES = [
 /**
  * GraphDefinitionLinkTargetCompartment - Compartment Consistency Rules
  *
- * @see https://hl7.org/fhir/R4/graphdefinitionlinktargetcompartment.html
+ * @see https://hl7.org/fhir/R4B/graphdefinitionlinktargetcompartment.html
  *
  * @example
  * const graphDefinitionLinkTargetCompartment = new GraphDefinitionLinkTargetCompartment({

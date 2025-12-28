@@ -59,7 +59,7 @@ const TEST_SCRIPT_SETUP_ACTION_ASSERT_PROPERTIES = [
 /**
  * TestScriptSetupActionAssert - The assertion to perform
  *
- * @see https://hl7.org/fhir/R4/testscriptsetupactionassert.html
+ * @see https://hl7.org/fhir/R4B/testscriptsetupactionassert.html
  *
  * @example
  * const testScriptSetupActionAssert = new TestScriptSetupActionAssert({

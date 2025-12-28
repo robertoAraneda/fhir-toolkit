@@ -27,7 +27,7 @@ const SUBSTANCE_DEFINITION_RELATIONSHIP_PROPERTIES = [
 /**
  * SubstanceDefinitionRelationship - A link between this substance and another
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionrelationship.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionrelationship.html
  *
  * @example
  * const substanceDefinitionRelationship = new SubstanceDefinitionRelationship({

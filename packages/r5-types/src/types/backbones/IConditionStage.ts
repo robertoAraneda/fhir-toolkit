@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Stage/grade, usually assessed formally
  * 
  *
- * @see https://hl7.org/fhir/R4/conditionstage.html
+ * @see https://hl7.org/fhir/R5/conditionstage.html
  */
 export interface IConditionStage extends IBackboneElement {
   /**

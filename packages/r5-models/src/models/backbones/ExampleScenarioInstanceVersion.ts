@@ -19,7 +19,7 @@ const EXAMPLE_SCENARIO_INSTANCE_VERSION_PROPERTIES = [
 /**
  * ExampleScenarioInstanceVersion - Snapshot of instance that changes
  *
- * @see https://hl7.org/fhir/R4/examplescenarioinstanceversion.html
+ * @see https://hl7.org/fhir/R5/examplescenarioinstanceversion.html
  *
  * @example
  * const exampleScenarioInstanceVersion = new ExampleScenarioInstanceVersion({

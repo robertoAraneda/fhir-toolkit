@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Prior or corollary claims
  * 
  *
- * @see https://hl7.org/fhir/R4/claimrelated.html
+ * @see https://hl7.org/fhir/R5/claimrelated.html
  */
 export interface IClaimRelated extends IBackboneElement {
   /**

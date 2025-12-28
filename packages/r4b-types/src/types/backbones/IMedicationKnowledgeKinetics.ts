@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * The time course of drug absorption, distribution, metabolism and excretion of a medication from the body
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgekinetics.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgekinetics.html
  */
 export interface IMedicationKnowledgeKinetics extends IBackboneElement {
   /**

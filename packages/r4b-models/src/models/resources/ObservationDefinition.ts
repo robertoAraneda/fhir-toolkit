@@ -33,7 +33,7 @@ const OBSERVATION_DEFINITION_PROPERTIES = [
 /**
  * ObservationDefinition - Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.
  *
- * @see https://hl7.org/fhir/R4/observationdefinition.html
+ * @see https://hl7.org/fhir/R4B/observationdefinition.html
  *
  * @example
  * const observationDefinition = new ObservationDefinition({

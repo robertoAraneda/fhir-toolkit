@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * Anatomical location
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponseadditembodysite.html
+ * @see https://hl7.org/fhir/R5/claimresponseadditembodysite.html
  */
 export interface IClaimResponseAddItemBodySite extends IBackboneElement {
   /**

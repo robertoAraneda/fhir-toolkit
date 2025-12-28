@@ -12,7 +12,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * The ResearchDefinition resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.
  * 
  *
- * @see https://hl7.org/fhir/R4/researchdefinition.html
+ * @see https://hl7.org/fhir/R4B/researchdefinition.html
  */
 export interface IResearchDefinition extends IDomainResource {
   /**

@@ -53,7 +53,7 @@ const EXPLANATION_OF_BENEFIT_ITEM_PROPERTIES = [
 /**
  * ExplanationOfBenefitItem - Product or service provided
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefititem.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefititem.html
  *
  * @example
  * const explanationOfBenefitItem = new ExplanationOfBenefitItem({

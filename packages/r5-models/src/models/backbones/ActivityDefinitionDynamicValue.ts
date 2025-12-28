@@ -15,7 +15,7 @@ const ACTIVITY_DEFINITION_DYNAMIC_VALUE_PROPERTIES = [
 /**
  * ActivityDefinitionDynamicValue - Dynamic aspects of the definition
  *
- * @see https://hl7.org/fhir/R4/activitydefinitiondynamicvalue.html
+ * @see https://hl7.org/fhir/R5/activitydefinitiondynamicvalue.html
  *
  * @example
  * const activityDefinitionDynamicValue = new ActivityDefinitionDynamicValue({

@@ -7,7 +7,7 @@ import type { IAnnotation } from '../datatypes/IAnnotation.js';
  * Codes associated with the substance
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitioncode.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitioncode.html
  */
 export interface ISubstanceDefinitionCode extends IBackboneElement {
   /**

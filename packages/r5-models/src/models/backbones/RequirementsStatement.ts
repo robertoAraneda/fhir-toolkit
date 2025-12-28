@@ -32,7 +32,7 @@ const REQUIREMENTS_STATEMENT_PROPERTIES = [
 /**
  * RequirementsStatement - Actual statement as markdown
  *
- * @see https://hl7.org/fhir/R4/requirementsstatement.html
+ * @see https://hl7.org/fhir/R5/requirementsstatement.html
  *
  * @example
  * const requirementsStatement = new RequirementsStatement({

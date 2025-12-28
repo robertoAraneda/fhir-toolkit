@@ -31,7 +31,7 @@ const PAYMENT_NOTICE_PROPERTIES = [
 /**
  * PaymentNotice - This resource provides the status of the payment for goods and services rendered, and the request and response resource references.
  *
- * @see https://hl7.org/fhir/R4/paymentnotice.html
+ * @see https://hl7.org/fhir/R5/paymentnotice.html
  *
  * @example
  * const paymentNotice = new PaymentNotice({

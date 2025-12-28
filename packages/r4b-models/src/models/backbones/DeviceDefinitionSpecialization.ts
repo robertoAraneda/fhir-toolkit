@@ -15,7 +15,7 @@ const DEVICE_DEFINITION_SPECIALIZATION_PROPERTIES = [
 /**
  * DeviceDefinitionSpecialization - The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionspecialization.html
+ * @see https://hl7.org/fhir/R4B/devicedefinitionspecialization.html
  *
  * @example
  * const deviceDefinitionSpecialization = new DeviceDefinitionSpecialization({

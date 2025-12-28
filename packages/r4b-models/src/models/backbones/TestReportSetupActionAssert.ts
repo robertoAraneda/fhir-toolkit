@@ -18,7 +18,7 @@ const TEST_REPORT_SETUP_ACTION_ASSERT_PROPERTIES = [
 /**
  * TestReportSetupActionAssert - The assertion to perform
  *
- * @see https://hl7.org/fhir/R4/testreportsetupactionassert.html
+ * @see https://hl7.org/fhir/R4B/testreportsetupactionassert.html
  *
  * @example
  * const testReportSetupActionAssert = new TestReportSetupActionAssert({

@@ -27,7 +27,7 @@ const CONCEPT_MAP_GROUP_ELEMENT_TARGET_PROPERTY_PROPERTIES = [
 /**
  * ConceptMapGroupElementTargetProperty - Property value for the source -> target mapping
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupelementtargetproperty.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupelementtargetproperty.html
  *
  * @example
  * const conceptMapGroupElementTargetProperty = new ConceptMapGroupElementTargetProperty({

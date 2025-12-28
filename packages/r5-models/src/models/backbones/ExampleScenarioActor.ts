@@ -20,7 +20,7 @@ const EXAMPLE_SCENARIO_ACTOR_PROPERTIES = [
 /**
  * ExampleScenarioActor - Individual involved in exchange
  *
- * @see https://hl7.org/fhir/R4/examplescenarioactor.html
+ * @see https://hl7.org/fhir/R5/examplescenarioactor.html
  *
  * @example
  * const exampleScenarioActor = new ExampleScenarioActor({

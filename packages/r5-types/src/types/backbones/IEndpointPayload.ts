@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Set of payloads that are provided by this endpoint
  * 
  *
- * @see https://hl7.org/fhir/R4/endpointpayload.html
+ * @see https://hl7.org/fhir/R5/endpointpayload.html
  */
 export interface IEndpointPayload extends IBackboneElement {
   /**

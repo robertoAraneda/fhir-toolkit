@@ -26,7 +26,7 @@ const MANUFACTURED_ITEM_DEFINITION_PROPERTY_PROPERTIES = [
 /**
  * ManufacturedItemDefinitionProperty - General characteristics of this item
  *
- * @see https://hl7.org/fhir/R4/manufactureditemdefinitionproperty.html
+ * @see https://hl7.org/fhir/R5/manufactureditemdefinitionproperty.html
  *
  * @example
  * const manufacturedItemDefinitionProperty = new ManufacturedItemDefinitionProperty({

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement } from '../../base/index.js';
  * Property value for the source -> target mapping
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupelementtargetproperty.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupelementtargetproperty.html
  */
 export interface IConceptMapGroupElementTargetProperty extends IBackboneElement {
   /**

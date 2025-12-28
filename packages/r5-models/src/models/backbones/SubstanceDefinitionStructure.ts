@@ -25,7 +25,7 @@ const SUBSTANCE_DEFINITION_STRUCTURE_PROPERTIES = [
 /**
  * SubstanceDefinitionStructure - Structural information
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionstructure.html
+ * @see https://hl7.org/fhir/R5/substancedefinitionstructure.html
  *
  * @example
  * const substanceDefinitionStructure = new SubstanceDefinitionStructure({

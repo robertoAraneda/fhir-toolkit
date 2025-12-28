@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Additional coverage classifications
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageclass.html
+ * @see https://hl7.org/fhir/R5/coverageclass.html
  */
 export interface ICoverageClass extends IBackboneElement {
   /**

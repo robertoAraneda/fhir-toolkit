@@ -7,7 +7,7 @@ import type { CriteriaNotExistsBehaviorType } from '../../valuesets/index.js';
  * Query based trigger rule
  * 
  *
- * @see https://hl7.org/fhir/R4/subscriptiontopicresourcetriggerquerycriteria.html
+ * @see https://hl7.org/fhir/R4B/subscriptiontopicresourcetriggerquerycriteria.html
  */
 export interface ISubscriptionTopicResourceTriggerQueryCriteria extends IBackboneElement {
   /**

@@ -14,7 +14,7 @@ const AVAILABILITY_PROPERTIES = [
 /**
  * Availability - Availability data for an {item}.
  *
- * @see https://hl7.org/fhir/R4/availability.html
+ * @see https://hl7.org/fhir/R5/availability.html
  *
  * @example
  * const availability = new Availability({

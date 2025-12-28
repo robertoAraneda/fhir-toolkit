@@ -8,7 +8,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * Details of how medication was taken
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationadministrationdosage.html
+ * @see https://hl7.org/fhir/R5/medicationadministrationdosage.html
  */
 export interface IMedicationAdministrationDosage extends IBackboneElement {
   /**

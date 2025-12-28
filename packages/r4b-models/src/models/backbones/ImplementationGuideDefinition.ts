@@ -20,7 +20,7 @@ const IMPLEMENTATION_GUIDE_DEFINITION_PROPERTIES = [
 /**
  * ImplementationGuideDefinition - Information needed to build the IG
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinition.html
+ * @see https://hl7.org/fhir/R4B/implementationguidedefinition.html
  *
  * @example
  * const implementationGuideDefinition = new ImplementationGuideDefinition({

@@ -27,7 +27,7 @@ const CONCEPT_MAP_GROUP_ELEMENT_TARGET_PROPERTIES = [
 /**
  * ConceptMapGroupElementTarget - Concept in target system for element
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupelementtarget.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupelementtarget.html
  *
  * @example
  * const conceptMapGroupElementTarget = new ConceptMapGroupElementTarget({

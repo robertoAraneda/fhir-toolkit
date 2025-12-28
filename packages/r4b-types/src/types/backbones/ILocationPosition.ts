@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * The absolute geographic location
  * 
  *
- * @see https://hl7.org/fhir/R4/locationposition.html
+ * @see https://hl7.org/fhir/R4B/locationposition.html
  */
 export interface ILocationPosition extends IBackboneElement {
   /**

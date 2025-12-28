@@ -9,7 +9,7 @@ import type { IQuestionnaireResponseItem } from './IQuestionnaireResponseItem.js
  * The response(s) to the question
  * 
  *
- * @see https://hl7.org/fhir/R4/questionnaireresponseitemanswer.html
+ * @see https://hl7.org/fhir/R4B/questionnaireresponseitemanswer.html
  */
 export interface IQuestionnaireResponseItemAnswer extends IBackboneElement {
   /**

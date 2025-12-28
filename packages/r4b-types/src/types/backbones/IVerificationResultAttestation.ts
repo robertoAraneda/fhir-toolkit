@@ -7,7 +7,7 @@ import type { ISignature } from '../datatypes/ISignature.js';
  * Information about the entity attesting to information
  * 
  *
- * @see https://hl7.org/fhir/R4/verificationresultattestation.html
+ * @see https://hl7.org/fhir/R4B/verificationresultattestation.html
  */
 export interface IVerificationResultAttestation extends IBackboneElement {
   /**

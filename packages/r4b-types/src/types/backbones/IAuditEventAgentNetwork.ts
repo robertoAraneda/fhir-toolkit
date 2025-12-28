@@ -7,7 +7,7 @@ import type { AuditEventAgentNetworkTypeType } from '../../valuesets/index.js';
  * Logical network location for application activity
  * 
  *
- * @see https://hl7.org/fhir/R4/auditeventagentnetwork.html
+ * @see https://hl7.org/fhir/R4B/auditeventagentnetwork.html
  */
 export interface IAuditEventAgentNetwork extends IBackboneElement {
   /**

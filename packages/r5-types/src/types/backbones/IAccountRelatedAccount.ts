@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Other associated accounts related to this account
  * 
  *
- * @see https://hl7.org/fhir/R4/accountrelatedaccount.html
+ * @see https://hl7.org/fhir/R5/accountrelatedaccount.html
  */
 export interface IAccountRelatedAccount extends IBackboneElement {
   /**

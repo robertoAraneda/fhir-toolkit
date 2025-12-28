@@ -9,7 +9,7 @@ import type { ActionRelationshipTypeType } from '../../valuesets/index.js';
  * Relationship to another action
  * 
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactionrelatedaction.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactionrelatedaction.html
  */
 export interface IPlanDefinitionActionRelatedAction extends IBackboneElement {
   /**

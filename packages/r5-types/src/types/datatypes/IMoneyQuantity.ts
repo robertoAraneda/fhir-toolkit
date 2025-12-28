@@ -9,7 +9,7 @@ import type { QuantityComparatorType } from '../../valuesets/index.js';
  * There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = "urn:iso:std:iso:4217" - currency).
  * 
  *
- * @see https://hl7.org/fhir/R4/moneyquantity.html
+ * @see https://hl7.org/fhir/R5/moneyquantity.html
  */
 export interface IMoneyQuantity extends IQuantity {
   /**

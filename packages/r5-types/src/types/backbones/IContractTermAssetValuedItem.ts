@@ -9,7 +9,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Contract Valued Item List
  * 
  *
- * @see https://hl7.org/fhir/R4/contracttermassetvalueditem.html
+ * @see https://hl7.org/fhir/R5/contracttermassetvalueditem.html
  */
 export interface IContractTermAssetValuedItem extends IBackboneElement {
   /**

@@ -17,7 +17,7 @@ const CITATION_CITED_ARTIFACT_CONTRIBUTORSHIP_ENTRY_AFFILIATION_INFO_PROPERTIES 
 /**
  * CitationCitedArtifactContributorshipEntryAffiliationInfo - Organizational affiliation
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorshipentryaffiliationinfo.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactcontributorshipentryaffiliationinfo.html
  *
  * @example
  * const citationCitedArtifactContributorshipEntryAffiliationInfo = new CitationCitedArtifactContributorshipEntryAffiliationInfo({

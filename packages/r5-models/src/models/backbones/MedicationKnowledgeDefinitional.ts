@@ -19,7 +19,7 @@ const MEDICATION_KNOWLEDGE_DEFINITIONAL_PROPERTIES = [
 /**
  * MedicationKnowledgeDefinitional - Minimal definition information about the medication
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgedefinitional.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgedefinitional.html
  *
  * @example
  * const medicationKnowledgeDefinitional = new MedicationKnowledgeDefinitional({

@@ -14,7 +14,7 @@ const CLAIM_RESPONSE_ADD_ITEM_BODY_SITE_PROPERTIES = [
 /**
  * ClaimResponseAddItemBodySite - Anatomical location
  *
- * @see https://hl7.org/fhir/R4/claimresponseadditembodysite.html
+ * @see https://hl7.org/fhir/R5/claimresponseadditembodysite.html
  *
  * @example
  * const claimResponseAddItemBodySite = new ClaimResponseAddItemBodySite({

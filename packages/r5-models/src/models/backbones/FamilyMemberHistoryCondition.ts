@@ -26,7 +26,7 @@ const FAMILY_MEMBER_HISTORY_CONDITION_PROPERTIES = [
 /**
  * FamilyMemberHistoryCondition - Condition that the related person had
  *
- * @see https://hl7.org/fhir/R4/familymemberhistorycondition.html
+ * @see https://hl7.org/fhir/R5/familymemberhistorycondition.html
  *
  * @example
  * const familyMemberHistoryCondition = new FamilyMemberHistoryCondition({

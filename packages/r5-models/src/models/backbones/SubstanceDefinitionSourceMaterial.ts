@@ -16,7 +16,7 @@ const SUBSTANCE_DEFINITION_SOURCE_MATERIAL_PROPERTIES = [
 /**
  * SubstanceDefinitionSourceMaterial - Material or taxonomic/anatomical source
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionsourcematerial.html
+ * @see https://hl7.org/fhir/R5/substancedefinitionsourcematerial.html
  *
  * @example
  * const substanceDefinitionSourceMaterial = new SubstanceDefinitionSourceMaterial({

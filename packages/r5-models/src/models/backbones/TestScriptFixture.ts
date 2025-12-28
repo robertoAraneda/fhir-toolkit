@@ -17,7 +17,7 @@ const TEST_SCRIPT_FIXTURE_PROPERTIES = [
 /**
  * TestScriptFixture - Fixture in the test script - by reference (uri)
  *
- * @see https://hl7.org/fhir/R4/testscriptfixture.html
+ * @see https://hl7.org/fhir/R5/testscriptfixture.html
  *
  * @example
  * const testScriptFixture = new TestScriptFixture({

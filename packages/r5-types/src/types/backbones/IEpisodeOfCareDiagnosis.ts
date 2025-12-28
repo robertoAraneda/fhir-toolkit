@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * The list of medical conditions that were addressed during the episode of care
  * 
  *
- * @see https://hl7.org/fhir/R4/episodeofcarediagnosis.html
+ * @see https://hl7.org/fhir/R5/episodeofcarediagnosis.html
  */
 export interface IEpisodeOfCareDiagnosis extends IBackboneElement {
   /**

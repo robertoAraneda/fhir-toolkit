@@ -15,7 +15,7 @@ const CLINICAL_USE_DEFINITION_UNDESIRABLE_EFFECT_PROPERTIES = [
 /**
  * ClinicalUseDefinitionUndesirableEffect - A possible negative outcome from the use of this treatment
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitionundesirableeffect.html
+ * @see https://hl7.org/fhir/R5/clinicalusedefinitionundesirableeffect.html
  *
  * @example
  * const clinicalUseDefinitionUndesirableEffect = new ClinicalUseDefinitionUndesirableEffect({

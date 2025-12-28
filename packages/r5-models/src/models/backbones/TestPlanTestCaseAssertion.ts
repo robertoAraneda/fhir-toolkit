@@ -15,7 +15,7 @@ const TEST_PLAN_TEST_CASE_ASSERTION_PROPERTIES = [
 /**
  * TestPlanTestCaseAssertion - Test assertions or expectations
  *
- * @see https://hl7.org/fhir/R4/testplantestcaseassertion.html
+ * @see https://hl7.org/fhir/R5/testplantestcaseassertion.html
  *
  * @example
  * const testPlanTestCaseAssertion = new TestPlanTestCaseAssertion({

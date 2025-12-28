@@ -34,7 +34,7 @@ const CLINICAL_USE_DEFINITION_PROPERTIES = [
 /**
  * ClinicalUseDefinition - A single issue - either an indication, contraindication, interaction or an undesirable effect for a medicinal product, medication, device or procedure.
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinition.html
+ * @see https://hl7.org/fhir/R5/clinicalusedefinition.html
  *
  * @example
  * const clinicalUseDefinition = new ClinicalUseDefinition({

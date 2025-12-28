@@ -62,7 +62,7 @@ const APPOINTMENT_PROPERTIES = [
 /**
  * Appointment - A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
  *
- * @see https://hl7.org/fhir/R4/appointment.html
+ * @see https://hl7.org/fhir/R5/appointment.html
  *
  * @example
  * const appointment = new Appointment({

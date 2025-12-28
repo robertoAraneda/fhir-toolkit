@@ -16,7 +16,7 @@ const PAYMENT_RECONCILIATION_PROCESS_NOTE_PROPERTIES = [
 /**
  * PaymentReconciliationProcessNote - Note concerning processing
  *
- * @see https://hl7.org/fhir/R4/paymentreconciliationprocessnote.html
+ * @see https://hl7.org/fhir/R5/paymentreconciliationprocessnote.html
  *
  * @example
  * const paymentReconciliationProcessNote = new PaymentReconciliationProcessNote({

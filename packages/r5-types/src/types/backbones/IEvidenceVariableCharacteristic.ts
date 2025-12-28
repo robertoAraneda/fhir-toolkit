@@ -13,7 +13,7 @@ import type { IEvidenceVariableCharacteristicTimeFromEvent } from './IEvidenceVa
  * A defining factor of the EvidenceVariable
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristic.html
+ * @see https://hl7.org/fhir/R5/evidencevariablecharacteristic.html
  */
 export interface IEvidenceVariableCharacteristic extends IBackboneElement {
   /**

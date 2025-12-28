@@ -14,7 +14,7 @@ const DEVICE_DISPENSE_PERFORMER_PROPERTIES = [
 /**
  * DeviceDispensePerformer - Who performed event
  *
- * @see https://hl7.org/fhir/R4/devicedispenseperformer.html
+ * @see https://hl7.org/fhir/R5/devicedispenseperformer.html
  *
  * @example
  * const deviceDispensePerformer = new DeviceDispensePerformer({

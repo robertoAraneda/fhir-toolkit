@@ -14,7 +14,7 @@ const ENCOUNTER_HISTORY_LOCATION_PROPERTIES = [
 /**
  * EncounterHistoryLocation - Location of the patient at this point in the encounter
  *
- * @see https://hl7.org/fhir/R4/encounterhistorylocation.html
+ * @see https://hl7.org/fhir/R5/encounterhistorylocation.html
  *
  * @example
  * const encounterHistoryLocation = new EncounterHistoryLocation({

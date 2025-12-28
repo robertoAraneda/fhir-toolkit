@@ -29,7 +29,7 @@ const VALUE_SET_EXPANSION_CONTAINS_PROPERTY_PROPERTIES = [
 /**
  * ValueSetExpansionContainsProperty - Property value for the concept
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansioncontainsproperty.html
+ * @see https://hl7.org/fhir/R5/valuesetexpansioncontainsproperty.html
  *
  * @example
  * const valueSetExpansionContainsProperty = new ValueSetExpansionContainsProperty({

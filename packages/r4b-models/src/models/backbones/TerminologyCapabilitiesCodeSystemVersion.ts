@@ -23,7 +23,7 @@ const TERMINOLOGY_CAPABILITIES_CODE_SYSTEM_VERSION_PROPERTIES = [
 /**
  * TerminologyCapabilitiesCodeSystemVersion - Version of Code System supported
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiescodesystemversion.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiescodesystemversion.html
  *
  * @example
  * const terminologyCapabilitiesCodeSystemVersion = new TerminologyCapabilitiesCodeSystemVersion({

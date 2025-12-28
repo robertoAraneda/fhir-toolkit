@@ -20,7 +20,7 @@ const RESEARCH_STUDY_ASSOCIATED_PARTY_PROPERTIES = [
 /**
  * ResearchStudyAssociatedParty - Sponsors, collaborators, and other parties
  *
- * @see https://hl7.org/fhir/R4/researchstudyassociatedparty.html
+ * @see https://hl7.org/fhir/R5/researchstudyassociatedparty.html
  *
  * @example
  * const researchStudyAssociatedParty = new ResearchStudyAssociatedParty({

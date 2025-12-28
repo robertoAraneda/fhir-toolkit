@@ -17,7 +17,7 @@ const ACCOUNT_GUARANTOR_PROPERTIES = [
 /**
  * AccountGuarantor - The parties ultimately responsible for balancing the Account
  *
- * @see https://hl7.org/fhir/R4/accountguarantor.html
+ * @see https://hl7.org/fhir/R4B/accountguarantor.html
  *
  * @example
  * const accountGuarantor = new AccountGuarantor({

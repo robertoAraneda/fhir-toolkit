@@ -7,7 +7,7 @@ import type { IStructureMapGroupRuleTargetParameter } from './IStructureMapGroup
  * Which other rules to apply in the context of this rule
  * 
  *
- * @see https://hl7.org/fhir/R4/structuremapgroupruledependent.html
+ * @see https://hl7.org/fhir/R5/structuremapgroupruledependent.html
  */
 export interface IStructureMapGroupRuleDependent extends IBackboneElement {
   /**

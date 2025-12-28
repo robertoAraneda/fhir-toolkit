@@ -23,7 +23,7 @@ const INVOICE_LINE_ITEM_PROPERTIES = [
 /**
  * InvoiceLineItem - Line items of this Invoice
  *
- * @see https://hl7.org/fhir/R4/invoicelineitem.html
+ * @see https://hl7.org/fhir/R5/invoicelineitem.html
  *
  * @example
  * const invoiceLineItem = new InvoiceLineItem({

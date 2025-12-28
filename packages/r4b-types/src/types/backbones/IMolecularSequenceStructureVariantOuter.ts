@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Structural variant outer
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequencestructurevariantouter.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencestructurevariantouter.html
  */
 export interface IMolecularSequenceStructureVariantOuter extends IBackboneElement {
   /**

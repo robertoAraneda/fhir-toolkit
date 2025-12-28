@@ -15,7 +15,7 @@ const STRUCTURE_MAP_GROUP_RULE_DEPENDENT_PROPERTIES = [
 /**
  * StructureMapGroupRuleDependent - Which other rules to apply in the context of this rule
  *
- * @see https://hl7.org/fhir/R4/structuremapgroupruledependent.html
+ * @see https://hl7.org/fhir/R5/structuremapgroupruledependent.html
  *
  * @example
  * const structureMapGroupRuleDependent = new StructureMapGroupRuleDependent({

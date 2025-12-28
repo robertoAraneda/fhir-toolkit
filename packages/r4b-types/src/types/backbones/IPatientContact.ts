@@ -11,7 +11,7 @@ import type { AdministrativeGenderType } from '../../valuesets/index.js';
  * A contact party (e.g. guardian, partner, friend) for the patient
  * 
  *
- * @see https://hl7.org/fhir/R4/patientcontact.html
+ * @see https://hl7.org/fhir/R4B/patientcontact.html
  */
 export interface IPatientContact extends IBackboneElement {
   /**

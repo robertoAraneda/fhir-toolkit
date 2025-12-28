@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account
  * 
  *
- * @see https://hl7.org/fhir/R4/accountcoverage.html
+ * @see https://hl7.org/fhir/R4B/accountcoverage.html
  */
 export interface IAccountCoverage extends IBackboneElement {
   /**

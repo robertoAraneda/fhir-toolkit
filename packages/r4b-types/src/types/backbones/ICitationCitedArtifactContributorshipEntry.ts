@@ -12,7 +12,7 @@ import type { ICitationCitedArtifactContributorshipEntryContributionInstance } f
  * An individual entity named in the list
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorshipentry.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactcontributorshipentry.html
  */
 export interface ICitationCitedArtifactContributorshipEntry extends IBackboneElement {
   /**

@@ -18,7 +18,7 @@ const PACKAGED_PRODUCT_DEFINITION_PACKAGE_SHELF_LIFE_STORAGE_PROPERTIES = [
 /**
  * PackagedProductDefinitionPackageShelfLifeStorage - Shelf Life and storage information
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionpackageshelflifestorage.html
+ * @see https://hl7.org/fhir/R4B/packagedproductdefinitionpackageshelflifestorage.html
  *
  * @example
  * const packagedProductDefinitionPackageShelfLifeStorage = new PackagedProductDefinitionPackageShelfLifeStorage({

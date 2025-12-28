@@ -20,7 +20,7 @@ const ELEMENT_DEFINITION_SLICING_PROPERTIES = [
 /**
  * ElementDefinitionSlicing - This element is sliced - slices follow
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionslicing.html
+ * @see https://hl7.org/fhir/R5/elementdefinitionslicing.html
  *
  * @example
  * const elementDefinitionSlicing = new ElementDefinitionSlicing({

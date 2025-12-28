@@ -11,7 +11,7 @@ import type { ImagingSelectionStatusType } from '../../valuesets/index.js';
  * A selection of DICOM SOP instances and/or frames within a single Study and Series. This might include additional specifics such as an image region, an Observation UID or a Segmentation Number, allowing linkage to an Observation Resource or transferring this information along with the ImagingStudy Resource.
  * 
  *
- * @see https://hl7.org/fhir/R4/imagingselection.html
+ * @see https://hl7.org/fhir/R5/imagingselection.html
  */
 export interface IImagingSelection extends IDomainResource {
   /**

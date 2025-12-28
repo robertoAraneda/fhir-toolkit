@@ -7,7 +7,7 @@ import type { ExampleScenarioActorTypeType } from '../../valuesets/index.js';
  * Individual involved in exchange
  * 
  *
- * @see https://hl7.org/fhir/R4/examplescenarioactor.html
+ * @see https://hl7.org/fhir/R5/examplescenarioactor.html
  */
 export interface IExampleScenarioActor extends IBackboneElement {
   /**

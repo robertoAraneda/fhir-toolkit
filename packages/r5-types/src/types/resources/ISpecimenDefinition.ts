@@ -12,7 +12,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * A kind of specimen with associated set of requirements.
  * 
  *
- * @see https://hl7.org/fhir/R4/specimendefinition.html
+ * @see https://hl7.org/fhir/R5/specimendefinition.html
  */
 export interface ISpecimenDefinition extends IDomainResource {
   /**

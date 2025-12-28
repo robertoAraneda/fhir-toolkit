@@ -23,7 +23,7 @@ const CONCEPT_MAP_GROUP_PROPERTIES = [
 /**
  * ConceptMapGroup - Same source and target systems
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroup.html
+ * @see https://hl7.org/fhir/R4B/conceptmapgroup.html
  *
  * @example
  * const conceptMapGroup = new ConceptMapGroup({

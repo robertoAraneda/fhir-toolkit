@@ -7,7 +7,7 @@ import type { IExpression } from '../datatypes/IExpression.js';
  * Dynamic aspects of the definition
  * 
  *
- * @see https://hl7.org/fhir/R4/activitydefinitiondynamicvalue.html
+ * @see https://hl7.org/fhir/R4B/activitydefinitiondynamicvalue.html
  */
 export interface IActivityDefinitionDynamicValue extends IBackboneElement {
   /**

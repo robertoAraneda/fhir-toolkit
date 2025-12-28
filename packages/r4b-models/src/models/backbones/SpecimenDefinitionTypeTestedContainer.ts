@@ -26,7 +26,7 @@ const SPECIMEN_DEFINITION_TYPE_TESTED_CONTAINER_PROPERTIES = [
 /**
  * SpecimenDefinitionTypeTestedContainer - The specimen's container
  *
- * @see https://hl7.org/fhir/R4/specimendefinitiontypetestedcontainer.html
+ * @see https://hl7.org/fhir/R4B/specimendefinitiontypetestedcontainer.html
  *
  * @example
  * const specimenDefinitionTypeTestedContainer = new SpecimenDefinitionTypeTestedContainer({

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * 4.9.13.6.1 Author type (Conditional)
  * 
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialorganismauthor.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialorganismauthor.html
  */
 export interface ISubstanceSourceMaterialOrganismAuthor extends IBackboneElement {
   /**

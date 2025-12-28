@@ -21,7 +21,7 @@ const BIOLOGICALLY_DERIVED_PRODUCT_PROCESSING_PROPERTIES = [
 /**
  * BiologicallyDerivedProductProcessing - Any processing of the product during collection
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductprocessing.html
+ * @see https://hl7.org/fhir/R4B/biologicallyderivedproductprocessing.html
  *
  * @example
  * const biologicallyDerivedProductProcessing = new BiologicallyDerivedProductProcessing({

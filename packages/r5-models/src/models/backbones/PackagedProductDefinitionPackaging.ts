@@ -30,7 +30,7 @@ const PACKAGED_PRODUCT_DEFINITION_PACKAGING_PROPERTIES = [
 /**
  * PackagedProductDefinitionPackaging - A packaging item, as a container for medically related items, possibly with other packaging items within, or a packaging component, such as bottle cap
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionpackaging.html
+ * @see https://hl7.org/fhir/R5/packagedproductdefinitionpackaging.html
  *
  * @example
  * const packagedProductDefinitionPackaging = new PackagedProductDefinitionPackaging({

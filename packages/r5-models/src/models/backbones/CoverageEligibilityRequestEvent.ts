@@ -17,7 +17,7 @@ const COVERAGE_ELIGIBILITY_REQUEST_EVENT_PROPERTIES = [
 /**
  * CoverageEligibilityRequestEvent - Event information
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityrequestevent.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityrequestevent.html
  *
  * @example
  * const coverageEligibilityRequestEvent = new CoverageEligibilityRequestEvent({

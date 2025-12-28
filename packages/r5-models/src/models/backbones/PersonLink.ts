@@ -16,7 +16,7 @@ const PERSON_LINK_PROPERTIES = [
 /**
  * PersonLink - Link to a resource that concerns the same actual person
  *
- * @see https://hl7.org/fhir/R4/personlink.html
+ * @see https://hl7.org/fhir/R5/personlink.html
  *
  * @example
  * const personLink = new PersonLink({

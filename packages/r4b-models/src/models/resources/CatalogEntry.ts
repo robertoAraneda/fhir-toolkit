@@ -34,7 +34,7 @@ const CATALOG_ENTRY_PROPERTIES = [
 /**
  * CatalogEntry - Catalog entries are wrappers that contextualize items included in a catalog.
  *
- * @see https://hl7.org/fhir/R4/catalogentry.html
+ * @see https://hl7.org/fhir/R4B/catalogentry.html
  *
  * @example
  * const catalogEntry = new CatalogEntry({

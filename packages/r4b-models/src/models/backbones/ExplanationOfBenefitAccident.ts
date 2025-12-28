@@ -19,7 +19,7 @@ const EXPLANATION_OF_BENEFIT_ACCIDENT_PROPERTIES = [
 /**
  * ExplanationOfBenefitAccident - Details of the event
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitaccident.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitaccident.html
  *
  * @example
  * const explanationOfBenefitAccident = new ExplanationOfBenefitAccident({

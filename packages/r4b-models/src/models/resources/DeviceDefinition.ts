@@ -53,7 +53,7 @@ const DEVICE_DEFINITION_PROPERTIES = [
 /**
  * DeviceDefinition - The characteristics, operational status and capabilities of a medical-related component of a medical device.
  *
- * @see https://hl7.org/fhir/R4/devicedefinition.html
+ * @see https://hl7.org/fhir/R4B/devicedefinition.html
  *
  * @example
  * const deviceDefinition = new DeviceDefinition({

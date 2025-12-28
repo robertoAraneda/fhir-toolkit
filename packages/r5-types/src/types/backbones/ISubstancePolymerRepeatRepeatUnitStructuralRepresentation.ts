@@ -7,7 +7,7 @@ import type { IAttachment } from '../datatypes/IAttachment.js';
  * A graphical structure for this SRU
  * 
  *
- * @see https://hl7.org/fhir/R4/substancepolymerrepeatrepeatunitstructuralrepresentation.html
+ * @see https://hl7.org/fhir/R5/substancepolymerrepeatrepeatunitstructuralrepresentation.html
  */
 export interface ISubstancePolymerRepeatRepeatUnitStructuralRepresentation extends IBackboneElement {
   /**

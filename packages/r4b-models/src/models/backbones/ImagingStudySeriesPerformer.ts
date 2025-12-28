@@ -14,7 +14,7 @@ const IMAGING_STUDY_SERIES_PERFORMER_PROPERTIES = [
 /**
  * ImagingStudySeriesPerformer - Who performed the series
  *
- * @see https://hl7.org/fhir/R4/imagingstudyseriesperformer.html
+ * @see https://hl7.org/fhir/R4B/imagingstudyseriesperformer.html
  *
  * @example
  * const imagingStudySeriesPerformer = new ImagingStudySeriesPerformer({

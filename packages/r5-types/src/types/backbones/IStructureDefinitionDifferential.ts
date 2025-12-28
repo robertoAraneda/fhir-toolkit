@@ -7,7 +7,7 @@ import type { IElementDefinition } from '../datatypes/IElementDefinition.js';
  * Differential view of the structure
  * 
  *
- * @see https://hl7.org/fhir/R4/structuredefinitiondifferential.html
+ * @see https://hl7.org/fhir/R5/structuredefinitiondifferential.html
  */
 export interface IStructureDefinitionDifferential extends IBackboneElement {
   /**

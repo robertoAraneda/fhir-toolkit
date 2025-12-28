@@ -22,7 +22,7 @@ const EVIDENCE_STATISTIC_MODEL_CHARACTERISTIC_VARIABLE_PROPERTIES = [
 /**
  * EvidenceStatisticModelCharacteristicVariable - A variable adjusted for in the adjusted analysis
  *
- * @see https://hl7.org/fhir/R4/evidencestatisticmodelcharacteristicvariable.html
+ * @see https://hl7.org/fhir/R4B/evidencestatisticmodelcharacteristicvariable.html
  *
  * @example
  * const evidenceStatisticModelCharacteristicVariable = new EvidenceStatisticModelCharacteristicVariable({

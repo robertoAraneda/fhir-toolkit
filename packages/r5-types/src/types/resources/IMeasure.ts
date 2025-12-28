@@ -15,7 +15,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * The Measure resource provides the definition of a quality measure.
  * 
  *
- * @see https://hl7.org/fhir/R4/measure.html
+ * @see https://hl7.org/fhir/R5/measure.html
  */
 export interface IMeasure extends IDomainResource {
   /**

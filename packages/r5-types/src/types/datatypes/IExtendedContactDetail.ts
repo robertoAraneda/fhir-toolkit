@@ -10,7 +10,7 @@ import type { IPeriod } from './IPeriod.js';
  * Specifies contact information for a specific purpose over a period of time, might be handled/monitored by a specific named person or organization.
  * 
  *
- * @see https://hl7.org/fhir/R4/extendedcontactdetail.html
+ * @see https://hl7.org/fhir/R5/extendedcontactdetail.html
  */
 export interface IExtendedContactDetail extends IDataType {
   /**

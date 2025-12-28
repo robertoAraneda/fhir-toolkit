@@ -49,7 +49,7 @@ const CARE_PLAN_PROPERTIES = [
 /**
  * CarePlan - Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
  *
- * @see https://hl7.org/fhir/R4/careplan.html
+ * @see https://hl7.org/fhir/R4B/careplan.html
  *
  * @example
  * const carePlan = new CarePlan({

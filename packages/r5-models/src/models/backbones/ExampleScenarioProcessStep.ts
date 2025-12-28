@@ -23,7 +23,7 @@ const EXAMPLE_SCENARIO_PROCESS_STEP_PROPERTIES = [
 /**
  * ExampleScenarioProcessStep - Event within of the process
  *
- * @see https://hl7.org/fhir/R4/examplescenarioprocessstep.html
+ * @see https://hl7.org/fhir/R5/examplescenarioprocessstep.html
  *
  * @example
  * const exampleScenarioProcessStep = new ExampleScenarioProcessStep({

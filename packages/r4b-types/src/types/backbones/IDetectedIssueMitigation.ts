@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Step taken to address
  * 
  *
- * @see https://hl7.org/fhir/R4/detectedissuemitigation.html
+ * @see https://hl7.org/fhir/R4B/detectedissuemitigation.html
  */
 export interface IDetectedIssueMitigation extends IBackboneElement {
   /**

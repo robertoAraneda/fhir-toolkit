@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Required  texture modifications
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionorderoraldiettexture.html
+ * @see https://hl7.org/fhir/R4B/nutritionorderoraldiettexture.html
  */
 export interface INutritionOrderOralDietTexture extends IBackboneElement {
   /**

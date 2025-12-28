@@ -58,7 +58,7 @@ const EVIDENCE_VARIABLE_PROPERTIES = [
 /**
  * EvidenceVariable - The EvidenceVariable resource describes an element that knowledge (Evidence) is about.
  *
- * @see https://hl7.org/fhir/R4/evidencevariable.html
+ * @see https://hl7.org/fhir/R4B/evidencevariable.html
  *
  * @example
  * const evidenceVariable = new EvidenceVariable({

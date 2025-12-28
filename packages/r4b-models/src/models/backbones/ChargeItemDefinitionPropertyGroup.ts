@@ -14,7 +14,7 @@ const CHARGE_ITEM_DEFINITION_PROPERTY_GROUP_PROPERTIES = [
 /**
  * ChargeItemDefinitionPropertyGroup - Group of properties which are applicable under the same conditions
  *
- * @see https://hl7.org/fhir/R4/chargeitemdefinitionpropertygroup.html
+ * @see https://hl7.org/fhir/R4B/chargeitemdefinitionpropertygroup.html
  *
  * @example
  * const chargeItemDefinitionPropertyGroup = new ChargeItemDefinitionPropertyGroup({

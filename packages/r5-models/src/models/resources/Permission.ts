@@ -27,7 +27,7 @@ const PERMISSION_PROPERTIES = [
 /**
  * Permission - Permission resource holds access rules for a given data and context.
  *
- * @see https://hl7.org/fhir/R4/permission.html
+ * @see https://hl7.org/fhir/R5/permission.html
  *
  * @example
  * const permission = new Permission({

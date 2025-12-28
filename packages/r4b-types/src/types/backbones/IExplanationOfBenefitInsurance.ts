@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Patient insurance information
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitinsurance.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitinsurance.html
  */
 export interface IExplanationOfBenefitInsurance extends IBackboneElement {
   /**

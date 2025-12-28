@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Variant in sequence
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequencevariant.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencevariant.html
  */
 export interface IMolecularSequenceVariant extends IBackboneElement {
   /**

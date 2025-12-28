@@ -17,7 +17,7 @@ const GROUP_MEMBER_PROPERTIES = [
 /**
  * GroupMember - Who or what is in group
  *
- * @see https://hl7.org/fhir/R4/groupmember.html
+ * @see https://hl7.org/fhir/R4B/groupmember.html
  *
  * @example
  * const groupMember = new GroupMember({

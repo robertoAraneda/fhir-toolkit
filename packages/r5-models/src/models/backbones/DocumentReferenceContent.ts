@@ -14,7 +14,7 @@ const DOCUMENT_REFERENCE_CONTENT_PROPERTIES = [
 /**
  * DocumentReferenceContent - Document referenced
  *
- * @see https://hl7.org/fhir/R4/documentreferencecontent.html
+ * @see https://hl7.org/fhir/R5/documentreferencecontent.html
  *
  * @example
  * const documentReferenceContent = new DocumentReferenceContent({

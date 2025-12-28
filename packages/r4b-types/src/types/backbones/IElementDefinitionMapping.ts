@@ -6,7 +6,7 @@ import type { IElement } from '../../base/index.js';
  * Map element to another set of definitions
  * 
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionmapping.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitionmapping.html
  */
 export interface IElementDefinitionMapping extends IElement {
   /**

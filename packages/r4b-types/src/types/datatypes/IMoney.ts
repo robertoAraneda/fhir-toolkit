@@ -6,7 +6,7 @@ import type { IElement } from '../../base/index.js';
  * An amount of economic utility in some recognized currency.
  * 
  *
- * @see https://hl7.org/fhir/R4/money.html
+ * @see https://hl7.org/fhir/R4B/money.html
  */
 export interface IMoney extends IElement {
   /**

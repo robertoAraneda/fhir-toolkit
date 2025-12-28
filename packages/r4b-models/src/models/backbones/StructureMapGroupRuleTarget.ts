@@ -30,7 +30,7 @@ const STRUCTURE_MAP_GROUP_RULE_TARGET_PROPERTIES = [
 /**
  * StructureMapGroupRuleTarget - Content to create because of this mapping rule
  *
- * @see https://hl7.org/fhir/R4/structuremapgroupruletarget.html
+ * @see https://hl7.org/fhir/R4B/structuremapgroupruletarget.html
  *
  * @example
  * const structureMapGroupRuleTarget = new StructureMapGroupRuleTarget({

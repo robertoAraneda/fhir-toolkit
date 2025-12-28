@@ -17,7 +17,7 @@ const SUBSCRIPTION_TOPIC_EVENT_TRIGGER_PROPERTIES = [
 /**
  * SubscriptionTopicEventTrigger - Event definitions the SubscriptionTopic
  *
- * @see https://hl7.org/fhir/R4/subscriptiontopiceventtrigger.html
+ * @see https://hl7.org/fhir/R5/subscriptiontopiceventtrigger.html
  *
  * @example
  * const subscriptionTopicEventTrigger = new SubscriptionTopicEventTrigger({

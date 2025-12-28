@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Details of a reaction that follows immunization
  * 
  *
- * @see https://hl7.org/fhir/R4/immunizationreaction.html
+ * @see https://hl7.org/fhir/R4B/immunizationreaction.html
  */
 export interface IImmunizationReaction extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionproperty.html
+ * @see https://hl7.org/fhir/R4B/devicedefinitionproperty.html
  */
 export interface IDeviceDefinitionProperty extends IBackboneElement {
   /**

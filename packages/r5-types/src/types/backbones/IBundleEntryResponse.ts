@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IResource } from '../../base/index.js'
  * Results of execution (transaction/batch/history)
  * 
  *
- * @see https://hl7.org/fhir/R4/bundleentryresponse.html
+ * @see https://hl7.org/fhir/R5/bundleentryresponse.html
  */
 export interface IBundleEntryResponse extends IBackboneElement {
   /**

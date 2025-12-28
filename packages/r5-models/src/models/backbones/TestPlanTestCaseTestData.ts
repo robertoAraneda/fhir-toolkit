@@ -18,7 +18,7 @@ const TEST_PLAN_TEST_CASE_TEST_DATA_PROPERTIES = [
 /**
  * TestPlanTestCaseTestData - The test data used in the test case
  *
- * @see https://hl7.org/fhir/R4/testplantestcasetestdata.html
+ * @see https://hl7.org/fhir/R5/testplantestcasetestdata.html
  *
  * @example
  * const testPlanTestCaseTestData = new TestPlanTestCaseTestData({

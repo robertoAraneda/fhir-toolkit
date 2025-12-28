@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * A template for building resources
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitiontemplate.html
+ * @see https://hl7.org/fhir/R5/implementationguidedefinitiontemplate.html
  */
 export interface IImplementationGuideDefinitionTemplate extends IBackboneElement {
   /**

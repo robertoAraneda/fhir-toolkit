@@ -15,7 +15,7 @@ const IMMUNIZATION_RECOMMENDATION_RECOMMENDATION_DATE_CRITERION_PROPERTIES = [
 /**
  * ImmunizationRecommendationRecommendationDateCriterion - Dates governing proposed immunization
  *
- * @see https://hl7.org/fhir/R4/immunizationrecommendationrecommendationdatecriterion.html
+ * @see https://hl7.org/fhir/R5/immunizationrecommendationrecommendationdatecriterion.html
  *
  * @example
  * const immunizationRecommendationRecommendationDateCriterion = new ImmunizationRecommendationRecommendationDateCriterion({

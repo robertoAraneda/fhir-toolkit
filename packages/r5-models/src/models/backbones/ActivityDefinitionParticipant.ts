@@ -21,7 +21,7 @@ const ACTIVITY_DEFINITION_PARTICIPANT_PROPERTIES = [
 /**
  * ActivityDefinitionParticipant - Who should participate in the action
  *
- * @see https://hl7.org/fhir/R4/activitydefinitionparticipant.html
+ * @see https://hl7.org/fhir/R5/activitydefinitionparticipant.html
  *
  * @example
  * const activityDefinitionParticipant = new ActivityDefinitionParticipant({

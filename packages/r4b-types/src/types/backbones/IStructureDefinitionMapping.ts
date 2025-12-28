@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * External specification that the content is mapped to
  * 
  *
- * @see https://hl7.org/fhir/R4/structuredefinitionmapping.html
+ * @see https://hl7.org/fhir/R4B/structuredefinitionmapping.html
  */
 export interface IStructureDefinitionMapping extends IBackboneElement {
   /**

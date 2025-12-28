@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Ameliorating actions taken after the adverse event occured in order to reduce the extent of harm
  * 
  *
- * @see https://hl7.org/fhir/R4/adverseeventmitigatingaction.html
+ * @see https://hl7.org/fhir/R5/adverseeventmitigatingaction.html
  */
 export interface IAdverseEventMitigatingAction extends IBackboneElement {
   /**

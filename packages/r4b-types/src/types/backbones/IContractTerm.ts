@@ -12,7 +12,7 @@ import type { IContractTermSecurityLabel } from './IContractTermSecurityLabel.js
  * Contract Term List
  * 
  *
- * @see https://hl7.org/fhir/R4/contractterm.html
+ * @see https://hl7.org/fhir/R4B/contractterm.html
  */
 export interface IContractTerm extends IBackboneElement {
   /**

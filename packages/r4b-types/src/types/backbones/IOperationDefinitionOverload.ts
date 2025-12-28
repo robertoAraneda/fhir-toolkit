@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Define overloaded variants for when  generating code
  * 
  *
- * @see https://hl7.org/fhir/R4/operationdefinitionoverload.html
+ * @see https://hl7.org/fhir/R4B/operationdefinitionoverload.html
  */
 export interface IOperationDefinitionOverload extends IBackboneElement {
   /**

@@ -24,7 +24,7 @@ const EXPLANATION_OF_BENEFIT_BENEFIT_BALANCE_PROPERTIES = [
 /**
  * ExplanationOfBenefitBenefitBalance - Balance by Benefit Category
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitbenefitbalance.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitbenefitbalance.html
  *
  * @example
  * const explanationOfBenefitBenefitBalance = new ExplanationOfBenefitBenefitBalance({

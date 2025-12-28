@@ -15,7 +15,7 @@ const MEDICATION_KNOWLEDGE_KINETICS_PROPERTIES = [
 /**
  * MedicationKnowledgeKinetics - The time course of drug absorption, distribution, metabolism and excretion of a medication from the body
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgekinetics.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgekinetics.html
  *
  * @example
  * const medicationKnowledgeKinetics = new MedicationKnowledgeKinetics({

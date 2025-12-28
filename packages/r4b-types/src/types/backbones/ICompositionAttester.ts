@@ -7,7 +7,7 @@ import type { CompositionAttestationModeType } from '../../valuesets/index.js';
  * Attests to accuracy of composition
  * 
  *
- * @see https://hl7.org/fhir/R4/compositionattester.html
+ * @see https://hl7.org/fhir/R4B/compositionattester.html
  */
 export interface ICompositionAttester extends IBackboneElement {
   /**

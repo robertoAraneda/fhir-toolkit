@@ -8,7 +8,7 @@ import type { IMedicationKnowledgeIndicationGuidelineDosingGuideline } from './I
  * Guidelines or protocols for administration of the medication for an indication
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeindicationguideline.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgeindicationguideline.html
  */
 export interface IMedicationKnowledgeIndicationGuideline extends IBackboneElement {
   /**

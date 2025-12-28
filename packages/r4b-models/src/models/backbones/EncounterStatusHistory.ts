@@ -16,7 +16,7 @@ const ENCOUNTER_STATUS_HISTORY_PROPERTIES = [
 /**
  * EncounterStatusHistory - List of past encounter statuses
  *
- * @see https://hl7.org/fhir/R4/encounterstatushistory.html
+ * @see https://hl7.org/fhir/R4B/encounterstatushistory.html
  *
  * @example
  * const encounterStatusHistory = new EncounterStatusHistory({

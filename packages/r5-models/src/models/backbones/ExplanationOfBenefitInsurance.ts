@@ -17,7 +17,7 @@ const EXPLANATION_OF_BENEFIT_INSURANCE_PROPERTIES = [
 /**
  * ExplanationOfBenefitInsurance - Patient insurance information
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitinsurance.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitinsurance.html
  *
  * @example
  * const explanationOfBenefitInsurance = new ExplanationOfBenefitInsurance({

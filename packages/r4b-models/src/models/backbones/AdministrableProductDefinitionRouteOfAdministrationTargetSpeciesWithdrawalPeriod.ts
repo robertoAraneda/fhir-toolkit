@@ -17,7 +17,7 @@ const ADMINISTRABLE_PRODUCT_DEFINITION_ROUTE_OF_ADMINISTRATION_TARGET_SPECIES_WI
 /**
  * AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod - A species specific time during which consumption of animal product is not appropriate
  *
- * @see https://hl7.org/fhir/R4/administrableproductdefinitionrouteofadministrationtargetspecieswithdrawalperiod.html
+ * @see https://hl7.org/fhir/R4B/administrableproductdefinitionrouteofadministrationtargetspecieswithdrawalperiod.html
  *
  * @example
  * const administrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod = new AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod({

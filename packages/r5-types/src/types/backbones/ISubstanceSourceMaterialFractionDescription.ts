@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Many complex materials are fractions of parts of plants, animals, or minerals. Fraction elements are often necessary to define both Substances and Specified Group 1 Substances. For substances derived from Plants, fraction information will be captured at the Substance information level ( . Oils, Juices and Exudates). Additional information for Extracts, such as extraction solvent composition, will be captured at the Specified Substance Group 1 information level. For plasma-derived products fraction information will be captured at the Substance and the Specified Substance Group 1 levels
  * 
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialfractiondescription.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialfractiondescription.html
  */
 export interface ISubstanceSourceMaterialFractionDescription extends IBackboneElement {
   /**

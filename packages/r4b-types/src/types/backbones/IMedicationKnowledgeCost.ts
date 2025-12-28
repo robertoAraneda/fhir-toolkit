@@ -7,7 +7,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * The pricing of the medication
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgecost.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgecost.html
  */
 export interface IMedicationKnowledgeCost extends IBackboneElement {
   /**

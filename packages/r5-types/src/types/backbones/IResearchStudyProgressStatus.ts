@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Status of study with time for that status
  * 
  *
- * @see https://hl7.org/fhir/R4/researchstudyprogressstatus.html
+ * @see https://hl7.org/fhir/R5/researchstudyprogressstatus.html
  */
 export interface IResearchStudyProgressStatus extends IBackboneElement {
   /**

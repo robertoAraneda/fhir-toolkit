@@ -25,7 +25,7 @@ const QUESTIONNAIRE_ITEM_ANSWER_OPTION_PROPERTIES = [
 /**
  * QuestionnaireItemAnswerOption - Permitted answer
  *
- * @see https://hl7.org/fhir/R4/questionnaireitemansweroption.html
+ * @see https://hl7.org/fhir/R5/questionnaireitemansweroption.html
  *
  * @example
  * const questionnaireItemAnswerOption = new QuestionnaireItemAnswerOption({

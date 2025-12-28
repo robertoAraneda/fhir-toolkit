@@ -30,7 +30,7 @@ const EXAMPLE_SCENARIO_PROCESS_STEP_OPERATION_PROPERTIES = [
 /**
  * ExampleScenarioProcessStepOperation - Each interaction or action
  *
- * @see https://hl7.org/fhir/R4/examplescenarioprocessstepoperation.html
+ * @see https://hl7.org/fhir/R4B/examplescenarioprocessstepoperation.html
  *
  * @example
  * const exampleScenarioProcessStepOperation = new ExampleScenarioProcessStepOperation({

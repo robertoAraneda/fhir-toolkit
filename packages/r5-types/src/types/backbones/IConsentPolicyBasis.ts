@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Computable version of the backing policy
  * 
  *
- * @see https://hl7.org/fhir/R4/consentpolicybasis.html
+ * @see https://hl7.org/fhir/R5/consentpolicybasis.html
  */
 export interface IConsentPolicyBasis extends IBackboneElement {
   /**

@@ -9,7 +9,7 @@ import type { FinancialResourceStatusType } from '../../valuesets/index.js';
  * An authorization for the provision of glasses and/or contact lenses to a patient.
  * 
  *
- * @see https://hl7.org/fhir/R4/visionprescription.html
+ * @see https://hl7.org/fhir/R4B/visionprescription.html
  */
 export interface IVisionPrescription extends IDomainResource {
   /**

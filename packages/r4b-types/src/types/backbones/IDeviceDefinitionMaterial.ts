@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * A substance used to create the material(s) of which the device is made
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionmaterial.html
+ * @see https://hl7.org/fhir/R4B/devicedefinitionmaterial.html
  */
 export interface IDeviceDefinitionMaterial extends IBackboneElement {
   /**

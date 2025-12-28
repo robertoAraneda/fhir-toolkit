@@ -15,7 +15,7 @@ const IMPLEMENTATION_GUIDE_GLOBAL_PROPERTIES = [
 /**
  * ImplementationGuideGlobal - Profiles that apply globally
  *
- * @see https://hl7.org/fhir/R4/implementationguideglobal.html
+ * @see https://hl7.org/fhir/R4B/implementationguideglobal.html
  *
  * @example
  * const implementationGuideGlobal = new ImplementationGuideGlobal({

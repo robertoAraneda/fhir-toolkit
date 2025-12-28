@@ -20,7 +20,7 @@ const PLAN_DEFINITION_ACTOR_OPTION_PROPERTIES = [
 /**
  * PlanDefinitionActorOption - Who or what can be this actor
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactoroption.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactoroption.html
  *
  * @example
  * const planDefinitionActorOption = new PlanDefinitionActorOption({

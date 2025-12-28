@@ -16,7 +16,7 @@ const INSURANCE_PLAN_COVERAGE_PROPERTIES = [
 /**
  * InsurancePlanCoverage - Coverage details
  *
- * @see https://hl7.org/fhir/R4/insuranceplancoverage.html
+ * @see https://hl7.org/fhir/R5/insuranceplancoverage.html
  *
  * @example
  * const insurancePlanCoverage = new InsurancePlanCoverage({

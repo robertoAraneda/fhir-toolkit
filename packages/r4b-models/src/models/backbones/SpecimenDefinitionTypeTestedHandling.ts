@@ -19,7 +19,7 @@ const SPECIMEN_DEFINITION_TYPE_TESTED_HANDLING_PROPERTIES = [
 /**
  * SpecimenDefinitionTypeTestedHandling - Specimen handling before testing
  *
- * @see https://hl7.org/fhir/R4/specimendefinitiontypetestedhandling.html
+ * @see https://hl7.org/fhir/R4B/specimendefinitiontypetestedhandling.html
  *
  * @example
  * const specimenDefinitionTypeTestedHandling = new SpecimenDefinitionTypeTestedHandling({

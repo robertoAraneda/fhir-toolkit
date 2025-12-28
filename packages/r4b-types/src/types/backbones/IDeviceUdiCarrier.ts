@@ -7,7 +7,7 @@ import type { UDIEntryTypeType } from '../../valuesets/index.js';
  * Unique Device Identifier (UDI) Barcode string
  * 
  *
- * @see https://hl7.org/fhir/R4/deviceudicarrier.html
+ * @see https://hl7.org/fhir/R4B/deviceudicarrier.html
  */
 export interface IDeviceUdiCarrier extends IBackboneElement {
   /**

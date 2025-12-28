@@ -44,7 +44,7 @@ const QUESTIONNAIRE_ITEM_PROPERTIES = [
 /**
  * QuestionnaireItem - Questions and sections within the Questionnaire
  *
- * @see https://hl7.org/fhir/R4/questionnaireitem.html
+ * @see https://hl7.org/fhir/R4B/questionnaireitem.html
  *
  * @example
  * const questionnaireItem = new QuestionnaireItem({

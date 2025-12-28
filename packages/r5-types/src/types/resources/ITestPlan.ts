@@ -12,7 +12,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * A plan for executing testing on an artifact or specifications.
  * 
  *
- * @see https://hl7.org/fhir/R4/testplan.html
+ * @see https://hl7.org/fhir/R5/testplan.html
  */
 export interface ITestPlan extends IDomainResource {
   /**

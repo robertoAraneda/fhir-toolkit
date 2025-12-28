@@ -7,7 +7,7 @@ import type { IAttachment } from '../datatypes/IAttachment.js';
  * Message payload
  * 
  *
- * @see https://hl7.org/fhir/R4/communicationpayload.html
+ * @see https://hl7.org/fhir/R5/communicationpayload.html
  */
 export interface ICommunicationPayload extends IBackboneElement {
   /**

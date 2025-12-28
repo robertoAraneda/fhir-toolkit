@@ -9,7 +9,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Product or service provided
  * 
  *
- * @see https://hl7.org/fhir/R4/claimitemdetailsubdetail.html
+ * @see https://hl7.org/fhir/R5/claimitemdetailsubdetail.html
  */
 export interface IClaimItemDetailSubDetail extends IBackboneElement {
   /**

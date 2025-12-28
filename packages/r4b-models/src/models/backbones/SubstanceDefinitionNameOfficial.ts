@@ -16,7 +16,7 @@ const SUBSTANCE_DEFINITION_NAME_OFFICIAL_PROPERTIES = [
 /**
  * SubstanceDefinitionNameOfficial - Details of the official nature of this name
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionnameofficial.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionnameofficial.html
  *
  * @example
  * const substanceDefinitionNameOfficial = new SubstanceDefinitionNameOfficial({

@@ -17,7 +17,7 @@ const CHARGE_ITEM_DEFINITION_APPLICABILITY_PROPERTIES = [
 /**
  * ChargeItemDefinitionApplicability - Whether or not the billing code is applicable
  *
- * @see https://hl7.org/fhir/R4/chargeitemdefinitionapplicability.html
+ * @see https://hl7.org/fhir/R4B/chargeitemdefinitionapplicability.html
  *
  * @example
  * const chargeItemDefinitionApplicability = new ChargeItemDefinitionApplicability({

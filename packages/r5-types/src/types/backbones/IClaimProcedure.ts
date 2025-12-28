@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Clinical procedures performed
  * 
  *
- * @see https://hl7.org/fhir/R4/claimprocedure.html
+ * @see https://hl7.org/fhir/R5/claimprocedure.html
  */
 export interface IClaimProcedure extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * The list of procedures relevant to this account
  * 
  *
- * @see https://hl7.org/fhir/R4/accountprocedure.html
+ * @see https://hl7.org/fhir/R5/accountprocedure.html
  */
 export interface IAccountProcedure extends IBackboneElement {
   /**

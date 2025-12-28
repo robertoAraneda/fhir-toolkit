@@ -19,7 +19,7 @@ const ELEMENT_DEFINITION_MAPPING_PROPERTIES = [
 /**
  * ElementDefinitionMapping - Map element to another set of definitions
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionmapping.html
+ * @see https://hl7.org/fhir/R5/elementdefinitionmapping.html
  *
  * @example
  * const elementDefinitionMapping = new ElementDefinitionMapping({

@@ -16,7 +16,7 @@ const COMPOSITION_EVENT_PROPERTIES = [
 /**
  * CompositionEvent - The clinical service(s) being documented
  *
- * @see https://hl7.org/fhir/R4/compositionevent.html
+ * @see https://hl7.org/fhir/R4B/compositionevent.html
  *
  * @example
  * const compositionEvent = new CompositionEvent({

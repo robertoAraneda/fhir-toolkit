@@ -21,7 +21,7 @@ import type { PublicationStatusType, RequestIntentType, RequestPriorityType, Req
  * This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.
  * 
  *
- * @see https://hl7.org/fhir/R4/activitydefinition.html
+ * @see https://hl7.org/fhir/R5/activitydefinition.html
  */
 export interface IActivityDefinition extends IDomainResource {
   /**

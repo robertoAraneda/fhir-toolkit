@@ -20,7 +20,7 @@ const IMMUNIZATION_RECOMMENDATION_PROPERTIES = [
 /**
  * ImmunizationRecommendation - A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.
  *
- * @see https://hl7.org/fhir/R4/immunizationrecommendation.html
+ * @see https://hl7.org/fhir/R5/immunizationrecommendation.html
  *
  * @example
  * const immunizationRecommendation = new ImmunizationRecommendation({

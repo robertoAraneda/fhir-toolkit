@@ -44,7 +44,7 @@ const SUBSTANCE_DEFINITION_PROPERTIES = [
 /**
  * SubstanceDefinition - The detailed description of a substance, typically at a level beyond what is used for prescribing.
  *
- * @see https://hl7.org/fhir/R4/substancedefinition.html
+ * @see https://hl7.org/fhir/R4B/substancedefinition.html
  *
  * @example
  * const substanceDefinition = new SubstanceDefinition({

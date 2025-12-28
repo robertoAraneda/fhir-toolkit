@@ -15,7 +15,7 @@ const RESEARCH_STUDY_OBJECTIVE_PROPERTIES = [
 /**
  * ResearchStudyObjective - A goal for the study
  *
- * @see https://hl7.org/fhir/R4/researchstudyobjective.html
+ * @see https://hl7.org/fhir/R4B/researchstudyobjective.html
  *
  * @example
  * const researchStudyObjective = new ResearchStudyObjective({

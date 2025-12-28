@@ -17,7 +17,7 @@ const COVERAGE_ELIGIBILITY_REQUEST_INSURANCE_PROPERTIES = [
 /**
  * CoverageEligibilityRequestInsurance - Patient insurance information
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityrequestinsurance.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityrequestinsurance.html
  *
  * @example
  * const coverageEligibilityRequestInsurance = new CoverageEligibilityRequestInsurance({

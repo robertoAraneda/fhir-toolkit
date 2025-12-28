@@ -21,7 +21,7 @@ const EVIDENCE_VARIABLE_DEFINITION_PROPERTIES = [
 /**
  * EvidenceVariableDefinition - Evidence variable such as population, exposure, or outcome
  *
- * @see https://hl7.org/fhir/R4/evidencevariabledefinition.html
+ * @see https://hl7.org/fhir/R5/evidencevariabledefinition.html
  *
  * @example
  * const evidenceVariableDefinition = new EvidenceVariableDefinition({

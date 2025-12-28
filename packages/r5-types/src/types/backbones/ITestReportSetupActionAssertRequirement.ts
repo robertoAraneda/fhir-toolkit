@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Links or references to the testing requirements
  * 
  *
- * @see https://hl7.org/fhir/R4/testreportsetupactionassertrequirement.html
+ * @see https://hl7.org/fhir/R5/testreportsetupactionassertrequirement.html
  */
 export interface ITestReportSetupActionAssertRequirement extends IBackboneElement {
   /**

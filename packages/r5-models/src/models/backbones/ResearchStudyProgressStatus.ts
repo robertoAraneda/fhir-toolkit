@@ -17,7 +17,7 @@ const RESEARCH_STUDY_PROGRESS_STATUS_PROPERTIES = [
 /**
  * ResearchStudyProgressStatus - Status of study with time for that status
  *
- * @see https://hl7.org/fhir/R4/researchstudyprogressstatus.html
+ * @see https://hl7.org/fhir/R5/researchstudyprogressstatus.html
  *
  * @example
  * const researchStudyProgressStatus = new ResearchStudyProgressStatus({

@@ -46,7 +46,7 @@ const TEST_SCRIPT_SETUP_ACTION_OPERATION_PROPERTIES = [
 /**
  * TestScriptSetupActionOperation - The setup operation to perform
  *
- * @see https://hl7.org/fhir/R4/testscriptsetupactionoperation.html
+ * @see https://hl7.org/fhir/R5/testscriptsetupactionoperation.html
  *
  * @example
  * const testScriptSetupActionOperation = new TestScriptSetupActionOperation({

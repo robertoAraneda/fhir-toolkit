@@ -7,7 +7,7 @@ import type { ContractResourcePublicationStatusType } from '../../valuesets/inde
  * Contract precursor content
  * 
  *
- * @see https://hl7.org/fhir/R4/contractcontentdefinition.html
+ * @see https://hl7.org/fhir/R5/contractcontentdefinition.html
  */
 export interface IContractContentDefinition extends IBackboneElement {
   /**

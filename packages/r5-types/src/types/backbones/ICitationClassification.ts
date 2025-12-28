@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * The assignment to an organizing scheme
  * 
  *
- * @see https://hl7.org/fhir/R4/citationclassification.html
+ * @see https://hl7.org/fhir/R5/citationclassification.html
  */
 export interface ICitationClassification extends IBackboneElement {
   /**

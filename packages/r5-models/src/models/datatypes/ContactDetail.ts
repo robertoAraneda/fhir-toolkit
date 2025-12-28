@@ -15,7 +15,7 @@ const CONTACT_DETAIL_PROPERTIES = [
 /**
  * ContactDetail - Specifies contact information for a person or organization.
  *
- * @see https://hl7.org/fhir/R4/contactdetail.html
+ * @see https://hl7.org/fhir/R5/contactdetail.html
  *
  * @example
  * const contactDetail = new ContactDetail({

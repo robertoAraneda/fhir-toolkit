@@ -37,7 +37,7 @@ import type { IUsageContext } from '../datatypes/IUsageContext.js';
  * Information produced as part of transport
  * 
  *
- * @see https://hl7.org/fhir/R4/transportoutput.html
+ * @see https://hl7.org/fhir/R5/transportoutput.html
  */
 export interface ITransportOutput extends IBackboneElement {
   /**

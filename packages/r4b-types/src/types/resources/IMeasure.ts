@@ -14,7 +14,7 @@ import type { MeasureImprovementNotationType, PublicationStatusType } from '../.
  * The Measure resource provides the definition of a quality measure.
  * 
  *
- * @see https://hl7.org/fhir/R4/measure.html
+ * @see https://hl7.org/fhir/R4B/measure.html
  */
 export interface IMeasure extends IDomainResource {
   /**

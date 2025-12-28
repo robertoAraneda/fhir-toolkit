@@ -7,7 +7,7 @@ import type { EventCapabilityModeType } from '../../valuesets/index.js';
  * Messages supported by this system
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementmessagingsupportedmessage.html
+ * @see https://hl7.org/fhir/R4B/capabilitystatementmessagingsupportedmessage.html
  */
 export interface ICapabilityStatementMessagingSupportedMessage extends IBackboneElement {
   /**

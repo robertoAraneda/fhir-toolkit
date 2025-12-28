@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Specifies descriptive properties of the nutrition product
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionproductcharacteristic.html
+ * @see https://hl7.org/fhir/R5/nutritionproductcharacteristic.html
  */
 export interface INutritionProductCharacteristic extends IBackboneElement {
   /**

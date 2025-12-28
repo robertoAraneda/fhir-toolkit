@@ -27,7 +27,7 @@ const COVERAGE_ELIGIBILITY_REQUEST_ITEM_PROPERTIES = [
 /**
  * CoverageEligibilityRequestItem - Item to be evaluated for eligibiity
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityrequestitem.html
+ * @see https://hl7.org/fhir/R4B/coverageeligibilityrequestitem.html
  *
  * @example
  * const coverageEligibilityRequestItem = new CoverageEligibilityRequestItem({

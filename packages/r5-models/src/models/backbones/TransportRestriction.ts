@@ -17,7 +17,7 @@ const TRANSPORT_RESTRICTION_PROPERTIES = [
 /**
  * TransportRestriction - Constraints on fulfillment transports
  *
- * @see https://hl7.org/fhir/R4/transportrestriction.html
+ * @see https://hl7.org/fhir/R5/transportrestriction.html
  *
  * @example
  * const transportRestriction = new TransportRestriction({

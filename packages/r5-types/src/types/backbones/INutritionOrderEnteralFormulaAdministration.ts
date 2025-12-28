@@ -9,7 +9,7 @@ import type { INutritionOrderEnteralFormulaAdministrationSchedule } from './INut
  * Formula feeding instruction as structured data
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionorderenteralformulaadministration.html
+ * @see https://hl7.org/fhir/R5/nutritionorderenteralformulaadministration.html
  */
 export interface INutritionOrderEnteralFormulaAdministration extends IBackboneElement {
   /**

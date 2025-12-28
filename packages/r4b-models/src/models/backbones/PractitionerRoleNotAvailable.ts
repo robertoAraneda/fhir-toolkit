@@ -15,7 +15,7 @@ const PRACTITIONER_ROLE_NOT_AVAILABLE_PROPERTIES = [
 /**
  * PractitionerRoleNotAvailable - Not available during this time due to provided reason
  *
- * @see https://hl7.org/fhir/R4/practitionerrolenotavailable.html
+ * @see https://hl7.org/fhir/R4B/practitionerrolenotavailable.html
  *
  * @example
  * const practitionerRoleNotAvailable = new PractitionerRoleNotAvailable({

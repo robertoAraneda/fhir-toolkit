@@ -9,7 +9,7 @@ import type { IExplanationOfBenefitItemAdjudication } from './IExplanationOfBene
  * Additional items
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefititemdetailsubdetail.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefititemdetailsubdetail.html
  */
 export interface IExplanationOfBenefitItemDetailSubDetail extends IBackboneElement {
   /**

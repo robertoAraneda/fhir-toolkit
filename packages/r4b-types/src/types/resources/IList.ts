@@ -10,7 +10,7 @@ import type { ListModeType, ListStatusType } from '../../valuesets/index.js';
  * A list is a curated collection of resources.
  * 
  *
- * @see https://hl7.org/fhir/R4/list.html
+ * @see https://hl7.org/fhir/R4B/list.html
  */
 export interface IList extends IDomainResource {
   /**

@@ -8,7 +8,7 @@ import type { BiologicallyDerivedProductStorageScaleType } from '../../valuesets
  * Product storage
  * 
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductstorage.html
+ * @see https://hl7.org/fhir/R4B/biologicallyderivedproductstorage.html
  */
 export interface IBiologicallyDerivedProductStorage extends IBackboneElement {
   /**

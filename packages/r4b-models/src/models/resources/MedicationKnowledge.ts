@@ -51,7 +51,7 @@ const MEDICATION_KNOWLEDGE_PROPERTIES = [
 /**
  * MedicationKnowledge - Information about a medication that is used to support knowledge.
  *
- * @see https://hl7.org/fhir/R4/medicationknowledge.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledge.html
  *
  * @example
  * const medicationKnowledge = new MedicationKnowledge({

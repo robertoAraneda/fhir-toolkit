@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Exceptions for patient payments
  * 
  *
- * @see https://hl7.org/fhir/R4/coveragecosttobeneficiaryexception.html
+ * @see https://hl7.org/fhir/R5/coveragecosttobeneficiaryexception.html
  */
 export interface ICoverageCostToBeneficiaryException extends IBackboneElement {
   /**

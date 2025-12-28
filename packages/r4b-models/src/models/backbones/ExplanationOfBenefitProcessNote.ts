@@ -20,7 +20,7 @@ const EXPLANATION_OF_BENEFIT_PROCESS_NOTE_PROPERTIES = [
 /**
  * ExplanationOfBenefitProcessNote - Note concerning adjudication
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitprocessnote.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitprocessnote.html
  *
  * @example
  * const explanationOfBenefitProcessNote = new ExplanationOfBenefitProcessNote({

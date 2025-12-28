@@ -8,7 +8,7 @@ import type { INutritionOrderEnteralFormulaAdministration } from './INutritionOr
  * Enteral formula components
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionorderenteralformula.html
+ * @see https://hl7.org/fhir/R4B/nutritionorderenteralformula.html
  */
 export interface INutritionOrderEnteralFormula extends IBackboneElement {
   /**

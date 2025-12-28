@@ -14,7 +14,7 @@ const MEDICATION_KNOWLEDGE_INDICATION_GUIDELINE_DOSING_GUIDELINE_DOSAGE_PROPERTI
 /**
  * MedicationKnowledgeIndicationGuidelineDosingGuidelineDosage - Dosage for the medication for the specific guidelines
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeindicationguidelinedosingguidelinedosage.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgeindicationguidelinedosingguidelinedosage.html
  *
  * @example
  * const medicationKnowledgeIndicationGuidelineDosingGuidelineDosage = new MedicationKnowledgeIndicationGuidelineDosingGuidelineDosage({

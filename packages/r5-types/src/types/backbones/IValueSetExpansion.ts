@@ -9,7 +9,7 @@ import type { IValueSetExpansionProperty } from './IValueSetExpansionProperty.js
  * Used when the value set is "expanded"
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansion.html
+ * @see https://hl7.org/fhir/R5/valuesetexpansion.html
  */
 export interface IValueSetExpansion extends IBackboneElement {
   /**

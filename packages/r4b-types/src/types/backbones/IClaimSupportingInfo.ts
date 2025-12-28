@@ -9,7 +9,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Supporting information
  * 
  *
- * @see https://hl7.org/fhir/R4/claimsupportinginfo.html
+ * @see https://hl7.org/fhir/R4B/claimsupportinginfo.html
  */
 export interface IClaimSupportingInfo extends IBackboneElement {
   /**

@@ -27,7 +27,7 @@ const EVIDENCE_VARIABLE_CHARACTERISTIC_DEFINITION_BY_TYPE_AND_VALUE_PROPERTIES =
 /**
  * EvidenceVariableCharacteristicDefinitionByTypeAndValue - Defines the characteristic using type and value
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristicdefinitionbytypeandvalue.html
+ * @see https://hl7.org/fhir/R5/evidencevariablecharacteristicdefinitionbytypeandvalue.html
  *
  * @example
  * const evidenceVariableCharacteristicDefinitionByTypeAndValue = new EvidenceVariableCharacteristicDefinitionByTypeAndValue({

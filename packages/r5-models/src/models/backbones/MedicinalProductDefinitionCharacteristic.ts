@@ -26,7 +26,7 @@ const MEDICINAL_PRODUCT_DEFINITION_CHARACTERISTIC_PROPERTIES = [
 /**
  * MedicinalProductDefinitionCharacteristic - Key product features such as "sugar free", "modified release"
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitioncharacteristic.html
+ * @see https://hl7.org/fhir/R5/medicinalproductdefinitioncharacteristic.html
  *
  * @example
  * const medicinalProductDefinitionCharacteristic = new MedicinalProductDefinitionCharacteristic({

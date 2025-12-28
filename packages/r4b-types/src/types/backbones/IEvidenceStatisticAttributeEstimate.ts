@@ -9,7 +9,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * An attribute of the Statistic
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencestatisticattributeestimate.html
+ * @see https://hl7.org/fhir/R4B/evidencestatisticattributeestimate.html
  */
 export interface IEvidenceStatisticAttributeEstimate extends IBackboneElement {
   /**

@@ -22,7 +22,7 @@ const RESEARCH_STUDY_COMPARISON_GROUP_PROPERTIES = [
 /**
  * ResearchStudyComparisonGroup - Defined path through the study for a subject
  *
- * @see https://hl7.org/fhir/R4/researchstudycomparisongroup.html
+ * @see https://hl7.org/fhir/R5/researchstudycomparisongroup.html
  *
  * @example
  * const researchStudyComparisonGroup = new ResearchStudyComparisonGroup({

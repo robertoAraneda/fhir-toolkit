@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Todo
  * 
  *
- * @see https://hl7.org/fhir/R4/substancereferenceinformationgene.html
+ * @see https://hl7.org/fhir/R5/substancereferenceinformationgene.html
  */
 export interface ISubstanceReferenceInformationGene extends IBackboneElement {
   /**

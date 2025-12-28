@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Key product features such as "sugar free", "modified release"
  * 
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitioncharacteristic.html
+ * @see https://hl7.org/fhir/R5/medicinalproductdefinitioncharacteristic.html
  */
 export interface IMedicinalProductDefinitionCharacteristic extends IBackboneElement {
   /**

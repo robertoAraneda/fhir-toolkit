@@ -7,7 +7,7 @@ import type { DaysOfWeekType } from '../../valuesets/index.js';
  * Times the Service Site is available
  * 
  *
- * @see https://hl7.org/fhir/R4/practitionerroleavailabletime.html
+ * @see https://hl7.org/fhir/R4B/practitionerroleavailabletime.html
  */
 export interface IPractitionerRoleAvailableTime extends IBackboneElement {
   /**

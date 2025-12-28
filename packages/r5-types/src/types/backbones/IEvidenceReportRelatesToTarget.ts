@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Target of the relationship
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencereportrelatestotarget.html
+ * @see https://hl7.org/fhir/R5/evidencereportrelatestotarget.html
  */
 export interface IEvidenceReportRelatesToTarget extends IBackboneElement {
   /**

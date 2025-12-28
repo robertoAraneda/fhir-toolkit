@@ -16,7 +16,7 @@ const INVENTORY_ITEM_DESCRIPTION_PROPERTIES = [
 /**
  * InventoryItemDescription - Descriptive characteristics of the item
  *
- * @see https://hl7.org/fhir/R4/inventoryitemdescription.html
+ * @see https://hl7.org/fhir/R5/inventoryitemdescription.html
  *
  * @example
  * const inventoryItemDescription = new InventoryItemDescription({

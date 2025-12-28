@@ -17,7 +17,7 @@ const IMPLEMENTATION_GUIDE_DEFINITION_TEMPLATE_PROPERTIES = [
 /**
  * ImplementationGuideDefinitionTemplate - A template for building resources
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitiontemplate.html
+ * @see https://hl7.org/fhir/R4B/implementationguidedefinitiontemplate.html
  *
  * @example
  * const implementationGuideDefinitionTemplate = new ImplementationGuideDefinitionTemplate({

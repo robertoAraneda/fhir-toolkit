@@ -17,7 +17,7 @@ const CITATION_STATUS_DATE_PROPERTIES = [
 /**
  * CitationStatusDate - An effective date or period for a status of the citation record
  *
- * @see https://hl7.org/fhir/R4/citationstatusdate.html
+ * @see https://hl7.org/fhir/R5/citationstatusdate.html
  *
  * @example
  * const citationStatusDate = new CitationStatusDate({

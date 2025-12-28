@@ -16,7 +16,7 @@ const DATA_REQUIREMENT_SORT_PROPERTIES = [
 /**
  * DataRequirementSort - Order of the results
  *
- * @see https://hl7.org/fhir/R4/datarequirementsort.html
+ * @see https://hl7.org/fhir/R5/datarequirementsort.html
  *
  * @example
  * const dataRequirementSort = new DataRequirementSort({

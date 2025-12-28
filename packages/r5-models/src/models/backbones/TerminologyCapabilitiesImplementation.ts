@@ -15,7 +15,7 @@ const TERMINOLOGY_CAPABILITIES_IMPLEMENTATION_PROPERTIES = [
 /**
  * TerminologyCapabilitiesImplementation - If this describes a specific instance
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesimplementation.html
+ * @see https://hl7.org/fhir/R5/terminologycapabilitiesimplementation.html
  *
  * @example
  * const terminologyCapabilitiesImplementation = new TerminologyCapabilitiesImplementation({

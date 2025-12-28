@@ -7,7 +7,7 @@ import type { ActionParticipantTypeType } from '../../valuesets/index.js';
  * Who should participate in the action
  * 
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactionparticipant.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactionparticipant.html
  */
 export interface IPlanDefinitionActionParticipant extends IBackboneElement {
   /**

@@ -18,7 +18,7 @@ const MEDICINAL_PRODUCT_DEFINITION_OPERATION_PROPERTIES = [
 /**
  * MedicinalProductDefinitionOperation - A manufacturing or administrative process for the medicinal product
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitionoperation.html
+ * @see https://hl7.org/fhir/R5/medicinalproductdefinitionoperation.html
  *
  * @example
  * const medicinalProductDefinitionOperation = new MedicinalProductDefinitionOperation({

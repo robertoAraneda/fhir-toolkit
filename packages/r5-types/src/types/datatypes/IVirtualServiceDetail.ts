@@ -8,7 +8,7 @@ import type { IExtendedContactDetail } from './IExtendedContactDetail.js';
  * Virtual Service Contact Details.
  * 
  *
- * @see https://hl7.org/fhir/R4/virtualservicedetail.html
+ * @see https://hl7.org/fhir/R5/virtualservicedetail.html
  */
 export interface IVirtualServiceDetail extends IDataType {
   /**

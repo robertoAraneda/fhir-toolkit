@@ -14,7 +14,7 @@ import type { SequenceTypeType } from '../../valuesets/index.js';
  * Raw data describing a biological sequence.
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequence.html
+ * @see https://hl7.org/fhir/R4B/molecularsequence.html
  */
 export interface IMolecularSequence extends IDomainResource {
   /**

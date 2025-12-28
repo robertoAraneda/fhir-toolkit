@@ -27,7 +27,7 @@ const CODE_SYSTEM_CONCEPT_PROPERTY_PROPERTIES = [
 /**
  * CodeSystemConceptProperty - Property value for the concept
  *
- * @see https://hl7.org/fhir/R4/codesystemconceptproperty.html
+ * @see https://hl7.org/fhir/R5/codesystemconceptproperty.html
  *
  * @example
  * const codeSystemConceptProperty = new CodeSystemConceptProperty({

@@ -14,7 +14,7 @@ const PERMISSION_JUSTIFICATION_PROPERTIES = [
 /**
  * PermissionJustification - The asserted justification for using the data
  *
- * @see https://hl7.org/fhir/R4/permissionjustification.html
+ * @see https://hl7.org/fhir/R5/permissionjustification.html
  *
  * @example
  * const permissionJustification = new PermissionJustification({

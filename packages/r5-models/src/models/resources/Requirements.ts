@@ -56,7 +56,7 @@ const REQUIREMENTS_PROPERTIES = [
 /**
  * Requirements - A set of requirements - a list of features or behaviors of designed systems that are necessary to achieve organizational or regulatory goals.
  *
- * @see https://hl7.org/fhir/R4/requirements.html
+ * @see https://hl7.org/fhir/R5/requirements.html
  *
  * @example
  * const requirements = new Requirements({

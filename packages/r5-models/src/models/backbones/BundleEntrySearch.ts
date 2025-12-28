@@ -16,7 +16,7 @@ const BUNDLE_ENTRY_SEARCH_PROPERTIES = [
 /**
  * BundleEntrySearch - Search related information
  *
- * @see https://hl7.org/fhir/R4/bundleentrysearch.html
+ * @see https://hl7.org/fhir/R5/bundleentrysearch.html
  *
  * @example
  * const bundleEntrySearch = new BundleEntrySearch({

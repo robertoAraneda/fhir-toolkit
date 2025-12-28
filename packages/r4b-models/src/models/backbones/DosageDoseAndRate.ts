@@ -20,7 +20,7 @@ const DOSAGE_DOSE_AND_RATE_PROPERTIES = [
 /**
  * DosageDoseAndRate - Amount of medication administered
  *
- * @see https://hl7.org/fhir/R4/dosagedoseandrate.html
+ * @see https://hl7.org/fhir/R4B/dosagedoseandrate.html
  *
  * @example
  * const dosageDoseAndRate = new DosageDoseAndRate({

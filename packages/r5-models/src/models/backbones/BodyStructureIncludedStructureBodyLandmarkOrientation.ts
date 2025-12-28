@@ -16,7 +16,7 @@ const BODY_STRUCTURE_INCLUDED_STRUCTURE_BODY_LANDMARK_ORIENTATION_PROPERTIES = [
 /**
  * BodyStructureIncludedStructureBodyLandmarkOrientation - Landmark relative location
  *
- * @see https://hl7.org/fhir/R4/bodystructureincludedstructurebodylandmarkorientation.html
+ * @see https://hl7.org/fhir/R5/bodystructureincludedstructurebodylandmarkorientation.html
  *
  * @example
  * const bodyStructureIncludedStructureBodyLandmarkOrientation = new BodyStructureIncludedStructureBodyLandmarkOrientation({

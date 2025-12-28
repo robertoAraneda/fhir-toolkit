@@ -10,7 +10,7 @@ import type { IOrganizationContact } from '../backbones/IOrganizationContact.js'
  * A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.
  * 
  *
- * @see https://hl7.org/fhir/R4/organization.html
+ * @see https://hl7.org/fhir/R4B/organization.html
  */
 export interface IOrganization extends IDomainResource {
   /**

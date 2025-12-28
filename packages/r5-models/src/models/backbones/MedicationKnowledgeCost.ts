@@ -20,7 +20,7 @@ const MEDICATION_KNOWLEDGE_COST_PROPERTIES = [
 /**
  * MedicationKnowledgeCost - The pricing of the medication
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgecost.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgecost.html
  *
  * @example
  * const medicationKnowledgeCost = new MedicationKnowledgeCost({

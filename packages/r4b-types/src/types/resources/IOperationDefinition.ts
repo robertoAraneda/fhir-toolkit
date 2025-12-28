@@ -11,7 +11,7 @@ import type { OperationKindType, PublicationStatusType } from '../../valuesets/i
  * A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).
  * 
  *
- * @see https://hl7.org/fhir/R4/operationdefinition.html
+ * @see https://hl7.org/fhir/R4B/operationdefinition.html
  */
 export interface IOperationDefinition extends IDomainResource {
   /**

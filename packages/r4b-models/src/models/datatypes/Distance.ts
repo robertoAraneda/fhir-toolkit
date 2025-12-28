@@ -22,7 +22,7 @@ const DISTANCE_PROPERTIES = [
 /**
  * Distance - A length - a value with a unit that is a physical distance.
  *
- * @see https://hl7.org/fhir/R4/distance.html
+ * @see https://hl7.org/fhir/R4B/distance.html
  *
  * @example
  * const distance = new Distance({

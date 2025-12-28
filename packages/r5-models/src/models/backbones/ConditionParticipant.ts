@@ -14,7 +14,7 @@ const CONDITION_PARTICIPANT_PROPERTIES = [
 /**
  * ConditionParticipant - Who or what participated in the activities related to the condition and how they were involved
  *
- * @see https://hl7.org/fhir/R4/conditionparticipant.html
+ * @see https://hl7.org/fhir/R5/conditionparticipant.html
  *
  * @example
  * const conditionParticipant = new ConditionParticipant({

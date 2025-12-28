@@ -33,7 +33,7 @@ const INGREDIENT_SUBSTANCE_STRENGTH_PROPERTIES = [
 /**
  * IngredientSubstanceStrength - The quantity of substance, per presentation, or per volume or mass, and type of quantity
  *
- * @see https://hl7.org/fhir/R4/ingredientsubstancestrength.html
+ * @see https://hl7.org/fhir/R5/ingredientsubstancestrength.html
  *
  * @example
  * const ingredientSubstanceStrength = new IngredientSubstanceStrength({

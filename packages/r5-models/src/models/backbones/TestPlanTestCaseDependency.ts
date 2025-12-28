@@ -15,7 +15,7 @@ const TEST_PLAN_TEST_CASE_DEPENDENCY_PROPERTIES = [
 /**
  * TestPlanTestCaseDependency - Required criteria to execute the test case
  *
- * @see https://hl7.org/fhir/R4/testplantestcasedependency.html
+ * @see https://hl7.org/fhir/R5/testplantestcasedependency.html
  *
  * @example
  * const testPlanTestCaseDependency = new TestPlanTestCaseDependency({

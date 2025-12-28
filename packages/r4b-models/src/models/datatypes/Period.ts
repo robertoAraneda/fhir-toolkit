@@ -15,7 +15,7 @@ const PERIOD_PROPERTIES = [
 /**
  * Period - A time period defined by a start and end date and optionally time.
  *
- * @see https://hl7.org/fhir/R4/period.html
+ * @see https://hl7.org/fhir/R4B/period.html
  *
  * @example
  * const period = new Period({

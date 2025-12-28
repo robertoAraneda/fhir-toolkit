@@ -12,7 +12,7 @@ import type { EncounterStatusType } from '../../valuesets/index.js';
  * A record of significant events/milestones key data throughout the history of an Encounter, often tracked for specific purposes such as billing.
  * 
  *
- * @see https://hl7.org/fhir/R4/encounterhistory.html
+ * @see https://hl7.org/fhir/R5/encounterhistory.html
  */
 export interface IEncounterHistory extends IDomainResource {
   /**

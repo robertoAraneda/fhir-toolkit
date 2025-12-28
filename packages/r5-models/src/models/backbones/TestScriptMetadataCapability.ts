@@ -25,7 +25,7 @@ const TEST_SCRIPT_METADATA_CAPABILITY_PROPERTIES = [
 /**
  * TestScriptMetadataCapability - Capabilities  that are assumed to function correctly on the FHIR server being tested
  *
- * @see https://hl7.org/fhir/R4/testscriptmetadatacapability.html
+ * @see https://hl7.org/fhir/R5/testscriptmetadatacapability.html
  *
  * @example
  * const testScriptMetadataCapability = new TestScriptMetadataCapability({

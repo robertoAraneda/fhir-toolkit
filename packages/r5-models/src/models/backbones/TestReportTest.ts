@@ -17,7 +17,7 @@ const TEST_REPORT_TEST_PROPERTIES = [
 /**
  * TestReportTest - A test executed from the test script
  *
- * @see https://hl7.org/fhir/R4/testreporttest.html
+ * @see https://hl7.org/fhir/R5/testreporttest.html
  *
  * @example
  * const testReportTest = new TestReportTest({

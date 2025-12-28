@@ -8,7 +8,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * A manufacturing or administrative process for the medicinal product
  * 
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitionoperation.html
+ * @see https://hl7.org/fhir/R4B/medicinalproductdefinitionoperation.html
  */
 export interface IMedicinalProductDefinitionOperation extends IBackboneElement {
   /**

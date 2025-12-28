@@ -7,7 +7,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * Association with other items or products
  * 
  *
- * @see https://hl7.org/fhir/R4/inventoryitemassociation.html
+ * @see https://hl7.org/fhir/R5/inventoryitemassociation.html
  */
 export interface IInventoryItemAssociation extends IBackboneElement {
   /**

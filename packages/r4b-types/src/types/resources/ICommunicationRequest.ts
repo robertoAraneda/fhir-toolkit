@@ -11,7 +11,7 @@ import type { RequestPriorityType, RequestStatusType } from '../../valuesets/ind
  * A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.
  * 
  *
- * @see https://hl7.org/fhir/R4/communicationrequest.html
+ * @see https://hl7.org/fhir/R4B/communicationrequest.html
  */
 export interface ICommunicationRequest extends IDomainResource {
   /**

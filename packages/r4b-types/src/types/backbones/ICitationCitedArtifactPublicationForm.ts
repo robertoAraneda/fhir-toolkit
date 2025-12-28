@@ -8,7 +8,7 @@ import type { ICitationCitedArtifactPublicationFormPublishedIn } from './ICitati
  * If multiple, used to represent alternative forms of the article that are not separate citations
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpublicationform.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactpublicationform.html
  */
 export interface ICitationCitedArtifactPublicationForm extends IBackboneElement {
   /**

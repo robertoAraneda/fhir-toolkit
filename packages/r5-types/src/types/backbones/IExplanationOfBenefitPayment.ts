@@ -8,7 +8,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * Payment Details
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitpayment.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitpayment.html
  */
 export interface IExplanationOfBenefitPayment extends IBackboneElement {
   /**

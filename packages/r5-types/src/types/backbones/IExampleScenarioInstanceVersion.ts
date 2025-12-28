@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Snapshot of instance that changes
  * 
  *
- * @see https://hl7.org/fhir/R4/examplescenarioinstanceversion.html
+ * @see https://hl7.org/fhir/R5/examplescenarioinstanceversion.html
  */
 export interface IExampleScenarioInstanceVersion extends IBackboneElement {
   /**

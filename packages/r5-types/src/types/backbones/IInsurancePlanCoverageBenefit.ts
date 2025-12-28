@@ -7,7 +7,7 @@ import type { IInsurancePlanCoverageBenefitLimit } from './IInsurancePlanCoverag
  * List of benefits
  * 
  *
- * @see https://hl7.org/fhir/R4/insuranceplancoveragebenefit.html
+ * @see https://hl7.org/fhir/R5/insuranceplancoveragebenefit.html
  */
 export interface IInsurancePlanCoverageBenefit extends IBackboneElement {
   /**

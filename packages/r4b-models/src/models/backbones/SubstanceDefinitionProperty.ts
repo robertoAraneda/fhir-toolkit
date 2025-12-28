@@ -22,7 +22,7 @@ const SUBSTANCE_DEFINITION_PROPERTY_PROPERTIES = [
 /**
  * SubstanceDefinitionProperty - General specifications for this substance
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionproperty.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionproperty.html
  *
  * @example
  * const substanceDefinitionProperty = new SubstanceDefinitionProperty({

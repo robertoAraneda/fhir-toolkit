@@ -32,7 +32,7 @@ const INVENTORY_REPORT_PROPERTIES = [
 /**
  * InventoryReport - A report of inventory or stock items.
  *
- * @see https://hl7.org/fhir/R4/inventoryreport.html
+ * @see https://hl7.org/fhir/R5/inventoryreport.html
  *
  * @example
  * const inventoryReport = new InventoryReport({

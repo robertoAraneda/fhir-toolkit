@@ -18,7 +18,7 @@ const COMPOSITION_RELATES_TO_PROPERTIES = [
 /**
  * CompositionRelatesTo - Relationships to other compositions/documents
  *
- * @see https://hl7.org/fhir/R4/compositionrelatesto.html
+ * @see https://hl7.org/fhir/R4B/compositionrelatesto.html
  *
  * @example
  * const compositionRelatesTo = new CompositionRelatesTo({

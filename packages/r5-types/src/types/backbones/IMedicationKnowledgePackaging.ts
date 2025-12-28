@@ -7,7 +7,7 @@ import type { IMedicationKnowledgeCost } from './IMedicationKnowledgeCost.js';
  * Details about packaged medications
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgepackaging.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgepackaging.html
  */
 export interface IMedicationKnowledgePackaging extends IBackboneElement {
   /**

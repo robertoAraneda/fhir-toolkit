@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * References to this parameter
  * 
  *
- * @see https://hl7.org/fhir/R4/operationdefinitionparameterreferencedfrom.html
+ * @see https://hl7.org/fhir/R4B/operationdefinitionparameterreferencedfrom.html
  */
 export interface IOperationDefinitionParameterReferencedFrom extends IBackboneElement {
   /**

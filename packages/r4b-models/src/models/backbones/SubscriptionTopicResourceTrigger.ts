@@ -22,7 +22,7 @@ const SUBSCRIPTION_TOPIC_RESOURCE_TRIGGER_PROPERTIES = [
 /**
  * SubscriptionTopicResourceTrigger - Definition of a resource-based trigger for the subscription topic
  *
- * @see https://hl7.org/fhir/R4/subscriptiontopicresourcetrigger.html
+ * @see https://hl7.org/fhir/R4B/subscriptiontopicresourcetrigger.html
  *
  * @example
  * const subscriptionTopicResourceTrigger = new SubscriptionTopicResourceTrigger({

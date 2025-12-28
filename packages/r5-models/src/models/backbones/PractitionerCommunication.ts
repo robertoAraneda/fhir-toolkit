@@ -15,7 +15,7 @@ const PRACTITIONER_COMMUNICATION_PROPERTIES = [
 /**
  * PractitionerCommunication - A language which may be used to communicate with the practitioner
  *
- * @see https://hl7.org/fhir/R4/practitionercommunication.html
+ * @see https://hl7.org/fhir/R5/practitionercommunication.html
  *
  * @example
  * const practitionerCommunication = new PractitionerCommunication({

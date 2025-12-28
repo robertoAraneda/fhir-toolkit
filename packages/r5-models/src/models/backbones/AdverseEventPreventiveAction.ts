@@ -14,7 +14,7 @@ const ADVERSE_EVENT_PREVENTIVE_ACTION_PROPERTIES = [
 /**
  * AdverseEventPreventiveAction - Preventive actions that contributed to avoiding the adverse event
  *
- * @see https://hl7.org/fhir/R4/adverseeventpreventiveaction.html
+ * @see https://hl7.org/fhir/R5/adverseeventpreventiveaction.html
  *
  * @example
  * const adverseEventPreventiveAction = new AdverseEventPreventiveAction({

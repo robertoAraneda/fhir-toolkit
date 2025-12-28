@@ -39,7 +39,7 @@ const DETECTED_ISSUE_PROPERTIES = [
 /**
  * DetectedIssue - Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, gaps in care, etc.
  *
- * @see https://hl7.org/fhir/R4/detectedissue.html
+ * @see https://hl7.org/fhir/R5/detectedissue.html
  *
  * @example
  * const detectedIssue = new DetectedIssue({

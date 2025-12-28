@@ -66,7 +66,7 @@ const CODE_SYSTEM_PROPERTIES = [
 /**
  * CodeSystem - The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
  *
- * @see https://hl7.org/fhir/R4/codesystem.html
+ * @see https://hl7.org/fhir/R4B/codesystem.html
  *
  * @example
  * const codeSystem = new CodeSystem({

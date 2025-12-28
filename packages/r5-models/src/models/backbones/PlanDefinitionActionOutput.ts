@@ -17,7 +17,7 @@ const PLAN_DEFINITION_ACTION_OUTPUT_PROPERTIES = [
 /**
  * PlanDefinitionActionOutput - Output data definition
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactionoutput.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactionoutput.html
  *
  * @example
  * const planDefinitionActionOutput = new PlanDefinitionActionOutput({

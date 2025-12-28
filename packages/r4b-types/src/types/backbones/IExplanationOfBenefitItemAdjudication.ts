@@ -7,7 +7,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * Adjudication details
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefititemadjudication.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefititemadjudication.html
  */
 export interface IExplanationOfBenefitItemAdjudication extends IBackboneElement {
   /**

@@ -8,7 +8,7 @@ import type { PriceComponentTypeType } from '../../valuesets/index.js';
  * Availability data for an {item}.
  * 
  *
- * @see https://hl7.org/fhir/R4/monetarycomponent.html
+ * @see https://hl7.org/fhir/R5/monetarycomponent.html
  */
 export interface IMonetaryComponent extends IDataType {
   /**

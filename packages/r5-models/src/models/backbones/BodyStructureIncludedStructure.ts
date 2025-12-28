@@ -18,7 +18,7 @@ const BODY_STRUCTURE_INCLUDED_STRUCTURE_PROPERTIES = [
 /**
  * BodyStructureIncludedStructure - Included anatomic location(s)
  *
- * @see https://hl7.org/fhir/R4/bodystructureincludedstructure.html
+ * @see https://hl7.org/fhir/R5/bodystructureincludedstructure.html
  *
  * @example
  * const bodyStructureIncludedStructure = new BodyStructureIncludedStructure({

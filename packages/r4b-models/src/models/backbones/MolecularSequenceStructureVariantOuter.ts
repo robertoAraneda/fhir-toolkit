@@ -15,7 +15,7 @@ const MOLECULAR_SEQUENCE_STRUCTURE_VARIANT_OUTER_PROPERTIES = [
 /**
  * MolecularSequenceStructureVariantOuter - Structural variant outer
  *
- * @see https://hl7.org/fhir/R4/molecularsequencestructurevariantouter.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencestructurevariantouter.html
  *
  * @example
  * const molecularSequenceStructureVariantOuter = new MolecularSequenceStructureVariantOuter({

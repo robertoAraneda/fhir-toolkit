@@ -19,7 +19,7 @@ const EVIDENCE_VARIABLE_CHARACTERISTIC_TIME_FROM_START_PROPERTIES = [
 /**
  * EvidenceVariableCharacteristicTimeFromStart - Observation time from study start
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristictimefromstart.html
+ * @see https://hl7.org/fhir/R4B/evidencevariablecharacteristictimefromstart.html
  *
  * @example
  * const evidenceVariableCharacteristicTimeFromStart = new EvidenceVariableCharacteristicTimeFromStart({

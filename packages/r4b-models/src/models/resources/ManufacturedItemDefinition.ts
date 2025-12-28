@@ -24,7 +24,7 @@ const MANUFACTURED_ITEM_DEFINITION_PROPERTIES = [
 /**
  * ManufacturedItemDefinition - The definition and characteristics of a medicinal manufactured item, such as a tablet or capsule, as contained in a packaged medicinal product.
  *
- * @see https://hl7.org/fhir/R4/manufactureditemdefinition.html
+ * @see https://hl7.org/fhir/R4B/manufactureditemdefinition.html
  *
  * @example
  * const manufacturedItemDefinition = new ManufacturedItemDefinition({

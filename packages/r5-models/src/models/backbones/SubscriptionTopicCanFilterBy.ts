@@ -25,7 +25,7 @@ const SUBSCRIPTION_TOPIC_CAN_FILTER_BY_PROPERTIES = [
 /**
  * SubscriptionTopicCanFilterBy - Properties by which a Subscription can filter notifications from the SubscriptionTopic
  *
- * @see https://hl7.org/fhir/R4/subscriptiontopiccanfilterby.html
+ * @see https://hl7.org/fhir/R5/subscriptiontopiccanfilterby.html
  *
  * @example
  * const subscriptionTopicCanFilterBy = new SubscriptionTopicCanFilterBy({

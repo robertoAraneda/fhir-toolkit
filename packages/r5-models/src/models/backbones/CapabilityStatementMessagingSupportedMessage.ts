@@ -16,7 +16,7 @@ const CAPABILITY_STATEMENT_MESSAGING_SUPPORTED_MESSAGE_PROPERTIES = [
 /**
  * CapabilityStatementMessagingSupportedMessage - Messages supported by this system
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementmessagingsupportedmessage.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementmessagingsupportedmessage.html
  *
  * @example
  * const capabilityStatementMessagingSupportedMessage = new CapabilityStatementMessagingSupportedMessage({

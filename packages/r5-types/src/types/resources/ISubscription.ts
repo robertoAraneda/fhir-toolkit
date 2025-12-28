@@ -11,7 +11,7 @@ import type { SubscriptionPayloadContentType, SubscriptionStatusType } from '../
  * The subscription resource describes a particular client's request to be notified about a SubscriptionTopic.
  * 
  *
- * @see https://hl7.org/fhir/R4/subscription.html
+ * @see https://hl7.org/fhir/R5/subscription.html
  */
 export interface ISubscription extends IDomainResource {
   /**

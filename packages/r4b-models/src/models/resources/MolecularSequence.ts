@@ -40,7 +40,7 @@ const MOLECULAR_SEQUENCE_PROPERTIES = [
 /**
  * MolecularSequence - Raw data describing a biological sequence.
  *
- * @see https://hl7.org/fhir/R4/molecularsequence.html
+ * @see https://hl7.org/fhir/R4B/molecularsequence.html
  *
  * @example
  * const molecularSequence = new MolecularSequence({

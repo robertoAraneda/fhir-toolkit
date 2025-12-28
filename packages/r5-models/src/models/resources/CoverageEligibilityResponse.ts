@@ -45,7 +45,7 @@ const COVERAGE_ELIGIBILITY_RESPONSE_PROPERTIES = [
 /**
  * CoverageEligibilityResponse - This resource provides eligibility and plan details from the processing of an CoverageEligibilityRequest resource.
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponse.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityresponse.html
  *
  * @example
  * const coverageEligibilityResponse = new CoverageEligibilityResponse({

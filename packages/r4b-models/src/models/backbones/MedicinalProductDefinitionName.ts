@@ -19,7 +19,7 @@ const MEDICINAL_PRODUCT_DEFINITION_NAME_PROPERTIES = [
 /**
  * MedicinalProductDefinitionName - The product's name, including full name and possibly coded parts
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitionname.html
+ * @see https://hl7.org/fhir/R4B/medicinalproductdefinitionname.html
  *
  * @example
  * const medicinalProductDefinitionName = new MedicinalProductDefinitionName({

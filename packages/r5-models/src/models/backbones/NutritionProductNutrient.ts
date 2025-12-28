@@ -14,7 +14,7 @@ const NUTRITION_PRODUCT_NUTRIENT_PROPERTIES = [
 /**
  * NutritionProductNutrient - The product's nutritional information expressed by the nutrients
  *
- * @see https://hl7.org/fhir/R4/nutritionproductnutrient.html
+ * @see https://hl7.org/fhir/R5/nutritionproductnutrient.html
  *
  * @example
  * const nutritionProductNutrient = new NutritionProductNutrient({

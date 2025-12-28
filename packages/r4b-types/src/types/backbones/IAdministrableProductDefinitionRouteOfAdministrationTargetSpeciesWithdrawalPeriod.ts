@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * A species specific time during which consumption of animal product is not appropriate
  * 
  *
- * @see https://hl7.org/fhir/R4/administrableproductdefinitionrouteofadministrationtargetspecieswithdrawalperiod.html
+ * @see https://hl7.org/fhir/R4B/administrableproductdefinitionrouteofadministrationtargetspecieswithdrawalperiod.html
  */
 export interface IAdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod extends IBackboneElement {
   /**

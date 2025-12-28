@@ -23,7 +23,7 @@ const CONTRACT_CONTENT_DEFINITION_PROPERTIES = [
 /**
  * ContractContentDefinition - Contract precursor content
  *
- * @see https://hl7.org/fhir/R4/contractcontentdefinition.html
+ * @see https://hl7.org/fhir/R4B/contractcontentdefinition.html
  *
  * @example
  * const contractContentDefinition = new ContractContentDefinition({

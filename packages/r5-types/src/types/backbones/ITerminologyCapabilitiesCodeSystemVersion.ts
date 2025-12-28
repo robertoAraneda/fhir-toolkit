@@ -8,7 +8,7 @@ import type { CommonLanguagesType } from '../../valuesets/index.js';
  * Version of Code System supported
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiescodesystemversion.html
+ * @see https://hl7.org/fhir/R5/terminologycapabilitiescodesystemversion.html
  */
 export interface ITerminologyCapabilitiesCodeSystemVersion extends IBackboneElement {
   /**

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * The populations in the group
  * 
  *
- * @see https://hl7.org/fhir/R4/measurereportgrouppopulation.html
+ * @see https://hl7.org/fhir/R4B/measurereportgrouppopulation.html
  */
 export interface IMeasureReportGroupPopulation extends IBackboneElement {
   /**

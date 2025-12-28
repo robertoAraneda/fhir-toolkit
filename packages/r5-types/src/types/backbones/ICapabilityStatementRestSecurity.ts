@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Information about security of implementation
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrestsecurity.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementrestsecurity.html
  */
 export interface ICapabilityStatementRestSecurity extends IBackboneElement {
   /**

@@ -21,7 +21,7 @@ const CLAIM_PROCEDURE_PROPERTIES = [
 /**
  * ClaimProcedure - Clinical procedures performed
  *
- * @see https://hl7.org/fhir/R4/claimprocedure.html
+ * @see https://hl7.org/fhir/R4B/claimprocedure.html
  *
  * @example
  * const claimProcedure = new ClaimProcedure({

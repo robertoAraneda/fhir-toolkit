@@ -11,7 +11,7 @@ import type { BundleTypeType } from '../../valuesets/index.js';
  * A container for a collection of resources.
  * 
  *
- * @see https://hl7.org/fhir/R4/bundle.html
+ * @see https://hl7.org/fhir/R5/bundle.html
  */
 export interface IBundle extends IResource {
   /**

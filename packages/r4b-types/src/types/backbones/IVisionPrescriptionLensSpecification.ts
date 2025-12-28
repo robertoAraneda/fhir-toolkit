@@ -10,7 +10,7 @@ import type { VisionEyesType } from '../../valuesets/index.js';
  * Vision lens authorization
  * 
  *
- * @see https://hl7.org/fhir/R4/visionprescriptionlensspecification.html
+ * @see https://hl7.org/fhir/R4B/visionprescriptionlensspecification.html
  */
 export interface IVisionPrescriptionLensSpecification extends IBackboneElement {
   /**

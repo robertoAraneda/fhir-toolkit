@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * List of the costs
  * 
  *
- * @see https://hl7.org/fhir/R4/insuranceplanplanspecificcostbenefitcost.html
+ * @see https://hl7.org/fhir/R4B/insuranceplanplanspecificcostbenefitcost.html
  */
 export interface IInsurancePlanPlanSpecificCostBenefitCost extends IBackboneElement {
   /**

@@ -24,7 +24,7 @@ const CLAIM_INSURANCE_PROPERTIES = [
 /**
  * ClaimInsurance - Patient insurance information
  *
- * @see https://hl7.org/fhir/R4/claiminsurance.html
+ * @see https://hl7.org/fhir/R5/claiminsurance.html
  *
  * @example
  * const claimInsurance = new ClaimInsurance({

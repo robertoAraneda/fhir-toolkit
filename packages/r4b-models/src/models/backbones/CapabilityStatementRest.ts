@@ -28,7 +28,7 @@ const CAPABILITY_STATEMENT_REST_PROPERTIES = [
 /**
  * CapabilityStatementRest - If the endpoint is a RESTful one
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrest.html
+ * @see https://hl7.org/fhir/R4B/capabilitystatementrest.html
  *
  * @example
  * const capabilityStatementRest = new CapabilityStatementRest({

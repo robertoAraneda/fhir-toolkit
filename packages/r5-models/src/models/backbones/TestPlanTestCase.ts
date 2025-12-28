@@ -23,7 +23,7 @@ const TEST_PLAN_TEST_CASE_PROPERTIES = [
 /**
  * TestPlanTestCase - The test cases that constitute this plan
  *
- * @see https://hl7.org/fhir/R4/testplantestcase.html
+ * @see https://hl7.org/fhir/R5/testplantestcase.html
  *
  * @example
  * const testPlanTestCase = new TestPlanTestCase({

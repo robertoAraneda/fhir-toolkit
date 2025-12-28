@@ -36,7 +36,7 @@ const INSURANCE_PLAN_PROPERTIES = [
 /**
  * InsurancePlan - Details of a Health Insurance product/plan provided by an organization.
  *
- * @see https://hl7.org/fhir/R4/insuranceplan.html
+ * @see https://hl7.org/fhir/R5/insuranceplan.html
  *
  * @example
  * const insurancePlan = new InsurancePlan({

@@ -47,7 +47,7 @@ const SUBSCRIPTION_PROPERTIES = [
 /**
  * Subscription - The subscription resource describes a particular client's request to be notified about a SubscriptionTopic.
  *
- * @see https://hl7.org/fhir/R4/subscription.html
+ * @see https://hl7.org/fhir/R5/subscription.html
  *
  * @example
  * const subscription = new Subscription({

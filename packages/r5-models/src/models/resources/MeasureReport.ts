@@ -41,7 +41,7 @@ const MEASURE_REPORT_PROPERTIES = [
 /**
  * MeasureReport - The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
  *
- * @see https://hl7.org/fhir/R4/measurereport.html
+ * @see https://hl7.org/fhir/R5/measurereport.html
  *
  * @example
  * const measureReport = new MeasureReport({

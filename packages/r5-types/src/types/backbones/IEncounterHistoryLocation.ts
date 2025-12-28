@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Location of the patient at this point in the encounter
  * 
  *
- * @see https://hl7.org/fhir/R4/encounterhistorylocation.html
+ * @see https://hl7.org/fhir/R5/encounterhistorylocation.html
  */
 export interface IEncounterHistoryLocation extends IBackboneElement {
   /**

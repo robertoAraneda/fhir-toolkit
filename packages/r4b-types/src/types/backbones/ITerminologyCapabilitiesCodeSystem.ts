@@ -7,7 +7,7 @@ import type { ITerminologyCapabilitiesCodeSystemVersion } from './ITerminologyCa
  * A code system supported by the server
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiescodesystem.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiescodesystem.html
  */
 export interface ITerminologyCapabilitiesCodeSystem extends IBackboneElement {
   /**

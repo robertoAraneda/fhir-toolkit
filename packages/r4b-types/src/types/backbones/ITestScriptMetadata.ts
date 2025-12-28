@@ -8,7 +8,7 @@ import type { ITestScriptMetadataLink } from './ITestScriptMetadataLink.js';
  * Required capability that is assumed to function correctly on the FHIR server being tested
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptmetadata.html
+ * @see https://hl7.org/fhir/R4B/testscriptmetadata.html
  */
 export interface ITestScriptMetadata extends IBackboneElement {
   /**

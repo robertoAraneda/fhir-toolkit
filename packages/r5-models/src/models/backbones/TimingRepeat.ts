@@ -48,7 +48,7 @@ const TIMING_REPEAT_PROPERTIES = [
 /**
  * TimingRepeat - When the event is to occur
  *
- * @see https://hl7.org/fhir/R4/timingrepeat.html
+ * @see https://hl7.org/fhir/R5/timingrepeat.html
  *
  * @example
  * const timingRepeat = new TimingRepeat({

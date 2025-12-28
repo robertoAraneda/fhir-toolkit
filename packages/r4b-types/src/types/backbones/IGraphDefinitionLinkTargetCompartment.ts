@@ -7,7 +7,7 @@ import type { CompartmentTypeType, GraphCompartmentRuleType, GraphCompartmentUse
  * Compartment Consistency Rules
  * 
  *
- * @see https://hl7.org/fhir/R4/graphdefinitionlinktargetcompartment.html
+ * @see https://hl7.org/fhir/R4B/graphdefinitionlinktargetcompartment.html
  */
 export interface IGraphDefinitionLinkTargetCompartment extends IBackboneElement {
   /**

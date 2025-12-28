@@ -21,7 +21,7 @@ const MEDICATION_INGREDIENT_PROPERTIES = [
 /**
  * MedicationIngredient - Active or inactive ingredient
  *
- * @see https://hl7.org/fhir/R4/medicationingredient.html
+ * @see https://hl7.org/fhir/R5/medicationingredient.html
  *
  * @example
  * const medicationIngredient = new MedicationIngredient({

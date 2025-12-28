@@ -22,7 +22,7 @@ const STRUCTURE_MAP_GROUP_RULE_PROPERTIES = [
 /**
  * StructureMapGroupRule - Transform Rule from source to target
  *
- * @see https://hl7.org/fhir/R4/structuremapgrouprule.html
+ * @see https://hl7.org/fhir/R4B/structuremapgrouprule.html
  *
  * @example
  * const structureMapGroupRule = new StructureMapGroupRule({

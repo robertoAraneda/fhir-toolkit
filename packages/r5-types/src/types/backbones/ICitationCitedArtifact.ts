@@ -18,7 +18,7 @@ import type { ICitationCitedArtifactWebLocation } from './ICitationCitedArtifact
  * The article or artifact being described
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifact.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifact.html
  */
 export interface ICitationCitedArtifact extends IBackboneElement {
   /**

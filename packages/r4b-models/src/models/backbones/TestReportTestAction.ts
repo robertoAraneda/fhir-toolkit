@@ -14,7 +14,7 @@ const TEST_REPORT_TEST_ACTION_PROPERTIES = [
 /**
  * TestReportTestAction - A test operation or assert that was performed
  *
- * @see https://hl7.org/fhir/R4/testreporttestaction.html
+ * @see https://hl7.org/fhir/R4B/testreporttestaction.html
  *
  * @example
  * const testReportTestAction = new TestReportTestAction({

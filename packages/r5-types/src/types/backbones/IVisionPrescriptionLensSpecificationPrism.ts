@@ -7,7 +7,7 @@ import type { VisionBaseType } from '../../valuesets/index.js';
  * Eye alignment compensation
  * 
  *
- * @see https://hl7.org/fhir/R4/visionprescriptionlensspecificationprism.html
+ * @see https://hl7.org/fhir/R5/visionprescriptionlensspecificationprism.html
  */
 export interface IVisionPrescriptionLensSpecificationPrism extends IBackboneElement {
   /**

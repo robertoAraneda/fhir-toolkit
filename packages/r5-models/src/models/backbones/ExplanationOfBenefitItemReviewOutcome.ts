@@ -18,7 +18,7 @@ const EXPLANATION_OF_BENEFIT_ITEM_REVIEW_OUTCOME_PROPERTIES = [
 /**
  * ExplanationOfBenefitItemReviewOutcome - Adjudication results
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefititemreviewoutcome.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefititemreviewoutcome.html
  *
  * @example
  * const explanationOfBenefitItemReviewOutcome = new ExplanationOfBenefitItemReviewOutcome({

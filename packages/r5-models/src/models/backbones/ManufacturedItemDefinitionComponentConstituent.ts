@@ -17,7 +17,7 @@ const MANUFACTURED_ITEM_DEFINITION_COMPONENT_CONSTITUENT_PROPERTIES = [
 /**
  * ManufacturedItemDefinitionComponentConstituent - A reference to a constituent of the manufactured item as a whole, linked here so that its component location within the item can be indicated. This not where the item's ingredient are primarily stated (for which see Ingredient.for or ManufacturedItemDefinition.ingredient)
  *
- * @see https://hl7.org/fhir/R4/manufactureditemdefinitioncomponentconstituent.html
+ * @see https://hl7.org/fhir/R5/manufactureditemdefinitioncomponentconstituent.html
  *
  * @example
  * const manufacturedItemDefinitionComponentConstituent = new ManufacturedItemDefinitionComponentConstituent({

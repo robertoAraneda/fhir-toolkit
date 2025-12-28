@@ -7,7 +7,7 @@ import type { ITerminologyCapabilitiesCodeSystemVersionFilter } from './ITermino
  * Version of Code System supported
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiescodesystemversion.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiescodesystemversion.html
  */
 export interface ITerminologyCapabilitiesCodeSystemVersion extends IBackboneElement {
   /**

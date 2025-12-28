@@ -25,7 +25,7 @@ const CONCEPT_MAP_GROUP_ELEMENT_TARGET_DEPENDS_ON_PROPERTIES = [
 /**
  * ConceptMapGroupElementTargetDependsOn - Other properties required for this mapping
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupelementtargetdependson.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupelementtargetdependson.html
  *
  * @example
  * const conceptMapGroupElementTargetDependsOn = new ConceptMapGroupElementTargetDependsOn({

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * To do
  * 
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialpartdescription.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialpartdescription.html
  */
 export interface ISubstanceSourceMaterialPartDescription extends IBackboneElement {
   /**

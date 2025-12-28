@@ -18,7 +18,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
  * 
  *
- * @see https://hl7.org/fhir/R4/testscript.html
+ * @see https://hl7.org/fhir/R4B/testscript.html
  */
 export interface ITestScript extends IDomainResource {
   /**

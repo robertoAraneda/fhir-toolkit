@@ -18,7 +18,7 @@ const SUBSTANCE_POLYMER_REPEAT_REPEAT_UNIT_STRUCTURAL_REPRESENTATION_PROPERTIES 
 /**
  * SubstancePolymerRepeatRepeatUnitStructuralRepresentation - A graphical structure for this SRU
  *
- * @see https://hl7.org/fhir/R4/substancepolymerrepeatrepeatunitstructuralrepresentation.html
+ * @see https://hl7.org/fhir/R5/substancepolymerrepeatrepeatunitstructuralrepresentation.html
  *
  * @example
  * const substancePolymerRepeatRepeatUnitStructuralRepresentation = new SubstancePolymerRepeatRepeatUnitStructuralRepresentation({

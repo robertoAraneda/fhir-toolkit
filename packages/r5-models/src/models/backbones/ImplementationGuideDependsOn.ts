@@ -19,7 +19,7 @@ const IMPLEMENTATION_GUIDE_DEPENDS_ON_PROPERTIES = [
 /**
  * ImplementationGuideDependsOn - Another Implementation guide this depends on
  *
- * @see https://hl7.org/fhir/R4/implementationguidedependson.html
+ * @see https://hl7.org/fhir/R5/implementationguidedependson.html
  *
  * @example
  * const implementationGuideDependsOn = new ImplementationGuideDependsOn({

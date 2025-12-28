@@ -7,7 +7,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * Calculated account balance(s)
  * 
  *
- * @see https://hl7.org/fhir/R4/accountbalance.html
+ * @see https://hl7.org/fhir/R5/accountbalance.html
  */
 export interface IAccountBalance extends IBackboneElement {
   /**

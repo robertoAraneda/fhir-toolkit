@@ -46,7 +46,7 @@ const HEALTHCARE_SERVICE_PROPERTIES = [
 /**
  * HealthcareService - The details of a healthcare service available at a location.
  *
- * @see https://hl7.org/fhir/R4/healthcareservice.html
+ * @see https://hl7.org/fhir/R5/healthcareservice.html
  *
  * @example
  * const healthcareService = new HealthcareService({

@@ -9,7 +9,7 @@ import type { IHumanName } from '../datatypes/IHumanName.js';
  * Contact for the organization for a certain purpose
  * 
  *
- * @see https://hl7.org/fhir/R4/organizationcontact.html
+ * @see https://hl7.org/fhir/R4B/organizationcontact.html
  */
 export interface IOrganizationContact extends IBackboneElement {
   /**

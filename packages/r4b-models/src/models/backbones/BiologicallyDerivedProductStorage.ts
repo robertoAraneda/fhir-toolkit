@@ -20,7 +20,7 @@ const BIOLOGICALLY_DERIVED_PRODUCT_STORAGE_PROPERTIES = [
 /**
  * BiologicallyDerivedProductStorage - Product storage
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductstorage.html
+ * @see https://hl7.org/fhir/R4B/biologicallyderivedproductstorage.html
  *
  * @example
  * const biologicallyDerivedProductStorage = new BiologicallyDerivedProductStorage({

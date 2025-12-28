@@ -14,7 +14,7 @@ const DETECTED_ISSUE_EVIDENCE_PROPERTIES = [
 /**
  * DetectedIssueEvidence - Supporting evidence
  *
- * @see https://hl7.org/fhir/R4/detectedissueevidence.html
+ * @see https://hl7.org/fhir/R5/detectedissueevidence.html
  *
  * @example
  * const detectedIssueEvidence = new DetectedIssueEvidence({

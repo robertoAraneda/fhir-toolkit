@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * 4.9.13.7.1 Kingdom (Conditional)
  * 
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialorganismorganismgeneral.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialorganismorganismgeneral.html
  */
 export interface ISubstanceSourceMaterialOrganismOrganismGeneral extends IBackboneElement {
   /**

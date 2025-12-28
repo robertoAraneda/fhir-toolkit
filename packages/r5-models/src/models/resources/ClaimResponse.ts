@@ -66,7 +66,7 @@ const CLAIM_RESPONSE_PROPERTIES = [
 /**
  * ClaimResponse - This resource provides the adjudication details from the processing of a Claim resource.
  *
- * @see https://hl7.org/fhir/R4/claimresponse.html
+ * @see https://hl7.org/fhir/R5/claimresponse.html
  *
  * @example
  * const claimResponse = new ClaimResponse({

@@ -36,7 +36,7 @@ const PRACTITIONER_PROPERTIES = [
 /**
  * Practitioner - A person who is directly or indirectly involved in the provisioning of healthcare or related services.
  *
- * @see https://hl7.org/fhir/R4/practitioner.html
+ * @see https://hl7.org/fhir/R5/practitioner.html
  *
  * @example
  * const practitioner = new Practitioner({

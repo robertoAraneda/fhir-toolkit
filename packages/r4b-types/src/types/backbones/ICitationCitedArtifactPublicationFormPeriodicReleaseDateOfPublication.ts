@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Defining the date on which the issue of the journal was published
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpublicationformperiodicreleasedateofpublication.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactpublicationformperiodicreleasedateofpublication.html
  */
 export interface ICitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication extends IBackboneElement {
   /**

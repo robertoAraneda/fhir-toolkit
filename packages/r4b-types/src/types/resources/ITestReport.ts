@@ -12,7 +12,7 @@ import type { TestReportResultType, TestReportStatusType } from '../../valuesets
  * A summary of information based on the results of executing a TestScript.
  * 
  *
- * @see https://hl7.org/fhir/R4/testreport.html
+ * @see https://hl7.org/fhir/R4B/testreport.html
  */
 export interface ITestReport extends IDomainResource {
   /**

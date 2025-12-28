@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Adjudication results
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefititemreviewoutcome.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefititemreviewoutcome.html
  */
 export interface IExplanationOfBenefitItemReviewOutcome extends IBackboneElement {
   /**

@@ -10,7 +10,7 @@ import type { SpecimenContainedPreferenceType } from '../../valuesets/index.js';
  * Specimen in container intended for testing by lab
  * 
  *
- * @see https://hl7.org/fhir/R4/specimendefinitiontypetested.html
+ * @see https://hl7.org/fhir/R4B/specimendefinitiontypetested.html
  */
 export interface ISpecimenDefinitionTypeTested extends IBackboneElement {
   /**

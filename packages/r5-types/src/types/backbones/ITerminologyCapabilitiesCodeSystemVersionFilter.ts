@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Filter Properties supported
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiescodesystemversionfilter.html
+ * @see https://hl7.org/fhir/R5/terminologycapabilitiescodesystemversionfilter.html
  */
 export interface ITerminologyCapabilitiesCodeSystemVersionFilter extends IBackboneElement {
   /**

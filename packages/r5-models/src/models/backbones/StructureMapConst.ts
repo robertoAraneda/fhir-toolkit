@@ -15,7 +15,7 @@ const STRUCTURE_MAP_CONST_PROPERTIES = [
 /**
  * StructureMapConst - Definition of the constant value used in the map rules
  *
- * @see https://hl7.org/fhir/R4/structuremapconst.html
+ * @see https://hl7.org/fhir/R5/structuremapconst.html
  *
  * @example
  * const structureMapConst = new StructureMapConst({

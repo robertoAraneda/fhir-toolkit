@@ -22,7 +22,7 @@ const MEDICATION_ADMINISTRATION_DOSAGE_PROPERTIES = [
 /**
  * MedicationAdministrationDosage - Details of how medication was taken
  *
- * @see https://hl7.org/fhir/R4/medicationadministrationdosage.html
+ * @see https://hl7.org/fhir/R5/medicationadministrationdosage.html
  *
  * @example
  * const medicationAdministrationDosage = new MedicationAdministrationDosage({

@@ -17,7 +17,7 @@ const SUBSTANCE_POLYMER_REPEAT_PROPERTIES = [
 /**
  * SubstancePolymerRepeat - Specifies and quantifies the repeated units and their configuration
  *
- * @see https://hl7.org/fhir/R4/substancepolymerrepeat.html
+ * @see https://hl7.org/fhir/R5/substancepolymerrepeat.html
  *
  * @example
  * const substancePolymerRepeat = new SubstancePolymerRepeat({

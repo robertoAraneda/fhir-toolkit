@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Consent Verified by patient or family
  * 
  *
- * @see https://hl7.org/fhir/R4/consentverification.html
+ * @see https://hl7.org/fhir/R5/consentverification.html
  */
 export interface IConsentVerification extends IBackboneElement {
   /**

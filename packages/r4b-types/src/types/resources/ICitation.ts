@@ -17,7 +17,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * The Citation Resource enables reference to any knowledge artifact for purposes of identification and attribution. The Citation Resource supports existing reference structures and developing publication practices such as versioning, expressing complex contributorship roles, and referencing computable resources.
  * 
  *
- * @see https://hl7.org/fhir/R4/citation.html
+ * @see https://hl7.org/fhir/R4B/citation.html
  */
 export interface ICitation extends IDomainResource {
   /**

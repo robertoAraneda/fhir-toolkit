@@ -16,7 +16,7 @@ import type { ContractResourceStatusType } from '../../valuesets/index.js';
  * Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement.
  * 
  *
- * @see https://hl7.org/fhir/R4/contract.html
+ * @see https://hl7.org/fhir/R5/contract.html
  */
 export interface IContract extends IDomainResource {
   /**

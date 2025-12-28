@@ -9,7 +9,7 @@ import type { ISubstanceReferenceInformationTarget } from '../backbones/ISubstan
  * Todo.
  * 
  *
- * @see https://hl7.org/fhir/R4/substancereferenceinformation.html
+ * @see https://hl7.org/fhir/R5/substancereferenceinformation.html
  */
 export interface ISubstanceReferenceInformation extends IDomainResource {
   /**

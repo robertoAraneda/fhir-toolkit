@@ -15,7 +15,7 @@ const CONSENT_POLICY_PROPERTIES = [
 /**
  * ConsentPolicy - Policies covered by this consent
  *
- * @see https://hl7.org/fhir/R4/consentpolicy.html
+ * @see https://hl7.org/fhir/R4B/consentpolicy.html
  *
  * @example
  * const consentPolicy = new ConsentPolicy({

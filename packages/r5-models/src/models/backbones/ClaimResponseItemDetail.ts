@@ -23,7 +23,7 @@ const CLAIM_RESPONSE_ITEM_DETAIL_PROPERTIES = [
 /**
  * ClaimResponseItemDetail - Adjudication for claim details
  *
- * @see https://hl7.org/fhir/R4/claimresponseitemdetail.html
+ * @see https://hl7.org/fhir/R5/claimresponseitemdetail.html
  *
  * @example
  * const claimResponseItemDetail = new ClaimResponseItemDetail({

@@ -8,7 +8,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Provides guide for interpretation
  * 
  *
- * @see https://hl7.org/fhir/R4/observationreferencerange.html
+ * @see https://hl7.org/fhir/R5/observationreferencerange.html
  */
 export interface IObservationReferenceRange extends IBackboneElement {
   /**

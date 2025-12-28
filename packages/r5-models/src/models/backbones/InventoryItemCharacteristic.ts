@@ -38,7 +38,7 @@ const INVENTORY_ITEM_CHARACTERISTIC_PROPERTIES = [
 /**
  * InventoryItemCharacteristic - Characteristic of the item
  *
- * @see https://hl7.org/fhir/R4/inventoryitemcharacteristic.html
+ * @see https://hl7.org/fhir/R5/inventoryitemcharacteristic.html
  *
  * @example
  * const inventoryItemCharacteristic = new InventoryItemCharacteristic({

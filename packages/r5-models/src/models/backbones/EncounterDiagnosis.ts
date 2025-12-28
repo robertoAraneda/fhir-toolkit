@@ -14,7 +14,7 @@ const ENCOUNTER_DIAGNOSIS_PROPERTIES = [
 /**
  * EncounterDiagnosis - The list of diagnosis relevant to this encounter
  *
- * @see https://hl7.org/fhir/R4/encounterdiagnosis.html
+ * @see https://hl7.org/fhir/R5/encounterdiagnosis.html
  *
  * @example
  * const encounterDiagnosis = new EncounterDiagnosis({

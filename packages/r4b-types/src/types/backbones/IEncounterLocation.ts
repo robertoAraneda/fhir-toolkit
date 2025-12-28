@@ -8,7 +8,7 @@ import type { EncounterLocationStatusType } from '../../valuesets/index.js';
  * List of locations where the patient has been
  * 
  *
- * @see https://hl7.org/fhir/R4/encounterlocation.html
+ * @see https://hl7.org/fhir/R4B/encounterlocation.html
  */
 export interface IEncounterLocation extends IBackboneElement {
   /**

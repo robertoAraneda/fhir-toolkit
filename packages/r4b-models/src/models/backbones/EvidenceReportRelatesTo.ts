@@ -18,7 +18,7 @@ const EVIDENCE_REPORT_RELATES_TO_PROPERTIES = [
 /**
  * EvidenceReportRelatesTo - Relationships to other compositions/documents
  *
- * @see https://hl7.org/fhir/R4/evidencereportrelatesto.html
+ * @see https://hl7.org/fhir/R4B/evidencereportrelatesto.html
  *
  * @example
  * const evidenceReportRelatesTo = new EvidenceReportRelatesTo({

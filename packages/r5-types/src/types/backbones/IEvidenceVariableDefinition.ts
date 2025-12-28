@@ -7,7 +7,7 @@ import type { IAnnotation } from '../datatypes/IAnnotation.js';
  * Evidence variable such as population, exposure, or outcome
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencevariabledefinition.html
+ * @see https://hl7.org/fhir/R5/evidencevariabledefinition.html
  */
 export interface IEvidenceVariableDefinition extends IBackboneElement {
   /**

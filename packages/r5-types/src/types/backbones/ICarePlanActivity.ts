@@ -8,7 +8,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * Action to occur or has occurred as part of plan
  * 
  *
- * @see https://hl7.org/fhir/R4/careplanactivity.html
+ * @see https://hl7.org/fhir/R5/careplanactivity.html
  */
 export interface ICarePlanActivity extends IBackboneElement {
   /**

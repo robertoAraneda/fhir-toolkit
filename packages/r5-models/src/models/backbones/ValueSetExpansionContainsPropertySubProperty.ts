@@ -27,7 +27,7 @@ const VALUE_SET_EXPANSION_CONTAINS_PROPERTY_SUB_PROPERTY_PROPERTIES = [
 /**
  * ValueSetExpansionContainsPropertySubProperty - SubProperty value for the concept
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansioncontainspropertysubproperty.html
+ * @see https://hl7.org/fhir/R5/valuesetexpansioncontainspropertysubproperty.html
  *
  * @example
  * const valueSetExpansionContainsPropertySubProperty = new ValueSetExpansionContainsPropertySubProperty({

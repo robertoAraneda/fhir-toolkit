@@ -7,7 +7,7 @@ import type { ILinkageItem } from '../backbones/ILinkageItem.js';
  * Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
  * 
  *
- * @see https://hl7.org/fhir/R4/linkage.html
+ * @see https://hl7.org/fhir/R4B/linkage.html
  */
 export interface ILinkage extends IDomainResource {
   /**

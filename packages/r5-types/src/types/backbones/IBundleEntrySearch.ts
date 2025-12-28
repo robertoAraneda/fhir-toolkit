@@ -7,7 +7,7 @@ import type { SearchEntryModeType } from '../../valuesets/index.js';
  * Search related information
  * 
  *
- * @see https://hl7.org/fhir/R4/bundleentrysearch.html
+ * @see https://hl7.org/fhir/R5/bundleentrysearch.html
  */
 export interface IBundleEntrySearch extends IBackboneElement {
   /**

@@ -19,7 +19,7 @@ const COVERAGE_ELIGIBILITY_RESPONSE_INSURANCE_PROPERTIES = [
 /**
  * CoverageEligibilityResponseInsurance - Patient insurance information
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponseinsurance.html
+ * @see https://hl7.org/fhir/R4B/coverageeligibilityresponseinsurance.html
  *
  * @example
  * const coverageEligibilityResponseInsurance = new CoverageEligibilityResponseInsurance({

@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Information about weekly recurring appointments
  * 
  *
- * @see https://hl7.org/fhir/R4/appointmentrecurrencetemplateweeklytemplate.html
+ * @see https://hl7.org/fhir/R5/appointmentrecurrencetemplateweeklytemplate.html
  */
 export interface IAppointmentRecurrenceTemplateWeeklyTemplate extends IBackboneElement {
   /**

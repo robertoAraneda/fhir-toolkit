@@ -7,7 +7,7 @@ import type { ISubstanceNucleicAcidSubunit } from '../backbones/ISubstanceNuclei
  * Nucleic acids are defined by three distinct elements: the base, sugar and linkage. Individual substance/moiety IDs will be created for each of these elements. The nucleotide sequence will be always entered in the 5’-3’ direction.
  * 
  *
- * @see https://hl7.org/fhir/R4/substancenucleicacid.html
+ * @see https://hl7.org/fhir/R5/substancenucleicacid.html
  */
 export interface ISubstanceNucleicAcid extends IDomainResource {
   /**

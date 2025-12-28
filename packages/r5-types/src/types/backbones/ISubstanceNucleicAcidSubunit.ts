@@ -9,7 +9,7 @@ import type { ISubstanceNucleicAcidSubunitSugar } from './ISubstanceNucleicAcidS
  * Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times
  * 
  *
- * @see https://hl7.org/fhir/R4/substancenucleicacidsubunit.html
+ * @see https://hl7.org/fhir/R5/substancenucleicacidsubunit.html
  */
 export interface ISubstanceNucleicAcidSubunit extends IBackboneElement {
   /**

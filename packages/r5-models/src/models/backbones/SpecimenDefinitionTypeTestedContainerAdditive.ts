@@ -14,7 +14,7 @@ const SPECIMEN_DEFINITION_TYPE_TESTED_CONTAINER_ADDITIVE_PROPERTIES = [
 /**
  * SpecimenDefinitionTypeTestedContainerAdditive - Additive associated with container
  *
- * @see https://hl7.org/fhir/R4/specimendefinitiontypetestedcontaineradditive.html
+ * @see https://hl7.org/fhir/R5/specimendefinitiontypetestedcontaineradditive.html
  *
  * @example
  * const specimenDefinitionTypeTestedContainerAdditive = new SpecimenDefinitionTypeTestedContainerAdditive({

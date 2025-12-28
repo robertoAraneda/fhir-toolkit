@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * The people who performed the procedure
  * 
  *
- * @see https://hl7.org/fhir/R4/procedureperformer.html
+ * @see https://hl7.org/fhir/R4B/procedureperformer.html
  */
 export interface IProcedurePerformer extends IBackboneElement {
   /**

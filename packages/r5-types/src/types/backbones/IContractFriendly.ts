@@ -7,7 +7,7 @@ import type { IAttachment } from '../datatypes/IAttachment.js';
  * Contract Friendly Language
  * 
  *
- * @see https://hl7.org/fhir/R4/contractfriendly.html
+ * @see https://hl7.org/fhir/R5/contractfriendly.html
  */
 export interface IContractFriendly extends IBackboneElement {
   /**

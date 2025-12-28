@@ -21,7 +21,7 @@ const STRUCTURE_MAP_GROUP_RULE_TARGET_PARAMETER_PROPERTIES = [
 /**
  * StructureMapGroupRuleTargetParameter - Parameters to the transform
  *
- * @see https://hl7.org/fhir/R4/structuremapgroupruletargetparameter.html
+ * @see https://hl7.org/fhir/R4B/structuremapgroupruletargetparameter.html
  *
  * @example
  * const structureMapGroupRuleTargetParameter = new StructureMapGroupRuleTargetParameter({

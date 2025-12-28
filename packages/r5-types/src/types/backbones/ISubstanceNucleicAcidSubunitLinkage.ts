@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * The linkages between sugar residues will also be captured
  * 
  *
- * @see https://hl7.org/fhir/R4/substancenucleicacidsubunitlinkage.html
+ * @see https://hl7.org/fhir/R5/substancenucleicacidsubunitlinkage.html
  */
 export interface ISubstanceNucleicAcidSubunitLinkage extends IBackboneElement {
   /**

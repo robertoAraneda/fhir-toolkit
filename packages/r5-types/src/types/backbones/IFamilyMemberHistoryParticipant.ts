@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who or what participated in the activities related to the family member history and how they were involved
  * 
  *
- * @see https://hl7.org/fhir/R4/familymemberhistoryparticipant.html
+ * @see https://hl7.org/fhir/R5/familymemberhistoryparticipant.html
  */
 export interface IFamilyMemberHistoryParticipant extends IBackboneElement {
   /**

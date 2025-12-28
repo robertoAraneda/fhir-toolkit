@@ -17,7 +17,7 @@ const CAPABILITY_STATEMENT_REST_RESOURCE_OPERATION_PROPERTIES = [
 /**
  * CapabilityStatementRestResourceOperation - Definition of a resource operation
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrestresourceoperation.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementrestresourceoperation.html
  *
  * @example
  * const capabilityStatementRestResourceOperation = new CapabilityStatementRestResourceOperation({

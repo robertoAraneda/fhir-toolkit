@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * For Composite resources to define the parts
  * 
  *
- * @see https://hl7.org/fhir/R4/searchparametercomponent.html
+ * @see https://hl7.org/fhir/R5/searchparametercomponent.html
  */
 export interface ISearchParameterComponent extends IBackboneElement {
   /**

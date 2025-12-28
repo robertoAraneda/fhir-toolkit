@@ -17,7 +17,7 @@ const TEST_PLAN_TEST_CASE_TEST_RUN_SCRIPT_PROPERTIES = [
 /**
  * TestPlanTestCaseTestRunScript - The test cases in a structured language e.g. gherkin, Postman, or FHIR TestScript
  *
- * @see https://hl7.org/fhir/R4/testplantestcasetestrunscript.html
+ * @see https://hl7.org/fhir/R5/testplantestcasetestrunscript.html
  *
  * @example
  * const testPlanTestCaseTestRunScript = new TestPlanTestCaseTestRunScript({

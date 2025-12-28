@@ -15,7 +15,7 @@ const TERMINOLOGY_CAPABILITIES_SOFTWARE_PROPERTIES = [
 /**
  * TerminologyCapabilitiesSoftware - Software that is covered by this terminology capability statement
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiessoftware.html
+ * @see https://hl7.org/fhir/R5/terminologycapabilitiessoftware.html
  *
  * @example
  * const terminologyCapabilitiesSoftware = new TerminologyCapabilitiesSoftware({

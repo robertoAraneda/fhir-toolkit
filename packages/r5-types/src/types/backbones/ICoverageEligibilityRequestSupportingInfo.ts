@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Supporting information
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityrequestsupportinginfo.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityrequestsupportinginfo.html
  */
 export interface ICoverageEligibilityRequestSupportingInfo extends IBackboneElement {
   /**

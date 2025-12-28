@@ -14,7 +14,7 @@ const DOCUMENT_REFERENCE_RELATES_TO_PROPERTIES = [
 /**
  * DocumentReferenceRelatesTo - Relationships to other documents
  *
- * @see https://hl7.org/fhir/R4/documentreferencerelatesto.html
+ * @see https://hl7.org/fhir/R5/documentreferencerelatesto.html
  *
  * @example
  * const documentReferenceRelatesTo = new DocumentReferenceRelatesTo({

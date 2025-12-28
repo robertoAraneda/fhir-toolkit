@@ -7,7 +7,7 @@ import type { DocumentModeType } from '../../valuesets/index.js';
  * Document definition
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementdocument.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementdocument.html
  */
 export interface ICapabilityStatementDocument extends IBackboneElement {
   /**

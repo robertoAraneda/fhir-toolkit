@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Information on the possible cause of the event
  * 
  *
- * @see https://hl7.org/fhir/R4/adverseeventsuspectentitycausality.html
+ * @see https://hl7.org/fhir/R5/adverseeventsuspectentitycausality.html
  */
 export interface IAdverseEventSuspectEntityCausality extends IBackboneElement {
   /**

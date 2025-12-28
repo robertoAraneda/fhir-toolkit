@@ -14,7 +14,7 @@ const MEDICATION_KNOWLEDGE_MONOGRAPH_PROPERTIES = [
 /**
  * MedicationKnowledgeMonograph - Associated documentation about the medication
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgemonograph.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgemonograph.html
  *
  * @example
  * const medicationKnowledgeMonograph = new MedicationKnowledgeMonograph({

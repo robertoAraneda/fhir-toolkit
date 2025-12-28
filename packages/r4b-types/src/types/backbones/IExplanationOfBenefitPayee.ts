@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Recipient of benefits payable
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitpayee.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitpayee.html
  */
 export interface IExplanationOfBenefitPayee extends IBackboneElement {
   /**

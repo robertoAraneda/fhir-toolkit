@@ -41,7 +41,7 @@ const MOLECULAR_SEQUENCE_QUALITY_PROPERTIES = [
 /**
  * MolecularSequenceQuality - An set of value as quality of sequence
  *
- * @see https://hl7.org/fhir/R4/molecularsequencequality.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencequality.html
  *
  * @example
  * const molecularSequenceQuality = new MolecularSequenceQuality({

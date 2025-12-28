@@ -8,7 +8,7 @@ import type { ISubstanceDefinitionStructureRepresentation } from './ISubstanceDe
  * Structural information
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionstructure.html
+ * @see https://hl7.org/fhir/R5/substancedefinitionstructure.html
  */
 export interface ISubstanceDefinitionStructure extends IBackboneElement {
   /**

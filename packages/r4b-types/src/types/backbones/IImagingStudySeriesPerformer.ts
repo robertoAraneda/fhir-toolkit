@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who performed the series
  * 
  *
- * @see https://hl7.org/fhir/R4/imagingstudyseriesperformer.html
+ * @see https://hl7.org/fhir/R4B/imagingstudyseriesperformer.html
  */
 export interface IImagingStudySeriesPerformer extends IBackboneElement {
   /**

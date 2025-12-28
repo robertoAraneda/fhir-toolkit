@@ -120,7 +120,7 @@ const TASK_INPUT_PROPERTIES = [
 /**
  * TaskInput - Information used to perform task
  *
- * @see https://hl7.org/fhir/R4/taskinput.html
+ * @see https://hl7.org/fhir/R5/taskinput.html
  *
  * @example
  * const taskInput = new TaskInput({

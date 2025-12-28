@@ -9,7 +9,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Todo
  * 
  *
- * @see https://hl7.org/fhir/R4/substancereferenceinformationtarget.html
+ * @see https://hl7.org/fhir/R5/substancereferenceinformationtarget.html
  */
 export interface ISubstanceReferenceInformationTarget extends IBackboneElement {
   /**

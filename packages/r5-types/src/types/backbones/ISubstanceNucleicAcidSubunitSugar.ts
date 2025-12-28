@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * 5.3.6.8.1 Sugar ID (Mandatory)
  * 
  *
- * @see https://hl7.org/fhir/R4/substancenucleicacidsubunitsugar.html
+ * @see https://hl7.org/fhir/R5/substancenucleicacidsubunitsugar.html
  */
 export interface ISubstanceNucleicAcidSubunitSugar extends IBackboneElement {
   /**

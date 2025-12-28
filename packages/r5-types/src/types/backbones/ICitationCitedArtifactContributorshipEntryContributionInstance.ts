@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Contributions with accounting for time or number
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorshipentrycontributioninstance.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactcontributorshipentrycontributioninstance.html
  */
 export interface ICitationCitedArtifactContributorshipEntryContributionInstance extends IBackboneElement {
   /**

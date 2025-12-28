@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who performed the medication administration and what they did
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationadministrationperformer.html
+ * @see https://hl7.org/fhir/R4B/medicationadministrationperformer.html
  */
 export interface IMedicationAdministrationPerformer extends IBackboneElement {
   /**

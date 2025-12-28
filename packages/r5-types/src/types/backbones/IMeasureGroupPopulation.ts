@@ -7,7 +7,7 @@ import type { IExpression } from '../datatypes/IExpression.js';
  * Population criteria
  * 
  *
- * @see https://hl7.org/fhir/R4/measuregrouppopulation.html
+ * @see https://hl7.org/fhir/R5/measuregrouppopulation.html
  */
 export interface IMeasureGroupPopulation extends IBackboneElement {
   /**

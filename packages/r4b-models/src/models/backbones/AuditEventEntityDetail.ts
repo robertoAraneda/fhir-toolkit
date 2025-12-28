@@ -17,7 +17,7 @@ const AUDIT_EVENT_ENTITY_DETAIL_PROPERTIES = [
 /**
  * AuditEventEntityDetail - Additional Information about the entity
  *
- * @see https://hl7.org/fhir/R4/auditevententitydetail.html
+ * @see https://hl7.org/fhir/R4B/auditevententitydetail.html
  *
  * @example
  * const auditEventEntityDetail = new AuditEventEntityDetail({

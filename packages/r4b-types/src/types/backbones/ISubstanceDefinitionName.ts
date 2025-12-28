@@ -7,7 +7,7 @@ import type { ISubstanceDefinitionNameOfficial } from './ISubstanceDefinitionNam
  * Names applicable to this substance
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionname.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionname.html
  */
 export interface ISubstanceDefinitionName extends IBackboneElement {
   /**

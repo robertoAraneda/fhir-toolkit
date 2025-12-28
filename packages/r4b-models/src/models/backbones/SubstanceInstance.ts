@@ -17,7 +17,7 @@ const SUBSTANCE_INSTANCE_PROPERTIES = [
 /**
  * SubstanceInstance - If this describes a specific package/container of the substance
  *
- * @see https://hl7.org/fhir/R4/substanceinstance.html
+ * @see https://hl7.org/fhir/R4B/substanceinstance.html
  *
  * @example
  * const substanceInstance = new SubstanceInstance({

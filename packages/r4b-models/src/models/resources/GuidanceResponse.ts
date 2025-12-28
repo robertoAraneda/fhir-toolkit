@@ -38,7 +38,7 @@ const GUIDANCE_RESPONSE_PROPERTIES = [
 /**
  * GuidanceResponse - A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.
  *
- * @see https://hl7.org/fhir/R4/guidanceresponse.html
+ * @see https://hl7.org/fhir/R4B/guidanceresponse.html
  *
  * @example
  * const guidanceResponse = new GuidanceResponse({

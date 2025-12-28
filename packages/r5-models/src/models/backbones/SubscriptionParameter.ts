@@ -15,7 +15,7 @@ const SUBSCRIPTION_PARAMETER_PROPERTIES = [
 /**
  * SubscriptionParameter - Channel type
  *
- * @see https://hl7.org/fhir/R4/subscriptionparameter.html
+ * @see https://hl7.org/fhir/R5/subscriptionparameter.html
  *
  * @example
  * const subscriptionParameter = new SubscriptionParameter({

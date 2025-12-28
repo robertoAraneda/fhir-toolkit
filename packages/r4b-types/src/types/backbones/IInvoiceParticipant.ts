@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Participant in creation of this Invoice
  * 
  *
- * @see https://hl7.org/fhir/R4/invoiceparticipant.html
+ * @see https://hl7.org/fhir/R4B/invoiceparticipant.html
  */
 export interface IInvoiceParticipant extends IBackboneElement {
   /**

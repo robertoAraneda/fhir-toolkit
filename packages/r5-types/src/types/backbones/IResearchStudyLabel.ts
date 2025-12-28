@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Additional names for the study
  * 
  *
- * @see https://hl7.org/fhir/R4/researchstudylabel.html
+ * @see https://hl7.org/fhir/R5/researchstudylabel.html
  */
 export interface IResearchStudyLabel extends IBackboneElement {
   /**

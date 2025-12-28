@@ -18,7 +18,7 @@ const MEDICATION_KNOWLEDGE_REGULATORY_PROPERTIES = [
 /**
  * MedicationKnowledgeRegulatory - Regulatory information about a medication
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeregulatory.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgeregulatory.html
  *
  * @example
  * const medicationKnowledgeRegulatory = new MedicationKnowledgeRegulatory({

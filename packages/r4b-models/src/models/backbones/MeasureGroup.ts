@@ -19,7 +19,7 @@ const MEASURE_GROUP_PROPERTIES = [
 /**
  * MeasureGroup - Population criteria group
  *
- * @see https://hl7.org/fhir/R4/measuregroup.html
+ * @see https://hl7.org/fhir/R4B/measuregroup.html
  *
  * @example
  * const measureGroup = new MeasureGroup({

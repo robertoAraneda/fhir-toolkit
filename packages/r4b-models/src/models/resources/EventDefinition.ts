@@ -64,7 +64,7 @@ const EVENT_DEFINITION_PROPERTIES = [
 /**
  * EventDefinition - The EventDefinition resource provides a reusable description of when a particular event can occur.
  *
- * @see https://hl7.org/fhir/R4/eventdefinition.html
+ * @see https://hl7.org/fhir/R4B/eventdefinition.html
  *
  * @example
  * const eventDefinition = new EventDefinition({

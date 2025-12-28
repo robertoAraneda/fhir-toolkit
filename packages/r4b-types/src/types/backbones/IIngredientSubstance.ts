@@ -8,7 +8,7 @@ import type { IIngredientSubstanceStrength } from './IIngredientSubstanceStrengt
  * The substance that comprises this ingredient
  * 
  *
- * @see https://hl7.org/fhir/R4/ingredientsubstance.html
+ * @see https://hl7.org/fhir/R4B/ingredientsubstance.html
  */
 export interface IIngredientSubstance extends IBackboneElement {
   /**

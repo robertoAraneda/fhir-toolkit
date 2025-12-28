@@ -18,7 +18,7 @@ const DEVICE_DEFINITION_CHARGE_ITEM_PROPERTIES = [
 /**
  * DeviceDefinitionChargeItem - Billing code or reference associated with the device
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionchargeitem.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionchargeitem.html
  *
  * @example
  * const deviceDefinitionChargeItem = new DeviceDefinitionChargeItem({

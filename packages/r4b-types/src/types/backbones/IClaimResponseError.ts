@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Processing errors
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponseerror.html
+ * @see https://hl7.org/fhir/R4B/claimresponseerror.html
  */
 export interface IClaimResponseError extends IBackboneElement {
   /**

@@ -11,7 +11,7 @@ import type { IBiologicallyDerivedProductProperty } from '../backbones/IBiologic
 into another (possibly the same) biological entity.
  * 
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproduct.html
+ * @see https://hl7.org/fhir/R5/biologicallyderivedproduct.html
  */
 export interface IBiologicallyDerivedProduct extends IDomainResource {
   /**

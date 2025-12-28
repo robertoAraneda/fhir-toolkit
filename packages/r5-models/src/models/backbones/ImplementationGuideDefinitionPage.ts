@@ -25,7 +25,7 @@ const IMPLEMENTATION_GUIDE_DEFINITION_PAGE_PROPERTIES = [
 /**
  * ImplementationGuideDefinitionPage - Page/Section in the Guide
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitionpage.html
+ * @see https://hl7.org/fhir/R5/implementationguidedefinitionpage.html
  *
  * @example
  * const implementationGuideDefinitionPage = new ImplementationGuideDefinitionPage({

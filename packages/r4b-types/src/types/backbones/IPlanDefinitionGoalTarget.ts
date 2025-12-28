@@ -9,7 +9,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Target outcome for the goal
  * 
  *
- * @see https://hl7.org/fhir/R4/plandefinitiongoaltarget.html
+ * @see https://hl7.org/fhir/R4B/plandefinitiongoaltarget.html
  */
 export interface IPlanDefinitionGoalTarget extends IBackboneElement {
   /**

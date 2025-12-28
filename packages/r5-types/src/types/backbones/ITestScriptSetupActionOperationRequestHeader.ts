@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Each operation can have one or more header elements
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptsetupactionoperationrequestheader.html
+ * @see https://hl7.org/fhir/R5/testscriptsetupactionoperationrequestheader.html
  */
 export interface ITestScriptSetupActionOperationRequestHeader extends IBackboneElement {
   /**

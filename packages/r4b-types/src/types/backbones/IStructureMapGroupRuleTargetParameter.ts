@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Parameters to the transform
  * 
  *
- * @see https://hl7.org/fhir/R4/structuremapgroupruletargetparameter.html
+ * @see https://hl7.org/fhir/R4B/structuremapgroupruletargetparameter.html
  */
 export interface IStructureMapGroupRuleTargetParameter extends IBackboneElement {
   /**

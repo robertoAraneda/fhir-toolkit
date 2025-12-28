@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Whether a substitution was performed on the dispense
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationdispensesubstitution.html
+ * @see https://hl7.org/fhir/R4B/medicationdispensesubstitution.html
  */
 export interface IMedicationDispenseSubstitution extends IBackboneElement {
   /**

@@ -20,7 +20,7 @@ const DEVICE_DEFINITION_REGULATORY_IDENTIFIER_PROPERTIES = [
 /**
  * DeviceDefinitionRegulatoryIdentifier - Regulatory identifier(s) associated with this device
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionregulatoryidentifier.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionregulatoryidentifier.html
  *
  * @example
  * const deviceDefinitionRegulatoryIdentifier = new DeviceDefinitionRegulatoryIdentifier({

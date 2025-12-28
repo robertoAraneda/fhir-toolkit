@@ -11,7 +11,7 @@ import type { AccountStatusType } from '../../valuesets/index.js';
  * A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centers, etc.
  * 
  *
- * @see https://hl7.org/fhir/R4/account.html
+ * @see https://hl7.org/fhir/R4B/account.html
  */
 export interface IAccount extends IDomainResource {
   /**

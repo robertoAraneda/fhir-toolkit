@@ -14,7 +14,7 @@ const CONSENT_PROVISION_ACTOR_PROPERTIES = [
 /**
  * ConsentProvisionActor - Who|what controlled by this rule (or group, by role)
  *
- * @see https://hl7.org/fhir/R4/consentprovisionactor.html
+ * @see https://hl7.org/fhir/R4B/consentprovisionactor.html
  *
  * @example
  * const consentProvisionActor = new ConsentProvisionActor({

@@ -15,7 +15,7 @@ const TEST_SCRIPT_SETUP_ACTION_OPERATION_REQUEST_HEADER_PROPERTIES = [
 /**
  * TestScriptSetupActionOperationRequestHeader - Each operation can have one or more header elements
  *
- * @see https://hl7.org/fhir/R4/testscriptsetupactionoperationrequestheader.html
+ * @see https://hl7.org/fhir/R5/testscriptsetupactionoperationrequestheader.html
  *
  * @example
  * const testScriptSetupActionOperationRequestHeader = new TestScriptSetupActionOperationRequestHeader({

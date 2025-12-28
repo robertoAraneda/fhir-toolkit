@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Not available during this time due to provided reason
  * 
  *
- * @see https://hl7.org/fhir/R4/healthcareservicenotavailable.html
+ * @see https://hl7.org/fhir/R4B/healthcareservicenotavailable.html
  */
 export interface IHealthcareServiceNotAvailable extends IBackboneElement {
   /**

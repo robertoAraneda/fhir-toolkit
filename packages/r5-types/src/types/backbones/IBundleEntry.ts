@@ -10,7 +10,7 @@ import type { IBundleLink } from './IBundleLink.js';
  * Entry in the bundle - will have a resource or information
  * 
  *
- * @see https://hl7.org/fhir/R4/bundleentry.html
+ * @see https://hl7.org/fhir/R5/bundleentry.html
  */
 export interface IBundleEntry extends IBackboneElement {
   /**

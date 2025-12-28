@@ -17,7 +17,7 @@ const EPISODE_OF_CARE_DIAGNOSIS_PROPERTIES = [
 /**
  * EpisodeOfCareDiagnosis - The list of diagnosis relevant to this episode of care
  *
- * @see https://hl7.org/fhir/R4/episodeofcarediagnosis.html
+ * @see https://hl7.org/fhir/R4B/episodeofcarediagnosis.html
  *
  * @example
  * const episodeOfCareDiagnosis = new EpisodeOfCareDiagnosis({

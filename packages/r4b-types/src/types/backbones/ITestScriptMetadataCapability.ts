@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Capabilities  that are assumed to function correctly on the FHIR server being tested
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptmetadatacapability.html
+ * @see https://hl7.org/fhir/R4B/testscriptmetadatacapability.html
  */
 export interface ITestScriptMetadataCapability extends IBackboneElement {
   /**

@@ -30,7 +30,7 @@ const EVIDENCE_STATISTIC_PROPERTIES = [
 /**
  * EvidenceStatistic - Values and parameters for a single statistic
  *
- * @see https://hl7.org/fhir/R4/evidencestatistic.html
+ * @see https://hl7.org/fhir/R5/evidencestatistic.html
  *
  * @example
  * const evidenceStatistic = new EvidenceStatistic({

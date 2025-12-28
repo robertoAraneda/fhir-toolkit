@@ -17,7 +17,7 @@ const MEASURE_REPORT_GROUP_POPULATION_PROPERTIES = [
 /**
  * MeasureReportGroupPopulation - The populations in the group
  *
- * @see https://hl7.org/fhir/R4/measurereportgrouppopulation.html
+ * @see https://hl7.org/fhir/R4B/measurereportgrouppopulation.html
  *
  * @example
  * const measureReportGroupPopulation = new MeasureReportGroupPopulation({

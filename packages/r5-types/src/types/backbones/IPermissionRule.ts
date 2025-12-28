@@ -9,7 +9,7 @@ import type { ConsentProvisionTypeType } from '../../valuesets/index.js';
  * Constraints to the Permission
  * 
  *
- * @see https://hl7.org/fhir/R4/permissionrule.html
+ * @see https://hl7.org/fhir/R5/permissionrule.html
  */
 export interface IPermissionRule extends IBackboneElement {
   /**

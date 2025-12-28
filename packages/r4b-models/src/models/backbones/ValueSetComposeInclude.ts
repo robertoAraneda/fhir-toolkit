@@ -21,7 +21,7 @@ const VALUE_SET_COMPOSE_INCLUDE_PROPERTIES = [
 /**
  * ValueSetComposeInclude - Include one or more codes from a code system or other value set(s)
  *
- * @see https://hl7.org/fhir/R4/valuesetcomposeinclude.html
+ * @see https://hl7.org/fhir/R4B/valuesetcomposeinclude.html
  *
  * @example
  * const valueSetComposeInclude = new ValueSetComposeInclude({

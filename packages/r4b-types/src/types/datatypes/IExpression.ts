@@ -6,7 +6,7 @@ import type { IElement } from '../../base/index.js';
  * A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used.
  * 
  *
- * @see https://hl7.org/fhir/R4/expression.html
+ * @see https://hl7.org/fhir/R4B/expression.html
  */
 export interface IExpression extends IElement {
   /**

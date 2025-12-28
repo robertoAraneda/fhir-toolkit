@@ -15,7 +15,7 @@ const TEST_REPORT_SETUP_ACTION_ASSERT_REQUIREMENT_PROPERTIES = [
 /**
  * TestReportSetupActionAssertRequirement - Links or references to the testing requirements
  *
- * @see https://hl7.org/fhir/R4/testreportsetupactionassertrequirement.html
+ * @see https://hl7.org/fhir/R5/testreportsetupactionassertrequirement.html
  *
  * @example
  * const testReportSetupActionAssertRequirement = new TestReportSetupActionAssertRequirement({

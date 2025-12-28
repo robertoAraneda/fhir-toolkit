@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Defined path through the study for a subject
  * 
  *
- * @see https://hl7.org/fhir/R4/researchstudyarm.html
+ * @see https://hl7.org/fhir/R4B/researchstudyarm.html
  */
 export interface IResearchStudyArm extends IBackboneElement {
   /**

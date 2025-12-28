@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Indication of the artifact(s) that are tested by this test case
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptscope.html
+ * @see https://hl7.org/fhir/R5/testscriptscope.html
  */
 export interface ITestScriptScope extends IBackboneElement {
   /**

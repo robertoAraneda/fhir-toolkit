@@ -12,7 +12,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * A Map of relationships between 2 structures that can be used to transform data.
  * 
  *
- * @see https://hl7.org/fhir/R4/structuremap.html
+ * @see https://hl7.org/fhir/R4B/structuremap.html
  */
 export interface IStructureMap extends IDomainResource {
   /**

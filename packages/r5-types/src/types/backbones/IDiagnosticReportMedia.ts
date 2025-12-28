@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Key images or data associated with this report
  * 
  *
- * @see https://hl7.org/fhir/R4/diagnosticreportmedia.html
+ * @see https://hl7.org/fhir/R5/diagnosticreportmedia.html
  */
 export interface IDiagnosticReportMedia extends IBackboneElement {
   /**

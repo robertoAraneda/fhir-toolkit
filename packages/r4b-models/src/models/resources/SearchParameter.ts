@@ -68,7 +68,7 @@ const SEARCH_PARAMETER_PROPERTIES = [
 /**
  * SearchParameter - A search parameter that defines a named search item that can be used to search/filter on a resource.
  *
- * @see https://hl7.org/fhir/R4/searchparameter.html
+ * @see https://hl7.org/fhir/R4B/searchparameter.html
  *
  * @example
  * const searchParameter = new SearchParameter({

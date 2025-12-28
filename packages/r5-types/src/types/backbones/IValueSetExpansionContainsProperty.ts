@@ -7,7 +7,7 @@ import type { IValueSetExpansionContainsPropertySubProperty } from './IValueSetE
  * Property value for the concept
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansioncontainsproperty.html
+ * @see https://hl7.org/fhir/R5/valuesetexpansioncontainsproperty.html
  */
 export interface IValueSetExpansionContainsProperty extends IBackboneElement {
   /**

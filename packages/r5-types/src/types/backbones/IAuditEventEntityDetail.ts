@@ -10,7 +10,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * Additional Information about the entity
  * 
  *
- * @see https://hl7.org/fhir/R4/auditevententitydetail.html
+ * @see https://hl7.org/fhir/R5/auditevententitydetail.html
  */
 export interface IAuditEventEntityDetail extends IBackboneElement {
   /**

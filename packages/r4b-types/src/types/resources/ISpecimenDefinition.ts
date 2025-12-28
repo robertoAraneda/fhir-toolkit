@@ -8,7 +8,7 @@ import type { ISpecimenDefinitionTypeTested } from '../backbones/ISpecimenDefini
  * A kind of specimen with associated set of requirements.
  * 
  *
- * @see https://hl7.org/fhir/R4/specimendefinition.html
+ * @see https://hl7.org/fhir/R4B/specimendefinition.html
  */
 export interface ISpecimenDefinition extends IDomainResource {
   /**

@@ -17,7 +17,7 @@ const CAPABILITY_STATEMENT_REST_SECURITY_PROPERTIES = [
 /**
  * CapabilityStatementRestSecurity - Information about security of implementation
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrestsecurity.html
+ * @see https://hl7.org/fhir/R4B/capabilitystatementrestsecurity.html
  *
  * @example
  * const capabilityStatementRestSecurity = new CapabilityStatementRestSecurity({

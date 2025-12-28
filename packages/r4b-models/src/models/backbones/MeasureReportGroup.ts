@@ -18,7 +18,7 @@ const MEASURE_REPORT_GROUP_PROPERTIES = [
 /**
  * MeasureReportGroup - Measure results for each group
  *
- * @see https://hl7.org/fhir/R4/measurereportgroup.html
+ * @see https://hl7.org/fhir/R4B/measurereportgroup.html
  *
  * @example
  * const measureReportGroup = new MeasureReportGroup({

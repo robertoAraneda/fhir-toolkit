@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * The defined version of the cited artifact
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactversion.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactversion.html
  */
 export interface ICitationCitedArtifactVersion extends IBackboneElement {
   /**

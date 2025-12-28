@@ -8,7 +8,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Line items of this Invoice
  * 
  *
- * @see https://hl7.org/fhir/R4/invoicelineitem.html
+ * @see https://hl7.org/fhir/R5/invoicelineitem.html
  */
 export interface IInvoiceLineItem extends IBackboneElement {
   /**

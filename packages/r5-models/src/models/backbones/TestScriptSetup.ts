@@ -12,7 +12,7 @@ const TEST_SCRIPT_SETUP_PROPERTIES = [
 /**
  * TestScriptSetup - A series of required setup operations before tests are executed
  *
- * @see https://hl7.org/fhir/R4/testscriptsetup.html
+ * @see https://hl7.org/fhir/R5/testscriptsetup.html
  *
  * @example
  * const testScriptSetup = new TestScriptSetup({

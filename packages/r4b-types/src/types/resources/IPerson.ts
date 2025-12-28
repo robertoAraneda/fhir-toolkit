@@ -13,7 +13,7 @@ import type { AdministrativeGenderType } from '../../valuesets/index.js';
  * Demographics and administrative information about a person independent of a specific health-related context.
  * 
  *
- * @see https://hl7.org/fhir/R4/person.html
+ * @see https://hl7.org/fhir/R4B/person.html
  */
 export interface IPerson extends IDomainResource {
   /**

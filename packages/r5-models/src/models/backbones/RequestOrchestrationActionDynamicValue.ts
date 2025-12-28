@@ -15,7 +15,7 @@ const REQUEST_ORCHESTRATION_ACTION_DYNAMIC_VALUE_PROPERTIES = [
 /**
  * RequestOrchestrationActionDynamicValue - Dynamic aspects of the definition
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationactiondynamicvalue.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationactiondynamicvalue.html
  *
  * @example
  * const requestOrchestrationActionDynamicValue = new RequestOrchestrationActionDynamicValue({

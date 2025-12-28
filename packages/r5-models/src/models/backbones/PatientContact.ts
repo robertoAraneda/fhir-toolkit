@@ -26,7 +26,7 @@ const PATIENT_CONTACT_PROPERTIES = [
 /**
  * PatientContact - A contact party (e.g. guardian, partner, friend) for the patient
  *
- * @see https://hl7.org/fhir/R4/patientcontact.html
+ * @see https://hl7.org/fhir/R5/patientcontact.html
  *
  * @example
  * const patientContact = new PatientContact({

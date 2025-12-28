@@ -20,7 +20,7 @@ const GRAPH_DEFINITION_NODE_PROPERTIES = [
 /**
  * GraphDefinitionNode - Potential target for the link
  *
- * @see https://hl7.org/fhir/R4/graphdefinitionnode.html
+ * @see https://hl7.org/fhir/R5/graphdefinitionnode.html
  *
  * @example
  * const graphDefinitionNode = new GraphDefinitionNode({

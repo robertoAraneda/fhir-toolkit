@@ -22,7 +22,7 @@ const COVERAGE_COST_TO_BENEFICIARY_PROPERTIES = [
 /**
  * CoverageCostToBeneficiary - Patient payments for services/products
  *
- * @see https://hl7.org/fhir/R4/coveragecosttobeneficiary.html
+ * @see https://hl7.org/fhir/R5/coveragecosttobeneficiary.html
  *
  * @example
  * const coverageCostToBeneficiary = new CoverageCostToBeneficiary({

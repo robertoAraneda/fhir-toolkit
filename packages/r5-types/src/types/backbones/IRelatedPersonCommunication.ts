@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * A language which may be used to communicate with the related person about the patient's health
  * 
  *
- * @see https://hl7.org/fhir/R4/relatedpersoncommunication.html
+ * @see https://hl7.org/fhir/R5/relatedpersoncommunication.html
  */
 export interface IRelatedPersonCommunication extends IBackboneElement {
   /**

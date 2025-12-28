@@ -24,7 +24,7 @@ const DATA_REQUIREMENT_VALUE_FILTER_PROPERTIES = [
 /**
  * DataRequirementValueFilter - What values are expected
  *
- * @see https://hl7.org/fhir/R4/datarequirementvaluefilter.html
+ * @see https://hl7.org/fhir/R5/datarequirementvaluefilter.html
  *
  * @example
  * const dataRequirementValueFilter = new DataRequirementValueFilter({

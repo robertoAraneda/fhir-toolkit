@@ -22,7 +22,7 @@ const SUBSCRIPTION_TOPIC_RESOURCE_TRIGGER_QUERY_CRITERIA_PROPERTIES = [
 /**
  * SubscriptionTopicResourceTriggerQueryCriteria - Query based trigger rule
  *
- * @see https://hl7.org/fhir/R4/subscriptiontopicresourcetriggerquerycriteria.html
+ * @see https://hl7.org/fhir/R5/subscriptiontopicresourcetriggerquerycriteria.html
  *
  * @example
  * const subscriptionTopicResourceTriggerQueryCriteria = new SubscriptionTopicResourceTriggerQueryCriteria({

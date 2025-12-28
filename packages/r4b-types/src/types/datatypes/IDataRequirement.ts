@@ -9,7 +9,7 @@ import type { IDataRequirementSort } from '../backbones/IDataRequirementSort.js'
  * Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data.
  * 
  *
- * @see https://hl7.org/fhir/R4/datarequirement.html
+ * @see https://hl7.org/fhir/R4B/datarequirement.html
  */
 export interface IDataRequirement extends IElement {
   /**

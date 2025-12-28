@@ -15,7 +15,7 @@ const SPECIMEN_FEATURE_PROPERTIES = [
 /**
  * SpecimenFeature - The physical feature of a specimen
  *
- * @see https://hl7.org/fhir/R4/specimenfeature.html
+ * @see https://hl7.org/fhir/R5/specimenfeature.html
  *
  * @example
  * const specimenFeature = new SpecimenFeature({

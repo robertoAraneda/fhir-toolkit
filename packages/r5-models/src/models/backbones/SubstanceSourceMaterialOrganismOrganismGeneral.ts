@@ -15,7 +15,7 @@ const SUBSTANCE_SOURCE_MATERIAL_ORGANISM_ORGANISM_GENERAL_PROPERTIES = [
 /**
  * SubstanceSourceMaterialOrganismOrganismGeneral - 4.9.13.7.1 Kingdom (Conditional)
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialorganismorganismgeneral.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialorganismorganismgeneral.html
  *
  * @example
  * const substanceSourceMaterialOrganismOrganismGeneral = new SubstanceSourceMaterialOrganismOrganismGeneral({

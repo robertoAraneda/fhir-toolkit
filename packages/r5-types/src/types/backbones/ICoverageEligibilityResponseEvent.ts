@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Event information
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponseevent.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityresponseevent.html
  */
 export interface ICoverageEligibilityResponseEvent extends IBackboneElement {
   /**

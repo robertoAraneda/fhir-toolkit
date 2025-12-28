@@ -23,7 +23,7 @@ const CLAIM_RESPONSE_ITEM_PROPERTIES = [
 /**
  * ClaimResponseItem - Adjudication for claim line items
  *
- * @see https://hl7.org/fhir/R4/claimresponseitem.html
+ * @see https://hl7.org/fhir/R5/claimresponseitem.html
  *
  * @example
  * const claimResponseItem = new ClaimResponseItem({

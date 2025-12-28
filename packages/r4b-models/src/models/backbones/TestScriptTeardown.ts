@@ -12,7 +12,7 @@ const TEST_SCRIPT_TEARDOWN_PROPERTIES = [
 /**
  * TestScriptTeardown - A series of required clean up steps
  *
- * @see https://hl7.org/fhir/R4/testscriptteardown.html
+ * @see https://hl7.org/fhir/R4B/testscriptteardown.html
  *
  * @example
  * const testScriptTeardown = new TestScriptTeardown({

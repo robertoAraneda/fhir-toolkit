@@ -11,7 +11,7 @@ import type { DetectedIssueSeverityType, ObservationStatusType } from '../../val
  * Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.
  * 
  *
- * @see https://hl7.org/fhir/R4/detectedissue.html
+ * @see https://hl7.org/fhir/R4B/detectedissue.html
  */
 export interface IDetectedIssue extends IDomainResource {
   /**

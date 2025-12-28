@@ -8,7 +8,7 @@ import type { IMolecularSequenceStructureVariantOuter } from './IMolecularSequen
  * Structural variant
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequencestructurevariant.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencestructurevariant.html
  */
 export interface IMolecularSequenceStructureVariant extends IBackboneElement {
   /**

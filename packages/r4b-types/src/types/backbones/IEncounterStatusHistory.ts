@@ -8,7 +8,7 @@ import type { EncounterStatusType } from '../../valuesets/index.js';
  * List of past encounter statuses
  * 
  *
- * @see https://hl7.org/fhir/R4/encounterstatushistory.html
+ * @see https://hl7.org/fhir/R4B/encounterstatushistory.html
  */
 export interface IEncounterStatusHistory extends IBackboneElement {
   /**

@@ -35,7 +35,7 @@ const QUESTIONNAIRE_ITEM_INITIAL_PROPERTIES = [
 /**
  * QuestionnaireItemInitial - Initial value(s) when item is first rendered
  *
- * @see https://hl7.org/fhir/R4/questionnaireiteminitial.html
+ * @see https://hl7.org/fhir/R5/questionnaireiteminitial.html
  *
  * @example
  * const questionnaireItemInitial = new QuestionnaireItemInitial({

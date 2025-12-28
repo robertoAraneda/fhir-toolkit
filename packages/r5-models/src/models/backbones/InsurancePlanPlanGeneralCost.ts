@@ -19,7 +19,7 @@ const INSURANCE_PLAN_PLAN_GENERAL_COST_PROPERTIES = [
 /**
  * InsurancePlanPlanGeneralCost - Overall costs
  *
- * @see https://hl7.org/fhir/R4/insuranceplanplangeneralcost.html
+ * @see https://hl7.org/fhir/R5/insuranceplanplangeneralcost.html
  *
  * @example
  * const insurancePlanPlanGeneralCost = new InsurancePlanPlanGeneralCost({

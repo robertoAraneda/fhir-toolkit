@@ -9,7 +9,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Observation time from study start
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristictimefromstart.html
+ * @see https://hl7.org/fhir/R4B/evidencevariablecharacteristictimefromstart.html
  */
 export interface IEvidenceVariableCharacteristicTimeFromStart extends IBackboneElement {
   /**

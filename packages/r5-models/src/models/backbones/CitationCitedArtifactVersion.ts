@@ -15,7 +15,7 @@ const CITATION_CITED_ARTIFACT_VERSION_PROPERTIES = [
 /**
  * CitationCitedArtifactVersion - The defined version of the cited artifact
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactversion.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactversion.html
  *
  * @example
  * const citationCitedArtifactVersion = new CitationCitedArtifactVersion({

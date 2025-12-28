@@ -14,7 +14,7 @@ const DIAGNOSTIC_REPORT_SUPPORTING_INFO_PROPERTIES = [
 /**
  * DiagnosticReportSupportingInfo - Additional information supporting the diagnostic report
  *
- * @see https://hl7.org/fhir/R4/diagnosticreportsupportinginfo.html
+ * @see https://hl7.org/fhir/R5/diagnosticreportsupportinginfo.html
  *
  * @example
  * const diagnosticReportSupportingInfo = new DiagnosticReportSupportingInfo({

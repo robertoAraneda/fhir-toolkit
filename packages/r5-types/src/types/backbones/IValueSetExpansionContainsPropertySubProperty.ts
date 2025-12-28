@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement } from '../../base/index.js';
  * SubProperty value for the concept
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansioncontainspropertysubproperty.html
+ * @see https://hl7.org/fhir/R5/valuesetexpansioncontainspropertysubproperty.html
  */
 export interface IValueSetExpansionContainsPropertySubProperty extends IBackboneElement {
   /**

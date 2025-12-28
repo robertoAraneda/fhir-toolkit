@@ -14,7 +14,7 @@ const CHARGE_ITEM_PERFORMER_PROPERTIES = [
 /**
  * ChargeItemPerformer - Who performed charged service
  *
- * @see https://hl7.org/fhir/R4/chargeitemperformer.html
+ * @see https://hl7.org/fhir/R5/chargeitemperformer.html
  *
  * @example
  * const chargeItemPerformer = new ChargeItemPerformer({

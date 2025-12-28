@@ -7,7 +7,7 @@ import type { IRange } from './IRange.js';
  * A populatioof people with some set of grouping criteria.
  * 
  *
- * @see https://hl7.org/fhir/R4/population.html
+ * @see https://hl7.org/fhir/R4B/population.html
  */
 export interface IPopulation extends IBackboneElement {
   /**

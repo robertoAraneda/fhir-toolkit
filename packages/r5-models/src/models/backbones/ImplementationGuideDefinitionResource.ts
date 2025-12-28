@@ -26,7 +26,7 @@ const IMPLEMENTATION_GUIDE_DEFINITION_RESOURCE_PROPERTIES = [
 /**
  * ImplementationGuideDefinitionResource - Resource in the implementation guide
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitionresource.html
+ * @see https://hl7.org/fhir/R5/implementationguidedefinitionresource.html
  *
  * @example
  * const implementationGuideDefinitionResource = new ImplementationGuideDefinitionResource({

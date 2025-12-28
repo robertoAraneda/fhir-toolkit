@@ -20,7 +20,7 @@ const DOCUMENT_REFERENCE_CONTEXT_PROPERTIES = [
 /**
  * DocumentReferenceContext - Clinical context of document
  *
- * @see https://hl7.org/fhir/R4/documentreferencecontext.html
+ * @see https://hl7.org/fhir/R4B/documentreferencecontext.html
  *
  * @example
  * const documentReferenceContext = new DocumentReferenceContext({

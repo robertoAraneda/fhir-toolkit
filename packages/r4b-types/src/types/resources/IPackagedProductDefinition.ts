@@ -11,7 +11,7 @@ import type { IPackagedProductDefinitionPackage } from '../backbones/IPackagedPr
  * A medically related item or items, in a container or package.
  * 
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinition.html
+ * @see https://hl7.org/fhir/R4B/packagedproductdefinition.html
  */
 export interface IPackagedProductDefinition extends IDomainResource {
   /**

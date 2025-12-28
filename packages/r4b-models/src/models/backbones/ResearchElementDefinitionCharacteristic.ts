@@ -48,7 +48,7 @@ const RESEARCH_ELEMENT_DEFINITION_CHARACTERISTIC_PROPERTIES = [
 /**
  * ResearchElementDefinitionCharacteristic - What defines the members of the research element
  *
- * @see https://hl7.org/fhir/R4/researchelementdefinitioncharacteristic.html
+ * @see https://hl7.org/fhir/R4B/researchelementdefinitioncharacteristic.html
  *
  * @example
  * const researchElementDefinitionCharacteristic = new ResearchElementDefinitionCharacteristic({

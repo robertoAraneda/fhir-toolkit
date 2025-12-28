@@ -16,7 +16,7 @@ const CAPABILITY_STATEMENT_REST_INTERACTION_PROPERTIES = [
 /**
  * CapabilityStatementRestInteraction - What operations are supported?
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrestinteraction.html
+ * @see https://hl7.org/fhir/R4B/capabilitystatementrestinteraction.html
  *
  * @example
  * const capabilityStatementRestInteraction = new CapabilityStatementRestInteraction({

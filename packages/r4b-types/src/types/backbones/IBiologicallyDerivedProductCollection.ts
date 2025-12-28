@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * How this product was collected
  * 
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductcollection.html
+ * @see https://hl7.org/fhir/R4B/biologicallyderivedproductcollection.html
  */
 export interface IBiologicallyDerivedProductCollection extends IBackboneElement {
   /**

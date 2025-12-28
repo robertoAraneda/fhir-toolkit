@@ -10,7 +10,7 @@ import type { DeviceMetricCategoryType, DeviceMetricOperationalStatusType } from
  * Describes a measurement, calculation or setting capability of a device.
  * 
  *
- * @see https://hl7.org/fhir/R4/devicemetric.html
+ * @see https://hl7.org/fhir/R5/devicemetric.html
  */
 export interface IDeviceMetric extends IDomainResource {
   /**

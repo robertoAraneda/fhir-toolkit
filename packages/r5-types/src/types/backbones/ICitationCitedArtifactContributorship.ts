@@ -8,7 +8,7 @@ import type { ICitationCitedArtifactContributorshipSummary } from './ICitationCi
  * Attribution of authors and other contributors
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorship.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactcontributorship.html
  */
 export interface ICitationCitedArtifactContributorship extends IBackboneElement {
   /**

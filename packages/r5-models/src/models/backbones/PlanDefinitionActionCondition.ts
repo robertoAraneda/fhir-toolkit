@@ -16,7 +16,7 @@ const PLAN_DEFINITION_ACTION_CONDITION_PROPERTIES = [
 /**
  * PlanDefinitionActionCondition - Whether or not the action is applicable
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactioncondition.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactioncondition.html
  *
  * @example
  * const planDefinitionActionCondition = new PlanDefinitionActionCondition({

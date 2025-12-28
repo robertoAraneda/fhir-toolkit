@@ -27,7 +27,7 @@ const SUBSCRIPTION_STATUS_PROPERTIES = [
 /**
  * SubscriptionStatus - The SubscriptionStatus resource describes the state of a Subscription during notifications.
  *
- * @see https://hl7.org/fhir/R4/subscriptionstatus.html
+ * @see https://hl7.org/fhir/R4B/subscriptionstatus.html
  *
  * @example
  * const subscriptionStatus = new SubscriptionStatus({

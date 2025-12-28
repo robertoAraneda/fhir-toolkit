@@ -10,7 +10,7 @@ import type { IClaimResponseItemReviewOutcome } from './IClaimResponseItemReview
  * Adjudication for claim details
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponseitemdetail.html
+ * @see https://hl7.org/fhir/R5/claimresponseitemdetail.html
  */
 export interface IClaimResponseItemDetail extends IBackboneElement {
   /**

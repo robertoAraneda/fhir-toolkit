@@ -9,7 +9,7 @@ import type { StructureMapGroupTypeModeType } from '../../valuesets/index.js';
  * Named sections for reader convenience
  * 
  *
- * @see https://hl7.org/fhir/R4/structuremapgroup.html
+ * @see https://hl7.org/fhir/R4B/structuremapgroup.html
  */
 export interface IStructureMapGroup extends IBackboneElement {
   /**

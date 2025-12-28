@@ -12,7 +12,7 @@ const TEST_REPORT_SETUP_PROPERTIES = [
 /**
  * TestReportSetup - The results of the series of required setup operations before the tests were executed
  *
- * @see https://hl7.org/fhir/R4/testreportsetup.html
+ * @see https://hl7.org/fhir/R5/testreportsetup.html
  *
  * @example
  * const testReportSetup = new TestReportSetup({

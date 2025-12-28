@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * The collection the cited article or artifact is published in
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpublicationformpublishedin.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactpublicationformpublishedin.html
  */
 export interface ICitationCitedArtifactPublicationFormPublishedIn extends IBackboneElement {
   /**

@@ -23,7 +23,7 @@ const MESSAGE_HEADER_SOURCE_PROPERTIES = [
 /**
  * MessageHeaderSource - Message source application
  *
- * @see https://hl7.org/fhir/R4/messageheadersource.html
+ * @see https://hl7.org/fhir/R5/messageheadersource.html
  *
  * @example
  * const messageHeaderSource = new MessageHeaderSource({

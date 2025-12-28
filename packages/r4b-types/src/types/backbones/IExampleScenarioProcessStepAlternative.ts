@@ -7,7 +7,7 @@ import type { IExampleScenarioProcessStep } from './IExampleScenarioProcessStep.
  * Alternate non-typical step action
  * 
  *
- * @see https://hl7.org/fhir/R4/examplescenarioprocessstepalternative.html
+ * @see https://hl7.org/fhir/R4B/examplescenarioprocessstepalternative.html
  */
 export interface IExampleScenarioProcessStepAlternative extends IBackboneElement {
   /**

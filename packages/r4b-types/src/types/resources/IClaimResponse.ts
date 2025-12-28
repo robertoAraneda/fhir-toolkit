@@ -18,7 +18,7 @@ import type { FinancialResourceStatusType, RemittanceOutcomeType, UseType } from
  * This resource provides the adjudication details from the processing of a Claim resource.
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponse.html
+ * @see https://hl7.org/fhir/R4B/claimresponse.html
  */
 export interface IClaimResponse extends IDomainResource {
   /**

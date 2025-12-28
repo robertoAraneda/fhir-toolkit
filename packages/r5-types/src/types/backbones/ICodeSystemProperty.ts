@@ -7,7 +7,7 @@ import type { PropertyTypeType } from '../../valuesets/index.js';
  * Additional information supplied about each concept
  * 
  *
- * @see https://hl7.org/fhir/R4/codesystemproperty.html
+ * @see https://hl7.org/fhir/R5/codesystemproperty.html
  */
 export interface ICodeSystemProperty extends IBackboneElement {
   /**

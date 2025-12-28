@@ -15,7 +15,7 @@ const HEALTHCARE_SERVICE_NOT_AVAILABLE_PROPERTIES = [
 /**
  * HealthcareServiceNotAvailable - Not available during this time due to provided reason
  *
- * @see https://hl7.org/fhir/R4/healthcareservicenotavailable.html
+ * @see https://hl7.org/fhir/R4B/healthcareservicenotavailable.html
  *
  * @example
  * const healthcareServiceNotAvailable = new HealthcareServiceNotAvailable({

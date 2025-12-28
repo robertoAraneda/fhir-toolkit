@@ -18,7 +18,7 @@ The primary difference between a medicationstatement and a medicationadministrat
 The MedicationStatement resource was previously called MedicationStatement.
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationstatement.html
+ * @see https://hl7.org/fhir/R5/medicationstatement.html
  */
 export interface IMedicationStatement extends IDomainResource {
   /**

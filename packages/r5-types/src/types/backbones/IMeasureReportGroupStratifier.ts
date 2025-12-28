@@ -7,7 +7,7 @@ import type { IMeasureReportGroupStratifierStratum } from './IMeasureReportGroup
  * Stratification results
  * 
  *
- * @see https://hl7.org/fhir/R4/measurereportgroupstratifier.html
+ * @see https://hl7.org/fhir/R5/measurereportgroupstratifier.html
  */
 export interface IMeasureReportGroupStratifier extends IBackboneElement {
   /**

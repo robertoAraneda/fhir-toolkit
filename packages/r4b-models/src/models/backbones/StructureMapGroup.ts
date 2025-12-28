@@ -24,7 +24,7 @@ const STRUCTURE_MAP_GROUP_PROPERTIES = [
 /**
  * StructureMapGroup - Named sections for reader convenience
  *
- * @see https://hl7.org/fhir/R4/structuremapgroup.html
+ * @see https://hl7.org/fhir/R4B/structuremapgroup.html
  *
  * @example
  * const structureMapGroup = new StructureMapGroup({

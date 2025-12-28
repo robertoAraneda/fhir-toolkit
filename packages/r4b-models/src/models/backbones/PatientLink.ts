@@ -16,7 +16,7 @@ const PATIENT_LINK_PROPERTIES = [
 /**
  * PatientLink - Link to another patient resource that concerns the same actual person
  *
- * @see https://hl7.org/fhir/R4/patientlink.html
+ * @see https://hl7.org/fhir/R4B/patientlink.html
  *
  * @example
  * const patientLink = new PatientLink({

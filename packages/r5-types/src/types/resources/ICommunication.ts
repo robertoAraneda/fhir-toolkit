@@ -11,7 +11,7 @@ import type { EventStatusType, RequestPriorityType } from '../../valuesets/index
  * A clinical or business level record of information being transmitted or shared; e.g. an alert that was sent to a responsible provider, a public health agency communication to a provider/reporter in response to a case report for a reportable condition.
  * 
  *
- * @see https://hl7.org/fhir/R4/communication.html
+ * @see https://hl7.org/fhir/R5/communication.html
  */
 export interface ICommunication extends IDomainResource {
   /**

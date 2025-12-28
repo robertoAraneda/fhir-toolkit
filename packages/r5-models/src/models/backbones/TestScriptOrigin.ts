@@ -17,7 +17,7 @@ const TEST_SCRIPT_ORIGIN_PROPERTIES = [
 /**
  * TestScriptOrigin - An abstract server representing a client or sender in a message exchange
  *
- * @see https://hl7.org/fhir/R4/testscriptorigin.html
+ * @see https://hl7.org/fhir/R5/testscriptorigin.html
  *
  * @example
  * const testScriptOrigin = new TestScriptOrigin({

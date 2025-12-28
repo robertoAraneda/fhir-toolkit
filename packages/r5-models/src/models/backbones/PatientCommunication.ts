@@ -15,7 +15,7 @@ const PATIENT_COMMUNICATION_PROPERTIES = [
 /**
  * PatientCommunication - A language which may be used to communicate with the patient about his or her health
  *
- * @see https://hl7.org/fhir/R4/patientcommunication.html
+ * @see https://hl7.org/fhir/R5/patientcommunication.html
  *
  * @example
  * const patientCommunication = new PatientCommunication({

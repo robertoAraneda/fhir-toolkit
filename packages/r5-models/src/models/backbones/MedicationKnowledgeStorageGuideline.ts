@@ -19,7 +19,7 @@ const MEDICATION_KNOWLEDGE_STORAGE_GUIDELINE_PROPERTIES = [
 /**
  * MedicationKnowledgeStorageGuideline - How the medication should be stored
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgestorageguideline.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgestorageguideline.html
  *
  * @example
  * const medicationKnowledgeStorageGuideline = new MedicationKnowledgeStorageGuideline({

@@ -15,7 +15,7 @@ const MEDICATION_KNOWLEDGE_MONITORING_PROGRAM_PROPERTIES = [
 /**
  * MedicationKnowledgeMonitoringProgram - Program under which a medication is reviewed
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgemonitoringprogram.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgemonitoringprogram.html
  *
  * @example
  * const medicationKnowledgeMonitoringProgram = new MedicationKnowledgeMonitoringProgram({

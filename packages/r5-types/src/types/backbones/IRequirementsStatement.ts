@@ -7,7 +7,7 @@ import type { ConformanceExpectationType } from '../../valuesets/index.js';
  * Actual statement as markdown
  * 
  *
- * @see https://hl7.org/fhir/R4/requirementsstatement.html
+ * @see https://hl7.org/fhir/R5/requirementsstatement.html
  */
 export interface IRequirementsStatement extends IBackboneElement {
   /**

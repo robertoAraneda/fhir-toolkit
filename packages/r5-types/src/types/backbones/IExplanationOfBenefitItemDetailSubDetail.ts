@@ -11,7 +11,7 @@ import type { IExplanationOfBenefitItemReviewOutcome } from './IExplanationOfBen
  * Additional items
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefititemdetailsubdetail.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefititemdetailsubdetail.html
  */
 export interface IExplanationOfBenefitItemDetailSubDetail extends IBackboneElement {
   /**

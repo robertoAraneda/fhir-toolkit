@@ -7,7 +7,7 @@ import type { ITestReportTeardownAction } from './ITestReportTeardownAction.js';
  * The results of running the series of required clean up steps
  * 
  *
- * @see https://hl7.org/fhir/R4/testreportteardown.html
+ * @see https://hl7.org/fhir/R5/testreportteardown.html
  */
 export interface ITestReportTeardown extends IBackboneElement {
   /**

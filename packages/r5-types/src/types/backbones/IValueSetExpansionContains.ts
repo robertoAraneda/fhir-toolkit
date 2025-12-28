@@ -8,7 +8,7 @@ import type { IValueSetExpansionContainsProperty } from './IValueSetExpansionCon
  * Codes in the value set
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansioncontains.html
+ * @see https://hl7.org/fhir/R5/valuesetexpansioncontains.html
  */
 export interface IValueSetExpansionContains extends IBackboneElement {
   /**

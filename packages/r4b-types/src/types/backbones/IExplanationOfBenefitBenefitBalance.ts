@@ -7,7 +7,7 @@ import type { IExplanationOfBenefitBenefitBalanceFinancial } from './IExplanatio
  * Balance by Benefit Category
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitbenefitbalance.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitbenefitbalance.html
  */
 export interface IExplanationOfBenefitBenefitBalance extends IBackboneElement {
   /**

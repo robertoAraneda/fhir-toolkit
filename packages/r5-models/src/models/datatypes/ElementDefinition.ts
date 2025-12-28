@@ -367,7 +367,7 @@ const ELEMENT_DEFINITION_PROPERTIES = [
 /**
  * ElementDefinition - Captures constraints on each element within the resource, profile, or extension.
  *
- * @see https://hl7.org/fhir/R4/elementdefinition.html
+ * @see https://hl7.org/fhir/R5/elementdefinition.html
  *
  * @example
  * const elementDefinition = new ElementDefinition({

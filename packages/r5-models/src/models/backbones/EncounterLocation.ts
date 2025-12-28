@@ -20,7 +20,7 @@ const ENCOUNTER_LOCATION_PROPERTIES = [
 /**
  * EncounterLocation - List of locations where the patient has been
  *
- * @see https://hl7.org/fhir/R4/encounterlocation.html
+ * @see https://hl7.org/fhir/R5/encounterlocation.html
  *
  * @example
  * const encounterLocation = new EncounterLocation({

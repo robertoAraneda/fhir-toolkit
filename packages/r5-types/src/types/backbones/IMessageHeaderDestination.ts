@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Message destination application(s)
  * 
  *
- * @see https://hl7.org/fhir/R4/messageheaderdestination.html
+ * @see https://hl7.org/fhir/R5/messageheaderdestination.html
  */
 export interface IMessageHeaderDestination extends IBackboneElement {
   /**

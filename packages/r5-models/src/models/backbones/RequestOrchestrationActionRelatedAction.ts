@@ -22,7 +22,7 @@ const REQUEST_ORCHESTRATION_ACTION_RELATED_ACTION_PROPERTIES = [
 /**
  * RequestOrchestrationActionRelatedAction - Relationship to another action
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationactionrelatedaction.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationactionrelatedaction.html
  *
  * @example
  * const requestOrchestrationActionRelatedAction = new RequestOrchestrationActionRelatedAction({

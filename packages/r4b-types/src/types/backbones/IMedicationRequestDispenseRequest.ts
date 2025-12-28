@@ -10,7 +10,7 @@ import type { IMedicationRequestDispenseRequestInitialFill } from './IMedication
  * Medication supply authorization
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationrequestdispenserequest.html
+ * @see https://hl7.org/fhir/R4B/medicationrequestdispenserequest.html
  */
 export interface IMedicationRequestDispenseRequest extends IBackboneElement {
   /**

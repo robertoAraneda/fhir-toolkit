@@ -11,7 +11,7 @@ import type { ObservationStatusType } from '../../valuesets/index.js';
  * An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.
  * 
  *
- * @see https://hl7.org/fhir/R4/riskassessment.html
+ * @see https://hl7.org/fhir/R4B/riskassessment.html
  */
 export interface IRiskAssessment extends IDomainResource {
   /**

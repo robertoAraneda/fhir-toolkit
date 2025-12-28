@@ -14,7 +14,7 @@ const CONDITION_EVIDENCE_PROPERTIES = [
 /**
  * ConditionEvidence - Supporting evidence
  *
- * @see https://hl7.org/fhir/R4/conditionevidence.html
+ * @see https://hl7.org/fhir/R4B/conditionevidence.html
  *
  * @example
  * const conditionEvidence = new ConditionEvidence({

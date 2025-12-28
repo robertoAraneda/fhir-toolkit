@@ -15,7 +15,7 @@ const HEALTHCARE_SERVICE_ELIGIBILITY_PROPERTIES = [
 /**
  * HealthcareServiceEligibility - Specific eligibility requirements required to use the service
  *
- * @see https://hl7.org/fhir/R4/healthcareserviceeligibility.html
+ * @see https://hl7.org/fhir/R4B/healthcareserviceeligibility.html
  *
  * @example
  * const healthcareServiceEligibility = new HealthcareServiceEligibility({

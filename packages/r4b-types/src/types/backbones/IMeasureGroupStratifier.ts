@@ -8,7 +8,7 @@ import type { IMeasureGroupStratifierComponent } from './IMeasureGroupStratifier
  * Stratifier criteria for the measure
  * 
  *
- * @see https://hl7.org/fhir/R4/measuregroupstratifier.html
+ * @see https://hl7.org/fhir/R4B/measuregroupstratifier.html
  */
 export interface IMeasureGroupStratifier extends IBackboneElement {
   /**

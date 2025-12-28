@@ -14,7 +14,7 @@ const INSURANCE_PLAN_COVERAGE_BENEFIT_LIMIT_PROPERTIES = [
 /**
  * InsurancePlanCoverageBenefitLimit - Benefit limits
  *
- * @see https://hl7.org/fhir/R4/insuranceplancoveragebenefitlimit.html
+ * @see https://hl7.org/fhir/R5/insuranceplancoveragebenefitlimit.html
  *
  * @example
  * const insurancePlanCoverageBenefitLimit = new InsurancePlanCoverageBenefitLimit({

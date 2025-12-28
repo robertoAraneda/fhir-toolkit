@@ -9,7 +9,7 @@ import type { AllergyIntoleranceSeverityType } from '../../valuesets/index.js';
  * Adverse Reaction Events linked to exposure to substance
  * 
  *
- * @see https://hl7.org/fhir/R4/allergyintolerancereaction.html
+ * @see https://hl7.org/fhir/R5/allergyintolerancereaction.html
  */
 export interface IAllergyIntoleranceReaction extends IBackboneElement {
   /**

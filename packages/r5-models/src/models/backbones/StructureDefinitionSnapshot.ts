@@ -12,7 +12,7 @@ const STRUCTURE_DEFINITION_SNAPSHOT_PROPERTIES = [
 /**
  * StructureDefinitionSnapshot - Snapshot view of the structure
  *
- * @see https://hl7.org/fhir/R4/structuredefinitionsnapshot.html
+ * @see https://hl7.org/fhir/R5/structuredefinitionsnapshot.html
  *
  * @example
  * const structureDefinitionSnapshot = new StructureDefinitionSnapshot({

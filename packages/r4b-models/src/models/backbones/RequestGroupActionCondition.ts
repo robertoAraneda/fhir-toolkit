@@ -16,7 +16,7 @@ const REQUEST_GROUP_ACTION_CONDITION_PROPERTIES = [
 /**
  * RequestGroupActionCondition - Whether or not the action is applicable
  *
- * @see https://hl7.org/fhir/R4/requestgroupactioncondition.html
+ * @see https://hl7.org/fhir/R4B/requestgroupactioncondition.html
  *
  * @example
  * const requestGroupActionCondition = new RequestGroupActionCondition({

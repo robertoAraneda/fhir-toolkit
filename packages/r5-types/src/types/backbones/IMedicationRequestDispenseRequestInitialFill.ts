@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * First fill details
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationrequestdispenserequestinitialfill.html
+ * @see https://hl7.org/fhir/R5/medicationrequestdispenserequestinitialfill.html
  */
 export interface IMedicationRequestDispenseRequestInitialFill extends IBackboneElement {
   /**

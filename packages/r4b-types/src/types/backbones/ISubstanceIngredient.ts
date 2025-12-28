@@ -7,7 +7,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * Composition information about the substance
  * 
  *
- * @see https://hl7.org/fhir/R4/substanceingredient.html
+ * @see https://hl7.org/fhir/R4B/substanceingredient.html
  */
 export interface ISubstanceIngredient extends IBackboneElement {
   /**

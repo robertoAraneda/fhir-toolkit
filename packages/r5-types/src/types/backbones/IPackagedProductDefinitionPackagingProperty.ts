@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * General characteristics of this item
  * 
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionpackagingproperty.html
+ * @see https://hl7.org/fhir/R5/packagedproductdefinitionpackagingproperty.html
  */
 export interface IPackagedProductDefinitionPackagingProperty extends IBackboneElement {
   /**

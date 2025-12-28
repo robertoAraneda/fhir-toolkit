@@ -15,7 +15,7 @@ import type { ImmunizationStatusType } from '../../valuesets/index.js';
  * Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.
  * 
  *
- * @see https://hl7.org/fhir/R4/immunization.html
+ * @see https://hl7.org/fhir/R5/immunization.html
  */
 export interface IImmunization extends IDomainResource {
   /**

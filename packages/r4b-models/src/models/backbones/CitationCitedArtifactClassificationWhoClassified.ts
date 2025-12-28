@@ -19,7 +19,7 @@ const CITATION_CITED_ARTIFACT_CLASSIFICATION_WHO_CLASSIFIED_PROPERTIES = [
 /**
  * CitationCitedArtifactClassificationWhoClassified - Provenance and copyright of classification
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactclassificationwhoclassified.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactclassificationwhoclassified.html
  *
  * @example
  * const citationCitedArtifactClassificationWhoClassified = new CitationCitedArtifactClassificationWhoClassified({

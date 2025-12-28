@@ -21,7 +21,7 @@ const GRAPH_DEFINITION_LINK_TARGET_PROPERTIES = [
 /**
  * GraphDefinitionLinkTarget - Potential target for the link
  *
- * @see https://hl7.org/fhir/R4/graphdefinitionlinktarget.html
+ * @see https://hl7.org/fhir/R4B/graphdefinitionlinktarget.html
  *
  * @example
  * const graphDefinitionLinkTarget = new GraphDefinitionLinkTarget({

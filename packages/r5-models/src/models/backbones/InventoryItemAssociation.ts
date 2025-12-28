@@ -16,7 +16,7 @@ const INVENTORY_ITEM_ASSOCIATION_PROPERTIES = [
 /**
  * InventoryItemAssociation - Association with other items or products
  *
- * @see https://hl7.org/fhir/R4/inventoryitemassociation.html
+ * @see https://hl7.org/fhir/R5/inventoryitemassociation.html
  *
  * @example
  * const inventoryItemAssociation = new InventoryItemAssociation({

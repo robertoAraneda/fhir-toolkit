@@ -26,7 +26,7 @@ const SUBSTANCE_DEFINITION_MOIETY_PROPERTIES = [
 /**
  * SubstanceDefinitionMoiety - Moiety, for structural modifications
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionmoiety.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionmoiety.html
  *
  * @example
  * const substanceDefinitionMoiety = new SubstanceDefinitionMoiety({

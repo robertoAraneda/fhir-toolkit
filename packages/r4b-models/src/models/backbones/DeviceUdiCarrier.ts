@@ -24,7 +24,7 @@ const DEVICE_UDI_CARRIER_PROPERTIES = [
 /**
  * DeviceUdiCarrier - Unique Device Identifier (UDI) Barcode string
  *
- * @see https://hl7.org/fhir/R4/deviceudicarrier.html
+ * @see https://hl7.org/fhir/R4B/deviceudicarrier.html
  *
  * @example
  * const deviceUdiCarrier = new DeviceUdiCarrier({

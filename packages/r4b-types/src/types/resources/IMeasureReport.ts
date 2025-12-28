@@ -10,7 +10,7 @@ import type { MeasureImprovementNotationType, MeasureReportStatusType, MeasureRe
  * The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
  * 
  *
- * @see https://hl7.org/fhir/R4/measurereport.html
+ * @see https://hl7.org/fhir/R4B/measurereport.html
  */
 export interface IMeasureReport extends IDomainResource {
   /**

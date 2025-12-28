@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Constraints on fulfillment tasks
  * 
  *
- * @see https://hl7.org/fhir/R4/taskrestriction.html
+ * @see https://hl7.org/fhir/R4B/taskrestriction.html
  */
 export interface ITaskRestriction extends IBackboneElement {
   /**

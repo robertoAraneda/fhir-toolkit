@@ -21,7 +21,7 @@ const SUBSTANCE_SOURCE_MATERIAL_ORGANISM_HYBRID_PROPERTIES = [
 /**
  * SubstanceSourceMaterialOrganismHybrid - 4.9.13.8.1 Hybrid species maternal organism ID (Optional)
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialorganismhybrid.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialorganismhybrid.html
  *
  * @example
  * const substanceSourceMaterialOrganismHybrid = new SubstanceSourceMaterialOrganismHybrid({

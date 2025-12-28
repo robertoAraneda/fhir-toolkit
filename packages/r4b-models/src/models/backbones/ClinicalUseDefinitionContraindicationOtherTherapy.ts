@@ -14,7 +14,7 @@ const CLINICAL_USE_DEFINITION_CONTRAINDICATION_OTHER_THERAPY_PROPERTIES = [
 /**
  * ClinicalUseDefinitionContraindicationOtherTherapy - Information about use of the product in relation to other therapies described as part of the contraindication
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitioncontraindicationothertherapy.html
+ * @see https://hl7.org/fhir/R4B/clinicalusedefinitioncontraindicationothertherapy.html
  *
  * @example
  * const clinicalUseDefinitionContraindicationOtherTherapy = new ClinicalUseDefinitionContraindicationOtherTherapy({

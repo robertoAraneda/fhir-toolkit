@@ -19,7 +19,7 @@ const EVIDENCE_REPORT_RELATES_TO_TARGET_PROPERTIES = [
 /**
  * EvidenceReportRelatesToTarget - Target of the relationship
  *
- * @see https://hl7.org/fhir/R4/evidencereportrelatestotarget.html
+ * @see https://hl7.org/fhir/R5/evidencereportrelatestotarget.html
  *
  * @example
  * const evidenceReportRelatesToTarget = new EvidenceReportRelatesToTarget({

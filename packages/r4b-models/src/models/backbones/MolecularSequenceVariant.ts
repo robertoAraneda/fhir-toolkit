@@ -23,7 +23,7 @@ const MOLECULAR_SEQUENCE_VARIANT_PROPERTIES = [
 /**
  * MolecularSequenceVariant - Variant in sequence
  *
- * @see https://hl7.org/fhir/R4/molecularsequencevariant.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencevariant.html
  *
  * @example
  * const molecularSequenceVariant = new MolecularSequenceVariant({

@@ -73,7 +73,7 @@ const EVIDENCE_PROPERTIES = [
 /**
  * Evidence - The Evidence Resource provides a machine-interpretable expression of an evidence concept including the evidence variables (e.g., population, exposures/interventions, comparators, outcomes, measured variables, confounding variables), the statistics, and the certainty of this evidence.
  *
- * @see https://hl7.org/fhir/R4/evidence.html
+ * @see https://hl7.org/fhir/R5/evidence.html
  *
  * @example
  * const evidence = new Evidence({

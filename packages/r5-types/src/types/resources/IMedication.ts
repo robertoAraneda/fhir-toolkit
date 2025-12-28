@@ -11,7 +11,7 @@ import type { MedicationStatusType } from '../../valuesets/index.js';
  * This resource is primarily used for the identification and definition of a medication, including ingredients, for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.
  * 
  *
- * @see https://hl7.org/fhir/R4/medication.html
+ * @see https://hl7.org/fhir/R5/medication.html
  */
 export interface IMedication extends IDomainResource {
   /**

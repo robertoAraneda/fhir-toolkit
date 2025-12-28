@@ -108,7 +108,7 @@ const ACTIVITY_DEFINITION_PROPERTIES = [
 /**
  * ActivityDefinition - This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.
  *
- * @see https://hl7.org/fhir/R4/activitydefinition.html
+ * @see https://hl7.org/fhir/R4B/activitydefinition.html
  *
  * @example
  * const activityDefinition = new ActivityDefinition({

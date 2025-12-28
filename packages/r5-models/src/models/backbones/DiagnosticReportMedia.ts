@@ -15,7 +15,7 @@ const DIAGNOSTIC_REPORT_MEDIA_PROPERTIES = [
 /**
  * DiagnosticReportMedia - Key images or data associated with this report
  *
- * @see https://hl7.org/fhir/R4/diagnosticreportmedia.html
+ * @see https://hl7.org/fhir/R5/diagnosticreportmedia.html
  *
  * @example
  * const diagnosticReportMedia = new DiagnosticReportMedia({

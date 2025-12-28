@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * How device is being used
  * 
  *
- * @see https://hl7.org/fhir/R4/deviceusageadherence.html
+ * @see https://hl7.org/fhir/R5/deviceusageadherence.html
  */
 export interface IDeviceUsageAdherence extends IBackboneElement {
   /**

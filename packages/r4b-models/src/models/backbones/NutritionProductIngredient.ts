@@ -14,7 +14,7 @@ const NUTRITION_PRODUCT_INGREDIENT_PROPERTIES = [
 /**
  * NutritionProductIngredient - Ingredients contained in this product
  *
- * @see https://hl7.org/fhir/R4/nutritionproductingredient.html
+ * @see https://hl7.org/fhir/R4B/nutritionproductingredient.html
  *
  * @example
  * const nutritionProductIngredient = new NutritionProductIngredient({

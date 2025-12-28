@@ -26,7 +26,7 @@ const SPECIMEN_COLLECTION_PROPERTIES = [
 /**
  * SpecimenCollection - Collection details
  *
- * @see https://hl7.org/fhir/R4/specimencollection.html
+ * @see https://hl7.org/fhir/R4B/specimencollection.html
  *
  * @example
  * const specimenCollection = new SpecimenCollection({

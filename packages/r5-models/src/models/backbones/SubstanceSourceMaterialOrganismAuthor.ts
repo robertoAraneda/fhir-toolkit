@@ -15,7 +15,7 @@ const SUBSTANCE_SOURCE_MATERIAL_ORGANISM_AUTHOR_PROPERTIES = [
 /**
  * SubstanceSourceMaterialOrganismAuthor - 4.9.13.6.1 Author type (Conditional)
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialorganismauthor.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialorganismauthor.html
  *
  * @example
  * const substanceSourceMaterialOrganismAuthor = new SubstanceSourceMaterialOrganismAuthor({

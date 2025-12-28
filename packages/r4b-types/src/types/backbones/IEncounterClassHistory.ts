@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * List of past encounter classes
  * 
  *
- * @see https://hl7.org/fhir/R4/encounterclasshistory.html
+ * @see https://hl7.org/fhir/R4B/encounterclasshistory.html
  */
 export interface IEncounterClassHistory extends IBackboneElement {
   /**

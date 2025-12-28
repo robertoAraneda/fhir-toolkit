@@ -17,7 +17,7 @@ const ELEMENT_DEFINITION_BASE_PROPERTIES = [
 /**
  * ElementDefinitionBase - Base definition information for tools
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionbase.html
+ * @see https://hl7.org/fhir/R5/elementdefinitionbase.html
  *
  * @example
  * const elementDefinitionBase = new ElementDefinitionBase({

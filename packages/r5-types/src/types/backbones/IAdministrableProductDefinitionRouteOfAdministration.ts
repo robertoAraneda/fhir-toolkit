@@ -10,7 +10,7 @@ import type { IAdministrableProductDefinitionRouteOfAdministrationTargetSpecies 
  * The path by which the product is taken into or makes contact with the body
  * 
  *
- * @see https://hl7.org/fhir/R4/administrableproductdefinitionrouteofadministration.html
+ * @see https://hl7.org/fhir/R5/administrableproductdefinitionrouteofadministration.html
  */
 export interface IAdministrableProductDefinitionRouteOfAdministration extends IBackboneElement {
   /**

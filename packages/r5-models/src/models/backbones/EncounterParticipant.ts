@@ -16,7 +16,7 @@ const ENCOUNTER_PARTICIPANT_PROPERTIES = [
 /**
  * EncounterParticipant - List of participants involved in the encounter
  *
- * @see https://hl7.org/fhir/R4/encounterparticipant.html
+ * @see https://hl7.org/fhir/R5/encounterparticipant.html
  *
  * @example
  * const encounterParticipant = new EncounterParticipant({

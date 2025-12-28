@@ -7,7 +7,7 @@ import type { IExpression } from '../datatypes/IExpression.js';
  * Dynamic aspects of the definition
  * 
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactiondynamicvalue.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactiondynamicvalue.html
  */
 export interface IPlanDefinitionActionDynamicValue extends IBackboneElement {
   /**

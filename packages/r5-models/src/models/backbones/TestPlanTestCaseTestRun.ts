@@ -15,7 +15,7 @@ const TEST_PLAN_TEST_CASE_TEST_RUN_PROPERTIES = [
 /**
  * TestPlanTestCaseTestRun - The actual test to be executed
  *
- * @see https://hl7.org/fhir/R4/testplantestcasetestrun.html
+ * @see https://hl7.org/fhir/R5/testplantestcasetestrun.html
  *
  * @example
  * const testPlanTestCaseTestRun = new TestPlanTestCaseTestRun({

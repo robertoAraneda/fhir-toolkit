@@ -7,7 +7,7 @@ import type { FilterOperatorType } from '../../valuesets/index.js';
  * Select codes/concepts by their properties (including relationships)
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetcomposeincludefilter.html
+ * @see https://hl7.org/fhir/R4B/valuesetcomposeincludefilter.html
  */
 export interface IValueSetComposeIncludeFilter extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { IValueSetComposeIncludeConceptDesignation } from './IValueSetCompo
  * A concept defined in the system
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetcomposeincludeconcept.html
+ * @see https://hl7.org/fhir/R5/valuesetcomposeincludeconcept.html
  */
 export interface IValueSetComposeIncludeConcept extends IBackboneElement {
   /**

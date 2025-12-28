@@ -6,7 +6,7 @@ import type { IElement } from '../../base/index.js';
  * Base definition information for tools
  * 
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionbase.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitionbase.html
  */
 export interface IElementDefinitionBase extends IElement {
   /**

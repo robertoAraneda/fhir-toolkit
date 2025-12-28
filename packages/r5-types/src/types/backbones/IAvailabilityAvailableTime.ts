@@ -7,7 +7,7 @@ import type { DaysOfWeekType } from '../../valuesets/index.js';
  * Times the {item} is available
  * 
  *
- * @see https://hl7.org/fhir/R4/availabilityavailabletime.html
+ * @see https://hl7.org/fhir/R5/availabilityavailabletime.html
  */
 export interface IAvailabilityAvailableTime extends IElement {
   /**

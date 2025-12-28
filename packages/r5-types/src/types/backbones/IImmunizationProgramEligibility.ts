@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Patient eligibility for a specific vaccination program
  * 
  *
- * @see https://hl7.org/fhir/R4/immunizationprogrameligibility.html
+ * @see https://hl7.org/fhir/R5/immunizationprogrameligibility.html
  */
 export interface IImmunizationProgramEligibility extends IBackboneElement {
   /**

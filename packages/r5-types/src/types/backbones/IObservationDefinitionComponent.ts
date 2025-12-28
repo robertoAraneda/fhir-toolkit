@@ -8,7 +8,7 @@ import type { ObservationDataTypeType } from '../../valuesets/index.js';
  * Component results
  * 
  *
- * @see https://hl7.org/fhir/R4/observationdefinitioncomponent.html
+ * @see https://hl7.org/fhir/R5/observationdefinitioncomponent.html
  */
 export interface IObservationDefinitionComponent extends IBackboneElement {
   /**

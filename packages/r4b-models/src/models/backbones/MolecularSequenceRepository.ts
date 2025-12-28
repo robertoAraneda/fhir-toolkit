@@ -24,7 +24,7 @@ const MOLECULAR_SEQUENCE_REPOSITORY_PROPERTIES = [
 /**
  * MolecularSequenceRepository - External repository which contains detailed report related with observedSeq in this resource
  *
- * @see https://hl7.org/fhir/R4/molecularsequencerepository.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencerepository.html
  *
  * @example
  * const molecularSequenceRepository = new MolecularSequenceRepository({

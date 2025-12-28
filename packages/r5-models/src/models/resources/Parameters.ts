@@ -12,7 +12,7 @@ const PARAMETERS_PROPERTIES = [
 /**
  * Parameters - This resource is used to pass information into and back from an operation (whether invoked directly from REST or within a messaging environment).  It is not persisted or allowed to be referenced by other resources.
  *
- * @see https://hl7.org/fhir/R4/parameters.html
+ * @see https://hl7.org/fhir/R5/parameters.html
  *
  * @example
  * const parameters = new Parameters({

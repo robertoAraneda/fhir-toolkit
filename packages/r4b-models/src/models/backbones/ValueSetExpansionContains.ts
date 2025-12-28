@@ -26,7 +26,7 @@ const VALUE_SET_EXPANSION_CONTAINS_PROPERTIES = [
 /**
  * ValueSetExpansionContains - Codes in the value set
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansioncontains.html
+ * @see https://hl7.org/fhir/R4B/valuesetexpansioncontains.html
  *
  * @example
  * const valueSetExpansionContains = new ValueSetExpansionContains({

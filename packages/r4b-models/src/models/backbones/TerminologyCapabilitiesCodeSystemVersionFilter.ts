@@ -15,7 +15,7 @@ const TERMINOLOGY_CAPABILITIES_CODE_SYSTEM_VERSION_FILTER_PROPERTIES = [
 /**
  * TerminologyCapabilitiesCodeSystemVersionFilter - Filter Properties supported
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiescodesystemversionfilter.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiescodesystemversionfilter.html
  *
  * @example
  * const terminologyCapabilitiesCodeSystemVersionFilter = new TerminologyCapabilitiesCodeSystemVersionFilter({

@@ -20,7 +20,7 @@ const EXAMPLE_SCENARIO_ACTOR_PROPERTIES = [
 /**
  * ExampleScenarioActor - Actor participating in the resource
  *
- * @see https://hl7.org/fhir/R4/examplescenarioactor.html
+ * @see https://hl7.org/fhir/R4B/examplescenarioactor.html
  *
  * @example
  * const exampleScenarioActor = new ExampleScenarioActor({

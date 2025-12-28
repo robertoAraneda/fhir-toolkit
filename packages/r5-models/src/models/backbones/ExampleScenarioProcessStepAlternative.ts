@@ -17,7 +17,7 @@ const EXAMPLE_SCENARIO_PROCESS_STEP_ALTERNATIVE_PROPERTIES = [
 /**
  * ExampleScenarioProcessStepAlternative - Alternate non-typical step action
  *
- * @see https://hl7.org/fhir/R4/examplescenarioprocessstepalternative.html
+ * @see https://hl7.org/fhir/R5/examplescenarioprocessstepalternative.html
  *
  * @example
  * const exampleScenarioProcessStepAlternative = new ExampleScenarioProcessStepAlternative({

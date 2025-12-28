@@ -34,7 +34,7 @@ const EXPLANATION_OF_BENEFIT_SUPPORTING_INFO_PROPERTIES = [
 /**
  * ExplanationOfBenefitSupportingInfo - Supporting information
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitsupportinginfo.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitsupportinginfo.html
  *
  * @example
  * const explanationOfBenefitSupportingInfo = new ExplanationOfBenefitSupportingInfo({

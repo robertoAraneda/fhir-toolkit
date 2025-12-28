@@ -11,7 +11,7 @@ import type { GenomicStudyStatusType } from '../../valuesets/index.js';
  * A GenomicStudy is a set of analyses performed to analyze and generate genomic data.
  * 
  *
- * @see https://hl7.org/fhir/R4/genomicstudy.html
+ * @see https://hl7.org/fhir/R5/genomicstudy.html
  */
 export interface IGenomicStudy extends IDomainResource {
   /**

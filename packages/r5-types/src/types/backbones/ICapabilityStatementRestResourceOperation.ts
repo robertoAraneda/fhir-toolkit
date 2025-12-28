@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Definition of a resource operation
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrestresourceoperation.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementrestresourceoperation.html
  */
 export interface ICapabilityStatementRestResourceOperation extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { ISignature } from '../datatypes/ISignature.js';
  * Contract Signatory
  * 
  *
- * @see https://hl7.org/fhir/R4/contractsigner.html
+ * @see https://hl7.org/fhir/R4B/contractsigner.html
  */
 export interface IContractSigner extends IBackboneElement {
   /**

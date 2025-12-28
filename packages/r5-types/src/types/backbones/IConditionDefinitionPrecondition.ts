@@ -8,7 +8,7 @@ import type { ConditionPreconditionTypeType } from '../../valuesets/index.js';
  * Observation that suggets this condition
  * 
  *
- * @see https://hl7.org/fhir/R4/conditiondefinitionprecondition.html
+ * @see https://hl7.org/fhir/R5/conditiondefinitionprecondition.html
  */
 export interface IConditionDefinitionPrecondition extends IBackboneElement {
   /**

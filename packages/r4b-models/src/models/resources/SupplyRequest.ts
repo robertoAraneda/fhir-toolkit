@@ -42,7 +42,7 @@ const SUPPLY_REQUEST_PROPERTIES = [
 /**
  * SupplyRequest - A record of a request for a medication, substance or device used in the healthcare setting.
  *
- * @see https://hl7.org/fhir/R4/supplyrequest.html
+ * @see https://hl7.org/fhir/R4B/supplyrequest.html
  *
  * @example
  * const supplyRequest = new SupplyRequest({

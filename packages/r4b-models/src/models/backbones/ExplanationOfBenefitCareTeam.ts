@@ -20,7 +20,7 @@ const EXPLANATION_OF_BENEFIT_CARE_TEAM_PROPERTIES = [
 /**
  * ExplanationOfBenefitCareTeam - Care Team members
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitcareteam.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitcareteam.html
  *
  * @example
  * const explanationOfBenefitCareTeam = new ExplanationOfBenefitCareTeam({

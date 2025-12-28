@@ -7,7 +7,7 @@ import type { ConceptMapPropertyTypeType } from '../../valuesets/index.js';
  * Additional properties of the mapping
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmapproperty.html
+ * @see https://hl7.org/fhir/R5/conceptmapproperty.html
  */
 export interface IConceptMapProperty extends IBackboneElement {
   /**

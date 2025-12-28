@@ -15,7 +15,7 @@ const SEARCH_PARAMETER_COMPONENT_PROPERTIES = [
 /**
  * SearchParameterComponent - For Composite resources to define the parts
  *
- * @see https://hl7.org/fhir/R4/searchparametercomponent.html
+ * @see https://hl7.org/fhir/R4B/searchparametercomponent.html
  *
  * @example
  * const searchParameterComponent = new SearchParameterComponent({

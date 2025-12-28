@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Links to the FHIR specification
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptmetadatalink.html
+ * @see https://hl7.org/fhir/R4B/testscriptmetadatalink.html
  */
 export interface ITestScriptMetadataLink extends IBackboneElement {
   /**

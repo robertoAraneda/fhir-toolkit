@@ -8,7 +8,7 @@ import type { RelatedArtifactTypeExpandedType } from '../../valuesets/index.js';
  * The artifact related to the cited artifact
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactrelatesto.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactrelatesto.html
  */
 export interface ICitationCitedArtifactRelatesTo extends IBackboneElement {
   /**

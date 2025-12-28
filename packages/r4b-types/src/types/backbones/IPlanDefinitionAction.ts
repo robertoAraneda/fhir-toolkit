@@ -19,7 +19,7 @@ import type { ActionCardinalityBehaviorType, ActionGroupingBehaviorType, ActionP
  * Action defined by the plan
  * 
  *
- * @see https://hl7.org/fhir/R4/plandefinitionaction.html
+ * @see https://hl7.org/fhir/R4B/plandefinitionaction.html
  */
 export interface IPlanDefinitionAction extends IBackboneElement {
   /**

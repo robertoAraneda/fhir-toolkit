@@ -9,7 +9,7 @@ import type { IEvidenceStatisticModelCharacteristicVariable } from './IEvidenceS
  * An aspect of the statistical model
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencestatisticmodelcharacteristic.html
+ * @see https://hl7.org/fhir/R5/evidencestatisticmodelcharacteristic.html
  */
 export interface IEvidenceStatisticModelCharacteristic extends IBackboneElement {
   /**

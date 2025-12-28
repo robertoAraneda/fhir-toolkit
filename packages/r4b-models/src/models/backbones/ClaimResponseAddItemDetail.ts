@@ -27,7 +27,7 @@ const CLAIM_RESPONSE_ADD_ITEM_DETAIL_PROPERTIES = [
 /**
  * ClaimResponseAddItemDetail - Insurer added line details
  *
- * @see https://hl7.org/fhir/R4/claimresponseadditemdetail.html
+ * @see https://hl7.org/fhir/R4B/claimresponseadditemdetail.html
  *
  * @example
  * const claimResponseAddItemDetail = new ClaimResponseAddItemDetail({

@@ -9,7 +9,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * Amount of medication administered
  * 
  *
- * @see https://hl7.org/fhir/R4/dosagedoseandrate.html
+ * @see https://hl7.org/fhir/R4B/dosagedoseandrate.html
  */
 export interface IDosageDoseAndRate extends IElement {
   /**

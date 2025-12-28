@@ -18,7 +18,7 @@ const PRACTITIONER_QUALIFICATION_PROPERTIES = [
 /**
  * PractitionerQualification - Qualifications, certifications, accreditations, licenses, training, etc. pertaining to the provision of care
  *
- * @see https://hl7.org/fhir/R4/practitionerqualification.html
+ * @see https://hl7.org/fhir/R5/practitionerqualification.html
  *
  * @example
  * const practitionerQualification = new PractitionerQualification({

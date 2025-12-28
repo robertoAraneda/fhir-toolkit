@@ -29,7 +29,7 @@ const MOLECULAR_SEQUENCE_RELATIVE_STARTING_SEQUENCE_PROPERTIES = [
 /**
  * MolecularSequenceRelativeStartingSequence - A sequence used as starting sequence
  *
- * @see https://hl7.org/fhir/R4/molecularsequencerelativestartingsequence.html
+ * @see https://hl7.org/fhir/R5/molecularsequencerelativestartingsequence.html
  *
  * @example
  * const molecularSequenceRelativeStartingSequence = new MolecularSequenceRelativeStartingSequence({

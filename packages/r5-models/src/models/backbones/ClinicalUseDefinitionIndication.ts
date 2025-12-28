@@ -26,7 +26,7 @@ const CLINICAL_USE_DEFINITION_INDICATION_PROPERTIES = [
 /**
  * ClinicalUseDefinitionIndication - Specifics for when this is an indication
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitionindication.html
+ * @see https://hl7.org/fhir/R5/clinicalusedefinitionindication.html
  *
  * @example
  * const clinicalUseDefinitionIndication = new ClinicalUseDefinitionIndication({

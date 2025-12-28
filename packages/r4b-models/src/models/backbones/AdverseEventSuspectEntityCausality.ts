@@ -18,7 +18,7 @@ const ADVERSE_EVENT_SUSPECT_ENTITY_CAUSALITY_PROPERTIES = [
 /**
  * AdverseEventSuspectEntityCausality - Information on the possible cause of the event
  *
- * @see https://hl7.org/fhir/R4/adverseeventsuspectentitycausality.html
+ * @see https://hl7.org/fhir/R4B/adverseeventsuspectentitycausality.html
  *
  * @example
  * const adverseEventSuspectEntityCausality = new AdverseEventSuspectEntityCausality({

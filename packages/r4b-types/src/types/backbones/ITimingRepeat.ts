@@ -10,7 +10,7 @@ import type { DaysOfWeekType, EventTimingType, UnitsOfTimeType } from '../../val
  * When the event is to occur
  * 
  *
- * @see https://hl7.org/fhir/R4/timingrepeat.html
+ * @see https://hl7.org/fhir/R4B/timingrepeat.html
  */
 export interface ITimingRepeat extends IElement {
   /**

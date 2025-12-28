@@ -8,7 +8,7 @@ import type { AdditionalBindingPurposeVSType } from '../../valuesets/index.js';
  * Additional Bindings - more rules about the binding
  * 
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionbindingadditional.html
+ * @see https://hl7.org/fhir/R5/elementdefinitionbindingadditional.html
  */
 export interface IElementDefinitionBindingAdditional extends IElement {
   /**

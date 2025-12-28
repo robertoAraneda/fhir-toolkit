@@ -13,7 +13,7 @@ import type { AdministrativeGenderType } from '../../valuesets/index.js';
  * A person who is directly or indirectly involved in the provisioning of healthcare.
  * 
  *
- * @see https://hl7.org/fhir/R4/practitioner.html
+ * @see https://hl7.org/fhir/R4B/practitioner.html
  */
 export interface IPractitioner extends IDomainResource {
   /**

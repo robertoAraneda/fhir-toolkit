@@ -16,7 +16,7 @@ const PERMISSION_RULE_DATA_RESOURCE_PROPERTIES = [
 /**
  * PermissionRuleDataResource - Explicit FHIR Resource references
  *
- * @see https://hl7.org/fhir/R4/permissionruledataresource.html
+ * @see https://hl7.org/fhir/R5/permissionruledataresource.html
  *
  * @example
  * const permissionRuleDataResource = new PermissionRuleDataResource({

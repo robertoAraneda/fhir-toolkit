@@ -18,7 +18,7 @@ const MEDICATION_KNOWLEDGE_MEDICINE_CLASSIFICATION_PROPERTIES = [
 /**
  * MedicationKnowledgeMedicineClassification - Categorization of the medication within a formulary or classification system
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgemedicineclassification.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgemedicineclassification.html
  *
  * @example
  * const medicationKnowledgeMedicineClassification = new MedicationKnowledgeMedicineClassification({

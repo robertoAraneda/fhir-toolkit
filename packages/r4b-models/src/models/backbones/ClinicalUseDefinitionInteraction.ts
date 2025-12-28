@@ -18,7 +18,7 @@ const CLINICAL_USE_DEFINITION_INTERACTION_PROPERTIES = [
 /**
  * ClinicalUseDefinitionInteraction - Specifics for when this is an interaction
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitioninteraction.html
+ * @see https://hl7.org/fhir/R4B/clinicalusedefinitioninteraction.html
  *
  * @example
  * const clinicalUseDefinitionInteraction = new ClinicalUseDefinitionInteraction({

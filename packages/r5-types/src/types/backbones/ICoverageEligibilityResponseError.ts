@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Processing errors
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponseerror.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityresponseerror.html
  */
 export interface ICoverageEligibilityResponseError extends IBackboneElement {
   /**

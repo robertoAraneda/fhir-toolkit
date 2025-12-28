@@ -17,7 +17,7 @@ const MEDICATION_KNOWLEDGE_ADMINISTRATION_GUIDELINES_PATIENT_CHARACTERISTICS_PRO
 /**
  * MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics - Characteristics of the patient that are relevant to the administration guidelines
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeadministrationguidelinespatientcharacteristics.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgeadministrationguidelinespatientcharacteristics.html
  *
  * @example
  * const medicationKnowledgeAdministrationGuidelinesPatientCharacteristics = new MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics({

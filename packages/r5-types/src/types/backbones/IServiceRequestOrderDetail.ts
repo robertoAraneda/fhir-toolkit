@@ -8,7 +8,7 @@ import type { IServiceRequestOrderDetailParameter } from './IServiceRequestOrder
  * Additional order information
  * 
  *
- * @see https://hl7.org/fhir/R4/servicerequestorderdetail.html
+ * @see https://hl7.org/fhir/R5/servicerequestorderdetail.html
  */
 export interface IServiceRequestOrderDetail extends IBackboneElement {
   /**

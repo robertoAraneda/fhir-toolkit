@@ -15,7 +15,7 @@ const CITATION_CITED_ARTIFACT_CONTRIBUTORSHIP_ENTRY_CONTRIBUTION_INSTANCE_PROPER
 /**
  * CitationCitedArtifactContributorshipEntryContributionInstance - Contributions with accounting for time or number
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorshipentrycontributioninstance.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactcontributorshipentrycontributioninstance.html
  *
  * @example
  * const citationCitedArtifactContributorshipEntryContributionInstance = new CitationCitedArtifactContributorshipEntryContributionInstance({

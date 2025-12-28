@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * HTML page within the parent IG
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidemanifestpage.html
+ * @see https://hl7.org/fhir/R4B/implementationguidemanifestpage.html
  */
 export interface IImplementationGuideManifestPage extends IBackboneElement {
   /**

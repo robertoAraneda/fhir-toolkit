@@ -18,7 +18,7 @@ const COMPOSITION_ATTESTER_PROPERTIES = [
 /**
  * CompositionAttester - Attests to accuracy of composition
  *
- * @see https://hl7.org/fhir/R4/compositionattester.html
+ * @see https://hl7.org/fhir/R4B/compositionattester.html
  *
  * @example
  * const compositionAttester = new CompositionAttester({

@@ -12,7 +12,7 @@ const TEST_REPORT_TEARDOWN_ACTION_PROPERTIES = [
 /**
  * TestReportTeardownAction - One or more teardown operations performed
  *
- * @see https://hl7.org/fhir/R4/testreportteardownaction.html
+ * @see https://hl7.org/fhir/R4B/testreportteardownaction.html
  *
  * @example
  * const testReportTeardownAction = new TestReportTeardownAction({

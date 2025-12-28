@@ -12,7 +12,7 @@ import type { IHealthcareServiceNotAvailable } from '../backbones/IHealthcareSer
  * The details of a healthcare service available at a location.
  * 
  *
- * @see https://hl7.org/fhir/R4/healthcareservice.html
+ * @see https://hl7.org/fhir/R4B/healthcareservice.html
  */
 export interface IHealthcareService extends IDomainResource {
   /**

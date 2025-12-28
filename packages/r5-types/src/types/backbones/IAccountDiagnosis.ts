@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * The list of diagnoses relevant to this account
  * 
  *
- * @see https://hl7.org/fhir/R4/accountdiagnosis.html
+ * @see https://hl7.org/fhir/R5/accountdiagnosis.html
  */
 export interface IAccountDiagnosis extends IBackboneElement {
   /**

@@ -17,7 +17,7 @@ const INSURANCE_PLAN_COVERAGE_BENEFIT_PROPERTIES = [
 /**
  * InsurancePlanCoverageBenefit - List of benefits
  *
- * @see https://hl7.org/fhir/R4/insuranceplancoveragebenefit.html
+ * @see https://hl7.org/fhir/R5/insuranceplancoveragebenefit.html
  *
  * @example
  * const insurancePlanCoverageBenefit = new InsurancePlanCoverageBenefit({

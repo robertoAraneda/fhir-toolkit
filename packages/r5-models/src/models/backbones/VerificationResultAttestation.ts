@@ -25,7 +25,7 @@ const VERIFICATION_RESULT_ATTESTATION_PROPERTIES = [
 /**
  * VerificationResultAttestation - Information about the entity attesting to information
  *
- * @see https://hl7.org/fhir/R4/verificationresultattestation.html
+ * @see https://hl7.org/fhir/R5/verificationresultattestation.html
  *
  * @example
  * const verificationResultAttestation = new VerificationResultAttestation({

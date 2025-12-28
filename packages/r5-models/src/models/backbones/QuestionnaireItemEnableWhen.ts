@@ -36,7 +36,7 @@ const QUESTIONNAIRE_ITEM_ENABLE_WHEN_PROPERTIES = [
 /**
  * QuestionnaireItemEnableWhen - Only allow data when
  *
- * @see https://hl7.org/fhir/R4/questionnaireitemenablewhen.html
+ * @see https://hl7.org/fhir/R5/questionnaireitemenablewhen.html
  *
  * @example
  * const questionnaireItemEnableWhen = new QuestionnaireItemEnableWhen({

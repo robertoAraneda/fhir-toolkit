@@ -20,7 +20,7 @@ import type { ActionCardinalityBehaviorType, ActionGroupingBehaviorType, ActionP
  * Proposed actions, if any
  * 
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationaction.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationaction.html
  */
 export interface IRequestOrchestrationAction extends IBackboneElement {
   /**

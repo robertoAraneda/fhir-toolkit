@@ -16,7 +16,7 @@ const SUBSTANCE_REFERENCE_INFORMATION_GENE_ELEMENT_PROPERTIES = [
 /**
  * SubstanceReferenceInformationGeneElement - Todo
  *
- * @see https://hl7.org/fhir/R4/substancereferenceinformationgeneelement.html
+ * @see https://hl7.org/fhir/R5/substancereferenceinformationgeneelement.html
  *
  * @example
  * const substanceReferenceInformationGeneElement = new SubstanceReferenceInformationGeneElement({

@@ -7,7 +7,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * Benefit Summary
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitbenefitbalancefinancial.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitbenefitbalancefinancial.html
  */
 export interface IExplanationOfBenefitBenefitBalanceFinancial extends IBackboneElement {
   /**

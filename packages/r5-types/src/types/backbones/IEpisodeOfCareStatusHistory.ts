@@ -8,7 +8,7 @@ import type { EpisodeOfCareStatusType } from '../../valuesets/index.js';
  * Past list of status codes (the current status may be included to cover the start date of the status)
  * 
  *
- * @see https://hl7.org/fhir/R4/episodeofcarestatushistory.html
+ * @see https://hl7.org/fhir/R5/episodeofcarestatushistory.html
  */
 export interface IEpisodeOfCareStatusHistory extends IBackboneElement {
   /**

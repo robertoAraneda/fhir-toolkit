@@ -14,7 +14,7 @@ const MEDICATION_DISPENSE_PERFORMER_PROPERTIES = [
 /**
  * MedicationDispensePerformer - Who performed event
  *
- * @see https://hl7.org/fhir/R4/medicationdispenseperformer.html
+ * @see https://hl7.org/fhir/R5/medicationdispenseperformer.html
  *
  * @example
  * const medicationDispensePerformer = new MedicationDispensePerformer({

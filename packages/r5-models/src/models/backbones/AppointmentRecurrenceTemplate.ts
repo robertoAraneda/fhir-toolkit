@@ -30,7 +30,7 @@ const APPOINTMENT_RECURRENCE_TEMPLATE_PROPERTIES = [
 /**
  * AppointmentRecurrenceTemplate - Details of the recurrence pattern/template used to generate occurrences
  *
- * @see https://hl7.org/fhir/R4/appointmentrecurrencetemplate.html
+ * @see https://hl7.org/fhir/R5/appointmentrecurrencetemplate.html
  *
  * @example
  * const appointmentRecurrenceTemplate = new AppointmentRecurrenceTemplate({

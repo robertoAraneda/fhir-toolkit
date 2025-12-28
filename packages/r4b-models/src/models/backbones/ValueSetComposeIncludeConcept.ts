@@ -17,7 +17,7 @@ const VALUE_SET_COMPOSE_INCLUDE_CONCEPT_PROPERTIES = [
 /**
  * ValueSetComposeIncludeConcept - A concept defined in the system
  *
- * @see https://hl7.org/fhir/R4/valuesetcomposeincludeconcept.html
+ * @see https://hl7.org/fhir/R4B/valuesetcomposeincludeconcept.html
  *
  * @example
  * const valueSetComposeIncludeConcept = new ValueSetComposeIncludeConcept({

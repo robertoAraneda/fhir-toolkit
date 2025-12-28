@@ -7,7 +7,7 @@ import type { IGraphDefinitionLinkCompartment } from './IGraphDefinitionLinkComp
  * Links this graph makes rules about
  * 
  *
- * @see https://hl7.org/fhir/R4/graphdefinitionlink.html
+ * @see https://hl7.org/fhir/R5/graphdefinitionlink.html
  */
 export interface IGraphDefinitionLink extends IBackboneElement {
   /**

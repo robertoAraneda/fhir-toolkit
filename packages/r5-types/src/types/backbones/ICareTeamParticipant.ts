@@ -8,7 +8,7 @@ import type { ITiming } from '../datatypes/ITiming.js';
  * Members of the team
  * 
  *
- * @see https://hl7.org/fhir/R4/careteamparticipant.html
+ * @see https://hl7.org/fhir/R5/careteamparticipant.html
  */
 export interface ICareTeamParticipant extends IBackboneElement {
   /**

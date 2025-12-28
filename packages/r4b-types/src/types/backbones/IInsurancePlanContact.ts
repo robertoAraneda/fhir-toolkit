@@ -9,7 +9,7 @@ import type { IHumanName } from '../datatypes/IHumanName.js';
  * Contact for the product
  * 
  *
- * @see https://hl7.org/fhir/R4/insuranceplancontact.html
+ * @see https://hl7.org/fhir/R4B/insuranceplancontact.html
  */
 export interface IInsurancePlanContact extends IBackboneElement {
   /**

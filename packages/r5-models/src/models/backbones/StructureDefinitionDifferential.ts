@@ -12,7 +12,7 @@ const STRUCTURE_DEFINITION_DIFFERENTIAL_PROPERTIES = [
 /**
  * StructureDefinitionDifferential - Differential view of the structure
  *
- * @see https://hl7.org/fhir/R4/structuredefinitiondifferential.html
+ * @see https://hl7.org/fhir/R5/structuredefinitiondifferential.html
  *
  * @example
  * const structureDefinitionDifferential = new StructureDefinitionDifferential({

@@ -19,7 +19,7 @@ const CLAIM_ACCIDENT_PROPERTIES = [
 /**
  * ClaimAccident - Details of the event
  *
- * @see https://hl7.org/fhir/R4/claimaccident.html
+ * @see https://hl7.org/fhir/R4B/claimaccident.html
  *
  * @example
  * const claimAccident = new ClaimAccident({

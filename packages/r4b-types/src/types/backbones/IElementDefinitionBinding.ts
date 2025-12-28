@@ -7,7 +7,7 @@ import type { BindingStrengthType } from '../../valuesets/index.js';
  * ValueSet details if this is coded
  * 
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionbinding.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitionbinding.html
  */
 export interface IElementDefinitionBinding extends IElement {
   /**

@@ -8,7 +8,7 @@ import type { IChargeItemDefinitionApplicability } from './IChargeItemDefinition
  * Group of properties which are applicable under the same conditions
  * 
  *
- * @see https://hl7.org/fhir/R4/chargeitemdefinitionpropertygroup.html
+ * @see https://hl7.org/fhir/R5/chargeitemdefinitionpropertygroup.html
  */
 export interface IChargeItemDefinitionPropertyGroup extends IBackboneElement {
   /**

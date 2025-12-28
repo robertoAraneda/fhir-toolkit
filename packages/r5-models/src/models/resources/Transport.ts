@@ -63,7 +63,7 @@ const TRANSPORT_PROPERTIES = [
 /**
  * Transport - Record of transport of item.
  *
- * @see https://hl7.org/fhir/R4/transport.html
+ * @see https://hl7.org/fhir/R5/transport.html
  *
  * @example
  * const transport = new Transport({

@@ -8,7 +8,7 @@ import type { IClaimResponseItemDetail } from './IClaimResponseItemDetail.js';
  * Adjudication for claim line items
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponseitem.html
+ * @see https://hl7.org/fhir/R4B/claimresponseitem.html
  */
 export interface IClaimResponseItem extends IBackboneElement {
   /**

@@ -8,7 +8,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * The case or regulatory procedure for granting or amending a regulated authorization. Note: This area is subject to ongoing review and the workgroup is seeking implementer feedback on its use (see link at bottom of page)
  * 
  *
- * @see https://hl7.org/fhir/R4/regulatedauthorizationcase.html
+ * @see https://hl7.org/fhir/R4B/regulatedauthorizationcase.html
  */
 export interface IRegulatedAuthorizationCase extends IBackboneElement {
   /**

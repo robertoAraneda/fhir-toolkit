@@ -7,7 +7,7 @@ import type { IQuantity } from './IQuantity.js';
  * A range of ratios expressed as a low and high numerator and a denominator.
  * 
  *
- * @see https://hl7.org/fhir/R4/ratiorange.html
+ * @see https://hl7.org/fhir/R4B/ratiorange.html
  */
 export interface IRatioRange extends IElement {
   /**

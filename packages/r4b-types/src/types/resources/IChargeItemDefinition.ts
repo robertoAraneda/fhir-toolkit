@@ -13,7 +13,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices. The properties may differ largely depending on type and realm, therefore this resource gives only a rough structure and requires profiling for each type of billing code system.
  * 
  *
- * @see https://hl7.org/fhir/R4/chargeitemdefinition.html
+ * @see https://hl7.org/fhir/R4B/chargeitemdefinition.html
  */
 export interface IChargeItemDefinition extends IDomainResource {
   /**

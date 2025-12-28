@@ -12,7 +12,7 @@ const MEDICATION_KNOWLEDGE_REGULATORY_SCHEDULE_PROPERTIES = [
 /**
  * MedicationKnowledgeRegulatorySchedule - Specifies the schedule of a medication in jurisdiction
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeregulatoryschedule.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgeregulatoryschedule.html
  *
  * @example
  * const medicationKnowledgeRegulatorySchedule = new MedicationKnowledgeRegulatorySchedule({

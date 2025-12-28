@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Who or what is in group
  * 
  *
- * @see https://hl7.org/fhir/R4/groupmember.html
+ * @see https://hl7.org/fhir/R5/groupmember.html
  */
 export interface IGroupMember extends IBackboneElement {
   /**

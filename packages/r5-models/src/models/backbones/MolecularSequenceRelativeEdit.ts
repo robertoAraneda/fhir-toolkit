@@ -19,7 +19,7 @@ const MOLECULAR_SEQUENCE_RELATIVE_EDIT_PROPERTIES = [
 /**
  * MolecularSequenceRelativeEdit - Changes in sequence from the starting sequence
  *
- * @see https://hl7.org/fhir/R4/molecularsequencerelativeedit.html
+ * @see https://hl7.org/fhir/R5/molecularsequencerelativeedit.html
  *
  * @example
  * const molecularSequenceRelativeEdit = new MolecularSequenceRelativeEdit({

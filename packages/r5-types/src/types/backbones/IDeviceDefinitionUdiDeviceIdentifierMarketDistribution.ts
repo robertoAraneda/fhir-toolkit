@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Indicates whether and when the device is available on the market
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionudideviceidentifiermarketdistribution.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionudideviceidentifiermarketdistribution.html
  */
 export interface IDeviceDefinitionUdiDeviceIdentifierMarketDistribution extends IBackboneElement {
   /**

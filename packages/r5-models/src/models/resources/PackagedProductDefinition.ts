@@ -38,7 +38,7 @@ const PACKAGED_PRODUCT_DEFINITION_PROPERTIES = [
 /**
  * PackagedProductDefinition - A medically related item or items, in a container or package.
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinition.html
+ * @see https://hl7.org/fhir/R5/packagedproductdefinition.html
  *
  * @example
  * const packagedProductDefinition = new PackagedProductDefinition({

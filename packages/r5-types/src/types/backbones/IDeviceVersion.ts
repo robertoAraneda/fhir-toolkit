@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * The actual design of the device or software version running on the device
  * 
  *
- * @see https://hl7.org/fhir/R4/deviceversion.html
+ * @see https://hl7.org/fhir/R5/deviceversion.html
  */
 export interface IDeviceVersion extends IBackboneElement {
   /**

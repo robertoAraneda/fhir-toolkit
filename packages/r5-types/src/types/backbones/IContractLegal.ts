@@ -7,7 +7,7 @@ import type { IAttachment } from '../datatypes/IAttachment.js';
  * Contract Legal Language
  * 
  *
- * @see https://hl7.org/fhir/R4/contractlegal.html
+ * @see https://hl7.org/fhir/R5/contractlegal.html
  */
 export interface IContractLegal extends IBackboneElement {
   /**

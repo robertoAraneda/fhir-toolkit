@@ -7,7 +7,7 @@ import type { ConstraintSeverityType } from '../../valuesets/index.js';
  * Condition that must evaluate to true
  * 
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionconstraint.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitionconstraint.html
  */
 export interface IElementDefinitionConstraint extends IElement {
   /**

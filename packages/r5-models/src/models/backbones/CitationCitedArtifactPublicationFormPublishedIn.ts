@@ -21,7 +21,7 @@ const CITATION_CITED_ARTIFACT_PUBLICATION_FORM_PUBLISHED_IN_PROPERTIES = [
 /**
  * CitationCitedArtifactPublicationFormPublishedIn - The collection the cited article or artifact is published in
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpublicationformpublishedin.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactpublicationformpublishedin.html
  *
  * @example
  * const citationCitedArtifactPublicationFormPublishedIn = new CitationCitedArtifactPublicationFormPublishedIn({

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who performed event
  * 
  *
- * @see https://hl7.org/fhir/R4/immunizationperformer.html
+ * @see https://hl7.org/fhir/R5/immunizationperformer.html
  */
 export interface IImmunizationPerformer extends IBackboneElement {
   /**

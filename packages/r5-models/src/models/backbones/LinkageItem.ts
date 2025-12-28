@@ -16,7 +16,7 @@ const LINKAGE_ITEM_PROPERTIES = [
 /**
  * LinkageItem - Item to be linked
  *
- * @see https://hl7.org/fhir/R4/linkageitem.html
+ * @see https://hl7.org/fhir/R5/linkageitem.html
  *
  * @example
  * const linkageItem = new LinkageItem({

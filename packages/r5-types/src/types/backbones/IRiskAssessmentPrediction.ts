@@ -8,7 +8,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Outcome predicted
  * 
  *
- * @see https://hl7.org/fhir/R4/riskassessmentprediction.html
+ * @see https://hl7.org/fhir/R5/riskassessmentprediction.html
  */
 export interface IRiskAssessmentPrediction extends IBackboneElement {
   /**

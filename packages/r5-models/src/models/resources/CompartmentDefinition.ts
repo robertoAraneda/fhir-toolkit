@@ -47,7 +47,7 @@ const COMPARTMENT_DEFINITION_PROPERTIES = [
 /**
  * CompartmentDefinition - A compartment definition that defines how resources are accessed on a server.
  *
- * @see https://hl7.org/fhir/R4/compartmentdefinition.html
+ * @see https://hl7.org/fhir/R5/compartmentdefinition.html
  *
  * @example
  * const compartmentDefinition = new CompartmentDefinition({

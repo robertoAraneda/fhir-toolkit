@@ -7,7 +7,7 @@ import type { IRelatedArtifact } from '../datatypes/IRelatedArtifact.js';
  * What kind of device or device system this is
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionclassification.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionclassification.html
  */
 export interface IDeviceDefinitionClassification extends IBackboneElement {
   /**

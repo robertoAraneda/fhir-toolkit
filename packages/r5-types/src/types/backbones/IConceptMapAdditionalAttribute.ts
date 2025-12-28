@@ -7,7 +7,7 @@ import type { ConceptMapAttributeTypeType } from '../../valuesets/index.js';
  * Definition of an additional attribute to act as a data source or target
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmapadditionalattribute.html
+ * @see https://hl7.org/fhir/R5/conceptmapadditionalattribute.html
  */
 export interface IConceptMapAdditionalAttribute extends IBackboneElement {
   /**

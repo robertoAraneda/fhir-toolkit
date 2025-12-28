@@ -7,7 +7,7 @@ import type { ExtensionContextTypeType } from '../../valuesets/index.js';
  * If an extension, where it can be used in instances
  * 
  *
- * @see https://hl7.org/fhir/R4/structuredefinitioncontext.html
+ * @see https://hl7.org/fhir/R5/structuredefinitioncontext.html
  */
 export interface IStructureDefinitionContext extends IBackboneElement {
   /**

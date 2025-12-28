@@ -14,7 +14,7 @@ const INSURANCE_PLAN_PLAN_SPECIFIC_COST_PROPERTIES = [
 /**
  * InsurancePlanPlanSpecificCost - Specific costs
  *
- * @see https://hl7.org/fhir/R4/insuranceplanplanspecificcost.html
+ * @see https://hl7.org/fhir/R4B/insuranceplanplanspecificcost.html
  *
  * @example
  * const insurancePlanPlanSpecificCost = new InsurancePlanPlanSpecificCost({

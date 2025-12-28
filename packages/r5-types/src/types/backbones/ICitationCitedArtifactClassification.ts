@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * The assignment to an organizing scheme
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactclassification.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactclassification.html
  */
 export interface ICitationCitedArtifactClassification extends IBackboneElement {
   /**

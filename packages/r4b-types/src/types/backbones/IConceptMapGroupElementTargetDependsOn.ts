@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Other elements required for this mapping (from context)
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupelementtargetdependson.html
+ * @see https://hl7.org/fhir/R4B/conceptmapgroupelementtargetdependson.html
  */
 export interface IConceptMapGroupElementTargetDependsOn extends IBackboneElement {
   /**

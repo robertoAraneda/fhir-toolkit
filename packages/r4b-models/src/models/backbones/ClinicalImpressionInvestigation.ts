@@ -14,7 +14,7 @@ const CLINICAL_IMPRESSION_INVESTIGATION_PROPERTIES = [
 /**
  * ClinicalImpressionInvestigation - One or more sets of investigations (signs, symptoms, etc.)
  *
- * @see https://hl7.org/fhir/R4/clinicalimpressioninvestigation.html
+ * @see https://hl7.org/fhir/R4B/clinicalimpressioninvestigation.html
  *
  * @example
  * const clinicalImpressionInvestigation = new ClinicalImpressionInvestigation({

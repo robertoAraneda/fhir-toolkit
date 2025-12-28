@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * If this describes a specific instance
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesimplementation.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiesimplementation.html
  */
 export interface ITerminologyCapabilitiesImplementation extends IBackboneElement {
   /**

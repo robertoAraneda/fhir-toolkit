@@ -8,7 +8,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * A link between this substance and another
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionrelationship.html
+ * @see https://hl7.org/fhir/R5/substancedefinitionrelationship.html
  */
 export interface ISubstanceDefinitionRelationship extends IBackboneElement {
   /**

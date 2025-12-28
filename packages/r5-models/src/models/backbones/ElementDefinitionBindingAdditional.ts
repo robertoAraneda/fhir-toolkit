@@ -24,7 +24,7 @@ const ELEMENT_DEFINITION_BINDING_ADDITIONAL_PROPERTIES = [
 /**
  * ElementDefinitionBindingAdditional - Additional Bindings - more rules about the binding
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionbindingadditional.html
+ * @see https://hl7.org/fhir/R5/elementdefinitionbindingadditional.html
  *
  * @example
  * const elementDefinitionBindingAdditional = new ElementDefinitionBindingAdditional({

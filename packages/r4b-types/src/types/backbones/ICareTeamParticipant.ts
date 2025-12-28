@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Members of the team
  * 
  *
- * @see https://hl7.org/fhir/R4/careteamparticipant.html
+ * @see https://hl7.org/fhir/R4B/careteamparticipant.html
  */
 export interface ICareTeamParticipant extends IBackboneElement {
   /**

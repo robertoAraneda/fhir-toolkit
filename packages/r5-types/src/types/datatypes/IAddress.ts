@@ -9,7 +9,7 @@ import type { AddressTypeType, AddressUseType } from '../../valuesets/index.js';
 The ISO21090-codedString may be used to provide a coded representation of the contents of strings in an Address.
  * 
  *
- * @see https://hl7.org/fhir/R4/address.html
+ * @see https://hl7.org/fhir/R5/address.html
  */
 export interface IAddress extends IDataType {
   /**

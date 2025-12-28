@@ -34,7 +34,7 @@ const OBSERVATION_DEFINITION_QUALIFIED_VALUE_PROPERTIES = [
 /**
  * ObservationDefinitionQualifiedValue - Set of qualified values for observation results
  *
- * @see https://hl7.org/fhir/R4/observationdefinitionqualifiedvalue.html
+ * @see https://hl7.org/fhir/R5/observationdefinitionqualifiedvalue.html
  *
  * @example
  * const observationDefinitionQualifiedValue = new ObservationDefinitionQualifiedValue({

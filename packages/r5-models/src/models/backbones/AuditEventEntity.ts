@@ -22,7 +22,7 @@ const AUDIT_EVENT_ENTITY_PROPERTIES = [
 /**
  * AuditEventEntity - Data or objects used
  *
- * @see https://hl7.org/fhir/R4/auditevententity.html
+ * @see https://hl7.org/fhir/R5/auditevententity.html
  *
  * @example
  * const auditEventEntity = new AuditEventEntity({

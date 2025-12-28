@@ -10,7 +10,7 @@ import type { ConditionalDeleteStatusType, ConditionalReadStatusType, ReferenceH
  * Resource served on the REST interface
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrestresource.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementrestresource.html
  */
 export interface ICapabilityStatementRestResource extends IBackboneElement {
   /**

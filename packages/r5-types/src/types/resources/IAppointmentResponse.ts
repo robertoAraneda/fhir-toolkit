@@ -8,7 +8,7 @@ import type { AppointmentResponseStatusType } from '../../valuesets/index.js';
  * A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.
  * 
  *
- * @see https://hl7.org/fhir/R4/appointmentresponse.html
+ * @see https://hl7.org/fhir/R5/appointmentresponse.html
  */
 export interface IAppointmentResponse extends IDomainResource {
   /**

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Event definitions the SubscriptionTopic
  * 
  *
- * @see https://hl7.org/fhir/R4/subscriptiontopiceventtrigger.html
+ * @see https://hl7.org/fhir/R4B/subscriptiontopiceventtrigger.html
  */
 export interface ISubscriptionTopicEventTrigger extends IBackboneElement {
   /**

@@ -34,7 +34,7 @@ const SPECIMEN_PROPERTIES = [
 /**
  * Specimen - A sample to be used for analysis.
  *
- * @see https://hl7.org/fhir/R4/specimen.html
+ * @see https://hl7.org/fhir/R4B/specimen.html
  *
  * @example
  * const specimen = new Specimen({

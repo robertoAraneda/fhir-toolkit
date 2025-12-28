@@ -9,7 +9,7 @@ import type { IManufacturedItemDefinitionProperty } from './IManufacturedItemDef
  * Physical parts of the manufactured item, that it is intrisically made from. This is distinct from the ingredients that are part of its chemical makeup
  * 
  *
- * @see https://hl7.org/fhir/R4/manufactureditemdefinitioncomponent.html
+ * @see https://hl7.org/fhir/R5/manufactureditemdefinitioncomponent.html
  */
 export interface IManufacturedItemDefinitionComponent extends IBackboneElement {
   /**

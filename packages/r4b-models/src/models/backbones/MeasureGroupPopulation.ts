@@ -17,7 +17,7 @@ const MEASURE_GROUP_POPULATION_PROPERTIES = [
 /**
  * MeasureGroupPopulation - Population criteria
  *
- * @see https://hl7.org/fhir/R4/measuregrouppopulation.html
+ * @see https://hl7.org/fhir/R4B/measuregrouppopulation.html
  *
  * @example
  * const measureGroupPopulation = new MeasureGroupPopulation({

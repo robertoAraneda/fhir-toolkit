@@ -9,7 +9,7 @@ import type { ArtifactAssessmentDispositionType, ArtifactAssessmentWorkflowStatu
  * This Resource provides one or more comments, classifiers or ratings about a Resource and supports attribution and rights management metadata for the added content.
  * 
  *
- * @see https://hl7.org/fhir/R4/artifactassessment.html
+ * @see https://hl7.org/fhir/R5/artifactassessment.html
  */
 export interface IArtifactAssessment extends IDomainResource {
   /**

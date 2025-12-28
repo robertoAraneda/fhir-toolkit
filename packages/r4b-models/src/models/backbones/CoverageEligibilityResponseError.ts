@@ -12,7 +12,7 @@ const COVERAGE_ELIGIBILITY_RESPONSE_ERROR_PROPERTIES = [
 /**
  * CoverageEligibilityResponseError - Processing errors
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponseerror.html
+ * @see https://hl7.org/fhir/R4B/coverageeligibilityresponseerror.html
  *
  * @example
  * const coverageEligibilityResponseError = new CoverageEligibilityResponseError({

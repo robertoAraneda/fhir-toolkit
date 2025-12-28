@@ -10,7 +10,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Supporting information
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitsupportinginfo.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitsupportinginfo.html
  */
 export interface IExplanationOfBenefitSupportingInfo extends IBackboneElement {
   /**

@@ -14,7 +14,7 @@ const ADVERSE_EVENT_SUSPECT_ENTITY_PROPERTIES = [
 /**
  * AdverseEventSuspectEntity - The suspected agent causing the adverse event
  *
- * @see https://hl7.org/fhir/R4/adverseeventsuspectentity.html
+ * @see https://hl7.org/fhir/R4B/adverseeventsuspectentity.html
  *
  * @example
  * const adverseEventSuspectEntity = new AdverseEventSuspectEntity({

@@ -16,7 +16,7 @@ const NARRATIVE_PROPERTIES = [
 /**
  * Narrative - A human-readable summary of the resource conveying the essential clinical and business information for the resource.
  *
- * @see https://hl7.org/fhir/R4/narrative.html
+ * @see https://hl7.org/fhir/R5/narrative.html
  *
  * @example
  * const narrative = new Narrative({

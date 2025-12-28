@@ -21,7 +21,7 @@ const CONCEPT_MAP_GROUP_ELEMENT_PROPERTIES = [
 /**
  * ConceptMapGroupElement - Mappings for a concept from the source set
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupelement.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupelement.html
  *
  * @example
  * const conceptMapGroupElement = new ConceptMapGroupElement({

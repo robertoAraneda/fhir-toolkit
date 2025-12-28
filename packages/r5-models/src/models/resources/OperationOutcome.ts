@@ -12,7 +12,7 @@ const OPERATION_OUTCOME_PROPERTIES = [
 /**
  * OperationOutcome - A collection of error, warning, or information messages that result from a system action.
  *
- * @see https://hl7.org/fhir/R4/operationoutcome.html
+ * @see https://hl7.org/fhir/R5/operationoutcome.html
  *
  * @example
  * const operationOutcome = new OperationOutcome({

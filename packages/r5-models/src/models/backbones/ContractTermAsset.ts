@@ -37,7 +37,7 @@ const CONTRACT_TERM_ASSET_PROPERTIES = [
 /**
  * ContractTermAsset - Contract Term Asset List
  *
- * @see https://hl7.org/fhir/R4/contracttermasset.html
+ * @see https://hl7.org/fhir/R5/contracttermasset.html
  *
  * @example
  * const contractTermAsset = new ContractTermAsset({

@@ -15,7 +15,7 @@ const AUDIT_EVENT_SOURCE_PROPERTIES = [
 /**
  * AuditEventSource - Audit Event Reporter
  *
- * @see https://hl7.org/fhir/R4/auditeventsource.html
+ * @see https://hl7.org/fhir/R5/auditeventsource.html
  *
  * @example
  * const auditEventSource = new AuditEventSource({

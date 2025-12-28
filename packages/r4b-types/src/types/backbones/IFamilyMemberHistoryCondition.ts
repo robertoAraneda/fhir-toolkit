@@ -10,7 +10,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Condition that the related person had
  * 
  *
- * @see https://hl7.org/fhir/R4/familymemberhistorycondition.html
+ * @see https://hl7.org/fhir/R4B/familymemberhistorycondition.html
  */
 export interface IFamilyMemberHistoryCondition extends IBackboneElement {
   /**

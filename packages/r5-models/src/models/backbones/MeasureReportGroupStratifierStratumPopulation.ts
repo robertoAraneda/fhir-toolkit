@@ -21,7 +21,7 @@ const MEASURE_REPORT_GROUP_STRATIFIER_STRATUM_POPULATION_PROPERTIES = [
 /**
  * MeasureReportGroupStratifierStratumPopulation - Population results in this stratum
  *
- * @see https://hl7.org/fhir/R4/measurereportgroupstratifierstratumpopulation.html
+ * @see https://hl7.org/fhir/R5/measurereportgroupstratifierstratumpopulation.html
  *
  * @example
  * const measureReportGroupStratifierStratumPopulation = new MeasureReportGroupStratifierStratumPopulation({

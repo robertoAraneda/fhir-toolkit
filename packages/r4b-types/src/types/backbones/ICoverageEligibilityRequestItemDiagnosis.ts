@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Applicable diagnosis
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityrequestitemdiagnosis.html
+ * @see https://hl7.org/fhir/R4B/coverageeligibilityrequestitemdiagnosis.html
  */
 export interface ICoverageEligibilityRequestItemDiagnosis extends IBackboneElement {
   /**

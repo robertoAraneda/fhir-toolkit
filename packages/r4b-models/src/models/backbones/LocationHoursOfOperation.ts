@@ -20,7 +20,7 @@ const LOCATION_HOURS_OF_OPERATION_PROPERTIES = [
 /**
  * LocationHoursOfOperation - What days/times during a week is this location usually open
  *
- * @see https://hl7.org/fhir/R4/locationhoursofoperation.html
+ * @see https://hl7.org/fhir/R4B/locationhoursofoperation.html
  *
  * @example
  * const locationHoursOfOperation = new LocationHoursOfOperation({

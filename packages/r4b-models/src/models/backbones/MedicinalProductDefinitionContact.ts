@@ -14,7 +14,7 @@ const MEDICINAL_PRODUCT_DEFINITION_CONTACT_PROPERTIES = [
 /**
  * MedicinalProductDefinitionContact - A product specific contact, person (in a role), or an organization
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitioncontact.html
+ * @see https://hl7.org/fhir/R4B/medicinalproductdefinitioncontact.html
  *
  * @example
  * const medicinalProductDefinitionContact = new MedicinalProductDefinitionContact({

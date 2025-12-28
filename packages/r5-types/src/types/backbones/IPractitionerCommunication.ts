@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * A language which may be used to communicate with the practitioner
  * 
  *
- * @see https://hl7.org/fhir/R4/practitionercommunication.html
+ * @see https://hl7.org/fhir/R5/practitionercommunication.html
  */
 export interface IPractitionerCommunication extends IBackboneElement {
   /**

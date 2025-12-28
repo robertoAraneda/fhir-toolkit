@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Applies to homopolymer and block co-polymers where the degree of polymerisation within a block can be described
  * 
  *
- * @see https://hl7.org/fhir/R4/substancepolymerrepeatrepeatunitdegreeofpolymerisation.html
+ * @see https://hl7.org/fhir/R5/substancepolymerrepeatrepeatunitdegreeofpolymerisation.html
  */
 export interface ISubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation extends IBackboneElement {
   /**

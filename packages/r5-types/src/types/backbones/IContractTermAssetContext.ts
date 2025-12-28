@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Circumstance of the asset
  * 
  *
- * @see https://hl7.org/fhir/R4/contracttermassetcontext.html
+ * @see https://hl7.org/fhir/R5/contracttermassetcontext.html
  */
 export interface IContractTermAssetContext extends IBackboneElement {
   /**

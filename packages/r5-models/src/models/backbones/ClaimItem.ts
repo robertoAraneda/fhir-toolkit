@@ -55,7 +55,7 @@ const CLAIM_ITEM_PROPERTIES = [
 /**
  * ClaimItem - Product or service provided
  *
- * @see https://hl7.org/fhir/R4/claimitem.html
+ * @see https://hl7.org/fhir/R5/claimitem.html
  *
  * @example
  * const claimItem = new ClaimItem({

@@ -15,7 +15,7 @@ const CODEABLE_CONCEPT_PROPERTIES = [
 /**
  * CodeableConcept - A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.
  *
- * @see https://hl7.org/fhir/R4/codeableconcept.html
+ * @see https://hl7.org/fhir/R5/codeableconcept.html
  *
  * @example
  * const codeableConcept = new CodeableConcept({

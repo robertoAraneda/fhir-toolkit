@@ -20,7 +20,7 @@ const CLAIM_CARE_TEAM_PROPERTIES = [
 /**
  * ClaimCareTeam - Members of the care team
  *
- * @see https://hl7.org/fhir/R4/claimcareteam.html
+ * @see https://hl7.org/fhir/R4B/claimcareteam.html
  *
  * @example
  * const claimCareTeam = new ClaimCareTeam({

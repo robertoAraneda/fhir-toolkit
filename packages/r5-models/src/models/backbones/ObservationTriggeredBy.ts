@@ -18,7 +18,7 @@ const OBSERVATION_TRIGGERED_BY_PROPERTIES = [
 /**
  * ObservationTriggeredBy - Triggering observation(s)
  *
- * @see https://hl7.org/fhir/R4/observationtriggeredby.html
+ * @see https://hl7.org/fhir/R5/observationtriggeredby.html
  *
  * @example
  * const observationTriggeredBy = new ObservationTriggeredBy({

@@ -15,7 +15,7 @@ const VALUE_SET_EXPANSION_PROPERTY_PROPERTIES = [
 /**
  * ValueSetExpansionProperty - Additional information supplied about each concept
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansionproperty.html
+ * @see https://hl7.org/fhir/R5/valuesetexpansionproperty.html
  *
  * @example
  * const valueSetExpansionProperty = new ValueSetExpansionProperty({

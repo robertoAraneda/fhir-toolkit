@@ -20,7 +20,7 @@ const SUPPLY_REQUEST_PARAMETER_PROPERTIES = [
 /**
  * SupplyRequestParameter - Ordered item details
  *
- * @see https://hl7.org/fhir/R4/supplyrequestparameter.html
+ * @see https://hl7.org/fhir/R4B/supplyrequestparameter.html
  *
  * @example
  * const supplyRequestParameter = new SupplyRequestParameter({

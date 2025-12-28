@@ -18,7 +18,7 @@ const CITATION_CITED_ARTIFACT_ABSTRACT_PROPERTIES = [
 /**
  * CitationCitedArtifactAbstract - Summary of the article or artifact
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactabstract.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactabstract.html
  *
  * @example
  * const citationCitedArtifactAbstract = new CitationCitedArtifactAbstract({

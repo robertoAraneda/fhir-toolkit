@@ -37,7 +37,7 @@ const TEST_REPORT_PROPERTIES = [
 /**
  * TestReport - A summary of information based on the results of executing a TestScript.
  *
- * @see https://hl7.org/fhir/R4/testreport.html
+ * @see https://hl7.org/fhir/R4B/testreport.html
  *
  * @example
  * const testReport = new TestReport({

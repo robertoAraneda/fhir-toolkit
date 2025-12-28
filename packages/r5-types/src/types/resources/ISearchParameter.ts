@@ -11,7 +11,7 @@ import type { PublicationStatusType, SearchComparatorType, SearchModifierCodeTyp
  * A search parameter that defines a named search item that can be used to search/filter on a resource.
  * 
  *
- * @see https://hl7.org/fhir/R4/searchparameter.html
+ * @see https://hl7.org/fhir/R5/searchparameter.html
  */
 export interface ISearchParameter extends IDomainResource {
   /**

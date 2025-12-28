@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Definition of the constant value used in the map rules
  * 
  *
- * @see https://hl7.org/fhir/R4/structuremapconst.html
+ * @see https://hl7.org/fhir/R5/structuremapconst.html
  */
 export interface IStructureMapConst extends IBackboneElement {
   /**

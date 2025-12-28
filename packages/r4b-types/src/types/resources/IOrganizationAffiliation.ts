@@ -9,7 +9,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.
  * 
  *
- * @see https://hl7.org/fhir/R4/organizationaffiliation.html
+ * @see https://hl7.org/fhir/R4B/organizationaffiliation.html
  */
 export interface IOrganizationAffiliation extends IDomainResource {
   /**

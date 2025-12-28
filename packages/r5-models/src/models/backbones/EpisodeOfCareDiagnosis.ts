@@ -14,7 +14,7 @@ const EPISODE_OF_CARE_DIAGNOSIS_PROPERTIES = [
 /**
  * EpisodeOfCareDiagnosis - The list of medical conditions that were addressed during the episode of care
  *
- * @see https://hl7.org/fhir/R4/episodeofcarediagnosis.html
+ * @see https://hl7.org/fhir/R5/episodeofcarediagnosis.html
  *
  * @example
  * const episodeOfCareDiagnosis = new EpisodeOfCareDiagnosis({

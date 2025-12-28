@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * List of participants involved in the encounter
  * 
  *
- * @see https://hl7.org/fhir/R4/encounterparticipant.html
+ * @see https://hl7.org/fhir/R5/encounterparticipant.html
  */
 export interface IEncounterParticipant extends IBackboneElement {
   /**

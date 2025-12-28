@@ -8,7 +8,7 @@ import type { IGraphDefinitionLinkTargetCompartment } from './IGraphDefinitionLi
  * Potential target for the link
  * 
  *
- * @see https://hl7.org/fhir/R4/graphdefinitionlinktarget.html
+ * @see https://hl7.org/fhir/R4B/graphdefinitionlinktarget.html
  */
 export interface IGraphDefinitionLinkTarget extends IBackboneElement {
   /**

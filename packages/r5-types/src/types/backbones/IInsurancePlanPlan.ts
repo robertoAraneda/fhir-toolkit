@@ -9,7 +9,7 @@ import type { IInsurancePlanPlanSpecificCost } from './IInsurancePlanPlanSpecifi
  * Plan details
  * 
  *
- * @see https://hl7.org/fhir/R4/insuranceplanplan.html
+ * @see https://hl7.org/fhir/R5/insuranceplanplan.html
  */
 export interface IInsurancePlanPlan extends IBackboneElement {
   /**

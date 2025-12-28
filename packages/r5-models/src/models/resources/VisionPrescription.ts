@@ -26,7 +26,7 @@ const VISION_PRESCRIPTION_PROPERTIES = [
 /**
  * VisionPrescription - An authorization for the provision of glasses and/or contact lenses to a patient.
  *
- * @see https://hl7.org/fhir/R4/visionprescription.html
+ * @see https://hl7.org/fhir/R5/visionprescription.html
  *
  * @example
  * const visionPrescription = new VisionPrescription({

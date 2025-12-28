@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Receiver Operator Characteristic (ROC) Curve
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequencequalityroc.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencequalityroc.html
  */
 export interface IMolecularSequenceQualityRoc extends IBackboneElement {
   /**

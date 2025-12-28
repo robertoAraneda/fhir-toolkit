@@ -15,7 +15,7 @@ const MOLECULAR_SEQUENCE_STRUCTURE_VARIANT_INNER_PROPERTIES = [
 /**
  * MolecularSequenceStructureVariantInner - Structural variant inner
  *
- * @see https://hl7.org/fhir/R4/molecularsequencestructurevariantinner.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencestructurevariantinner.html
  *
  * @example
  * const molecularSequenceStructureVariantInner = new MolecularSequenceStructureVariantInner({

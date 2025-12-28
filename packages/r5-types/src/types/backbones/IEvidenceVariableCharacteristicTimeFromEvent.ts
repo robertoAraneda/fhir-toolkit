@@ -9,7 +9,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Timing in which the characteristic is determined
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristictimefromevent.html
+ * @see https://hl7.org/fhir/R5/evidencevariablecharacteristictimefromevent.html
  */
 export interface IEvidenceVariableCharacteristicTimeFromEvent extends IBackboneElement {
   /**

@@ -27,7 +27,7 @@ const INGREDIENT_PROPERTIES = [
 /**
  * Ingredient - An ingredient of a manufactured item or pharmaceutical product.
  *
- * @see https://hl7.org/fhir/R4/ingredient.html
+ * @see https://hl7.org/fhir/R4B/ingredient.html
  *
  * @example
  * const ingredient = new Ingredient({

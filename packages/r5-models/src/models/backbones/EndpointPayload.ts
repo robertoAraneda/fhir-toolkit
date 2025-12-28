@@ -15,7 +15,7 @@ const ENDPOINT_PAYLOAD_PROPERTIES = [
 /**
  * EndpointPayload - Set of payloads that are provided by this endpoint
  *
- * @see https://hl7.org/fhir/R4/endpointpayload.html
+ * @see https://hl7.org/fhir/R5/endpointpayload.html
  *
  * @example
  * const endpointPayload = new EndpointPayload({

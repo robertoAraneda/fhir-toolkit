@@ -18,7 +18,7 @@ const EVIDENCE_STATISTIC_MODEL_CHARACTERISTIC_PROPERTIES = [
 /**
  * EvidenceStatisticModelCharacteristic - An aspect of the statistical model
  *
- * @see https://hl7.org/fhir/R4/evidencestatisticmodelcharacteristic.html
+ * @see https://hl7.org/fhir/R4B/evidencestatisticmodelcharacteristic.html
  *
  * @example
  * const evidenceStatisticModelCharacteristic = new EvidenceStatisticModelCharacteristic({

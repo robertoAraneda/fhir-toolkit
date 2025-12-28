@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Indicates who or what performed an action
  * 
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductdispenseperformer.html
+ * @see https://hl7.org/fhir/R5/biologicallyderivedproductdispenseperformer.html
  */
 export interface IBiologicallyDerivedProductDispensePerformer extends IBackboneElement {
   /**

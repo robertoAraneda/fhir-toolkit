@@ -27,7 +27,7 @@ const APPOINTMENT_RECURRENCE_TEMPLATE_WEEKLY_TEMPLATE_PROPERTIES = [
 /**
  * AppointmentRecurrenceTemplateWeeklyTemplate - Information about weekly recurring appointments
  *
- * @see https://hl7.org/fhir/R4/appointmentrecurrencetemplateweeklytemplate.html
+ * @see https://hl7.org/fhir/R5/appointmentrecurrencetemplateweeklytemplate.html
  *
  * @example
  * const appointmentRecurrenceTemplateWeeklyTemplate = new AppointmentRecurrenceTemplateWeeklyTemplate({

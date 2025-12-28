@@ -9,7 +9,7 @@ import type { IMedicationKnowledgeStorageGuidelineEnvironmentalSetting } from '.
  * How the medication should be stored
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgestorageguideline.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgestorageguideline.html
  */
 export interface IMedicationKnowledgeStorageGuideline extends IBackboneElement {
   /**

@@ -18,7 +18,7 @@ const CLAIM_RESPONSE_ITEM_REVIEW_OUTCOME_PROPERTIES = [
 /**
  * ClaimResponseItemReviewOutcome - Adjudication results
  *
- * @see https://hl7.org/fhir/R4/claimresponseitemreviewoutcome.html
+ * @see https://hl7.org/fhir/R5/claimresponseitemreviewoutcome.html
  *
  * @example
  * const claimResponseItemReviewOutcome = new ClaimResponseItemReviewOutcome({

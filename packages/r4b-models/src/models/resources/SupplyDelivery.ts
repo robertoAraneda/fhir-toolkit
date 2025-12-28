@@ -34,7 +34,7 @@ const SUPPLY_DELIVERY_PROPERTIES = [
 /**
  * SupplyDelivery - Record of delivery of what is supplied.
  *
- * @see https://hl7.org/fhir/R4/supplydelivery.html
+ * @see https://hl7.org/fhir/R4B/supplydelivery.html
  *
  * @example
  * const supplyDelivery = new SupplyDelivery({

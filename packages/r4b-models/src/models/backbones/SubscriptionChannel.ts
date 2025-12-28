@@ -20,7 +20,7 @@ const SUBSCRIPTION_CHANNEL_PROPERTIES = [
 /**
  * SubscriptionChannel - The channel on which to report matches to the criteria
  *
- * @see https://hl7.org/fhir/R4/subscriptionchannel.html
+ * @see https://hl7.org/fhir/R4B/subscriptionchannel.html
  *
  * @example
  * const subscriptionChannel = new SubscriptionChannel({

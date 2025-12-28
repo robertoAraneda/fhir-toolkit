@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * If this describes a specific instance
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementimplementation.html
+ * @see https://hl7.org/fhir/R4B/capabilitystatementimplementation.html
  */
 export interface ICapabilityStatementImplementation extends IBackboneElement {
   /**

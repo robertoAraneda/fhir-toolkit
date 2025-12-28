@@ -14,7 +14,7 @@ const ADVERSE_EVENT_CONTRIBUTING_FACTOR_PROPERTIES = [
 /**
  * AdverseEventContributingFactor - Contributing factors suspected to have increased the probability or severity of the adverse event
  *
- * @see https://hl7.org/fhir/R4/adverseeventcontributingfactor.html
+ * @see https://hl7.org/fhir/R5/adverseeventcontributingfactor.html
  *
  * @example
  * const adverseEventContributingFactor = new AdverseEventContributingFactor({

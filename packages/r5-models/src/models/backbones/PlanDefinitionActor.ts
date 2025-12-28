@@ -17,7 +17,7 @@ const PLAN_DEFINITION_ACTOR_PROPERTIES = [
 /**
  * PlanDefinitionActor - Actors within the plan
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactor.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactor.html
  *
  * @example
  * const planDefinitionActor = new PlanDefinitionActor({

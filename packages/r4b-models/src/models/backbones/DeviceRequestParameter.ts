@@ -20,7 +20,7 @@ const DEVICE_REQUEST_PARAMETER_PROPERTIES = [
 /**
  * DeviceRequestParameter - Device details
  *
- * @see https://hl7.org/fhir/R4/devicerequestparameter.html
+ * @see https://hl7.org/fhir/R4B/devicerequestparameter.html
  *
  * @example
  * const deviceRequestParameter = new DeviceRequestParameter({

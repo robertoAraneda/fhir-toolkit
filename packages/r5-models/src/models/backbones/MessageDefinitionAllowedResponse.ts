@@ -15,7 +15,7 @@ const MESSAGE_DEFINITION_ALLOWED_RESPONSE_PROPERTIES = [
 /**
  * MessageDefinitionAllowedResponse - Responses to this message
  *
- * @see https://hl7.org/fhir/R4/messagedefinitionallowedresponse.html
+ * @see https://hl7.org/fhir/R5/messagedefinitionallowedresponse.html
  *
  * @example
  * const messageDefinitionAllowedResponse = new MessageDefinitionAllowedResponse({

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Specifies if changes are allowed when dispensing a medication from a regulatory perspective
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeregulatorysubstitution.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgeregulatorysubstitution.html
  */
 export interface IMedicationKnowledgeRegulatorySubstitution extends IBackboneElement {
   /**

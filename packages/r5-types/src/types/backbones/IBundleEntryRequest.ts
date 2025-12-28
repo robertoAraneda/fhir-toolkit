@@ -7,7 +7,7 @@ import type { HTTPVerbType } from '../../valuesets/index.js';
  * Additional execution information (transaction/batch/history)
  * 
  *
- * @see https://hl7.org/fhir/R4/bundleentryrequest.html
+ * @see https://hl7.org/fhir/R5/bundleentryrequest.html
  */
 export interface IBundleEntryRequest extends IBackboneElement {
   /**

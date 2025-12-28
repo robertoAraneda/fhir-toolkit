@@ -20,7 +20,7 @@ const INVOICE_LINE_ITEM_PRICE_COMPONENT_PROPERTIES = [
 /**
  * InvoiceLineItemPriceComponent - Components of total line item price
  *
- * @see https://hl7.org/fhir/R4/invoicelineitempricecomponent.html
+ * @see https://hl7.org/fhir/R4B/invoicelineitempricecomponent.html
  *
  * @example
  * const invoiceLineItemPriceComponent = new InvoiceLineItemPriceComponent({

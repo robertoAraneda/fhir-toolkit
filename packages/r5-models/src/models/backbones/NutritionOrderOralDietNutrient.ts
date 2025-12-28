@@ -14,7 +14,7 @@ const NUTRITION_ORDER_ORAL_DIET_NUTRIENT_PROPERTIES = [
 /**
  * NutritionOrderOralDietNutrient - Required  nutrient modifications
  *
- * @see https://hl7.org/fhir/R4/nutritionorderoraldietnutrient.html
+ * @see https://hl7.org/fhir/R5/nutritionorderoraldietnutrient.html
  *
  * @example
  * const nutritionOrderOralDietNutrient = new NutritionOrderOralDietNutrient({

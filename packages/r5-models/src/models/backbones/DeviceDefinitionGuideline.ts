@@ -23,7 +23,7 @@ const DEVICE_DEFINITION_GUIDELINE_PROPERTIES = [
 /**
  * DeviceDefinitionGuideline - Information aimed at providing directions for the usage of this model of device
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionguideline.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionguideline.html
  *
  * @example
  * const deviceDefinitionGuideline = new DeviceDefinitionGuideline({

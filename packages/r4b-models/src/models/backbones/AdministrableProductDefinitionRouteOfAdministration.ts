@@ -22,7 +22,7 @@ const ADMINISTRABLE_PRODUCT_DEFINITION_ROUTE_OF_ADMINISTRATION_PROPERTIES = [
 /**
  * AdministrableProductDefinitionRouteOfAdministration - The path by which the product is taken into or makes contact with the body
  *
- * @see https://hl7.org/fhir/R4/administrableproductdefinitionrouteofadministration.html
+ * @see https://hl7.org/fhir/R4B/administrableproductdefinitionrouteofadministration.html
  *
  * @example
  * const administrableProductDefinitionRouteOfAdministration = new AdministrableProductDefinitionRouteOfAdministration({

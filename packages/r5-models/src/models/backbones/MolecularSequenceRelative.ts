@@ -21,7 +21,7 @@ const MOLECULAR_SEQUENCE_RELATIVE_PROPERTIES = [
 /**
  * MolecularSequenceRelative - A sequence defined relative to another sequence
  *
- * @see https://hl7.org/fhir/R4/molecularsequencerelative.html
+ * @see https://hl7.org/fhir/R5/molecularsequencerelative.html
  *
  * @example
  * const molecularSequenceRelative = new MolecularSequenceRelative({

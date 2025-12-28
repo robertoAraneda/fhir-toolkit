@@ -10,7 +10,7 @@ import type { IDataRequirementValueFilter } from '../backbones/IDataRequirementV
  * Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data.
  * 
  *
- * @see https://hl7.org/fhir/R4/datarequirement.html
+ * @see https://hl7.org/fhir/R5/datarequirement.html
  */
 export interface IDataRequirement extends IDataType {
   /**

@@ -9,7 +9,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Collection details
  * 
  *
- * @see https://hl7.org/fhir/R4/specimencollection.html
+ * @see https://hl7.org/fhir/R4B/specimencollection.html
  */
 export interface ISpecimenCollection extends IBackboneElement {
   /**

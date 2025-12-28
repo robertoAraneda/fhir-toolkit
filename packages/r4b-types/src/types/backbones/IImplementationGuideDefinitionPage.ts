@@ -7,7 +7,7 @@ import type { GuidePageGenerationType } from '../../valuesets/index.js';
  * Page/Section in the Guide
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitionpage.html
+ * @see https://hl7.org/fhir/R4B/implementationguidedefinitionpage.html
  */
 export interface IImplementationGuideDefinitionPage extends IBackboneElement {
   /**

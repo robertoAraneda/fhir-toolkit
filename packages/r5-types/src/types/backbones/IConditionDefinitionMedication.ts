@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Medications particularly relevant for this condition
  * 
  *
- * @see https://hl7.org/fhir/R4/conditiondefinitionmedication.html
+ * @see https://hl7.org/fhir/R5/conditiondefinitionmedication.html
  */
 export interface IConditionDefinitionMedication extends IBackboneElement {
   /**

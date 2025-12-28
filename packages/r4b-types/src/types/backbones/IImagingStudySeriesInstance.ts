@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement } from '../../base/index.js';
  * A single SOP instance from the series
  * 
  *
- * @see https://hl7.org/fhir/R4/imagingstudyseriesinstance.html
+ * @see https://hl7.org/fhir/R4B/imagingstudyseriesinstance.html
  */
 export interface IImagingStudySeriesInstance extends IBackboneElement {
   /**

@@ -10,7 +10,7 @@ import type { CompartmentTypeType, PublicationStatusType } from '../../valuesets
  * A compartment definition that defines how resources are accessed on a server.
  * 
  *
- * @see https://hl7.org/fhir/R4/compartmentdefinition.html
+ * @see https://hl7.org/fhir/R4B/compartmentdefinition.html
  */
 export interface ICompartmentDefinition extends IDomainResource {
   /**

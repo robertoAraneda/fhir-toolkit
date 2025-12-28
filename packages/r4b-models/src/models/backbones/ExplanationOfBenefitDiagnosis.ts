@@ -20,7 +20,7 @@ const EXPLANATION_OF_BENEFIT_DIAGNOSIS_PROPERTIES = [
 /**
  * ExplanationOfBenefitDiagnosis - Pertinent diagnosis information
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitdiagnosis.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitdiagnosis.html
  *
  * @example
  * const explanationOfBenefitDiagnosis = new ExplanationOfBenefitDiagnosis({

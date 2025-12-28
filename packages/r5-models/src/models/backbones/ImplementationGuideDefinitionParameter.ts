@@ -15,7 +15,7 @@ const IMPLEMENTATION_GUIDE_DEFINITION_PARAMETER_PROPERTIES = [
 /**
  * ImplementationGuideDefinitionParameter - Defines how IG is built by tools
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitionparameter.html
+ * @see https://hl7.org/fhir/R5/implementationguidedefinitionparameter.html
  *
  * @example
  * const implementationGuideDefinitionParameter = new ImplementationGuideDefinitionParameter({

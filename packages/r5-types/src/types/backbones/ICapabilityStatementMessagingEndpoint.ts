@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement } from '../../base/index.js';
  * Where messages should be sent
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementmessagingendpoint.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementmessagingendpoint.html
  */
 export interface ICapabilityStatementMessagingEndpoint extends IBackboneElement {
   /**

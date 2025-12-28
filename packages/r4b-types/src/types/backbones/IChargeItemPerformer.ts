@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who performed charged service
  * 
  *
- * @see https://hl7.org/fhir/R4/chargeitemperformer.html
+ * @see https://hl7.org/fhir/R4B/chargeitemperformer.html
  */
 export interface IChargeItemPerformer extends IBackboneElement {
   /**

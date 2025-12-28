@@ -21,7 +21,7 @@ const EVIDENCE_STATISTIC_SAMPLE_SIZE_PROPERTIES = [
 /**
  * EvidenceStatisticSampleSize - Number of samples in the statistic
  *
- * @see https://hl7.org/fhir/R4/evidencestatisticsamplesize.html
+ * @see https://hl7.org/fhir/R4B/evidencestatisticsamplesize.html
  *
  * @example
  * const evidenceStatisticSampleSize = new EvidenceStatisticSampleSize({

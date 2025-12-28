@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * Reference to another product, e.g. for linking authorised to investigational product
  * 
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitioncrossreference.html
+ * @see https://hl7.org/fhir/R4B/medicinalproductdefinitioncrossreference.html
  */
 export interface IMedicinalProductDefinitionCrossReference extends IBackboneElement {
   /**

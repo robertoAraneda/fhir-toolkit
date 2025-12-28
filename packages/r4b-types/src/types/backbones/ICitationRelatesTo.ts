@@ -8,7 +8,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Artifact related to the Citation Resource
  * 
  *
- * @see https://hl7.org/fhir/R4/citationrelatesto.html
+ * @see https://hl7.org/fhir/R4B/citationrelatesto.html
  */
 export interface ICitationRelatesTo extends IBackboneElement {
   /**

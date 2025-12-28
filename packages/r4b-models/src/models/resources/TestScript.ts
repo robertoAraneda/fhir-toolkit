@@ -60,7 +60,7 @@ const TEST_SCRIPT_PROPERTIES = [
 /**
  * TestScript - A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
  *
- * @see https://hl7.org/fhir/R4/testscript.html
+ * @see https://hl7.org/fhir/R4B/testscript.html
  *
  * @example
  * const testScript = new TestScript({

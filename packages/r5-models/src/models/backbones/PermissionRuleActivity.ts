@@ -15,7 +15,7 @@ const PERMISSION_RULE_ACTIVITY_PROPERTIES = [
 /**
  * PermissionRuleActivity - A description or definition of which activities are allowed to be done on the data
  *
- * @see https://hl7.org/fhir/R4/permissionruleactivity.html
+ * @see https://hl7.org/fhir/R5/permissionruleactivity.html
  *
  * @example
  * const permissionRuleActivity = new PermissionRuleActivity({

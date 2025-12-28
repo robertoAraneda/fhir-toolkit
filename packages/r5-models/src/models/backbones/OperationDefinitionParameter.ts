@@ -39,7 +39,7 @@ const OPERATION_DEFINITION_PARAMETER_PROPERTIES = [
 /**
  * OperationDefinitionParameter - Parameters for the operation/query
  *
- * @see https://hl7.org/fhir/R4/operationdefinitionparameter.html
+ * @see https://hl7.org/fhir/R5/operationdefinitionparameter.html
  *
  * @example
  * const operationDefinitionParameter = new OperationDefinitionParameter({

@@ -50,7 +50,7 @@ const CONDITION_PROPERTIES = [
 /**
  * Condition - A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.
  *
- * @see https://hl7.org/fhir/R4/condition.html
+ * @see https://hl7.org/fhir/R5/condition.html
  *
  * @example
  * const condition = new Condition({

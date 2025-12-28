@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement } from '../../base/index.js';
  * Content profile rules for the document
  * 
  *
- * @see https://hl7.org/fhir/R4/documentreferencecontentprofile.html
+ * @see https://hl7.org/fhir/R5/documentreferencecontentprofile.html
  */
 export interface IDocumentReferenceContentProfile extends IBackboneElement {
   /**

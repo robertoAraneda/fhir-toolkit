@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Total nutrient for the whole meal, product, serving
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionintakeingredientlabel.html
+ * @see https://hl7.org/fhir/R5/nutritionintakeingredientlabel.html
  */
 export interface INutritionIntakeIngredientLabel extends IBackboneElement {
   /**

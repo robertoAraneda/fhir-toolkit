@@ -14,7 +14,7 @@ const TEST_SCRIPT_TEST_ACTION_PROPERTIES = [
 /**
  * TestScriptTestAction - A test operation or assert to perform
  *
- * @see https://hl7.org/fhir/R4/testscripttestaction.html
+ * @see https://hl7.org/fhir/R4B/testscripttestaction.html
  *
  * @example
  * const testScriptTestAction = new TestScriptTestAction({

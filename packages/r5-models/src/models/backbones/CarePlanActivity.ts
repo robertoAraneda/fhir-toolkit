@@ -16,7 +16,7 @@ const CARE_PLAN_ACTIVITY_PROPERTIES = [
 /**
  * CarePlanActivity - Action to occur or has occurred as part of plan
  *
- * @see https://hl7.org/fhir/R4/careplanactivity.html
+ * @see https://hl7.org/fhir/R5/careplanactivity.html
  *
  * @example
  * const carePlanActivity = new CarePlanActivity({

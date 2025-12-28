@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Software that is covered by this terminology capability statement
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiessoftware.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiessoftware.html
  */
 export interface ITerminologyCapabilitiesSoftware extends IBackboneElement {
   /**

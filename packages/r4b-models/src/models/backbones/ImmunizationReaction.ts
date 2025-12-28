@@ -17,7 +17,7 @@ const IMMUNIZATION_REACTION_PROPERTIES = [
 /**
  * ImmunizationReaction - Details of a reaction that follows immunization
  *
- * @see https://hl7.org/fhir/R4/immunizationreaction.html
+ * @see https://hl7.org/fhir/R4B/immunizationreaction.html
  *
  * @example
  * const immunizationReaction = new ImmunizationReaction({

@@ -7,7 +7,7 @@ import type { OperationParameterUseType } from '../../valuesets/index.js';
  * The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse.
  * 
  *
- * @see https://hl7.org/fhir/R4/parameterdefinition.html
+ * @see https://hl7.org/fhir/R5/parameterdefinition.html
  */
 export interface IParameterDefinition extends IDataType {
   /**

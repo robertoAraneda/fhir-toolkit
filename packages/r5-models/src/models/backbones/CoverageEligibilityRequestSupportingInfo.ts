@@ -17,7 +17,7 @@ const COVERAGE_ELIGIBILITY_REQUEST_SUPPORTING_INFO_PROPERTIES = [
 /**
  * CoverageEligibilityRequestSupportingInfo - Supporting information
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityrequestsupportinginfo.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityrequestsupportinginfo.html
  *
  * @example
  * const coverageEligibilityRequestSupportingInfo = new CoverageEligibilityRequestSupportingInfo({

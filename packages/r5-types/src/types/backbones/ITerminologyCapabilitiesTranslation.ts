@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Information about the [ConceptMap/$translate](conceptmap-operation-translate.html) operation
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiestranslation.html
+ * @see https://hl7.org/fhir/R5/terminologycapabilitiestranslation.html
  */
 export interface ITerminologyCapabilitiesTranslation extends IBackboneElement {
   /**

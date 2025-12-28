@@ -17,7 +17,7 @@ const EXPLANATION_OF_BENEFIT_EVENT_PROPERTIES = [
 /**
  * ExplanationOfBenefitEvent - Event information
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitevent.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitevent.html
  *
  * @example
  * const explanationOfBenefitEvent = new ExplanationOfBenefitEvent({

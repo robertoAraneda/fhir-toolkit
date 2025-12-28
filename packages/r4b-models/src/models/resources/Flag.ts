@@ -25,7 +25,7 @@ const FLAG_PROPERTIES = [
 /**
  * Flag - Prospective warnings of potential issues when providing care to the patient.
  *
- * @see https://hl7.org/fhir/R4/flag.html
+ * @see https://hl7.org/fhir/R4B/flag.html
  *
  * @example
  * const flag = new Flag({

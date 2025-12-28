@@ -22,7 +22,7 @@ const PLAN_DEFINITION_ACTION_RELATED_ACTION_PROPERTIES = [
 /**
  * PlanDefinitionActionRelatedAction - Relationship to another action
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactionrelatedaction.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactionrelatedaction.html
  *
  * @example
  * const planDefinitionActionRelatedAction = new PlanDefinitionActionRelatedAction({

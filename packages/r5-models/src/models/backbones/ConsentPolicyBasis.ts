@@ -15,7 +15,7 @@ const CONSENT_POLICY_BASIS_PROPERTIES = [
 /**
  * ConsentPolicyBasis - Computable version of the backing policy
  *
- * @see https://hl7.org/fhir/R4/consentpolicybasis.html
+ * @see https://hl7.org/fhir/R5/consentpolicybasis.html
  *
  * @example
  * const consentPolicyBasis = new ConsentPolicyBasis({

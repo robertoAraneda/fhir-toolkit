@@ -14,7 +14,7 @@ import type { EventStatusType } from '../../valuesets/index.js';
  * An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.
  * 
  *
- * @see https://hl7.org/fhir/R4/procedure.html
+ * @see https://hl7.org/fhir/R4B/procedure.html
  */
 export interface IProcedure extends IDomainResource {
   /**

@@ -7,7 +7,7 @@ import type { ISignature } from '../datatypes/ISignature.js';
  * Information about the entity validating information
  * 
  *
- * @see https://hl7.org/fhir/R4/verificationresultvalidator.html
+ * @see https://hl7.org/fhir/R5/verificationresultvalidator.html
  */
 export interface IVerificationResultValidator extends IBackboneElement {
   /**

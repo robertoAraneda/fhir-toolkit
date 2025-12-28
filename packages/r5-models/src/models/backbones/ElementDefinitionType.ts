@@ -23,7 +23,7 @@ const ELEMENT_DEFINITION_TYPE_PROPERTIES = [
 /**
  * ElementDefinitionType - Data type and Profile for this element
  *
- * @see https://hl7.org/fhir/R4/elementdefinitiontype.html
+ * @see https://hl7.org/fhir/R5/elementdefinitiontype.html
  *
  * @example
  * const elementDefinitionType = new ElementDefinitionType({

@@ -30,7 +30,7 @@ const SPECIMEN_DEFINITION_TYPE_TESTED_PROPERTIES = [
 /**
  * SpecimenDefinitionTypeTested - Specimen in container intended for testing by lab
  *
- * @see https://hl7.org/fhir/R4/specimendefinitiontypetested.html
+ * @see https://hl7.org/fhir/R5/specimendefinitiontypetested.html
  *
  * @example
  * const specimenDefinitionTypeTested = new SpecimenDefinitionTypeTested({

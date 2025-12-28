@@ -8,7 +8,7 @@ import type { QuantityComparatorType } from '../../valuesets/index.js';
  * A length of time.
  * 
  *
- * @see https://hl7.org/fhir/R4/duration.html
+ * @see https://hl7.org/fhir/R5/duration.html
  */
 export interface IDuration extends IQuantity {
   /**

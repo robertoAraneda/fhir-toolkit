@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Organizational affiliation
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorshipentryaffiliationinfo.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactcontributorshipentryaffiliationinfo.html
  */
 export interface ICitationCitedArtifactContributorshipEntryAffiliationInfo extends IBackboneElement {
   /**

@@ -15,7 +15,7 @@ const CITATION_CITED_ARTIFACT_CLASSIFICATION_PROPERTIES = [
 /**
  * CitationCitedArtifactClassification - The assignment to an organizing scheme
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactclassification.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactclassification.html
  *
  * @example
  * const citationCitedArtifactClassification = new CitationCitedArtifactClassification({

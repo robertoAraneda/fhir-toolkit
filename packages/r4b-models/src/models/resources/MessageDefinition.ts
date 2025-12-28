@@ -64,7 +64,7 @@ const MESSAGE_DEFINITION_PROPERTIES = [
 /**
  * MessageDefinition - Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.
  *
- * @see https://hl7.org/fhir/R4/messagedefinition.html
+ * @see https://hl7.org/fhir/R4B/messagedefinition.html
  *
  * @example
  * const messageDefinition = new MessageDefinition({

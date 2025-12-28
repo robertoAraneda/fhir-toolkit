@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Additive associated with container
  * 
  *
- * @see https://hl7.org/fhir/R4/specimendefinitiontypetestedcontaineradditive.html
+ * @see https://hl7.org/fhir/R5/specimendefinitiontypetestedcontaineradditive.html
  */
 export interface ISpecimenDefinitionTypeTestedContainerAdditive extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { IDataRequirement } from '../datatypes/IDataRequirement.js';
  * Output data definition
  * 
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactionoutput.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactionoutput.html
  */
 export interface IPlanDefinitionActionOutput extends IBackboneElement {
   /**

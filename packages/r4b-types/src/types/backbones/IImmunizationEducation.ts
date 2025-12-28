@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Educational material presented to patient
  * 
  *
- * @see https://hl7.org/fhir/R4/immunizationeducation.html
+ * @see https://hl7.org/fhir/R4B/immunizationeducation.html
  */
 export interface IImmunizationEducation extends IBackboneElement {
   /**

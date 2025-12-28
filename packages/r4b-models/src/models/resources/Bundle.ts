@@ -26,7 +26,7 @@ const BUNDLE_PROPERTIES = [
 /**
  * Bundle - A container for a collection of resources.
  *
- * @see https://hl7.org/fhir/R4/bundle.html
+ * @see https://hl7.org/fhir/R4B/bundle.html
  *
  * @example
  * const bundle = new Bundle({

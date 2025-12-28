@@ -14,7 +14,7 @@ const EXPLANATION_OF_BENEFIT_PAYEE_PROPERTIES = [
 /**
  * ExplanationOfBenefitPayee - Recipient of benefits payable
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitpayee.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitpayee.html
  *
  * @example
  * const explanationOfBenefitPayee = new ExplanationOfBenefitPayee({

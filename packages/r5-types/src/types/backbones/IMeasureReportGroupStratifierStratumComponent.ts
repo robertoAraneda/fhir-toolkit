@@ -8,7 +8,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Stratifier component values
  * 
  *
- * @see https://hl7.org/fhir/R4/measurereportgroupstratifierstratumcomponent.html
+ * @see https://hl7.org/fhir/R5/measurereportgroupstratifierstratumcomponent.html
  */
 export interface IMeasureReportGroupStratifierStratumComponent extends IBackboneElement {
   /**

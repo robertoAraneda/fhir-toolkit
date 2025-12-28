@@ -8,7 +8,7 @@ import type { DeviceCorrectiveActionScopeType } from '../../valuesets/index.js';
  * Tracking of latest field safety corrective action
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitioncorrectiveaction.html
+ * @see https://hl7.org/fhir/R5/devicedefinitioncorrectiveaction.html
  */
 export interface IDeviceDefinitionCorrectiveAction extends IBackboneElement {
   /**

@@ -24,7 +24,7 @@ const ADMINISTRABLE_PRODUCT_DEFINITION_PROPERTY_PROPERTIES = [
 /**
  * AdministrableProductDefinitionProperty - Characteristics e.g. a product's onset of action
  *
- * @see https://hl7.org/fhir/R4/administrableproductdefinitionproperty.html
+ * @see https://hl7.org/fhir/R4B/administrableproductdefinitionproperty.html
  *
  * @example
  * const administrableProductDefinitionProperty = new AdministrableProductDefinitionProperty({

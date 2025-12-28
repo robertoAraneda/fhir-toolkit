@@ -7,7 +7,7 @@ import type { CommonLanguagesType } from '../../valuesets/index.js';
  * Descriptive characteristics of the item
  * 
  *
- * @see https://hl7.org/fhir/R4/inventoryitemdescription.html
+ * @see https://hl7.org/fhir/R5/inventoryitemdescription.html
  */
 export interface IInventoryItemDescription extends IBackboneElement {
   /**

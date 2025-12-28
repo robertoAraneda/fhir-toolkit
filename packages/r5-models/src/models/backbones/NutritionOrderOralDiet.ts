@@ -22,7 +22,7 @@ const NUTRITION_ORDER_ORAL_DIET_PROPERTIES = [
 /**
  * NutritionOrderOralDiet - Oral diet components
  *
- * @see https://hl7.org/fhir/R4/nutritionorderoraldiet.html
+ * @see https://hl7.org/fhir/R5/nutritionorderoraldiet.html
  *
  * @example
  * const nutritionOrderOralDiet = new NutritionOrderOralDiet({

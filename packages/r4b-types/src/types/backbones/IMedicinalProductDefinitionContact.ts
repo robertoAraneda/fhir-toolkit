@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * A product specific contact, person (in a role), or an organization
  * 
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitioncontact.html
+ * @see https://hl7.org/fhir/R4B/medicinalproductdefinitioncontact.html
  */
 export interface IMedicinalProductDefinitionContact extends IBackboneElement {
   /**

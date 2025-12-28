@@ -7,7 +7,7 @@ import type { ITerminologyCapabilitiesExpansionParameter } from './ITerminologyC
  * Information about the [ValueSet/$expand](valueset-operation-expand.html) operation
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesexpansion.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiesexpansion.html
  */
 export interface ITerminologyCapabilitiesExpansion extends IBackboneElement {
   /**

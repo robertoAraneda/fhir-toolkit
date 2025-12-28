@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Fixture in the test script - by reference (uri)
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptfixture.html
+ * @see https://hl7.org/fhir/R5/testscriptfixture.html
  */
 export interface ITestScriptFixture extends IBackboneElement {
   /**

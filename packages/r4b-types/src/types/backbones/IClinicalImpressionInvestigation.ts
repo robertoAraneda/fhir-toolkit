@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * One or more sets of investigations (signs, symptoms, etc.)
  * 
  *
- * @see https://hl7.org/fhir/R4/clinicalimpressioninvestigation.html
+ * @see https://hl7.org/fhir/R4B/clinicalimpressioninvestigation.html
  */
 export interface IClinicalImpressionInvestigation extends IBackboneElement {
   /**

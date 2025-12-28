@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Todo
  * 
  *
- * @see https://hl7.org/fhir/R4/substancereferenceinformationgeneelement.html
+ * @see https://hl7.org/fhir/R5/substancereferenceinformationgeneelement.html
  */
 export interface ISubstanceReferenceInformationGeneElement extends IBackboneElement {
   /**

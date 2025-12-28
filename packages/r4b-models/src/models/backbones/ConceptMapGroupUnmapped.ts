@@ -20,7 +20,7 @@ const CONCEPT_MAP_GROUP_UNMAPPED_PROPERTIES = [
 /**
  * ConceptMapGroupUnmapped - What to do when there is no mapping for the source concept
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupunmapped.html
+ * @see https://hl7.org/fhir/R4B/conceptmapgroupunmapped.html
  *
  * @example
  * const conceptMapGroupUnmapped = new ConceptMapGroupUnmapped({

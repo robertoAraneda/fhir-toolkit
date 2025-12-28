@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Device capabilities
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitioncapability.html
+ * @see https://hl7.org/fhir/R4B/devicedefinitioncapability.html
  */
 export interface IDeviceDefinitionCapability extends IBackboneElement {
   /**

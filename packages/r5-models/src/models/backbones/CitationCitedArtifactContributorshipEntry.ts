@@ -25,7 +25,7 @@ const CITATION_CITED_ARTIFACT_CONTRIBUTORSHIP_ENTRY_PROPERTIES = [
 /**
  * CitationCitedArtifactContributorshipEntry - An individual entity named as a contributor
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorshipentry.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactcontributorshipentry.html
  *
  * @example
  * const citationCitedArtifactContributorshipEntry = new CitationCitedArtifactContributorshipEntry({

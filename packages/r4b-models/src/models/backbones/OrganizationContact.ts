@@ -18,7 +18,7 @@ const ORGANIZATION_CONTACT_PROPERTIES = [
 /**
  * OrganizationContact - Contact for the organization for a certain purpose
  *
- * @see https://hl7.org/fhir/R4/organizationcontact.html
+ * @see https://hl7.org/fhir/R4B/organizationcontact.html
  *
  * @example
  * const organizationContact = new OrganizationContact({

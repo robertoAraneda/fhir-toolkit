@@ -17,7 +17,7 @@ const CITATION_CITED_ARTIFACT_CONTRIBUTORSHIP_SUMMARY_PROPERTIES = [
 /**
  * CitationCitedArtifactContributorshipSummary - Used to record a display of the author/contributor list without separate coding for each list member
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorshipsummary.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactcontributorshipsummary.html
  *
  * @example
  * const citationCitedArtifactContributorshipSummary = new CitationCitedArtifactContributorshipSummary({

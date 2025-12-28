@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Plan that is appropriate
  * 
  *
- * @see https://hl7.org/fhir/R4/conditiondefinitionplan.html
+ * @see https://hl7.org/fhir/R5/conditiondefinitionplan.html
  */
 export interface IConditionDefinitionPlan extends IBackboneElement {
   /**

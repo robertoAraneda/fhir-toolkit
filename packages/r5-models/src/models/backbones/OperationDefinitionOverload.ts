@@ -15,7 +15,7 @@ const OPERATION_DEFINITION_OVERLOAD_PROPERTIES = [
 /**
  * OperationDefinitionOverload - Define overloaded variants for when  generating code
  *
- * @see https://hl7.org/fhir/R4/operationdefinitionoverload.html
+ * @see https://hl7.org/fhir/R5/operationdefinitionoverload.html
  *
  * @example
  * const operationDefinitionOverload = new OperationDefinitionOverload({

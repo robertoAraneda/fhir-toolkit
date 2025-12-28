@@ -34,7 +34,7 @@ const IMMUNIZATION_RECOMMENDATION_RECOMMENDATION_PROPERTIES = [
 /**
  * ImmunizationRecommendationRecommendation - Vaccine administration recommendations
  *
- * @see https://hl7.org/fhir/R4/immunizationrecommendationrecommendation.html
+ * @see https://hl7.org/fhir/R4B/immunizationrecommendationrecommendation.html
  *
  * @example
  * const immunizationRecommendationRecommendation = new ImmunizationRecommendationRecommendation({

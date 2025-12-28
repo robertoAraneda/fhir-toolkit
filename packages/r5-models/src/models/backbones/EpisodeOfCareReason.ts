@@ -14,7 +14,7 @@ const EPISODE_OF_CARE_REASON_PROPERTIES = [
 /**
  * EpisodeOfCareReason - The list of medical reasons that are expected to be addressed during the episode of care
  *
- * @see https://hl7.org/fhir/R4/episodeofcarereason.html
+ * @see https://hl7.org/fhir/R5/episodeofcarereason.html
  *
  * @example
  * const episodeOfCareReason = new EpisodeOfCareReason({

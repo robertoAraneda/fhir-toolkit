@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Coding words or phrases of the name
  * 
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitionnamepart.html
+ * @see https://hl7.org/fhir/R5/medicinalproductdefinitionnamepart.html
  */
 export interface IMedicinalProductDefinitionNamePart extends IBackboneElement {
   /**

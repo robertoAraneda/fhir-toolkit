@@ -9,7 +9,7 @@ import type { ICoverageCostToBeneficiaryException } from './ICoverageCostToBenef
  * Patient payments for services/products
  * 
  *
- * @see https://hl7.org/fhir/R4/coveragecosttobeneficiary.html
+ * @see https://hl7.org/fhir/R5/coveragecosttobeneficiary.html
  */
 export interface ICoverageCostToBeneficiary extends IBackboneElement {
   /**

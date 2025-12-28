@@ -8,7 +8,7 @@ import type { IQuantity } from './IQuantity.js';
  * The shelf-life and storage information for a medicinal product item or container can be described using this class.
  * 
  *
- * @see https://hl7.org/fhir/R4/productshelflife.html
+ * @see https://hl7.org/fhir/R4B/productshelflife.html
  */
 export interface IProductShelfLife extends IBackboneElement {
   /**

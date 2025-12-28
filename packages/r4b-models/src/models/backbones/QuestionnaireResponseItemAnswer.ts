@@ -37,7 +37,7 @@ const QUESTIONNAIRE_RESPONSE_ITEM_ANSWER_PROPERTIES = [
 /**
  * QuestionnaireResponseItemAnswer - The response(s) to the question
  *
- * @see https://hl7.org/fhir/R4/questionnaireresponseitemanswer.html
+ * @see https://hl7.org/fhir/R4B/questionnaireresponseitemanswer.html
  *
  * @example
  * const questionnaireResponseItemAnswer = new QuestionnaireResponseItemAnswer({

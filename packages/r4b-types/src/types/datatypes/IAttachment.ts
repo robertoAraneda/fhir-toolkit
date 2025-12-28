@@ -6,7 +6,7 @@ import type { IElement } from '../../base/index.js';
  * For referring to data content defined in other formats.
  * 
  *
- * @see https://hl7.org/fhir/R4/attachment.html
+ * @see https://hl7.org/fhir/R4B/attachment.html
  */
 export interface IAttachment extends IElement {
   /**

@@ -7,7 +7,7 @@ import type { VersionIndependentResourceTypesAllType } from '../../valuesets/ind
  * Potential target for the link
  * 
  *
- * @see https://hl7.org/fhir/R4/graphdefinitionnode.html
+ * @see https://hl7.org/fhir/R5/graphdefinitionnode.html
  */
 export interface IGraphDefinitionNode extends IBackboneElement {
   /**

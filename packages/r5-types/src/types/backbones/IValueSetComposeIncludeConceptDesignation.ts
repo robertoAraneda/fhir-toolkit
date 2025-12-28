@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement } from '../../base/index.js';
  * Additional representations for this concept
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetcomposeincludeconceptdesignation.html
+ * @see https://hl7.org/fhir/R5/valuesetcomposeincludeconceptdesignation.html
  */
 export interface IValueSetComposeIncludeConceptDesignation extends IBackboneElement {
   /**

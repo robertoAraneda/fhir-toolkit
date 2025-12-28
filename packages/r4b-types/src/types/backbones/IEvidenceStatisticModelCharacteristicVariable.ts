@@ -9,7 +9,7 @@ import type { EvidenceVariableHandlingType } from '../../valuesets/index.js';
  * A variable adjusted for in the adjusted analysis
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencestatisticmodelcharacteristicvariable.html
+ * @see https://hl7.org/fhir/R4B/evidencestatisticmodelcharacteristicvariable.html
  */
 export interface IEvidenceStatisticModelCharacteristicVariable extends IBackboneElement {
   /**

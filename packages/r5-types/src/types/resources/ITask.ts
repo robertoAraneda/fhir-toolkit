@@ -15,7 +15,7 @@ import type { RequestPriorityType, TaskIntentType, TaskStatusType } from '../../
  * A task to be performed.
  * 
  *
- * @see https://hl7.org/fhir/R4/task.html
+ * @see https://hl7.org/fhir/R5/task.html
  */
 export interface ITask extends IDomainResource {
   /**

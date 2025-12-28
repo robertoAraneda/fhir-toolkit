@@ -17,7 +17,7 @@ const LINKAGE_PROPERTIES = [
 /**
  * Linkage - Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
  *
- * @see https://hl7.org/fhir/R4/linkage.html
+ * @see https://hl7.org/fhir/R4B/linkage.html
  *
  * @example
  * const linkage = new Linkage({

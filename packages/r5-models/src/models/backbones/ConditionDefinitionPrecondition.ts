@@ -19,7 +19,7 @@ const CONDITION_DEFINITION_PRECONDITION_PROPERTIES = [
 /**
  * ConditionDefinitionPrecondition - Observation that suggets this condition
  *
- * @see https://hl7.org/fhir/R4/conditiondefinitionprecondition.html
+ * @see https://hl7.org/fhir/R5/conditiondefinitionprecondition.html
  *
  * @example
  * const conditionDefinitionPrecondition = new ConditionDefinitionPrecondition({

@@ -7,7 +7,7 @@ import type { SearchParamTypeType } from '../../valuesets/index.js';
  * Search parameters supported by implementation
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrestresourcesearchparam.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementrestresourcesearchparam.html
  */
 export interface ICapabilityStatementRestResourceSearchParam extends IBackboneElement {
   /**

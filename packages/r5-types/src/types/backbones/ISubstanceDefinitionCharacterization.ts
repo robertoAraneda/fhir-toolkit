@@ -7,7 +7,7 @@ import type { IAttachment } from '../datatypes/IAttachment.js';
  * General specifications for this substance
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitioncharacterization.html
+ * @see https://hl7.org/fhir/R5/substancedefinitioncharacterization.html
  */
 export interface ISubstanceDefinitionCharacterization extends IBackboneElement {
   /**

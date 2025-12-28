@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * Who or what performed the medication administration and what type of performance they did
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationadministrationperformer.html
+ * @see https://hl7.org/fhir/R5/medicationadministrationperformer.html
  */
 export interface IMedicationAdministrationPerformer extends IBackboneElement {
   /**

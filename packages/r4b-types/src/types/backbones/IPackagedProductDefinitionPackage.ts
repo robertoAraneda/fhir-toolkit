@@ -10,7 +10,7 @@ import type { IPackagedProductDefinitionPackageShelfLifeStorage } from './IPacka
  * A packaging item, as a container for medically related items, possibly with other packaging items within, or a packaging component, such as bottle cap
  * 
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionpackage.html
+ * @see https://hl7.org/fhir/R4B/packagedproductdefinitionpackage.html
  */
 export interface IPackagedProductDefinitionPackage extends IBackboneElement {
   /**

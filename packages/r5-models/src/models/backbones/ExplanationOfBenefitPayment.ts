@@ -21,7 +21,7 @@ const EXPLANATION_OF_BENEFIT_PAYMENT_PROPERTIES = [
 /**
  * ExplanationOfBenefitPayment - Payment Details
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitpayment.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitpayment.html
  *
  * @example
  * const explanationOfBenefitPayment = new ExplanationOfBenefitPayment({

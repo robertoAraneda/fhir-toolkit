@@ -8,7 +8,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * Payment Details
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponsepayment.html
+ * @see https://hl7.org/fhir/R5/claimresponsepayment.html
  */
 export interface IClaimResponsePayment extends IBackboneElement {
   /**

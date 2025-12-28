@@ -13,7 +13,7 @@ import type { LocationModeType, LocationStatusType } from '../../valuesets/index
  * Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated.
  * 
  *
- * @see https://hl7.org/fhir/R4/location.html
+ * @see https://hl7.org/fhir/R5/location.html
  */
 export interface ILocation extends IDomainResource {
   /**

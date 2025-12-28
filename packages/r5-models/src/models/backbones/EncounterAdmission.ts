@@ -19,7 +19,7 @@ const ENCOUNTER_ADMISSION_PROPERTIES = [
 /**
  * EncounterAdmission - Details about the admission to a healthcare service
  *
- * @see https://hl7.org/fhir/R4/encounteradmission.html
+ * @see https://hl7.org/fhir/R5/encounteradmission.html
  *
  * @example
  * const encounterAdmission = new EncounterAdmission({

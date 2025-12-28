@@ -22,7 +22,7 @@ const QUANTITY_PROPERTIES = [
 /**
  * Quantity - A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
  *
- * @see https://hl7.org/fhir/R4/quantity.html
+ * @see https://hl7.org/fhir/R5/quantity.html
  *
  * @example
  * const quantity = new Quantity({

@@ -14,7 +14,7 @@ const MEDICATION_KNOWLEDGE_ADMINISTRATION_GUIDELINES_DOSAGE_PROPERTIES = [
 /**
  * MedicationKnowledgeAdministrationGuidelinesDosage - Dosage for the medication for the specific guidelines
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeadministrationguidelinesdosage.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgeadministrationguidelinesdosage.html
  *
  * @example
  * const medicationKnowledgeAdministrationGuidelinesDosage = new MedicationKnowledgeAdministrationGuidelinesDosage({

@@ -21,7 +21,7 @@ const IMPLEMENTATION_GUIDE_MANIFEST_PROPERTIES = [
 /**
  * ImplementationGuideManifest - Information about an assembled IG
  *
- * @see https://hl7.org/fhir/R4/implementationguidemanifest.html
+ * @see https://hl7.org/fhir/R5/implementationguidemanifest.html
  *
  * @example
  * const implementationGuideManifest = new ImplementationGuideManifest({

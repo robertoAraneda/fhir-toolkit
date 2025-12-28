@@ -17,7 +17,7 @@ import type { CapabilityStatementKindType, CodeSearchSupportType, PublicationSta
  * A TerminologyCapabilities resource documents a set of capabilities (behaviors) of a FHIR Terminology Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilities.html
+ * @see https://hl7.org/fhir/R5/terminologycapabilities.html
  */
 export interface ITerminologyCapabilities extends IDomainResource {
   /**

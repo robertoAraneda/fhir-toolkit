@@ -19,7 +19,7 @@ const DEVICE_METRIC_CALIBRATION_PROPERTIES = [
 /**
  * DeviceMetricCalibration - Describes the calibrations that have been performed or that are required to be performed
  *
- * @see https://hl7.org/fhir/R4/devicemetriccalibration.html
+ * @see https://hl7.org/fhir/R4B/devicemetriccalibration.html
  *
  * @example
  * const deviceMetricCalibration = new DeviceMetricCalibration({

@@ -8,7 +8,7 @@ import type { ActionConditionKindType } from '../../valuesets/index.js';
  * Whether or not the action is applicable
  * 
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactioncondition.html
+ * @see https://hl7.org/fhir/R4B/plandefinitionactioncondition.html
  */
 export interface IPlanDefinitionActionCondition extends IBackboneElement {
   /**

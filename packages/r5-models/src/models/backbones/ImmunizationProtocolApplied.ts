@@ -21,7 +21,7 @@ const IMMUNIZATION_PROTOCOL_APPLIED_PROPERTIES = [
 /**
  * ImmunizationProtocolApplied - Protocol followed by the provider
  *
- * @see https://hl7.org/fhir/R4/immunizationprotocolapplied.html
+ * @see https://hl7.org/fhir/R5/immunizationprotocolapplied.html
  *
  * @example
  * const immunizationProtocolApplied = new ImmunizationProtocolApplied({

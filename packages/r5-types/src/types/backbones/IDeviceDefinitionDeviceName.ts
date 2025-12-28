@@ -7,7 +7,7 @@ import type { DeviceNameTypeType } from '../../valuesets/index.js';
  * The name or names of the device as given by the manufacturer
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitiondevicename.html
+ * @see https://hl7.org/fhir/R5/devicedefinitiondevicename.html
  */
 export interface IDeviceDefinitionDeviceName extends IBackboneElement {
   /**

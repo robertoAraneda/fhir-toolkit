@@ -71,7 +71,7 @@ const PLAN_DEFINITION_PROPERTIES = [
 /**
  * PlanDefinition - This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical and non-clinical artifacts such as clinical decision support rules, order sets, protocols, and drug quality specifications.
  *
- * @see https://hl7.org/fhir/R4/plandefinition.html
+ * @see https://hl7.org/fhir/R4B/plandefinition.html
  *
  * @example
  * const planDefinition = new PlanDefinition({

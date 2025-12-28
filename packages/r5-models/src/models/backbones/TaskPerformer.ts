@@ -14,7 +14,7 @@ const TASK_PERFORMER_PROPERTIES = [
 /**
  * TaskPerformer - Who or what performed the task
  *
- * @see https://hl7.org/fhir/R4/taskperformer.html
+ * @see https://hl7.org/fhir/R5/taskperformer.html
  *
  * @example
  * const taskPerformer = new TaskPerformer({

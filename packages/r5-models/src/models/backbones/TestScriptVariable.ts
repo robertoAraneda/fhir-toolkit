@@ -27,7 +27,7 @@ const TEST_SCRIPT_VARIABLE_PROPERTIES = [
 /**
  * TestScriptVariable - Placeholder for evaluated elements
  *
- * @see https://hl7.org/fhir/R4/testscriptvariable.html
+ * @see https://hl7.org/fhir/R5/testscriptvariable.html
  *
  * @example
  * const testScriptVariable = new TestScriptVariable({

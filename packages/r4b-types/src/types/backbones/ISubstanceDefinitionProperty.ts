@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * General specifications for this substance
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionproperty.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionproperty.html
  */
 export interface ISubstanceDefinitionProperty extends IBackboneElement {
   /**

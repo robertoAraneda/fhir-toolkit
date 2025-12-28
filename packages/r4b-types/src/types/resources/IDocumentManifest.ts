@@ -9,7 +9,7 @@ import type { DocumentReferenceStatusType } from '../../valuesets/index.js';
  * A collection of documents compiled for a purpose together with metadata that applies to the collection.
  * 
  *
- * @see https://hl7.org/fhir/R4/documentmanifest.html
+ * @see https://hl7.org/fhir/R4B/documentmanifest.html
  */
 export interface IDocumentManifest extends IDomainResource {
   /**

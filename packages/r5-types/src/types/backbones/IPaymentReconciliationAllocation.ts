@@ -8,7 +8,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * Settlement particulars
  * 
  *
- * @see https://hl7.org/fhir/R4/paymentreconciliationallocation.html
+ * @see https://hl7.org/fhir/R5/paymentreconciliationallocation.html
  */
 export interface IPaymentReconciliationAllocation extends IBackboneElement {
   /**

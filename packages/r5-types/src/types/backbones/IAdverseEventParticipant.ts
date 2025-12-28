@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who was involved in the adverse event or the potential adverse event and what they did
  * 
  *
- * @see https://hl7.org/fhir/R4/adverseeventparticipant.html
+ * @see https://hl7.org/fhir/R5/adverseeventparticipant.html
  */
 export interface IAdverseEventParticipant extends IBackboneElement {
   /**

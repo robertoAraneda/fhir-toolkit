@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Details about the admission to a healthcare service
  * 
  *
- * @see https://hl7.org/fhir/R4/encounteradmission.html
+ * @see https://hl7.org/fhir/R5/encounteradmission.html
  */
 export interface IEncounterAdmission extends IBackboneElement {
   /**

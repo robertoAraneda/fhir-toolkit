@@ -15,7 +15,7 @@ import type { EvidenceVariableHandlingType, PublicationStatusType } from '../../
  * The EvidenceVariable resource describes an element that knowledge (Evidence) is about.
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencevariable.html
+ * @see https://hl7.org/fhir/R5/evidencevariable.html
  */
 export interface IEvidenceVariable extends IDomainResource {
   /**

@@ -10,7 +10,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * Catalog entries are wrappers that contextualize items included in a catalog.
  * 
  *
- * @see https://hl7.org/fhir/R4/catalogentry.html
+ * @see https://hl7.org/fhir/R4B/catalogentry.html
  */
 export interface ICatalogEntry extends IDomainResource {
   /**

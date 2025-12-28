@@ -19,7 +19,7 @@ const ANNOTATION_PROPERTIES = [
 /**
  * Annotation - A  text note which also  contains information about who made the statement and when.
  *
- * @see https://hl7.org/fhir/R4/annotation.html
+ * @see https://hl7.org/fhir/R4B/annotation.html
  *
  * @example
  * const annotation = new Annotation({

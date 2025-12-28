@@ -11,7 +11,7 @@ import type { InventoryCountTypeType, InventoryReportStatusType } from '../../va
  * A report of inventory or stock items.
  * 
  *
- * @see https://hl7.org/fhir/R4/inventoryreport.html
+ * @see https://hl7.org/fhir/R5/inventoryreport.html
  */
 export interface IInventoryReport extends IDomainResource {
   /**

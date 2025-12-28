@@ -7,7 +7,7 @@ import type { BindingStrengthType } from '../../valuesets/index.js';
  * ValueSet details if this is coded
  * 
  *
- * @see https://hl7.org/fhir/R4/operationdefinitionparameterbinding.html
+ * @see https://hl7.org/fhir/R5/operationdefinitionparameterbinding.html
  */
 export interface IOperationDefinitionParameterBinding extends IBackboneElement {
   /**

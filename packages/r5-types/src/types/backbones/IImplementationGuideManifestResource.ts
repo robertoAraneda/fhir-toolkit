@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Resource in the implementation guide
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidemanifestresource.html
+ * @see https://hl7.org/fhir/R5/implementationguidemanifestresource.html
  */
 export interface IImplementationGuideManifestResource extends IBackboneElement {
   /**

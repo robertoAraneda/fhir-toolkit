@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Outputs for the analysis event
  * 
  *
- * @see https://hl7.org/fhir/R4/genomicstudyanalysisoutput.html
+ * @see https://hl7.org/fhir/R5/genomicstudyanalysisoutput.html
  */
 export interface IGenomicStudyAnalysisOutput extends IBackboneElement {
   /**

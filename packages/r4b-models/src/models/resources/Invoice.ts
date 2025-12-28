@@ -40,7 +40,7 @@ const INVOICE_PROPERTIES = [
 /**
  * Invoice - Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.
  *
- * @see https://hl7.org/fhir/R4/invoice.html
+ * @see https://hl7.org/fhir/R4B/invoice.html
  *
  * @example
  * const invoice = new Invoice({

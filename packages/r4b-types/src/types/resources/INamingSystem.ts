@@ -10,7 +10,7 @@ import type { NamingSystemTypeType, PublicationStatusType } from '../../valueset
  * A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
  * 
  *
- * @see https://hl7.org/fhir/R4/namingsystem.html
+ * @see https://hl7.org/fhir/R4B/namingsystem.html
  */
 export interface INamingSystem extends IDomainResource {
   /**

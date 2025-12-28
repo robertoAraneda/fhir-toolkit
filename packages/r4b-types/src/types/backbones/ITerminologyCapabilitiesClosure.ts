@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Information about the [ConceptMap/$closure](conceptmap-operation-closure.html) operation
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesclosure.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiesclosure.html
  */
 export interface ITerminologyCapabilitiesClosure extends IBackboneElement {
   /**

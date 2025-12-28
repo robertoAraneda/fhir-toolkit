@@ -18,7 +18,7 @@ const INVENTORY_ITEM_NAME_PROPERTIES = [
 /**
  * InventoryItemName - The item name(s) - the brand name, or common name, functional name, generic name or others
  *
- * @see https://hl7.org/fhir/R4/inventoryitemname.html
+ * @see https://hl7.org/fhir/R5/inventoryitemname.html
  *
  * @example
  * const inventoryItemName = new InventoryItemName({

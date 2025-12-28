@@ -15,7 +15,7 @@ const MEDICINAL_PRODUCT_DEFINITION_NAME_PART_PROPERTIES = [
 /**
  * MedicinalProductDefinitionNamePart - Coding words or phrases of the name
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitionnamepart.html
+ * @see https://hl7.org/fhir/R5/medicinalproductdefinitionnamepart.html
  *
  * @example
  * const medicinalProductDefinitionNamePart = new MedicinalProductDefinitionNamePart({

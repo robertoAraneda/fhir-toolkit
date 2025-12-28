@@ -8,7 +8,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * The product's nutritional information expressed by the nutrients
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionproductnutrient.html
+ * @see https://hl7.org/fhir/R4B/nutritionproductnutrient.html
  */
 export interface INutritionProductNutrient extends IBackboneElement {
   /**

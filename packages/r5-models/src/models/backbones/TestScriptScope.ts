@@ -16,7 +16,7 @@ const TEST_SCRIPT_SCOPE_PROPERTIES = [
 /**
  * TestScriptScope - Indication of the artifact(s) that are tested by this test case
  *
- * @see https://hl7.org/fhir/R4/testscriptscope.html
+ * @see https://hl7.org/fhir/R5/testscriptscope.html
  *
  * @example
  * const testScriptScope = new TestScriptScope({

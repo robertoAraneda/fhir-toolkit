@@ -24,7 +24,7 @@ const NUTRITION_PRODUCT_INSTANCE_PROPERTIES = [
 /**
  * NutritionProductInstance - One or several physical instances or occurrences of the nutrition product
  *
- * @see https://hl7.org/fhir/R4/nutritionproductinstance.html
+ * @see https://hl7.org/fhir/R5/nutritionproductinstance.html
  *
  * @example
  * const nutritionProductInstance = new NutritionProductInstance({

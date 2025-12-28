@@ -8,7 +8,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * The clinical service(s) being documented
  * 
  *
- * @see https://hl7.org/fhir/R4/compositionevent.html
+ * @see https://hl7.org/fhir/R5/compositionevent.html
  */
 export interface ICompositionEvent extends IBackboneElement {
   /**

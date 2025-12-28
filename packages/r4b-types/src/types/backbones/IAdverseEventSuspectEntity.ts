@@ -7,7 +7,7 @@ import type { IAdverseEventSuspectEntityCausality } from './IAdverseEventSuspect
  * The suspected agent causing the adverse event
  * 
  *
- * @see https://hl7.org/fhir/R4/adverseeventsuspectentity.html
+ * @see https://hl7.org/fhir/R4B/adverseeventsuspectentity.html
  */
 export interface IAdverseEventSuspectEntity extends IBackboneElement {
   /**

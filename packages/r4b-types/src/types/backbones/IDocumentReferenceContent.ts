@@ -7,7 +7,7 @@ import type { IAttachment } from '../datatypes/IAttachment.js';
  * Document referenced
  * 
  *
- * @see https://hl7.org/fhir/R4/documentreferencecontent.html
+ * @see https://hl7.org/fhir/R4B/documentreferencecontent.html
  */
 export interface IDocumentReferenceContent extends IBackboneElement {
   /**

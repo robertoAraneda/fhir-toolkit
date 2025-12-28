@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Details of the official nature of this name
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionnameofficial.html
+ * @see https://hl7.org/fhir/R5/substancedefinitionnameofficial.html
  */
 export interface ISubstanceDefinitionNameOfficial extends IBackboneElement {
   /**

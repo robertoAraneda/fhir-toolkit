@@ -7,7 +7,7 @@ import type { IMoney } from '../datatypes/IMoney.js';
  * Benefit Summary
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponseinsuranceitembenefit.html
+ * @see https://hl7.org/fhir/R4B/coverageeligibilityresponseinsuranceitembenefit.html
  */
 export interface ICoverageEligibilityResponseInsuranceItemBenefit extends IBackboneElement {
   /**

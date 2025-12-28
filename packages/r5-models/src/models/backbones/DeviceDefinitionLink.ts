@@ -14,7 +14,7 @@ const DEVICE_DEFINITION_LINK_PROPERTIES = [
 /**
  * DeviceDefinitionLink - An associated device, attached to, used with, communicating with or linking a previous or new device model to the focal device
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionlink.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionlink.html
  *
  * @example
  * const deviceDefinitionLink = new DeviceDefinitionLink({

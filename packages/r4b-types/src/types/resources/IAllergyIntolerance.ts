@@ -13,7 +13,7 @@ import type { AllergyIntoleranceCategoryType, AllergyIntoleranceClinicalStatusTy
  * Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
  * 
  *
- * @see https://hl7.org/fhir/R4/allergyintolerance.html
+ * @see https://hl7.org/fhir/R4B/allergyintolerance.html
  */
 export interface IAllergyIntolerance extends IDomainResource {
   /**

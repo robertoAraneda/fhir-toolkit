@@ -62,7 +62,7 @@ const REQUEST_GROUP_ACTION_PROPERTIES = [
 /**
  * RequestGroupAction - Proposed actions, if any
  *
- * @see https://hl7.org/fhir/R4/requestgroupaction.html
+ * @see https://hl7.org/fhir/R4B/requestgroupaction.html
  *
  * @example
  * const requestGroupAction = new RequestGroupAction({

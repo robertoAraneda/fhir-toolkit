@@ -17,7 +17,7 @@ const REQUEST_ORCHESTRATION_ACTION_OUTPUT_PROPERTIES = [
 /**
  * RequestOrchestrationActionOutput - Output data definition
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationactionoutput.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationactionoutput.html
  *
  * @example
  * const requestOrchestrationActionOutput = new RequestOrchestrationActionOutput({

@@ -24,7 +24,7 @@ const MEASURE_REPORT_GROUP_STRATIFIER_STRATUM_COMPONENT_PROPERTIES = [
 /**
  * MeasureReportGroupStratifierStratumComponent - Stratifier component values
  *
- * @see https://hl7.org/fhir/R4/measurereportgroupstratifierstratumcomponent.html
+ * @see https://hl7.org/fhir/R5/measurereportgroupstratifierstratumcomponent.html
  *
  * @example
  * const measureReportGroupStratifierStratumComponent = new MeasureReportGroupStratifierStratumComponent({

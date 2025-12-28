@@ -10,7 +10,7 @@ import type { IDosageDoseAndRate } from '../backbones/IDosageDoseAndRate.js';
  * Indicates how the medication is/was taken or should be taken by the patient.
  * 
  *
- * @see https://hl7.org/fhir/R4/dosage.html
+ * @see https://hl7.org/fhir/R5/dosage.html
  */
 export interface IDosage extends IBackboneType {
   /**

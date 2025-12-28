@@ -24,7 +24,7 @@ const BUNDLE_ENTRY_REQUEST_PROPERTIES = [
 /**
  * BundleEntryRequest - Additional execution information (transaction/batch/history)
  *
- * @see https://hl7.org/fhir/R4/bundleentryrequest.html
+ * @see https://hl7.org/fhir/R4B/bundleentryrequest.html
  *
  * @example
  * const bundleEntryRequest = new BundleEntryRequest({

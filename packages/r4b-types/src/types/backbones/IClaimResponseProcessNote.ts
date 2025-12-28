@@ -7,7 +7,7 @@ import type { NoteTypeType } from '../../valuesets/index.js';
  * Note concerning adjudication
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponseprocessnote.html
+ * @see https://hl7.org/fhir/R4B/claimresponseprocessnote.html
  */
 export interface IClaimResponseProcessNote extends IBackboneElement {
   /**

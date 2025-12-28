@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Placeholder for evaluated elements
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptvariable.html
+ * @see https://hl7.org/fhir/R4B/testscriptvariable.html
  */
 export interface ITestScriptVariable extends IBackboneElement {
   /**

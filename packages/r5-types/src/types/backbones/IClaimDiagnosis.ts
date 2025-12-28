@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Pertinent diagnosis information
  * 
  *
- * @see https://hl7.org/fhir/R4/claimdiagnosis.html
+ * @see https://hl7.org/fhir/R5/claimdiagnosis.html
  */
 export interface IClaimDiagnosis extends IBackboneElement {
   /**

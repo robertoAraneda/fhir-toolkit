@@ -8,7 +8,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * Ingredients contained in this product
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionproductingredient.html
+ * @see https://hl7.org/fhir/R4B/nutritionproductingredient.html
  */
 export interface INutritionProductIngredient extends IBackboneElement {
   /**

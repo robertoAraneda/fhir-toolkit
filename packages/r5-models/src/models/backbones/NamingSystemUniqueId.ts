@@ -24,7 +24,7 @@ const NAMING_SYSTEM_UNIQUE_ID_PROPERTIES = [
 /**
  * NamingSystemUniqueId - Unique identifiers used for system
  *
- * @see https://hl7.org/fhir/R4/namingsystemuniqueid.html
+ * @see https://hl7.org/fhir/R5/namingsystemuniqueid.html
  *
  * @example
  * const namingSystemUniqueId = new NamingSystemUniqueId({

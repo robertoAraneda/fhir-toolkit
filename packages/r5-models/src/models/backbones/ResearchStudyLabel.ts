@@ -15,7 +15,7 @@ const RESEARCH_STUDY_LABEL_PROPERTIES = [
 /**
  * ResearchStudyLabel - Additional names for the study
  *
- * @see https://hl7.org/fhir/R4/researchstudylabel.html
+ * @see https://hl7.org/fhir/R5/researchstudylabel.html
  *
  * @example
  * const researchStudyLabel = new ResearchStudyLabel({

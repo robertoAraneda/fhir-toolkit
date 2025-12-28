@@ -32,7 +32,7 @@ const CLAIM_RESPONSE_ADD_ITEM_DETAIL_SUB_DETAIL_PROPERTIES = [
 /**
  * ClaimResponseAddItemDetailSubDetail - Insurer added line items
  *
- * @see https://hl7.org/fhir/R4/claimresponseadditemdetailsubdetail.html
+ * @see https://hl7.org/fhir/R5/claimresponseadditemdetailsubdetail.html
  *
  * @example
  * const claimResponseAddItemDetailSubDetail = new ClaimResponseAddItemDetailSubDetail({

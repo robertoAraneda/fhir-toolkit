@@ -38,7 +38,7 @@ const GENOMIC_STUDY_PROPERTIES = [
 /**
  * GenomicStudy - A GenomicStudy is a set of analyses performed to analyze and generate genomic data.
  *
- * @see https://hl7.org/fhir/R4/genomicstudy.html
+ * @see https://hl7.org/fhir/R5/genomicstudy.html
  *
  * @example
  * const genomicStudy = new GenomicStudy({

@@ -11,7 +11,7 @@ import type { SupplyDeliveryStatusType, SupplyDeliverySupplyItemTypeType } from 
  * Record of delivery of what is supplied.
  * 
  *
- * @see https://hl7.org/fhir/R4/supplydelivery.html
+ * @see https://hl7.org/fhir/R5/supplydelivery.html
  */
 export interface ISupplyDelivery extends IDomainResource {
   /**

@@ -47,7 +47,7 @@ const CONTRACT_TERM_ACTION_PROPERTIES = [
 /**
  * ContractTermAction - Entity being ascribed responsibility
  *
- * @see https://hl7.org/fhir/R4/contracttermaction.html
+ * @see https://hl7.org/fhir/R5/contracttermaction.html
  *
  * @example
  * const contractTermAction = new ContractTermAction({

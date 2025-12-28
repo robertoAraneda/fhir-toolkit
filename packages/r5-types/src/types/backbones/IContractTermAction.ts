@@ -11,7 +11,7 @@ import type { IContractTermActionSubject } from './IContractTermActionSubject.js
  * Entity being ascribed responsibility
  * 
  *
- * @see https://hl7.org/fhir/R4/contracttermaction.html
+ * @see https://hl7.org/fhir/R5/contracttermaction.html
  */
 export interface IContractTermAction extends IBackboneElement {
   /**

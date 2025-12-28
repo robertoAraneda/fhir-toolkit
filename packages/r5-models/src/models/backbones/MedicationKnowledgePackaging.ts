@@ -14,7 +14,7 @@ const MEDICATION_KNOWLEDGE_PACKAGING_PROPERTIES = [
 /**
  * MedicationKnowledgePackaging - Details about packaged medications
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgepackaging.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgepackaging.html
  *
  * @example
  * const medicationKnowledgePackaging = new MedicationKnowledgePackaging({

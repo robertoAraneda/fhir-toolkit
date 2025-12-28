@@ -23,7 +23,7 @@ const EXAMPLE_SCENARIO_INSTANCE_PROPERTIES = [
 /**
  * ExampleScenarioInstance - Each resource and each version that is present in the workflow
  *
- * @see https://hl7.org/fhir/R4/examplescenarioinstance.html
+ * @see https://hl7.org/fhir/R4B/examplescenarioinstance.html
  *
  * @example
  * const exampleScenarioInstance = new ExampleScenarioInstance({

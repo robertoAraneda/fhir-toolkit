@@ -8,7 +8,7 @@ import type { TestScriptRequestMethodCodeType } from '../../valuesets/index.js';
  * The setup operation to perform
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptsetupactionoperation.html
+ * @see https://hl7.org/fhir/R4B/testscriptsetupactionoperation.html
  */
 export interface ITestScriptSetupActionOperation extends IBackboneElement {
   /**

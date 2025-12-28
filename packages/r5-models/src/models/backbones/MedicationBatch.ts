@@ -15,7 +15,7 @@ const MEDICATION_BATCH_PROPERTIES = [
 /**
  * MedicationBatch - Details about packaged medications
  *
- * @see https://hl7.org/fhir/R4/medicationbatch.html
+ * @see https://hl7.org/fhir/R5/medicationbatch.html
  *
  * @example
  * const medicationBatch = new MedicationBatch({

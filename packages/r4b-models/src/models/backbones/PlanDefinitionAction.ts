@@ -82,7 +82,7 @@ const PLAN_DEFINITION_ACTION_PROPERTIES = [
 /**
  * PlanDefinitionAction - Action defined by the plan
  *
- * @see https://hl7.org/fhir/R4/plandefinitionaction.html
+ * @see https://hl7.org/fhir/R4B/plandefinitionaction.html
  *
  * @example
  * const planDefinitionAction = new PlanDefinitionAction({

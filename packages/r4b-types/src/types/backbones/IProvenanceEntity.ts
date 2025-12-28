@@ -8,7 +8,7 @@ import type { ProvenanceEntityRoleType } from '../../valuesets/index.js';
  * An entity used in this activity
  * 
  *
- * @see https://hl7.org/fhir/R4/provenanceentity.html
+ * @see https://hl7.org/fhir/R4B/provenanceentity.html
  */
 export interface IProvenanceEntity extends IBackboneElement {
   /**

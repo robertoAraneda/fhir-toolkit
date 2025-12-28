@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Protocol followed by the provider
  * 
  *
- * @see https://hl7.org/fhir/R4/immunizationprotocolapplied.html
+ * @see https://hl7.org/fhir/R4B/immunizationprotocolapplied.html
  */
 export interface IImmunizationProtocolApplied extends IBackboneElement {
   /**

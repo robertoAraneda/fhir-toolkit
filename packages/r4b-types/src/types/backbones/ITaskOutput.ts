@@ -34,7 +34,7 @@ import type { IUsageContext } from '../datatypes/IUsageContext.js';
  * Information produced as part of task
  * 
  *
- * @see https://hl7.org/fhir/R4/taskoutput.html
+ * @see https://hl7.org/fhir/R4B/taskoutput.html
  */
 export interface ITaskOutput extends IBackboneElement {
   /**

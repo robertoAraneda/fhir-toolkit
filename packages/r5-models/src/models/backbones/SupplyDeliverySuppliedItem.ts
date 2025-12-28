@@ -16,7 +16,7 @@ const SUPPLY_DELIVERY_SUPPLIED_ITEM_PROPERTIES = [
 /**
  * SupplyDeliverySuppliedItem - The item that is delivered or supplied
  *
- * @see https://hl7.org/fhir/R4/supplydeliverysupplieditem.html
+ * @see https://hl7.org/fhir/R5/supplydeliverysupplieditem.html
  *
  * @example
  * const supplyDeliverySuppliedItem = new SupplyDeliverySuppliedItem({

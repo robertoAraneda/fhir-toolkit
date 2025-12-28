@@ -10,7 +10,7 @@ import type { EnableWhenBehaviorType, QuestionnaireItemTypeType } from '../../va
  * Questions and sections within the Questionnaire
  * 
  *
- * @see https://hl7.org/fhir/R4/questionnaireitem.html
+ * @see https://hl7.org/fhir/R4B/questionnaireitem.html
  */
 export interface IQuestionnaireItem extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { ITiming } from '../datatypes/ITiming.js';
  * Scheduling information for oral diets
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionorderoraldietschedule.html
+ * @see https://hl7.org/fhir/R5/nutritionorderoraldietschedule.html
  */
 export interface INutritionOrderOralDietSchedule extends IBackboneElement {
   /**

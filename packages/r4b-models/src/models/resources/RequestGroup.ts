@@ -43,7 +43,7 @@ const REQUEST_GROUP_PROPERTIES = [
 /**
  * RequestGroup - A group of related requests that can be used to capture intended activities that have inter-dependencies such as "give this medication after that one".
  *
- * @see https://hl7.org/fhir/R4/requestgroup.html
+ * @see https://hl7.org/fhir/R4B/requestgroup.html
  *
  * @example
  * const requestGroup = new RequestGroup({

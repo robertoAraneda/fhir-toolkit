@@ -8,7 +8,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Setting or value of environment for adequate storage
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgestorageguidelineenvironmentalsetting.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgestorageguidelineenvironmentalsetting.html
  */
 export interface IMedicationKnowledgeStorageGuidelineEnvironmentalSetting extends IBackboneElement {
   /**

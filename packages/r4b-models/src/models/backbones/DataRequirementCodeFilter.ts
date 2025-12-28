@@ -19,7 +19,7 @@ const DATA_REQUIREMENT_CODE_FILTER_PROPERTIES = [
 /**
  * DataRequirementCodeFilter - What codes are expected
  *
- * @see https://hl7.org/fhir/R4/datarequirementcodefilter.html
+ * @see https://hl7.org/fhir/R4B/datarequirementcodefilter.html
  *
  * @example
  * const dataRequirementCodeFilter = new DataRequirementCodeFilter({

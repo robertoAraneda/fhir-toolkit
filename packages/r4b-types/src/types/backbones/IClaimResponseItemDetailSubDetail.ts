@@ -7,7 +7,7 @@ import type { IClaimResponseItemAdjudication } from './IClaimResponseItemAdjudic
  * Adjudication for claim sub-details
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponseitemdetailsubdetail.html
+ * @see https://hl7.org/fhir/R4B/claimresponseitemdetailsubdetail.html
  */
 export interface IClaimResponseItemDetailSubDetail extends IBackboneElement {
   /**

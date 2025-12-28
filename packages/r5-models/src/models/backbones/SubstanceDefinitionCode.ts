@@ -20,7 +20,7 @@ const SUBSTANCE_DEFINITION_CODE_PROPERTIES = [
 /**
  * SubstanceDefinitionCode - Codes associated with the substance
  *
- * @see https://hl7.org/fhir/R4/substancedefinitioncode.html
+ * @see https://hl7.org/fhir/R5/substancedefinitioncode.html
  *
  * @example
  * const substanceDefinitionCode = new SubstanceDefinitionCode({

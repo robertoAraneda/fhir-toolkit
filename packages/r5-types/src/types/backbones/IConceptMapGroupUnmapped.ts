@@ -7,7 +7,7 @@ import type { ConceptMapGroupUnmappedModeType, ConceptMapRelationshipType } from
  * What to do when there is no mapping target for the source concept and ConceptMap.group.element.noMap is not true
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupunmapped.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupunmapped.html
  */
 export interface IConceptMapGroupUnmapped extends IBackboneElement {
   /**

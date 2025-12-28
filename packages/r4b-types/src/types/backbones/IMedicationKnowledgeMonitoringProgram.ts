@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Program under which a medication is reviewed
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgemonitoringprogram.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgemonitoringprogram.html
  */
 export interface IMedicationKnowledgeMonitoringProgram extends IBackboneElement {
   /**

@@ -18,7 +18,7 @@ const VALUE_SET_COMPOSE_INCLUDE_CONCEPT_DESIGNATION_PROPERTIES = [
 /**
  * ValueSetComposeIncludeConceptDesignation - Additional representations for this concept
  *
- * @see https://hl7.org/fhir/R4/valuesetcomposeincludeconceptdesignation.html
+ * @see https://hl7.org/fhir/R5/valuesetcomposeincludeconceptdesignation.html
  *
  * @example
  * const valueSetComposeIncludeConceptDesignation = new ValueSetComposeIncludeConceptDesignation({

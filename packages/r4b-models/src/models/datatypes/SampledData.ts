@@ -25,7 +25,7 @@ const SAMPLED_DATA_PROPERTIES = [
 /**
  * SampledData - A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.
  *
- * @see https://hl7.org/fhir/R4/sampleddata.html
+ * @see https://hl7.org/fhir/R4B/sampleddata.html
  *
  * @example
  * const sampledData = new SampledData({

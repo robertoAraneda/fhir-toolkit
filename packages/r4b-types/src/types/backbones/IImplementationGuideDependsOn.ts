@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Another Implementation guide this depends on
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidedependson.html
+ * @see https://hl7.org/fhir/R4B/implementationguidedependson.html
  */
 export interface IImplementationGuideDependsOn extends IBackboneElement {
   /**

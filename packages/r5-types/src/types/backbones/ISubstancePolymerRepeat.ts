@@ -7,7 +7,7 @@ import type { ISubstancePolymerRepeatRepeatUnit } from './ISubstancePolymerRepea
  * Specifies and quantifies the repeated units and their configuration
  * 
  *
- * @see https://hl7.org/fhir/R4/substancepolymerrepeat.html
+ * @see https://hl7.org/fhir/R5/substancepolymerrepeat.html
  */
 export interface ISubstancePolymerRepeat extends IBackboneElement {
   /**

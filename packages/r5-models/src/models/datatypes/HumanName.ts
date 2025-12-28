@@ -26,7 +26,7 @@ const HUMAN_NAME_PROPERTIES = [
 /**
  * HumanName - A name, normally of a human, that can be used for other living entities (e.g. animals but not organizations) that have been assigned names by a human and may need the use of name parts or the need for usage information.
  *
- * @see https://hl7.org/fhir/R4/humanname.html
+ * @see https://hl7.org/fhir/R5/humanname.html
  *
  * @example
  * const humanName = new HumanName({

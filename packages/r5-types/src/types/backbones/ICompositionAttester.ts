@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Attests to accuracy of composition
  * 
  *
- * @see https://hl7.org/fhir/R4/compositionattester.html
+ * @see https://hl7.org/fhir/R5/compositionattester.html
  */
 export interface ICompositionAttester extends IBackboneElement {
   /**

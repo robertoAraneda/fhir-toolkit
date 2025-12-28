@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * One or several physical instances or occurrences of the nutrition product
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionproductinstance.html
+ * @see https://hl7.org/fhir/R4B/nutritionproductinstance.html
  */
 export interface INutritionProductInstance extends IBackboneElement {
   /**

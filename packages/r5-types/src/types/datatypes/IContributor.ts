@@ -8,7 +8,7 @@ import type { ContributorTypeType } from '../../valuesets/index.js';
  * A contributor to the content of a knowledge asset, including authors, editors, reviewers, and endorsers.
  * 
  *
- * @see https://hl7.org/fhir/R4/contributor.html
+ * @see https://hl7.org/fhir/R5/contributor.html
  */
 export interface IContributor extends IDataType {
   /**

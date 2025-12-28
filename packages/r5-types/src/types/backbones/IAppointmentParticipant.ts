@@ -8,7 +8,7 @@ import type { ParticipationStatusType } from '../../valuesets/index.js';
  * Participants involved in appointment
  * 
  *
- * @see https://hl7.org/fhir/R4/appointmentparticipant.html
+ * @see https://hl7.org/fhir/R5/appointmentparticipant.html
  */
 export interface IAppointmentParticipant extends IBackboneElement {
   /**

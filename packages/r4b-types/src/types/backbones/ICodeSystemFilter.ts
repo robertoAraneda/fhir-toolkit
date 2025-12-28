@@ -7,7 +7,7 @@ import type { FilterOperatorType } from '../../valuesets/index.js';
  * Filter that can be used in a value set
  * 
  *
- * @see https://hl7.org/fhir/R4/codesystemfilter.html
+ * @see https://hl7.org/fhir/R4B/codesystemfilter.html
  */
 export interface ICodeSystemFilter extends IBackboneElement {
   /**

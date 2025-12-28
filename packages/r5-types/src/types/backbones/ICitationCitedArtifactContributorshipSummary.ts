@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Used to record a display of the author/contributor list without separate data element for each list member
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorshipsummary.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactcontributorshipsummary.html
  */
 export interface ICitationCitedArtifactContributorshipSummary extends IBackboneElement {
   /**

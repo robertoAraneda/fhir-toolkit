@@ -18,7 +18,7 @@ const ACCOUNT_BALANCE_PROPERTIES = [
 /**
  * AccountBalance - Calculated account balance(s)
  *
- * @see https://hl7.org/fhir/R4/accountbalance.html
+ * @see https://hl7.org/fhir/R5/accountbalance.html
  *
  * @example
  * const accountBalance = new AccountBalance({

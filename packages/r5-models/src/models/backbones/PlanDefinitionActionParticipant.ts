@@ -23,7 +23,7 @@ const PLAN_DEFINITION_ACTION_PARTICIPANT_PROPERTIES = [
 /**
  * PlanDefinitionActionParticipant - Who should participate in the action
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactionparticipant.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactionparticipant.html
  *
  * @example
  * const planDefinitionActionParticipant = new PlanDefinitionActionParticipant({

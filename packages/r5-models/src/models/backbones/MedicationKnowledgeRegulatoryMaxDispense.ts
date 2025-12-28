@@ -14,7 +14,7 @@ const MEDICATION_KNOWLEDGE_REGULATORY_MAX_DISPENSE_PROPERTIES = [
 /**
  * MedicationKnowledgeRegulatoryMaxDispense - The maximum number of units of the medication that can be dispensed in a period
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeregulatorymaxdispense.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgeregulatorymaxdispense.html
  *
  * @example
  * const medicationKnowledgeRegulatoryMaxDispense = new MedicationKnowledgeRegulatoryMaxDispense({

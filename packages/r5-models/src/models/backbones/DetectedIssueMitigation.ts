@@ -19,7 +19,7 @@ const DETECTED_ISSUE_MITIGATION_PROPERTIES = [
 /**
  * DetectedIssueMitigation - Step taken to address
  *
- * @see https://hl7.org/fhir/R4/detectedissuemitigation.html
+ * @see https://hl7.org/fhir/R5/detectedissuemitigation.html
  *
  * @example
  * const detectedIssueMitigation = new DetectedIssueMitigation({

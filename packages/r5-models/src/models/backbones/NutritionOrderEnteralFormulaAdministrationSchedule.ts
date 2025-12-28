@@ -17,7 +17,7 @@ const NUTRITION_ORDER_ENTERAL_FORMULA_ADMINISTRATION_SCHEDULE_PROPERTIES = [
 /**
  * NutritionOrderEnteralFormulaAdministrationSchedule - Scheduling information for enteral formula products
  *
- * @see https://hl7.org/fhir/R4/nutritionorderenteralformulaadministrationschedule.html
+ * @see https://hl7.org/fhir/R5/nutritionorderenteralformulaadministrationschedule.html
  *
  * @example
  * const nutritionOrderEnteralFormulaAdministrationSchedule = new NutritionOrderEnteralFormulaAdministrationSchedule({

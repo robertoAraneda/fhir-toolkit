@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Clinical context of document
  * 
  *
- * @see https://hl7.org/fhir/R4/documentreferencecontext.html
+ * @see https://hl7.org/fhir/R4B/documentreferencecontext.html
  */
 export interface IDocumentReferenceContext extends IBackboneElement {
   /**

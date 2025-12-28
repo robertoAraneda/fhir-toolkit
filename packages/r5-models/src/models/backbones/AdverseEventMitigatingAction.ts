@@ -14,7 +14,7 @@ const ADVERSE_EVENT_MITIGATING_ACTION_PROPERTIES = [
 /**
  * AdverseEventMitigatingAction - Ameliorating actions taken after the adverse event occured in order to reduce the extent of harm
  *
- * @see https://hl7.org/fhir/R4/adverseeventmitigatingaction.html
+ * @see https://hl7.org/fhir/R5/adverseeventmitigatingaction.html
  *
  * @example
  * const adverseEventMitigatingAction = new AdverseEventMitigatingAction({

@@ -37,7 +37,7 @@ import type { IUsageContext } from '../datatypes/IUsageContext.js';
  * Example value (as defined for type)
  * 
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionexample.html
+ * @see https://hl7.org/fhir/R5/elementdefinitionexample.html
  */
 export interface IElementDefinitionExample extends IElement {
   /**

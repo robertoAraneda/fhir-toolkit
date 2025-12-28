@@ -25,7 +25,7 @@ const CONCEPT_MAP_GROUP_UNMAPPED_PROPERTIES = [
 /**
  * ConceptMapGroupUnmapped - What to do when there is no mapping target for the source concept and ConceptMap.group.element.noMap is not true
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupunmapped.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupunmapped.html
  *
  * @example
  * const conceptMapGroupUnmapped = new ConceptMapGroupUnmapped({

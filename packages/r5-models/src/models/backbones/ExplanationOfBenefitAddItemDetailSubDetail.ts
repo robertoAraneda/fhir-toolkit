@@ -33,7 +33,7 @@ const EXPLANATION_OF_BENEFIT_ADD_ITEM_DETAIL_SUB_DETAIL_PROPERTIES = [
 /**
  * ExplanationOfBenefitAddItemDetailSubDetail - Insurer added line items
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitadditemdetailsubdetail.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitadditemdetailsubdetail.html
  *
  * @example
  * const explanationOfBenefitAddItemDetailSubDetail = new ExplanationOfBenefitAddItemDetailSubDetail({

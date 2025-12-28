@@ -9,7 +9,7 @@ import type { IContractTermOfferParty } from './IContractTermOfferParty.js';
  * Context of the Contract term
  * 
  *
- * @see https://hl7.org/fhir/R4/contracttermoffer.html
+ * @see https://hl7.org/fhir/R5/contracttermoffer.html
  */
 export interface IContractTermOffer extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { IRelatedArtifact } from '../datatypes/IRelatedArtifact.js';
  * Identifies the standards, specifications, or formal guidances for the capabilities supported by the device
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionconformsto.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionconformsto.html
  */
 export interface IDeviceDefinitionConformsTo extends IBackboneElement {
   /**

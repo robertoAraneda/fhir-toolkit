@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Actor involved in the event
  * 
  *
- * @see https://hl7.org/fhir/R4/auditeventagent.html
+ * @see https://hl7.org/fhir/R5/auditeventagent.html
  */
 export interface IAuditEventAgent extends IBackboneElement {
   /**

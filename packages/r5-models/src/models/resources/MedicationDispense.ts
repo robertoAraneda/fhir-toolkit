@@ -54,7 +54,7 @@ const MEDICATION_DISPENSE_PROPERTIES = [
 /**
  * MedicationDispense - Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.
  *
- * @see https://hl7.org/fhir/R4/medicationdispense.html
+ * @see https://hl7.org/fhir/R5/medicationdispense.html
  *
  * @example
  * const medicationDispense = new MedicationDispense({

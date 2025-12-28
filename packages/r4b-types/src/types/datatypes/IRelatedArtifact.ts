@@ -8,7 +8,7 @@ import type { RelatedArtifactTypeType } from '../../valuesets/index.js';
  * Related artifacts such as additional documentation, justification, or bibliographic references.
  * 
  *
- * @see https://hl7.org/fhir/R4/relatedartifact.html
+ * @see https://hl7.org/fhir/R4B/relatedartifact.html
  */
 export interface IRelatedArtifact extends IElement {
   /**

@@ -8,7 +8,7 @@ import type { TestReportActionResultType } from '../../valuesets/index.js';
  * The assertion to perform
  * 
  *
- * @see https://hl7.org/fhir/R4/testreportsetupactionassert.html
+ * @see https://hl7.org/fhir/R5/testreportsetupactionassert.html
  */
 export interface ITestReportSetupActionAssert extends IBackboneElement {
   /**

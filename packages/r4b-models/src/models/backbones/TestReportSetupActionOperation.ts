@@ -18,7 +18,7 @@ const TEST_REPORT_SETUP_ACTION_OPERATION_PROPERTIES = [
 /**
  * TestReportSetupActionOperation - The operation to perform
  *
- * @see https://hl7.org/fhir/R4/testreportsetupactionoperation.html
+ * @see https://hl7.org/fhir/R4B/testreportsetupactionoperation.html
  *
  * @example
  * const testReportSetupActionOperation = new TestReportSetupActionOperation({

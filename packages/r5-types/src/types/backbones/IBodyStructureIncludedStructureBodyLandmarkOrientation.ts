@@ -7,7 +7,7 @@ import type { IBodyStructureIncludedStructureBodyLandmarkOrientationDistanceFrom
  * Landmark relative location
  * 
  *
- * @see https://hl7.org/fhir/R4/bodystructureincludedstructurebodylandmarkorientation.html
+ * @see https://hl7.org/fhir/R5/bodystructureincludedstructurebodylandmarkorientation.html
  */
 export interface IBodyStructureIncludedStructureBodyLandmarkOrientation extends IBackboneElement {
   /**

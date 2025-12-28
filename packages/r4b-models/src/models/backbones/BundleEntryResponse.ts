@@ -21,7 +21,7 @@ const BUNDLE_ENTRY_RESPONSE_PROPERTIES = [
 /**
  * BundleEntryResponse - Results of execution (transaction/batch/history)
  *
- * @see https://hl7.org/fhir/R4/bundleentryresponse.html
+ * @see https://hl7.org/fhir/R4B/bundleentryresponse.html
  *
  * @example
  * const bundleEntryResponse = new BundleEntryResponse({

@@ -13,7 +13,7 @@ import type { RequestPriorityType, SupplyRequestStatusType } from '../../valuese
  * A record of a request to deliver a medication, substance or device used in the healthcare setting to a particular destination for a particular person or organization.
  * 
  *
- * @see https://hl7.org/fhir/R4/supplyrequest.html
+ * @see https://hl7.org/fhir/R5/supplyrequest.html
  */
 export interface ISupplyRequest extends IDomainResource {
   /**

@@ -14,7 +14,7 @@ const GENOMIC_STUDY_ANALYSIS_OUTPUT_PROPERTIES = [
 /**
  * GenomicStudyAnalysisOutput - Outputs for the analysis event
  *
- * @see https://hl7.org/fhir/R4/genomicstudyanalysisoutput.html
+ * @see https://hl7.org/fhir/R5/genomicstudyanalysisoutput.html
  *
  * @example
  * const genomicStudyAnalysisOutput = new GenomicStudyAnalysisOutput({

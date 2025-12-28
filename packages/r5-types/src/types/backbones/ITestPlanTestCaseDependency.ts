@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Required criteria to execute the test case
  * 
  *
- * @see https://hl7.org/fhir/R4/testplantestcasedependency.html
+ * @see https://hl7.org/fhir/R5/testplantestcasedependency.html
  */
 export interface ITestPlanTestCaseDependency extends IBackboneElement {
   /**

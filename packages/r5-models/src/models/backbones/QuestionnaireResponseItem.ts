@@ -20,7 +20,7 @@ const QUESTIONNAIRE_RESPONSE_ITEM_PROPERTIES = [
 /**
  * QuestionnaireResponseItem - Groups and questions
  *
- * @see https://hl7.org/fhir/R4/questionnaireresponseitem.html
+ * @see https://hl7.org/fhir/R5/questionnaireresponseitem.html
  *
  * @example
  * const questionnaireResponseItem = new QuestionnaireResponseItem({

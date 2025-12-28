@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement, IReference } from '../../base
  * The test data used in the test case
  * 
  *
- * @see https://hl7.org/fhir/R4/testplantestcasetestdata.html
+ * @see https://hl7.org/fhir/R5/testplantestcasetestdata.html
  */
 export interface ITestPlanTestCaseTestData extends IBackboneElement {
   /**

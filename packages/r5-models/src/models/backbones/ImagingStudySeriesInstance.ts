@@ -19,7 +19,7 @@ const IMAGING_STUDY_SERIES_INSTANCE_PROPERTIES = [
 /**
  * ImagingStudySeriesInstance - A single SOP instance from the series
  *
- * @see https://hl7.org/fhir/R4/imagingstudyseriesinstance.html
+ * @see https://hl7.org/fhir/R5/imagingstudyseriesinstance.html
  *
  * @example
  * const imagingStudySeriesInstance = new ImagingStudySeriesInstance({

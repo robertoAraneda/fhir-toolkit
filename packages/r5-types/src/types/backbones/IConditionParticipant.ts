@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who or what participated in the activities related to the condition and how they were involved
  * 
  *
- * @see https://hl7.org/fhir/R4/conditionparticipant.html
+ * @see https://hl7.org/fhir/R5/conditionparticipant.html
  */
 export interface IConditionParticipant extends IBackboneElement {
   /**

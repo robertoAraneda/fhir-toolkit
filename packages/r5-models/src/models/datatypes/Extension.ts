@@ -120,7 +120,7 @@ const EXTENSION_PROPERTIES = [
 /**
  * Extension - Optional Extension Element - found in all resources.
  *
- * @see https://hl7.org/fhir/R4/extension.html
+ * @see https://hl7.org/fhir/R5/extension.html
  *
  * @example
  * const extension = new Extension({

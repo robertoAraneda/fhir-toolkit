@@ -14,7 +14,7 @@ const ENCOUNTER_REASON_PROPERTIES = [
 /**
  * EncounterReason - The list of medical reasons that are expected to be addressed during the episode of care
  *
- * @see https://hl7.org/fhir/R4/encounterreason.html
+ * @see https://hl7.org/fhir/R5/encounterreason.html
  *
  * @example
  * const encounterReason = new EncounterReason({

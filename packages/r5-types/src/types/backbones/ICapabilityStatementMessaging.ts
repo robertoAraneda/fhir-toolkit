@@ -8,7 +8,7 @@ import type { ICapabilityStatementMessagingSupportedMessage } from './ICapabilit
  * If messaging is supported
  * 
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementmessaging.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementmessaging.html
  */
 export interface ICapabilityStatementMessaging extends IBackboneElement {
   /**

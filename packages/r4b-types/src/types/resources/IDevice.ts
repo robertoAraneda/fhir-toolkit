@@ -15,7 +15,7 @@ import type { FHIRDeviceStatusType } from '../../valuesets/index.js';
  * A type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.
  * 
  *
- * @see https://hl7.org/fhir/R4/device.html
+ * @see https://hl7.org/fhir/R4B/device.html
  */
 export interface IDevice extends IDomainResource {
   /**

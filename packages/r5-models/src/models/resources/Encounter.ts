@@ -55,7 +55,7 @@ const ENCOUNTER_PROPERTIES = [
 /**
  * Encounter - An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.  Encounter is primarily used to record information about the actual activities that occurred, where Appointment is used to record planned activities.
  *
- * @see https://hl7.org/fhir/R4/encounter.html
+ * @see https://hl7.org/fhir/R5/encounter.html
  *
  * @example
  * const encounter = new Encounter({

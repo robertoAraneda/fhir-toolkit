@@ -18,7 +18,7 @@ const MESSAGE_HEADER_RESPONSE_PROPERTIES = [
 /**
  * MessageHeaderResponse - If this is a reply to prior message
  *
- * @see https://hl7.org/fhir/R4/messageheaderresponse.html
+ * @see https://hl7.org/fhir/R5/messageheaderresponse.html
  *
  * @example
  * const messageHeaderResponse = new MessageHeaderResponse({

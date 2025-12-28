@@ -20,7 +20,7 @@ const CHARGE_ITEM_DEFINITION_PROPERTY_GROUP_PRICE_COMPONENT_PROPERTIES = [
 /**
  * ChargeItemDefinitionPropertyGroupPriceComponent - Components of total line item price
  *
- * @see https://hl7.org/fhir/R4/chargeitemdefinitionpropertygrouppricecomponent.html
+ * @see https://hl7.org/fhir/R4B/chargeitemdefinitionpropertygrouppricecomponent.html
  *
  * @example
  * const chargeItemDefinitionPropertyGroupPriceComponent = new ChargeItemDefinitionPropertyGroupPriceComponent({

@@ -13,7 +13,7 @@ import type { GroupMeasureType } from '../../valuesets/index.js';
  * What defines the members of the research element
  * 
  *
- * @see https://hl7.org/fhir/R4/researchelementdefinitioncharacteristic.html
+ * @see https://hl7.org/fhir/R4B/researchelementdefinitioncharacteristic.html
  */
 export interface IResearchElementDefinitionCharacteristic extends IBackboneElement {
   /**

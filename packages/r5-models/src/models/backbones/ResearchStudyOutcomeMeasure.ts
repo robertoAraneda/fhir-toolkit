@@ -19,7 +19,7 @@ const RESEARCH_STUDY_OUTCOME_MEASURE_PROPERTIES = [
 /**
  * ResearchStudyOutcomeMeasure - A variable measured during the study
  *
- * @see https://hl7.org/fhir/R4/researchstudyoutcomemeasure.html
+ * @see https://hl7.org/fhir/R5/researchstudyoutcomemeasure.html
  *
  * @example
  * const researchStudyOutcomeMeasure = new ResearchStudyOutcomeMeasure({

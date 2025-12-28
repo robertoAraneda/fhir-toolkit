@@ -17,7 +17,7 @@ const CAPABILITY_STATEMENT_SOFTWARE_PROPERTIES = [
 /**
  * CapabilityStatementSoftware - Software that is covered by this capability statement
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementsoftware.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementsoftware.html
  *
  * @example
  * const capabilityStatementSoftware = new CapabilityStatementSoftware({

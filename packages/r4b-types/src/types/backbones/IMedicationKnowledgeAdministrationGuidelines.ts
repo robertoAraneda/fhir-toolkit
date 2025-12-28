@@ -8,7 +8,7 @@ import type { IMedicationKnowledgeAdministrationGuidelinesPatientCharacteristics
  * Guidelines for administration of the medication
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeadministrationguidelines.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgeadministrationguidelines.html
  */
 export interface IMedicationKnowledgeAdministrationGuidelines extends IBackboneElement {
   /**

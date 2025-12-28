@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Specifies descriptive properties of the medicine
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgedefinitionaldrugcharacteristic.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgedefinitionaldrugcharacteristic.html
  */
 export interface IMedicationKnowledgeDefinitionalDrugCharacteristic extends IBackboneElement {
   /**

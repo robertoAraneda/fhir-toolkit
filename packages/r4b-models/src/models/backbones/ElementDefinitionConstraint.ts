@@ -26,7 +26,7 @@ const ELEMENT_DEFINITION_CONSTRAINT_PROPERTIES = [
 /**
  * ElementDefinitionConstraint - Condition that must evaluate to true
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionconstraint.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitionconstraint.html
  *
  * @example
  * const elementDefinitionConstraint = new ElementDefinitionConstraint({

@@ -9,7 +9,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Characteristic
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencereportsubjectcharacteristic.html
+ * @see https://hl7.org/fhir/R4B/evidencereportsubjectcharacteristic.html
  */
 export interface IEvidenceReportSubjectCharacteristic extends IBackboneElement {
   /**

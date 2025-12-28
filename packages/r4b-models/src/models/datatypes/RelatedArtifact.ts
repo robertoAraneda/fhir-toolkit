@@ -26,7 +26,7 @@ const RELATED_ARTIFACT_PROPERTIES = [
 /**
  * RelatedArtifact - Related artifacts such as additional documentation, justification, or bibliographic references.
  *
- * @see https://hl7.org/fhir/R4/relatedartifact.html
+ * @see https://hl7.org/fhir/R4B/relatedartifact.html
  *
  * @example
  * const relatedArtifact = new RelatedArtifact({

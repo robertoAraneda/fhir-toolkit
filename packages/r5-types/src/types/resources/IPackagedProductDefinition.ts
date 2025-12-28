@@ -12,7 +12,7 @@ import type { IPackagedProductDefinitionPackagingProperty } from '../backbones/I
  * A medically related item or items, in a container or package.
  * 
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinition.html
+ * @see https://hl7.org/fhir/R5/packagedproductdefinition.html
  */
 export interface IPackagedProductDefinition extends IDomainResource {
   /**

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Organization(s) responsible for the product
  * 
  *
- * @see https://hl7.org/fhir/R4/inventoryitemresponsibleorganization.html
+ * @see https://hl7.org/fhir/R5/inventoryitemresponsibleorganization.html
  */
 export interface IInventoryItemResponsibleOrganization extends IBackboneElement {
   /**

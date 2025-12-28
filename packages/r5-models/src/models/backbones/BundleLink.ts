@@ -15,7 +15,7 @@ const BUNDLE_LINK_PROPERTIES = [
 /**
  * BundleLink - Links related to this Bundle
  *
- * @see https://hl7.org/fhir/R4/bundlelink.html
+ * @see https://hl7.org/fhir/R5/bundlelink.html
  *
  * @example
  * const bundleLink = new BundleLink({

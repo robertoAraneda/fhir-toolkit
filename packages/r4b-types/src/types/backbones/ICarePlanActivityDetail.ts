@@ -10,7 +10,7 @@ import type { CarePlanActivityKindType, CarePlanActivityStatusType } from '../..
  * In-line definition of activity
  * 
  *
- * @see https://hl7.org/fhir/R4/careplanactivitydetail.html
+ * @see https://hl7.org/fhir/R4B/careplanactivitydetail.html
  */
 export interface ICarePlanActivityDetail extends IBackboneElement {
   /**

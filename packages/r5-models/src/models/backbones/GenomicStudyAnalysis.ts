@@ -41,7 +41,7 @@ const GENOMIC_STUDY_ANALYSIS_PROPERTIES = [
 /**
  * GenomicStudyAnalysis - Genomic Analysis Event
  *
- * @see https://hl7.org/fhir/R4/genomicstudyanalysis.html
+ * @see https://hl7.org/fhir/R5/genomicstudyanalysis.html
  *
  * @example
  * const genomicStudyAnalysis = new GenomicStudyAnalysis({

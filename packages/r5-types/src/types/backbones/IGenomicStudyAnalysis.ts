@@ -12,7 +12,7 @@ import type { IGenomicStudyAnalysisPerformer } from './IGenomicStudyAnalysisPerf
  * Genomic Analysis Event
  * 
  *
- * @see https://hl7.org/fhir/R4/genomicstudyanalysis.html
+ * @see https://hl7.org/fhir/R5/genomicstudyanalysis.html
  */
 export interface IGenomicStudyAnalysis extends IBackboneElement {
   /**

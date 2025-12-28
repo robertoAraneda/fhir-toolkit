@@ -14,7 +14,7 @@ const MEDICATION_ADMINISTRATION_PERFORMER_PROPERTIES = [
 /**
  * MedicationAdministrationPerformer - Who performed the medication administration and what they did
  *
- * @see https://hl7.org/fhir/R4/medicationadministrationperformer.html
+ * @see https://hl7.org/fhir/R4B/medicationadministrationperformer.html
  *
  * @example
  * const medicationAdministrationPerformer = new MedicationAdministrationPerformer({

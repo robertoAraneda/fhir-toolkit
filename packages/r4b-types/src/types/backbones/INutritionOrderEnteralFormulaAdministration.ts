@@ -9,7 +9,7 @@ import type { ITiming } from '../datatypes/ITiming.js';
  * Formula feeding instruction as structured data
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionorderenteralformulaadministration.html
+ * @see https://hl7.org/fhir/R4B/nutritionorderenteralformulaadministration.html
  */
 export interface INutritionOrderEnteralFormulaAdministration extends IBackboneElement {
   /**

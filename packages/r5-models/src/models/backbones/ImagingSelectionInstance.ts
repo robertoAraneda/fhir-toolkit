@@ -23,7 +23,7 @@ const IMAGING_SELECTION_INSTANCE_PROPERTIES = [
 /**
  * ImagingSelectionInstance - The selected instances
  *
- * @see https://hl7.org/fhir/R4/imagingselectioninstance.html
+ * @see https://hl7.org/fhir/R5/imagingselectioninstance.html
  *
  * @example
  * const imagingSelectionInstance = new ImagingSelectionInstance({

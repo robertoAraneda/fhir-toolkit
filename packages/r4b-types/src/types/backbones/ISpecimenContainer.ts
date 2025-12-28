@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Direct container of specimen (tube/slide, etc.)
  * 
  *
- * @see https://hl7.org/fhir/R4/specimencontainer.html
+ * @see https://hl7.org/fhir/R4B/specimencontainer.html
  */
 export interface ISpecimenContainer extends IBackboneElement {
   /**

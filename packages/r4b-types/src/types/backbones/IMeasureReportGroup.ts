@@ -9,7 +9,7 @@ import type { IMeasureReportGroupStratifier } from './IMeasureReportGroupStratif
  * Measure results for each group
  * 
  *
- * @see https://hl7.org/fhir/R4/measurereportgroup.html
+ * @see https://hl7.org/fhir/R4B/measurereportgroup.html
  */
 export interface IMeasureReportGroup extends IBackboneElement {
   /**

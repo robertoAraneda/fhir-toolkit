@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Required  nutrient modifications
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionorderoraldietnutrient.html
+ * @see https://hl7.org/fhir/R5/nutritionorderoraldietnutrient.html
  */
 export interface INutritionOrderOralDietNutrient extends IBackboneElement {
   /**

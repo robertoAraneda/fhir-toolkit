@@ -7,7 +7,7 @@ import type { DocumentRelationshipTypeType } from '../../valuesets/index.js';
  * Relationships to other documents
  * 
  *
- * @see https://hl7.org/fhir/R4/documentreferencerelatesto.html
+ * @see https://hl7.org/fhir/R4B/documentreferencerelatesto.html
  */
 export interface IDocumentReferenceRelatesTo extends IBackboneElement {
   /**

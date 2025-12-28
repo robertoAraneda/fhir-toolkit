@@ -14,7 +14,7 @@ const GENOMIC_STUDY_ANALYSIS_DEVICE_PROPERTIES = [
 /**
  * GenomicStudyAnalysisDevice - Devices used for the analysis (e.g., instruments, software), with settings and parameters
  *
- * @see https://hl7.org/fhir/R4/genomicstudyanalysisdevice.html
+ * @see https://hl7.org/fhir/R5/genomicstudyanalysisdevice.html
  *
  * @example
  * const genomicStudyAnalysisDevice = new GenomicStudyAnalysisDevice({

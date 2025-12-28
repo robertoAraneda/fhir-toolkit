@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Relationships to other documents
  * 
  *
- * @see https://hl7.org/fhir/R4/documentreferencerelatesto.html
+ * @see https://hl7.org/fhir/R5/documentreferencerelatesto.html
  */
 export interface IDocumentReferenceRelatesTo extends IBackboneElement {
   /**

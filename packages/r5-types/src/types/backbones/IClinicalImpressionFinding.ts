@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * Possible or likely findings and diagnoses
  * 
  *
- * @see https://hl7.org/fhir/R4/clinicalimpressionfinding.html
+ * @see https://hl7.org/fhir/R5/clinicalimpressionfinding.html
  */
 export interface IClinicalImpressionFinding extends IBackboneElement {
   /**

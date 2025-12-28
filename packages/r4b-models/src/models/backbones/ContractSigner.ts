@@ -16,7 +16,7 @@ const CONTRACT_SIGNER_PROPERTIES = [
 /**
  * ContractSigner - Contract Signatory
  *
- * @see https://hl7.org/fhir/R4/contractsigner.html
+ * @see https://hl7.org/fhir/R4B/contractsigner.html
  *
  * @example
  * const contractSigner = new ContractSigner({

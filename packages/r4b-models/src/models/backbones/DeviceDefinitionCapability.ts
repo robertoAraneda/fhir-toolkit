@@ -13,7 +13,7 @@ const DEVICE_DEFINITION_CAPABILITY_PROPERTIES = [
 /**
  * DeviceDefinitionCapability - Device capabilities
  *
- * @see https://hl7.org/fhir/R4/devicedefinitioncapability.html
+ * @see https://hl7.org/fhir/R4B/devicedefinitioncapability.html
  *
  * @example
  * const deviceDefinitionCapability = new DeviceDefinitionCapability({

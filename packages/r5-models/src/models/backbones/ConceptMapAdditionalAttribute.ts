@@ -20,7 +20,7 @@ const CONCEPT_MAP_ADDITIONAL_ATTRIBUTE_PROPERTIES = [
 /**
  * ConceptMapAdditionalAttribute - Definition of an additional attribute to act as a data source or target
  *
- * @see https://hl7.org/fhir/R4/conceptmapadditionalattribute.html
+ * @see https://hl7.org/fhir/R5/conceptmapadditionalattribute.html
  *
  * @example
  * const conceptMapAdditionalAttribute = new ConceptMapAdditionalAttribute({

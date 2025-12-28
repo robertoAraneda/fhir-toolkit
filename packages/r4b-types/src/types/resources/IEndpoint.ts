@@ -10,7 +10,7 @@ import type { EndpointStatusType } from '../../valuesets/index.js';
  * The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.
  * 
  *
- * @see https://hl7.org/fhir/R4/endpoint.html
+ * @see https://hl7.org/fhir/R4B/endpoint.html
  */
 export interface IEndpoint extends IDomainResource {
   /**

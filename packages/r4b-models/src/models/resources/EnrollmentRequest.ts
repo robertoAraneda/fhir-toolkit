@@ -23,7 +23,7 @@ const ENROLLMENT_REQUEST_PROPERTIES = [
 /**
  * EnrollmentRequest - This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
  *
- * @see https://hl7.org/fhir/R4/enrollmentrequest.html
+ * @see https://hl7.org/fhir/R4B/enrollmentrequest.html
  *
  * @example
  * const enrollmentRequest = new EnrollmentRequest({

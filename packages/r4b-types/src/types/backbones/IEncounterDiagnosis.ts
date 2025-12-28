@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * The list of diagnosis relevant to this encounter
  * 
  *
- * @see https://hl7.org/fhir/R4/encounterdiagnosis.html
+ * @see https://hl7.org/fhir/R4B/encounterdiagnosis.html
  */
 export interface IEncounterDiagnosis extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { ISubstancePolymerMonomerSetStartingMaterial } from './ISubstancePo
  * Todo
  * 
  *
- * @see https://hl7.org/fhir/R4/substancepolymermonomerset.html
+ * @see https://hl7.org/fhir/R5/substancepolymermonomerset.html
  */
 export interface ISubstancePolymerMonomerSet extends IBackboneElement {
   /**

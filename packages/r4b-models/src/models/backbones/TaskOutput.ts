@@ -112,7 +112,7 @@ const TASK_OUTPUT_PROPERTIES = [
 /**
  * TaskOutput - Information produced as part of task
  *
- * @see https://hl7.org/fhir/R4/taskoutput.html
+ * @see https://hl7.org/fhir/R4B/taskoutput.html
  *
  * @example
  * const taskOutput = new TaskOutput({

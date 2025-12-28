@@ -7,7 +7,7 @@ import type { ResponseTypeType } from '../../valuesets/index.js';
  * If this is a reply to prior message
  * 
  *
- * @see https://hl7.org/fhir/R4/messageheaderresponse.html
+ * @see https://hl7.org/fhir/R4B/messageheaderresponse.html
  */
 export interface IMessageHeaderResponse extends IBackboneElement {
   /**

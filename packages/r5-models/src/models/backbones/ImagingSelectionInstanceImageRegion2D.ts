@@ -16,7 +16,7 @@ const IMAGING_SELECTION_INSTANCE_IMAGE_REGION2D_PROPERTIES = [
 /**
  * ImagingSelectionInstanceImageRegion2D - A specific 2D region in a DICOM image / frame
  *
- * @see https://hl7.org/fhir/R4/imagingselectioninstanceimageregion2d.html
+ * @see https://hl7.org/fhir/R5/imagingselectioninstanceimageregion2d.html
  *
  * @example
  * const imagingSelectionInstanceImageRegion2D = new ImagingSelectionInstanceImageRegion2D({

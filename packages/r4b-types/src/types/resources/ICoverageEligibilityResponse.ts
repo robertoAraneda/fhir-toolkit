@@ -11,7 +11,7 @@ import type { EligibilityResponsePurposeType, FinancialResourceStatusType, Remit
  * This resource provides eligibility and plan details from the processing of an CoverageEligibilityRequest resource.
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponse.html
+ * @see https://hl7.org/fhir/R4B/coverageeligibilityresponse.html
  */
 export interface ICoverageEligibilityResponse extends IDomainResource {
   /**

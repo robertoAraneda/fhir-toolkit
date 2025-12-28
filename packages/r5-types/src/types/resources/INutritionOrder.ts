@@ -13,7 +13,7 @@ import type { RequestIntentType, RequestPriorityType, RequestStatusType } from '
  * A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident.
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionorder.html
+ * @see https://hl7.org/fhir/R5/nutritionorder.html
  */
 export interface INutritionOrder extends IDomainResource {
   /**

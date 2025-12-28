@@ -17,7 +17,7 @@ const VERIFICATION_RESULT_VALIDATOR_PROPERTIES = [
 /**
  * VerificationResultValidator - Information about the entity validating information
  *
- * @see https://hl7.org/fhir/R4/verificationresultvalidator.html
+ * @see https://hl7.org/fhir/R4B/verificationresultvalidator.html
  *
  * @example
  * const verificationResultValidator = new VerificationResultValidator({

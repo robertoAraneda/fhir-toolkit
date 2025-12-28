@@ -30,7 +30,7 @@ const BIOLOGICALLY_DERIVED_PRODUCT_PROPERTY_PROPERTIES = [
 /**
  * BiologicallyDerivedProductProperty - A property that is specific to this BiologicallyDerviedProduct instance
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductproperty.html
+ * @see https://hl7.org/fhir/R5/biologicallyderivedproductproperty.html
  *
  * @example
  * const biologicallyDerivedProductProperty = new BiologicallyDerivedProductProperty({

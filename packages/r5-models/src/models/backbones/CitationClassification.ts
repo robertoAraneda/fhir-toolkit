@@ -13,7 +13,7 @@ const CITATION_CLASSIFICATION_PROPERTIES = [
 /**
  * CitationClassification - The assignment to an organizing scheme
  *
- * @see https://hl7.org/fhir/R4/citationclassification.html
+ * @see https://hl7.org/fhir/R5/citationclassification.html
  *
  * @example
  * const citationClassification = new CitationClassification({

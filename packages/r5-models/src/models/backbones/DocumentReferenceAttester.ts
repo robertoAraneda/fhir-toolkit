@@ -17,7 +17,7 @@ const DOCUMENT_REFERENCE_ATTESTER_PROPERTIES = [
 /**
  * DocumentReferenceAttester - Attests to accuracy of the document
  *
- * @see https://hl7.org/fhir/R4/documentreferenceattester.html
+ * @see https://hl7.org/fhir/R5/documentreferenceattester.html
  *
  * @example
  * const documentReferenceAttester = new DocumentReferenceAttester({

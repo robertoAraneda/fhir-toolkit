@@ -15,7 +15,7 @@ const AVAILABILITY_NOT_AVAILABLE_TIME_PROPERTIES = [
 /**
  * AvailabilityNotAvailableTime - Not available during this time due to provided reason
  *
- * @see https://hl7.org/fhir/R4/availabilitynotavailabletime.html
+ * @see https://hl7.org/fhir/R5/availabilitynotavailabletime.html
  *
  * @example
  * const availabilityNotAvailableTime = new AvailabilityNotAvailableTime({

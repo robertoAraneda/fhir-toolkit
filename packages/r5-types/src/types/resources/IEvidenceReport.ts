@@ -15,7 +15,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * The EvidenceReport Resource is a specialized container for a collection of resources and codeable concepts, adapted to support compositions of Evidence, EvidenceVariable, and Citation resources and related concepts.
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencereport.html
+ * @see https://hl7.org/fhir/R5/evidencereport.html
  */
 export interface IEvidenceReport extends IDomainResource {
   /**

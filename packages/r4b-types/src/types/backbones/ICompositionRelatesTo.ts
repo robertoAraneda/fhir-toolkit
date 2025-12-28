@@ -8,7 +8,7 @@ import type { DocumentRelationshipTypeType } from '../../valuesets/index.js';
  * Relationships to other compositions/documents
  * 
  *
- * @see https://hl7.org/fhir/R4/compositionrelatesto.html
+ * @see https://hl7.org/fhir/R4B/compositionrelatesto.html
  */
 export interface ICompositionRelatesTo extends IBackboneElement {
   /**

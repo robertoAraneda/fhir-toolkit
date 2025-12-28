@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who was performed in the intake
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionintakeperformer.html
+ * @see https://hl7.org/fhir/R5/nutritionintakeperformer.html
  */
 export interface INutritionIntakePerformer extends IBackboneElement {
   /**

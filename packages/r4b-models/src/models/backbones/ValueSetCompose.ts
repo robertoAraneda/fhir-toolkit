@@ -18,7 +18,7 @@ const VALUE_SET_COMPOSE_PROPERTIES = [
 /**
  * ValueSetCompose - Content logical definition of the value set (CLD)
  *
- * @see https://hl7.org/fhir/R4/valuesetcompose.html
+ * @see https://hl7.org/fhir/R4B/valuesetcompose.html
  *
  * @example
  * const valueSetCompose = new ValueSetCompose({

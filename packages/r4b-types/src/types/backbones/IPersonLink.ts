@@ -7,7 +7,7 @@ import type { IdentityAssuranceLevelType } from '../../valuesets/index.js';
  * Link to a resource that concerns the same actual person
  * 
  *
- * @see https://hl7.org/fhir/R4/personlink.html
+ * @see https://hl7.org/fhir/R4B/personlink.html
  */
 export interface IPersonLink extends IBackboneElement {
   /**

@@ -23,7 +23,7 @@ const SUBSCRIPTION_FILTER_BY_PROPERTIES = [
 /**
  * SubscriptionFilterBy - Criteria for narrowing the subscription topic stream
  *
- * @see https://hl7.org/fhir/R4/subscriptionfilterby.html
+ * @see https://hl7.org/fhir/R5/subscriptionfilterby.html
  *
  * @example
  * const subscriptionFilterBy = new SubscriptionFilterBy({

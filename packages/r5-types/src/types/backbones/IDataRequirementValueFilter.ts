@@ -9,7 +9,7 @@ import type { ValueFilterComparatorType } from '../../valuesets/index.js';
  * What values are expected
  * 
  *
- * @see https://hl7.org/fhir/R4/datarequirementvaluefilter.html
+ * @see https://hl7.org/fhir/R5/datarequirementvaluefilter.html
  */
 export interface IDataRequirementValueFilter extends IElement {
   /**

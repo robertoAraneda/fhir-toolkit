@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * Details of a reaction that follows immunization
  * 
  *
- * @see https://hl7.org/fhir/R4/immunizationreaction.html
+ * @see https://hl7.org/fhir/R5/immunizationreaction.html
  */
 export interface IImmunizationReaction extends IBackboneElement {
   /**

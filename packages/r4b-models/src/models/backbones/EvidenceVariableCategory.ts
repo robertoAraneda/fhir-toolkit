@@ -19,7 +19,7 @@ const EVIDENCE_VARIABLE_CATEGORY_PROPERTIES = [
 /**
  * EvidenceVariableCategory - A grouping for ordinal or polychotomous variables
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecategory.html
+ * @see https://hl7.org/fhir/R4B/evidencevariablecategory.html
  *
  * @example
  * const evidenceVariableCategory = new EvidenceVariableCategory({

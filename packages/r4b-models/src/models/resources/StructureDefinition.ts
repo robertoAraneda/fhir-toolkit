@@ -69,7 +69,7 @@ const STRUCTURE_DEFINITION_PROPERTIES = [
 /**
  * StructureDefinition - A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types.
  *
- * @see https://hl7.org/fhir/R4/structuredefinition.html
+ * @see https://hl7.org/fhir/R4B/structuredefinition.html
  *
  * @example
  * const structureDefinition = new StructureDefinition({

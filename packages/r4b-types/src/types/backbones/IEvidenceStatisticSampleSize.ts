@@ -7,7 +7,7 @@ import type { IAnnotation } from '../datatypes/IAnnotation.js';
  * Number of samples in the statistic
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencestatisticsamplesize.html
+ * @see https://hl7.org/fhir/R4B/evidencestatisticsamplesize.html
  */
 export interface IEvidenceStatisticSampleSize extends IBackboneElement {
   /**

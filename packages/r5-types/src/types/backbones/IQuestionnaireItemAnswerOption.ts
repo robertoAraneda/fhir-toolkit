@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement, IReference } from '../../base
  * Permitted answer
  * 
  *
- * @see https://hl7.org/fhir/R4/questionnaireitemansweroption.html
+ * @see https://hl7.org/fhir/R5/questionnaireitemansweroption.html
  */
 export interface IQuestionnaireItemAnswerOption extends IBackboneElement {
   /**

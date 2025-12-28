@@ -7,7 +7,7 @@ import type { IPeriod } from './IPeriod.js';
  * The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available.
  * 
  *
- * @see https://hl7.org/fhir/R4/marketingstatus.html
+ * @see https://hl7.org/fhir/R4B/marketingstatus.html
  */
 export interface IMarketingStatus extends IBackboneElement {
   /**

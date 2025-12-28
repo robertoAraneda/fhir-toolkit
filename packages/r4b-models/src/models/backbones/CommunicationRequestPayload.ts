@@ -17,7 +17,7 @@ const COMMUNICATION_REQUEST_PAYLOAD_PROPERTIES = [
 /**
  * CommunicationRequestPayload - Message payload
  *
- * @see https://hl7.org/fhir/R4/communicationrequestpayload.html
+ * @see https://hl7.org/fhir/R4B/communicationrequestpayload.html
  *
  * @example
  * const communicationRequestPayload = new CommunicationRequestPayload({

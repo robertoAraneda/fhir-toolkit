@@ -34,7 +34,7 @@ const IMMUNIZATION_EVALUATION_PROPERTIES = [
 /**
  * ImmunizationEvaluation - Describes a comparison of an immunization event against published recommendations to determine if the administration is "valid" in relation to those  recommendations.
  *
- * @see https://hl7.org/fhir/R4/immunizationevaluation.html
+ * @see https://hl7.org/fhir/R5/immunizationevaluation.html
  *
  * @example
  * const immunizationEvaluation = new ImmunizationEvaluation({

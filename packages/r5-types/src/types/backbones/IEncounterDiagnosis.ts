@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * The list of diagnosis relevant to this encounter
  * 
  *
- * @see https://hl7.org/fhir/R4/encounterdiagnosis.html
+ * @see https://hl7.org/fhir/R5/encounterdiagnosis.html
  */
 export interface IEncounterDiagnosis extends IBackboneElement {
   /**

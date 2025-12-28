@@ -7,7 +7,7 @@ import type { IAnnotation } from '../datatypes/IAnnotation.js';
  * Step taken to address
  * 
  *
- * @see https://hl7.org/fhir/R4/detectedissuemitigation.html
+ * @see https://hl7.org/fhir/R5/detectedissuemitigation.html
  */
 export interface IDetectedIssueMitigation extends IBackboneElement {
   /**

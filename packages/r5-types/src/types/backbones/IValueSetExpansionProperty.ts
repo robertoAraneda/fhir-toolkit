@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Additional information supplied about each concept
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansionproperty.html
+ * @see https://hl7.org/fhir/R5/valuesetexpansionproperty.html
  */
 export interface IValueSetExpansionProperty extends IBackboneElement {
   /**

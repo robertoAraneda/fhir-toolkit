@@ -18,7 +18,7 @@ const INSURANCE_PLAN_CONTACT_PROPERTIES = [
 /**
  * InsurancePlanContact - Contact for the product
  *
- * @see https://hl7.org/fhir/R4/insuranceplancontact.html
+ * @see https://hl7.org/fhir/R4B/insuranceplancontact.html
  *
  * @example
  * const insurancePlanContact = new InsurancePlanContact({

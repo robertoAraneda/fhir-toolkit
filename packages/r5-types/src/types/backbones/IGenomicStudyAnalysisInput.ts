@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Inputs for the analysis event
  * 
  *
- * @see https://hl7.org/fhir/R4/genomicstudyanalysisinput.html
+ * @see https://hl7.org/fhir/R5/genomicstudyanalysisinput.html
  */
 export interface IGenomicStudyAnalysisInput extends IBackboneElement {
   /**

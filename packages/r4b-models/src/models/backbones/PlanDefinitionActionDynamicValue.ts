@@ -15,7 +15,7 @@ const PLAN_DEFINITION_ACTION_DYNAMIC_VALUE_PROPERTIES = [
 /**
  * PlanDefinitionActionDynamicValue - Dynamic aspects of the definition
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactiondynamicvalue.html
+ * @see https://hl7.org/fhir/R4B/plandefinitionactiondynamicvalue.html
  *
  * @example
  * const planDefinitionActionDynamicValue = new PlanDefinitionActionDynamicValue({

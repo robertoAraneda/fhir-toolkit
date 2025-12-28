@@ -10,7 +10,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * Target outcome for the goal
  * 
  *
- * @see https://hl7.org/fhir/R4/goaltarget.html
+ * @see https://hl7.org/fhir/R4B/goaltarget.html
  */
 export interface IGoalTarget extends IBackboneElement {
   /**

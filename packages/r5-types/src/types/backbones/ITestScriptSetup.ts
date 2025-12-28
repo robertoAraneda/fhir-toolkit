@@ -7,7 +7,7 @@ import type { ITestScriptSetupAction } from './ITestScriptSetupAction.js';
  * A series of required setup operations before tests are executed
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptsetup.html
+ * @see https://hl7.org/fhir/R5/testscriptsetup.html
  */
 export interface ITestScriptSetup extends IBackboneElement {
   /**

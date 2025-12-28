@@ -26,7 +26,7 @@ const GROUP_CHARACTERISTIC_PROPERTIES = [
 /**
  * GroupCharacteristic - Include / Exclude group members by Trait
  *
- * @see https://hl7.org/fhir/R4/groupcharacteristic.html
+ * @see https://hl7.org/fhir/R5/groupcharacteristic.html
  *
  * @example
  * const groupCharacteristic = new GroupCharacteristic({

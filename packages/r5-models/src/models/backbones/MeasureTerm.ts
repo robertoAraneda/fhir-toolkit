@@ -15,7 +15,7 @@ const MEASURE_TERM_PROPERTIES = [
 /**
  * MeasureTerm - Defined terms used in the measure documentation
  *
- * @see https://hl7.org/fhir/R4/measureterm.html
+ * @see https://hl7.org/fhir/R5/measureterm.html
  *
  * @example
  * const measureTerm = new MeasureTerm({

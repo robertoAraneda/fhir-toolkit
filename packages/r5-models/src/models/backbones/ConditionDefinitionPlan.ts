@@ -14,7 +14,7 @@ const CONDITION_DEFINITION_PLAN_PROPERTIES = [
 /**
  * ConditionDefinitionPlan - Plan that is appropriate
  *
- * @see https://hl7.org/fhir/R4/conditiondefinitionplan.html
+ * @see https://hl7.org/fhir/R5/conditiondefinitionplan.html
  *
  * @example
  * const conditionDefinitionPlan = new ConditionDefinitionPlan({

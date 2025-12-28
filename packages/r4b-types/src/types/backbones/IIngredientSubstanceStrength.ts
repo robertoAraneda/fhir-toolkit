@@ -9,7 +9,7 @@ import type { IIngredientSubstanceStrengthReferenceStrength } from './IIngredien
  * The quantity of substance, per presentation, or per volume or mass, and type of quantity
  * 
  *
- * @see https://hl7.org/fhir/R4/ingredientsubstancestrength.html
+ * @see https://hl7.org/fhir/R4B/ingredientsubstancestrength.html
  */
 export interface IIngredientSubstanceStrength extends IBackboneElement {
   /**

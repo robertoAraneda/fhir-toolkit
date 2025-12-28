@@ -40,7 +40,7 @@ const PERSON_PROPERTIES = [
 /**
  * Person - Demographics and administrative information about a person independent of a specific health-related context.
  *
- * @see https://hl7.org/fhir/R4/person.html
+ * @see https://hl7.org/fhir/R5/person.html
  *
  * @example
  * const person = new Person({

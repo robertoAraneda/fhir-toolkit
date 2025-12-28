@@ -19,7 +19,7 @@ const INVENTORY_REPORT_INVENTORY_LISTING_PROPERTIES = [
 /**
  * InventoryReportInventoryListing - An inventory listing section (grouped by any of the attributes)
  *
- * @see https://hl7.org/fhir/R4/inventoryreportinventorylisting.html
+ * @see https://hl7.org/fhir/R5/inventoryreportinventorylisting.html
  *
  * @example
  * const inventoryReportInventoryListing = new InventoryReportInventoryListing({

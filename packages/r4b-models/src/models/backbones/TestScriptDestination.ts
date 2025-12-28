@@ -15,7 +15,7 @@ const TEST_SCRIPT_DESTINATION_PROPERTIES = [
 /**
  * TestScriptDestination - An abstract server representing a destination or receiver in a message exchange
  *
- * @see https://hl7.org/fhir/R4/testscriptdestination.html
+ * @see https://hl7.org/fhir/R4B/testscriptdestination.html
  *
  * @example
  * const testScriptDestination = new TestScriptDestination({

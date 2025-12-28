@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Note concerning adjudication
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitprocessnote.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitprocessnote.html
  */
 export interface IExplanationOfBenefitProcessNote extends IBackboneElement {
   /**

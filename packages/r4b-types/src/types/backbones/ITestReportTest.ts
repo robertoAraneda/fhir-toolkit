@@ -7,7 +7,7 @@ import type { ITestReportTestAction } from './ITestReportTestAction.js';
  * A test executed from the test script
  * 
  *
- * @see https://hl7.org/fhir/R4/testreporttest.html
+ * @see https://hl7.org/fhir/R4B/testreporttest.html
  */
 export interface ITestReportTest extends IBackboneElement {
   /**

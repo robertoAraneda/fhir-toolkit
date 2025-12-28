@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement } from '../../base/index.js';
  * Defines how IG is built by tools
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitionparameter.html
+ * @see https://hl7.org/fhir/R5/implementationguidedefinitionparameter.html
  */
 export interface IImplementationGuideDefinitionParameter extends IBackboneElement {
   /**

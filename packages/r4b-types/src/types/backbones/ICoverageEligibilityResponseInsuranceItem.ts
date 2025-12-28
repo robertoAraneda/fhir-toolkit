@@ -7,7 +7,7 @@ import type { ICoverageEligibilityResponseInsuranceItemBenefit } from './ICovera
  * Benefits and authorization details
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponseinsuranceitem.html
+ * @see https://hl7.org/fhir/R4B/coverageeligibilityresponseinsuranceitem.html
  */
 export interface ICoverageEligibilityResponseInsuranceItem extends IBackboneElement {
   /**

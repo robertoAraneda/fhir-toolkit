@@ -10,7 +10,7 @@ import type { SequenceTypeType } from '../../valuesets/index.js';
  * Representation of a molecular sequence.
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequence.html
+ * @see https://hl7.org/fhir/R5/molecularsequence.html
  */
 export interface IMolecularSequence extends IDomainResource {
   /**

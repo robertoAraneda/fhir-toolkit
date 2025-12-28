@@ -9,7 +9,7 @@ import type { ActionRelationshipTypeType } from '../../valuesets/index.js';
  * Relationship to another action
  * 
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationactionrelatedaction.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationactionrelatedaction.html
  */
 export interface IRequestOrchestrationActionRelatedAction extends IBackboneElement {
   /**

@@ -32,7 +32,7 @@ const TRIGGER_DEFINITION_PROPERTIES = [
 /**
  * TriggerDefinition - A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element.
  *
- * @see https://hl7.org/fhir/R4/triggerdefinition.html
+ * @see https://hl7.org/fhir/R5/triggerdefinition.html
  *
  * @example
  * const triggerDefinition = new TriggerDefinition({

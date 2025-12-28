@@ -39,7 +39,7 @@ const COVERAGE_ELIGIBILITY_REQUEST_PROPERTIES = [
 /**
  * CoverageEligibilityRequest - The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityrequest.html
+ * @see https://hl7.org/fhir/R4B/coverageeligibilityrequest.html
  *
  * @example
  * const coverageEligibilityRequest = new CoverageEligibilityRequest({

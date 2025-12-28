@@ -8,7 +8,7 @@ import type { IConceptMapGroupUnmapped } from './IConceptMapGroupUnmapped.js';
  * Same source and target systems
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroup.html
+ * @see https://hl7.org/fhir/R4B/conceptmapgroup.html
  */
 export interface IConceptMapGroup extends IBackboneElement {
   /**

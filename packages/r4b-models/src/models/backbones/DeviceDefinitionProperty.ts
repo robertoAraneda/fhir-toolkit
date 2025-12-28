@@ -15,7 +15,7 @@ const DEVICE_DEFINITION_PROPERTY_PROPERTIES = [
 /**
  * DeviceDefinitionProperty - The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionproperty.html
+ * @see https://hl7.org/fhir/R4B/devicedefinitionproperty.html
  *
  * @example
  * const deviceDefinitionProperty = new DeviceDefinitionProperty({

@@ -9,7 +9,7 @@ import type { QuestionnaireResponseStatusType } from '../../valuesets/index.js';
  * A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.
  * 
  *
- * @see https://hl7.org/fhir/R4/questionnaireresponse.html
+ * @see https://hl7.org/fhir/R4B/questionnaireresponse.html
  */
 export interface IQuestionnaireResponse extends IDomainResource {
   /**

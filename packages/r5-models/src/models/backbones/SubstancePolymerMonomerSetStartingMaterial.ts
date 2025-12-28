@@ -18,7 +18,7 @@ const SUBSTANCE_POLYMER_MONOMER_SET_STARTING_MATERIAL_PROPERTIES = [
 /**
  * SubstancePolymerMonomerSetStartingMaterial - The starting materials - monomer(s) used in the synthesis of the polymer
  *
- * @see https://hl7.org/fhir/R4/substancepolymermonomersetstartingmaterial.html
+ * @see https://hl7.org/fhir/R5/substancepolymermonomersetstartingmaterial.html
  *
  * @example
  * const substancePolymerMonomerSetStartingMaterial = new SubstancePolymerMonomerSetStartingMaterial({

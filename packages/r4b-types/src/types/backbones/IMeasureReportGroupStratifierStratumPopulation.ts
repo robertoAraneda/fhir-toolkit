@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Population results in this stratum
  * 
  *
- * @see https://hl7.org/fhir/R4/measurereportgroupstratifierstratumpopulation.html
+ * @see https://hl7.org/fhir/R4B/measurereportgroupstratifierstratumpopulation.html
  */
 export interface IMeasureReportGroupStratifierStratumPopulation extends IBackboneElement {
   /**

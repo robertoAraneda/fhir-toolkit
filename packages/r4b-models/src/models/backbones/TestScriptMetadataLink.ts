@@ -15,7 +15,7 @@ const TEST_SCRIPT_METADATA_LINK_PROPERTIES = [
 /**
  * TestScriptMetadataLink - Links to the FHIR specification
  *
- * @see https://hl7.org/fhir/R4/testscriptmetadatalink.html
+ * @see https://hl7.org/fhir/R4B/testscriptmetadatalink.html
  *
  * @example
  * const testScriptMetadataLink = new TestScriptMetadataLink({

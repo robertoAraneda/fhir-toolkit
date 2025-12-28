@@ -24,7 +24,7 @@ const ALLERGY_INTOLERANCE_REACTION_PROPERTIES = [
 /**
  * AllergyIntoleranceReaction - Adverse Reaction Events linked to exposure to substance
  *
- * @see https://hl7.org/fhir/R4/allergyintolerancereaction.html
+ * @see https://hl7.org/fhir/R4B/allergyintolerancereaction.html
  *
  * @example
  * const allergyIntoleranceReaction = new AllergyIntoleranceReaction({

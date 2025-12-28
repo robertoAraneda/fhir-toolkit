@@ -7,7 +7,7 @@ import type { DiscriminatorTypeType } from '../../valuesets/index.js';
  * Element values that are used to distinguish the slices
  * 
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionslicingdiscriminator.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitionslicingdiscriminator.html
  */
 export interface IElementDefinitionSlicingDiscriminator extends IElement {
   /**

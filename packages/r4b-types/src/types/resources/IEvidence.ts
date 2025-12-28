@@ -15,7 +15,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * The Evidence Resource provides a machine-interpretable expression of an evidence concept including the evidence variables (eg population, exposures/interventions, comparators, outcomes, measured variables, confounding variables), the statistics, and the certainty of this evidence.
  * 
  *
- * @see https://hl7.org/fhir/R4/evidence.html
+ * @see https://hl7.org/fhir/R4B/evidence.html
  */
 export interface IEvidence extends IDomainResource {
   /**

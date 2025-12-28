@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Who or what participated in the activities related to the allergy or intolerance and how they were involved
  * 
  *
- * @see https://hl7.org/fhir/R4/allergyintoleranceparticipant.html
+ * @see https://hl7.org/fhir/R5/allergyintoleranceparticipant.html
  */
 export interface IAllergyIntoleranceParticipant extends IBackboneElement {
   /**

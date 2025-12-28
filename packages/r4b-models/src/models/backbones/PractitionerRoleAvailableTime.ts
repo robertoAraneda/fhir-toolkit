@@ -20,7 +20,7 @@ const PRACTITIONER_ROLE_AVAILABLE_TIME_PROPERTIES = [
 /**
  * PractitionerRoleAvailableTime - Times the Service Site is available
  *
- * @see https://hl7.org/fhir/R4/practitionerroleavailabletime.html
+ * @see https://hl7.org/fhir/R4B/practitionerroleavailabletime.html
  *
  * @example
  * const practitionerRoleAvailableTime = new PractitionerRoleAvailableTime({

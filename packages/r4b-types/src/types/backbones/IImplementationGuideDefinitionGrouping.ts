@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Grouping used to present related resources in the IG
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitiongrouping.html
+ * @see https://hl7.org/fhir/R4B/implementationguidedefinitiongrouping.html
  */
 export interface IImplementationGuideDefinitionGrouping extends IBackboneElement {
   /**

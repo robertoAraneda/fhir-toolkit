@@ -47,7 +47,7 @@ const COMMUNICATION_PROPERTIES = [
 /**
  * Communication - An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.
  *
- * @see https://hl7.org/fhir/R4/communication.html
+ * @see https://hl7.org/fhir/R4B/communication.html
  *
  * @example
  * const communication = new Communication({

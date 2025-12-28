@@ -28,7 +28,7 @@ const MEDICATION_REQUEST_DISPENSE_REQUEST_PROPERTIES = [
 /**
  * MedicationRequestDispenseRequest - Medication supply authorization
  *
- * @see https://hl7.org/fhir/R4/medicationrequestdispenserequest.html
+ * @see https://hl7.org/fhir/R5/medicationrequestdispenserequest.html
  *
  * @example
  * const medicationRequestDispenseRequest = new MedicationRequestDispenseRequest({

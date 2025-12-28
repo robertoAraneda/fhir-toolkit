@@ -13,7 +13,7 @@ const PACKAGED_PRODUCT_DEFINITION_LEGAL_STATUS_OF_SUPPLY_PROPERTIES = [
 /**
  * PackagedProductDefinitionLegalStatusOfSupply - The legal status of supply of the packaged item as classified by the regulator
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionlegalstatusofsupply.html
+ * @see https://hl7.org/fhir/R5/packagedproductdefinitionlegalstatusofsupply.html
  *
  * @example
  * const packagedProductDefinitionLegalStatusOfSupply = new PackagedProductDefinitionLegalStatusOfSupply({

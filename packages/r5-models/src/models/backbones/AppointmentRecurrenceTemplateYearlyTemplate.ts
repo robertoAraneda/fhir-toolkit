@@ -13,7 +13,7 @@ const APPOINTMENT_RECURRENCE_TEMPLATE_YEARLY_TEMPLATE_PROPERTIES = [
 /**
  * AppointmentRecurrenceTemplateYearlyTemplate - Information about yearly recurring appointments
  *
- * @see https://hl7.org/fhir/R4/appointmentrecurrencetemplateyearlytemplate.html
+ * @see https://hl7.org/fhir/R5/appointmentrecurrencetemplateyearlytemplate.html
  *
  * @example
  * const appointmentRecurrenceTemplateYearlyTemplate = new AppointmentRecurrenceTemplateYearlyTemplate({

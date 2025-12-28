@@ -8,7 +8,7 @@ import type { ReportRelationshipTypeType } from '../../valuesets/index.js';
  * Relationships to other compositions/documents
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencereportrelatesto.html
+ * @see https://hl7.org/fhir/R5/evidencereportrelatesto.html
  */
 export interface IEvidenceReportRelatesTo extends IBackboneElement {
   /**

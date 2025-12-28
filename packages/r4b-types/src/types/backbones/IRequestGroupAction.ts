@@ -15,7 +15,7 @@ import type { ActionCardinalityBehaviorType, ActionGroupingBehaviorType, ActionP
  * Proposed actions, if any
  * 
  *
- * @see https://hl7.org/fhir/R4/requestgroupaction.html
+ * @see https://hl7.org/fhir/R4B/requestgroupaction.html
  */
 export interface IRequestGroupAction extends IBackboneElement {
   /**

@@ -15,7 +15,7 @@ import type { IClaimResponseItemReviewOutcome } from './IClaimResponseItemReview
  * Insurer added line items
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponseadditem.html
+ * @see https://hl7.org/fhir/R5/claimresponseadditem.html
  */
 export interface IClaimResponseAddItem extends IBackboneElement {
   /**

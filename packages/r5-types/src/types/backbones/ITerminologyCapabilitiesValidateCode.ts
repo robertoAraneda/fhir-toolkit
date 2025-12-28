@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation
  * 
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesvalidatecode.html
+ * @see https://hl7.org/fhir/R5/terminologycapabilitiesvalidatecode.html
  */
 export interface ITerminologyCapabilitiesValidateCode extends IBackboneElement {
   /**

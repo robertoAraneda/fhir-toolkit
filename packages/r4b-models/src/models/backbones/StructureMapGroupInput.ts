@@ -20,7 +20,7 @@ const STRUCTURE_MAP_GROUP_INPUT_PROPERTIES = [
 /**
  * StructureMapGroupInput - Named instance provided when invoking the map
  *
- * @see https://hl7.org/fhir/R4/structuremapgroupinput.html
+ * @see https://hl7.org/fhir/R4B/structuremapgroupinput.html
  *
  * @example
  * const structureMapGroupInput = new StructureMapGroupInput({

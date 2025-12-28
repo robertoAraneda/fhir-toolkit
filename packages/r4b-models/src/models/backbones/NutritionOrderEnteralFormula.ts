@@ -26,7 +26,7 @@ const NUTRITION_ORDER_ENTERAL_FORMULA_PROPERTIES = [
 /**
  * NutritionOrderEnteralFormula - Enteral formula components
  *
- * @see https://hl7.org/fhir/R4/nutritionorderenteralformula.html
+ * @see https://hl7.org/fhir/R4B/nutritionorderenteralformula.html
  *
  * @example
  * const nutritionOrderEnteralFormula = new NutritionOrderEnteralFormula({

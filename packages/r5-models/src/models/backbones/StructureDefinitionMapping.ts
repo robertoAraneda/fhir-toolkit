@@ -19,7 +19,7 @@ const STRUCTURE_DEFINITION_MAPPING_PROPERTIES = [
 /**
  * StructureDefinitionMapping - External specification that the content is mapped to
  *
- * @see https://hl7.org/fhir/R4/structuredefinitionmapping.html
+ * @see https://hl7.org/fhir/R5/structuredefinitionmapping.html
  *
  * @example
  * const structureDefinitionMapping = new StructureDefinitionMapping({

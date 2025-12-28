@@ -29,7 +29,7 @@ const ORGANIZATION_AFFILIATION_PROPERTIES = [
 /**
  * OrganizationAffiliation - Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.
  *
- * @see https://hl7.org/fhir/R4/organizationaffiliation.html
+ * @see https://hl7.org/fhir/R4B/organizationaffiliation.html
  *
  * @example
  * const organizationAffiliation = new OrganizationAffiliation({

@@ -18,7 +18,7 @@ const CODE_SYSTEM_CONCEPT_DESIGNATION_PROPERTIES = [
 /**
  * CodeSystemConceptDesignation - Additional representations for the concept
  *
- * @see https://hl7.org/fhir/R4/codesystemconceptdesignation.html
+ * @see https://hl7.org/fhir/R5/codesystemconceptdesignation.html
  *
  * @example
  * const codeSystemConceptDesignation = new CodeSystemConceptDesignation({

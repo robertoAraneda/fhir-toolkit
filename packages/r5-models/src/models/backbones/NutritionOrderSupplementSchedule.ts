@@ -17,7 +17,7 @@ const NUTRITION_ORDER_SUPPLEMENT_SCHEDULE_PROPERTIES = [
 /**
  * NutritionOrderSupplementSchedule - Scheduling information for supplements
  *
- * @see https://hl7.org/fhir/R4/nutritionordersupplementschedule.html
+ * @see https://hl7.org/fhir/R5/nutritionordersupplementschedule.html
  *
  * @example
  * const nutritionOrderSupplementSchedule = new NutritionOrderSupplementSchedule({

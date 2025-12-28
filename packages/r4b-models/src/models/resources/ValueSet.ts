@@ -48,7 +48,7 @@ const VALUE_SET_PROPERTIES = [
 /**
  * ValueSet - A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [CodeSystem](codesystem.html) definitions and their use in [coded elements](terminologies.html).
  *
- * @see https://hl7.org/fhir/R4/valueset.html
+ * @see https://hl7.org/fhir/R4B/valueset.html
  *
  * @example
  * const valueSet = new ValueSet({

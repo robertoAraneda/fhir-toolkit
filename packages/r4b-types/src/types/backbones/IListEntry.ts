@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Entries in the list
  * 
  *
- * @see https://hl7.org/fhir/R4/listentry.html
+ * @see https://hl7.org/fhir/R4B/listentry.html
  */
 export interface IListEntry extends IBackboneElement {
   /**

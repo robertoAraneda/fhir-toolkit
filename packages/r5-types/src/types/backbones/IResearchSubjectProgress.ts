@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Subject status
  * 
  *
- * @see https://hl7.org/fhir/R4/researchsubjectprogress.html
+ * @see https://hl7.org/fhir/R5/researchsubjectprogress.html
  */
 export interface IResearchSubjectProgress extends IBackboneElement {
   /**

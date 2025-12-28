@@ -15,7 +15,7 @@ const VALUE_SET_SCOPE_PROPERTIES = [
 /**
  * ValueSetScope - Description of the semantic space the Value Set Expansion is intended to cover and should further clarify the text in ValueSet.description
  *
- * @see https://hl7.org/fhir/R4/valuesetscope.html
+ * @see https://hl7.org/fhir/R5/valuesetscope.html
  *
  * @example
  * const valueSetScope = new ValueSetScope({

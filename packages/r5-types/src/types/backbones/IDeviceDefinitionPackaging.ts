@@ -9,7 +9,7 @@ import type { IDeviceDefinitionUdiDeviceIdentifier } from './IDeviceDefinitionUd
  * Information about the packaging of the device, i.e. how the device is packaged
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionpackaging.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionpackaging.html
  */
 export interface IDeviceDefinitionPackaging extends IBackboneElement {
   /**

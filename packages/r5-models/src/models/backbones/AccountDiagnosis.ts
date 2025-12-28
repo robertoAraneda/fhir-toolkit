@@ -22,7 +22,7 @@ const ACCOUNT_DIAGNOSIS_PROPERTIES = [
 /**
  * AccountDiagnosis - The list of diagnoses relevant to this account
  *
- * @see https://hl7.org/fhir/R4/accountdiagnosis.html
+ * @see https://hl7.org/fhir/R5/accountdiagnosis.html
  *
  * @example
  * const accountDiagnosis = new AccountDiagnosis({

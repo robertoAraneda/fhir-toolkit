@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * The maximum number of units of the medication that can be dispensed in a period
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeregulatorymaxdispense.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgeregulatorymaxdispense.html
  */
 export interface IMedicationKnowledgeRegulatoryMaxDispense extends IBackboneElement {
   /**

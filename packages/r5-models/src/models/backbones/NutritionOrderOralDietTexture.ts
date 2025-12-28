@@ -13,7 +13,7 @@ const NUTRITION_ORDER_ORAL_DIET_TEXTURE_PROPERTIES = [
 /**
  * NutritionOrderOralDietTexture - Required  texture modifications
  *
- * @see https://hl7.org/fhir/R4/nutritionorderoraldiettexture.html
+ * @see https://hl7.org/fhir/R5/nutritionorderoraldiettexture.html
  *
  * @example
  * const nutritionOrderOralDietTexture = new NutritionOrderOralDietTexture({

@@ -14,7 +14,7 @@ const CLAIM_RESPONSE_TOTAL_PROPERTIES = [
 /**
  * ClaimResponseTotal - Adjudication totals
  *
- * @see https://hl7.org/fhir/R4/claimresponsetotal.html
+ * @see https://hl7.org/fhir/R5/claimresponsetotal.html
  *
  * @example
  * const claimResponseTotal = new ClaimResponseTotal({

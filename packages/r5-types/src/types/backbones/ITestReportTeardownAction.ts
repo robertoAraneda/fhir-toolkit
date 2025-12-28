@@ -7,7 +7,7 @@ import type { ITestReportSetupActionOperation } from './ITestReportSetupActionOp
  * One or more teardown operations performed
  * 
  *
- * @see https://hl7.org/fhir/R4/testreportteardownaction.html
+ * @see https://hl7.org/fhir/R5/testreportteardownaction.html
  */
 export interface ITestReportTeardownAction extends IBackboneElement {
   /**

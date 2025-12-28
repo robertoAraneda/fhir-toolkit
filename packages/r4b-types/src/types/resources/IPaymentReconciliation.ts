@@ -12,7 +12,7 @@ import type { FinancialResourceStatusType, RemittanceOutcomeType } from '../../v
  * This resource provides the details including amount of a payment and allocates the payment items being paid.
  * 
  *
- * @see https://hl7.org/fhir/R4/paymentreconciliation.html
+ * @see https://hl7.org/fhir/R4B/paymentreconciliation.html
  */
 export interface IPaymentReconciliation extends IDomainResource {
   /**

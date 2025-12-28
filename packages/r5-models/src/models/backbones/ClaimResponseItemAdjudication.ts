@@ -17,7 +17,7 @@ const CLAIM_RESPONSE_ITEM_ADJUDICATION_PROPERTIES = [
 /**
  * ClaimResponseItemAdjudication - Adjudication details
  *
- * @see https://hl7.org/fhir/R4/claimresponseitemadjudication.html
+ * @see https://hl7.org/fhir/R5/claimresponseitemadjudication.html
  *
  * @example
  * const claimResponseItemAdjudication = new ClaimResponseItemAdjudication({

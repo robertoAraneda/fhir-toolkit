@@ -14,7 +14,7 @@ const EVIDENCE_REPORT_SUBJECT_PROPERTIES = [
 /**
  * EvidenceReportSubject - Focus of the report
  *
- * @see https://hl7.org/fhir/R4/evidencereportsubject.html
+ * @see https://hl7.org/fhir/R4B/evidencereportsubject.html
  *
  * @example
  * const evidenceReportSubject = new EvidenceReportSubject({

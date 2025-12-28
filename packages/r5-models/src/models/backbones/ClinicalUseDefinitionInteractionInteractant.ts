@@ -14,7 +14,7 @@ const CLINICAL_USE_DEFINITION_INTERACTION_INTERACTANT_PROPERTIES = [
 /**
  * ClinicalUseDefinitionInteractionInteractant - The specific medication, product, food etc. or laboratory test that interacts
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitioninteractioninteractant.html
+ * @see https://hl7.org/fhir/R5/clinicalusedefinitioninteractioninteractant.html
  *
  * @example
  * const clinicalUseDefinitionInteractionInteractant = new ClinicalUseDefinitionInteractionInteractant({

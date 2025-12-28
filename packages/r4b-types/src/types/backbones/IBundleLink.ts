@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Links related to this Bundle
  * 
  *
- * @see https://hl7.org/fhir/R4/bundlelink.html
+ * @see https://hl7.org/fhir/R4B/bundlelink.html
  */
 export interface IBundleLink extends IBackboneElement {
   /**

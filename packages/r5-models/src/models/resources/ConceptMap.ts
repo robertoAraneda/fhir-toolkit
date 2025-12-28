@@ -75,7 +75,7 @@ const CONCEPT_MAP_PROPERTIES = [
 /**
  * ConceptMap - A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models.
  *
- * @see https://hl7.org/fhir/R4/conceptmap.html
+ * @see https://hl7.org/fhir/R5/conceptmap.html
  *
  * @example
  * const conceptMap = new ConceptMap({

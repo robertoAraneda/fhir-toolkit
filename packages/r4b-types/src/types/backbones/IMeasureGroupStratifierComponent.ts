@@ -7,7 +7,7 @@ import type { IExpression } from '../datatypes/IExpression.js';
  * Stratifier criteria component for the measure
  * 
  *
- * @see https://hl7.org/fhir/R4/measuregroupstratifiercomponent.html
+ * @see https://hl7.org/fhir/R4B/measuregroupstratifiercomponent.html
  */
 export interface IMeasureGroupStratifierComponent extends IBackboneElement {
   /**

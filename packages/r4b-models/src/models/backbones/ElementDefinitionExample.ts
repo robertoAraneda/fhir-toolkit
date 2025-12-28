@@ -115,7 +115,7 @@ const ELEMENT_DEFINITION_EXAMPLE_PROPERTIES = [
 /**
  * ElementDefinitionExample - Example value (as defined for type)
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionexample.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitionexample.html
  *
  * @example
  * const elementDefinitionExample = new ElementDefinitionExample({

@@ -15,7 +15,7 @@ const CAPABILITY_STATEMENT_MESSAGING_ENDPOINT_PROPERTIES = [
 /**
  * CapabilityStatementMessagingEndpoint - Where messages should be sent
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementmessagingendpoint.html
+ * @see https://hl7.org/fhir/R4B/capabilitystatementmessagingendpoint.html
  *
  * @example
  * const capabilityStatementMessagingEndpoint = new CapabilityStatementMessagingEndpoint({

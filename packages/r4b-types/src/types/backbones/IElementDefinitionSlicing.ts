@@ -8,7 +8,7 @@ import type { SlicingRulesType } from '../../valuesets/index.js';
  * This element is sliced - slices follow
  * 
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionslicing.html
+ * @see https://hl7.org/fhir/R4B/elementdefinitionslicing.html
  */
 export interface IElementDefinitionSlicing extends IElement {
   /**

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICoding, IElement, IReference } from '../../base
  * Audit Event Reporter
  * 
  *
- * @see https://hl7.org/fhir/R4/auditeventsource.html
+ * @see https://hl7.org/fhir/R4B/auditeventsource.html
  */
 export interface IAuditEventSource extends IBackboneElement {
   /**

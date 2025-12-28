@@ -18,7 +18,7 @@ const ORGANIZATION_QUALIFICATION_PROPERTIES = [
 /**
  * OrganizationQualification - Qualifications, certifications, accreditations, licenses, training, etc. pertaining to the provision of care
  *
- * @see https://hl7.org/fhir/R4/organizationqualification.html
+ * @see https://hl7.org/fhir/R5/organizationqualification.html
  *
  * @example
  * const organizationQualification = new OrganizationQualification({

@@ -7,7 +7,7 @@ import type { NoteTypeType } from '../../valuesets/index.js';
  * Note concerning processing
  * 
  *
- * @see https://hl7.org/fhir/R4/paymentreconciliationprocessnote.html
+ * @see https://hl7.org/fhir/R5/paymentreconciliationprocessnote.html
  */
 export interface IPaymentReconciliationProcessNote extends IBackboneElement {
   /**

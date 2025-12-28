@@ -8,7 +8,7 @@ import type { IUsageContext } from '../datatypes/IUsageContext.js';
  * Information aimed at providing directions for the usage of this model of device
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionguideline.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionguideline.html
  */
 export interface IDeviceDefinitionGuideline extends IBackboneElement {
   /**

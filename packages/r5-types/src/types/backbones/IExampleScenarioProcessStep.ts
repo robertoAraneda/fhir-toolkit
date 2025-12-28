@@ -9,7 +9,7 @@ import type { IExampleScenarioProcessStepOperation } from './IExampleScenarioPro
  * Event within of the process
  * 
  *
- * @see https://hl7.org/fhir/R4/examplescenarioprocessstep.html
+ * @see https://hl7.org/fhir/R5/examplescenarioprocessstep.html
  */
 export interface IExampleScenarioProcessStep extends IBackboneElement {
   /**

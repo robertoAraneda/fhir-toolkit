@@ -14,7 +14,7 @@ const ACCOUNT_RELATED_ACCOUNT_PROPERTIES = [
 /**
  * AccountRelatedAccount - Other associated accounts related to this account
  *
- * @see https://hl7.org/fhir/R4/accountrelatedaccount.html
+ * @see https://hl7.org/fhir/R5/accountrelatedaccount.html
  *
  * @example
  * const accountRelatedAccount = new AccountRelatedAccount({

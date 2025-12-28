@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Who performed the procedure and what they did
  * 
  *
- * @see https://hl7.org/fhir/R4/procedureperformer.html
+ * @see https://hl7.org/fhir/R5/procedureperformer.html
  */
 export interface IProcedurePerformer extends IBackboneElement {
   /**

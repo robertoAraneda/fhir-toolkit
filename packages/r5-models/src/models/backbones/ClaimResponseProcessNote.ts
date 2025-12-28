@@ -18,7 +18,7 @@ const CLAIM_RESPONSE_PROCESS_NOTE_PROPERTIES = [
 /**
  * ClaimResponseProcessNote - Note concerning adjudication
  *
- * @see https://hl7.org/fhir/R4/claimresponseprocessnote.html
+ * @see https://hl7.org/fhir/R5/claimresponseprocessnote.html
  *
  * @example
  * const claimResponseProcessNote = new ClaimResponseProcessNote({

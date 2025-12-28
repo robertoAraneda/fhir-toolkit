@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Associated or related medication information
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgerelatedmedicationknowledge.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgerelatedmedicationknowledge.html
  */
 export interface IMedicationKnowledgeRelatedMedicationKnowledge extends IBackboneElement {
   /**

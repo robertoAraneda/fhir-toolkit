@@ -7,7 +7,7 @@ import type { ITestReportSetupAction } from './ITestReportSetupAction.js';
  * The results of the series of required setup operations before the tests were executed
  * 
  *
- * @see https://hl7.org/fhir/R4/testreportsetup.html
+ * @see https://hl7.org/fhir/R5/testreportsetup.html
  */
 export interface ITestReportSetup extends IBackboneElement {
   /**

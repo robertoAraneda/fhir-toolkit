@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Policies covered by this consent
  * 
  *
- * @see https://hl7.org/fhir/R4/consentpolicy.html
+ * @see https://hl7.org/fhir/R4B/consentpolicy.html
  */
 export interface IConsentPolicy extends IBackboneElement {
   /**

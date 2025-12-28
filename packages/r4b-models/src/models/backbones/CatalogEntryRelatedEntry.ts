@@ -16,7 +16,7 @@ const CATALOG_ENTRY_RELATED_ENTRY_PROPERTIES = [
 /**
  * CatalogEntryRelatedEntry - An item that this catalog entry is related to
  *
- * @see https://hl7.org/fhir/R4/catalogentryrelatedentry.html
+ * @see https://hl7.org/fhir/R4B/catalogentryrelatedentry.html
  *
  * @example
  * const catalogEntryRelatedEntry = new CatalogEntryRelatedEntry({

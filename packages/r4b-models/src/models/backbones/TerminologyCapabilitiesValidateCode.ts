@@ -13,7 +13,7 @@ const TERMINOLOGY_CAPABILITIES_VALIDATE_CODE_PROPERTIES = [
 /**
  * TerminologyCapabilitiesValidateCode - Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesvalidatecode.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiesvalidatecode.html
  *
  * @example
  * const terminologyCapabilitiesValidateCode = new TerminologyCapabilitiesValidateCode({

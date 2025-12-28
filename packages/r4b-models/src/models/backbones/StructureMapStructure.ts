@@ -20,7 +20,7 @@ const STRUCTURE_MAP_STRUCTURE_PROPERTIES = [
 /**
  * StructureMapStructure - Structure Definition used by this map
  *
- * @see https://hl7.org/fhir/R4/structuremapstructure.html
+ * @see https://hl7.org/fhir/R4B/structuremapstructure.html
  *
  * @example
  * const structureMapStructure = new StructureMapStructure({

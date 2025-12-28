@@ -16,7 +16,7 @@ const CITATION_CITED_ARTIFACT_TITLE_PROPERTIES = [
 /**
  * CitationCitedArtifactTitle - The title details of the article or artifact
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifacttitle.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifacttitle.html
  *
  * @example
  * const citationCitedArtifactTitle = new CitationCitedArtifactTitle({

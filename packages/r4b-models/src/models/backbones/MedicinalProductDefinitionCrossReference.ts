@@ -14,7 +14,7 @@ const MEDICINAL_PRODUCT_DEFINITION_CROSS_REFERENCE_PROPERTIES = [
 /**
  * MedicinalProductDefinitionCrossReference - Reference to another product, e.g. for linking authorised to investigational product
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitioncrossreference.html
+ * @see https://hl7.org/fhir/R4B/medicinalproductdefinitioncrossreference.html
  *
  * @example
  * const medicinalProductDefinitionCrossReference = new MedicinalProductDefinitionCrossReference({

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * The test cases in a structured language e.g. gherkin, Postman, or FHIR TestScript
  * 
  *
- * @see https://hl7.org/fhir/R4/testplantestcasetestrunscript.html
+ * @see https://hl7.org/fhir/R5/testplantestcasetestrunscript.html
  */
 export interface ITestPlanTestCaseTestRunScript extends IBackboneElement {
   /**

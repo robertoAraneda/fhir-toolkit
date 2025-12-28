@@ -21,7 +21,7 @@ const OBSERVATION_REFERENCE_RANGE_PROPERTIES = [
 /**
  * ObservationReferenceRange - Provides guide for interpretation
  *
- * @see https://hl7.org/fhir/R4/observationreferencerange.html
+ * @see https://hl7.org/fhir/R4B/observationreferencerange.html
  *
  * @example
  * const observationReferenceRange = new ObservationReferenceRange({

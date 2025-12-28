@@ -13,7 +13,7 @@ import type { NutritionProductStatusType } from '../../valuesets/index.js';
  * A food or supplement that is consumed by patients.
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionproduct.html
+ * @see https://hl7.org/fhir/R5/nutritionproduct.html
  */
 export interface INutritionProduct extends IDomainResource {
   /**

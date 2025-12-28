@@ -8,7 +8,7 @@ import type { IClinicalUseDefinitionContraindicationOtherTherapy } from './IClin
  * Specifics for when this is a contraindication
  * 
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitioncontraindication.html
+ * @see https://hl7.org/fhir/R4B/clinicalusedefinitioncontraindication.html
  */
 export interface IClinicalUseDefinitionContraindication extends IBackboneElement {
   /**

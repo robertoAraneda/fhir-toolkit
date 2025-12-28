@@ -24,7 +24,7 @@ const IDENTIFIER_PROPERTIES = [
 /**
  * Identifier - An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
  *
- * @see https://hl7.org/fhir/R4/identifier.html
+ * @see https://hl7.org/fhir/R4B/identifier.html
  *
  * @example
  * const identifier = new Identifier({

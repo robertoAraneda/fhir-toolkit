@@ -12,7 +12,7 @@ import type { EligibilityOutcomeType, EligibilityResponsePurposeType, FinancialR
  * This resource provides eligibility and plan details from the processing of an CoverageEligibilityRequest resource.
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponse.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityresponse.html
  */
 export interface ICoverageEligibilityResponse extends IDomainResource {
   /**

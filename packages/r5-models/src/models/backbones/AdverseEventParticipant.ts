@@ -14,7 +14,7 @@ const ADVERSE_EVENT_PARTICIPANT_PROPERTIES = [
 /**
  * AdverseEventParticipant - Who was involved in the adverse event or the potential adverse event and what they did
  *
- * @see https://hl7.org/fhir/R4/adverseeventparticipant.html
+ * @see https://hl7.org/fhir/R5/adverseeventparticipant.html
  *
  * @example
  * const adverseEventParticipant = new AdverseEventParticipant({

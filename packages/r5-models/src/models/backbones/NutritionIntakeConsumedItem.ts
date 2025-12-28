@@ -23,7 +23,7 @@ const NUTRITION_INTAKE_CONSUMED_ITEM_PROPERTIES = [
 /**
  * NutritionIntakeConsumedItem - What food or fluid product or item was consumed
  *
- * @see https://hl7.org/fhir/R4/nutritionintakeconsumeditem.html
+ * @see https://hl7.org/fhir/R5/nutritionintakeconsumeditem.html
  *
  * @example
  * const nutritionIntakeConsumedItem = new NutritionIntakeConsumedItem({

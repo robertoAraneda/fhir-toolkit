@@ -8,7 +8,7 @@ import type { QuestionnaireItemOperatorType } from '../../valuesets/index.js';
  * Only allow data when
  * 
  *
- * @see https://hl7.org/fhir/R4/questionnaireitemenablewhen.html
+ * @see https://hl7.org/fhir/R4B/questionnaireitemenablewhen.html
  */
 export interface IQuestionnaireItemEnableWhen extends IBackboneElement {
   /**

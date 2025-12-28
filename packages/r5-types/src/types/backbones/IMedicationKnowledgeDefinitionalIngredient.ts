@@ -9,7 +9,7 @@ import type { IRatio } from '../datatypes/IRatio.js';
  * Active or inactive ingredient
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgedefinitionalingredient.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgedefinitionalingredient.html
  */
 export interface IMedicationKnowledgeDefinitionalIngredient extends IBackboneElement {
   /**

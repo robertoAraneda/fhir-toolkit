@@ -18,7 +18,7 @@ const PROVENANCE_ENTITY_PROPERTIES = [
 /**
  * ProvenanceEntity - An entity used in this activity
  *
- * @see https://hl7.org/fhir/R4/provenanceentity.html
+ * @see https://hl7.org/fhir/R4B/provenanceentity.html
  *
  * @example
  * const provenanceEntity = new ProvenanceEntity({

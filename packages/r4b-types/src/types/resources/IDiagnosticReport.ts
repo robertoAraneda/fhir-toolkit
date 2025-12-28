@@ -11,7 +11,7 @@ import type { DiagnosticReportStatusType } from '../../valuesets/index.js';
  * The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.
  * 
  *
- * @see https://hl7.org/fhir/R4/diagnosticreport.html
+ * @see https://hl7.org/fhir/R4B/diagnosticreport.html
  */
 export interface IDiagnosticReport extends IDomainResource {
   /**

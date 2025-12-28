@@ -21,7 +21,7 @@ const CODING_PROPERTIES = [
 /**
  * Coding - A reference to a code defined by a terminology system.
  *
- * @see https://hl7.org/fhir/R4/coding.html
+ * @see https://hl7.org/fhir/R5/coding.html
  *
  * @example
  * const coding = new Coding({

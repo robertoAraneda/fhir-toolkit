@@ -34,7 +34,7 @@ const CONTRACT_TERM_PROPERTIES = [
 /**
  * ContractTerm - Contract Term List
  *
- * @see https://hl7.org/fhir/R4/contractterm.html
+ * @see https://hl7.org/fhir/R4B/contractterm.html
  *
  * @example
  * const contractTerm = new ContractTerm({

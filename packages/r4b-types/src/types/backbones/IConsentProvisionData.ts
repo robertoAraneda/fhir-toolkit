@@ -7,7 +7,7 @@ import type { ConsentDataMeaningType } from '../../valuesets/index.js';
  * Data controlled by this rule
  * 
  *
- * @see https://hl7.org/fhir/R4/consentprovisiondata.html
+ * @see https://hl7.org/fhir/R4B/consentprovisiondata.html
  */
 export interface IConsentProvisionData extends IBackboneElement {
   /**

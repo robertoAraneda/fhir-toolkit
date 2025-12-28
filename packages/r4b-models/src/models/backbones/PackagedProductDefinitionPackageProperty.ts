@@ -22,7 +22,7 @@ const PACKAGED_PRODUCT_DEFINITION_PACKAGE_PROPERTY_PROPERTIES = [
 /**
  * PackagedProductDefinitionPackageProperty - General characteristics of this item
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionpackageproperty.html
+ * @see https://hl7.org/fhir/R4B/packagedproductdefinitionpackageproperty.html
  *
  * @example
  * const packagedProductDefinitionPackageProperty = new PackagedProductDefinitionPackageProperty({

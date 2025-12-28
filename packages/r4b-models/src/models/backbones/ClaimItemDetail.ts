@@ -30,7 +30,7 @@ const CLAIM_ITEM_DETAIL_PROPERTIES = [
 /**
  * ClaimItemDetail - Product or service provided
  *
- * @see https://hl7.org/fhir/R4/claimitemdetail.html
+ * @see https://hl7.org/fhir/R4B/claimitemdetail.html
  *
  * @example
  * const claimItemDetail = new ClaimItemDetail({

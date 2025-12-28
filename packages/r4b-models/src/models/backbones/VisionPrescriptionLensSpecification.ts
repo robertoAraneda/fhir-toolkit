@@ -40,7 +40,7 @@ const VISION_PRESCRIPTION_LENS_SPECIFICATION_PROPERTIES = [
 /**
  * VisionPrescriptionLensSpecification - Vision lens authorization
  *
- * @see https://hl7.org/fhir/R4/visionprescriptionlensspecification.html
+ * @see https://hl7.org/fhir/R4B/visionprescriptionlensspecification.html
  *
  * @example
  * const visionPrescriptionLensSpecification = new VisionPrescriptionLensSpecification({

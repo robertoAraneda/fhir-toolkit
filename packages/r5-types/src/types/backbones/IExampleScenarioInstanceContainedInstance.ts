@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Resources contained in the instance
  * 
  *
- * @see https://hl7.org/fhir/R4/examplescenarioinstancecontainedinstance.html
+ * @see https://hl7.org/fhir/R5/examplescenarioinstancecontainedinstance.html
  */
 export interface IExampleScenarioInstanceContainedInstance extends IBackboneElement {
   /**

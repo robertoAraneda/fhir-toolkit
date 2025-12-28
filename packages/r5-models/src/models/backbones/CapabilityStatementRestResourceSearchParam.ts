@@ -20,7 +20,7 @@ const CAPABILITY_STATEMENT_REST_RESOURCE_SEARCH_PARAM_PROPERTIES = [
 /**
  * CapabilityStatementRestResourceSearchParam - Search parameters supported by implementation
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementrestresourcesearchparam.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementrestresourcesearchparam.html
  *
  * @example
  * const capabilityStatementRestResourceSearchParam = new CapabilityStatementRestResourceSearchParam({

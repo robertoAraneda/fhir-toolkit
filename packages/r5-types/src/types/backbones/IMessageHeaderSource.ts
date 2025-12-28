@@ -7,7 +7,7 @@ import type { IContactPoint } from '../datatypes/IContactPoint.js';
  * Message source application
  * 
  *
- * @see https://hl7.org/fhir/R4/messageheadersource.html
+ * @see https://hl7.org/fhir/R5/messageheadersource.html
  */
 export interface IMessageHeaderSource extends IBackboneElement {
   /**

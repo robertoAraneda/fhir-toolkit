@@ -13,7 +13,7 @@ const TERMINOLOGY_CAPABILITIES_TRANSLATION_PROPERTIES = [
 /**
  * TerminologyCapabilitiesTranslation - Information about the [ConceptMap/$translate](conceptmap-operation-translate.html) operation
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiestranslation.html
+ * @see https://hl7.org/fhir/R5/terminologycapabilitiestranslation.html
  *
  * @example
  * const terminologyCapabilitiesTranslation = new TerminologyCapabilitiesTranslation({

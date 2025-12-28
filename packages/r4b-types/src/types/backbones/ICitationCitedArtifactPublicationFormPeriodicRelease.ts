@@ -7,7 +7,7 @@ import type { ICitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublicat
  * The specific issue in which the cited article resides
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpublicationformperiodicrelease.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactpublicationformperiodicrelease.html
  */
 export interface ICitationCitedArtifactPublicationFormPeriodicRelease extends IBackboneElement {
   /**

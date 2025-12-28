@@ -35,7 +35,7 @@ const CONTRACT_TERM_OFFER_ANSWER_PROPERTIES = [
 /**
  * ContractTermOfferAnswer - Response to offer text
  *
- * @see https://hl7.org/fhir/R4/contracttermofferanswer.html
+ * @see https://hl7.org/fhir/R5/contracttermofferanswer.html
  *
  * @example
  * const contractTermOfferAnswer = new ContractTermOfferAnswer({

@@ -16,7 +16,7 @@ const ELEMENT_DEFINITION_SLICING_DISCRIMINATOR_PROPERTIES = [
 /**
  * ElementDefinitionSlicingDiscriminator - Element values that are used to distinguish the slices
  *
- * @see https://hl7.org/fhir/R4/elementdefinitionslicingdiscriminator.html
+ * @see https://hl7.org/fhir/R5/elementdefinitionslicingdiscriminator.html
  *
  * @example
  * const elementDefinitionSlicingDiscriminator = new ElementDefinitionSlicingDiscriminator({

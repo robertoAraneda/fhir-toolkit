@@ -19,7 +19,7 @@ const REFERENCE_PROPERTIES = [
 /**
  * Reference - A reference from one resource to another.
  *
- * @see https://hl7.org/fhir/R4/reference.html
+ * @see https://hl7.org/fhir/R4B/reference.html
  *
  * @example
  * const reference = new Reference({

@@ -64,7 +64,7 @@ const MEDICATION_REQUEST_PROPERTIES = [
 /**
  * MedicationRequest - An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.
  *
- * @see https://hl7.org/fhir/R4/medicationrequest.html
+ * @see https://hl7.org/fhir/R5/medicationrequest.html
  *
  * @example
  * const medicationRequest = new MedicationRequest({

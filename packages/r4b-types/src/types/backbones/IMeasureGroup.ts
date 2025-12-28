@@ -8,7 +8,7 @@ import type { IMeasureGroupStratifier } from './IMeasureGroupStratifier.js';
  * Population criteria group
  * 
  *
- * @see https://hl7.org/fhir/R4/measuregroup.html
+ * @see https://hl7.org/fhir/R4B/measuregroup.html
  */
 export interface IMeasureGroup extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { ITestScriptTeardownAction } from './ITestScriptTeardownAction.js';
  * A series of required clean up steps
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptteardown.html
+ * @see https://hl7.org/fhir/R4B/testscriptteardown.html
  */
 export interface ITestScriptTeardown extends IBackboneElement {
   /**

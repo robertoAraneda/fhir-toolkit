@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Critical environmental, health or physical risks or hazards. For example 'Do not operate heavy machinery', 'May cause drowsiness'
  * 
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitionwarning.html
+ * @see https://hl7.org/fhir/R4B/clinicalusedefinitionwarning.html
  */
 export interface IClinicalUseDefinitionWarning extends IBackboneElement {
   /**

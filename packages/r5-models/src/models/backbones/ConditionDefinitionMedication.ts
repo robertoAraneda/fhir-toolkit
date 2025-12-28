@@ -13,7 +13,7 @@ const CONDITION_DEFINITION_MEDICATION_PROPERTIES = [
 /**
  * ConditionDefinitionMedication - Medications particularly relevant for this condition
  *
- * @see https://hl7.org/fhir/R4/conditiondefinitionmedication.html
+ * @see https://hl7.org/fhir/R5/conditiondefinitionmedication.html
  *
  * @example
  * const conditionDefinitionMedication = new ConditionDefinitionMedication({

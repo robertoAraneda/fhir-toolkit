@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * How a resource is related to the compartment
  * 
  *
- * @see https://hl7.org/fhir/R4/compartmentdefinitionresource.html
+ * @see https://hl7.org/fhir/R4B/compartmentdefinitionresource.html
  */
 export interface ICompartmentDefinitionResource extends IBackboneElement {
   /**

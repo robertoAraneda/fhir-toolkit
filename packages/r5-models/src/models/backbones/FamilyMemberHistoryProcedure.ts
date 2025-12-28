@@ -28,7 +28,7 @@ const FAMILY_MEMBER_HISTORY_PROCEDURE_PROPERTIES = [
 /**
  * FamilyMemberHistoryProcedure - Procedures that the related person had
  *
- * @see https://hl7.org/fhir/R4/familymemberhistoryprocedure.html
+ * @see https://hl7.org/fhir/R5/familymemberhistoryprocedure.html
  *
  * @example
  * const familyMemberHistoryProcedure = new FamilyMemberHistoryProcedure({

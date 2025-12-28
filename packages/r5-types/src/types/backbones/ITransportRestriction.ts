@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Constraints on fulfillment transports
  * 
  *
- * @see https://hl7.org/fhir/R4/transportrestriction.html
+ * @see https://hl7.org/fhir/R5/transportrestriction.html
  */
 export interface ITransportRestriction extends IBackboneElement {
   /**

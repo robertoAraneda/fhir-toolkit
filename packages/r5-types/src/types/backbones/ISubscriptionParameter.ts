@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Channel type
  * 
  *
- * @see https://hl7.org/fhir/R4/subscriptionparameter.html
+ * @see https://hl7.org/fhir/R5/subscriptionparameter.html
  */
 export interface ISubscriptionParameter extends IBackboneElement {
   /**

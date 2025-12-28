@@ -34,7 +34,7 @@ const EXPLANATION_OF_BENEFIT_ITEM_DETAIL_PROPERTIES = [
 /**
  * ExplanationOfBenefitItemDetail - Additional items
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefititemdetail.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefititemdetail.html
  *
  * @example
  * const explanationOfBenefitItemDetail = new ExplanationOfBenefitItemDetail({

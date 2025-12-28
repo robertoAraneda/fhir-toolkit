@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Components to add to the feeding
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionorderenteralformulaadditive.html
+ * @see https://hl7.org/fhir/R5/nutritionorderenteralformulaadditive.html
  */
 export interface INutritionOrderEnteralFormulaAdditive extends IBackboneElement {
   /**

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Information about the primary source(s) involved in validation
  * 
  *
- * @see https://hl7.org/fhir/R4/verificationresultprimarysource.html
+ * @see https://hl7.org/fhir/R4B/verificationresultprimarysource.html
  */
 export interface IVerificationResultPrimarySource extends IBackboneElement {
   /**

@@ -18,7 +18,7 @@ const TEST_REPORT_PARTICIPANT_PROPERTIES = [
 /**
  * TestReportParticipant - A participant in the test execution, either the execution engine, a client, or a server
  *
- * @see https://hl7.org/fhir/R4/testreportparticipant.html
+ * @see https://hl7.org/fhir/R5/testreportparticipant.html
  *
  * @example
  * const testReportParticipant = new TestReportParticipant({

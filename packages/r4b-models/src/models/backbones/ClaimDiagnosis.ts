@@ -20,7 +20,7 @@ const CLAIM_DIAGNOSIS_PROPERTIES = [
 /**
  * ClaimDiagnosis - Pertinent diagnosis information
  *
- * @see https://hl7.org/fhir/R4/claimdiagnosis.html
+ * @see https://hl7.org/fhir/R4B/claimdiagnosis.html
  *
  * @example
  * const claimDiagnosis = new ClaimDiagnosis({

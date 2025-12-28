@@ -14,7 +14,7 @@ import type { RequestIntentType, RequestPriorityType, RequestStatusType } from '
  * A record of a request for service such as diagnostic investigations, treatments, or operations to be performed.
  * 
  *
- * @see https://hl7.org/fhir/R4/servicerequest.html
+ * @see https://hl7.org/fhir/R4B/servicerequest.html
  */
 export interface IServiceRequest extends IDomainResource {
   /**

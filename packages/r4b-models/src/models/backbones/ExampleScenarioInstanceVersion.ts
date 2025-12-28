@@ -15,7 +15,7 @@ const EXAMPLE_SCENARIO_INSTANCE_VERSION_PROPERTIES = [
 /**
  * ExampleScenarioInstanceVersion - A specific version of the resource
  *
- * @see https://hl7.org/fhir/R4/examplescenarioinstanceversion.html
+ * @see https://hl7.org/fhir/R4B/examplescenarioinstanceversion.html
  *
  * @example
  * const exampleScenarioInstanceVersion = new ExampleScenarioInstanceVersion({

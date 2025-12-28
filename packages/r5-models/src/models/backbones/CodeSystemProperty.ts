@@ -20,7 +20,7 @@ const CODE_SYSTEM_PROPERTY_PROPERTIES = [
 /**
  * CodeSystemProperty - Additional information supplied about each concept
  *
- * @see https://hl7.org/fhir/R4/codesystemproperty.html
+ * @see https://hl7.org/fhir/R5/codesystemproperty.html
  *
  * @example
  * const codeSystemProperty = new CodeSystemProperty({

@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Provenance and copyright of classification
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactclassificationwhoclassified.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactclassificationwhoclassified.html
  */
 export interface ICitationCitedArtifactClassificationWhoClassified extends IBackboneElement {
   /**

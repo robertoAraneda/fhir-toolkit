@@ -18,7 +18,7 @@ const MESSAGE_HEADER_DESTINATION_PROPERTIES = [
 /**
  * MessageHeaderDestination - Message destination application(s)
  *
- * @see https://hl7.org/fhir/R4/messageheaderdestination.html
+ * @see https://hl7.org/fhir/R4B/messageheaderdestination.html
  *
  * @example
  * const messageHeaderDestination = new MessageHeaderDestination({

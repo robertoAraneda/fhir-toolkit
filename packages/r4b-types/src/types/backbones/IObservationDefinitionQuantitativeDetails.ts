@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Characteristics of quantitative results
  * 
  *
- * @see https://hl7.org/fhir/R4/observationdefinitionquantitativedetails.html
+ * @see https://hl7.org/fhir/R4B/observationdefinitionquantitativedetails.html
  */
 export interface IObservationDefinitionQuantitativeDetails extends IBackboneElement {
   /**

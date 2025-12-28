@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Supporting evidence
  * 
  *
- * @see https://hl7.org/fhir/R4/detectedissueevidence.html
+ * @see https://hl7.org/fhir/R5/detectedissueevidence.html
  */
 export interface IDetectedIssueEvidence extends IBackboneElement {
   /**

@@ -18,7 +18,7 @@ const MEDICATION_DISPENSE_SUBSTITUTION_PROPERTIES = [
 /**
  * MedicationDispenseSubstitution - Whether a substitution was performed on the dispense
  *
- * @see https://hl7.org/fhir/R4/medicationdispensesubstitution.html
+ * @see https://hl7.org/fhir/R4B/medicationdispensesubstitution.html
  *
  * @example
  * const medicationDispenseSubstitution = new MedicationDispenseSubstitution({

@@ -7,7 +7,7 @@ import type { IExampleScenarioInstanceContainedInstance } from './IExampleScenar
  * Step is simple action
  * 
  *
- * @see https://hl7.org/fhir/R4/examplescenarioprocessstepoperation.html
+ * @see https://hl7.org/fhir/R5/examplescenarioprocessstepoperation.html
  */
 export interface IExampleScenarioProcessStepOperation extends IBackboneElement {
   /**

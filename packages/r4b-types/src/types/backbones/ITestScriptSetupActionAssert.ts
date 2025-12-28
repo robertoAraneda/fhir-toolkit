@@ -7,7 +7,7 @@ import type { AssertionDirectionTypeType, AssertionOperatorTypeType, AssertionRe
  * The assertion to perform
  * 
  *
- * @see https://hl7.org/fhir/R4/testscriptsetupactionassert.html
+ * @see https://hl7.org/fhir/R4B/testscriptsetupactionassert.html
  */
 export interface ITestScriptSetupActionAssert extends IBackboneElement {
   /**

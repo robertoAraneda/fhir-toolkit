@@ -8,7 +8,7 @@ import type { AdministrativeGenderType, ObservationRangeCategoryType } from '../
  * Set of qualified values for observation results
  * 
  *
- * @see https://hl7.org/fhir/R4/observationdefinitionqualifiedvalue.html
+ * @see https://hl7.org/fhir/R5/observationdefinitionqualifiedvalue.html
  */
 export interface IObservationDefinitionQualifiedValue extends IBackboneElement {
   /**

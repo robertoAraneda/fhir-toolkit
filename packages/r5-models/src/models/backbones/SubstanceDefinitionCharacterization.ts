@@ -18,7 +18,7 @@ const SUBSTANCE_DEFINITION_CHARACTERIZATION_PROPERTIES = [
 /**
  * SubstanceDefinitionCharacterization - General specifications for this substance
  *
- * @see https://hl7.org/fhir/R4/substancedefinitioncharacterization.html
+ * @see https://hl7.org/fhir/R5/substancedefinitioncharacterization.html
  *
  * @example
  * const substanceDefinitionCharacterization = new SubstanceDefinitionCharacterization({

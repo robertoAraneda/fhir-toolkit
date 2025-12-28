@@ -7,7 +7,7 @@ import type { ImagingSelection3DGraphicTypeType } from '../../valuesets/index.js
  * A specific 3D region in a DICOM frame of reference
  * 
  *
- * @see https://hl7.org/fhir/R4/imagingselectioninstanceimageregion3d.html
+ * @see https://hl7.org/fhir/R5/imagingselectioninstanceimageregion3d.html
  */
 export interface IImagingSelectionInstanceImageRegion3D extends IBackboneElement {
   /**

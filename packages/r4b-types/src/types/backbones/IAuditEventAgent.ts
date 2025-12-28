@@ -7,7 +7,7 @@ import type { IAuditEventAgentNetwork } from './IAuditEventAgentNetwork.js';
  * Actor involved in the event
  * 
  *
- * @see https://hl7.org/fhir/R4/auditeventagent.html
+ * @see https://hl7.org/fhir/R4B/auditeventagent.html
  */
 export interface IAuditEventAgent extends IBackboneElement {
   /**

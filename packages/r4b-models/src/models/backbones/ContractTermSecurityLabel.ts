@@ -17,7 +17,7 @@ const CONTRACT_TERM_SECURITY_LABEL_PROPERTIES = [
 /**
  * ContractTermSecurityLabel - Protection for the Term
  *
- * @see https://hl7.org/fhir/R4/contracttermsecuritylabel.html
+ * @see https://hl7.org/fhir/R4B/contracttermsecuritylabel.html
  *
  * @example
  * const contractTermSecurityLabel = new ContractTermSecurityLabel({

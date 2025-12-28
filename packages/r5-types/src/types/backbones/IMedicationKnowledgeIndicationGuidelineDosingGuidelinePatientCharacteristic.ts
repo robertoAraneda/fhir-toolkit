@@ -8,7 +8,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Characteristics of the patient that are relevant to the administration guidelines
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeindicationguidelinedosingguidelinepatientcharacteristic.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgeindicationguidelinedosingguidelinepatientcharacteristic.html
  */
 export interface IMedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic extends IBackboneElement {
   /**

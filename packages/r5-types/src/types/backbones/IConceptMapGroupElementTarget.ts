@@ -9,7 +9,7 @@ import type { ConceptMapRelationshipType } from '../../valuesets/index.js';
  * Concept in target system for element
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupelementtarget.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupelementtarget.html
  */
 export interface IConceptMapGroupElementTarget extends IBackboneElement {
   /**

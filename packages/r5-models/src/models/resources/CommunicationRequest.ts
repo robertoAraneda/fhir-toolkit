@@ -50,7 +50,7 @@ const COMMUNICATION_REQUEST_PROPERTIES = [
 /**
  * CommunicationRequest - A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.
  *
- * @see https://hl7.org/fhir/R4/communicationrequest.html
+ * @see https://hl7.org/fhir/R5/communicationrequest.html
  *
  * @example
  * const communicationRequest = new CommunicationRequest({

@@ -11,7 +11,7 @@ import type { IImplementationGuideDefinitionTemplate } from './IImplementationGu
  * Information needed to build the IG
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinition.html
+ * @see https://hl7.org/fhir/R5/implementationguidedefinition.html
  */
 export interface IImplementationGuideDefinition extends IBackboneElement {
   /**

@@ -67,7 +67,7 @@ const CONTRACT_PROPERTIES = [
 /**
  * Contract - Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement.
  *
- * @see https://hl7.org/fhir/R4/contract.html
+ * @see https://hl7.org/fhir/R4B/contract.html
  *
  * @example
  * const contract = new Contract({

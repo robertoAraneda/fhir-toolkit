@@ -7,7 +7,7 @@ import type { FHIRVersionType } from '../../valuesets/index.js';
  * Resource in the implementation guide
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidedefinitionresource.html
+ * @see https://hl7.org/fhir/R4B/implementationguidedefinitionresource.html
  */
 export interface IImplementationGuideDefinitionResource extends IBackboneElement {
   /**

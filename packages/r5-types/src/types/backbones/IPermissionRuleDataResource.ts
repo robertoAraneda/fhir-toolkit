@@ -7,7 +7,7 @@ import type { ConsentDataMeaningType } from '../../valuesets/index.js';
  * Explicit FHIR Resource references
  * 
  *
- * @see https://hl7.org/fhir/R4/permissionruledataresource.html
+ * @see https://hl7.org/fhir/R5/permissionruledataresource.html
  */
 export interface IPermissionRuleDataResource extends IBackboneElement {
   /**

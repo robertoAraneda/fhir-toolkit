@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * An effective date or period for a status of the citation
  * 
  *
- * @see https://hl7.org/fhir/R4/citationstatusdate.html
+ * @see https://hl7.org/fhir/R4B/citationstatusdate.html
  */
 export interface ICitationStatusDate extends IBackboneElement {
   /**

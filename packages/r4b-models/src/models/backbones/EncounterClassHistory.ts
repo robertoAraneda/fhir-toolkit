@@ -14,7 +14,7 @@ const ENCOUNTER_CLASS_HISTORY_PROPERTIES = [
 /**
  * EncounterClassHistory - List of past encounter classes
  *
- * @see https://hl7.org/fhir/R4/encounterclasshistory.html
+ * @see https://hl7.org/fhir/R4B/encounterclasshistory.html
  *
  * @example
  * const encounterClassHistory = new EncounterClassHistory({

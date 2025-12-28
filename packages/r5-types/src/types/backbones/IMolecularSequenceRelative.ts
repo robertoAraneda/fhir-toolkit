@@ -9,7 +9,7 @@ import type { IMolecularSequenceRelativeStartingSequence } from './IMolecularSeq
  * A sequence defined relative to another sequence
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequencerelative.html
+ * @see https://hl7.org/fhir/R5/molecularsequencerelative.html
  */
 export interface IMolecularSequenceRelative extends IBackboneElement {
   /**

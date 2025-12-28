@@ -10,7 +10,7 @@ import type { ITestPlanTestCaseTestRun } from './ITestPlanTestCaseTestRun.js';
  * The test cases that constitute this plan
  * 
  *
- * @see https://hl7.org/fhir/R4/testplantestcase.html
+ * @see https://hl7.org/fhir/R5/testplantestcase.html
  */
 export interface ITestPlanTestCase extends IBackboneElement {
   /**

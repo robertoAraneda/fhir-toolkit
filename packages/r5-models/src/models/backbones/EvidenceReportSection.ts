@@ -30,7 +30,7 @@ const EVIDENCE_REPORT_SECTION_PROPERTIES = [
 /**
  * EvidenceReportSection - Composition is broken into sections
  *
- * @see https://hl7.org/fhir/R4/evidencereportsection.html
+ * @see https://hl7.org/fhir/R5/evidencereportsection.html
  *
  * @example
  * const evidenceReportSection = new EvidenceReportSection({

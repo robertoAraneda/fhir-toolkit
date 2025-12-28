@@ -19,7 +19,7 @@ const CITATION_CITED_ARTIFACT_PUBLICATION_FORM_PERIODIC_RELEASE_PROPERTIES = [
 /**
  * CitationCitedArtifactPublicationFormPeriodicRelease - The specific issue in which the cited article resides
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpublicationformperiodicrelease.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactpublicationformperiodicrelease.html
  *
  * @example
  * const citationCitedArtifactPublicationFormPeriodicRelease = new CitationCitedArtifactPublicationFormPeriodicRelease({

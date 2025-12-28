@@ -8,7 +8,7 @@ import type { ITestReportSetupActionOperation } from './ITestReportSetupActionOp
  * A setup operation or assert that was executed
  * 
  *
- * @see https://hl7.org/fhir/R4/testreportsetupaction.html
+ * @see https://hl7.org/fhir/R5/testreportsetupaction.html
  */
 export interface ITestReportSetupAction extends IBackboneElement {
   /**

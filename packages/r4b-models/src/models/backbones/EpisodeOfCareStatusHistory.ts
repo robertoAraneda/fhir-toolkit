@@ -16,7 +16,7 @@ const EPISODE_OF_CARE_STATUS_HISTORY_PROPERTIES = [
 /**
  * EpisodeOfCareStatusHistory - Past list of status codes (the current status may be included to cover the start date of the status)
  *
- * @see https://hl7.org/fhir/R4/episodeofcarestatushistory.html
+ * @see https://hl7.org/fhir/R4B/episodeofcarestatushistory.html
  *
  * @example
  * const episodeOfCareStatusHistory = new EpisodeOfCareStatusHistory({

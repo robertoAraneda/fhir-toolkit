@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Stratifier component values
  * 
  *
- * @see https://hl7.org/fhir/R4/measurereportgroupstratifierstratumcomponent.html
+ * @see https://hl7.org/fhir/R4B/measurereportgroupstratifierstratumcomponent.html
  */
 export interface IMeasureReportGroupStratifierStratumComponent extends IBackboneElement {
   /**

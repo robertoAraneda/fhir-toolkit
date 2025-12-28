@@ -8,7 +8,7 @@ import type { FinancialResourceStatusType } from '../../valuesets/index.js';
  * This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
  * 
  *
- * @see https://hl7.org/fhir/R4/enrollmentrequest.html
+ * @see https://hl7.org/fhir/R5/enrollmentrequest.html
  */
 export interface IEnrollmentRequest extends IDomainResource {
   /**

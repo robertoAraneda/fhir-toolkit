@@ -17,7 +17,7 @@ const CONTRACT_TERM_ASSET_CONTEXT_PROPERTIES = [
 /**
  * ContractTermAssetContext - Circumstance of the asset
  *
- * @see https://hl7.org/fhir/R4/contracttermassetcontext.html
+ * @see https://hl7.org/fhir/R5/contracttermassetcontext.html
  *
  * @example
  * const contractTermAssetContext = new ContractTermAssetContext({

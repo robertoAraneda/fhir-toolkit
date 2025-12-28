@@ -79,7 +79,7 @@ const OBSERVATION_PROPERTIES = [
 /**
  * Observation - Measurements and simple assertions made about a patient, device or other subject.
  *
- * @see https://hl7.org/fhir/R4/observation.html
+ * @see https://hl7.org/fhir/R5/observation.html
  *
  * @example
  * const observation = new Observation({

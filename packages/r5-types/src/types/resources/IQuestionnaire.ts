@@ -12,7 +12,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.
  * 
  *
- * @see https://hl7.org/fhir/R4/questionnaire.html
+ * @see https://hl7.org/fhir/R5/questionnaire.html
  */
 export interface IQuestionnaire extends IDomainResource {
   /**

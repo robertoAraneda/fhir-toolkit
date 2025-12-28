@@ -14,7 +14,7 @@ const CONTRACT_TERM_OFFER_PARTY_PROPERTIES = [
 /**
  * ContractTermOfferParty - Offer Recipient
  *
- * @see https://hl7.org/fhir/R4/contracttermofferparty.html
+ * @see https://hl7.org/fhir/R5/contracttermofferparty.html
  *
  * @example
  * const contractTermOfferParty = new ContractTermOfferParty({

@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * A specific version of the resource
  * 
  *
- * @see https://hl7.org/fhir/R4/examplescenarioinstanceversion.html
+ * @see https://hl7.org/fhir/R4B/examplescenarioinstanceversion.html
  */
 export interface IExampleScenarioInstanceVersion extends IBackboneElement {
   /**

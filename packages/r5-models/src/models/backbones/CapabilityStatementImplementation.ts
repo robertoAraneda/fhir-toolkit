@@ -17,7 +17,7 @@ const CAPABILITY_STATEMENT_IMPLEMENTATION_PROPERTIES = [
 /**
  * CapabilityStatementImplementation - If this describes a specific instance
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementimplementation.html
+ * @see https://hl7.org/fhir/R5/capabilitystatementimplementation.html
  *
  * @example
  * const capabilityStatementImplementation = new CapabilityStatementImplementation({

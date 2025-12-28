@@ -33,7 +33,7 @@ const IMAGING_STUDY_SERIES_PROPERTIES = [
 /**
  * ImagingStudySeries - Each study has one or more series of instances
  *
- * @see https://hl7.org/fhir/R4/imagingstudyseries.html
+ * @see https://hl7.org/fhir/R5/imagingstudyseries.html
  *
  * @example
  * const imagingStudySeries = new ImagingStudySeries({

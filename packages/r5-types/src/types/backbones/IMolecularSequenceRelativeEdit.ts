@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Changes in sequence from the starting sequence
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequencerelativeedit.html
+ * @see https://hl7.org/fhir/R5/molecularsequencerelativeedit.html
  */
 export interface IMolecularSequenceRelativeEdit extends IBackboneElement {
   /**

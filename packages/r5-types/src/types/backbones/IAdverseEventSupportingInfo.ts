@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Supporting information relevant to the event
  * 
  *
- * @see https://hl7.org/fhir/R4/adverseeventsupportinginfo.html
+ * @see https://hl7.org/fhir/R5/adverseeventsupportinginfo.html
  */
 export interface IAdverseEventSupportingInfo extends IBackboneElement {
   /**

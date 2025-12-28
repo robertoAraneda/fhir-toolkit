@@ -7,7 +7,7 @@ import type { SubscriptionSearchModifierType } from '../../valuesets/index.js';
  * Properties by which a Subscription can filter notifications from the SubscriptionTopic
  * 
  *
- * @see https://hl7.org/fhir/R4/subscriptiontopiccanfilterby.html
+ * @see https://hl7.org/fhir/R4B/subscriptiontopiccanfilterby.html
  */
 export interface ISubscriptionTopicCanFilterBy extends IBackboneElement {
   /**

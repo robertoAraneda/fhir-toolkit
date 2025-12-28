@@ -18,7 +18,7 @@ const DEVICE_DEFINITION_CORRECTIVE_ACTION_PROPERTIES = [
 /**
  * DeviceDefinitionCorrectiveAction - Tracking of latest field safety corrective action
  *
- * @see https://hl7.org/fhir/R4/devicedefinitioncorrectiveaction.html
+ * @see https://hl7.org/fhir/R5/devicedefinitioncorrectiveaction.html
  *
  * @example
  * const deviceDefinitionCorrectiveAction = new DeviceDefinitionCorrectiveAction({

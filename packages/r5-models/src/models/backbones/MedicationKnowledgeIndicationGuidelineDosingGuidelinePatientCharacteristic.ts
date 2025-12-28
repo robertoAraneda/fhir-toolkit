@@ -17,7 +17,7 @@ const MEDICATION_KNOWLEDGE_INDICATION_GUIDELINE_DOSING_GUIDELINE_PATIENT_CHARACT
 /**
  * MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic - Characteristics of the patient that are relevant to the administration guidelines
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeindicationguidelinedosingguidelinepatientcharacteristic.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgeindicationguidelinedosingguidelinepatientcharacteristic.html
  *
  * @example
  * const medicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic = new MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic({

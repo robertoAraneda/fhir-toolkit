@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Initial value(s) when item is first rendered
  * 
  *
- * @see https://hl7.org/fhir/R4/questionnaireiteminitial.html
+ * @see https://hl7.org/fhir/R4B/questionnaireiteminitial.html
  */
 export interface IQuestionnaireItemInitial extends IBackboneElement {
   /**

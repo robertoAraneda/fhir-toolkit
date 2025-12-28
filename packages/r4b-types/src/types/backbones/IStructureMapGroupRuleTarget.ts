@@ -8,7 +8,7 @@ import type { StructureMapContextTypeType, StructureMapTargetListModeType, Struc
  * Content to create because of this mapping rule
  * 
  *
- * @see https://hl7.org/fhir/R4/structuremapgroupruletarget.html
+ * @see https://hl7.org/fhir/R4B/structuremapgroupruletarget.html
  */
 export interface IStructureMapGroupRuleTarget extends IBackboneElement {
   /**

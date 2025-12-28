@@ -8,7 +8,7 @@ import type { EnrollmentOutcomeType, FinancialResourceStatusType } from '../../v
  * This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.
  * 
  *
- * @see https://hl7.org/fhir/R4/enrollmentresponse.html
+ * @see https://hl7.org/fhir/R5/enrollmentresponse.html
  */
 export interface IEnrollmentResponse extends IDomainResource {
   /**

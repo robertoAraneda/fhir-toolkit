@@ -14,7 +14,7 @@ const EXPLANATION_OF_BENEFIT_TOTAL_PROPERTIES = [
 /**
  * ExplanationOfBenefitTotal - Adjudication totals
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefittotal.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefittotal.html
  *
  * @example
  * const explanationOfBenefitTotal = new ExplanationOfBenefitTotal({

@@ -40,7 +40,7 @@ const CITATION_CITED_ARTIFACT_PUBLICATION_FORM_PROPERTIES = [
 /**
  * CitationCitedArtifactPublicationForm - If multiple, used to represent alternative forms of the article that are not separate citations
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpublicationform.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactpublicationform.html
  *
  * @example
  * const citationCitedArtifactPublicationForm = new CitationCitedArtifactPublicationForm({

@@ -9,7 +9,7 @@ import type { IClaimItemDetailSubDetail } from './IClaimItemDetailSubDetail.js';
  * Product or service provided
  * 
  *
- * @see https://hl7.org/fhir/R4/claimitemdetail.html
+ * @see https://hl7.org/fhir/R4B/claimitemdetail.html
  */
 export interface IClaimItemDetail extends IBackboneElement {
   /**

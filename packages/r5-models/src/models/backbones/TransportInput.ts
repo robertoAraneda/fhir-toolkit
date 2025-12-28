@@ -120,7 +120,7 @@ const TRANSPORT_INPUT_PROPERTIES = [
 /**
  * TransportInput - Information used to perform transport
  *
- * @see https://hl7.org/fhir/R4/transportinput.html
+ * @see https://hl7.org/fhir/R5/transportinput.html
  *
  * @example
  * const transportInput = new TransportInput({

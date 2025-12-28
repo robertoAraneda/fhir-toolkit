@@ -7,7 +7,7 @@ import type { IPlanDefinitionActorOption } from './IPlanDefinitionActorOption.js
  * Actors within the plan
  * 
  *
- * @see https://hl7.org/fhir/R4/plandefinitionactor.html
+ * @see https://hl7.org/fhir/R5/plandefinitionactor.html
  */
 export interface IPlanDefinitionActor extends IBackboneElement {
   /**

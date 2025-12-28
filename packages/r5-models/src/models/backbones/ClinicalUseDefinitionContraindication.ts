@@ -20,7 +20,7 @@ const CLINICAL_USE_DEFINITION_CONTRAINDICATION_PROPERTIES = [
 /**
  * ClinicalUseDefinitionContraindication - Specifics for when this is a contraindication
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitioncontraindication.html
+ * @see https://hl7.org/fhir/R5/clinicalusedefinitioncontraindication.html
  *
  * @example
  * const clinicalUseDefinitionContraindication = new ClinicalUseDefinitionContraindication({

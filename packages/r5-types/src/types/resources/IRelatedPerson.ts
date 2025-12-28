@@ -14,7 +14,7 @@ import type { AdministrativeGenderType } from '../../valuesets/index.js';
  * Information about a person that is involved in a patient's health or the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
  * 
  *
- * @see https://hl7.org/fhir/R4/relatedperson.html
+ * @see https://hl7.org/fhir/R5/relatedperson.html
  */
 export interface IRelatedPerson extends IDomainResource {
   /**

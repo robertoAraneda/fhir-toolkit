@@ -16,7 +16,7 @@ import type { EventStatusType } from '../../valuesets/index.js';
  * An action that is or was performed on or for a patient, practitioner, device, organization, or location. For example, this can be a physical intervention on a patient like an operation, or less invasive like long term services, counseling, or hypnotherapy.  This can be a quality or safety inspection for a location, organization, or device.  This can be an accreditation procedure on a practitioner for licensing.
  * 
  *
- * @see https://hl7.org/fhir/R4/procedure.html
+ * @see https://hl7.org/fhir/R5/procedure.html
  */
 export interface IProcedure extends IDomainResource {
   /**

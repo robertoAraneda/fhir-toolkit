@@ -12,7 +12,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * Details of a Health Insurance product/plan provided by an organization.
  * 
  *
- * @see https://hl7.org/fhir/R4/insuranceplan.html
+ * @see https://hl7.org/fhir/R4B/insuranceplan.html
  */
 export interface IInsurancePlan extends IDomainResource {
   /**

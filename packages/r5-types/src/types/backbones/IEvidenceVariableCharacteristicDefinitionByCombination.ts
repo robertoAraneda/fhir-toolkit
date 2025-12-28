@@ -8,7 +8,7 @@ import type { CharacteristicCombinationType } from '../../valuesets/index.js';
  * Used to specify how two or more characteristics are combined
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristicdefinitionbycombination.html
+ * @see https://hl7.org/fhir/R5/evidencevariablecharacteristicdefinitionbycombination.html
  */
 export interface IEvidenceVariableCharacteristicDefinitionByCombination extends IBackboneElement {
   /**

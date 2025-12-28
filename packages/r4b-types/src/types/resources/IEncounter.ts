@@ -16,7 +16,7 @@ import type { EncounterStatusType } from '../../valuesets/index.js';
  * An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
  * 
  *
- * @see https://hl7.org/fhir/R4/encounter.html
+ * @see https://hl7.org/fhir/R4B/encounter.html
  */
 export interface IEncounter extends IDomainResource {
   /**

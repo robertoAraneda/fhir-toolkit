@@ -8,7 +8,7 @@ import type { ActionConditionKindType } from '../../valuesets/index.js';
  * Whether or not the action is applicable
  * 
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationactioncondition.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationactioncondition.html
  */
 export interface IRequestOrchestrationActionCondition extends IBackboneElement {
   /**

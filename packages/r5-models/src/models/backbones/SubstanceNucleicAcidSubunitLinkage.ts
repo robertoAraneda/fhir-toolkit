@@ -19,7 +19,7 @@ const SUBSTANCE_NUCLEIC_ACID_SUBUNIT_LINKAGE_PROPERTIES = [
 /**
  * SubstanceNucleicAcidSubunitLinkage - The linkages between sugar residues will also be captured
  *
- * @see https://hl7.org/fhir/R4/substancenucleicacidsubunitlinkage.html
+ * @see https://hl7.org/fhir/R5/substancenucleicacidsubunitlinkage.html
  *
  * @example
  * const substanceNucleicAcidSubunitLinkage = new SubstanceNucleicAcidSubunitLinkage({

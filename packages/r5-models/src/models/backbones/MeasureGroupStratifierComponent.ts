@@ -21,7 +21,7 @@ const MEASURE_GROUP_STRATIFIER_COMPONENT_PROPERTIES = [
 /**
  * MeasureGroupStratifierComponent - Stratifier criteria component for the measure
  *
- * @see https://hl7.org/fhir/R4/measuregroupstratifiercomponent.html
+ * @see https://hl7.org/fhir/R5/measuregroupstratifiercomponent.html
  *
  * @example
  * const measureGroupStratifierComponent = new MeasureGroupStratifierComponent({

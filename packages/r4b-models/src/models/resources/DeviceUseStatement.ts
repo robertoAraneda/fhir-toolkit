@@ -36,7 +36,7 @@ const DEVICE_USE_STATEMENT_PROPERTIES = [
 /**
  * DeviceUseStatement - A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.
  *
- * @see https://hl7.org/fhir/R4/deviceusestatement.html
+ * @see https://hl7.org/fhir/R4B/deviceusestatement.html
  *
  * @example
  * const deviceUseStatement = new DeviceUseStatement({

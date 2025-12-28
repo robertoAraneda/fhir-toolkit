@@ -27,7 +27,7 @@ const VIRTUAL_SERVICE_DETAIL_PROPERTIES = [
 /**
  * VirtualServiceDetail - Virtual Service Contact Details.
  *
- * @see https://hl7.org/fhir/R4/virtualservicedetail.html
+ * @see https://hl7.org/fhir/R5/virtualservicedetail.html
  *
  * @example
  * const virtualServiceDetail = new VirtualServiceDetail({

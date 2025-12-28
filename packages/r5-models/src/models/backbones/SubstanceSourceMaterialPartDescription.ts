@@ -13,7 +13,7 @@ const SUBSTANCE_SOURCE_MATERIAL_PART_DESCRIPTION_PROPERTIES = [
 /**
  * SubstanceSourceMaterialPartDescription - To do
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialpartdescription.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialpartdescription.html
  *
  * @example
  * const substanceSourceMaterialPartDescription = new SubstanceSourceMaterialPartDescription({

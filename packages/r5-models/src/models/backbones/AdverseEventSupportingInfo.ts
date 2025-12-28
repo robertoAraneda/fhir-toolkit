@@ -14,7 +14,7 @@ const ADVERSE_EVENT_SUPPORTING_INFO_PROPERTIES = [
 /**
  * AdverseEventSupportingInfo - Supporting information relevant to the event
  *
- * @see https://hl7.org/fhir/R4/adverseeventsupportinginfo.html
+ * @see https://hl7.org/fhir/R5/adverseeventsupportinginfo.html
  *
  * @example
  * const adverseEventSupportingInfo = new AdverseEventSupportingInfo({

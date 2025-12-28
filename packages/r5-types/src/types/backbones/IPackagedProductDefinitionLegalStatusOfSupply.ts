@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * The legal status of supply of the packaged item as classified by the regulator
  * 
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionlegalstatusofsupply.html
+ * @see https://hl7.org/fhir/R5/packagedproductdefinitionlegalstatusofsupply.html
  */
 export interface IPackagedProductDefinitionLegalStatusOfSupply extends IBackboneElement {
   /**

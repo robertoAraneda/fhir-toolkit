@@ -8,7 +8,7 @@ import type { ListModeType } from '../../valuesets/index.js';
  * Composition is broken into sections
  * 
  *
- * @see https://hl7.org/fhir/R4/compositionsection.html
+ * @see https://hl7.org/fhir/R4B/compositionsection.html
  */
 export interface ICompositionSection extends IBackboneElement {
   /**

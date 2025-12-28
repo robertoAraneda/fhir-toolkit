@@ -7,7 +7,7 @@ import type { IContactPoint } from './IContactPoint.js';
  * Specifies contact information for a person or organization.
  * 
  *
- * @see https://hl7.org/fhir/R4/contactdetail.html
+ * @see https://hl7.org/fhir/R5/contactdetail.html
  */
 export interface IContactDetail extends IDataType {
   /**

@@ -13,7 +13,7 @@ import type { BiologicallyDerivedProductCategoryType, BiologicallyDerivedProduct
 into another (possibly the same) biological entity.
  * 
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproduct.html
+ * @see https://hl7.org/fhir/R4B/biologicallyderivedproduct.html
  */
 export interface IBiologicallyDerivedProduct extends IDomainResource {
   /**

@@ -37,7 +37,7 @@ const VERIFICATION_RESULT_PROPERTIES = [
 /**
  * VerificationResult - Describes validation requirements, source(s), status and dates for one or more elements.
  *
- * @see https://hl7.org/fhir/R4/verificationresult.html
+ * @see https://hl7.org/fhir/R5/verificationresult.html
  *
  * @example
  * const verificationResult = new VerificationResult({

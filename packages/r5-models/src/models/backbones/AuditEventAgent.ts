@@ -27,7 +27,7 @@ const AUDIT_EVENT_AGENT_PROPERTIES = [
 /**
  * AuditEventAgent - Actor involved in the event
  *
- * @see https://hl7.org/fhir/R4/auditeventagent.html
+ * @see https://hl7.org/fhir/R5/auditeventagent.html
  *
  * @example
  * const auditEventAgent = new AuditEventAgent({

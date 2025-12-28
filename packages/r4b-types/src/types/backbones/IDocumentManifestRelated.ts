@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Related things
  * 
  *
- * @see https://hl7.org/fhir/R4/documentmanifestrelated.html
+ * @see https://hl7.org/fhir/R4B/documentmanifestrelated.html
  */
 export interface IDocumentManifestRelated extends IBackboneElement {
   /**

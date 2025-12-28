@@ -26,7 +26,7 @@ const PARAMETER_DEFINITION_PROPERTIES = [
 /**
  * ParameterDefinition - The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse.
  *
- * @see https://hl7.org/fhir/R4/parameterdefinition.html
+ * @see https://hl7.org/fhir/R5/parameterdefinition.html
  *
  * @example
  * const parameterDefinition = new ParameterDefinition({

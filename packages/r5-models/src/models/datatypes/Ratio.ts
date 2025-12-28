@@ -13,7 +13,7 @@ const RATIO_PROPERTIES = [
 /**
  * Ratio - A relationship of two Quantity values - expressed as a numerator and a denominator.
  *
- * @see https://hl7.org/fhir/R4/ratio.html
+ * @see https://hl7.org/fhir/R5/ratio.html
  *
  * @example
  * const ratio = new Ratio({

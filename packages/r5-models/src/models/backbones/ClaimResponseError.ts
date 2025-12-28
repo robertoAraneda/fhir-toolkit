@@ -21,7 +21,7 @@ const CLAIM_RESPONSE_ERROR_PROPERTIES = [
 /**
  * ClaimResponseError - Processing errors
  *
- * @see https://hl7.org/fhir/R4/claimresponseerror.html
+ * @see https://hl7.org/fhir/R5/claimresponseerror.html
  *
  * @example
  * const claimResponseError = new ClaimResponseError({

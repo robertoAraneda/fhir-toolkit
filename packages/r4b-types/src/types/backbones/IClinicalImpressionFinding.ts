@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Possible or likely findings and diagnoses
  * 
  *
- * @see https://hl7.org/fhir/R4/clinicalimpressionfinding.html
+ * @see https://hl7.org/fhir/R4B/clinicalimpressionfinding.html
  */
 export interface IClinicalImpressionFinding extends IBackboneElement {
   /**

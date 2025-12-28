@@ -10,7 +10,7 @@ import type { IUsageContext } from '../datatypes/IUsageContext.js';
  * Billing code or reference associated with the device
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionchargeitem.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionchargeitem.html
  */
 export interface IDeviceDefinitionChargeItem extends IBackboneElement {
   /**

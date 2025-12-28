@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Dates governing proposed immunization
  * 
  *
- * @see https://hl7.org/fhir/R4/immunizationrecommendationrecommendationdatecriterion.html
+ * @see https://hl7.org/fhir/R5/immunizationrecommendationrecommendationdatecriterion.html
  */
 export interface IImmunizationRecommendationRecommendationDateCriterion extends IBackboneElement {
   /**

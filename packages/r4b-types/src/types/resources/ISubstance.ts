@@ -10,7 +10,7 @@ import type { FHIRSubstanceStatusType } from '../../valuesets/index.js';
  * A homogeneous material with a definite composition.
  * 
  *
- * @see https://hl7.org/fhir/R4/substance.html
+ * @see https://hl7.org/fhir/R4B/substance.html
  */
 export interface ISubstance extends IDomainResource {
   /**

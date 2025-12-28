@@ -10,7 +10,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * An ingredient of a manufactured item or pharmaceutical product.
  * 
  *
- * @see https://hl7.org/fhir/R4/ingredient.html
+ * @see https://hl7.org/fhir/R4B/ingredient.html
  */
 export interface IIngredient extends IDomainResource {
   /**

@@ -37,7 +37,7 @@ const INVENTORY_ITEM_PROPERTIES = [
 /**
  * InventoryItem - A functional description of an inventory item used in inventory and supply-related workflows.
  *
- * @see https://hl7.org/fhir/R4/inventoryitem.html
+ * @see https://hl7.org/fhir/R5/inventoryitem.html
  *
  * @example
  * const inventoryItem = new InventoryItem({

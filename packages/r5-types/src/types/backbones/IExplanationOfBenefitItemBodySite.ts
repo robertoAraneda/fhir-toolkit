@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * Anatomical location
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefititembodysite.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefititembodysite.html
  */
 export interface IExplanationOfBenefitItemBodySite extends IBackboneElement {
   /**

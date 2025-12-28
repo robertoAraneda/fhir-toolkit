@@ -15,7 +15,7 @@ const COVERAGE_PAYMENT_BY_PROPERTIES = [
 /**
  * CoveragePaymentBy - Self-pay parties and responsibility
  *
- * @see https://hl7.org/fhir/R4/coveragepaymentby.html
+ * @see https://hl7.org/fhir/R5/coveragepaymentby.html
  *
  * @example
  * const coveragePaymentBy = new CoveragePaymentBy({

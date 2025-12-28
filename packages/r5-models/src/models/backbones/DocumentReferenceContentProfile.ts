@@ -17,7 +17,7 @@ const DOCUMENT_REFERENCE_CONTENT_PROFILE_PROPERTIES = [
 /**
  * DocumentReferenceContentProfile - Content profile rules for the document
  *
- * @see https://hl7.org/fhir/R4/documentreferencecontentprofile.html
+ * @see https://hl7.org/fhir/R5/documentreferencecontentprofile.html
  *
  * @example
  * const documentReferenceContentProfile = new DocumentReferenceContentProfile({

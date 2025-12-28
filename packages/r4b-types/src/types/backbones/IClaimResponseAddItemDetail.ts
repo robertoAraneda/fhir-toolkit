@@ -10,7 +10,7 @@ import type { IClaimResponseItemAdjudication } from './IClaimResponseItemAdjudic
  * Insurer added line details
  * 
  *
- * @see https://hl7.org/fhir/R4/claimresponseadditemdetail.html
+ * @see https://hl7.org/fhir/R4B/claimresponseadditemdetail.html
  */
 export interface IClaimResponseAddItemDetail extends IBackboneElement {
   /**

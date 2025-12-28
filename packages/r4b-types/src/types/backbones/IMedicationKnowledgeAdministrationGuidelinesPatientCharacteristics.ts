@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Characteristics of the patient that are relevant to the administration guidelines
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeadministrationguidelinespatientcharacteristics.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgeadministrationguidelinespatientcharacteristics.html
  */
 export interface IMedicationKnowledgeAdministrationGuidelinesPatientCharacteristics extends IBackboneElement {
   /**

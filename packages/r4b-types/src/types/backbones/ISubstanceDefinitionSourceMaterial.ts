@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Material or taxonomic/anatomical source
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionsourcematerial.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionsourcematerial.html
  */
 export interface ISubstanceDefinitionSourceMaterial extends IBackboneElement {
   /**

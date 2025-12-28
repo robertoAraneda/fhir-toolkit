@@ -7,7 +7,7 @@ import type { INarrative } from '../datatypes/INarrative.js';
  * Composition is broken into sections
  * 
  *
- * @see https://hl7.org/fhir/R4/compositionsection.html
+ * @see https://hl7.org/fhir/R5/compositionsection.html
  */
 export interface ICompositionSection extends IBackboneElement {
   /**

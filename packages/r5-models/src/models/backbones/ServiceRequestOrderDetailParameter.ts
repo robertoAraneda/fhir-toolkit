@@ -26,7 +26,7 @@ const SERVICE_REQUEST_ORDER_DETAIL_PARAMETER_PROPERTIES = [
 /**
  * ServiceRequestOrderDetailParameter - The parameter details for the service being requested
  *
- * @see https://hl7.org/fhir/R4/servicerequestorderdetailparameter.html
+ * @see https://hl7.org/fhir/R5/servicerequestorderdetailparameter.html
  *
  * @example
  * const serviceRequestOrderDetailParameter = new ServiceRequestOrderDetailParameter({

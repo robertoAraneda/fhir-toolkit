@@ -14,7 +14,7 @@ const DEVICE_DEFINITION_CLASSIFICATION_PROPERTIES = [
 /**
  * DeviceDefinitionClassification - What kind of device or device system this is
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionclassification.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionclassification.html
  *
  * @example
  * const deviceDefinitionClassification = new DeviceDefinitionClassification({

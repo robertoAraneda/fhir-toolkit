@@ -9,7 +9,7 @@ import type { INutritionOrderSupplementSchedule } from './INutritionOrderSupplem
  * Supplement components
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionordersupplement.html
+ * @see https://hl7.org/fhir/R5/nutritionordersupplement.html
  */
 export interface INutritionOrderSupplement extends IBackboneElement {
   /**

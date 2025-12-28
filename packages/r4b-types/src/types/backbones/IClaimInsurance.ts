@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Patient insurance information
  * 
  *
- * @see https://hl7.org/fhir/R4/claiminsurance.html
+ * @see https://hl7.org/fhir/R4B/claiminsurance.html
  */
 export interface IClaimInsurance extends IBackboneElement {
   /**

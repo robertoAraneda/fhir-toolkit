@@ -18,7 +18,7 @@ const PRODUCT_SHELF_LIFE_PROPERTIES = [
 /**
  * ProductShelfLife - The shelf-life and storage information for a medicinal product item or container can be described using this class.
  *
- * @see https://hl7.org/fhir/R4/productshelflife.html
+ * @see https://hl7.org/fhir/R5/productshelflife.html
  *
  * @example
  * const productShelfLife = new ProductShelfLife({

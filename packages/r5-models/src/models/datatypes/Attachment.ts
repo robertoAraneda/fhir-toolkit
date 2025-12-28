@@ -37,7 +37,7 @@ const ATTACHMENT_PROPERTIES = [
 /**
  * Attachment - For referring to data content defined in other formats.
  *
- * @see https://hl7.org/fhir/R4/attachment.html
+ * @see https://hl7.org/fhir/R5/attachment.html
  *
  * @example
  * const attachment = new Attachment({

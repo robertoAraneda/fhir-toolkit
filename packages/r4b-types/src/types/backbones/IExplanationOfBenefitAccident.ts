@@ -7,7 +7,7 @@ import type { IAddress } from '../datatypes/IAddress.js';
  * Details of the event
  * 
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitaccident.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitaccident.html
  */
 export interface IExplanationOfBenefitAccident extends IBackboneElement {
   /**

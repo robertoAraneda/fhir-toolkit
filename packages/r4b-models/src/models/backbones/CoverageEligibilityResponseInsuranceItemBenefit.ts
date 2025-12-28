@@ -24,7 +24,7 @@ const COVERAGE_ELIGIBILITY_RESPONSE_INSURANCE_ITEM_BENEFIT_PROPERTIES = [
 /**
  * CoverageEligibilityResponseInsuranceItemBenefit - Benefit Summary
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityresponseinsuranceitembenefit.html
+ * @see https://hl7.org/fhir/R4B/coverageeligibilityresponseinsuranceitembenefit.html
  *
  * @example
  * const coverageEligibilityResponseInsuranceItemBenefit = new CoverageEligibilityResponseInsuranceItemBenefit({

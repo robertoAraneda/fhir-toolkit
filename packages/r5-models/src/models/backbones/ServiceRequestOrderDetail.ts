@@ -14,7 +14,7 @@ const SERVICE_REQUEST_ORDER_DETAIL_PROPERTIES = [
 /**
  * ServiceRequestOrderDetail - Additional order information
  *
- * @see https://hl7.org/fhir/R4/servicerequestorderdetail.html
+ * @see https://hl7.org/fhir/R5/servicerequestorderdetail.html
  *
  * @example
  * const serviceRequestOrderDetail = new ServiceRequestOrderDetail({

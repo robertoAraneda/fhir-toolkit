@@ -7,7 +7,7 @@ import type { StructureMapModelModeType } from '../../valuesets/index.js';
  * Structure Definition used by this map
  * 
  *
- * @see https://hl7.org/fhir/R4/structuremapstructure.html
+ * @see https://hl7.org/fhir/R5/structuremapstructure.html
  */
 export interface IStructureMapStructure extends IBackboneElement {
   /**

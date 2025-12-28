@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Event information
  * 
  *
- * @see https://hl7.org/fhir/R4/claimevent.html
+ * @see https://hl7.org/fhir/R5/claimevent.html
  */
 export interface IClaimEvent extends IBackboneElement {
   /**

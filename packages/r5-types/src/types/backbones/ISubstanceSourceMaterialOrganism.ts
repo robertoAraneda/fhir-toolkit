@@ -9,7 +9,7 @@ import type { ISubstanceSourceMaterialOrganismOrganismGeneral } from './ISubstan
  * This subclause describes the organism which the substance is derived from. For vaccines, the parent organism shall be specified based on these subclause elements. As an example, full taxonomy will be described for the Substance Name: ., Leaf
  * 
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialorganism.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialorganism.html
  */
 export interface ISubstanceSourceMaterialOrganism extends IBackboneElement {
   /**

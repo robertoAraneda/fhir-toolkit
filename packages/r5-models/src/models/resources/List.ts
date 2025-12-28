@@ -35,7 +35,7 @@ const LIST_PROPERTIES = [
 /**
  * List - A List is a curated collection of resources, for things such as problem lists, allergy lists, facility list, organization list, etc.
  *
- * @see https://hl7.org/fhir/R4/list.html
+ * @see https://hl7.org/fhir/R5/list.html
  *
  * @example
  * const list = new List({

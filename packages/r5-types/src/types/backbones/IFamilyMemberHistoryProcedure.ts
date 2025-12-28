@@ -10,7 +10,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Procedures that the related person had
  * 
  *
- * @see https://hl7.org/fhir/R4/familymemberhistoryprocedure.html
+ * @see https://hl7.org/fhir/R5/familymemberhistoryprocedure.html
  */
 export interface IFamilyMemberHistoryProcedure extends IBackboneElement {
   /**

@@ -21,7 +21,7 @@ const TERMINOLOGY_CAPABILITIES_EXPANSION_PROPERTIES = [
 /**
  * TerminologyCapabilitiesExpansion - Information about the [ValueSet/$expand](valueset-operation-expand.html) operation
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesexpansion.html
+ * @see https://hl7.org/fhir/R5/terminologycapabilitiesexpansion.html
  *
  * @example
  * const terminologyCapabilitiesExpansion = new TerminologyCapabilitiesExpansion({

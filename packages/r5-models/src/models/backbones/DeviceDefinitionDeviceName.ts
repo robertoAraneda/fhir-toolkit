@@ -16,7 +16,7 @@ const DEVICE_DEFINITION_DEVICE_NAME_PROPERTIES = [
 /**
  * DeviceDefinitionDeviceName - The name or names of the device as given by the manufacturer
  *
- * @see https://hl7.org/fhir/R4/devicedefinitiondevicename.html
+ * @see https://hl7.org/fhir/R5/devicedefinitiondevicename.html
  *
  * @example
  * const deviceDefinitionDeviceName = new DeviceDefinitionDeviceName({

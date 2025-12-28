@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Contributing factors suspected to have increased the probability or severity of the adverse event
  * 
  *
- * @see https://hl7.org/fhir/R4/adverseeventcontributingfactor.html
+ * @see https://hl7.org/fhir/R5/adverseeventcontributingfactor.html
  */
 export interface IAdverseEventContributingFactor extends IBackboneElement {
   /**

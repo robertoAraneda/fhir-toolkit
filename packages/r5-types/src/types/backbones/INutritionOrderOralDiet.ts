@@ -9,7 +9,7 @@ import type { INutritionOrderOralDietTexture } from './INutritionOrderOralDietTe
  * Oral diet components
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionorderoraldiet.html
+ * @see https://hl7.org/fhir/R5/nutritionorderoraldiet.html
  */
 export interface INutritionOrderOralDiet extends IBackboneElement {
   /**

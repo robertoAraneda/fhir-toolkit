@@ -14,7 +14,7 @@ const INVENTORY_ITEM_RESPONSIBLE_ORGANIZATION_PROPERTIES = [
 /**
  * InventoryItemResponsibleOrganization - Organization(s) responsible for the product
  *
- * @see https://hl7.org/fhir/R4/inventoryitemresponsibleorganization.html
+ * @see https://hl7.org/fhir/R5/inventoryitemresponsibleorganization.html
  *
  * @example
  * const inventoryItemResponsibleOrganization = new InventoryItemResponsibleOrganization({

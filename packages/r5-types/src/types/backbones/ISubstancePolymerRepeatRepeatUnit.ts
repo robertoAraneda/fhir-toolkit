@@ -8,7 +8,7 @@ import type { ISubstancePolymerRepeatRepeatUnitStructuralRepresentation } from '
  * An SRU - Structural Repeat Unit
  * 
  *
- * @see https://hl7.org/fhir/R4/substancepolymerrepeatrepeatunit.html
+ * @see https://hl7.org/fhir/R5/substancepolymerrepeatrepeatunit.html
  */
 export interface ISubstancePolymerRepeatRepeatUnit extends IBackboneElement {
   /**

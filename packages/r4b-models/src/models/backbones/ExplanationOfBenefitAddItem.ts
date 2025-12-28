@@ -46,7 +46,7 @@ const EXPLANATION_OF_BENEFIT_ADD_ITEM_PROPERTIES = [
 /**
  * ExplanationOfBenefitAddItem - Insurer added line items
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitadditem.html
+ * @see https://hl7.org/fhir/R4B/explanationofbenefitadditem.html
  *
  * @example
  * const explanationOfBenefitAddItem = new ExplanationOfBenefitAddItem({

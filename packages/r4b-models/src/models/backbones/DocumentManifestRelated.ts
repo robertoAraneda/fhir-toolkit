@@ -14,7 +14,7 @@ const DOCUMENT_MANIFEST_RELATED_PROPERTIES = [
 /**
  * DocumentManifestRelated - Related things
  *
- * @see https://hl7.org/fhir/R4/documentmanifestrelated.html
+ * @see https://hl7.org/fhir/R4B/documentmanifestrelated.html
  *
  * @example
  * const documentManifestRelated = new DocumentManifestRelated({

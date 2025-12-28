@@ -14,7 +14,7 @@ const ADMINISTRABLE_PRODUCT_DEFINITION_ROUTE_OF_ADMINISTRATION_TARGET_SPECIES_PR
 /**
  * AdministrableProductDefinitionRouteOfAdministrationTargetSpecies - A species for which this route applies
  *
- * @see https://hl7.org/fhir/R4/administrableproductdefinitionrouteofadministrationtargetspecies.html
+ * @see https://hl7.org/fhir/R4B/administrableproductdefinitionrouteofadministrationtargetspecies.html
  *
  * @example
  * const administrableProductDefinitionRouteOfAdministrationTargetSpecies = new AdministrableProductDefinitionRouteOfAdministrationTargetSpecies({

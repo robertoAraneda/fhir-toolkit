@@ -8,7 +8,7 @@ import type { ITestScriptSetupActionOperation } from './ITestScriptSetupActionOp
  * A test operation or assert to perform
  * 
  *
- * @see https://hl7.org/fhir/R4/testscripttestaction.html
+ * @see https://hl7.org/fhir/R4B/testscripttestaction.html
  */
 export interface ITestScriptTestAction extends IBackboneElement {
   /**

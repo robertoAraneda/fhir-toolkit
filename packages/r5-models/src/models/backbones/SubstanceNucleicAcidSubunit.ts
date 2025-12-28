@@ -26,7 +26,7 @@ const SUBSTANCE_NUCLEIC_ACID_SUBUNIT_PROPERTIES = [
 /**
  * SubstanceNucleicAcidSubunit - Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times
  *
- * @see https://hl7.org/fhir/R4/substancenucleicacidsubunit.html
+ * @see https://hl7.org/fhir/R5/substancenucleicacidsubunit.html
  *
  * @example
  * const substanceNucleicAcidSubunit = new SubstanceNucleicAcidSubunit({

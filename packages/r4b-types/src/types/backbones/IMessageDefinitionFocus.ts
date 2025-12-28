@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement } from '../../base/index.js';
  * Resource(s) that are the subject of the event
  * 
  *
- * @see https://hl7.org/fhir/R4/messagedefinitionfocus.html
+ * @see https://hl7.org/fhir/R4B/messagedefinitionfocus.html
  */
 export interface IMessageDefinitionFocus extends IBackboneElement {
   /**

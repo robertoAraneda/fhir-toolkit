@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Moiety, for structural modifications
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionmoiety.html
+ * @see https://hl7.org/fhir/R5/substancedefinitionmoiety.html
  */
 export interface ISubstanceDefinitionMoiety extends IBackboneElement {
   /**

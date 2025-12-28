@@ -8,7 +8,7 @@ import type { ImmunizationEvaluationStatusType } from '../../valuesets/index.js'
  * Describes a comparison of an immunization event against published recommendations to determine if the administration is "valid" in relation to those  recommendations.
  * 
  *
- * @see https://hl7.org/fhir/R4/immunizationevaluation.html
+ * @see https://hl7.org/fhir/R5/immunizationevaluation.html
  */
 export interface IImmunizationEvaluation extends IDomainResource {
   /**

@@ -21,7 +21,7 @@ const MOLECULAR_SEQUENCE_STRUCTURE_VARIANT_PROPERTIES = [
 /**
  * MolecularSequenceStructureVariant - Structural variant
  *
- * @see https://hl7.org/fhir/R4/molecularsequencestructurevariant.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencestructurevariant.html
  *
  * @example
  * const molecularSequenceStructureVariant = new MolecularSequenceStructureVariant({

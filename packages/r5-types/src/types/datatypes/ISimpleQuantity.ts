@@ -9,7 +9,7 @@ import type { QuantityComparatorType } from '../../valuesets/index.js';
  * The comparator is not used on a SimpleQuantity
  * 
  *
- * @see https://hl7.org/fhir/R4/simplequantity.html
+ * @see https://hl7.org/fhir/R5/simplequantity.html
  */
 export interface ISimpleQuantity extends IQuantity {
   /**

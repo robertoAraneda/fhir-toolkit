@@ -8,7 +8,7 @@ import type { NameUseType } from '../../valuesets/index.js';
  * A human's name with the ability to identify parts and usage.
  * 
  *
- * @see https://hl7.org/fhir/R4/humanname.html
+ * @see https://hl7.org/fhir/R4B/humanname.html
  */
 export interface IHumanName extends IElement {
   /**

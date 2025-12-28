@@ -21,7 +21,7 @@ const EVIDENCE_CERTAINTY_PROPERTIES = [
 /**
  * EvidenceCertainty - Certainty or quality of the evidence
  *
- * @see https://hl7.org/fhir/R4/evidencecertainty.html
+ * @see https://hl7.org/fhir/R4B/evidencecertainty.html
  *
  * @example
  * const evidenceCertainty = new EvidenceCertainty({

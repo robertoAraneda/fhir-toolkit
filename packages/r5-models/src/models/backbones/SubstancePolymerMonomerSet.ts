@@ -14,7 +14,7 @@ const SUBSTANCE_POLYMER_MONOMER_SET_PROPERTIES = [
 /**
  * SubstancePolymerMonomerSet - Todo
  *
- * @see https://hl7.org/fhir/R4/substancepolymermonomerset.html
+ * @see https://hl7.org/fhir/R5/substancepolymermonomerset.html
  *
  * @example
  * const substancePolymerMonomerSet = new SubstancePolymerMonomerSet({

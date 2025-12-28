@@ -7,7 +7,7 @@ import type { CatalogEntryRelationTypeType } from '../../valuesets/index.js';
  * An item that this catalog entry is related to
  * 
  *
- * @see https://hl7.org/fhir/R4/catalogentryrelatedentry.html
+ * @see https://hl7.org/fhir/R4B/catalogentryrelatedentry.html
  */
 export interface ICatalogEntryRelatedEntry extends IBackboneElement {
   /**

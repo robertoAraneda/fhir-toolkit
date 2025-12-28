@@ -11,7 +11,7 @@ import type { IEvidenceStatisticSampleSize } from './IEvidenceStatisticSampleSiz
  * Values and parameters for a single statistic
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencestatistic.html
+ * @see https://hl7.org/fhir/R4B/evidencestatistic.html
  */
 export interface IEvidenceStatistic extends IBackboneElement {
   /**

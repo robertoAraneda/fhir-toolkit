@@ -16,7 +16,7 @@ const PROVENANCE_AGENT_PROPERTIES = [
 /**
  * ProvenanceAgent - Actor involved
  *
- * @see https://hl7.org/fhir/R4/provenanceagent.html
+ * @see https://hl7.org/fhir/R5/provenanceagent.html
  *
  * @example
  * const provenanceAgent = new ProvenanceAgent({

@@ -21,7 +21,7 @@ const NUTRITION_ORDER_SUPPLEMENT_PROPERTIES = [
 /**
  * NutritionOrderSupplement - Supplement components
  *
- * @see https://hl7.org/fhir/R4/nutritionordersupplement.html
+ * @see https://hl7.org/fhir/R4B/nutritionordersupplement.html
  *
  * @example
  * const nutritionOrderSupplement = new NutritionOrderSupplement({

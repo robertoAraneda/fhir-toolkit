@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * A possible negative outcome from the use of this treatment
  * 
  *
- * @see https://hl7.org/fhir/R4/clinicalusedefinitionundesirableeffect.html
+ * @see https://hl7.org/fhir/R5/clinicalusedefinitionundesirableeffect.html
  */
 export interface IClinicalUseDefinitionUndesirableEffect extends IBackboneElement {
   /**

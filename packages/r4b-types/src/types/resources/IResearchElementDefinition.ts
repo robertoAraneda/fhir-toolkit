@@ -13,7 +13,7 @@ import type { PublicationStatusType, ResearchElementTypeType, VariableTypeType }
  * The ResearchElementDefinition resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
  * 
  *
- * @see https://hl7.org/fhir/R4/researchelementdefinition.html
+ * @see https://hl7.org/fhir/R4B/researchelementdefinition.html
  */
 export interface IResearchElementDefinition extends IDomainResource {
   /**

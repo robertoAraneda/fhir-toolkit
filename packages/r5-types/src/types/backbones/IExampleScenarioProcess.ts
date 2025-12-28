@@ -7,7 +7,7 @@ import type { IExampleScenarioProcessStep } from './IExampleScenarioProcessStep.
  * Major process within scenario
  * 
  *
- * @see https://hl7.org/fhir/R4/examplescenarioprocess.html
+ * @see https://hl7.org/fhir/R5/examplescenarioprocess.html
  */
 export interface IExampleScenarioProcess extends IBackboneElement {
   /**

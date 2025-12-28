@@ -17,7 +17,7 @@ const DEVICE_DEFINITION_VERSION_PROPERTIES = [
 /**
  * DeviceDefinitionVersion - The version of the device or software
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionversion.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionversion.html
  *
  * @example
  * const deviceDefinitionVersion = new DeviceDefinitionVersion({

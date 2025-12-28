@@ -80,7 +80,7 @@ const REQUEST_ORCHESTRATION_ACTION_PROPERTIES = [
 /**
  * RequestOrchestrationAction - Proposed actions, if any
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationaction.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationaction.html
  *
  * @example
  * const requestOrchestrationAction = new RequestOrchestrationAction({

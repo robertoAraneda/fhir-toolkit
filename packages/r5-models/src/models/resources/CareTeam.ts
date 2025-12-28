@@ -33,7 +33,7 @@ const CARE_TEAM_PROPERTIES = [
 /**
  * CareTeam - The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care.
  *
- * @see https://hl7.org/fhir/R4/careteam.html
+ * @see https://hl7.org/fhir/R5/careteam.html
  *
  * @example
  * const careTeam = new CareTeam({

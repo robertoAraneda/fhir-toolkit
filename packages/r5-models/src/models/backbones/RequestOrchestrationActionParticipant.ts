@@ -24,7 +24,7 @@ const REQUEST_ORCHESTRATION_ACTION_PARTICIPANT_PROPERTIES = [
 /**
  * RequestOrchestrationActionParticipant - Who should perform the action
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationactionparticipant.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationactionparticipant.html
  *
  * @example
  * const requestOrchestrationActionParticipant = new RequestOrchestrationActionParticipant({

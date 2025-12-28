@@ -25,7 +25,7 @@ const OPERATION_OUTCOME_ISSUE_PROPERTIES = [
 /**
  * OperationOutcomeIssue - A single issue associated with the action
  *
- * @see https://hl7.org/fhir/R4/operationoutcomeissue.html
+ * @see https://hl7.org/fhir/R5/operationoutcomeissue.html
  *
  * @example
  * const operationOutcomeIssue = new OperationOutcomeIssue({

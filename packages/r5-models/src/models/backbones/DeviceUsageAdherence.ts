@@ -13,7 +13,7 @@ const DEVICE_USAGE_ADHERENCE_PROPERTIES = [
 /**
  * DeviceUsageAdherence - How device is being used
  *
- * @see https://hl7.org/fhir/R4/deviceusageadherence.html
+ * @see https://hl7.org/fhir/R5/deviceusageadherence.html
  *
  * @example
  * const deviceUsageAdherence = new DeviceUsageAdherence({

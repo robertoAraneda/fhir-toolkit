@@ -8,7 +8,7 @@ import type { IImplementationGuideManifestResource } from './IImplementationGuid
  * Information about an assembled IG
  * 
  *
- * @see https://hl7.org/fhir/R4/implementationguidemanifest.html
+ * @see https://hl7.org/fhir/R4B/implementationguidemanifest.html
  */
 export interface IImplementationGuideManifest extends IBackboneElement {
   /**

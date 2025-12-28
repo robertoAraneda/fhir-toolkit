@@ -26,7 +26,7 @@ const RESEARCH_SUBJECT_PROPERTIES = [
 /**
  * ResearchSubject - A physical entity which is the primary unit of operational and/or administrative interest in a study.
  *
- * @see https://hl7.org/fhir/R4/researchsubject.html
+ * @see https://hl7.org/fhir/R4B/researchsubject.html
  *
  * @example
  * const researchSubject = new ResearchSubject({

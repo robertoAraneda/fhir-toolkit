@@ -10,7 +10,7 @@ import type { IContractTermOfferAnswer } from './IContractTermOfferAnswer.js';
  * Contract Term Asset List
  * 
  *
- * @see https://hl7.org/fhir/R4/contracttermasset.html
+ * @see https://hl7.org/fhir/R4B/contracttermasset.html
  */
 export interface IContractTermAsset extends IBackboneElement {
   /**

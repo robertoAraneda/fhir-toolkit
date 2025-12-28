@@ -7,7 +7,7 @@ import type { IBodyStructureIncludedStructureBodyLandmarkOrientation } from './I
  * Included anatomic location(s)
  * 
  *
- * @see https://hl7.org/fhir/R4/bodystructureincludedstructure.html
+ * @see https://hl7.org/fhir/R5/bodystructureincludedstructure.html
  */
 export interface IBodyStructureIncludedStructure extends IBackboneElement {
   /**

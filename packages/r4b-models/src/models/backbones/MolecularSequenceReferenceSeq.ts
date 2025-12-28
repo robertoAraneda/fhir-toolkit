@@ -30,7 +30,7 @@ const MOLECULAR_SEQUENCE_REFERENCE_SEQ_PROPERTIES = [
 /**
  * MolecularSequenceReferenceSeq - A sequence used as reference
  *
- * @see https://hl7.org/fhir/R4/molecularsequencereferenceseq.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencereferenceseq.html
  *
  * @example
  * const molecularSequenceReferenceSeq = new MolecularSequenceReferenceSeq({

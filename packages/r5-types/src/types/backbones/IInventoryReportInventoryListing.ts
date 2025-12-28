@@ -7,7 +7,7 @@ import type { IInventoryReportInventoryListingItem } from './IInventoryReportInv
  * An inventory listing section (grouped by any of the attributes)
  * 
  *
- * @see https://hl7.org/fhir/R4/inventoryreportinventorylisting.html
+ * @see https://hl7.org/fhir/R5/inventoryreportinventorylisting.html
  */
 export interface IInventoryReportInventoryListing extends IBackboneElement {
   /**

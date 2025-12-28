@@ -8,7 +8,7 @@ import type { SubscriptionNotificationTypeType, SubscriptionStatusType } from '.
  * The SubscriptionStatus resource describes the state of a Subscription during notifications.
  * 
  *
- * @see https://hl7.org/fhir/R4/subscriptionstatus.html
+ * @see https://hl7.org/fhir/R5/subscriptionstatus.html
  */
 export interface ISubscriptionStatus extends IDomainResource {
   /**

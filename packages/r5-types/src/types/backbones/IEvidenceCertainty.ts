@@ -7,7 +7,7 @@ import type { IAnnotation } from '../datatypes/IAnnotation.js';
  * Certainty or quality of the evidence
  * 
  *
- * @see https://hl7.org/fhir/R4/evidencecertainty.html
+ * @see https://hl7.org/fhir/R5/evidencecertainty.html
  */
 export interface IEvidenceCertainty extends IBackboneElement {
   /**

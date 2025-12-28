@@ -22,7 +22,7 @@ const DEVICE_DEFINITION_PACKAGING_PROPERTIES = [
 /**
  * DeviceDefinitionPackaging - Information about the packaging of the device, i.e. how the device is packaged
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionpackaging.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionpackaging.html
  *
  * @example
  * const deviceDefinitionPackaging = new DeviceDefinitionPackaging({

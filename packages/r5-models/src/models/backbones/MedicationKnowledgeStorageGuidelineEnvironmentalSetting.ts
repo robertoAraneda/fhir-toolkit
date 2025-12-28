@@ -17,7 +17,7 @@ const MEDICATION_KNOWLEDGE_STORAGE_GUIDELINE_ENVIRONMENTAL_SETTING_PROPERTIES = 
 /**
  * MedicationKnowledgeStorageGuidelineEnvironmentalSetting - Setting or value of environment for adequate storage
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgestorageguidelineenvironmentalsetting.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgestorageguidelineenvironmentalsetting.html
  *
  * @example
  * const medicationKnowledgeStorageGuidelineEnvironmentalSetting = new MedicationKnowledgeStorageGuidelineEnvironmentalSetting({

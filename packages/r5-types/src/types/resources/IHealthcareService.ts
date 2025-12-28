@@ -11,7 +11,7 @@ import type { IHealthcareServiceEligibility } from '../backbones/IHealthcareServ
  * The details of a healthcare service available at a location.
  * 
  *
- * @see https://hl7.org/fhir/R4/healthcareservice.html
+ * @see https://hl7.org/fhir/R5/healthcareservice.html
  */
 export interface IHealthcareService extends IDomainResource {
   /**

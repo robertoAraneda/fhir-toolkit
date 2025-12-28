@@ -9,7 +9,7 @@ import type { OperationParameterScopeType, OperationParameterUseType, SearchPara
  * Parameters for the operation/query
  * 
  *
- * @see https://hl7.org/fhir/R4/operationdefinitionparameter.html
+ * @see https://hl7.org/fhir/R5/operationdefinitionparameter.html
  */
 export interface IOperationDefinitionParameter extends IBackboneElement {
   /**

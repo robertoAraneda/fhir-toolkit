@@ -20,7 +20,7 @@ const PERMISSION_RULE_PROPERTIES = [
 /**
  * PermissionRule - Constraints to the Permission
  *
- * @see https://hl7.org/fhir/R4/permissionrule.html
+ * @see https://hl7.org/fhir/R5/permissionrule.html
  *
  * @example
  * const permissionRule = new PermissionRule({

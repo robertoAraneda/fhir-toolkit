@@ -12,7 +12,7 @@ import type { AuditEventActionType, AuditEventSeverityType } from '../../valuese
  * A record of an event relevant for purposes such as operations, privacy, security, maintenance, and performance analysis.
  * 
  *
- * @see https://hl7.org/fhir/R4/auditevent.html
+ * @see https://hl7.org/fhir/R5/auditevent.html
  */
 export interface IAuditEvent extends IDomainResource {
   /**

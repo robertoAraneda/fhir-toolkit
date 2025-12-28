@@ -54,7 +54,7 @@ const GRAPH_DEFINITION_PROPERTIES = [
 /**
  * GraphDefinition - A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set.
  *
- * @see https://hl7.org/fhir/R4/graphdefinition.html
+ * @see https://hl7.org/fhir/R5/graphdefinition.html
  *
  * @example
  * const graphDefinition = new GraphDefinition({

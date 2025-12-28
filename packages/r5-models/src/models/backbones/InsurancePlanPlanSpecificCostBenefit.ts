@@ -14,7 +14,7 @@ const INSURANCE_PLAN_PLAN_SPECIFIC_COST_BENEFIT_PROPERTIES = [
 /**
  * InsurancePlanPlanSpecificCostBenefit - Benefits list
  *
- * @see https://hl7.org/fhir/R4/insuranceplanplanspecificcostbenefit.html
+ * @see https://hl7.org/fhir/R5/insuranceplanplanspecificcostbenefit.html
  *
  * @example
  * const insurancePlanPlanSpecificCostBenefit = new InsurancePlanPlanSpecificCostBenefit({

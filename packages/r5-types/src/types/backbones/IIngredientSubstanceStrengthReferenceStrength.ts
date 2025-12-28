@@ -10,7 +10,7 @@ import type { IRatioRange } from '../datatypes/IRatioRange.js';
  * Strength expressed in terms of a reference substance
  * 
  *
- * @see https://hl7.org/fhir/R4/ingredientsubstancestrengthreferencestrength.html
+ * @see https://hl7.org/fhir/R5/ingredientsubstancestrengthreferencestrength.html
  */
 export interface IIngredientSubstanceStrengthReferenceStrength extends IBackboneElement {
   /**

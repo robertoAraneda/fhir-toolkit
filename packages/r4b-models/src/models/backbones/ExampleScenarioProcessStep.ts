@@ -19,7 +19,7 @@ const EXAMPLE_SCENARIO_PROCESS_STEP_PROPERTIES = [
 /**
  * ExampleScenarioProcessStep - Each step of the process
  *
- * @see https://hl7.org/fhir/R4/examplescenarioprocessstep.html
+ * @see https://hl7.org/fhir/R4B/examplescenarioprocessstep.html
  *
  * @example
  * const exampleScenarioProcessStep = new ExampleScenarioProcessStep({

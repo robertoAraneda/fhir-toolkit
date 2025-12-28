@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Categorization of the medication within a formulary or classification system
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgemedicineclassification.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgemedicineclassification.html
  */
 export interface IMedicationKnowledgeMedicineClassification extends IBackboneElement {
   /**

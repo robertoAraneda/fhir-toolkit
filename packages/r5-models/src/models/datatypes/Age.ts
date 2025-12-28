@@ -22,7 +22,7 @@ const AGE_PROPERTIES = [
 /**
  * Age - A duration of time during which an organism (or a process) has existed.
  *
- * @see https://hl7.org/fhir/R4/age.html
+ * @see https://hl7.org/fhir/R5/age.html
  *
  * @example
  * const age = new Age({

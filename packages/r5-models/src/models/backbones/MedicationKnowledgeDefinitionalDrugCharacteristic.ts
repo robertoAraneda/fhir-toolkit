@@ -22,7 +22,7 @@ const MEDICATION_KNOWLEDGE_DEFINITIONAL_DRUG_CHARACTERISTIC_PROPERTIES = [
 /**
  * MedicationKnowledgeDefinitionalDrugCharacteristic - Specifies descriptive properties of the medicine
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgedefinitionaldrugcharacteristic.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgedefinitionaldrugcharacteristic.html
  *
  * @example
  * const medicationKnowledgeDefinitionalDrugCharacteristic = new MedicationKnowledgeDefinitionalDrugCharacteristic({

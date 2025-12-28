@@ -19,7 +19,7 @@ const CAPABILITY_STATEMENT_MESSAGING_PROPERTIES = [
 /**
  * CapabilityStatementMessaging - If messaging is supported
  *
- * @see https://hl7.org/fhir/R4/capabilitystatementmessaging.html
+ * @see https://hl7.org/fhir/R4B/capabilitystatementmessaging.html
  *
  * @example
  * const capabilityStatementMessaging = new CapabilityStatementMessaging({

@@ -6,7 +6,7 @@ import type { IBackboneElement, IElement, IReference } from '../../base/index.js
  * Detailed information about any events relevant to this notification
  * 
  *
- * @see https://hl7.org/fhir/R4/subscriptionstatusnotificationevent.html
+ * @see https://hl7.org/fhir/R5/subscriptionstatusnotificationevent.html
  */
 export interface ISubscriptionStatusNotificationEvent extends IBackboneElement {
   /**

@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IReference } from '../../base/
  * Actor involved
  * 
  *
- * @see https://hl7.org/fhir/R4/provenanceagent.html
+ * @see https://hl7.org/fhir/R4B/provenanceagent.html
  */
 export interface IProvenanceAgent extends IBackboneElement {
   /**

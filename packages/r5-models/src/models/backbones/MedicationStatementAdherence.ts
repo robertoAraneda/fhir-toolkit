@@ -13,7 +13,7 @@ const MEDICATION_STATEMENT_ADHERENCE_PROPERTIES = [
 /**
  * MedicationStatementAdherence - Indicates whether the medication is or is not being consumed or administered
  *
- * @see https://hl7.org/fhir/R4/medicationstatementadherence.html
+ * @see https://hl7.org/fhir/R5/medicationstatementadherence.html
  *
  * @example
  * const medicationStatementAdherence = new MedicationStatementAdherence({

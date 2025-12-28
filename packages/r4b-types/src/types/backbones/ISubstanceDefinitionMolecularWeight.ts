@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * The molecular weight or weight range
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionmolecularweight.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionmolecularweight.html
  */
 export interface ISubstanceDefinitionMolecularWeight extends IBackboneElement {
   /**

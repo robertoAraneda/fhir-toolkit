@@ -19,7 +19,7 @@ const MARKETING_STATUS_PROPERTIES = [
 /**
  * MarketingStatus - The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available.
  *
- * @see https://hl7.org/fhir/R4/marketingstatus.html
+ * @see https://hl7.org/fhir/R5/marketingstatus.html
  *
  * @example
  * const marketingStatus = new MarketingStatus({

@@ -23,7 +23,7 @@ const CONTACT_POINT_PROPERTIES = [
 /**
  * ContactPoint - Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
  *
- * @see https://hl7.org/fhir/R4/contactpoint.html
+ * @see https://hl7.org/fhir/R4B/contactpoint.html
  *
  * @example
  * const contactPoint = new ContactPoint({

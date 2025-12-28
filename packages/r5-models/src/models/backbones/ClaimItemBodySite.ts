@@ -14,7 +14,7 @@ const CLAIM_ITEM_BODY_SITE_PROPERTIES = [
 /**
  * ClaimItemBodySite - Anatomical location
  *
- * @see https://hl7.org/fhir/R4/claimitembodysite.html
+ * @see https://hl7.org/fhir/R5/claimitembodysite.html
  *
  * @example
  * const claimItemBodySite = new ClaimItemBodySite({

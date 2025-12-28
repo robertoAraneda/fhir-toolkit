@@ -10,7 +10,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.
  * 
  *
- * @see https://hl7.org/fhir/R4/practitionerrole.html
+ * @see https://hl7.org/fhir/R5/practitionerrole.html
  */
 export interface IPractitionerRole extends IDomainResource {
   /**

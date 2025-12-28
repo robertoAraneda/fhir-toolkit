@@ -7,7 +7,7 @@ import type { IDataRequirement } from '../datatypes/IDataRequirement.js';
  * Input data requirements
  * 
  *
- * @see https://hl7.org/fhir/R4/requestorchestrationactioninput.html
+ * @see https://hl7.org/fhir/R5/requestorchestrationactioninput.html
  */
 export interface IRequestOrchestrationActionInput extends IBackboneElement {
   /**

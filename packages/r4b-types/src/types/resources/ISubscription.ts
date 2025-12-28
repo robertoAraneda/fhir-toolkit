@@ -9,7 +9,7 @@ import type { SubscriptionStatusType } from '../../valuesets/index.js';
  * The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system can take an appropriate action.
  * 
  *
- * @see https://hl7.org/fhir/R4/subscription.html
+ * @see https://hl7.org/fhir/R4B/subscription.html
  */
 export interface ISubscription extends IDomainResource {
   /**

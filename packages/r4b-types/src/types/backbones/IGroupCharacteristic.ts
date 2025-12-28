@@ -9,7 +9,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Include / Exclude group members by Trait
  * 
  *
- * @see https://hl7.org/fhir/R4/groupcharacteristic.html
+ * @see https://hl7.org/fhir/R4B/groupcharacteristic.html
  */
 export interface IGroupCharacteristic extends IBackboneElement {
   /**

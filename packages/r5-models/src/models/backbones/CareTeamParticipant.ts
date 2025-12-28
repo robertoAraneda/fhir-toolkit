@@ -19,7 +19,7 @@ const CARE_TEAM_PARTICIPANT_PROPERTIES = [
 /**
  * CareTeamParticipant - Members of the team
  *
- * @see https://hl7.org/fhir/R4/careteamparticipant.html
+ * @see https://hl7.org/fhir/R5/careteamparticipant.html
  *
  * @example
  * const careTeamParticipant = new CareTeamParticipant({

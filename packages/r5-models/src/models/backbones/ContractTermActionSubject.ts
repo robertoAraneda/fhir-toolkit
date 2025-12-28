@@ -14,7 +14,7 @@ const CONTRACT_TERM_ACTION_SUBJECT_PROPERTIES = [
 /**
  * ContractTermActionSubject - Entity of the action
  *
- * @see https://hl7.org/fhir/R4/contracttermactionsubject.html
+ * @see https://hl7.org/fhir/R5/contracttermactionsubject.html
  *
  * @example
  * const contractTermActionSubject = new ContractTermActionSubject({

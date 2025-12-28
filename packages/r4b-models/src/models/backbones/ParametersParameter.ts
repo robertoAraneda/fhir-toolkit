@@ -116,7 +116,7 @@ const PARAMETERS_PARAMETER_PROPERTIES = [
 /**
  * ParametersParameter - Operation Parameter
  *
- * @see https://hl7.org/fhir/R4/parametersparameter.html
+ * @see https://hl7.org/fhir/R4B/parametersparameter.html
  *
  * @example
  * const parametersParameter = new ParametersParameter({

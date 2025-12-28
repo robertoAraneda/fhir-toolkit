@@ -23,7 +23,7 @@ const VALUE_SET_EXPANSION_PROPERTIES = [
 /**
  * ValueSetExpansion - Used when the value set is "expanded"
  *
- * @see https://hl7.org/fhir/R4/valuesetexpansion.html
+ * @see https://hl7.org/fhir/R4B/valuesetexpansion.html
  *
  * @example
  * const valueSetExpansion = new ValueSetExpansion({

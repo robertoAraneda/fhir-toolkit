@@ -19,7 +19,7 @@ const SUBSTANCE_POLYMER_REPEAT_REPEAT_UNIT_DEGREE_OF_POLYMERISATION_PROPERTIES =
 /**
  * SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation - Applies to homopolymer and block co-polymers where the degree of polymerisation within a block can be described
  *
- * @see https://hl7.org/fhir/R4/substancepolymerrepeatrepeatunitdegreeofpolymerisation.html
+ * @see https://hl7.org/fhir/R5/substancepolymerrepeatrepeatunitdegreeofpolymerisation.html
  *
  * @example
  * const substancePolymerRepeatRepeatUnitDegreeOfPolymerisation = new SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation({

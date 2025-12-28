@@ -25,7 +25,7 @@ const RISK_ASSESSMENT_PREDICTION_PROPERTIES = [
 /**
  * RiskAssessmentPrediction - Outcome predicted
  *
- * @see https://hl7.org/fhir/R4/riskassessmentprediction.html
+ * @see https://hl7.org/fhir/R5/riskassessmentprediction.html
  *
  * @example
  * const riskAssessmentPrediction = new RiskAssessmentPrediction({

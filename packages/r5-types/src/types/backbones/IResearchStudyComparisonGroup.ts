@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * Defined path through the study for a subject
  * 
  *
- * @see https://hl7.org/fhir/R4/researchstudycomparisongroup.html
+ * @see https://hl7.org/fhir/R5/researchstudycomparisongroup.html
  */
 export interface IResearchStudyComparisonGroup extends IBackboneElement {
   /**

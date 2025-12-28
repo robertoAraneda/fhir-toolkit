@@ -31,7 +31,7 @@ const NUTRITION_PRODUCT_PROPERTIES = [
 /**
  * NutritionProduct - A food or fluid product that is consumed by patients.
  *
- * @see https://hl7.org/fhir/R4/nutritionproduct.html
+ * @see https://hl7.org/fhir/R4B/nutritionproduct.html
  *
  * @example
  * const nutritionProduct = new NutritionProduct({

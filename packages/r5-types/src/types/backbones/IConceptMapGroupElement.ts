@@ -7,7 +7,7 @@ import type { IConceptMapGroupElementTarget } from './IConceptMapGroupElementTar
  * Mappings for a concept from the source set
  * 
  *
- * @see https://hl7.org/fhir/R4/conceptmapgroupelement.html
+ * @see https://hl7.org/fhir/R5/conceptmapgroupelement.html
  */
 export interface IConceptMapGroupElement extends IBackboneElement {
   /**

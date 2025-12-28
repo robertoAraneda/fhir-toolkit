@@ -73,7 +73,7 @@ const SERVICE_REQUEST_PROPERTIES = [
 /**
  * ServiceRequest - A record of a request for service such as diagnostic investigations, treatments, or operations to be performed.
  *
- * @see https://hl7.org/fhir/R4/servicerequest.html
+ * @see https://hl7.org/fhir/R5/servicerequest.html
  *
  * @example
  * const serviceRequest = new ServiceRequest({

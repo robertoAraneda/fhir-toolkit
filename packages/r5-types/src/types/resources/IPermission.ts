@@ -10,7 +10,7 @@ import type { PermissionRuleCombiningType, PermissionStatusType } from '../../va
  * Permission resource holds access rules for a given data and context.
  * 
  *
- * @see https://hl7.org/fhir/R4/permission.html
+ * @see https://hl7.org/fhir/R5/permission.html
  */
 export interface IPermission extends IDomainResource {
   /**

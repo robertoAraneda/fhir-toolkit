@@ -38,7 +38,7 @@ const BIOLOGICALLY_DERIVED_PRODUCT_DISPENSE_PROPERTIES = [
 /**
  * BiologicallyDerivedProductDispense - This resource reflects an instance of a biologically derived product dispense. The supply or dispense of a biologically derived product from the supply organization or department (e.g. hospital transfusion laboratory) to the clinical team responsible for clinical application.
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductdispense.html
+ * @see https://hl7.org/fhir/R5/biologicallyderivedproductdispense.html
  *
  * @example
  * const biologicallyDerivedProductDispense = new BiologicallyDerivedProductDispense({

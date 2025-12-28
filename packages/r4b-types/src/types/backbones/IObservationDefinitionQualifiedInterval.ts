@@ -8,7 +8,7 @@ import type { AdministrativeGenderType, ObservationRangeCategoryType } from '../
  * Qualified range for continuous and ordinal observation results
  * 
  *
- * @see https://hl7.org/fhir/R4/observationdefinitionqualifiedinterval.html
+ * @see https://hl7.org/fhir/R4B/observationdefinitionqualifiedinterval.html
  */
 export interface IObservationDefinitionQualifiedInterval extends IBackboneElement {
   /**

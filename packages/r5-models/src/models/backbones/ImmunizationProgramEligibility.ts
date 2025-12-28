@@ -13,7 +13,7 @@ const IMMUNIZATION_PROGRAM_ELIGIBILITY_PROPERTIES = [
 /**
  * ImmunizationProgramEligibility - Patient eligibility for a specific vaccination program
  *
- * @see https://hl7.org/fhir/R4/immunizationprogrameligibility.html
+ * @see https://hl7.org/fhir/R5/immunizationprogrameligibility.html
  *
  * @example
  * const immunizationProgramEligibility = new ImmunizationProgramEligibility({

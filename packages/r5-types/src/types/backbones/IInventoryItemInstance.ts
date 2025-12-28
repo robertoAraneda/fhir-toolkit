@@ -7,7 +7,7 @@ import type { IIdentifier } from '../datatypes/IIdentifier.js';
  * Instances or occurrences of the product
  * 
  *
- * @see https://hl7.org/fhir/R4/inventoryiteminstance.html
+ * @see https://hl7.org/fhir/R5/inventoryiteminstance.html
  */
 export interface IInventoryItemInstance extends IBackboneElement {
   /**

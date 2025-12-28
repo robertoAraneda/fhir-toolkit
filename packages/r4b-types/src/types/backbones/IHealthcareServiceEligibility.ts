@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Specific eligibility requirements required to use the service
  * 
  *
- * @see https://hl7.org/fhir/R4/healthcareserviceeligibility.html
+ * @see https://hl7.org/fhir/R4B/healthcareserviceeligibility.html
  */
 export interface IHealthcareServiceEligibility extends IBackboneElement {
   /**

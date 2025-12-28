@@ -22,7 +22,7 @@ const CONCEPT_MAP_PROPERTY_PROPERTIES = [
 /**
  * ConceptMapProperty - Additional properties of the mapping
  *
- * @see https://hl7.org/fhir/R4/conceptmapproperty.html
+ * @see https://hl7.org/fhir/R5/conceptmapproperty.html
  *
  * @example
  * const conceptMapProperty = new ConceptMapProperty({

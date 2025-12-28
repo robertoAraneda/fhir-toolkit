@@ -13,7 +13,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * Example of workflow instance.
  * 
  *
- * @see https://hl7.org/fhir/R4/examplescenario.html
+ * @see https://hl7.org/fhir/R5/examplescenario.html
  */
 export interface IExampleScenario extends IDomainResource {
   /**

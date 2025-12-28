@@ -7,7 +7,7 @@ import type { ITiming } from '../datatypes/ITiming.js';
  * Scheduling information for supplements
  * 
  *
- * @see https://hl7.org/fhir/R4/nutritionordersupplementschedule.html
+ * @see https://hl7.org/fhir/R5/nutritionordersupplementschedule.html
  */
 export interface INutritionOrderSupplementSchedule extends IBackboneElement {
   /**

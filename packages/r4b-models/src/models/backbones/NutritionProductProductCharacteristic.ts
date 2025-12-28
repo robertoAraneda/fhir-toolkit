@@ -24,7 +24,7 @@ const NUTRITION_PRODUCT_PRODUCT_CHARACTERISTIC_PROPERTIES = [
 /**
  * NutritionProductProductCharacteristic - Specifies descriptive properties of the nutrition product
  *
- * @see https://hl7.org/fhir/R4/nutritionproductproductcharacteristic.html
+ * @see https://hl7.org/fhir/R4B/nutritionproductproductcharacteristic.html
  *
  * @example
  * const nutritionProductProductCharacteristic = new NutritionProductProductCharacteristic({

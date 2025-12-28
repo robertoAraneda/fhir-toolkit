@@ -14,7 +14,7 @@ const CONTRACT_FRIENDLY_PROPERTIES = [
 /**
  * ContractFriendly - Contract Friendly Language
  *
- * @see https://hl7.org/fhir/R4/contractfriendly.html
+ * @see https://hl7.org/fhir/R4B/contractfriendly.html
  *
  * @example
  * const contractFriendly = new ContractFriendly({

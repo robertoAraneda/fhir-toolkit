@@ -46,7 +46,7 @@ const COVERAGE_PROPERTIES = [
 /**
  * Coverage - Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.
  *
- * @see https://hl7.org/fhir/R4/coverage.html
+ * @see https://hl7.org/fhir/R5/coverage.html
  *
  * @example
  * const coverage = new Coverage({

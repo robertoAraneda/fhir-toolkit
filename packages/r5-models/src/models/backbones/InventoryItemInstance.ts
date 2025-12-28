@@ -20,7 +20,7 @@ const INVENTORY_ITEM_INSTANCE_PROPERTIES = [
 /**
  * InventoryItemInstance - Instances or occurrences of the product
  *
- * @see https://hl7.org/fhir/R4/inventoryiteminstance.html
+ * @see https://hl7.org/fhir/R5/inventoryiteminstance.html
  *
  * @example
  * const inventoryItemInstance = new InventoryItemInstance({

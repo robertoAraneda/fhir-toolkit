@@ -23,7 +23,7 @@ const SUBSTANCE_POLYMER_PROPERTIES = [
 /**
  * SubstancePolymer - Properties of a substance specific to it being a polymer.
  *
- * @see https://hl7.org/fhir/R4/substancepolymer.html
+ * @see https://hl7.org/fhir/R5/substancepolymer.html
  *
  * @example
  * const substancePolymer = new SubstancePolymer({

@@ -7,7 +7,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Details about packaged medications
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgepackaging.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgepackaging.html
  */
 export interface IMedicationKnowledgePackaging extends IBackboneElement {
   /**

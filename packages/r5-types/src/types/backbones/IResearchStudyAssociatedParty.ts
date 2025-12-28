@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Sponsors, collaborators, and other parties
  * 
  *
- * @see https://hl7.org/fhir/R4/researchstudyassociatedparty.html
+ * @see https://hl7.org/fhir/R5/researchstudyassociatedparty.html
  */
 export interface IResearchStudyAssociatedParty extends IBackboneElement {
   /**

@@ -7,7 +7,7 @@ import type { IValueSetComposeInclude } from './IValueSetComposeInclude.js';
  * Content logical definition of the value set (CLD)
  * 
  *
- * @see https://hl7.org/fhir/R4/valuesetcompose.html
+ * @see https://hl7.org/fhir/R4B/valuesetcompose.html
  */
 export interface IValueSetCompose extends IBackboneElement {
   /**

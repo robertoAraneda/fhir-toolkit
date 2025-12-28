@@ -19,7 +19,7 @@ const MESSAGE_DEFINITION_FOCUS_PROPERTIES = [
 /**
  * MessageDefinitionFocus - Resource(s) that are the subject of the event
  *
- * @see https://hl7.org/fhir/R4/messagedefinitionfocus.html
+ * @see https://hl7.org/fhir/R5/messagedefinitionfocus.html
  *
  * @example
  * const messageDefinitionFocus = new MessageDefinitionFocus({

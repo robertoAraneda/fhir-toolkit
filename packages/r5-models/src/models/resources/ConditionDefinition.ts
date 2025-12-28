@@ -68,7 +68,7 @@ const CONDITION_DEFINITION_PROPERTIES = [
 /**
  * ConditionDefinition - A definition of a condition and information relevant to managing it.
  *
- * @see https://hl7.org/fhir/R4/conditiondefinition.html
+ * @see https://hl7.org/fhir/R5/conditiondefinition.html
  *
  * @example
  * const conditionDefinition = new ConditionDefinition({

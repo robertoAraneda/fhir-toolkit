@@ -11,7 +11,7 @@ import type { GoalLifecycleStatusType } from '../../valuesets/index.js';
  * Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
  * 
  *
- * @see https://hl7.org/fhir/R4/goal.html
+ * @see https://hl7.org/fhir/R5/goal.html
  */
 export interface IGoal extends IDomainResource {
   /**

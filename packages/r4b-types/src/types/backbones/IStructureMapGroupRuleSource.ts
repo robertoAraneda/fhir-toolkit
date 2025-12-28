@@ -35,7 +35,7 @@ import type { StructureMapSourceListModeType } from '../../valuesets/index.js';
  * Source inputs to the mapping
  * 
  *
- * @see https://hl7.org/fhir/R4/structuremapgrouprulesource.html
+ * @see https://hl7.org/fhir/R4B/structuremapgrouprulesource.html
  */
 export interface IStructureMapGroupRuleSource extends IBackboneElement {
   /**

@@ -30,7 +30,7 @@ const EVIDENCE_VARIABLE_CHARACTERISTIC_PROPERTIES = [
 /**
  * EvidenceVariableCharacteristic - What defines the members of the evidence element
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristic.html
+ * @see https://hl7.org/fhir/R4B/evidencevariablecharacteristic.html
  *
  * @example
  * const evidenceVariableCharacteristic = new EvidenceVariableCharacteristic({

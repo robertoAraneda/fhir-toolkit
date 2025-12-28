@@ -17,7 +17,7 @@ const IMPLEMENTATION_GUIDE_MANIFEST_PAGE_PROPERTIES = [
 /**
  * ImplementationGuideManifestPage - HTML page within the parent IG
  *
- * @see https://hl7.org/fhir/R4/implementationguidemanifestpage.html
+ * @see https://hl7.org/fhir/R5/implementationguidemanifestpage.html
  *
  * @example
  * const implementationGuideManifestPage = new ImplementationGuideManifestPage({

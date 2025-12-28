@@ -28,7 +28,7 @@ const RESEARCH_SUBJECT_PROPERTIES = [
 /**
  * ResearchSubject - A ResearchSubject is a participant or object which is the recipient of investigative activities in a research study.
  *
- * @see https://hl7.org/fhir/R4/researchsubject.html
+ * @see https://hl7.org/fhir/R5/researchsubject.html
  *
  * @example
  * const researchSubject = new ResearchSubject({

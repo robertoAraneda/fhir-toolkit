@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * A depiction of the structure of the substance
  * 
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionstructurerepresentation.html
+ * @see https://hl7.org/fhir/R5/substancedefinitionstructurerepresentation.html
  */
 export interface ISubstanceDefinitionStructureRepresentation extends IBackboneElement {
   /**

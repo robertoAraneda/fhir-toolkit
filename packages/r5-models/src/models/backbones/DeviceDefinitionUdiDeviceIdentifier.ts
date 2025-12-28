@@ -19,7 +19,7 @@ const DEVICE_DEFINITION_UDI_DEVICE_IDENTIFIER_PROPERTIES = [
 /**
  * DeviceDefinitionUdiDeviceIdentifier - Unique Device Identifier (UDI) Barcode string
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionudideviceidentifier.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionudideviceidentifier.html
  *
  * @example
  * const deviceDefinitionUdiDeviceIdentifier = new DeviceDefinitionUdiDeviceIdentifier({

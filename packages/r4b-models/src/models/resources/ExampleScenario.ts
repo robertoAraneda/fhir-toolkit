@@ -46,7 +46,7 @@ const EXAMPLE_SCENARIO_PROPERTIES = [
 /**
  * ExampleScenario - Example of workflow instance.
  *
- * @see https://hl7.org/fhir/R4/examplescenario.html
+ * @see https://hl7.org/fhir/R4B/examplescenario.html
  *
  * @example
  * const exampleScenario = new ExampleScenario({

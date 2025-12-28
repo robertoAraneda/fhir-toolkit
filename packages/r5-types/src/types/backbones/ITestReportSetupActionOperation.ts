@@ -7,7 +7,7 @@ import type { TestReportActionResultType } from '../../valuesets/index.js';
  * The operation to perform
  * 
  *
- * @see https://hl7.org/fhir/R4/testreportsetupactionoperation.html
+ * @see https://hl7.org/fhir/R5/testreportsetupactionoperation.html
  */
 export interface ITestReportSetupActionOperation extends IBackboneElement {
   /**

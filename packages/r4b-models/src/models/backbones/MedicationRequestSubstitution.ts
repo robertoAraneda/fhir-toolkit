@@ -16,7 +16,7 @@ const MEDICATION_REQUEST_SUBSTITUTION_PROPERTIES = [
 /**
  * MedicationRequestSubstitution - Any restrictions on medication substitution
  *
- * @see https://hl7.org/fhir/R4/medicationrequestsubstitution.html
+ * @see https://hl7.org/fhir/R4B/medicationrequestsubstitution.html
  *
  * @example
  * const medicationRequestSubstitution = new MedicationRequestSubstitution({

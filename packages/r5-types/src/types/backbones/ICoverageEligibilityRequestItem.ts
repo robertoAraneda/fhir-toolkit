@@ -9,7 +9,7 @@ import type { ICoverageEligibilityRequestItemDiagnosis } from './ICoverageEligib
  * Item to be evaluated for eligibiity
  * 
  *
- * @see https://hl7.org/fhir/R4/coverageeligibilityrequestitem.html
+ * @see https://hl7.org/fhir/R5/coverageeligibilityrequestitem.html
  */
 export interface ICoverageEligibilityRequestItem extends IBackboneElement {
   /**

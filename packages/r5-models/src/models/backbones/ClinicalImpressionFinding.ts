@@ -15,7 +15,7 @@ const CLINICAL_IMPRESSION_FINDING_PROPERTIES = [
 /**
  * ClinicalImpressionFinding - Possible or likely findings and diagnoses
  *
- * @see https://hl7.org/fhir/R4/clinicalimpressionfinding.html
+ * @see https://hl7.org/fhir/R5/clinicalimpressionfinding.html
  *
  * @example
  * const clinicalImpressionFinding = new ClinicalImpressionFinding({

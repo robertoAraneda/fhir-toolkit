@@ -15,7 +15,7 @@ const SERVICE_REQUEST_PATIENT_INSTRUCTION_PROPERTIES = [
 /**
  * ServiceRequestPatientInstruction - Patient or consumer-oriented instructions
  *
- * @see https://hl7.org/fhir/R4/servicerequestpatientinstruction.html
+ * @see https://hl7.org/fhir/R5/servicerequestpatientinstruction.html
  *
  * @example
  * const serviceRequestPatientInstruction = new ServiceRequestPatientInstruction({

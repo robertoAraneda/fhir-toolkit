@@ -33,7 +33,7 @@ const EPISODE_OF_CARE_PROPERTIES = [
 /**
  * EpisodeOfCare - An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.
  *
- * @see https://hl7.org/fhir/R4/episodeofcare.html
+ * @see https://hl7.org/fhir/R5/episodeofcare.html
  *
  * @example
  * const episodeOfCare = new EpisodeOfCare({

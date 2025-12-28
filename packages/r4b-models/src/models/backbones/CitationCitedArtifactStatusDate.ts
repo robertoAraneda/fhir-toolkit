@@ -17,7 +17,7 @@ const CITATION_CITED_ARTIFACT_STATUS_DATE_PROPERTIES = [
 /**
  * CitationCitedArtifactStatusDate - An effective date or period for a status of the cited artifact
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactstatusdate.html
+ * @see https://hl7.org/fhir/R4B/citationcitedartifactstatusdate.html
  *
  * @example
  * const citationCitedArtifactStatusDate = new CitationCitedArtifactStatusDate({

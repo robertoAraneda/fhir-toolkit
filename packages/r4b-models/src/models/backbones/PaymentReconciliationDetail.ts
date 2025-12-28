@@ -26,7 +26,7 @@ const PAYMENT_RECONCILIATION_DETAIL_PROPERTIES = [
 /**
  * PaymentReconciliationDetail - Settlement particulars
  *
- * @see https://hl7.org/fhir/R4/paymentreconciliationdetail.html
+ * @see https://hl7.org/fhir/R4B/paymentreconciliationdetail.html
  *
  * @example
  * const paymentReconciliationDetail = new PaymentReconciliationDetail({

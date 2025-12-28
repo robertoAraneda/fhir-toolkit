@@ -9,7 +9,7 @@ import type { FlagStatusType } from '../../valuesets/index.js';
  * Prospective warnings of potential issues when providing care to the patient.
  * 
  *
- * @see https://hl7.org/fhir/R4/flag.html
+ * @see https://hl7.org/fhir/R5/flag.html
  */
 export interface IFlag extends IDomainResource {
   /**

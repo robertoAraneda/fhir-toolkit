@@ -7,7 +7,7 @@ import type { ICitationCitedArtifactContributorshipEntryContributionInstance } f
  * An individual entity named as a contributor
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactcontributorshipentry.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactcontributorshipentry.html
  */
 export interface ICitationCitedArtifactContributorshipEntry extends IBackboneElement {
   /**

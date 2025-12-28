@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, ICoding } from '../../base/ind
  * Whether the event succeeded or failed
  * 
  *
- * @see https://hl7.org/fhir/R4/auditeventoutcome.html
+ * @see https://hl7.org/fhir/R5/auditeventoutcome.html
  */
 export interface IAuditEventOutcome extends IBackboneElement {
   /**

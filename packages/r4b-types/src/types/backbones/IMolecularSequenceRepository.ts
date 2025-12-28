@@ -7,7 +7,7 @@ import type { RepositoryTypeType } from '../../valuesets/index.js';
  * External repository which contains detailed report related with observedSeq in this resource
  * 
  *
- * @see https://hl7.org/fhir/R4/molecularsequencerepository.html
+ * @see https://hl7.org/fhir/R4B/molecularsequencerepository.html
  */
 export interface IMolecularSequenceRepository extends IBackboneElement {
   /**

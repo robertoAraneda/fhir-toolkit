@@ -15,7 +15,7 @@ const SUBSTANCE_DEFINITION_MOLECULAR_WEIGHT_PROPERTIES = [
 /**
  * SubstanceDefinitionMolecularWeight - The molecular weight or weight range
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionmolecularweight.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionmolecularweight.html
  *
  * @example
  * const substanceDefinitionMolecularWeight = new SubstanceDefinitionMolecularWeight({

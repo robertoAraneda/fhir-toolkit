@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * Any manipulation of product post-collection
  * 
  *
- * @see https://hl7.org/fhir/R4/biologicallyderivedproductmanipulation.html
+ * @see https://hl7.org/fhir/R4B/biologicallyderivedproductmanipulation.html
  */
 export interface IBiologicallyDerivedProductManipulation extends IBackboneElement {
   /**

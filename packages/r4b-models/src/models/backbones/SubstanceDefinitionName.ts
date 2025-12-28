@@ -27,7 +27,7 @@ const SUBSTANCE_DEFINITION_NAME_PROPERTIES = [
 /**
  * SubstanceDefinitionName - Names applicable to this substance
  *
- * @see https://hl7.org/fhir/R4/substancedefinitionname.html
+ * @see https://hl7.org/fhir/R4B/substancedefinitionname.html
  *
  * @example
  * const substanceDefinitionName = new SubstanceDefinitionName({

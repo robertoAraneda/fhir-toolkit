@@ -15,7 +15,7 @@ const TEST_SCRIPT_SETUP_ACTION_ASSERT_REQUIREMENT_PROPERTIES = [
 /**
  * TestScriptSetupActionAssertRequirement - Links or references to the testing requirements
  *
- * @see https://hl7.org/fhir/R4/testscriptsetupactionassertrequirement.html
+ * @see https://hl7.org/fhir/R5/testscriptsetupactionassertrequirement.html
  *
  * @example
  * const testScriptSetupActionAssertRequirement = new TestScriptSetupActionAssertRequirement({

@@ -8,7 +8,7 @@ import type { ICodeSystemConceptProperty } from './ICodeSystemConceptProperty.js
  * Concepts in the code system
  * 
  *
- * @see https://hl7.org/fhir/R4/codesystemconcept.html
+ * @see https://hl7.org/fhir/R4B/codesystemconcept.html
  */
 export interface ICodeSystemConcept extends IBackboneElement {
   /**

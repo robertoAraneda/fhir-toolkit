@@ -15,7 +15,7 @@ const CITATION_CITED_ARTIFACT_WEB_LOCATION_PROPERTIES = [
 /**
  * CitationCitedArtifactWebLocation - Used for any URL for the article or artifact cited
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactweblocation.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactweblocation.html
  *
  * @example
  * const citationCitedArtifactWebLocation = new CitationCitedArtifactWebLocation({

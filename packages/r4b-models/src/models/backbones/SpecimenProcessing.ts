@@ -21,7 +21,7 @@ const SPECIMEN_PROCESSING_PROPERTIES = [
 /**
  * SpecimenProcessing - Processing and processing step details
  *
- * @see https://hl7.org/fhir/R4/specimenprocessing.html
+ * @see https://hl7.org/fhir/R4B/specimenprocessing.html
  *
  * @example
  * const specimenProcessing = new SpecimenProcessing({

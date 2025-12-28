@@ -45,7 +45,7 @@ const CARE_PLAN_ACTIVITY_DETAIL_PROPERTIES = [
 /**
  * CarePlanActivityDetail - In-line definition of activity
  *
- * @see https://hl7.org/fhir/R4/careplanactivitydetail.html
+ * @see https://hl7.org/fhir/R4B/careplanactivitydetail.html
  *
  * @example
  * const carePlanActivityDetail = new CarePlanActivityDetail({

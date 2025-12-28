@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * 4.9.13.8.1 Hybrid species maternal organism ID (Optional)
  * 
  *
- * @see https://hl7.org/fhir/R4/substancesourcematerialorganismhybrid.html
+ * @see https://hl7.org/fhir/R5/substancesourcematerialorganismhybrid.html
  */
 export interface ISubstanceSourceMaterialOrganismHybrid extends IBackboneElement {
   /**

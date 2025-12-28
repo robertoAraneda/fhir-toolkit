@@ -8,7 +8,7 @@ import type { IdentifierUseType } from '../../valuesets/index.js';
  * An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
  * 
  *
- * @see https://hl7.org/fhir/R4/identifier.html
+ * @see https://hl7.org/fhir/R4B/identifier.html
  */
 export interface IIdentifier extends IElement {
   /**

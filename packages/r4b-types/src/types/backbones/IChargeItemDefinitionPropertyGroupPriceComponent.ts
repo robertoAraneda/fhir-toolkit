@@ -8,7 +8,7 @@ import type { InvoicePriceComponentTypeType } from '../../valuesets/index.js';
  * Components of total line item price
  * 
  *
- * @see https://hl7.org/fhir/R4/chargeitemdefinitionpropertygrouppricecomponent.html
+ * @see https://hl7.org/fhir/R4B/chargeitemdefinitionpropertygrouppricecomponent.html
  */
 export interface IChargeItemDefinitionPropertyGroupPriceComponent extends IBackboneElement {
   /**

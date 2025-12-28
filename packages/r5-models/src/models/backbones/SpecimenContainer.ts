@@ -15,7 +15,7 @@ const SPECIMEN_CONTAINER_PROPERTIES = [
 /**
  * SpecimenContainer - Direct container of specimen (tube/slide, etc.)
  *
- * @see https://hl7.org/fhir/R4/specimencontainer.html
+ * @see https://hl7.org/fhir/R5/specimencontainer.html
  *
  * @example
  * const specimenContainer = new SpecimenContainer({

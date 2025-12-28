@@ -21,7 +21,7 @@ const INGREDIENT_SUBSTANCE_STRENGTH_REFERENCE_STRENGTH_PROPERTIES = [
 /**
  * IngredientSubstanceStrengthReferenceStrength - Strength expressed in terms of a reference substance
  *
- * @see https://hl7.org/fhir/R4/ingredientsubstancestrengthreferencestrength.html
+ * @see https://hl7.org/fhir/R4B/ingredientsubstancestrengthreferencestrength.html
  *
  * @example
  * const ingredientSubstanceStrengthReferenceStrength = new IngredientSubstanceStrengthReferenceStrength({

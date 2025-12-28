@@ -7,7 +7,7 @@ import type { DeviceDefinitionRegulatoryIdentifierTypeType } from '../../valuese
  * Regulatory identifier(s) associated with this device
  * 
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionregulatoryidentifier.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionregulatoryidentifier.html
  */
 export interface IDeviceDefinitionRegulatoryIdentifier extends IBackboneElement {
   /**

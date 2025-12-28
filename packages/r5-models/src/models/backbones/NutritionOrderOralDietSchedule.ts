@@ -17,7 +17,7 @@ const NUTRITION_ORDER_ORAL_DIET_SCHEDULE_PROPERTIES = [
 /**
  * NutritionOrderOralDietSchedule - Scheduling information for oral diets
  *
- * @see https://hl7.org/fhir/R4/nutritionorderoraldietschedule.html
+ * @see https://hl7.org/fhir/R5/nutritionorderoraldietschedule.html
  *
  * @example
  * const nutritionOrderOralDietSchedule = new NutritionOrderOralDietSchedule({

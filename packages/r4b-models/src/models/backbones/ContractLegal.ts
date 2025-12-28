@@ -14,7 +14,7 @@ const CONTRACT_LEGAL_PROPERTIES = [
 /**
  * ContractLegal - Contract Legal Language
  *
- * @see https://hl7.org/fhir/R4/contractlegal.html
+ * @see https://hl7.org/fhir/R4B/contractlegal.html
  *
  * @example
  * const contractLegal = new ContractLegal({

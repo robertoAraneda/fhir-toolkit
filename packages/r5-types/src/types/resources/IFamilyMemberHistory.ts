@@ -16,7 +16,7 @@ import type { FamilyHistoryStatusType } from '../../valuesets/index.js';
  * Significant health conditions for a person related to the patient relevant in the context of care for the patient.
  * 
  *
- * @see https://hl7.org/fhir/R4/familymemberhistory.html
+ * @see https://hl7.org/fhir/R5/familymemberhistory.html
  */
 export interface IFamilyMemberHistory extends IDomainResource {
   /**

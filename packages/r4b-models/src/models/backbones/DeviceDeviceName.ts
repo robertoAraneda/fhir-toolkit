@@ -16,7 +16,7 @@ const DEVICE_DEVICE_NAME_PROPERTIES = [
 /**
  * DeviceDeviceName - The name of the device as given by the manufacturer
  *
- * @see https://hl7.org/fhir/R4/devicedevicename.html
+ * @see https://hl7.org/fhir/R4B/devicedevicename.html
  *
  * @example
  * const deviceDeviceName = new DeviceDeviceName({

@@ -10,7 +10,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * A medicinal product in the final form which is suitable for administering to a patient (after any mixing of multiple components, dissolution etc. has been performed).
  * 
  *
- * @see https://hl7.org/fhir/R4/administrableproductdefinition.html
+ * @see https://hl7.org/fhir/R4B/administrableproductdefinition.html
  */
 export interface IAdministrableProductDefinition extends IDomainResource {
   /**

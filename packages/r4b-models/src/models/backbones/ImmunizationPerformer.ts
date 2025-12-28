@@ -14,7 +14,7 @@ const IMMUNIZATION_PERFORMER_PROPERTIES = [
 /**
  * ImmunizationPerformer - Who performed event
  *
- * @see https://hl7.org/fhir/R4/immunizationperformer.html
+ * @see https://hl7.org/fhir/R4B/immunizationperformer.html
  *
  * @example
  * const immunizationPerformer = new ImmunizationPerformer({

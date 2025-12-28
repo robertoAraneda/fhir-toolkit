@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Specifies the schedule of a medication in jurisdiction
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeregulatoryschedule.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgeregulatoryschedule.html
  */
 export interface IMedicationKnowledgeRegulatorySchedule extends IBackboneElement {
   /**

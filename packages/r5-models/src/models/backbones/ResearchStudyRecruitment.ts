@@ -18,7 +18,7 @@ const RESEARCH_STUDY_RECRUITMENT_PROPERTIES = [
 /**
  * ResearchStudyRecruitment - Target or actual group of participants enrolled in study
  *
- * @see https://hl7.org/fhir/R4/researchstudyrecruitment.html
+ * @see https://hl7.org/fhir/R5/researchstudyrecruitment.html
  *
  * @example
  * const researchStudyRecruitment = new ResearchStudyRecruitment({

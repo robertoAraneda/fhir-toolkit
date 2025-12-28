@@ -34,7 +34,7 @@ const REGULATED_AUTHORIZATION_PROPERTIES = [
 /**
  * RegulatedAuthorization - Regulatory approval, clearance or licencing related to a regulated product, treatment, facility or activity that is cited in a guidance, regulation, rule or legislative act. An example is Market Authorization relating to a Medicinal Product.
  *
- * @see https://hl7.org/fhir/R4/regulatedauthorization.html
+ * @see https://hl7.org/fhir/R5/regulatedauthorization.html
  *
  * @example
  * const regulatedAuthorization = new RegulatedAuthorization({

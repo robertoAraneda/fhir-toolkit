@@ -8,7 +8,7 @@ import type { IImagingStudySeriesPerformer } from './IImagingStudySeriesPerforme
  * Each study has one or more series of instances
  * 
  *
- * @see https://hl7.org/fhir/R4/imagingstudyseries.html
+ * @see https://hl7.org/fhir/R4B/imagingstudyseries.html
  */
 export interface IImagingStudySeries extends IBackboneElement {
   /**

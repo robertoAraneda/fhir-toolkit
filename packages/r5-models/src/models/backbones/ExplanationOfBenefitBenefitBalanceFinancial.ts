@@ -22,7 +22,7 @@ const EXPLANATION_OF_BENEFIT_BENEFIT_BALANCE_FINANCIAL_PROPERTIES = [
 /**
  * ExplanationOfBenefitBenefitBalanceFinancial - Benefit Summary
  *
- * @see https://hl7.org/fhir/R4/explanationofbenefitbenefitbalancefinancial.html
+ * @see https://hl7.org/fhir/R5/explanationofbenefitbenefitbalancefinancial.html
  *
  * @example
  * const explanationOfBenefitBenefitBalanceFinancial = new ExplanationOfBenefitBenefitBalanceFinancial({

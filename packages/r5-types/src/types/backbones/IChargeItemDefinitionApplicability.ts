@@ -9,7 +9,7 @@ import type { IRelatedArtifact } from '../datatypes/IRelatedArtifact.js';
  * Whether or not the billing code is applicable
  * 
  *
- * @see https://hl7.org/fhir/R4/chargeitemdefinitionapplicability.html
+ * @see https://hl7.org/fhir/R5/chargeitemdefinitionapplicability.html
  */
 export interface IChargeItemDefinitionApplicability extends IBackboneElement {
   /**

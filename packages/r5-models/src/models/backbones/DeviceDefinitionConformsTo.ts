@@ -18,7 +18,7 @@ const DEVICE_DEFINITION_CONFORMS_TO_PROPERTIES = [
 /**
  * DeviceDefinitionConformsTo - Identifies the standards, specifications, or formal guidances for the capabilities supported by the device
  *
- * @see https://hl7.org/fhir/R4/devicedefinitionconformsto.html
+ * @see https://hl7.org/fhir/R5/devicedefinitionconformsto.html
  *
  * @example
  * const deviceDefinitionConformsTo = new DeviceDefinitionConformsTo({

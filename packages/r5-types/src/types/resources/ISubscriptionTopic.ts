@@ -15,7 +15,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * Describes a stream of resource state changes or events and annotated with labels useful to filter projections from this topic.
  * 
  *
- * @see https://hl7.org/fhir/R4/subscriptiontopic.html
+ * @see https://hl7.org/fhir/R5/subscriptiontopic.html
  */
 export interface ISubscriptionTopic extends IDomainResource {
   /**

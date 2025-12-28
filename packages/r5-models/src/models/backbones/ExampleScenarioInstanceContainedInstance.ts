@@ -15,7 +15,7 @@ const EXAMPLE_SCENARIO_INSTANCE_CONTAINED_INSTANCE_PROPERTIES = [
 /**
  * ExampleScenarioInstanceContainedInstance - Resources contained in the instance
  *
- * @see https://hl7.org/fhir/R4/examplescenarioinstancecontainedinstance.html
+ * @see https://hl7.org/fhir/R5/examplescenarioinstancecontainedinstance.html
  *
  * @example
  * const exampleScenarioInstanceContainedInstance = new ExampleScenarioInstanceContainedInstance({

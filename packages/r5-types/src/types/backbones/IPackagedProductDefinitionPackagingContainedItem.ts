@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * The item(s) within the packaging
  * 
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionpackagingcontaineditem.html
+ * @see https://hl7.org/fhir/R5/packagedproductdefinitionpackagingcontaineditem.html
  */
 export interface IPackagedProductDefinitionPackagingContainedItem extends IBackboneElement {
   /**

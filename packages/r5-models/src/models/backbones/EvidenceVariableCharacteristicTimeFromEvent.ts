@@ -27,7 +27,7 @@ const EVIDENCE_VARIABLE_CHARACTERISTIC_TIME_FROM_EVENT_PROPERTIES = [
 /**
  * EvidenceVariableCharacteristicTimeFromEvent - Timing in which the characteristic is determined
  *
- * @see https://hl7.org/fhir/R4/evidencevariablecharacteristictimefromevent.html
+ * @see https://hl7.org/fhir/R5/evidencevariablecharacteristictimefromevent.html
  *
  * @example
  * const evidenceVariableCharacteristicTimeFromEvent = new EvidenceVariableCharacteristicTimeFromEvent({

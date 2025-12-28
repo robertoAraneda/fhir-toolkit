@@ -8,7 +8,7 @@ import type { QuantityComparatorType } from '../../valuesets/index.js';
  * A duration of time during which an organism (or a process) has existed.
  * 
  *
- * @see https://hl7.org/fhir/R4/age.html
+ * @see https://hl7.org/fhir/R4B/age.html
  */
 export interface IAge extends IQuantity {
   /**

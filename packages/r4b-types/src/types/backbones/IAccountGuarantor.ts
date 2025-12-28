@@ -7,7 +7,7 @@ import type { IPeriod } from '../datatypes/IPeriod.js';
  * The parties ultimately responsible for balancing the Account
  * 
  *
- * @see https://hl7.org/fhir/R4/accountguarantor.html
+ * @see https://hl7.org/fhir/R4B/accountguarantor.html
  */
 export interface IAccountGuarantor extends IBackboneElement {
   /**

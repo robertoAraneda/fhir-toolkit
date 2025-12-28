@@ -30,7 +30,7 @@ const ARTIFACT_ASSESSMENT_CONTENT_PROPERTIES = [
 /**
  * ArtifactAssessmentContent - Comment, classifier, or rating content
  *
- * @see https://hl7.org/fhir/R4/artifactassessmentcontent.html
+ * @see https://hl7.org/fhir/R5/artifactassessmentcontent.html
  *
  * @example
  * const artifactAssessmentContent = new ArtifactAssessmentContent({

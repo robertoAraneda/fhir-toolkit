@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement } from '../../base/in
  * Identifies the standards, specifications, or formal guidances for the capabilities supported by the device
  * 
  *
- * @see https://hl7.org/fhir/R4/deviceconformsto.html
+ * @see https://hl7.org/fhir/R5/deviceconformsto.html
  */
 export interface IDeviceConformsTo extends IBackboneElement {
   /**

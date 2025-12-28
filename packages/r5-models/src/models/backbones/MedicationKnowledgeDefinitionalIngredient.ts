@@ -19,7 +19,7 @@ const MEDICATION_KNOWLEDGE_DEFINITIONAL_INGREDIENT_PROPERTIES = [
 /**
  * MedicationKnowledgeDefinitionalIngredient - Active or inactive ingredient
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgedefinitionalingredient.html
+ * @see https://hl7.org/fhir/R5/medicationknowledgedefinitionalingredient.html
  *
  * @example
  * const medicationKnowledgeDefinitionalIngredient = new MedicationKnowledgeDefinitionalIngredient({

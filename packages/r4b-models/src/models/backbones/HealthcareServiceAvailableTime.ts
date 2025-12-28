@@ -20,7 +20,7 @@ const HEALTHCARE_SERVICE_AVAILABLE_TIME_PROPERTIES = [
 /**
  * HealthcareServiceAvailableTime - Times the Service Site is available
  *
- * @see https://hl7.org/fhir/R4/healthcareserviceavailabletime.html
+ * @see https://hl7.org/fhir/R4B/healthcareserviceavailabletime.html
  *
  * @example
  * const healthcareServiceAvailableTime = new HealthcareServiceAvailableTime({

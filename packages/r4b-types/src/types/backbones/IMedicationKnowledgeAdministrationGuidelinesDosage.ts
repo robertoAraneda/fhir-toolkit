@@ -7,7 +7,7 @@ import type { IDosage } from '../datatypes/IDosage.js';
  * Dosage for the medication for the specific guidelines
  * 
  *
- * @see https://hl7.org/fhir/R4/medicationknowledgeadministrationguidelinesdosage.html
+ * @see https://hl7.org/fhir/R4B/medicationknowledgeadministrationguidelinesdosage.html
  */
 export interface IMedicationKnowledgeAdministrationGuidelinesDosage extends IBackboneElement {
   /**

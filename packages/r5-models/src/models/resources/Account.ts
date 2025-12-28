@@ -43,7 +43,7 @@ const ACCOUNT_PROPERTIES = [
 /**
  * Account - A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centers, etc.
  *
- * @see https://hl7.org/fhir/R4/account.html
+ * @see https://hl7.org/fhir/R5/account.html
  *
  * @example
  * const account = new Account({

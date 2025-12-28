@@ -19,7 +19,7 @@ const DEVICE_VERSION_PROPERTIES = [
 /**
  * DeviceVersion - The actual design of the device or software version running on the device
  *
- * @see https://hl7.org/fhir/R4/deviceversion.html
+ * @see https://hl7.org/fhir/R5/deviceversion.html
  *
  * @example
  * const deviceVersion = new DeviceVersion({

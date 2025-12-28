@@ -10,7 +10,7 @@ import type { DeviceAssociationType } from '../../valuesets/index.js';
  * A record of association or dissociation of a device with a patient.
  * 
  *
- * @see https://hl7.org/fhir/R4/deviceassociation.html
+ * @see https://hl7.org/fhir/R5/deviceassociation.html
  */
 export interface IDeviceAssociation extends IDomainResource {
   /**

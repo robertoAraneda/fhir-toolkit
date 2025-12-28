@@ -8,7 +8,7 @@ import type { IQuantity } from '../datatypes/IQuantity.js';
  * Landmark relative location
  * 
  *
- * @see https://hl7.org/fhir/R4/bodystructureincludedstructurebodylandmarkorientationdistancefromlandmark.html
+ * @see https://hl7.org/fhir/R5/bodystructureincludedstructurebodylandmarkorientationdistancefromlandmark.html
  */
 export interface IBodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark extends IBackboneElement {
   /**

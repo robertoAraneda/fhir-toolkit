@@ -8,7 +8,7 @@ import type { IRange } from '../datatypes/IRange.js';
  * Device details
  * 
  *
- * @see https://hl7.org/fhir/R4/devicerequestparameter.html
+ * @see https://hl7.org/fhir/R5/devicerequestparameter.html
  */
 export interface IDeviceRequestParameter extends IBackboneElement {
   /**

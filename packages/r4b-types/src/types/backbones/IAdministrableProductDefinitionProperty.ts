@@ -9,7 +9,7 @@ import type { PublicationStatusType } from '../../valuesets/index.js';
  * Characteristics e.g. a product's onset of action
  * 
  *
- * @see https://hl7.org/fhir/R4/administrableproductdefinitionproperty.html
+ * @see https://hl7.org/fhir/R4B/administrableproductdefinitionproperty.html
  */
 export interface IAdministrableProductDefinitionProperty extends IBackboneElement {
   /**

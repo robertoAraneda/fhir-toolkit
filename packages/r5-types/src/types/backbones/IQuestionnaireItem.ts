@@ -10,7 +10,7 @@ import type { EnableWhenBehaviorType, QuestionnaireAnswerConstraintType, Questio
  * Questions and sections within the Questionnaire
  * 
  *
- * @see https://hl7.org/fhir/R4/questionnaireitem.html
+ * @see https://hl7.org/fhir/R5/questionnaireitem.html
  */
 export interface IQuestionnaireItem extends IBackboneElement {
   /**

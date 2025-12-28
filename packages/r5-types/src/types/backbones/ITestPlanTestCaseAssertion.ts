@@ -7,7 +7,7 @@ import type { ICodeableReference } from '../datatypes/ICodeableReference.js';
  * Test assertions or expectations
  * 
  *
- * @see https://hl7.org/fhir/R4/testplantestcaseassertion.html
+ * @see https://hl7.org/fhir/R5/testplantestcaseassertion.html
  */
 export interface ITestPlanTestCaseAssertion extends IBackboneElement {
   /**

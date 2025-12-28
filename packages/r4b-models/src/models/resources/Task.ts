@@ -61,7 +61,7 @@ const TASK_PROPERTIES = [
 /**
  * Task - A task to be performed.
  *
- * @see https://hl7.org/fhir/R4/task.html
+ * @see https://hl7.org/fhir/R4B/task.html
  *
  * @example
  * const task = new Task({

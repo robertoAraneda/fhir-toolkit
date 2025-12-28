@@ -10,7 +10,7 @@ import type { IRegulatedAuthorizationCase } from '../backbones/IRegulatedAuthori
  * Regulatory approval, clearance or licencing related to a regulated product, treatment, facility or activity that is cited in a guidance, regulation, rule or legislative act. An example is Market Authorization relating to a Medicinal Product.
  * 
  *
- * @see https://hl7.org/fhir/R4/regulatedauthorization.html
+ * @see https://hl7.org/fhir/R5/regulatedauthorization.html
  */
 export interface IRegulatedAuthorization extends IDomainResource {
   /**

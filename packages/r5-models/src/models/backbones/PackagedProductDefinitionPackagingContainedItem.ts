@@ -14,7 +14,7 @@ const PACKAGED_PRODUCT_DEFINITION_PACKAGING_CONTAINED_ITEM_PROPERTIES = [
 /**
  * PackagedProductDefinitionPackagingContainedItem - The item(s) within the packaging
  *
- * @see https://hl7.org/fhir/R4/packagedproductdefinitionpackagingcontaineditem.html
+ * @see https://hl7.org/fhir/R5/packagedproductdefinitionpackagingcontaineditem.html
  *
  * @example
  * const packagedProductDefinitionPackagingContainedItem = new PackagedProductDefinitionPackagingContainedItem({

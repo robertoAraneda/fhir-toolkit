@@ -16,7 +16,7 @@ const CONSENT_PROVISION_DATA_PROPERTIES = [
 /**
  * ConsentProvisionData - Data controlled by this rule
  *
- * @see https://hl7.org/fhir/R4/consentprovisiondata.html
+ * @see https://hl7.org/fhir/R4B/consentprovisiondata.html
  *
  * @example
  * const consentProvisionData = new ConsentProvisionData({

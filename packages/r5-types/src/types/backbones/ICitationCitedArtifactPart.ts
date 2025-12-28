@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept, IElement, IReference } from '.
  * The component of the article or artifact
  * 
  *
- * @see https://hl7.org/fhir/R4/citationcitedartifactpart.html
+ * @see https://hl7.org/fhir/R5/citationcitedartifactpart.html
  */
 export interface ICitationCitedArtifactPart extends IBackboneElement {
   /**

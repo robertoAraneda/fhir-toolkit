@@ -38,7 +38,7 @@ const OBSERVATION_COMPONENT_PROPERTIES = [
 /**
  * ObservationComponent - Component results
  *
- * @see https://hl7.org/fhir/R4/observationcomponent.html
+ * @see https://hl7.org/fhir/R4B/observationcomponent.html
  *
  * @example
  * const observationComponent = new ObservationComponent({

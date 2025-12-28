@@ -15,7 +15,7 @@ const TERMINOLOGY_CAPABILITIES_EXPANSION_PARAMETER_PROPERTIES = [
 /**
  * TerminologyCapabilitiesExpansionParameter - Supported expansion parameter
  *
- * @see https://hl7.org/fhir/R4/terminologycapabilitiesexpansionparameter.html
+ * @see https://hl7.org/fhir/R4B/terminologycapabilitiesexpansionparameter.html
  *
  * @example
  * const terminologyCapabilitiesExpansionParameter = new TerminologyCapabilitiesExpansionParameter({

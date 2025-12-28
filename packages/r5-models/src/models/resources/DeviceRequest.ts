@@ -60,7 +60,7 @@ const DEVICE_REQUEST_PROPERTIES = [
 /**
  * DeviceRequest - Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
  *
- * @see https://hl7.org/fhir/R4/devicerequest.html
+ * @see https://hl7.org/fhir/R5/devicerequest.html
  *
  * @example
  * const deviceRequest = new DeviceRequest({

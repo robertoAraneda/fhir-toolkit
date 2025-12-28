@@ -6,7 +6,7 @@ import type { IBackboneElement, ICodeableConcept } from '../../base/index.js';
  * Country and jurisdiction where the name applies
  * 
  *
- * @see https://hl7.org/fhir/R4/medicinalproductdefinitionnameusage.html
+ * @see https://hl7.org/fhir/R5/medicinalproductdefinitionnameusage.html
  */
 export interface IMedicinalProductDefinitionNameUsage extends IBackboneElement {
   /**

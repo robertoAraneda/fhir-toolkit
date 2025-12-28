@@ -8,7 +8,7 @@ import type { IImmunizationRecommendationRecommendation } from '../backbones/IIm
  * A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.
  * 
  *
- * @see https://hl7.org/fhir/R4/immunizationrecommendation.html
+ * @see https://hl7.org/fhir/R4B/immunizationrecommendation.html
  */
 export interface IImmunizationRecommendation extends IDomainResource {
   /**

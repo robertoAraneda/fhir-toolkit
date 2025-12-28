@@ -22,7 +22,7 @@ const CODE_SYSTEM_CONCEPT_PROPERTIES = [
 /**
  * CodeSystemConcept - Concepts in the code system
  *
- * @see https://hl7.org/fhir/R4/codesystemconcept.html
+ * @see https://hl7.org/fhir/R4B/codesystemconcept.html
  *
  * @example
  * const codeSystemConcept = new CodeSystemConcept({
