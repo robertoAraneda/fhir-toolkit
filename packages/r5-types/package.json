@@ -1,6 +1,6 @@
 {
   "name": "@fhir-toolkit/r5-types",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "FHIR R5 TypeScript type definitions and valuesets",
   "type": "module",
   "main": "./dist/index.cjs",
