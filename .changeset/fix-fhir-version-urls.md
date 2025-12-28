@@ -1,5 +1,4 @@
 ---
-"@fhir-toolkit/codegen": patch
 "@fhir-toolkit/r4-types": patch
 "@fhir-toolkit/r4b-types": patch
 "@fhir-toolkit/r5-types": patch
