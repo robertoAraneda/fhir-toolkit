@@ -1,8 +1,15 @@
 {
   "name": "@fhir-toolkit/client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "FHIR R4 REST client for browser and Node.js",
-  "keywords": ["fhir", "r4", "client", "rest", "healthcare", "hl7"],
+  "keywords": [
+    "fhir",
+    "r4",
+    "client",
+    "rest",
+    "healthcare",
+    "hl7"
+  ],
   "author": "Roberto Araneda <robaraneda@gmail.com>",
   "license": "MIT",
   "type": "module",
@@ -16,7 +23,9 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",

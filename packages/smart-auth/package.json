@@ -1,8 +1,15 @@
 {
   "name": "@fhir-toolkit/smart-auth",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SMART on FHIR OAuth2 authorization for browser and Node.js",
-  "keywords": ["fhir", "smart", "oauth2", "pkce", "healthcare", "hl7"],
+  "keywords": [
+    "fhir",
+    "smart",
+    "oauth2",
+    "pkce",
+    "healthcare",
+    "hl7"
+  ],
   "author": "Roberto Araneda <robaraneda@gmail.com>",
   "license": "MIT",
   "type": "module",
@@ -16,7 +23,9 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",

@@ -1,5 +1,13 @@
 # @fhir-toolkit/cli
 
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies [079c245]
+  - @fhir-toolkit/yafv@1.2.0
+  - @fhir-toolkit/r4-models@1.0.0
+
 ## 0.1.6
 
 ### Patch Changes
