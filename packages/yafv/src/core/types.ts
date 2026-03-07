@@ -86,8 +86,14 @@ export interface StructureDefinition {
   type: string;
   baseDefinition?: string;
   derivation?: 'specialization' | 'constraint';
+  context?: StructureDefinitionContext[];
   snapshot?: StructureDefinitionSnapshot;
   differential?: StructureDefinitionDifferential;
+}
+
+export interface StructureDefinitionContext {
+  type: 'fhirpath' | 'element' | 'extension';
+  expression: string;
 }
 
 export interface StructureDefinitionSnapshot {
@@ -115,11 +121,14 @@ export interface ElementDefinition {
   mustSupport?: boolean;
   isModifier?: boolean;
   isSummary?: boolean;
+  /** Maximum length for string-type elements */
+  maxLength?: number;
   /** Fixed value - element must be exactly this value */
   fixed?: any;
   /** Pattern value - element must contain at least this (can have more) */
   pattern?: any;
-  // Support for typed fixed[x] and pattern[x] variants
+  // Support for typed fixed[x] and pattern[x] variants (e.g., fixedString, patternCodeableConcept)
+  // Also supports minValue[x] and maxValue[x] (e.g., minValueInteger, maxValueDate)
   [key: string]: any;
 }
 
@@ -145,6 +154,7 @@ export interface ElementDefinitionType {
   code: string;
   profile?: string[];
   targetProfile?: string[];
+  aggregation?: ('contained' | 'referenced' | 'bundled')[];
   extension?: Extension[];
 }
 
@@ -266,6 +276,23 @@ export interface ValidationOptions {
    * @default false
    */
   validateMustSupport?: boolean;
+  /**
+   * Maximum time in milliseconds for FHIRPath constraint evaluation.
+   * If exceeded, remaining constraints are skipped with a warning.
+   * @default 10000
+   */
+  constraintTimeoutMs?: number;
+  /**
+   * Include source location (line/column) in validation issues.
+   * Requires the raw JSON string to be passed via `sourceJson`.
+   * @default false
+   */
+  includeSourceLocation?: boolean;
+  /**
+   * Raw JSON source string for source location mapping.
+   * Only used when `includeSourceLocation` is true.
+   */
+  sourceJson?: string;
 }
 
 export interface ValidationContext {
@@ -284,6 +311,8 @@ export interface ValidationContext {
     line?: number;
     column?: number;
   };
+  /** Resource index for FHIRPath resolve() - contains contained and Bundle entries */
+  resourceIndex?: import('../validators/fhirpath-resolver.js').ResourceIndex;
 }
 
 // ============================================================================

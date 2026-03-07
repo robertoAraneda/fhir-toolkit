@@ -63,6 +63,12 @@ export function validateReference(
       const typeIssues = validateReferenceType(reference, path, allowedTypes);
       issues.push(...typeIssues);
     }
+
+    // Check aggregation mode if specified
+    if (allowedTypes && allowedTypes.length > 0) {
+      const aggIssues = validateAggregationMode(reference.reference, path, allowedTypes);
+      issues.push(...aggIssues);
+    }
   }
 
   // Validate type if present
@@ -99,7 +105,7 @@ function validateReferenceString(
   // - URN: urn:uuid:... or urn:oid:...
 
   const containedPattern = /^#[\w.-]+$/;
-  const relativePattern = /^[A-Z][a-zA-Z]+\/[\w.-]+$/;
+  const relativePattern = /^[A-Z][a-zA-Z]+\/[\w.-]+(?:\/_history\/[\w.-]+)?$/;
   const absolutePattern = /^https?:\/\/.+/;
   const urnUuidPattern = /^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   const urnOidPattern = /^urn:oid:[0-2](\.[1-9][0-9]*)+$/;
@@ -139,14 +145,14 @@ function validateReferenceType(
   let targetType: string | undefined;
 
   if (reference.reference) {
-    // For relative references (ResourceType/id)
-    const match = reference.reference.match(/^([A-Z][a-zA-Z]+)\/[\w.-]+$/);
+    // For relative references (ResourceType/id or ResourceType/id/_history/versionId)
+    const match = reference.reference.match(/^([A-Z][a-zA-Z]+)\/[\w.-]+(?:\/_history\/[\w.-]+)?$/);
     if (match) {
       targetType = match[1];
     }
 
     // For absolute URLs, try to extract type
-    const urlMatch = reference.reference.match(/\/([A-Z][a-zA-Z]+)\/[\w.-]+$/);
+    const urlMatch = reference.reference.match(/\/([A-Z][a-zA-Z]+)\/[\w.-]+(?:\/_history\/[\w.-]+)?$/);
     if (urlMatch) {
       targetType = urlMatch[1];
     }
@@ -259,6 +265,7 @@ export function parseReference(reference: string): {
   resourceType?: string;
   id?: string;
   baseUrl?: string;
+  versionId?: string;
 } {
   // Contained reference
   if (reference.startsWith('#')) {
@@ -280,9 +287,9 @@ export function parseReference(reference: string): {
     };
   }
 
-  // Absolute URL
+  // Absolute URL (with optional /_history/versionId)
   if (reference.startsWith('http://') || reference.startsWith('https://')) {
-    const match = reference.match(/^(https?:\/\/.+)\/([A-Z][a-zA-Z]+)\/([^/]+)$/);
+    const match = reference.match(/^(https?:\/\/.+)\/([A-Z][a-zA-Z]+)\/([^/]+?)(?:\/_history\/([^/]+))?$/);
     if (match) {
       return {
         isContained: false,
@@ -291,6 +298,7 @@ export function parseReference(reference: string): {
         baseUrl: match[1],
         resourceType: match[2],
         id: match[3],
+        versionId: match[4],
       };
     }
     return {
@@ -300,8 +308,8 @@ export function parseReference(reference: string): {
     };
   }
 
-  // Relative reference
-  const match = reference.match(/^([A-Z][a-zA-Z]+)\/(.+)$/);
+  // Relative reference (with optional /_history/versionId)
+  const match = reference.match(/^([A-Z][a-zA-Z]+)\/([^/]+?)(?:\/_history\/([^/]+))?$/);
   if (match) {
     return {
       isContained: false,
@@ -309,6 +317,7 @@ export function parseReference(reference: string): {
       isUrn: false,
       resourceType: match[1],
       id: match[2],
+      versionId: match[3],
     };
   }
 
@@ -353,6 +362,53 @@ export function referencesMatch(ref1: string, ref2: string): boolean {
   }
 
   return false;
+}
+
+/**
+ * Validate reference aggregation mode.
+ * Checks that the reference format matches the allowed aggregation modes
+ * (contained, referenced, bundled) from ElementDefinition.type[].aggregation.
+ */
+function validateAggregationMode(
+  reference: string,
+  path: string,
+  allowedTypes: ElementDefinitionType[]
+): OperationOutcomeIssue[] {
+  // Collect all aggregation modes from Reference types
+  const aggregations = new Set<string>();
+  for (const type of allowedTypes) {
+    if (type.code === 'Reference' && type.aggregation) {
+      for (const agg of type.aggregation) {
+        aggregations.add(agg);
+      }
+    }
+  }
+
+  // If no aggregation is specified, all modes are allowed
+  if (aggregations.size === 0) return [];
+
+  // Determine actual aggregation mode from reference format
+  let actualMode: string;
+  if (reference.startsWith('#')) {
+    actualMode = 'contained';
+  } else if (reference.startsWith('urn:')) {
+    actualMode = 'bundled';
+  } else {
+    actualMode = 'referenced';
+  }
+
+  if (!aggregations.has(actualMode)) {
+    return [
+      createIssue(
+        'error',
+        'value',
+        `Reference '${reference}' uses '${actualMode}' mode which is not allowed. Allowed aggregation modes: ${[...aggregations].join(', ')}`,
+        path
+      ),
+    ];
+  }
+
+  return [];
 }
 
 /**

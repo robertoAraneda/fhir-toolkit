@@ -127,3 +127,14 @@ export type {
   Reference,
   ReferenceValidationResult,
 } from './validators/reference-validator.js';
+
+// JSON location mapper
+export {
+  buildLocationMap,
+  findLocation,
+  enrichIssuesWithLocation,
+} from './validators/json-location.js';
+
+export type {
+  SourceLocation,
+} from './validators/json-location.js';

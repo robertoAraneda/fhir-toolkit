@@ -5,6 +5,8 @@
  * Reference: https://hl7.org/fhir/R4/datatypes.html
  */
 
+import type { StructureDefinition } from '../core/types.js';
+
 export interface PrimitiveValidationResult {
   valid: boolean;
   message?: string;
@@ -260,7 +262,8 @@ function validateId(value: any): PrimitiveValidationResult {
       message: `Expected string for id, got ${typeof value}`,
     };
   }
-  if (!PATTERNS.id.test(value)) {
+  const pattern = getPatternForType('id')!;
+  if (!pattern.test(value)) {
     return {
       valid: false,
       message: `Invalid id format: "${value}". Must match [A-Za-z0-9\\-.]{1,64}`,
@@ -282,7 +285,7 @@ function validateCode(value: any): PrimitiveValidationResult {
       message: 'Code cannot be empty. In FHIR, elements must have content if present.',
     };
   }
-  if (!PATTERNS.code.test(value)) {
+  if (!getPatternForType('code')!.test(value)) {
     return {
       valid: false,
       message: `Invalid code format: "${value}". Cannot have leading/trailing whitespace`,
@@ -304,7 +307,7 @@ function validateUri(value: any): PrimitiveValidationResult {
       message: 'URI cannot be empty',
     };
   }
-  if (!PATTERNS.uri.test(value)) {
+  if (!getPatternForType('uri')!.test(value)) {
     return {
       valid: false,
       message: `Invalid uri format: "${value}"`,
@@ -321,7 +324,7 @@ function validateUrl(value: any): PrimitiveValidationResult {
     };
   }
   // URL is a URI that must be absolute
-  if (!PATTERNS.url.test(value)) {
+  if (!getPatternForType('url')!.test(value)) {
     return {
       valid: false,
       message: `Invalid url format: "${value}". Must be an absolute URL`,
@@ -355,7 +358,7 @@ function validateOid(value: any): PrimitiveValidationResult {
       message: `Expected string for oid, got ${typeof value}`,
     };
   }
-  if (!PATTERNS.oid.test(value)) {
+  if (!getPatternForType('oid')!.test(value)) {
     return {
       valid: false,
       message: `Invalid oid format: "${value}". Must match urn:oid:[0-2](\\.(0|[1-9][0-9]*))+`,
@@ -371,7 +374,7 @@ function validateUuid(value: any): PrimitiveValidationResult {
       message: `Expected string for uuid, got ${typeof value}`,
     };
   }
-  if (!PATTERNS.uuid.test(value)) {
+  if (!getPatternForType('uuid')!.test(value)) {
     return {
       valid: false,
       message: `Invalid uuid format: "${value}". Must match urn:uuid:[0-9a-fA-F-]{36}`,
@@ -387,7 +390,7 @@ function validateDate(value: any): PrimitiveValidationResult {
       message: `Expected string for date, got ${typeof value}`,
     };
   }
-  if (!PATTERNS.date.test(value)) {
+  if (!getPatternForType('date')!.test(value)) {
     return {
       valid: false,
       message: `Invalid date format: "${value}". Must be YYYY, YYYY-MM, or YYYY-MM-DD`,
@@ -403,7 +406,7 @@ function validateDateTime(value: any): PrimitiveValidationResult {
       message: `Expected string for dateTime, got ${typeof value}`,
     };
   }
-  if (!PATTERNS.dateTime.test(value)) {
+  if (!getPatternForType('dateTime')!.test(value)) {
     return {
       valid: false,
       message: `Invalid dateTime format: "${value}"`,
@@ -419,7 +422,7 @@ function validateTime(value: any): PrimitiveValidationResult {
       message: `Expected string for time, got ${typeof value}`,
     };
   }
-  if (!PATTERNS.time.test(value)) {
+  if (!getPatternForType('time')!.test(value)) {
     return {
       valid: false,
       message: `Invalid time format: "${value}". Must be hh:mm:ss[.sss]`,
@@ -435,7 +438,7 @@ function validateInstant(value: any): PrimitiveValidationResult {
       message: `Expected string for instant, got ${typeof value}`,
     };
   }
-  if (!PATTERNS.instant.test(value)) {
+  if (!getPatternForType('instant')!.test(value)) {
     return {
       valid: false,
       message: `Invalid instant format: "${value}". Must be YYYY-MM-DDThh:mm:ss[.sss]Z or with timezone`,
@@ -453,7 +456,7 @@ function validateBase64Binary(value: any): PrimitiveValidationResult {
   }
   // Remove whitespace before checking (base64 can have whitespace)
   const cleaned = value.replace(/\s/g, '');
-  if (cleaned.length > 0 && !PATTERNS.base64Binary.test(cleaned)) {
+  if (cleaned.length > 0 && !getPatternForType('base64Binary')!.test(cleaned)) {
     return {
       valid: false,
       message: `Invalid base64Binary format`,
@@ -462,6 +465,22 @@ function validateBase64Binary(value: any): PrimitiveValidationResult {
   return { valid: true };
 }
 
+// FHIR XHTML allowed elements per https://hl7.org/fhir/R4/narrative.html#xhtml
+const XHTML_ALLOWED_ELEMENTS = new Set([
+  'div', 'p', 'b', 'i', 'em', 'strong', 'small', 'big', 'tt', 'sub', 'sup',
+  'br', 'hr', 'a', 'img', 'span', 'pre', 'code', 'blockquote', 'caption',
+  'table', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td', 'col', 'colgroup',
+  'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+]);
+
+// Disallowed attributes (security-sensitive)
+const XHTML_DISALLOWED_ATTRS = new Set([
+  'onclick', 'ondblclick', 'onmousedown', 'onmouseup', 'onmouseover',
+  'onmousemove', 'onmouseout', 'onkeypress', 'onkeydown', 'onkeyup',
+  'onfocus', 'onblur', 'onchange', 'onsubmit', 'onreset', 'onselect',
+  'onload', 'onunload', 'onerror',
+]);
+
 function validateXhtml(value: any): PrimitiveValidationResult {
   if (typeof value !== 'string') {
     return {
@@ -469,11 +488,123 @@ function validateXhtml(value: any): PrimitiveValidationResult {
       message: `Expected string for xhtml, got ${typeof value}`,
     };
   }
-  if (!PATTERNS.xhtml.test(value)) {
+  if (!(getPatternForType('xhtml') || PATTERNS.xhtml).test(value)) {
     return {
       valid: false,
       message: `Invalid xhtml format. Must be wrapped in <div> element`,
     };
   }
+
+  // Check for disallowed elements
+  const tagMatches = value.matchAll(/<\/?([a-zA-Z][a-zA-Z0-9]*)[>\s/]/g);
+  for (const match of tagMatches) {
+    const tagName = match[1].toLowerCase();
+    if (!XHTML_ALLOWED_ELEMENTS.has(tagName)) {
+      return {
+        valid: false,
+        message: `XHTML contains disallowed element '<${tagName}>'. Only FHIR narrative elements are allowed.`,
+      };
+    }
+  }
+
+  // Check for disallowed attributes (event handlers)
+  const attrMatches = value.matchAll(/\s(on[a-z]+)\s*=/gi);
+  for (const match of attrMatches) {
+    const attrName = match[1].toLowerCase();
+    if (XHTML_DISALLOWED_ATTRS.has(attrName)) {
+      return {
+        valid: false,
+        message: `XHTML contains disallowed attribute '${attrName}'. Event handler attributes are not allowed.`,
+      };
+    }
+  }
+
+  // Check for <script> and <style> tags (always disallowed)
+  if (/<script[\s>]/i.test(value) || /<style[\s>]/i.test(value)) {
+    return {
+      valid: false,
+      message: `XHTML must not contain <script> or <style> elements`,
+    };
+  }
+
   return { valid: true };
+}
+
+// --- Dynamic regex from StructureDefinition ---
+
+const REGEX_EXTENSION_URL = 'http://hl7.org/fhir/StructureDefinition/regex';
+
+/** Cache of dynamically loaded regex patterns (type name → compiled RegExp) */
+const dynamicPatterns = new Map<string, RegExp>();
+
+/**
+ * Extract the regex pattern from a primitive type's StructureDefinition.
+ * Looks for the regex extension on the `.value` element's type.
+ */
+export function extractRegexFromSD(sd: StructureDefinition): string | undefined {
+  const elements = sd.snapshot?.element;
+  if (!elements) return undefined;
+
+  const typeName = sd.type;
+  const valueElement = elements.find(
+    (e: any) => e.id === `${typeName}.value` || e.path === `${typeName}.value`
+  );
+  if (!valueElement?.type) return undefined;
+
+  for (const t of valueElement.type) {
+    if (!t.extension) continue;
+    for (const ext of t.extension) {
+      if (ext.url === REGEX_EXTENSION_URL && ext.valueString) {
+        return ext.valueString;
+      }
+    }
+  }
+
+  return undefined;
+}
+
+/**
+ * Load dynamic regex patterns from StructureDefinitions for all primitive types.
+ * Call this during validator initialization after the registry is loaded.
+ *
+ * @param getSD - Function to retrieve a StructureDefinition by type name
+ */
+export function loadDynamicPrimitivePatterns(
+  getSD: (typeName: string) => StructureDefinition | undefined
+): void {
+  // Types that use regex for validation (excludes boolean, integer, decimal, etc.
+  // which are validated by typeof checks rather than regex)
+  const regexTypes = [
+    'id', 'code', 'uri', 'url', 'canonical', 'oid', 'uuid',
+    'date', 'dateTime', 'time', 'instant', 'base64Binary',
+  ];
+
+  for (const typeName of regexTypes) {
+    const sd = getSD(typeName);
+    if (!sd) continue;
+
+    const pattern = extractRegexFromSD(sd);
+    if (!pattern) continue;
+
+    try {
+      dynamicPatterns.set(typeName, new RegExp(`^${pattern}$`));
+    } catch {
+      // Invalid regex in SD, fall back to hardcoded
+    }
+  }
+}
+
+/**
+ * Get the regex pattern for a primitive type.
+ * Prefers dynamically loaded patterns, falls back to hardcoded.
+ */
+export function getPatternForType(typeName: string): RegExp | undefined {
+  return dynamicPatterns.get(typeName) || (PATTERNS as Record<string, RegExp>)[typeName];
+}
+
+/**
+ * Check if dynamic patterns have been loaded
+ */
+export function hasDynamicPatterns(): boolean {
+  return dynamicPatterns.size > 0;
 }

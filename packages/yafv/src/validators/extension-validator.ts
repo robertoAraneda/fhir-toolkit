@@ -107,6 +107,12 @@ export function validateExtension(
     );
   }
 
+  // Validate extension context - check that extension is used in an allowed location
+  if (extensionDef.context && extensionDef.context.length > 0) {
+    const contextIssues = validateExtensionContext(extensionDef, path, isModifier);
+    issues.push(...contextIssues);
+  }
+
   // Validate extension content
   const contentIssues = validateExtensionContent(extension, extensionDef, path, registry);
   issues.push(...contentIssues);
@@ -558,6 +564,93 @@ function matchesSliceUrl(url: string, sliceElement: ElementDefinition, elements?
   if (sliceElement.sliceName === lastSegment) {
     return true;
   }
+
+  return false;
+}
+
+/**
+ * Validate that an extension is used in an allowed context.
+ * Extensions declare their allowed contexts via StructureDefinition.context[].
+ */
+function validateExtensionContext(
+  extensionDef: StructureDefinition,
+  path: string,
+  isModifier: boolean
+): OperationOutcomeIssue[] {
+  const contexts = extensionDef.context;
+  if (!contexts || contexts.length === 0) return [];
+
+  // Extract the element context from the path
+  // e.g., "Patient.extension[0]" → context is "Patient"
+  // e.g., "Patient.name.extension[0]" → context is "Patient.name"
+  // e.g., "Patient.modifierExtension[0]" → context is "Patient"
+  const contextPath = extractContextFromPath(path);
+
+  for (const ctx of contexts) {
+    if (ctx.type === 'element') {
+      if (matchesElementContext(contextPath, ctx.expression)) {
+        return [];
+      }
+    }
+    // 'fhirpath' and 'extension' context types are harder to validate
+    // For now, accept them as matching
+    if (ctx.type === 'fhirpath' || ctx.type === 'extension') {
+      return [];
+    }
+  }
+
+  // No context matched
+  const allowedContexts = contexts
+    .map((c) => `${c.type}:${c.expression}`)
+    .join(', ');
+
+  return [
+    createIssue(
+      isModifier ? 'error' : 'warning',
+      'structure',
+      `Extension '${extensionDef.url}' is not allowed in context '${contextPath}'. Allowed contexts: ${allowedContexts}`,
+      path
+    ),
+  ];
+}
+
+/**
+ * Extract the element context from a validation path.
+ * Strips array indices and extension/modifierExtension segments.
+ */
+function extractContextFromPath(path: string): string {
+  // Remove array indices: "Patient.name[0].extension[1]" → "Patient.name.extension"
+  let clean = path.replace(/\[\d+\]/g, '');
+  // Remove trailing .extension or .modifierExtension
+  clean = clean.replace(/\.(modifier)?[Ee]xtension$/, '');
+  return clean;
+}
+
+/**
+ * Check if a context path matches an element context expression.
+ * Supports:
+ * - Exact match: "Patient" matches "Patient"
+ * - Path match: "Patient.name" matches "Patient.name"
+ * - Abstract types: "Element" matches any element, "Resource" matches any resource
+ */
+function matchesElementContext(contextPath: string, expression: string): boolean {
+  // Exact match
+  if (contextPath === expression) return true;
+
+  // Path prefix match (context path starts with expression)
+  if (contextPath.startsWith(expression + '.')) return true;
+
+  // Abstract type matches
+  const abstractTypes = ['Element', 'Resource', 'DomainResource'];
+  if (abstractTypes.includes(expression)) return true;
+
+  // Extract the root resource type from the context path
+  const rootType = contextPath.split('.')[0];
+
+  // Check if expression is a data type that could match
+  // e.g., expression "Identifier" matches path "Patient.identifier" (the type is Identifier)
+  // This is a simplified check - full implementation would need SD lookup
+  if (expression === rootType) return true;
 
   return false;
 }

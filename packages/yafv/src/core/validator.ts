@@ -20,7 +20,7 @@ import type {
   IssueCode,
 } from './types.js';
 import { SpecRegistry, getDefaultRegistry, type FhirVersion } from './spec-registry.js';
-import { validatePrimitiveType, isPrimitiveType } from '../validators/primitive-types.js';
+import { validatePrimitiveType, isPrimitiveType, loadDynamicPrimitivePatterns } from '../validators/primitive-types.js';
 import { evaluateConstraint } from '../validators/fhirpath-evaluator.js';
 import {
   validateCodingAgainstBinding,
@@ -35,6 +35,8 @@ import {
 } from '../validators/slicing-validator.js';
 import { validateExtension } from '../validators/extension-validator.js';
 import { validateGlobalInvariants } from '../validators/invariant-validator.js';
+import { buildResourceIndex } from '../validators/fhirpath-resolver.js';
+import { buildLocationMap, enrichIssuesWithLocation } from '../validators/json-location.js';
 
 // Re-export FhirVersion for convenience
 export type { FhirVersion };
@@ -54,6 +56,8 @@ export interface ValidatorOptions {
   terminologyCacheTTL?: number;
   /** Terminology cache max size (default: 1000) */
   terminologyCacheSize?: number;
+  /** External profile resolver for profiles not in the local registry */
+  externalProfileResolver?: (url: string) => Promise<StructureDefinition | null>;
 }
 
 export class FhirValidator {
@@ -62,6 +66,7 @@ export class FhirValidator {
   private initialized = false;
   private terminologyService?: TerminologyService;
   private fhirVersion: FhirVersion;
+  private externalProfileResolver?: (url: string) => Promise<StructureDefinition | null>;
 
   constructor(options: ValidatorOptions = {}) {
     this.fhirVersion = options.fhirVersion || 'R4';
@@ -72,6 +77,9 @@ export class FhirValidator {
       failFast: false,
       ...options.defaultOptions,
     };
+
+    // Store external profile resolver
+    this.externalProfileResolver = options.externalProfileResolver;
 
     // Create terminology service if configured
     if (options.terminologyServer) {
@@ -114,6 +122,10 @@ export class FhirValidator {
     }
 
     await this.registry.initialize();
+
+    // Load dynamic regex patterns from StructureDefinitions
+    loadDynamicPrimitivePatterns((typeName) => this.registry.getStructureDefinition(typeName));
+
     this.initialized = true;
   }
 
@@ -148,7 +160,20 @@ export class FhirValidator {
 
     // Get the StructureDefinition for this resource type
     const profileUrl = mergedOptions.profile || this.getBaseProfileUrl(resource.resourceType);
-    const structureDefinition = this.registry.getStructureDefinition(profileUrl);
+    let structureDefinition = this.registry.getStructureDefinition(profileUrl);
+
+    // Try external resolver if not found locally
+    if (!structureDefinition && this.externalProfileResolver) {
+      try {
+        const resolved = await this.externalProfileResolver(profileUrl);
+        if (resolved) {
+          this.registry.addSpec(resolved, 'external-resolver');
+          structureDefinition = resolved;
+        }
+      } catch {
+        // External resolver failed, fall through to error
+      }
+    }
 
     if (!structureDefinition) {
       return this.createOutcome([
@@ -161,11 +186,15 @@ export class FhirValidator {
       ]);
     }
 
+    // Build resource index for FHIRPath resolve() support
+    const resourceIndex = buildResourceIndex(resource);
+
     // Create validation context
     const context: ValidationContext = {
       rootResource: resource,
       data: resource,
       path: resource.resourceType,
+      resourceIndex,
     };
 
     // Run validations based on level
@@ -244,6 +273,12 @@ export class FhirValidator {
           resource.resourceType
         )
       );
+    }
+
+    // Enrich issues with source location if requested
+    if (mergedOptions.includeSourceLocation && mergedOptions.sourceJson) {
+      const locationMap = buildLocationMap(mergedOptions.sourceJson);
+      enrichIssuesWithLocation(deduplicatedIssues, locationMap);
     }
 
     return this.createOutcome(deduplicatedIssues);
@@ -1081,6 +1116,27 @@ export class FhirValidator {
                 }
               }
             }
+
+            // Validate maxLength for nested string elements
+            if (nestedValue !== undefined && nestedValue !== null && element.maxLength !== undefined) {
+              const nestedContext = { ...context, path: itemPath };
+              const maxLengthIssues = this.validateMaxLength(nestedValue, { ...element, path: itemPath }, nestedContext);
+              issues.push(...maxLengthIssues);
+            }
+
+            // Validate minValue/maxValue for nested elements
+            if (nestedValue !== undefined && nestedValue !== null) {
+              const nestedContext = { ...context, path: itemPath };
+              const boundsIssues = this.validateValueBounds(nestedValue, { ...element, path: itemPath }, nestedContext);
+              issues.push(...boundsIssues);
+            }
+
+            // Handle contentReference for nested elements
+            if (nestedValue !== undefined && nestedValue !== null && element.contentReference && !element.type) {
+              const nestedContext = { ...context, path: itemPath };
+              const contentRefIssues = await this.validateContentReference(nestedValue, { ...element, path: itemPath }, nestedContext, _options);
+              issues.push(...contentRefIssues);
+            }
           }
         }
         return issues;
@@ -1100,10 +1156,28 @@ export class FhirValidator {
       issues.push(...typeIssues);
     }
 
+    // Handle contentReference: validate value against the referenced element's structure
+    if (value !== undefined && value !== null && element.contentReference && !element.type) {
+      const contentRefIssues = await this.validateContentReference(value, element, context, _options);
+      issues.push(...contentRefIssues);
+    }
+
     // Validate fixed/pattern values if defined
     if (value !== undefined && value !== null) {
       const fixedPatternIssues = this.validateFixedAndPattern(value, element, context);
       issues.push(...fixedPatternIssues);
+    }
+
+    // Validate maxLength for string-type elements
+    if (value !== undefined && value !== null && element.maxLength !== undefined) {
+      const maxLengthIssues = this.validateMaxLength(value, element, context);
+      issues.push(...maxLengthIssues);
+    }
+
+    // Validate minValue/maxValue for ordered types
+    if (value !== undefined && value !== null) {
+      const boundsIssues = this.validateValueBounds(value, element, context);
+      issues.push(...boundsIssues);
     }
 
     return issues;
@@ -1705,6 +1779,10 @@ export class FhirValidator {
       return issues;
     }
 
+    // Safety limit: total time budget for constraint evaluation (default: 10s)
+    const constraintTimeoutMs = options.constraintTimeoutMs ?? 10_000;
+    const startTime = Date.now();
+
     // Track evaluated constraints to avoid duplicates
     const evaluatedConstraints = new Set<string>();
 
@@ -1747,6 +1825,19 @@ export class FhirValidator {
 
       // Evaluate each constraint
       for (const constraint of element.constraint) {
+        // Safety: check total time budget for constraint evaluation
+        if (Date.now() - startTime > constraintTimeoutMs) {
+          issues.push(
+            this.createIssue(
+              'warning',
+              'timeout',
+              `Constraint evaluation timed out after ${constraintTimeoutMs}ms. Some constraints were not evaluated.`,
+              context.path
+            )
+          );
+          return issues;
+        }
+
         // Skip if no FHIRPath expression
         if (!constraint.expression) {
           continue;
@@ -1790,6 +1881,8 @@ export class FhirValidator {
             const result = evaluateConstraint(constraint.expression, evalContext, {
               resource: evalContext,
               rootResource: context.rootResource,
+              resourceIndex: context.resourceIndex,
+              registry: this.registry,
             });
             if (!result.passed) {
               constraintPassed = false;
@@ -1802,6 +1895,8 @@ export class FhirValidator {
           const result = evaluateConstraint(constraint.expression, data, {
             resource: data,
             rootResource: context.rootResource,
+            resourceIndex: context.resourceIndex,
+            registry: this.registry,
           });
           constraintPassed = result.passed;
           constraintError = result.error;
@@ -1859,7 +1954,20 @@ export class FhirValidator {
 
     for (const profileUrl of profiles) {
       // Get the profile StructureDefinition
-      const profile = this.registry.getProfile(profileUrl);
+      let profile = this.registry.getProfile(profileUrl);
+
+      // Try external resolver if not found locally
+      if (!profile && this.externalProfileResolver) {
+        try {
+          const resolved = await this.externalProfileResolver(profileUrl);
+          if (resolved) {
+            this.registry.addSpec(resolved, 'external-resolver');
+            profile = resolved;
+          }
+        } catch {
+          // External resolver failed
+        }
+      }
 
       if (!profile) {
         issues.push(
@@ -2146,6 +2254,209 @@ export class FhirValidator {
    * @see https://www.hl7.org/fhir/elementdefinition-definitions.html#ElementDefinition.fixed_x_
    * @see https://www.hl7.org/fhir/elementdefinition-definitions.html#ElementDefinition.pattern_x_
    */
+  /**
+   * Validate an element using contentReference.
+   * contentReference points to another element in the same SD whose
+   * type structure applies here (e.g., recursive types like Questionnaire.item).
+   */
+  private async validateContentReference(
+    value: any,
+    element: ElementDefinition,
+    context: ValidationContext,
+    _options: ValidationOptions
+  ): Promise<OperationOutcomeIssue[]> {
+    const issues: OperationOutcomeIssue[] = [];
+    const ref = element.contentReference!;
+
+    // contentReference is like "#Questionnaire.item" - strip the "#"
+    const referencedPath = ref.startsWith('#') ? ref.substring(1) : ref;
+
+    // Find the SD that contains this element
+    const resourceType = referencedPath.split('.')[0];
+    const sd = this.registry.getStructureDefinition(resourceType);
+    if (!sd?.snapshot?.element) return issues;
+
+    // Find child elements of the referenced path
+    const childElements = sd.snapshot.element.filter(
+      (e: ElementDefinition) =>
+        e.path.startsWith(referencedPath + '.') &&
+        e.path.split('.').length === referencedPath.split('.').length + 1
+    );
+
+    if (childElements.length === 0) return issues;
+
+    // Validate value(s) against the child elements
+    const values = Array.isArray(value) ? value : [value];
+    for (let i = 0; i < values.length; i++) {
+      const item = values[i];
+      if (!item || typeof item !== 'object') continue;
+
+      const itemPath = Array.isArray(value)
+        ? `${element.path}[${i}]`
+        : element.path;
+
+      for (const childElement of childElements) {
+        // Remap the child element path to the current location
+        const childFieldName = childElement.path.split('.').pop()!;
+        const remappedElement: ElementDefinition = {
+          ...childElement,
+          path: `${itemPath}.${childFieldName}`,
+        };
+
+        // Validate cardinality at minimum
+        const childValue = item[childFieldName];
+        const cardIssues = this.validateCardinality(childValue, remappedElement, context);
+        issues.push(...cardIssues);
+      }
+    }
+
+    return issues;
+  }
+
+  /**
+   * Validate maxLength constraint on string-type elements
+   */
+  private validateMaxLength(
+    value: any,
+    element: ElementDefinition,
+    context: ValidationContext
+  ): OperationOutcomeIssue[] {
+    const issues: OperationOutcomeIssue[] = [];
+    const maxLength = element.maxLength!;
+
+    const checkValue = (v: any, path: string) => {
+      if (typeof v === 'string' && v.length > maxLength) {
+        issues.push(
+          this.createIssue(
+            'error',
+            'value',
+            `String value exceeds maxLength of ${maxLength} (actual length: ${v.length})`,
+            path,
+            context
+          )
+        );
+      }
+    };
+
+    if (Array.isArray(value)) {
+      for (let i = 0; i < value.length; i++) {
+        checkValue(value[i], `${element.path}[${i}]`);
+      }
+    } else {
+      checkValue(value, element.path);
+    }
+
+    return issues;
+  }
+
+  /**
+   * Validate minValue[x] and maxValue[x] constraints on ordered types
+   * Supports integer, decimal, date, dateTime, time, instant, Quantity
+   */
+  private validateValueBounds(
+    value: any,
+    element: ElementDefinition,
+    context: ValidationContext
+  ): OperationOutcomeIssue[] {
+    const issues: OperationOutcomeIssue[] = [];
+
+    // Find minValue[x] and maxValue[x] from the element definition
+    // These are stored as minValueInteger, minValueDecimal, minValueDate, etc.
+    const boundTypes = ['Integer', 'Decimal', 'Date', 'DateTime', 'Time', 'Instant',
+      'UnsignedInt', 'PositiveInt', 'Quantity'];
+
+    let minValue: any = undefined;
+    let maxValue: any = undefined;
+    let boundType: string | undefined;
+
+    for (const bt of boundTypes) {
+      const minKey = `minValue${bt}`;
+      const maxKey = `maxValue${bt}`;
+      if (element[minKey] !== undefined) {
+        minValue = element[minKey];
+        boundType = bt;
+      }
+      if (element[maxKey] !== undefined) {
+        maxValue = element[maxKey];
+        boundType = boundType || bt;
+      }
+    }
+
+    if (minValue === undefined && maxValue === undefined) {
+      return issues;
+    }
+
+    const checkValue = (v: any, path: string) => {
+      const comparable = this.toComparableValue(v, boundType!);
+      if (comparable === undefined) return;
+
+      if (minValue !== undefined) {
+        const minComparable = this.toComparableValue(minValue, boundType!);
+        if (minComparable !== undefined && comparable < minComparable) {
+          issues.push(
+            this.createIssue(
+              'error',
+              'value',
+              `Value ${JSON.stringify(v)} is less than minimum allowed value ${JSON.stringify(minValue)}`,
+              path,
+              context
+            )
+          );
+        }
+      }
+
+      if (maxValue !== undefined) {
+        const maxComparable = this.toComparableValue(maxValue, boundType!);
+        if (maxComparable !== undefined && comparable > maxComparable) {
+          issues.push(
+            this.createIssue(
+              'error',
+              'value',
+              `Value ${JSON.stringify(v)} exceeds maximum allowed value ${JSON.stringify(maxValue)}`,
+              path,
+              context
+            )
+          );
+        }
+      }
+    };
+
+    if (Array.isArray(value)) {
+      for (let i = 0; i < value.length; i++) {
+        checkValue(value[i], `${element.path}[${i}]`);
+      }
+    } else {
+      checkValue(value, element.path);
+    }
+
+    return issues;
+  }
+
+  /**
+   * Convert a value to a comparable number/string for bounds checking
+   */
+  private toComparableValue(value: any, boundType: string): number | string | undefined {
+    switch (boundType) {
+      case 'Integer':
+      case 'UnsignedInt':
+      case 'PositiveInt':
+      case 'Decimal':
+        return typeof value === 'number' ? value : undefined;
+      case 'Date':
+      case 'DateTime':
+      case 'Time':
+      case 'Instant':
+        return typeof value === 'string' ? value : undefined;
+      case 'Quantity':
+        if (typeof value === 'object' && value !== null && typeof value.value === 'number') {
+          return value.value;
+        }
+        return undefined;
+      default:
+        return undefined;
+    }
+  }
+
   private validateFixedAndPattern(
     value: any,
     element: ElementDefinition,

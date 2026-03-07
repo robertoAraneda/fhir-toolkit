@@ -8,6 +8,9 @@
 import fhirpath from 'fhirpath';
 import fhirpathR4Model from 'fhirpath/fhir-context/r4';
 import { LRUCache } from 'lru-cache';
+import { type ResourceIndex, resolveReference } from './fhirpath-resolver.js';
+import { isCodeInValueSet, type Coding } from './terminology-validator.js';
+import type { SpecRegistry } from '../core/spec-registry.js';
 
 export interface FHIRPathContext {
   /** The resource being validated */
@@ -16,6 +19,10 @@ export interface FHIRPathContext {
   rootResource?: any;
   /** Additional context variables */
   context?: Record<string, any>;
+  /** Resource index for resolve() support */
+  resourceIndex?: ResourceIndex;
+  /** SpecRegistry for memberOf() terminology validation */
+  registry?: SpecRegistry;
 }
 
 export interface EvaluationResult {
@@ -34,7 +41,62 @@ export interface ConstraintEvaluationResult {
   error?: string;
 }
 
-// Cache for compiled FHIRPath expressions
+// Mutable references set before each evaluation so compiled closures can access them.
+let activeResourceIndex: ResourceIndex | undefined;
+let activeRegistry: SpecRegistry | undefined;
+
+// userInvocationTable compiled into all cached expressions.
+const userInvocationTable = {
+  resolve: {
+    fn: (inputs: any[]) => {
+      if (!activeResourceIndex) return [];
+      const results: any[] = [];
+      for (const input of inputs) {
+        const ref = typeof input === 'string' ? input : input?.reference;
+        if (!ref) continue;
+        const resolved = resolveReference(ref, activeResourceIndex);
+        if (resolved) results.push(resolved);
+      }
+      return results;
+    },
+    arity: { 0: [] as string[] },
+  },
+  memberOf: {
+    fn: (inputs: any[], valueSetUrl: string) => {
+      if (!activeRegistry || inputs.length !== 1 || inputs[0] == null) return [];
+      const input = inputs[0];
+      const valueSet = activeRegistry.getValueSet(valueSetUrl);
+      if (!valueSet) {
+        // Can't validate against unknown ValueSet - return true (fail-open)
+        return [true];
+      }
+
+      // Input is a code string
+      if (typeof input === 'string') {
+        return [isCodeInValueSet({ code: input }, valueSet, activeRegistry)];
+      }
+
+      // Input is a Coding { system, code }
+      if (input.code !== undefined && !Array.isArray(input.coding)) {
+        const coding: Coding = { system: input.system, code: input.code };
+        return [isCodeInValueSet(coding, valueSet, activeRegistry)];
+      }
+
+      // Input is a CodeableConcept { coding: [...] }
+      if (Array.isArray(input.coding)) {
+        const result = input.coding.some((c: any) =>
+          isCodeInValueSet({ system: c.system, code: c.code }, valueSet, activeRegistry!)
+        );
+        return [result];
+      }
+
+      return [true];
+    },
+    arity: { 1: ['String'] as string[] },
+  },
+};
+
+// Cache for compiled FHIRPath expressions (all compiled with resolve() support)
 const expressionCache = new LRUCache<string, any>({
   max: 500,
 });
@@ -71,17 +133,25 @@ export function evaluate(
     // Check cache for compiled expression
     let compiled = expressionCache.get(expression);
     if (!compiled) {
-      compiled = fhirpath.compile(expression, fhirpathR4Model);
+      compiled = fhirpath.compile(expression, fhirpathR4Model, {
+        userInvocationTable,
+      });
       expressionCache.set(expression, compiled);
     }
 
-    // Evaluate the expression with R4 model for proper choice type resolution
-    const result = compiled(resource, environment);
-
-    return {
-      success: true,
-      result,
-    };
+    // Set mutable references for this evaluation.
+    // The compiled closures (resolve, memberOf) read from these.
+    const previousIndex = activeResourceIndex;
+    const previousRegistry = activeRegistry;
+    activeResourceIndex = context?.resourceIndex;
+    activeRegistry = context?.registry;
+    try {
+      const result = compiled(resource, environment);
+      return { success: true, result };
+    } finally {
+      activeResourceIndex = previousIndex;
+      activeRegistry = previousRegistry;
+    }
   } catch (error) {
     return {
       success: false,

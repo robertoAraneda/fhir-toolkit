@@ -331,6 +331,29 @@ export class SpecRegistry {
       throw new Error(`Spec ${type} must have a url`);
     }
 
+    // For extension StructureDefinitions, merge context arrays when re-adding
+    if (type === 'StructureDefinition') {
+      const existing = this.specs.get(url);
+      if (existing && existing.type === 'StructureDefinition') {
+        const existingSD = existing.resource as StructureDefinition;
+        const newSD = resource as StructureDefinition;
+        if (existingSD.context && newSD.context) {
+          // Merge contexts, deduplicating by type+expression
+          const existingKeys = new Set(
+            existingSD.context.map((c: any) => `${c.type}:${c.expression}`)
+          );
+          for (const ctx of newSD.context) {
+            const key = `${ctx.type}:${ctx.expression}`;
+            if (!existingKeys.has(key)) {
+              existingSD.context.push(ctx);
+            }
+          }
+          // Use existing SD with merged contexts
+          resource = existingSD as any;
+        }
+      }
+    }
+
     const loadedSpec: LoadedSpec = {
       type,
       resource,

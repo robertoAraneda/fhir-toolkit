@@ -6,7 +6,12 @@ import { describe, it, expect } from 'vitest';
 import {
   validatePrimitiveType,
   isPrimitiveType,
+  extractRegexFromSD,
+  loadDynamicPrimitivePatterns,
+  getPatternForType,
+  hasDynamicPatterns,
 } from '../../src/validators/primitive-types.js';
+import type { StructureDefinition } from '../../src/core/types.js';
 
 describe('Primitive Type Validation', () => {
   describe('isPrimitiveType', () => {
@@ -410,5 +415,131 @@ describe('Primitive Type Validation', () => {
       const result = validatePrimitiveType('Hello World', 'xhtml');
       expect(result.valid).toBe(false);
     });
+
+    it('should reject disallowed elements like <script>', () => {
+      const result = validatePrimitiveType('<div xmlns="http://www.w3.org/1999/xhtml"><script>alert("xss")</script></div>', 'xhtml');
+      expect(result.valid).toBe(false);
+      expect(result.message).toContain('script');
+    });
+
+    it('should reject disallowed elements like <style>', () => {
+      const result = validatePrimitiveType('<div xmlns="http://www.w3.org/1999/xhtml"><style>body{color:red}</style></div>', 'xhtml');
+      expect(result.valid).toBe(false);
+    });
+
+    it('should reject event handler attributes', () => {
+      const result = validatePrimitiveType('<div xmlns="http://www.w3.org/1999/xhtml"><p onclick="alert()">test</p></div>', 'xhtml');
+      expect(result.valid).toBe(false);
+      expect(result.message).toContain('onclick');
+    });
+
+    it('should reject non-FHIR elements like <form>', () => {
+      const result = validatePrimitiveType('<div xmlns="http://www.w3.org/1999/xhtml"><form action="/"><input type="text"/></form></div>', 'xhtml');
+      expect(result.valid).toBe(false);
+      expect(result.message).toContain('form');
+    });
+
+    it('should allow valid FHIR narrative elements', () => {
+      const result = validatePrimitiveType(
+        '<div xmlns="http://www.w3.org/1999/xhtml"><p>Patient: <b>John Doe</b></p><table><tr><th>Date</th><td>2024-01-15</td></tr></table></div>',
+        'xhtml'
+      );
+      expect(result.valid).toBe(true);
+    });
+  });
+});
+
+describe('Dynamic Regex from StructureDefinition', () => {
+  it('should extract regex from a primitive type SD', () => {
+    const sd: any = {
+      resourceType: 'StructureDefinition',
+      url: 'http://hl7.org/fhir/StructureDefinition/id',
+      type: 'id',
+      snapshot: {
+        element: [
+          { id: 'id', path: 'id' },
+          {
+            id: 'id.value',
+            path: 'id.value',
+            type: [
+              {
+                code: 'http://hl7.org/fhirpath/System.String',
+                extension: [
+                  {
+                    url: 'http://hl7.org/fhir/StructureDefinition/regex',
+                    valueString: '[A-Za-z0-9\\-\\.]{1,64}',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    };
+
+    const regex = extractRegexFromSD(sd);
+    expect(regex).toBe('[A-Za-z0-9\\-\\.]{1,64}');
+  });
+
+  it('should return undefined when no regex extension exists', () => {
+    const sd: any = {
+      resourceType: 'StructureDefinition',
+      url: 'http://hl7.org/fhir/StructureDefinition/string',
+      type: 'string',
+      snapshot: {
+        element: [
+          { id: 'string', path: 'string' },
+          {
+            id: 'string.value',
+            path: 'string.value',
+            type: [{ code: 'http://hl7.org/fhirpath/System.String' }],
+          },
+        ],
+      },
+    };
+
+    expect(extractRegexFromSD(sd)).toBeUndefined();
+  });
+
+  it('should load dynamic patterns from SD provider', () => {
+    const sds: Record<string, any> = {
+      id: {
+        resourceType: 'StructureDefinition',
+        type: 'id',
+        snapshot: {
+          element: [
+            {
+              id: 'id.value',
+              path: 'id.value',
+              type: [
+                {
+                  code: 'http://hl7.org/fhirpath/System.String',
+                  extension: [
+                    {
+                      url: 'http://hl7.org/fhir/StructureDefinition/regex',
+                      valueString: '[A-Za-z0-9\\-\\.]{1,64}',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      },
+    };
+
+    loadDynamicPrimitivePatterns((name) => sds[name]);
+    expect(hasDynamicPatterns()).toBe(true);
+
+    const pattern = getPatternForType('id');
+    expect(pattern).toBeDefined();
+    expect(pattern!.test('valid-id.123')).toBe(true);
+    expect(pattern!.test('invalid id!')).toBe(false);
+  });
+
+  it('should fall back to hardcoded patterns for types without SD', () => {
+    const pattern = getPatternForType('date');
+    expect(pattern).toBeDefined();
+    expect(pattern!.test('2024-01-15')).toBe(true);
   });
 });

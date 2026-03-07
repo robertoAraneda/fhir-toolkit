@@ -276,6 +276,17 @@ async function validateBundleEntries(
       issues.push(...fullUrlIssues);
     }
 
+    // Validate fullUrl/id consistency
+    if (entry.fullUrl && entry.resource?.id) {
+      const fullUrlIdIssues = validateFullUrlIdConsistency(
+        entry.fullUrl,
+        entry.resource.id,
+        entry.resource.resourceType,
+        entryPath
+      );
+      issues.push(...fullUrlIdIssues);
+    }
+
     // Validate resource if present
     if (entry.resource) {
       // Check basic resource structure
@@ -349,6 +360,55 @@ function validateFullUrl(
         `${entryPath}.fullUrl`
       )
     );
+  }
+
+  return issues;
+}
+
+/**
+ * Validate that fullUrl is consistent with resource id.
+ * For non-URN fullUrls, the fullUrl should end with /{resourceType}/{id}.
+ */
+function validateFullUrlIdConsistency(
+  fullUrl: string,
+  resourceId: string,
+  resourceType: string | undefined,
+  entryPath: string
+): OperationOutcomeIssue[] {
+  const issues: OperationOutcomeIssue[] = [];
+
+  // Skip URN-based fullUrls (urn:uuid:, urn:oid:) - no id consistency required
+  if (fullUrl.startsWith('urn:')) {
+    return issues;
+  }
+
+  // For URL-based fullUrls, check that it ends with /{id}
+  const expectedSuffix = `/${resourceId}`;
+  if (!fullUrl.endsWith(expectedSuffix)) {
+    issues.push(
+      createIssue(
+        'error',
+        'value',
+        `fullUrl '${fullUrl}' is not consistent with resource id '${resourceId}'`,
+        `${entryPath}.fullUrl`
+      )
+    );
+    return issues;
+  }
+
+  // Additionally check that the resourceType is in the path
+  if (resourceType) {
+    const expectedTypeSuffix = `/${resourceType}/${resourceId}`;
+    if (!fullUrl.endsWith(expectedTypeSuffix)) {
+      issues.push(
+        createIssue(
+          'warning',
+          'value',
+          `fullUrl '${fullUrl}' does not end with '${resourceType}/${resourceId}'`,
+          `${entryPath}.fullUrl`
+        )
+      );
+    }
   }
 
   return issues;

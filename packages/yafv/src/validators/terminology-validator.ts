@@ -234,7 +234,7 @@ export async function validateCodeAgainstBinding(
 /**
  * Check if a Coding is in a ValueSet
  */
-function isCodeInValueSet(
+export function isCodeInValueSet(
   coding: Coding,
   valueSet: ValueSet,
   registry: SpecRegistry

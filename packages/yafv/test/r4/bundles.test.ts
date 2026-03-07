@@ -516,6 +516,42 @@ describe('Reference Validation', () => {
       );
       expect(result.valid).toBe(true);
     });
+
+    it('should validate relative reference with _history version', () => {
+      const result = validateReference(
+        { reference: 'Patient/123/_history/2' },
+        'subject'
+      );
+      expect(result.valid).toBe(true);
+      expect(result.issues.filter((i) => i.severity === 'warning')).toHaveLength(0);
+    });
+
+    it('should validate absolute reference with _history version', () => {
+      const result = validateReference(
+        { reference: 'http://example.org/fhir/Patient/123/_history/5' },
+        'subject'
+      );
+      expect(result.valid).toBe(true);
+    });
+
+    it('should correctly extract target type from versioned reference', () => {
+      const result = validateReference(
+        { reference: 'Patient/123/_history/2' },
+        'subject',
+        [{ code: 'Reference', targetProfile: ['http://hl7.org/fhir/StructureDefinition/Patient'] }]
+      );
+      expect(result.valid).toBe(true);
+    });
+
+    it('should reject wrong target type in versioned reference', () => {
+      const result = validateReference(
+        { reference: 'Observation/123/_history/2' },
+        'subject',
+        [{ code: 'Reference', targetProfile: ['http://hl7.org/fhir/StructureDefinition/Patient'] }]
+      );
+      const errors = result.issues.filter((i) => i.severity === 'error');
+      expect(errors.length).toBeGreaterThan(0);
+    });
   });
 
   describe('parseReference', () => {
@@ -546,6 +582,24 @@ describe('Reference Validation', () => {
       expect(result.isUrn).toBe(true);
       expect(result.id).toBe('urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a');
     });
+
+    it('should parse relative reference with _history', () => {
+      const result = parseReference('Patient/123/_history/2');
+      expect(result.isContained).toBe(false);
+      expect(result.isAbsolute).toBe(false);
+      expect(result.resourceType).toBe('Patient');
+      expect(result.id).toBe('123');
+      expect(result.versionId).toBe('2');
+    });
+
+    it('should parse absolute reference with _history', () => {
+      const result = parseReference('http://example.org/fhir/Patient/123/_history/5');
+      expect(result.isAbsolute).toBe(true);
+      expect(result.resourceType).toBe('Patient');
+      expect(result.id).toBe('123');
+      expect(result.versionId).toBe('5');
+      expect(result.baseUrl).toBe('http://example.org/fhir');
+    });
   });
 
   describe('referencesMatch', () => {
@@ -565,6 +619,124 @@ describe('Reference Validation', () => {
 
     it('should not match different ids', () => {
       expect(referencesMatch('Patient/123', 'Patient/456')).toBe(false);
+    });
+  });
+
+  describe('Bundle fullUrl/id consistency', () => {
+    it('should accept consistent fullUrl and resource id', async () => {
+      const bundle: Bundle = {
+        resourceType: 'Bundle',
+        type: 'collection',
+        entry: [
+          {
+            fullUrl: 'http://example.org/fhir/Patient/123',
+            resource: {
+              resourceType: 'Patient',
+              id: '123',
+            },
+          },
+        ],
+      };
+
+      const result = await validateBundle(bundle);
+      const consistencyErrors = result.issues.filter(
+        (i) => i.diagnostics?.includes('not consistent with resource id')
+      );
+      expect(consistencyErrors).toHaveLength(0);
+    });
+
+    it('should detect inconsistent fullUrl and resource id', async () => {
+      const bundle: Bundle = {
+        resourceType: 'Bundle',
+        type: 'collection',
+        entry: [
+          {
+            fullUrl: 'http://example.org/fhir/Patient/999',
+            resource: {
+              resourceType: 'Patient',
+              id: '123',
+            },
+          },
+        ],
+      };
+
+      const result = await validateBundle(bundle);
+      const consistencyErrors = result.issues.filter(
+        (i) =>
+          i.severity === 'error' &&
+          i.diagnostics?.includes('not consistent with resource id')
+      );
+      expect(consistencyErrors).toHaveLength(1);
+      expect(consistencyErrors[0].diagnostics).toContain('999');
+      expect(consistencyErrors[0].diagnostics).toContain('123');
+    });
+
+    it('should skip consistency check for urn:uuid fullUrls', async () => {
+      const bundle: Bundle = {
+        resourceType: 'Bundle',
+        type: 'collection',
+        entry: [
+          {
+            fullUrl: 'urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a',
+            resource: {
+              resourceType: 'Patient',
+              id: '123',
+            },
+          },
+        ],
+      };
+
+      const result = await validateBundle(bundle);
+      const consistencyErrors = result.issues.filter(
+        (i) => i.diagnostics?.includes('not consistent with resource id')
+      );
+      expect(consistencyErrors).toHaveLength(0);
+    });
+
+    it('should skip consistency check for urn:oid fullUrls', async () => {
+      const bundle: Bundle = {
+        resourceType: 'Bundle',
+        type: 'collection',
+        entry: [
+          {
+            fullUrl: 'urn:oid:2.16.840.1.113883.3.1',
+            resource: {
+              resourceType: 'Organization',
+              id: 'org-1',
+            },
+          },
+        ],
+      };
+
+      const result = await validateBundle(bundle);
+      const consistencyErrors = result.issues.filter(
+        (i) => i.diagnostics?.includes('not consistent with resource id')
+      );
+      expect(consistencyErrors).toHaveLength(0);
+    });
+
+    it('should warn when resourceType is not in fullUrl path', async () => {
+      const bundle: Bundle = {
+        resourceType: 'Bundle',
+        type: 'collection',
+        entry: [
+          {
+            fullUrl: 'http://example.org/fhir/WrongType/123',
+            resource: {
+              resourceType: 'Patient',
+              id: '123',
+            },
+          },
+        ],
+      };
+
+      const result = await validateBundle(bundle);
+      const warnings = result.issues.filter(
+        (i) =>
+          i.severity === 'warning' &&
+          i.diagnostics?.includes('does not end with')
+      );
+      expect(warnings).toHaveLength(1);
     });
   });
 });
