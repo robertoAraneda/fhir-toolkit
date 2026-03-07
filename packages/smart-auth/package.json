@@ -1,0 +1,48 @@
+{
+  "name": "@fhir-toolkit/smart-auth",
+  "version": "0.1.0",
+  "description": "SMART on FHIR OAuth2 authorization for browser and Node.js",
+  "keywords": ["fhir", "smart", "oauth2", "pkce", "healthcare", "hl7"],
+  "author": "Roberto Araneda <robaraneda@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@fhir-toolkit/client": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertoAraneda/fhir-toolkit.git",
+    "directory": "packages/smart-auth"
+  },
+  "bugs": {
+    "url": "https://github.com/robertoAraneda/fhir-toolkit/issues"
+  }
+}
