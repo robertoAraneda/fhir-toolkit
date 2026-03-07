@@ -1,8 +1,17 @@
 {
   "name": "@fhir-toolkit/react-ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Headless React UI components for SMART on FHIR applications",
-  "keywords": ["fhir", "react", "smart", "ui", "headless", "components", "healthcare", "hl7"],
+  "keywords": [
+    "fhir",
+    "react",
+    "smart",
+    "ui",
+    "headless",
+    "components",
+    "healthcare",
+    "hl7"
+  ],
   "author": "Roberto Araneda <robaraneda@gmail.com>",
   "license": "MIT",
   "type": "module",
@@ -16,7 +25,9 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
