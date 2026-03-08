@@ -188,10 +188,37 @@ export class FhirClient {
 
   // ─── Operations ────────────────────────────────────────────────────────
 
+  /**
+   * Execute a FHIR operation (e.g., `$validate`, `$everything`, `$expand`).
+   *
+   * The `body` parameter accepts either a `Parameters` resource or any FHIR resource directly.
+   * Some operations like `$validate` accept the resource directly in the body
+   * (e.g., `POST /Patient/$validate` with a Patient resource), while others
+   * require a `Parameters` wrapper.
+   *
+   * When using GET with a `Parameters` body, the parameters are converted to query string params.
+   * When using GET with a non-Parameters resource, the body is ignored.
+   *
+   * @example
+   * ```typescript
+   * // $validate with resource directly in body
+   * const outcome = await client.operation<IOperationOutcome>('Patient', '$validate', patient);
+   *
+   * // $validate with Parameters wrapper
+   * const params: IParameters = {
+   *   resourceType: 'Parameters',
+   *   parameter: [{ name: 'resource', resource: patient }],
+   * };
+   * const outcome = await client.operation<IOperationOutcome>('Patient', '$validate', params);
+   *
+   * // $everything
+   * const bundle = await client.operation<IBundle>('Patient/123', '$everything');
+   * ```
+   */
   async operation<T = IParameters>(
     scope: string,
     name: string,
-    params?: IParameters,
+    body?: IParameters | IResource,
     method: 'GET' | 'POST' = 'POST',
     options?: RequestOptions,
   ): Promise<T> {
@@ -201,27 +228,31 @@ export class FhirClient {
       : `${this.baseUrl}/${operationName}`;
 
     if (method === 'GET') {
-      if (params?.parameter && params.parameter.length > 0) {
-        const queryParts: string[] = [];
-        for (const p of params.parameter) {
-          const value =
-            p.valueString ??
-            p.valueInteger?.toString() ??
-            p.valueBoolean?.toString() ??
-            p.valueCode ??
-            '';
-          if (p.name && value) {
-            queryParts.push(`${encodeURIComponent(p.name)}=${encodeURIComponent(value)}`);
+      // Extract query params only from Parameters resources
+      if (body && 'resourceType' in body && body.resourceType === 'Parameters') {
+        const asParams = body as IParameters;
+        if (asParams.parameter && asParams.parameter.length > 0) {
+          const queryParts: string[] = [];
+          for (const p of asParams.parameter) {
+            const value =
+              p.valueString ??
+              p.valueInteger?.toString() ??
+              p.valueBoolean?.toString() ??
+              p.valueCode ??
+              '';
+            if (p.name && value) {
+              queryParts.push(`${encodeURIComponent(p.name)}=${encodeURIComponent(value)}`);
+            }
           }
-        }
-        if (queryParts.length > 0) {
-          return fhirFetchResource<T>(`${url}?${queryParts.join('&')}`, 'GET', this.options, options);
+          if (queryParts.length > 0) {
+            return fhirFetchResource<T>(`${url}?${queryParts.join('&')}`, 'GET', this.options, options);
+          }
         }
       }
       return fhirFetchResource<T>(url, 'GET', this.options, options);
     }
 
-    return fhirFetchResource<T>(url, 'POST', this.options, options, params);
+    return fhirFetchResource<T>(url, 'POST', this.options, options, body);
   }
 
   // ─── Whole System ──────────────────────────────────────────────────────
