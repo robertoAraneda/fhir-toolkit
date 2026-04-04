@@ -48,6 +48,7 @@ import type {
   DifferenceOfExpr,
   TypeExtentExpr,
   TimingExpr,
+  TimingOp,
   SetAggregateExpr,
   WithClause,
   WithoutClause,
@@ -71,6 +72,9 @@ import {
   CqlDateTime,
   CqlTime,
   CqlQuantity,
+  DateTimePrecision,
+  DatePrecision,
+  TimePrecision,
 } from '../types/primitives.js';
 import {
   CqlInterval,
@@ -423,16 +427,21 @@ export class CqlEvaluator
         if (!isComparable(left)) {
           throw new Error(`cannot compare ${left.type}`);
         }
-        const cmp = left.compareTo(right);
-        switch (expr.operator) {
-          case BinaryOp.Less:
-            return CqlBoolean.of(cmp < 0);
-          case BinaryOp.LessOrEqual:
-            return CqlBoolean.of(cmp <= 0);
-          case BinaryOp.Greater:
-            return CqlBoolean.of(cmp > 0);
-          case BinaryOp.GreaterOrEqual:
-            return CqlBoolean.of(cmp >= 0);
+        try {
+          const cmp = left.compareTo(right);
+          switch (expr.operator) {
+            case BinaryOp.Less:
+              return CqlBoolean.of(cmp < 0);
+            case BinaryOp.LessOrEqual:
+              return CqlBoolean.of(cmp <= 0);
+            case BinaryOp.Greater:
+              return CqlBoolean.of(cmp > 0);
+            case BinaryOp.GreaterOrEqual:
+              return CqlBoolean.of(cmp >= 0);
+          }
+        } catch {
+          // Ambiguous comparison (different precisions) returns null per CQL spec
+          return null;
         }
         break;
       }
@@ -1084,24 +1093,62 @@ export class CqlEvaluator
   async visitTiming(expr: TimingExpr): Promise<CqlResult> {
     const left = await this.evaluate(expr.left);
     const right = await this.evaluate(expr.right);
+    const op = expr.operator;
 
-    if (!(left instanceof CqlInterval) || !(right instanceof CqlInterval)) {
-      return null;
+    try {
+      return this.evalTimingInner(left, right, op);
+    } catch (e) {
+      // Ambiguous comparison (different precisions) -> null
+      if (e instanceof Error && e.message.includes('ambiguous')) return null;
+      throw e;
+    }
+  }
+
+  private evalTimingInner(
+    left: CqlValue | null,
+    right: CqlValue | null,
+    op: TimingOp,
+  ): CqlResult {
+    // List-based includes/included-in operations
+    if (left instanceof CqlList || right instanceof CqlList) {
+      return this.evalListTiming(left, right, op);
     }
 
-    const leftIv = left as CqlInterval<CqlComparable>;
-    const rightIv = right as CqlInterval<CqlComparable>;
-    const op = expr.operator;
+    // Point-to-point temporal comparisons (e.g., DateTime same day as DateTime)
+    if (!(left instanceof CqlInterval) && !(right instanceof CqlInterval)) {
+      if (left === null || right === null) return null;
+      return this.evalPointTiming(left as CqlComparable, right as CqlComparable, op);
+    }
+
+    // Point-to-interval or interval-to-point: promote point to unit interval
+    const leftIv = left instanceof CqlInterval
+      ? left as CqlInterval<CqlComparable>
+      : left !== null
+        ? new CqlInterval(left as CqlComparable, left as CqlComparable, true, true)
+        : null;
+    const rightIv = right instanceof CqlInterval
+      ? right as CqlInterval<CqlComparable>
+      : right !== null
+        ? new CqlInterval(right as CqlComparable, right as CqlComparable, true, true)
+        : null;
+
+    if (leftIv === null || rightIv === null) return null;
 
     switch (op.timingKind) {
       case TimingKind.SameAs:
         return CqlBoolean.of(leftIv.equals(rightIv));
 
       case TimingKind.Includes:
+        if (op.properly) {
+          return CqlBoolean.of(leftIv.includes(rightIv) && !rightIv.includes(leftIv));
+        }
         return CqlBoolean.of(leftIv.includes(rightIv));
 
       case TimingKind.IncludedIn:
       case TimingKind.During:
+        if (op.properly) {
+          return CqlBoolean.of(rightIv.includes(leftIv) && !leftIv.includes(rightIv));
+        }
         return CqlBoolean.of(rightIv.includes(leftIv));
 
       case TimingKind.BeforeOrAfter: {
@@ -1114,11 +1161,21 @@ export class CqlEvaluator
       }
 
       case TimingKind.Meets: {
-        if (leftIv.high !== null && rightIv.low !== null && leftIv.high.equals(rightIv.low)) {
-          return CqlBoolean.TRUE;
+        // Meets: end of A = successor of start of B, or end of B = predecessor of start of A
+        // Simplified: A.high is immediately adjacent to B.low, or B.high is immediately adjacent to A.low
+        if (leftIv.high !== null && rightIv.low !== null) {
+          if (leftIv.high instanceof CqlInteger && rightIv.low instanceof CqlInteger) {
+            if (leftIv.high.value + 1 === rightIv.low.value) return CqlBoolean.TRUE;
+          } else if (leftIv.high.equals(rightIv.low)) {
+            return CqlBoolean.TRUE;
+          }
         }
-        if (leftIv.low !== null && rightIv.high !== null && leftIv.low.equals(rightIv.high)) {
-          return CqlBoolean.TRUE;
+        if (leftIv.low !== null && rightIv.high !== null) {
+          if (leftIv.low instanceof CqlInteger && rightIv.high instanceof CqlInteger) {
+            if (rightIv.high.value + 1 === leftIv.low.value) return CqlBoolean.TRUE;
+          } else if (leftIv.low.equals(rightIv.high)) {
+            return CqlBoolean.TRUE;
+          }
         }
         return CqlBoolean.FALSE;
       }
@@ -1128,12 +1185,18 @@ export class CqlEvaluator
 
       case TimingKind.Starts: {
         if (leftIv.low === null || rightIv.low === null) return null;
-        return CqlBoolean.of(leftIv.low.equals(rightIv.low));
+        const startsEqual = leftIv.low.equals(rightIv.low);
+        if (!startsEqual) return CqlBoolean.FALSE;
+        // 'starts' also requires left is included in right
+        return CqlBoolean.of(rightIv.includes(leftIv));
       }
 
       case TimingKind.Ends: {
         if (leftIv.high === null || rightIv.high === null) return null;
-        return CqlBoolean.of(leftIv.high.equals(rightIv.high));
+        const endsEqual = leftIv.high.equals(rightIv.high);
+        if (!endsEqual) return CqlBoolean.FALSE;
+        // 'ends' also requires left is included in right
+        return CqlBoolean.of(rightIv.includes(leftIv));
       }
 
       case TimingKind.Within:
@@ -1142,6 +1205,252 @@ export class CqlEvaluator
       default:
         return null;
     }
+  }
+
+  /**
+   * Evaluate list-based timing operations (includes, included in, etc.).
+   */
+  private evalListTiming(
+    left: CqlValue | null,
+    right: CqlValue | null,
+    op: TimingOp,
+  ): CqlResult {
+    if (left === null || right === null) return null;
+
+    switch (op.timingKind) {
+      case TimingKind.Includes: {
+        // List includes List: left contains all elements of right
+        // List includes element: left contains element
+        const lItems = toList(left);
+        if (right instanceof CqlList) {
+          const rItems = right.values;
+          if (rItems.length === 0) return CqlBoolean.TRUE;
+          const allFound = rItems.every(r =>
+            r === null ? lItems.some(l => l === null) : lItems.some(l => l !== null && l.equals(r))
+          );
+          if (op.properly) {
+            return CqlBoolean.of(allFound && lItems.length > rItems.length);
+          }
+          return CqlBoolean.of(allFound);
+        }
+        // element in list
+        return CqlBoolean.of(lItems.some(l => l !== null && l.equals(right)));
+      }
+
+      case TimingKind.IncludedIn:
+      case TimingKind.During: {
+        // List included in List: right contains all elements of left
+        if (left instanceof CqlList) {
+          const rItems = toList(right);
+          const lItems = left.values;
+          if (lItems.length === 0) return CqlBoolean.TRUE;
+          const allFound = lItems.every(l =>
+            l === null ? rItems.some(r => r === null) : rItems.some(r => r !== null && r.equals(l))
+          );
+          if (op.properly) {
+            return CqlBoolean.of(allFound && rItems.length > lItems.length);
+          }
+          return CqlBoolean.of(allFound);
+        }
+        // element in list
+        const rItems = toList(right);
+        return CqlBoolean.of(rItems.some(r => r !== null && r.equals(left)));
+      }
+
+      default:
+        return null;
+    }
+  }
+
+  /**
+   * Evaluate point-to-point temporal comparisons (same X as, before X of, after X of).
+   */
+  private evalPointTiming(
+    left: CqlComparable,
+    right: CqlComparable,
+    op: TimingOp,
+  ): CqlResult {
+    const precision = op.precision;
+
+    switch (op.timingKind) {
+      case TimingKind.SameAs: {
+        if (!precision) {
+          // No precision: full equality
+          if (op.before) {
+            // same or before
+            try { return CqlBoolean.of(left.compareTo(right) <= 0); } catch { return null; }
+          }
+          if (op.after) {
+            // same or after
+            try { return CqlBoolean.of(left.compareTo(right) >= 0); } catch { return null; }
+          }
+          return CqlBoolean.of(left.equals(right));
+        }
+        // Precision-based: compare at given precision
+        const cmp = this.compareTemporal(left, right, precision);
+        if (cmp === null) return null;
+        if (op.before) return CqlBoolean.of(cmp <= 0);  // same or before
+        if (op.after) return CqlBoolean.of(cmp >= 0);    // same or after
+        return CqlBoolean.of(cmp === 0);
+      }
+
+      case TimingKind.BeforeOrAfter: {
+        if (!precision) {
+          try {
+            const cmp = left.compareTo(right);
+            return CqlBoolean.of(op.before ? cmp < 0 : cmp > 0);
+          } catch {
+            return null;
+          }
+        }
+        const cmp = this.compareTemporal(left, right, precision);
+        if (cmp === null) return null;
+        return CqlBoolean.of(op.before ? cmp < 0 : cmp > 0);
+      }
+
+      case TimingKind.Includes: {
+        // Point includes point: equality
+        if (!precision) return CqlBoolean.of(left.equals(right));
+        const cmp = this.compareTemporal(left, right, precision);
+        if (cmp === null) return null;
+        return CqlBoolean.of(cmp === 0);
+      }
+
+      case TimingKind.IncludedIn:
+      case TimingKind.During: {
+        // Point during/included in point: equality
+        if (!precision) return CqlBoolean.of(left.equals(right));
+        const cmp = this.compareTemporal(left, right, precision);
+        if (cmp === null) return null;
+        return CqlBoolean.of(cmp === 0);
+      }
+
+      default:
+        return null;
+    }
+  }
+
+  /**
+   * Compare two temporal values at a given precision.
+   * Returns negative if left < right, 0 if equal, positive if left > right, or null if incompatible.
+   */
+  private compareTemporal(
+    left: CqlComparable,
+    right: CqlComparable,
+    precision: string,
+  ): number | null {
+    // DateTime comparison
+    if (left instanceof CqlDateTime && right instanceof CqlDateTime) {
+      return this.compareDateTimeAtPrecision(left, right, precision);
+    }
+    // Date comparison
+    if (left instanceof CqlDate && right instanceof CqlDate) {
+      return this.compareDateAtPrecision(left, right, precision);
+    }
+    // Time comparison
+    if (left instanceof CqlTime && right instanceof CqlTime) {
+      return this.compareTimeAtPrecision(left, right, precision);
+    }
+    // Numeric - no precision semantics, just compare
+    try {
+      return left.compareTo(right);
+    } catch {
+      return null;
+    }
+  }
+
+  private compareDateTimeAtPrecision(a: CqlDateTime, b: CqlDateTime, precision: string): number | null {
+    // Normalize to UTC if both have timezone info
+    const aNorm = (a.hasTZ && a.tzOffset !== 0) ? this.normalizeToUtc(a) : a;
+    const bNorm = (b.hasTZ && b.tzOffset !== 0) ? this.normalizeToUtc(b) : b;
+
+    const components: Array<[string, (dt: CqlDateTime) => number, number]> = [
+      ['year', (dt) => dt.year, DateTimePrecision.Year],
+      ['month', (dt) => dt.month, DateTimePrecision.Month],
+      ['day', (dt) => dt.day, DateTimePrecision.Day],
+      ['hour', (dt) => dt.hour, DateTimePrecision.Hour],
+      ['minute', (dt) => dt.minute, DateTimePrecision.Minute],
+      ['second', (dt) => dt.second, DateTimePrecision.Second],
+      ['millisecond', (dt) => dt.millis, DateTimePrecision.Millisecond],
+    ];
+
+    for (const [name, getter, precLevel] of components) {
+      // If either operand doesn't have this precision, comparison is uncertain
+      if (aNorm.precision < precLevel || bNorm.precision < precLevel) {
+        return null; // indeterminate
+      }
+      const av = getter(aNorm);
+      const bv = getter(bNorm);
+      if (av !== bv) return av - bv;
+      if (name === precision) return 0;
+    }
+    return 0;
+  }
+
+  private normalizeToUtc(dt: CqlDateTime): CqlDateTime {
+    // Convert to UTC by subtracting the timezone offset
+    const d = new Date(Date.UTC(
+      dt.year, dt.month - 1, dt.day,
+      dt.hour, dt.minute, dt.second, dt.millis,
+    ));
+    // Subtract offset: if offset is +60 (i.e., +01:00), UTC time = local - 60min
+    d.setUTCMinutes(d.getUTCMinutes() - dt.tzOffset);
+
+    const pad = (n: number, w: number) => String(n).padStart(w, '0');
+    let s = `${pad(d.getUTCFullYear(), 4)}-${pad(d.getUTCMonth() + 1, 2)}-${pad(d.getUTCDate(), 2)}`;
+    if (dt.precision >= DateTimePrecision.Hour) {
+      s += `T${pad(d.getUTCHours(), 2)}`;
+    }
+    if (dt.precision >= DateTimePrecision.Minute) {
+      s += `:${pad(d.getUTCMinutes(), 2)}`;
+    }
+    if (dt.precision >= DateTimePrecision.Second) {
+      s += `:${pad(d.getUTCSeconds(), 2)}`;
+    }
+    if (dt.precision >= DateTimePrecision.Millisecond) {
+      s += `.${pad(d.getUTCMilliseconds(), 3)}`;
+    }
+    s += 'Z';
+    return new CqlDateTime(s);
+  }
+
+  private compareDateAtPrecision(a: CqlDate, b: CqlDate, precision: string): number | null {
+    const components: Array<[string, (dt: CqlDate) => number, number]> = [
+      ['year', (dt) => dt.year, DatePrecision.Year],
+      ['month', (dt) => dt.month, DatePrecision.Month],
+      ['day', (dt) => dt.day, DatePrecision.Day],
+    ];
+
+    for (const [name, getter, precLevel] of components) {
+      if (a.precision < precLevel || b.precision < precLevel) {
+        return null;
+      }
+      const av = getter(a);
+      const bv = getter(b);
+      if (av !== bv) return av - bv;
+      if (name === precision) return 0;
+    }
+    return 0;
+  }
+
+  private compareTimeAtPrecision(a: CqlTime, b: CqlTime, precision: string): number | null {
+    const components: Array<[string, (t: CqlTime) => number, number]> = [
+      ['hour', (t) => t.hour, TimePrecision.Hour],
+      ['minute', (t) => t.minute, TimePrecision.Minute],
+      ['second', (t) => t.second, TimePrecision.Second],
+      ['millisecond', (t) => t.millis, TimePrecision.Millisecond],
+    ];
+
+    for (const [name, getter, precLevel] of components) {
+      if (a.precision < precLevel || b.precision < precLevel) {
+        return null;
+      }
+      const av = getter(a);
+      const bv = getter(b);
+      if (av !== bv) return av - bv;
+      if (name === precision) return 0;
+    }
+    return 0;
   }
 
   async visitSetAggregate(expr: SetAggregateExpr): Promise<CqlResult> {
@@ -1195,6 +1504,13 @@ export class CqlEvaluator
       return new CqlString(left.value + right.value);
     }
 
+    // DateTime/Date/Time +/- Quantity (temporal arithmetic)
+    if ((op === BinaryOp.Add || op === BinaryOp.Subtract) &&
+      (left instanceof CqlDateTime || left instanceof CqlDate || left instanceof CqlTime) &&
+      right instanceof CqlQuantity) {
+      return this.evalTemporalArithmetic(op, left, right);
+    }
+
     // Quantity arithmetic (same unit)
     if (left instanceof CqlQuantity && right instanceof CqlQuantity) {
       if (left.unit !== right.unit) {
@@ -1238,10 +1554,14 @@ export class CqlEvaluator
       }
     }
 
-    // Long arithmetic
-    if (left instanceof CqlLong && right instanceof CqlLong) {
-      const lv = left.value;
-      const rv = right.value;
+    // Long arithmetic (Long op Long, or Integer op Long, or Long op Integer)
+    if (
+      (left instanceof CqlLong || left instanceof CqlInteger) &&
+      (right instanceof CqlLong || right instanceof CqlInteger) &&
+      (left instanceof CqlLong || right instanceof CqlLong)
+    ) {
+      const lv = left instanceof CqlLong ? left.value : BigInt(left.value);
+      const rv = right instanceof CqlLong ? right.value : BigInt(right.value);
       switch (op) {
         case BinaryOp.Add:
           return new CqlLong(lv + rv);
@@ -1324,6 +1644,107 @@ export class CqlEvaluator
     return null;
   }
 
+  /**
+   * Temporal arithmetic: DateTime/Date/Time +/- Quantity
+   */
+  private evalTemporalArithmetic(
+    op: BinaryOp,
+    temporal: CqlDateTime | CqlDate | CqlTime,
+    quantity: CqlQuantity,
+  ): CqlResult {
+    const amount = op === BinaryOp.Add
+      ? quantity.value.toNumber()
+      : -quantity.value.toNumber();
+    const unit = quantity.unit.toLowerCase().replace(/s$/, '');
+    const pad = (n: number, w: number) => String(n).padStart(w, '0');
+
+    if (temporal instanceof CqlDateTime) {
+      const d = new Date(Date.UTC(
+        temporal.year,
+        (temporal.month || 1) - 1,
+        temporal.day || 1,
+        temporal.hour,
+        temporal.minute,
+        temporal.second,
+        temporal.millis,
+      ));
+      switch (unit) {
+        case 'year': d.setUTCFullYear(d.getUTCFullYear() + amount); break;
+        case 'month': d.setUTCMonth(d.getUTCMonth() + amount); break;
+        case 'week': d.setUTCDate(d.getUTCDate() + amount * 7); break;
+        case 'day': d.setUTCDate(d.getUTCDate() + amount); break;
+        case 'hour': d.setUTCHours(d.getUTCHours() + amount); break;
+        case 'minute': d.setUTCMinutes(d.getUTCMinutes() + amount); break;
+        case 'second': d.setUTCSeconds(d.getUTCSeconds() + amount); break;
+        case 'millisecond': d.setUTCMilliseconds(d.getUTCMilliseconds() + amount); break;
+        default: throw new Error(`unsupported temporal unit: ${quantity.unit}`);
+      }
+      // Reconstruct at original precision
+      let s = pad(d.getUTCFullYear(), 4);
+      if (temporal.precision >= DateTimePrecision.Month) s += `-${pad(d.getUTCMonth() + 1, 2)}`;
+      if (temporal.precision >= DateTimePrecision.Day) s += `-${pad(d.getUTCDate(), 2)}`;
+      if (temporal.precision >= DateTimePrecision.Hour) s += `T${pad(d.getUTCHours(), 2)}`;
+      if (temporal.precision >= DateTimePrecision.Minute) s += `:${pad(d.getUTCMinutes(), 2)}`;
+      if (temporal.precision >= DateTimePrecision.Second) s += `:${pad(d.getUTCSeconds(), 2)}`;
+      if (temporal.precision >= DateTimePrecision.Millisecond) s += `.${pad(d.getUTCMilliseconds(), 3)}`;
+      if (temporal.hasTZ) {
+        if (temporal.tzOffset === 0) s += 'Z';
+        else {
+          const sign = temporal.tzOffset < 0 ? '-' : '+';
+          const abs = Math.abs(temporal.tzOffset);
+          s += `${sign}${pad(Math.floor(abs / 60), 2)}:${pad(abs % 60, 2)}`;
+        }
+      }
+      return new CqlDateTime(s);
+    }
+
+    if (temporal instanceof CqlDate) {
+      const d = new Date(Date.UTC(
+        temporal.year,
+        (temporal.month || 1) - 1,
+        temporal.day || 1,
+      ));
+      switch (unit) {
+        case 'year': d.setUTCFullYear(d.getUTCFullYear() + amount); break;
+        case 'month': d.setUTCMonth(d.getUTCMonth() + amount); break;
+        case 'week': d.setUTCDate(d.getUTCDate() + amount * 7); break;
+        case 'day': d.setUTCDate(d.getUTCDate() + amount); break;
+        default: throw new Error(`unsupported temporal unit for Date: ${quantity.unit}`);
+      }
+      let s = pad(d.getUTCFullYear(), 4);
+      if (temporal.precision >= DatePrecision.Month) s += `-${pad(d.getUTCMonth() + 1, 2)}`;
+      if (temporal.precision >= DatePrecision.Day) s += `-${pad(d.getUTCDate(), 2)}`;
+      return new CqlDate(s);
+    }
+
+    if (temporal instanceof CqlTime) {
+      // Time arithmetic
+      let totalMs = temporal.hour * 3600000 + temporal.minute * 60000 +
+        temporal.second * 1000 + temporal.millis;
+      switch (unit) {
+        case 'hour': totalMs += amount * 3600000; break;
+        case 'minute': totalMs += amount * 60000; break;
+        case 'second': totalMs += amount * 1000; break;
+        case 'millisecond': totalMs += amount; break;
+        default: throw new Error(`unsupported temporal unit for Time: ${quantity.unit}`);
+      }
+      // Normalize (keep within 0-24h range)
+      totalMs = ((totalMs % 86400000) + 86400000) % 86400000;
+      const h = Math.floor(totalMs / 3600000);
+      const m = Math.floor((totalMs % 3600000) / 60000);
+      const sec = Math.floor((totalMs % 60000) / 1000);
+      const ms = totalMs % 1000;
+
+      let s = pad(h, 2);
+      if (temporal.precision >= TimePrecision.Minute) s += `:${pad(m, 2)}`;
+      if (temporal.precision >= TimePrecision.Second) s += `:${pad(sec, 2)}`;
+      if (temporal.precision >= TimePrecision.Millisecond) s += `.${pad(ms, 3)}`;
+      return new CqlTime(s);
+    }
+
+    return null;
+  }
+
   private evalSetOp(
     op: BinaryOp,
     left: CqlValue,
@@ -1368,8 +1789,12 @@ export class CqlEvaluator
   ): CqlResult {
     if (op === BinaryOp.In) {
       // left in right
-      if (left === null || right === null) return null;
+      // null in null -> null; null in {} -> false; null in {1, null} -> true
+      if (right === null) {
+        return left === null ? null : CqlBoolean.FALSE;
+      }
       if (right instanceof CqlInterval) {
+        if (left === null) return null;
         return CqlBoolean.of(
           (right as CqlInterval<CqlComparable>).contains(
             left as CqlComparable,
@@ -1377,11 +1802,21 @@ export class CqlEvaluator
         );
       }
       const rItems = toList(right);
-      return CqlBoolean.of(rItems.some((r) => r.equals(left)));
+      if (left === null) {
+        // null in list: check if list is empty -> false, or contains null -> true, otherwise null
+        if (rItems.length === 0) return CqlBoolean.FALSE;
+        // CQL: null is found in list via equivalence (null ~ null = true)
+        return CqlBoolean.of(rItems.some((r) => r === null));
+      }
+      return CqlBoolean.of(rItems.some((r) => r !== null && r.equals(left)));
     }
     // contains: right in left
-    if (left === null || right === null) return null;
+    // null contains X -> false (empty collection)
+    if (left === null) {
+      return CqlBoolean.FALSE;
+    }
     if (left instanceof CqlInterval) {
+      if (right === null) return null;
       return CqlBoolean.of(
         (left as CqlInterval<CqlComparable>).contains(
           right as CqlComparable,
@@ -1389,7 +1824,11 @@ export class CqlEvaluator
       );
     }
     const lItems = toList(left);
-    return CqlBoolean.of(lItems.some((l) => l.equals(right)));
+    if (right === null) {
+      // list contains null: check if list has null element
+      return CqlBoolean.of(lItems.some((l) => l === null));
+    }
+    return CqlBoolean.of(lItems.some((l) => l !== null && l.equals(right)));
   }
 
   private evalFlatten(val: CqlValue | null): CqlResult {

@@ -65,6 +65,7 @@ export class CqlInteger implements CqlComparable {
     if (other instanceof CqlInteger) return this.value === other.value;
     if (other instanceof CqlDecimal)
       return new Decimal(this.value).equals(other.value);
+    if (other instanceof CqlLong) return BigInt(this.value) === other.value;
     return false;
   }
 
@@ -76,6 +77,12 @@ export class CqlInteger implements CqlComparable {
     if (other instanceof CqlInteger) return this.value - other.value;
     if (other instanceof CqlDecimal)
       return new Decimal(this.value).comparedTo(other.value);
+    if (other instanceof CqlLong) {
+      const bv = BigInt(this.value);
+      if (bv < other.value) return -1;
+      if (bv > other.value) return 1;
+      return 0;
+    }
     throw typeError('Integer', other.type);
   }
 
@@ -94,7 +101,9 @@ export class CqlLong implements CqlComparable {
   constructor(readonly value: bigint) {}
 
   equals(other: CqlValue): boolean {
-    return other instanceof CqlLong && this.value === other.value;
+    if (other instanceof CqlLong) return this.value === other.value;
+    if (other instanceof CqlInteger) return this.value === BigInt(other.value);
+    return false;
   }
 
   equivalent(other: CqlValue): boolean {
@@ -102,9 +111,16 @@ export class CqlLong implements CqlComparable {
   }
 
   compareTo(other: CqlValue): number {
-    if (!(other instanceof CqlLong)) throw typeError('Long', other.type);
-    if (this.value < other.value) return -1;
-    if (this.value > other.value) return 1;
+    let otherVal: bigint;
+    if (other instanceof CqlLong) {
+      otherVal = other.value;
+    } else if (other instanceof CqlInteger) {
+      otherVal = BigInt(other.value);
+    } else {
+      throw typeError('Long', other.type);
+    }
+    if (this.value < otherVal) return -1;
+    if (this.value > otherVal) return 1;
     return 0;
   }
 
@@ -134,7 +150,20 @@ export class CqlDecimal implements CqlComparable {
   }
 
   equivalent(other: CqlValue): boolean {
-    return this.equals(other);
+    if (other instanceof CqlInteger) {
+      return this.value.equals(new Decimal(other.value));
+    }
+    if (!(other instanceof CqlDecimal)) return false;
+    // CQL decimal equivalence: compare at the least precision (fewest decimal places)
+    // Truncate (not round) to the lower precision
+    const thisStr = this.value.toFixed();
+    const otherStr = other.value.toFixed();
+    const thisDp = thisStr.includes('.') ? thisStr.split('.')[1].length : 0;
+    const otherDp = otherStr.includes('.') ? otherStr.split('.')[1].length : 0;
+    const minDp = Math.min(thisDp, otherDp);
+    // Use ROUND_DOWN (truncate) to avoid rounding
+    return this.value.toDecimalPlaces(minDp, Decimal.ROUND_DOWN)
+      .equals(other.value.toDecimalPlaces(minDp, Decimal.ROUND_DOWN));
   }
 
   compareTo(other: CqlValue): number {
@@ -318,8 +347,11 @@ export class CqlDate implements CqlComparable {
 // CqlDateTime
 // ---------------------------------------------------------------------------
 
+// DateTime regex - allows optional T with optional time components
+// Supports: "2015", "2015-02", "2015-02-10", "2015T", "2015-02T", "2015-02-10T",
+//   "2015-02-10T10", "2015-02-10T10:30:00.000Z", etc.
 const DT_RE =
-  /^(\d{4})(?:-(\d{2})(?:-(\d{2})(?:T(\d{2})(?::(\d{2})(?::(\d{2})(?:\.(\d+))?)?)?)?)?)?(Z|[+-]\d{2}:\d{2})?$/;
+  /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?T?(?:(\d{2})(?::(\d{2})(?::(\d{2})(?:\.(\d+))?)?)?)?(Z|[+-]\d{2}:\d{2})?$/;
 
 export class CqlDateTime implements CqlComparable {
   readonly type = 'DateTime' as const;

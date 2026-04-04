@@ -38,16 +38,17 @@ export function parseCvl(text: string): CqlValue | null {
   }
 
   // DateTime: @2024-01-15T10:30:00 or @2024T (year-only with T)
+  // Also handles @2014-01-01T (date with trailing T but no time) as DateTime
   if (text.startsWith('@') && !text.startsWith('@T')) {
     const raw = text.slice(1);
-    if (raw.includes('T') || /^\d{4}$/.test(raw) || /^\d{4}-\d{2}$/.test(raw) || /^\d{4}-\d{2}-\d{2}$/.test(raw)) {
-      // If it ends with T (like @2016T) or contains T in the middle, it's a DateTime
-      if (raw.includes('T')) {
-        return new CqlDateTime(raw);
-      }
-      // Pure date without T: @2024-01-15
-      return new CqlDate(raw);
+    if (raw.includes('T')) {
+      // Any presence of T makes it a DateTime.
+      // If T is at the end (e.g., @2016T, @2014-01-01T), strip it for parsing
+      // since CqlDateTime regex expects optional time components after T.
+      const normalized = raw.endsWith('T') ? raw.slice(0, -1) : raw;
+      return new CqlDateTime(normalized);
     }
+    // Pure date without T: @2024-01-15, @2024-01, @2024
     return new CqlDate(raw);
   }
 

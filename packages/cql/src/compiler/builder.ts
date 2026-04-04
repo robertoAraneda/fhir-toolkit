@@ -124,6 +124,15 @@ import {
   type AccessModifierContext,
   type IdentifierContext,
   type ReferentialIdentifierContext,
+  ConcurrentWithIntervalOperatorPhraseContext,
+  BeforeOrAfterIntervalOperatorPhraseContext,
+  IncludesIntervalOperatorPhraseContext,
+  IncludedInIntervalOperatorPhraseContext,
+  OverlapsIntervalOperatorPhraseContext,
+  MeetsIntervalOperatorPhraseContext,
+  StartsIntervalOperatorPhraseContext,
+  EndsIntervalOperatorPhraseContext,
+  WithinIntervalOperatorPhraseContext,
   cqlParser,
 } from '../grammar/generated/cqlParser.js';
 
@@ -764,18 +773,159 @@ export class CqlBuilder extends cqlVisitor<unknown> {
   override visitTimingExpression = (ctx: TimingExpressionContext): Expression | null => {
     const exprs = ctx.expression();
     if (exprs.length < 2) return null;
-    const timingOp: TimingOp = {
-      timingKind: TimingKind.SameAs,
-      precision: '',
-      properly: false,
-      before: false,
-      after: false,
-    };
+    const phrase = ctx.intervalOperatorPhrase();
+    const timingOp = this.parseTimingOp(phrase);
     return {
       kind: 'Timing',
       left: this.visitExpr(exprs[0])!,
       right: this.visitExpr(exprs[1])!,
       operator: timingOp,
+    };
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private parseTimingOp(phrase: any): TimingOp {
+    const text = phrase.getText().toLowerCase();
+
+    // Extract precision from text (year, month, day, hour, minute, second, millisecond)
+    // Note: getText() concatenates tokens without spaces, so \b may not work
+    const precMatch = text.match(/(millisecond|second|minute|hour|day|month|year)s?/);
+    const precision = precMatch ? precMatch[1] : '';
+    const properly = text.includes('properly');
+
+    if (phrase instanceof ConcurrentWithIntervalOperatorPhraseContext) {
+      // "same <precision> as", "same <precision> or before", "same <precision> or after"
+      return {
+        timingKind: TimingKind.SameAs,
+        precision,
+        properly: false,
+        before: text.includes('before'),
+        after: text.includes('after'),
+      };
+    }
+
+    if (phrase instanceof BeforeOrAfterIntervalOperatorPhraseContext) {
+      const isBefore = text.includes('before');
+      const isOnOr = text.includes('onor') || text.includes('oron');
+      // "on or before" = SameOrBefore (<=), "on or after" = SameOrAfter (>=)
+      // plain "before" = strictly before (<), plain "after" = strictly after (>)
+      if (isOnOr) {
+        // "on or before/after" maps to SameAs with before/after flag (same or before/after)
+        return {
+          timingKind: TimingKind.SameAs,
+          precision,
+          properly: false,
+          before: isBefore,
+          after: !isBefore,
+        };
+      }
+      return {
+        timingKind: TimingKind.BeforeOrAfter,
+        precision,
+        properly,
+        before: isBefore,
+        after: !isBefore,
+      };
+    }
+
+    if (phrase instanceof IncludesIntervalOperatorPhraseContext) {
+      return {
+        timingKind: TimingKind.Includes,
+        precision,
+        properly,
+        before: false,
+        after: false,
+      };
+    }
+
+    if (phrase instanceof IncludedInIntervalOperatorPhraseContext) {
+      // "included in" or "during"
+      const kind = text.includes('during') ? TimingKind.During : TimingKind.IncludedIn;
+      return {
+        timingKind: kind,
+        precision,
+        properly,
+        before: false,
+        after: false,
+      };
+    }
+
+    if (phrase instanceof OverlapsIntervalOperatorPhraseContext) {
+      return {
+        timingKind: TimingKind.Overlaps,
+        precision,
+        properly: false,
+        before: text.includes('before'),
+        after: text.includes('after'),
+      };
+    }
+
+    if (phrase instanceof MeetsIntervalOperatorPhraseContext) {
+      return {
+        timingKind: TimingKind.Meets,
+        precision,
+        properly: false,
+        before: text.includes('before'),
+        after: text.includes('after'),
+      };
+    }
+
+    if (phrase instanceof StartsIntervalOperatorPhraseContext) {
+      return {
+        timingKind: TimingKind.Starts,
+        precision,
+        properly: false,
+        before: false,
+        after: false,
+      };
+    }
+
+    if (phrase instanceof EndsIntervalOperatorPhraseContext) {
+      return {
+        timingKind: TimingKind.Ends,
+        precision,
+        properly: false,
+        before: false,
+        after: false,
+      };
+    }
+
+    if (phrase instanceof WithinIntervalOperatorPhraseContext) {
+      return {
+        timingKind: TimingKind.Within,
+        precision,
+        properly,
+        before: false,
+        after: false,
+      };
+    }
+
+    // Fallback: try to infer from text
+    let timingKind = TimingKind.SameAs;
+    if (text.includes('before') || text.includes('after')) {
+      timingKind = TimingKind.BeforeOrAfter;
+    } else if (text.includes('includes')) {
+      timingKind = TimingKind.Includes;
+    } else if (text.includes('during') || text.includes('included in')) {
+      timingKind = TimingKind.During;
+    } else if (text.includes('overlaps')) {
+      timingKind = TimingKind.Overlaps;
+    } else if (text.includes('meets')) {
+      timingKind = TimingKind.Meets;
+    } else if (text.includes('starts')) {
+      timingKind = TimingKind.Starts;
+    } else if (text.includes('ends')) {
+      timingKind = TimingKind.Ends;
+    } else if (text.includes('within')) {
+      timingKind = TimingKind.Within;
+    }
+
+    return {
+      timingKind,
+      precision,
+      properly,
+      before: text.includes('before'),
+      after: text.includes('after'),
     };
   };
 

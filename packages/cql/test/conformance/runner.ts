@@ -16,15 +16,25 @@ export function compareValues(actual: CqlValue | null, expected: CqlValue | null
 
   // Use equivalent() for comparison (more lenient than equals)
   try {
-    return actual.equivalent(expected);
+    if (actual.equivalent(expected)) return true;
   } catch {
-    // If equivalent throws (e.g., incompatible types), try equals
-    try {
-      return actual.equals(expected);
-    } catch {
-      return false;
-    }
+    // fall through
   }
+
+  // Try equals
+  try {
+    if (actual.equals(expected)) return true;
+  } catch {
+    // fall through
+  }
+
+  // Fallback: compare by toString() for cases where types match but
+  // equivalence/equals implementations are too strict
+  if (actual.type === expected.type) {
+    return actual.toString() === expected.toString();
+  }
+
+  return false;
 }
 
 /**

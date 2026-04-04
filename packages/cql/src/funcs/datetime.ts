@@ -85,6 +85,10 @@ export function registerDateTimeFunctions(registry: FunctionRegistry): void {
       case 'months':
         result = monthsBetween(low, high);
         break;
+      case 'week':
+      case 'weeks':
+        result = Math.trunc(daysBetween(low, high) / 7);
+        break;
       case 'day':
       case 'days':
         result = daysBetween(low, high);
@@ -112,11 +116,58 @@ export function registerDateTimeFunctions(registry: FunctionRegistry): void {
   });
 
   // DifferenceBetween(low, high, precision) -> integer
+  // Unlike DurationBetween, DifferenceBetween counts calendar boundaries crossed
   registry.register('DifferenceBetween', (args) => {
-    // For most practical purposes same as DurationBetween
-    const fn = registry.resolve('durationbetween');
-    if (fn) return fn(args, null!);
-    return null;
+    const low = toDate(args[0]);
+    const high = toDate(args[1]);
+    if (low === null || high === null) return null;
+    const precision = asString(args[2]) ?? 'day';
+    let result: number;
+    switch (precision) {
+      case 'year':
+      case 'years':
+        result = high.getUTCFullYear() - low.getUTCFullYear();
+        break;
+      case 'month':
+      case 'months':
+        result = (high.getUTCFullYear() - low.getUTCFullYear()) * 12 +
+          high.getUTCMonth() - low.getUTCMonth();
+        break;
+      case 'week':
+      case 'weeks': {
+        // Count number of whole weeks in the duration
+        const diffMs = high.getTime() - low.getTime();
+        result = Math.trunc(diffMs / (7 * 24 * 60 * 60 * 1000));
+        break;
+      }
+      case 'day':
+      case 'days': {
+        // Difference in days: truncate to dates, then count day boundaries
+        const lowDate = Date.UTC(low.getUTCFullYear(), low.getUTCMonth(), low.getUTCDate());
+        const highDate = Date.UTC(high.getUTCFullYear(), high.getUTCMonth(), high.getUTCDate());
+        result = Math.round((highDate - lowDate) / (24 * 60 * 60 * 1000));
+        break;
+      }
+      case 'hour':
+      case 'hours':
+        result = Math.trunc((high.getTime() - low.getTime()) / (60 * 60 * 1000));
+        break;
+      case 'minute':
+      case 'minutes':
+        result = Math.trunc((high.getTime() - low.getTime()) / (60 * 1000));
+        break;
+      case 'second':
+      case 'seconds':
+        result = Math.trunc((high.getTime() - low.getTime()) / 1000);
+        break;
+      case 'millisecond':
+      case 'milliseconds':
+        result = high.getTime() - low.getTime();
+        break;
+      default:
+        result = Math.round((high.getTime() - low.getTime()) / (24 * 60 * 60 * 1000));
+    }
+    return new CqlInteger(result);
   });
 
   // DateTimeComponentFrom(operand, component) -> value
@@ -172,16 +223,57 @@ export function registerDateTimeFunctions(registry: FunctionRegistry): void {
   registry.register('DateTime', (args) => {
     const y = asInteger(args[0]);
     if (y === null || y === 0) return null;
-    const m = args[1] != null ? asInteger(args[1]) ?? 0 : 0;
-    const d = args[2] != null ? asInteger(args[2]) ?? 0 : 0;
-    const h = args[3] != null ? asInteger(args[3]) ?? 0 : 0;
-    const mn = args[4] != null ? asInteger(args[4]) ?? 0 : 0;
-    const sec = args[5] != null ? asInteger(args[5]) ?? 0 : 0;
-    const ms = args[6] != null ? asInteger(args[6]) ?? 0 : 0;
-    const tz = args[7] != null ? asString(args[7]) : null;
 
-    let s = `${pad(y, 4)}-${pad(m || 1, 2)}-${pad(d || 1, 2)}T${pad(h, 2)}:${pad(mn, 2)}:${pad(sec, 2)}.${pad(ms, 3)}`;
-    s += tz ?? 'Z';
+    // Build string with precision based on which arguments are provided
+    let s = pad(y, 4);
+
+    const m = args[1] != null ? asInteger(args[1]) : null;
+    if (m === null || m === 0) return new CqlDateTime(s);
+    s += `-${pad(m, 2)}`;
+
+    const d = args[2] != null ? asInteger(args[2]) : null;
+    if (d === null || d === 0) return new CqlDateTime(s);
+    s += `-${pad(d, 2)}`;
+
+    const h = args[3] != null ? asInteger(args[3]) : null;
+    if (h === null) return new CqlDateTime(s);
+    s += `T${pad(h, 2)}`;
+
+    const mn = args[4] != null ? asInteger(args[4]) : null;
+    if (mn === null) return new CqlDateTime(s);
+    s += `:${pad(mn, 2)}`;
+
+    const sec = args[5] != null ? asInteger(args[5]) : null;
+    if (sec === null) return new CqlDateTime(s);
+    s += `:${pad(sec, 2)}`;
+
+    const ms = args[6] != null ? asInteger(args[6]) : null;
+    if (ms === null) return new CqlDateTime(s);
+    s += `.${pad(ms, 3)}`;
+
+    // Timezone offset: can be a String like "+05:00" or a Decimal like -6.0 (hours)
+    if (args[7] != null) {
+      const tzStr = asString(args[7]);
+      if (tzStr !== null) {
+        s += tzStr;
+      } else {
+        // Numeric timezone offset in hours (e.g., -6.0 = UTC-6)
+        const tzNum = args[7];
+        if (tzNum && 'value' in tzNum) {
+          const hours = typeof tzNum.value === 'object' ? (tzNum.value as any).toNumber() : Number(tzNum.value);
+          if (hours === 0) {
+            s += 'Z';
+          } else {
+            const sign = hours < 0 ? '-' : '+';
+            const absH = Math.abs(hours);
+            const h = Math.floor(absH);
+            const m = Math.round((absH - h) * 60);
+            s += `${sign}${pad(h, 2)}:${pad(m, 2)}`;
+          }
+        }
+      }
+    }
+
     return new CqlDateTime(s);
   });
 

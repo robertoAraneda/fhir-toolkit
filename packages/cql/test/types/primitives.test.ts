@@ -123,8 +123,13 @@ describe('CqlLong', () => {
     expect(new CqlLong(1n).equals(new CqlLong(2n))).toBe(false);
   });
 
+  it('equals: cross-type Integer comparison', () => {
+    expect(new CqlLong(1n).equals(new CqlInteger(1))).toBe(true);
+    expect(new CqlLong(1n).equals(new CqlInteger(2))).toBe(false);
+  });
+
   it('equals: different type returns false', () => {
-    expect(new CqlLong(1n).equals(new CqlInteger(1))).toBe(false);
+    expect(new CqlLong(1n).equals(new CqlString('1'))).toBe(false);
   });
 
   it('compareTo', () => {
@@ -133,8 +138,14 @@ describe('CqlLong', () => {
     expect(new CqlLong(3n).compareTo(new CqlLong(3n))).toBe(0);
   });
 
+  it('compareTo with Integer', () => {
+    expect(new CqlLong(1n).compareTo(new CqlInteger(2))).toBeLessThan(0);
+    expect(new CqlLong(2n).compareTo(new CqlInteger(1))).toBeGreaterThan(0);
+    expect(new CqlLong(3n).compareTo(new CqlInteger(3))).toBe(0);
+  });
+
   it('compareTo throws for incompatible type', () => {
-    expect(() => new CqlLong(1n).compareTo(new CqlInteger(1))).toThrow(
+    expect(() => new CqlLong(1n).compareTo(new CqlString('1'))).toThrow(
       TypeError,
     );
   });

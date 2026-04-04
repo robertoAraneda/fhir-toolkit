@@ -102,7 +102,7 @@ export function toDate(v: CqlValue | null): Date | null {
   }
 
   if (v instanceof CqlDateTime) {
-    return new Date(
+    const d = new Date(
       Date.UTC(
         v.year,
         (v.month || 1) - 1,
@@ -113,6 +113,11 @@ export function toDate(v: CqlValue | null): Date | null {
         v.millis || 0,
       ),
     );
+    // Apply timezone offset: convert local time to UTC
+    if (v.hasTZ && v.tzOffset !== 0) {
+      d.setUTCMinutes(d.getUTCMinutes() - v.tzOffset);
+    }
+    return d;
   }
 
   if (v instanceof CqlTime) {
