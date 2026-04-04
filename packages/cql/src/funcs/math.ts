@@ -30,15 +30,23 @@ function pad(n: number, w: number): string {
 }
 
 export function registerMathFunctions(registry: FunctionRegistry): void {
-  // Power(base, exp) -> Decimal
+  // Power(base, exp) -> Integer|Long|Decimal (preserves input type)
   registry.register('Power', (args) => {
     const base = args[0];
     const exp = args[1];
     if (base === null || exp === null) return null;
     const b = numericVal(base);
     const e = numericVal(exp);
-    // 0^0 = 1 per CQL spec
-    return new CqlDecimal(b.pow(e));
+    const result = b.pow(e);
+    // Preserve type: if both args are Long, return Long
+    if (base instanceof CqlLong) {
+      try { return new CqlLong(BigInt(result.toFixed(0))); } catch { /* fall through */ }
+    }
+    // If both args are Integer, return Integer
+    if (base instanceof CqlInteger && exp instanceof CqlInteger) {
+      return new CqlInteger(result.toNumber());
+    }
+    return new CqlDecimal(result);
   });
 
   // Round(value, precision?) -> Decimal
