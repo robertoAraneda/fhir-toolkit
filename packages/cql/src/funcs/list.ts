@@ -10,6 +10,7 @@ import {
   CqlBoolean,
   CqlDecimal,
   CqlInteger,
+  CqlNull,
 } from '../types/index.js';
 import { CqlList } from '../types/index.js';
 import { asInteger, asList, numericVal } from './helpers.js';
@@ -119,14 +120,16 @@ export function registerListFunctions(registry: FunctionRegistry): void {
   registry.register('First', (args) => {
     const list = asList(args[0]);
     if (list === null || list.length === 0) return null;
-    return list[0];
+    const v = list[0];
+    return v instanceof CqlNull ? null : v;
   });
 
   // Last(list) -> value
   registry.register('Last', (args) => {
     const list = asList(args[0]);
     if (list === null || list.length === 0) return null;
-    return list[list.length - 1];
+    const v = list[list.length - 1];
+    return v instanceof CqlNull ? null : v;
   });
 
   // SingletonFrom(list) -> value
@@ -140,7 +143,8 @@ export function registerListFunctions(registry: FunctionRegistry): void {
   registry.register('Exists', (args) => {
     const list = asList(args[0]);
     if (list === null) return CqlBoolean.FALSE;
-    return CqlBoolean.of(list.length > 0);
+    // Exists is true only if there's at least one non-null element
+    return CqlBoolean.of(list.some(v => !(v instanceof CqlNull)));
   });
 
   // Take(list, count) -> list
@@ -163,6 +167,7 @@ export function registerListFunctions(registry: FunctionRegistry): void {
 
   // Tail(list) -> list
   registry.register('Tail', (args) => {
+    if (args[0] === null) return null;
     const list = asList(args[0]);
     if (list === null || list.length <= 1) return new CqlList([]);
     return new CqlList(list.slice(1));

@@ -786,14 +786,14 @@ describe('CqlEvaluator', () => {
       expect((r as CqlList).values.length).toBe(3);
     });
 
-    it('null elements are excluded from list', async () => {
+    it('null elements are preserved in list as CqlNull', async () => {
       const expr: Expression = {
         kind: 'List',
         typeSpec: null,
         elements: [intLit(1), nullLit(), intLit(3)],
       };
       const r = await mkEval().evaluate(expr);
-      expect((r as CqlList).values.length).toBe(2);
+      expect((r as CqlList).values.length).toBe(3);
     });
   });
 

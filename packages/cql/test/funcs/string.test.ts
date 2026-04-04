@@ -31,8 +31,8 @@ describe('string functions', () => {
     expect(call('Length', new CqlString('abc'))).toEqual(new CqlInteger(3));
   });
 
-  it('Length returns 0 for null', () => {
-    expect(call('Length', null)).toEqual(new CqlInteger(0));
+  it('Length returns null for null', () => {
+    expect(call('Length', null)).toBeNull();
   });
 
   it('StartsWith checks prefix', () => {
@@ -56,8 +56,8 @@ describe('string functions', () => {
     expect(call('Substring', new CqlString('abcdef'), new CqlInteger(3))).toEqual(new CqlString('def'));
   });
 
-  it('Substring out of range returns empty', () => {
-    expect(call('Substring', new CqlString('abc'), new CqlInteger(10))).toEqual(new CqlString(''));
+  it('Substring out of range returns null', () => {
+    expect(call('Substring', new CqlString('abc'), new CqlInteger(10))).toBeNull();
   });
 
   it('IndexOf finds substring', () => {

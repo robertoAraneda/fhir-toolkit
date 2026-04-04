@@ -185,6 +185,7 @@ function unquoteString(s: string): string {
       s = s.slice(1, -1);
     }
   }
+  s = s.replace(/\\u([0-9A-Fa-f]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
   s = s.replace(/\\'/g, "'");
   s = s.replace(/\\"/g, '"');
   s = s.replace(/\\\\/g, '\\');

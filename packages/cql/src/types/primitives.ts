@@ -10,6 +10,23 @@ import { Decimal } from 'decimal.js';
 import type { CqlComparable, CqlValue } from './value.js';
 
 // ---------------------------------------------------------------------------
+// Null sentinel
+// ---------------------------------------------------------------------------
+
+/**
+ * CqlNull is a sentinel value used to represent null inside CqlList.
+ * It allows lists to track null elements for operations like Length, First, Last, contains.
+ */
+export class CqlNull implements CqlValue {
+  readonly type = 'Null' as const;
+  static readonly INSTANCE = new CqlNull();
+  private constructor() {}
+  equals(_other: CqlValue): boolean { return _other instanceof CqlNull; }
+  equivalent(_other: CqlValue): boolean { return _other instanceof CqlNull; }
+  toString(): string { return 'null'; }
+}
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
@@ -135,11 +152,24 @@ export class CqlLong implements CqlComparable {
 
 export class CqlDecimal implements CqlComparable {
   readonly type = 'Decimal' as const;
+  readonly originalPrecision: number; // number of decimal places in original representation
 
-  constructor(readonly value: Decimal) {}
+  constructor(readonly value: Decimal, originalPrecision?: number) {
+    if (originalPrecision !== undefined) {
+      this.originalPrecision = originalPrecision;
+    } else {
+      // Infer from value
+      const s = value.toFixed();
+      const dot = s.indexOf('.');
+      this.originalPrecision = dot >= 0 ? s.length - dot - 1 : 0;
+    }
+  }
 
   static of(v: string | number): CqlDecimal {
-    return new CqlDecimal(new Decimal(v));
+    const s = String(v);
+    const dot = s.indexOf('.');
+    const origPrec = dot >= 0 ? s.length - dot - 1 : 0;
+    return new CqlDecimal(new Decimal(v), origPrec);
   }
 
   equals(other: CqlValue): boolean {

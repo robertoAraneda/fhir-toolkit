@@ -155,7 +155,7 @@ export class CqlList implements CqlValue {
 
   constructor(readonly values: CqlValue[]) {}
 
-  /** Number of elements. */
+  /** Number of elements (including nulls). */
   count(): number {
     return this.values.length;
   }

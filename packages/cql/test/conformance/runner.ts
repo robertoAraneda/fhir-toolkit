@@ -5,6 +5,7 @@
 import { CqlEngine } from '../../src/index.js';
 import { parseCvl } from './cvl-parser.js';
 import type { CqlValue } from '../../src/types/value.js';
+import { CqlNull } from '../../src/types/primitives.js';
 
 /**
  * Compare two CqlValues using equivalence semantics.

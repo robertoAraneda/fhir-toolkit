@@ -22,6 +22,7 @@ import {
   CqlDateTime,
   CqlTime,
   CqlQuantity,
+  CqlNull,
 } from '../../src/types/primitives.js';
 import { CqlInterval, CqlList, CqlTuple } from '../../src/types/complex.js';
 import type { CqlValue, CqlComparable } from '../../src/types/value.js';
@@ -113,9 +114,14 @@ function isBalancedString(text: string): boolean {
   return true;
 }
 
-/** Unescape CQL string ('' -> '). */
+/** Unescape CQL string: '' -> ', \' -> ', \" -> ", \\ -> \, \uXXXX -> char, etc. */
 function unescapeCqlString(s: string): string {
-  return s.replace(/''/g, "'");
+  return s
+    .replace(/''/g, "'")
+    .replace(/\\'/g, "'")
+    .replace(/\\"/g, '"')
+    .replace(/\\\\/g, '\\')
+    .replace(/\\u([0-9A-Fa-f]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
 }
 
 /**
@@ -220,10 +226,8 @@ function parseList(text: string): CqlList {
     const trimmed = part.trim();
     const val = parseCvl(trimmed);
     if (val === null) {
-      // null elements in lists — we still include them conceptually
-      // but CqlList holds CqlValue[], so we skip nulls or handle specially
-      // For now, push a sentinel — actually the list tests may not have null elements in output
-      // We'll handle this if needed
+      // Use CqlNull sentinel for null elements in lists
+      values.push(CqlNull.INSTANCE);
       continue;
     }
     values.push(val);

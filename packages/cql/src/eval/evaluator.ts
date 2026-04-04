@@ -72,6 +72,7 @@ import {
   CqlDateTime,
   CqlTime,
   CqlQuantity,
+  CqlNull,
   DateTimePrecision,
   DatePrecision,
   TimePrecision,
@@ -202,10 +203,19 @@ function convertToType(
       return null;
     case 'datetime':
       if (v instanceof CqlDateTime) return v;
-      if (v instanceof CqlDate) return new CqlDateTime(v.toString() + 'T00:00:00');
+      if (v instanceof CqlDate) return new CqlDateTime(v.toString());
       if (v instanceof CqlString) {
         try { return new CqlDateTime(v.value); } catch { return null; }
       }
+      return null;
+    case 'quantity':
+      if (v instanceof CqlQuantity) return v;
+      if (v instanceof CqlInteger) return CqlQuantity.of(v.value, '1');
+      if (v instanceof CqlDecimal) return new CqlQuantity(v.value, '1');
+      return null;
+    case 'long':
+      if (v instanceof CqlLong) return v;
+      if (v instanceof CqlInteger) return new CqlLong(BigInt(v.value));
       return null;
     default:
       return null;
@@ -400,6 +410,9 @@ export class CqlEvaluator
           return CqlBoolean.of(left !== null || right !== null);
         case BinaryOp.Union:
           return left === null ? right : left;
+        case BinaryOp.Except:
+          // list except null = list; null except list = null
+          return left !== null ? left : null;
         case BinaryOp.Concatenate: {
           const ls = left !== null ? left.toString() : '';
           const rs = right !== null ? right.toString() : '';
@@ -411,10 +424,21 @@ export class CqlEvaluator
     }
 
     switch (expr.operator) {
-      case BinaryOp.Equal:
+      case BinaryOp.Equal: {
+        // CQL: if any element in the comparison is null, result is null (not false)
+        if (left instanceof CqlTuple && right instanceof CqlTuple) {
+          const eqResult = this.tupleEqualWithNull(left, right);
+          return eqResult === null ? null : CqlBoolean.of(eqResult);
+        }
         return CqlBoolean.of(left.equals(right));
-      case BinaryOp.NotEqual:
+      }
+      case BinaryOp.NotEqual: {
+        if (left instanceof CqlTuple && right instanceof CqlTuple) {
+          const eqResult = this.tupleEqualWithNull(left, right);
+          return eqResult === null ? null : CqlBoolean.of(!eqResult);
+        }
         return CqlBoolean.of(!left.equals(right));
+      }
       case BinaryOp.Equivalent:
         return CqlBoolean.of(left.equivalent(right));
       case BinaryOp.NotEquivalent:
@@ -464,6 +488,10 @@ export class CqlEvaluator
       case BinaryOp.Union:
       case BinaryOp.Intersect:
       case BinaryOp.Except:
+        // Interval-specific set operations
+        if (left instanceof CqlInterval && right instanceof CqlInterval) {
+          return this.evalIntervalSetOp(expr.operator, left as CqlInterval<CqlComparable>, right as CqlInterval<CqlComparable>);
+        }
         return this.evalSetOp(expr.operator, left, right);
 
       case BinaryOp.In:
@@ -484,7 +512,10 @@ export class CqlEvaluator
 
       case UnaryOp.Exists:
         if (operand === null) return CqlBoolean.FALSE;
-        if (operand instanceof CqlList) return CqlBoolean.of(!operand.isEmpty());
+        if (operand instanceof CqlList) {
+          // Exists is true only if there's at least one non-null element
+          return CqlBoolean.of(operand.values.some(v => !(v instanceof CqlNull)));
+        }
         return CqlBoolean.TRUE;
 
       case UnaryOp.Negate:
@@ -512,7 +543,10 @@ export class CqlEvaluator
       case UnaryOp.SingletonFrom: {
         const items = toList(operand);
         if (items.length === 0) return null;
-        if (items.length === 1) return items[0];
+        if (items.length === 1) {
+          const v = items[0];
+          return v instanceof CqlNull ? null : v;
+        }
         throw new Error(
           `singleton from requires 0 or 1 elements, got ${items.length}`,
         );
@@ -585,9 +619,17 @@ export class CqlEvaluator
     const operand = await this.evaluate(expr.operand);
     if (operand === null) return CqlBoolean.FALSE;
     if (expr.type.specKind !== 'NamedType') return CqlBoolean.FALSE;
-    return CqlBoolean.of(
-      operand.type.toLowerCase() === expr.type.name.toLowerCase(),
-    );
+    const operandType = operand.type.toLowerCase();
+    const targetType = expr.type.name.toLowerCase().replace(/^system\./, '');
+    if (operandType === targetType) return CqlBoolean.TRUE;
+    // CQL type hierarchy
+    const typeHierarchy: Record<string, string[]> = {
+      'vocabulary': ['valueset', 'codesystem'],
+      'any': ['boolean', 'integer', 'long', 'decimal', 'string', 'date', 'datetime', 'time', 'quantity', 'code', 'concept', 'interval', 'list', 'tuple'],
+    };
+    const subtypes = typeHierarchy[targetType];
+    if (subtypes && subtypes.includes(operandType)) return CqlBoolean.TRUE;
+    return CqlBoolean.FALSE;
   }
 
   async visitAs(expr: AsExpr): Promise<CqlResult> {
@@ -913,6 +955,8 @@ export class CqlEvaluator
   async visitInterval(expr: IntervalExpr): Promise<CqlResult> {
     const low = await this.evaluate(expr.low);
     const high = await this.evaluate(expr.high);
+    // CQL spec: Interval[null, null] evaluates to null
+    if (low === null && high === null) return null;
     return new CqlInterval(
       low as CqlComparable | null,
       high as CqlComparable | null,
@@ -934,7 +978,7 @@ export class CqlEvaluator
     const values: CqlValue[] = [];
     for (const elem of expr.elements) {
       const val = await this.evaluate(elem);
-      if (val !== null) values.push(val);
+      values.push(val === null ? CqlNull.INSTANCE : val);
     }
     return new CqlList(values);
   }
@@ -1032,10 +1076,8 @@ export class CqlEvaluator
     expr: DateTimeComponentFromExpr,
   ): Promise<CqlResult> {
     const operand = await this.evaluate(expr.operand);
-    const fn = this.registry.resolve('datetimecomponentfrom');
-    if (fn) return await fn([operand, new CqlString(expr.component)], this.ctx);
-    // Inline fallback
     if (operand === null) return null;
+    // Always use inline handler for precision-aware extraction
     return this.extractDateTimeComponent(operand, expr.component);
   }
 
@@ -1073,8 +1115,16 @@ export class CqlEvaluator
       switch (typeName) {
         case 'integer':
           return new CqlInteger(-2147483648);
+        case 'long':
+          return new CqlLong(-9223372036854775808n);
         case 'decimal':
-          return CqlDecimal.of(-1e28);
+          return new CqlDecimal(new Decimal('-99999999999999999999.99999999'));
+        case 'datetime':
+          return new CqlDateTime('0001-01-01T00:00:00.000Z');
+        case 'date':
+          return new CqlDate('0001-01-01');
+        case 'time':
+          return new CqlTime('00:00:00.000');
         default:
           return null;
       }
@@ -1083,8 +1133,16 @@ export class CqlEvaluator
     switch (typeName) {
       case 'integer':
         return new CqlInteger(2147483647);
+      case 'long':
+        return new CqlLong(9223372036854775807n);
       case 'decimal':
-        return CqlDecimal.of(1e28);
+        return new CqlDecimal(new Decimal('99999999999999999999.99999999'));
+      case 'datetime':
+        return new CqlDateTime('9999-12-31T23:59:59.999Z');
+      case 'date':
+        return new CqlDate('9999-12-31');
+      case 'time':
+        return new CqlTime('23:59:59.999');
       default:
         return null;
     }
@@ -1135,21 +1193,77 @@ export class CqlEvaluator
     if (leftIv === null || rightIv === null) return null;
 
     switch (op.timingKind) {
-      case TimingKind.SameAs:
+      case TimingKind.SameAs: {
+        if (op.before) {
+          // "on or before": for interval, use end/high; for point (promoted), low=high
+          const leftEnd = leftIv.high;
+          const rightEnd = rightIv.high;
+          if (leftEnd === null || rightEnd === null) return null;
+          try {
+            if (op.precision) {
+              const cmp = this.compareTemporal(leftEnd, rightEnd, op.precision);
+              return cmp === null ? null : CqlBoolean.of(cmp <= 0);
+            }
+            return CqlBoolean.of(leftEnd.compareTo(rightEnd) <= 0);
+          } catch { return null; }
+        }
+        if (op.after) {
+          // "on or after": for interval, use start/low; for point (promoted), low=high
+          const leftStart = leftIv.low;
+          const rightStart = rightIv.low;
+          if (leftStart === null || rightStart === null) return null;
+          try {
+            if (op.precision) {
+              const cmp = this.compareTemporal(leftStart, rightStart, op.precision);
+              return cmp === null ? null : CqlBoolean.of(cmp >= 0);
+            }
+            return CqlBoolean.of(leftStart.compareTo(rightStart) >= 0);
+          } catch { return null; }
+        }
         return CqlBoolean.of(leftIv.equals(rightIv));
+      }
 
-      case TimingKind.Includes:
+      case TimingKind.Includes: {
+        if (op.precision) {
+          // Precision-based includes
+          return this.evalPrecisionIncludes(leftIv, rightIv, op.precision, op.properly || false);
+        }
         if (op.properly) {
+          // For properly includes with a point (promoted to unit interval):
+          // The point must be strictly inside (not on a boundary)
+          if (left !== null && !(left instanceof CqlInterval)) {
+            // right is a point promoted to unit interval
+            const point = rightIv.low!;
+            const contains = leftIv.contains(point);
+            if (!contains) return CqlBoolean.FALSE;
+            // Check it's not on a boundary
+            const onLow = leftIv.low !== null && leftIv.low.equals(point);
+            const onHigh = leftIv.high !== null && leftIv.high.equals(point);
+            return CqlBoolean.of(!onLow && !onHigh);
+          }
           return CqlBoolean.of(leftIv.includes(rightIv) && !rightIv.includes(leftIv));
         }
         return CqlBoolean.of(leftIv.includes(rightIv));
+      }
 
       case TimingKind.IncludedIn:
-      case TimingKind.During:
+      case TimingKind.During: {
+        if (op.precision) {
+          return this.evalPrecisionIncludes(rightIv, leftIv, op.precision, op.properly || false);
+        }
         if (op.properly) {
+          if (right !== null && !(right instanceof CqlInterval)) {
+            const point = leftIv.low!;
+            const contains = rightIv.contains(point);
+            if (!contains) return CqlBoolean.FALSE;
+            const onLow = rightIv.low !== null && rightIv.low.equals(point);
+            const onHigh = rightIv.high !== null && rightIv.high.equals(point);
+            return CqlBoolean.of(!onLow && !onHigh);
+          }
           return CqlBoolean.of(rightIv.includes(leftIv) && !leftIv.includes(rightIv));
         }
         return CqlBoolean.of(rightIv.includes(leftIv));
+      }
 
       case TimingKind.BeforeOrAfter: {
         if (op.before) {
@@ -1161,27 +1275,50 @@ export class CqlEvaluator
       }
 
       case TimingKind.Meets: {
-        // Meets: end of A = successor of start of B, or end of B = predecessor of start of A
-        // Simplified: A.high is immediately adjacent to B.low, or B.high is immediately adjacent to A.low
-        if (leftIv.high !== null && rightIv.low !== null) {
-          if (leftIv.high instanceof CqlInteger && rightIv.low instanceof CqlInteger) {
-            if (leftIv.high.value + 1 === rightIv.low.value) return CqlBoolean.TRUE;
-          } else if (leftIv.high.equals(rightIv.low)) {
-            return CqlBoolean.TRUE;
-          }
+        // Meets: end of A is immediately adjacent to start of B (using successor), or vice versa
+        // Also handle MeetsBefore and MeetsAfter
+        if (op.before !== undefined && op.before) {
+          // MeetsBefore: A.high is immediately before B.low (successor(A.high) = B.low)
+          return this.evalMeetsAdjacent(leftIv.high, rightIv.low);
         }
-        if (leftIv.low !== null && rightIv.high !== null) {
-          if (leftIv.low instanceof CqlInteger && rightIv.high instanceof CqlInteger) {
-            if (rightIv.high.value + 1 === leftIv.low.value) return CqlBoolean.TRUE;
-          } else if (leftIv.low.equals(rightIv.high)) {
-            return CqlBoolean.TRUE;
-          }
+        if (op.after !== undefined && op.after) {
+          // MeetsAfter: A.low is immediately after B.high (A.low = successor(B.high))
+          return this.evalMeetsAdjacent(rightIv.high, leftIv.low);
         }
+        // Meets (either direction)
+        const fwd = this.evalMeetsAdjacent(leftIv.high, rightIv.low);
+        if (isTrue(fwd)) return CqlBoolean.TRUE;
+        const bwd = this.evalMeetsAdjacent(rightIv.high, leftIv.low);
+        if (isTrue(bwd)) return CqlBoolean.TRUE;
+        if (fwd === null || bwd === null) return null;
         return CqlBoolean.FALSE;
       }
 
-      case TimingKind.Overlaps:
+      case TimingKind.Overlaps: {
+        if (op.before !== undefined && op.before) {
+          // OverlapsBefore: left starts before right AND left ends within right
+          // left.low < right.low AND right.low <= left.high AND left.high <= right.high
+          if (leftIv.low === null || rightIv.low === null || leftIv.high === null || rightIv.high === null) return null;
+          try {
+            const startsBefore = leftIv.low.compareTo(rightIv.low) < 0;
+            const endsInOrBefore = leftIv.high.compareTo(rightIv.high) <= 0;
+            const overlapExists = leftIv.overlaps(rightIv);
+            return CqlBoolean.of(startsBefore && endsInOrBefore && overlapExists);
+          } catch { return null; }
+        }
+        if (op.after !== undefined && op.after) {
+          // OverlapsAfter: left ends after right AND left starts within right
+          // left.high > right.high AND left.low >= right.low AND left.low <= right.high
+          if (leftIv.low === null || rightIv.low === null || leftIv.high === null || rightIv.high === null) return null;
+          try {
+            const endsAfter = leftIv.high.compareTo(rightIv.high) > 0;
+            const startsInOrAfter = leftIv.low.compareTo(rightIv.low) >= 0;
+            const overlapExists = leftIv.overlaps(rightIv);
+            return CqlBoolean.of(endsAfter && startsInOrAfter && overlapExists);
+          } catch { return null; }
+        }
         return CqlBoolean.of(leftIv.overlaps(rightIv));
+      }
 
       case TimingKind.Starts: {
         if (leftIv.low === null || rightIv.low === null) return null;
@@ -1215,46 +1352,135 @@ export class CqlEvaluator
     right: CqlValue | null,
     op: TimingOp,
   ): CqlResult {
+    // For list includes/included-in, null element checks are valid
+    if (left === null && right === null) return null;
+    if (left === null && (op.timingKind === TimingKind.Includes || op.timingKind === TimingKind.IncludedIn || op.timingKind === TimingKind.During)) {
+      return CqlBoolean.FALSE;
+    }
+    if (right === null && (op.timingKind === TimingKind.Includes)) {
+      // List properly includes null: check if list has a CqlNull element
+      if (left instanceof CqlList) {
+        const hasNull = left.values.some(v => v instanceof CqlNull);
+        if (op.properly) return CqlBoolean.of(hasNull && left.values.length > 1);
+        return CqlBoolean.of(hasNull);
+      }
+      return CqlBoolean.FALSE;
+    }
+    if (left === null && (op.timingKind === TimingKind.IncludedIn || op.timingKind === TimingKind.During)) {
+      // null properly included in list
+      if (right instanceof CqlList) {
+        const hasNull = right.values.some(v => v instanceof CqlNull);
+        if (op.properly) return CqlBoolean.of(hasNull && right.values.length > 1);
+        return CqlBoolean.of(hasNull);
+      }
+      return CqlBoolean.FALSE;
+    }
     if (left === null || right === null) return null;
 
     switch (op.timingKind) {
       case TimingKind.Includes: {
-        // List includes List: left contains all elements of right
-        // List includes element: left contains element
         const lItems = toList(left);
         if (right instanceof CqlList) {
           const rItems = right.values;
-          if (rItems.length === 0) return CqlBoolean.TRUE;
-          const allFound = rItems.every(r =>
-            r === null ? lItems.some(l => l === null) : lItems.some(l => l !== null && l.equals(r))
-          );
-          if (op.properly) {
-            return CqlBoolean.of(allFound && lItems.length > rItems.length);
+          // Empty includes empty = true, but properly empty includes empty = false
+          if (op.properly && lItems.length <= rItems.length) {
+            // Check if they're equivalent first
+            if (lItems.length === rItems.length) {
+              // Need to be strict subset for proper
+              const lEquiv = new CqlList(lItems);
+              const rEquiv = new CqlList(rItems);
+              if (lEquiv.equivalent(rEquiv)) return CqlBoolean.FALSE;
+            }
           }
-          return CqlBoolean.of(allFound);
+          if (rItems.length === 0) {
+            return CqlBoolean.of(!op.properly || lItems.length > 0);
+          }
+          let hasNull = false;
+          for (const r of rItems) {
+            if (r === null) {
+              if (!lItems.some(l => l === null)) {
+                // null not found in left; but maybe it's ambiguous
+                hasNull = true;
+              }
+            } else {
+              if (!lItems.some(l => l !== null && l.equals(r))) return CqlBoolean.FALSE;
+            }
+          }
+          if (hasNull && !lItems.some(l => l === null)) return CqlBoolean.FALSE;
+          if (op.properly) {
+            return CqlBoolean.of(lItems.length > rItems.length);
+          }
+          return CqlBoolean.TRUE;
         }
-        // element in list
-        return CqlBoolean.of(lItems.some(l => l !== null && l.equals(right)));
+        // List includes single element
+        if (right === null) return CqlBoolean.of(lItems.some(l => l === null));
+        // Check for ambiguous element comparison (different precision)
+        let found = false;
+        let hasAmbiguous = false;
+        for (const l of lItems) {
+          if (l === null) continue;
+          try {
+            if (l.equals(right)) { found = true; break; }
+          } catch {
+            hasAmbiguous = true;
+          }
+        }
+        if (found) {
+          if (op.properly) return CqlBoolean.of(lItems.length > 1);
+          return CqlBoolean.TRUE;
+        }
+        if (hasAmbiguous) return null;
+        return CqlBoolean.FALSE;
       }
 
       case TimingKind.IncludedIn:
       case TimingKind.During: {
-        // List included in List: right contains all elements of left
         if (left instanceof CqlList) {
           const rItems = toList(right);
           const lItems = left.values;
-          if (lItems.length === 0) return CqlBoolean.TRUE;
-          const allFound = lItems.every(l =>
-            l === null ? rItems.some(r => r === null) : rItems.some(r => r !== null && r.equals(l))
-          );
-          if (op.properly) {
-            return CqlBoolean.of(allFound && rItems.length > lItems.length);
+          if (op.properly && lItems.length >= rItems.length) {
+            if (lItems.length === rItems.length) {
+              const lEquiv = new CqlList(lItems);
+              const rEquiv = new CqlList(rItems);
+              if (lEquiv.equivalent(rEquiv)) return CqlBoolean.FALSE;
+            }
           }
-          return CqlBoolean.of(allFound);
+          if (lItems.length === 0) {
+            return CqlBoolean.of(!op.properly || rItems.length > 0);
+          }
+          let hasNull = false;
+          for (const l of lItems) {
+            if (l === null) {
+              if (!rItems.some(r => r === null)) hasNull = true;
+            } else {
+              if (!rItems.some(r => r !== null && r.equals(l))) return CqlBoolean.FALSE;
+            }
+          }
+          if (hasNull && !rItems.some(r => r === null)) return CqlBoolean.FALSE;
+          if (op.properly) {
+            return CqlBoolean.of(rItems.length > lItems.length);
+          }
+          return CqlBoolean.TRUE;
         }
-        // element in list
+        // Single element included in list
         const rItems = toList(right);
-        return CqlBoolean.of(rItems.some(r => r !== null && r.equals(left)));
+        if (left === null) return CqlBoolean.of(rItems.some(r => r === null));
+        let found = false;
+        let hasAmbiguous = false;
+        for (const r of rItems) {
+          if (r === null) continue;
+          try {
+            if (r.equals(left)) { found = true; break; }
+          } catch {
+            hasAmbiguous = true;
+          }
+        }
+        if (found) {
+          if (op.properly) return CqlBoolean.of(rItems.length > 1);
+          return CqlBoolean.TRUE;
+        }
+        if (hasAmbiguous) return null;
+        return CqlBoolean.FALSE;
       }
 
       default:
@@ -1468,7 +1694,24 @@ export class CqlEvaluator
               const per = expr.per !== null ? await this.evaluate(expr.per) : null;
               const expanded = await expandFn([item, per], this.ctx);
               if (expanded instanceof CqlList) {
-                result.push(...expanded.values);
+                // When expanding a list of intervals, wrap each point in a step-sized unit interval
+                const step = per instanceof CqlQuantity ? per.value.toNumber() :
+                             per instanceof CqlInteger ? per.value : 1;
+                for (let pi = 0; pi < expanded.values.length; pi++) {
+                  const point = expanded.values[pi];
+                  if (point instanceof CqlInterval) {
+                    result.push(point);
+                  } else if (point instanceof CqlInteger) {
+                    // For integer expand with step, each element becomes Interval[v, v+step-1]
+                    // But must fit within the original interval
+                    const hi = item.high as CqlComparable;
+                    const endVal = new CqlInteger(point.value + step - 1);
+                    if (hi !== null && endVal.compareTo(hi) > 0) continue; // Skip if doesn't fit
+                    result.push(new CqlInterval(point, step === 1 ? point : endVal as CqlComparable, true, true));
+                  } else {
+                    result.push(new CqlInterval(point as CqlComparable, point as CqlComparable, true, true));
+                  }
+                }
               }
             }
           }
@@ -1659,34 +1902,74 @@ export class CqlEvaluator
     const pad = (n: number, w: number) => String(n).padStart(w, '0');
 
     if (temporal instanceof CqlDateTime) {
-      const d = new Date(Date.UTC(
-        temporal.year,
-        (temporal.month || 1) - 1,
-        temporal.day || 1,
-        temporal.hour,
-        temporal.minute,
-        temporal.second,
-        temporal.millis,
-      ));
+      let yr = temporal.year;
+      let mo = (temporal.month || 1) - 1; // 0-based
+      let dy = temporal.day || 1;
+      let hr = temporal.hour;
+      let mi = temporal.minute;
+      let se = temporal.second;
+      let ms = temporal.millis;
+
       switch (unit) {
-        case 'year': d.setUTCFullYear(d.getUTCFullYear() + amount); break;
-        case 'month': d.setUTCMonth(d.getUTCMonth() + amount); break;
-        case 'week': d.setUTCDate(d.getUTCDate() + amount * 7); break;
-        case 'day': d.setUTCDate(d.getUTCDate() + amount); break;
-        case 'hour': d.setUTCHours(d.getUTCHours() + amount); break;
-        case 'minute': d.setUTCMinutes(d.getUTCMinutes() + amount); break;
-        case 'second': d.setUTCSeconds(d.getUTCSeconds() + amount); break;
-        case 'millisecond': d.setUTCMilliseconds(d.getUTCMilliseconds() + amount); break;
+        case 'year': {
+          yr += amount;
+          // Clamp day for year changes (e.g., Feb 29 -> Feb 28)
+          if (temporal.precision >= DateTimePrecision.Day) {
+            const maxDay = new Date(Date.UTC(yr, mo + 1, 0)).getUTCDate();
+            if (dy > maxDay) dy = maxDay;
+          }
+          break;
+        }
+        case 'month': {
+          if (temporal.precision < DateTimePrecision.Month) {
+            // Year-only precision: truncate months to years
+            yr += Math.trunc(amount / 12);
+            break;
+          }
+          const totalMonths = yr * 12 + mo + amount;
+          yr = Math.floor(totalMonths / 12);
+          mo = ((totalMonths % 12) + 12) % 12;
+          if (temporal.precision >= DateTimePrecision.Day) {
+            const maxDay = new Date(Date.UTC(yr, mo + 1, 0)).getUTCDate();
+            if (dy > maxDay) dy = maxDay;
+          }
+          break;
+        }
+        case 'week':
+        case 'day':
+        case 'hour':
+        case 'minute':
+        case 'second':
+        case 'millisecond': {
+          const d = new Date(Date.UTC(yr, mo, dy, hr, mi, se, ms));
+          switch (unit) {
+            case 'week': d.setUTCDate(d.getUTCDate() + amount * 7); break;
+            case 'day': d.setUTCDate(d.getUTCDate() + amount); break;
+            case 'hour': d.setUTCHours(d.getUTCHours() + amount); break;
+            case 'minute': d.setUTCMinutes(d.getUTCMinutes() + amount); break;
+            case 'second': d.setUTCSeconds(d.getUTCSeconds() + amount); break;
+            case 'millisecond': d.setUTCMilliseconds(d.getUTCMilliseconds() + amount); break;
+          }
+          yr = d.getUTCFullYear();
+          mo = d.getUTCMonth();
+          dy = d.getUTCDate();
+          hr = d.getUTCHours();
+          mi = d.getUTCMinutes();
+          se = d.getUTCSeconds();
+          ms = d.getUTCMilliseconds();
+          break;
+        }
         default: throw new Error(`unsupported temporal unit: ${quantity.unit}`);
       }
+
       // Reconstruct at original precision
-      let s = pad(d.getUTCFullYear(), 4);
-      if (temporal.precision >= DateTimePrecision.Month) s += `-${pad(d.getUTCMonth() + 1, 2)}`;
-      if (temporal.precision >= DateTimePrecision.Day) s += `-${pad(d.getUTCDate(), 2)}`;
-      if (temporal.precision >= DateTimePrecision.Hour) s += `T${pad(d.getUTCHours(), 2)}`;
-      if (temporal.precision >= DateTimePrecision.Minute) s += `:${pad(d.getUTCMinutes(), 2)}`;
-      if (temporal.precision >= DateTimePrecision.Second) s += `:${pad(d.getUTCSeconds(), 2)}`;
-      if (temporal.precision >= DateTimePrecision.Millisecond) s += `.${pad(d.getUTCMilliseconds(), 3)}`;
+      let s = pad(yr, 4);
+      if (temporal.precision >= DateTimePrecision.Month) s += `-${pad(mo + 1, 2)}`;
+      if (temporal.precision >= DateTimePrecision.Day) s += `-${pad(dy, 2)}`;
+      if (temporal.precision >= DateTimePrecision.Hour) s += `T${pad(hr, 2)}`;
+      if (temporal.precision >= DateTimePrecision.Minute) s += `:${pad(mi, 2)}`;
+      if (temporal.precision >= DateTimePrecision.Second) s += `:${pad(se, 2)}`;
+      if (temporal.precision >= DateTimePrecision.Millisecond) s += `.${pad(ms, 3)}`;
       if (temporal.hasTZ) {
         if (temporal.tzOffset === 0) s += 'Z';
         else {
@@ -1699,21 +1982,55 @@ export class CqlEvaluator
     }
 
     if (temporal instanceof CqlDate) {
-      const d = new Date(Date.UTC(
-        temporal.year,
-        (temporal.month || 1) - 1,
-        temporal.day || 1,
-      ));
+      let yr = temporal.year;
+      let mo = (temporal.month || 1) - 1; // 0-based
+      let dy = temporal.day || 1;
+
       switch (unit) {
-        case 'year': d.setUTCFullYear(d.getUTCFullYear() + amount); break;
-        case 'month': d.setUTCMonth(d.getUTCMonth() + amount); break;
-        case 'week': d.setUTCDate(d.getUTCDate() + amount * 7); break;
-        case 'day': d.setUTCDate(d.getUTCDate() + amount); break;
+        case 'year': {
+          yr += amount;
+          if (temporal.precision >= DatePrecision.Day) {
+            const maxDay = new Date(Date.UTC(yr, mo + 1, 0)).getUTCDate();
+            if (dy > maxDay) dy = maxDay;
+          }
+          break;
+        }
+        case 'month': {
+          if (temporal.precision < DatePrecision.Month) {
+            yr += Math.trunc(amount / 12);
+            break;
+          }
+          const totalMonths = yr * 12 + mo + amount;
+          yr = Math.floor(totalMonths / 12);
+          mo = ((totalMonths % 12) + 12) % 12;
+          if (temporal.precision >= DatePrecision.Day) {
+            const maxDay = new Date(Date.UTC(yr, mo + 1, 0)).getUTCDate();
+            if (dy > maxDay) dy = maxDay;
+          }
+          break;
+        }
+        case 'week':
+        case 'day': {
+          if (temporal.precision < DatePrecision.Day && unit === 'day') {
+            // Month-only precision: truncate days to months
+            const totalMonths = yr * 12 + mo + Math.trunc(amount / 30);
+            yr = Math.floor(totalMonths / 12);
+            mo = ((totalMonths % 12) + 12) % 12;
+            break;
+          }
+          const d = new Date(Date.UTC(yr, mo, dy));
+          if (unit === 'week') d.setUTCDate(d.getUTCDate() + amount * 7);
+          else d.setUTCDate(d.getUTCDate() + amount);
+          yr = d.getUTCFullYear();
+          mo = d.getUTCMonth();
+          dy = d.getUTCDate();
+          break;
+        }
         default: throw new Error(`unsupported temporal unit for Date: ${quantity.unit}`);
       }
-      let s = pad(d.getUTCFullYear(), 4);
-      if (temporal.precision >= DatePrecision.Month) s += `-${pad(d.getUTCMonth() + 1, 2)}`;
-      if (temporal.precision >= DatePrecision.Day) s += `-${pad(d.getUTCDate(), 2)}`;
+      let s = pad(yr, 4);
+      if (temporal.precision >= DatePrecision.Month) s += `-${pad(mo + 1, 2)}`;
+      if (temporal.precision >= DatePrecision.Day) s += `-${pad(dy, 2)}`;
       return new CqlDate(s);
     }
 
@@ -1742,6 +2059,189 @@ export class CqlEvaluator
       return new CqlTime(s);
     }
 
+    return null;
+  }
+
+  /** Precision-based includes for intervals. */
+  private evalPrecisionIncludes(
+    outer: CqlInterval<CqlComparable>,
+    inner: CqlInterval<CqlComparable>,
+    precision: string,
+    properly: boolean,
+  ): CqlResult {
+    // Check that inner's low >= outer's low and inner's high <= outer's high at given precision
+    if (outer.low !== null && inner.low !== null) {
+      const cmp = this.compareTemporal(outer.low, inner.low, precision);
+      if (cmp === null) return null;
+      if (cmp > 0) return CqlBoolean.FALSE;
+    }
+    if (outer.high !== null && inner.high !== null) {
+      const cmp = this.compareTemporal(outer.high, inner.high, precision);
+      if (cmp === null) return null;
+      if (cmp < 0) return CqlBoolean.FALSE;
+    }
+    if (properly) {
+      // At least one boundary must be strictly inside
+      let strictLow = false;
+      let strictHigh = false;
+      if (outer.low !== null && inner.low !== null) {
+        const cmp = this.compareTemporal(outer.low, inner.low, precision);
+        if (cmp !== null && cmp < 0) strictLow = true;
+      }
+      if (outer.high !== null && inner.high !== null) {
+        const cmp = this.compareTemporal(outer.high, inner.high, precision);
+        if (cmp !== null && cmp > 0) strictHigh = true;
+      }
+      return CqlBoolean.of(strictLow || strictHigh);
+    }
+    return CqlBoolean.TRUE;
+  }
+
+  /** Check if successor(a) === b (a is immediately adjacent to b). */
+  private evalMeetsAdjacent(a: CqlComparable | null, b: CqlComparable | null): CqlResult {
+    if (a === null || b === null) return null;
+    try {
+      const suc = this.evalSuccessorPredecessor(UnaryOp.SuccessorOf, a);
+      if (suc !== null && suc.equals(b)) return CqlBoolean.TRUE;
+      return CqlBoolean.FALSE;
+    } catch {
+      return CqlBoolean.FALSE;
+    }
+  }
+
+  /** Tuple equality with null propagation: returns true/false/null */
+  private tupleEqualWithNull(a: CqlTuple, b: CqlTuple): boolean | null {
+    if (a.elements.size !== b.elements.size) return false;
+    let hasNull = false;
+    for (const [k, v] of a.elements) {
+      if (!b.elements.has(k)) return false;
+      const ov = b.elements.get(k) ?? null;
+      if (v === null && ov === null) continue; // both null = equal for this element
+      if (v === null || ov === null) {
+        hasNull = true; // one null, one not = null propagation
+        continue;
+      }
+      if (!v.equals(ov)) return false;
+    }
+    return hasNull ? null : true;
+  }
+
+  private evalIntervalSetOp(
+    op: BinaryOp,
+    a: CqlInterval<CqlComparable>,
+    b: CqlInterval<CqlComparable>,
+  ): CqlResult {
+    switch (op) {
+      case BinaryOp.Union: {
+        // Union of two intervals: if they overlap or are adjacent, merge; otherwise null
+        if (!a.overlaps(b)) {
+          // Check adjacency (meets)
+          let meets = false;
+          if (a.high !== null && b.low !== null) {
+            try {
+              const suc = this.evalSuccessorPredecessor(UnaryOp.SuccessorOf, a.high);
+              if (suc !== null && suc.equals(b.low)) meets = true;
+            } catch { /* ignore */ }
+            if (!meets) {
+              try { if (a.high.equals(b.low)) meets = true; } catch { /* ignore */ }
+            }
+          }
+          if (!meets && b.high !== null && a.low !== null) {
+            try {
+              const suc = this.evalSuccessorPredecessor(UnaryOp.SuccessorOf, b.high);
+              if (suc !== null && suc.equals(a.low)) meets = true;
+            } catch { /* ignore */ }
+            if (!meets) {
+              try { if (b.high.equals(a.low)) meets = true; } catch { /* ignore */ }
+            }
+          }
+          if (!meets) return null;
+        }
+        // Merge: take min low, max high
+        let newLow = a.low;
+        let newLowClosed = a.lowClosed;
+        let newHigh = a.high;
+        let newHighClosed = a.highClosed;
+        if (a.low !== null && b.low !== null) {
+          const cmp = a.low.compareTo(b.low);
+          if (cmp > 0 || (cmp === 0 && b.lowClosed && !a.lowClosed)) {
+            newLow = b.low; newLowClosed = b.lowClosed;
+          }
+        } else if (a.low === null) {
+          newLow = a.low; newLowClosed = a.lowClosed;
+        } else {
+          newLow = b.low; newLowClosed = b.lowClosed;
+        }
+        if (a.high !== null && b.high !== null) {
+          const cmp = a.high.compareTo(b.high);
+          if (cmp < 0 || (cmp === 0 && b.highClosed && !a.highClosed)) {
+            newHigh = b.high; newHighClosed = b.highClosed;
+          }
+        } else if (a.high === null) {
+          newHigh = a.high; newHighClosed = a.highClosed;
+        } else {
+          newHigh = b.high; newHighClosed = b.highClosed;
+        }
+        return new CqlInterval(newLow, newHigh, newLowClosed, newHighClosed);
+      }
+
+      case BinaryOp.Intersect: {
+        if (!a.overlaps(b)) return null;
+        // Take max low, min high
+        let newLow = a.low;
+        let newLowClosed = a.lowClosed;
+        let newHigh = a.high;
+        let newHighClosed = a.highClosed;
+        if (a.low !== null && b.low !== null) {
+          const cmp = a.low.compareTo(b.low);
+          if (cmp < 0 || (cmp === 0 && !b.lowClosed && a.lowClosed)) {
+            newLow = b.low; newLowClosed = b.lowClosed;
+          }
+        } else if (b.low !== null) {
+          newLow = b.low; newLowClosed = b.lowClosed;
+        }
+        if (a.high !== null && b.high !== null) {
+          const cmp = a.high.compareTo(b.high);
+          if (cmp > 0 || (cmp === 0 && !b.highClosed && a.highClosed)) {
+            newHigh = b.high; newHighClosed = b.highClosed;
+          }
+        } else if (b.high !== null) {
+          newHigh = b.high; newHighClosed = b.highClosed;
+        }
+        return new CqlInterval(newLow, newHigh, newLowClosed, newHighClosed);
+      }
+
+      case BinaryOp.Except: {
+        // If B completely contains A, return null
+        if (b.includes(a)) return null;
+        // If no overlap, return A
+        if (!a.overlaps(b)) return a;
+        // If B overlaps the start of A, return the right part of A
+        if (b.low !== null && a.low !== null) {
+          const cmpLow = b.low.compareTo(a.low);
+          if (cmpLow <= 0 && b.high !== null) {
+            // B covers the left side: return from successor(b.high) to a.high
+            const newLow = this.evalSuccessorPredecessor(UnaryOp.SuccessorOf, b.high);
+            if (newLow !== null) {
+              return new CqlInterval(newLow as CqlComparable, a.high, true, a.highClosed);
+            }
+          }
+        }
+        // If B overlaps the end of A, return the left part of A
+        if (b.high !== null && a.high !== null) {
+          const cmpHigh = b.high.compareTo(a.high);
+          if (cmpHigh >= 0 && b.low !== null) {
+            // B covers the right side: return from a.low to predecessor(b.low)
+            const newHigh = this.evalSuccessorPredecessor(UnaryOp.PredecessorOf, b.low);
+            if (newHigh !== null) {
+              return new CqlInterval(a.low, newHigh as CqlComparable, a.lowClosed, true);
+            }
+          }
+        }
+        // B is in the middle of A: spec says return null (can't represent two disjoint pieces)
+        return null;
+      }
+    }
     return null;
   }
 
@@ -1789,7 +2289,6 @@ export class CqlEvaluator
   ): CqlResult {
     if (op === BinaryOp.In) {
       // left in right
-      // null in null -> null; null in {} -> false; null in {1, null} -> true
       if (right === null) {
         return left === null ? null : CqlBoolean.FALSE;
       }
@@ -1803,15 +2302,16 @@ export class CqlEvaluator
       }
       const rItems = toList(right);
       if (left === null) {
-        // null in list: check if list is empty -> false, or contains null -> true, otherwise null
         if (rItems.length === 0) return CqlBoolean.FALSE;
-        // CQL: null is found in list via equivalence (null ~ null = true)
-        return CqlBoolean.of(rItems.some((r) => r === null));
+        // CQL: null in list - check if list has a CqlNull element
+        return CqlBoolean.of(rItems.some((r) => r instanceof CqlNull));
       }
-      return CqlBoolean.of(rItems.some((r) => r !== null && r.equals(left)));
+      return CqlBoolean.of(rItems.some((r) => {
+        if (r instanceof CqlNull) return false;
+        try { return r.equivalent(left); } catch { return false; }
+      }));
     }
     // contains: right in left
-    // null contains X -> false (empty collection)
     if (left === null) {
       return CqlBoolean.FALSE;
     }
@@ -1825,10 +2325,13 @@ export class CqlEvaluator
     }
     const lItems = toList(left);
     if (right === null) {
-      // list contains null: check if list has null element
-      return CqlBoolean.of(lItems.some((l) => l === null));
+      // list contains null: check if list has CqlNull element
+      return CqlBoolean.of(lItems.some((l) => l instanceof CqlNull));
     }
-    return CqlBoolean.of(lItems.some((l) => l !== null && l.equals(right)));
+    return CqlBoolean.of(lItems.some((l) => {
+      if (l instanceof CqlNull) return false;
+      try { return l.equivalent(right); } catch { return false; }
+    }));
   }
 
   private evalFlatten(val: CqlValue | null): CqlResult {
@@ -1849,18 +2352,94 @@ export class CqlEvaluator
     operand: CqlValue | null,
   ): CqlResult {
     if (operand === null) return null;
+    const isSuc = op === UnaryOp.SuccessorOf;
     if (operand instanceof CqlInteger) {
-      return new CqlInteger(
-        op === UnaryOp.SuccessorOf ? operand.value + 1 : operand.value - 1,
-      );
+      return new CqlInteger(isSuc ? operand.value + 1 : operand.value - 1);
+    }
+    if (operand instanceof CqlLong) {
+      return new CqlLong(isSuc ? operand.value + 1n : operand.value - 1n);
     }
     if (operand instanceof CqlDecimal) {
       const epsilon = new Decimal('1e-8');
-      return new CqlDecimal(
-        op === UnaryOp.SuccessorOf
-          ? operand.value.plus(epsilon)
-          : operand.value.minus(epsilon),
-      );
+      return new CqlDecimal(isSuc ? operand.value.plus(epsilon) : operand.value.minus(epsilon));
+    }
+    if (operand instanceof CqlQuantity) {
+      const epsilon = new Decimal('1e-8');
+      return new CqlQuantity(isSuc ? operand.value.plus(epsilon) : operand.value.minus(epsilon), operand.unit);
+    }
+    if (operand instanceof CqlDateTime) {
+      const pad = (n: number, w: number) => String(n).padStart(w, '0');
+      const amt = isSuc ? 1 : -1;
+      let yr = operand.year;
+      let mo = (operand.month || 1) - 1;
+      let dy = operand.day || 1;
+      let hr = operand.hour;
+      let mi = operand.minute;
+      let se = operand.second;
+      let ms = operand.millis;
+      // Add/subtract at the finest precision of the input
+      switch (operand.precision) {
+        case DateTimePrecision.Year: yr += amt; break;
+        case DateTimePrecision.Month: { const t = yr*12+mo+amt; yr = Math.floor(t/12); mo = ((t%12)+12)%12; break; }
+        case DateTimePrecision.Day: { const d = new Date(Date.UTC(yr, mo, dy)); d.setUTCDate(d.getUTCDate()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); break; }
+        case DateTimePrecision.Hour: { const d = new Date(Date.UTC(yr, mo, dy, hr)); d.setUTCHours(d.getUTCHours()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); break; }
+        case DateTimePrecision.Minute: { const d = new Date(Date.UTC(yr, mo, dy, hr, mi)); d.setUTCMinutes(d.getUTCMinutes()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); break; }
+        case DateTimePrecision.Second: { const d = new Date(Date.UTC(yr, mo, dy, hr, mi, se)); d.setUTCSeconds(d.getUTCSeconds()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); se=d.getUTCSeconds(); break; }
+        default: { const d = new Date(Date.UTC(yr, mo, dy, hr, mi, se, ms)); d.setUTCMilliseconds(d.getUTCMilliseconds()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); se=d.getUTCSeconds(); ms=d.getUTCMilliseconds(); break; }
+      }
+      let s = pad(yr, 4);
+      if (operand.precision >= DateTimePrecision.Month) s += `-${pad(mo + 1, 2)}`;
+      if (operand.precision >= DateTimePrecision.Day) s += `-${pad(dy, 2)}`;
+      if (operand.precision >= DateTimePrecision.Hour) s += `T${pad(hr, 2)}`;
+      if (operand.precision >= DateTimePrecision.Minute) s += `:${pad(mi, 2)}`;
+      if (operand.precision >= DateTimePrecision.Second) s += `:${pad(se, 2)}`;
+      if (operand.precision >= DateTimePrecision.Millisecond) s += `.${pad(ms, 3)}`;
+      if (operand.hasTZ) {
+        if (operand.tzOffset === 0) s += 'Z';
+        else {
+          const sign = operand.tzOffset < 0 ? '-' : '+';
+          const abs = Math.abs(operand.tzOffset);
+          s += `${sign}${pad(Math.floor(abs / 60), 2)}:${pad(abs % 60, 2)}`;
+        }
+      }
+      return new CqlDateTime(s);
+    }
+    if (operand instanceof CqlDate) {
+      const pad = (n: number, w: number) => String(n).padStart(w, '0');
+      const amt = isSuc ? 1 : -1;
+      let yr = operand.year;
+      let mo = (operand.month || 1) - 1;
+      let dy = operand.day || 1;
+      switch (operand.precision) {
+        case DatePrecision.Year: yr += amt; break;
+        case DatePrecision.Month: { const t = yr*12+mo+amt; yr = Math.floor(t/12); mo = ((t%12)+12)%12; break; }
+        default: { const d = new Date(Date.UTC(yr, mo, dy)); d.setUTCDate(d.getUTCDate()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); break; }
+      }
+      let s = pad(yr, 4);
+      if (operand.precision >= DatePrecision.Month) s += `-${pad(mo + 1, 2)}`;
+      if (operand.precision >= DatePrecision.Day) s += `-${pad(dy, 2)}`;
+      return new CqlDate(s);
+    }
+    if (operand instanceof CqlTime) {
+      const pad = (n: number, w: number) => String(n).padStart(w, '0');
+      const amt = isSuc ? 1 : -1;
+      let totalMs = operand.hour * 3600000 + operand.minute * 60000 + operand.second * 1000 + operand.millis;
+      switch (operand.precision) {
+        case TimePrecision.Hour: totalMs += amt * 3600000; break;
+        case TimePrecision.Minute: totalMs += amt * 60000; break;
+        case TimePrecision.Second: totalMs += amt * 1000; break;
+        default: totalMs += amt; break;
+      }
+      totalMs = ((totalMs % 86400000) + 86400000) % 86400000;
+      const h = Math.floor(totalMs / 3600000);
+      const m = Math.floor((totalMs % 3600000) / 60000);
+      const sec = Math.floor((totalMs % 60000) / 1000);
+      const ms = totalMs % 1000;
+      let s = pad(h, 2);
+      if (operand.precision >= TimePrecision.Minute) s += `:${pad(m, 2)}`;
+      if (operand.precision >= TimePrecision.Second) s += `:${pad(sec, 2)}`;
+      if (operand.precision >= TimePrecision.Millisecond) s += `.${pad(ms, 3)}`;
+      return new CqlTime(s);
     }
     throw new Error(`successor/predecessor not supported for ${operand.type}`);
   }
@@ -1924,7 +2503,8 @@ export class CqlEvaluator
     switch (name) {
       case 'count': {
         const items = toList(source);
-        return new CqlInteger(items.length);
+        // Count excludes null elements per CQL spec
+        return new CqlInteger(items.filter(v => !(v instanceof CqlNull)).length);
       }
       case 'exists': {
         if (expr.operands.length > 0) {
@@ -1937,11 +2517,15 @@ export class CqlEvaluator
       }
       case 'first': {
         const items = toList(source);
-        return items.length > 0 ? items[0] : null;
+        if (items.length === 0) return null;
+        const v = items[0];
+        return v instanceof CqlNull ? null : v;
       }
       case 'last': {
         const items = toList(source);
-        return items.length > 0 ? items[items.length - 1] : null;
+        if (items.length === 0) return null;
+        const v = items[items.length - 1];
+        return v instanceof CqlNull ? null : v;
       }
       case 'tostring':
         if (source !== null) return new CqlString(source.toString());
@@ -1959,19 +2543,47 @@ export class CqlEvaluator
         if (source === null) return null;
         return CqlBoolean.of(!isTrue(source));
       case 'length':
+        if (source === null) return null;
         if (source instanceof CqlString) return new CqlInteger(source.value.length);
+        if (source instanceof CqlList) return new CqlInteger(source.values.length);
         return new CqlInteger(0);
-      case 'coalesce':
+      case 'coalesce': {
+        // Coalesce with a list argument: find first non-null in the list
+        if (expr.operands.length === 1) {
+          const arg = await this.evaluate(expr.operands[0]);
+          if (arg instanceof CqlList) {
+            for (const item of arg.values) {
+              if (item !== null && !(item instanceof CqlNull)) return item;
+            }
+            return null;
+          }
+          return arg;
+        }
+        // Multiple arguments: find first non-null
         for (const arg of expr.operands) {
           const val = await this.evaluate(arg);
-          if (val !== null) return val;
+          if (val !== null && !(val instanceof CqlNull)) return val;
         }
         return null;
+      }
       case 'isnull':
-        return CqlBoolean.of(source === null);
+        if (source !== null && source !== undefined) return CqlBoolean.FALSE;
+        if (expr.operands.length > 0) {
+          const val = await this.evaluate(expr.operands[0]);
+          return CqlBoolean.of(val === null);
+        }
+        return CqlBoolean.TRUE;
       case 'istrue':
+        if (expr.operands.length > 0 && source === null) {
+          const val = await this.evaluate(expr.operands[0]);
+          return CqlBoolean.of(isTrue(val));
+        }
         return CqlBoolean.of(isTrue(source));
       case 'isfalse':
+        if (expr.operands.length > 0 && source === null) {
+          const val = await this.evaluate(expr.operands[0]);
+          return CqlBoolean.of(isFalse(val));
+        }
         return CqlBoolean.of(isFalse(source));
       case 'now': {
         const now = new Date();
@@ -2224,13 +2836,27 @@ export class CqlEvaluator
         return CqlBoolean.FALSE;
       }
       case 'indexof': {
-        if (source instanceof CqlString && expr.operands.length > 0) {
-          const arg = await this.evaluate(expr.operands[0]);
-          if (arg instanceof CqlString) {
-            return new CqlInteger(source.value.indexOf(arg.value));
+        if (expr.operands.length > 0) {
+          // IndexOf(list, element) - the function form takes (list, element)
+          // inline form: source.indexOf(arg)
+          if (source instanceof CqlString) {
+            const arg = await this.evaluate(expr.operands[0]);
+            if (arg instanceof CqlString) {
+              return new CqlInteger(source.value.indexOf(arg.value));
+            }
+          }
+          if (source instanceof CqlList) {
+            const arg = await this.evaluate(expr.operands[0]);
+            if (arg === null) return new CqlInteger(-1);
+            for (let i = 0; i < source.values.length; i++) {
+              if (source.values[i] !== null && source.values[i].equals(arg)) {
+                return new CqlInteger(i);
+              }
+            }
+            return new CqlInteger(-1);
           }
         }
-        return new CqlInteger(-1);
+        return null;
       }
       case 'substring': {
         if (source instanceof CqlString && expr.operands.length > 0) {
@@ -2243,11 +2869,14 @@ export class CqlEvaluator
           }
           if (startIdx < 0 || startIdx >= source.value.length) return null;
           const end = length >= 0 ? startIdx + length : undefined;
-          return new CqlString(source.value.substring(startIdx, end));
+          const result = source.value.substring(startIdx, end);
+          if (result.length === 0) return null;
+          return new CqlString(result);
         }
         return source;
       }
       case 'tail': {
+        if (source === null) return null;
         const items = toList(source);
         return new CqlList(items.slice(1));
       }
@@ -2271,6 +2900,60 @@ export class CqlEvaluator
         }
         return source ?? new CqlList([]);
       }
+      case 'product': {
+        const items = toList(source);
+        if (items.length === 0) return null;
+        const first = items[0];
+        if (first === null) return null;
+        if (first instanceof CqlInteger) {
+          let product = 1;
+          for (const item of items) {
+            if (item === null) return null;
+            if (item instanceof CqlInteger) product *= item.value;
+          }
+          return new CqlInteger(product);
+        }
+        if (first instanceof CqlLong) {
+          let product = 1n;
+          for (const item of items) {
+            if (item === null) return null;
+            if (item instanceof CqlLong) product *= item.value;
+          }
+          return new CqlLong(product);
+        }
+        if (first instanceof CqlQuantity) {
+          let product = first.value;
+          for (let i = 1; i < items.length; i++) {
+            const item = items[i];
+            if (item === null) return null;
+            if (item instanceof CqlQuantity) product = product.times(item.value);
+          }
+          return new CqlQuantity(product, (first as CqlQuantity).unit);
+        }
+        let product = new Decimal(1);
+        for (const item of items) {
+          if (item === null) return null;
+          product = product.times(toDecimal(item));
+        }
+        return CqlDecimal.of(product.toString());
+      }
+      case 'toquantity': {
+        const val = source ?? (expr.operands.length > 0 ? await this.evaluate(expr.operands[0]) : null);
+        if (val === null) return null;
+        if (val instanceof CqlQuantity) return val;
+        if (val instanceof CqlInteger) return CqlQuantity.of(val.value, '1');
+        if (val instanceof CqlDecimal) return new CqlQuantity(val.value, '1');
+        if (val instanceof CqlString) {
+          // Try parsing "value unit"
+          const m = val.value.match(/^(-?[\d.]+)\s*(.*)$/);
+          if (m) return CqlQuantity.of(m[1], m[2] || '1');
+        }
+        return null;
+      }
+      case 'descendents':
+      case 'descendants':
+        // FHIRPath function - return empty list for CQL standalone
+        return new CqlList([]);
       default:
         throw new Error(`unknown function: ${expr.name}`);
     }
@@ -2385,19 +3068,21 @@ export class CqlEvaluator
         case 'year':
           return new CqlInteger(operand.year);
         case 'month':
-          return operand.month ? new CqlInteger(operand.month) : null;
+          return operand.precision >= DateTimePrecision.Month ? new CqlInteger(operand.month) : null;
         case 'day':
-          return operand.day ? new CqlInteger(operand.day) : null;
+          return operand.precision >= DateTimePrecision.Day ? new CqlInteger(operand.day) : null;
         case 'hour':
-          return new CqlInteger(operand.hour);
+          return operand.precision >= DateTimePrecision.Hour ? new CqlInteger(operand.hour) : null;
         case 'minute':
-          return new CqlInteger(operand.minute);
+          return operand.precision >= DateTimePrecision.Minute ? new CqlInteger(operand.minute) : null;
         case 'second':
-          return new CqlInteger(operand.second);
+          return operand.precision >= DateTimePrecision.Second ? new CqlInteger(operand.second) : null;
         case 'millisecond':
-          return new CqlInteger(operand.millis);
+          return operand.precision >= DateTimePrecision.Millisecond ? new CqlInteger(operand.millis) : null;
         case 'timezoneoffset':
           return operand.hasTZ ? new CqlDecimal(new Decimal(operand.tzOffset / 60)) : null;
+        case 'date':
+          return new CqlDate(operand.toString().split('T')[0]);
         default:
           return null;
       }

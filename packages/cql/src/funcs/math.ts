@@ -151,11 +151,7 @@ export function registerMathFunctions(registry: FunctionRegistry): void {
     if (v === null) return null;
 
     if (v instanceof CqlDecimal) {
-      // Count digits after the decimal point in the string representation
-      const s = v.value.toFixed();
-      const dotIdx = s.indexOf('.');
-      if (dotIdx < 0) return new CqlInteger(0);
-      return new CqlInteger(s.length - dotIdx - 1);
+      return new CqlInteger(v.originalPrecision);
     }
 
     if (v instanceof CqlDate || v instanceof CqlDateTime || v instanceof CqlTime) {

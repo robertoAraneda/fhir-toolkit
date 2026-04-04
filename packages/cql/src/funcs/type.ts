@@ -120,7 +120,8 @@ export function registerTypeFunctions(registry: FunctionRegistry): void {
     if (v === null) return null;
     if (v instanceof CqlDateTime) return v;
     if (v instanceof CqlDate) {
-      return new CqlDateTime(v.toString() + 'T00:00:00');
+      // Preserve date precision: @2014-01-01 -> @2014-01-01T (no time components)
+      return new CqlDateTime(v.toString());
     }
     if (v instanceof CqlString) {
       try {

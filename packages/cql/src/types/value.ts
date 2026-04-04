@@ -21,7 +21,8 @@ export type CqlType =
   | 'Concept'
   | 'Interval'
   | 'List'
-  | 'Tuple';
+  | 'Tuple'
+  | 'Null';
 
 /**
  * Base interface for every CQL value.

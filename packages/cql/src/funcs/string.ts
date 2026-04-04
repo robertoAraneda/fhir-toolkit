@@ -4,7 +4,7 @@
  * Ported from Go: funcs/string_ops.go
  */
 
-import { CqlBoolean, CqlInteger, CqlString } from '../types/index.js';
+import { CqlBoolean, CqlInteger, CqlNull, CqlString } from '../types/index.js';
 import { CqlList } from '../types/index.js';
 import { asInteger, asString } from './helpers.js';
 import type { FunctionRegistry } from './registry.js';
@@ -24,9 +24,13 @@ export function registerStringFunctions(registry: FunctionRegistry): void {
     return new CqlString(s.toLowerCase());
   });
 
-  // Length(string) -> integer
+  // Length(string|list) -> integer
   registry.register('Length', (args) => {
-    const s = asString(args[0]);
+    const v = args[0];
+    if (v === null) return null;
+    if (v instanceof CqlString) return new CqlInteger(v.value.length);
+    if (v instanceof CqlList) return new CqlInteger(v.values.length);
+    const s = asString(v);
     if (s === null) return new CqlInteger(0);
     return new CqlInteger(s.length);
   });
@@ -52,21 +56,41 @@ export function registerStringFunctions(registry: FunctionRegistry): void {
     const s = asString(args[0]);
     const start = asInteger(args[1]);
     if (s === null || start === null) return null;
-    if (start < 0 || start >= s.length) return new CqlString('');
+    if (start < 0 || start >= s.length) return null;
     const len = args[2] != null ? asInteger(args[2]) : null;
     if (len !== null && len > 0) {
       const end = Math.min(start + len, s.length);
-      return new CqlString(s.slice(start, end));
+      const result = s.slice(start, end);
+      return result.length === 0 ? null : new CqlString(result);
     }
-    return new CqlString(s.slice(start));
+    const result = s.slice(start);
+    return result.length === 0 ? null : new CqlString(result);
   });
 
-  // IndexOf(string, substring) -> integer
+  // IndexOf(source, element) -> integer  (works for strings and lists)
   registry.register('IndexOf', (args) => {
-    const s = asString(args[0]);
-    const sub = asString(args[1]);
-    if (s === null || sub === null) return null;
-    return new CqlInteger(s.indexOf(sub));
+    const source = args[0];
+    const element = args[1];
+    if (source === null) return null;
+    // String IndexOf
+    if (source instanceof CqlString) {
+      const sub = asString(element);
+      if (sub === null) return null;
+      return new CqlInteger(source.value.indexOf(sub));
+    }
+    // List IndexOf
+    if (source instanceof CqlList) {
+      if (element === null) return new CqlInteger(-1);
+      for (let i = 0; i < source.values.length; i++) {
+        const item = source.values[i];
+        if (item instanceof CqlNull) continue;
+        try {
+          if (item.equals(element)) return new CqlInteger(i);
+        } catch { /* skip */ }
+      }
+      return new CqlInteger(-1);
+    }
+    return null;
   });
 
   // PositionOf(pattern, string) -> integer
@@ -106,7 +130,10 @@ export function registerStringFunctions(registry: FunctionRegistry): void {
     if (s === null || pattern === null || replacement === null) return null;
     try {
       const re = new RegExp(pattern, 'g');
-      return new CqlString(s.replace(re, replacement));
+      // Convert Java/CQL regex replacement escapes to JS:
+      // \$ -> $$ (literal dollar), \\ -> \ (literal backslash)
+      const jsReplacement = replacement.replace(/\\\$/g, '$$$$').replace(/\\\\/g, '\\');
+      return new CqlString(s.replace(re, jsReplacement));
     } catch {
       return args[0] as CqlString;
     }
@@ -118,11 +145,12 @@ export function registerStringFunctions(registry: FunctionRegistry): void {
     if (list === null) return null;
     const separator = args[1] != null ? asString(args[1]) ?? '' : '';
     if (list instanceof CqlList) {
+      if (list.values.length === 0) return null;
+      // If any element is null, Combine returns null per CQL spec
       const parts: string[] = [];
       for (const item of list.values) {
-        if (item !== null) {
-          parts.push(item.toString());
-        }
+        if (item === null) return null;
+        parts.push(item.toString());
       }
       return new CqlString(parts.join(separator));
     }
@@ -132,8 +160,12 @@ export function registerStringFunctions(registry: FunctionRegistry): void {
   // Split(string, separator) -> list<string>
   registry.register('Split', (args) => {
     const s = asString(args[0]);
+    if (s === null) return null;
     const separator = asString(args[1]);
-    if (s === null || separator === null) return null;
+    if (separator === null) {
+      // CQL spec: Split with null separator returns the string as a single-element list
+      return new CqlList([new CqlString(s)]);
+    }
     const parts = s.split(separator);
     return new CqlList(parts.map((p) => new CqlString(p)));
   });
