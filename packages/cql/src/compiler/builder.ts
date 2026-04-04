@@ -1200,7 +1200,23 @@ export class CqlBuilder extends cqlVisitor<unknown> {
   };
 
   override visitQuantityLiteral = (ctx: QuantityLiteralContext): Expression => {
-    return { kind: 'Literal', valueType: LiteralType.Quantity, value: ctx.getText() };
+    const qctx = ctx.quantity();
+    const numStr = qctx.NUMBER().getText();
+    const unitCtx = qctx.unit();
+    let unit = '';
+    if (unitCtx) {
+      const s = unitCtx.STRING();
+      if (s) {
+        // STRING token includes surrounding quotes — strip them
+        const raw = s.getText();
+        unit = raw.replace(/^'|'$/g, '');
+      } else {
+        unit = unitCtx.getText();
+      }
+    }
+    // Encode as "value unit" separated by space for the evaluator
+    const value = unit ? `${numStr} ${unit}` : numStr;
+    return { kind: 'Literal', valueType: LiteralType.Quantity, value };
   };
 
   override visitRatioLiteral = (ctx: RatioLiteralContext): Expression => {

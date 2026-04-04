@@ -102,12 +102,17 @@ function toList(v: CqlValue | null): CqlValue[] {
 function toDecimal(v: CqlValue | null): Decimal {
   if (v === null) return new Decimal(0);
   if (v instanceof CqlInteger) return new Decimal(v.value);
+  if (v instanceof CqlLong) return new Decimal(v.value.toString());
   if (v instanceof CqlDecimal) return v.value;
   return new Decimal(0);
 }
 
 function isDecimalType(v: CqlValue): boolean {
   return v instanceof CqlDecimal;
+}
+
+function isNumericType(v: CqlValue): boolean {
+  return v instanceof CqlInteger || v instanceof CqlDecimal || v instanceof CqlLong;
 }
 
 function isComparable(v: CqlValue): v is CqlComparable {
@@ -161,6 +166,42 @@ function convertToType(
         if (s === 'false' || s === '0') return CqlBoolean.FALSE;
       }
       if (v instanceof CqlInteger) return CqlBoolean.of(v.value !== 0);
+      return null;
+    case 'time':
+      if (v instanceof CqlTime) return v;
+      if (v instanceof CqlDateTime) {
+        return new CqlTime(
+          `${String(v.hour).padStart(2, '0')}:${String(v.minute).padStart(2, '0')}:${String(v.second).padStart(2, '0')}.${String(v.millis).padStart(3, '0')}`,
+        );
+      }
+      if (v instanceof CqlString) {
+        try {
+          let s = v.value.startsWith('T') ? v.value.slice(1) : v.value;
+          // Strip timezone
+          s = s.replace(/([Zz]|[+-]\d{2}:\d{2})$/, '');
+          return new CqlTime(s);
+        } catch {
+          return null;
+        }
+      }
+      return null;
+    case 'date':
+      if (v instanceof CqlDate) return v;
+      if (v instanceof CqlDateTime) {
+        const ds = v.toString();
+        const idx = ds.indexOf('T');
+        return new CqlDate(idx >= 0 ? ds.slice(0, idx) : ds);
+      }
+      if (v instanceof CqlString) {
+        try { return new CqlDate(v.value); } catch { return null; }
+      }
+      return null;
+    case 'datetime':
+      if (v instanceof CqlDateTime) return v;
+      if (v instanceof CqlDate) return new CqlDateTime(v.toString() + 'T00:00:00');
+      if (v instanceof CqlString) {
+        try { return new CqlDateTime(v.value); } catch { return null; }
+      }
       return null;
     default:
       return null;
@@ -440,6 +481,8 @@ export class CqlEvaluator
       case UnaryOp.Negate:
         if (operand === null) return null;
         if (operand instanceof CqlInteger) return new CqlInteger(-operand.value);
+        if (operand instanceof CqlLong) return new CqlLong(-operand.value);
+        if (operand instanceof CqlQuantity) return new CqlQuantity(operand.value.neg(), operand.unit);
         return CqlDecimal.of(toDecimal(operand).neg().toString());
 
       case UnaryOp.Positive:
@@ -1147,7 +1190,80 @@ export class CqlEvaluator
     left: CqlValue,
     right: CqlValue,
   ): CqlResult {
-    // Try integer arithmetic first
+    // String concatenation: CQL '+' on strings is concatenation
+    if (op === BinaryOp.Add && left instanceof CqlString && right instanceof CqlString) {
+      return new CqlString(left.value + right.value);
+    }
+
+    // Quantity arithmetic (same unit)
+    if (left instanceof CqlQuantity && right instanceof CqlQuantity) {
+      if (left.unit !== right.unit) {
+        throw new Error(`incompatible units: ${left.unit} and ${right.unit}`);
+      }
+      switch (op) {
+        case BinaryOp.Add:
+          return new CqlQuantity(left.value.plus(right.value), left.unit);
+        case BinaryOp.Subtract:
+          return new CqlQuantity(left.value.minus(right.value), left.unit);
+        case BinaryOp.Multiply:
+          return new CqlQuantity(left.value.times(right.value), left.unit);
+        case BinaryOp.Divide:
+          if (right.value.isZero()) return null;
+          return new CqlQuantity(left.value.div(right.value), left.unit);
+        case BinaryOp.Div:
+          if (right.value.isZero()) return null;
+          return new CqlQuantity(left.value.div(right.value).truncated(), left.unit);
+        case BinaryOp.Mod:
+          if (right.value.isZero()) return null;
+          return new CqlQuantity(left.value.mod(right.value), left.unit);
+      }
+    }
+
+    // Quantity * number or Quantity / number
+    if (left instanceof CqlQuantity && isNumericType(right)) {
+      const rv = toDecimal(right);
+      switch (op) {
+        case BinaryOp.Multiply:
+          return new CqlQuantity(left.value.times(rv), left.unit);
+        case BinaryOp.Divide:
+          if (rv.isZero()) return null;
+          return new CqlQuantity(left.value.div(rv), left.unit);
+      }
+    }
+    // number * Quantity
+    if (right instanceof CqlQuantity && isNumericType(left)) {
+      const lv = toDecimal(left);
+      if (op === BinaryOp.Multiply) {
+        return new CqlQuantity(lv.times(right.value), right.unit);
+      }
+    }
+
+    // Long arithmetic
+    if (left instanceof CqlLong && right instanceof CqlLong) {
+      const lv = left.value;
+      const rv = right.value;
+      switch (op) {
+        case BinaryOp.Add:
+          return new CqlLong(lv + rv);
+        case BinaryOp.Subtract:
+          return new CqlLong(lv - rv);
+        case BinaryOp.Multiply:
+          return new CqlLong(lv * rv);
+        case BinaryOp.Divide:
+          if (rv === 0n) return null;
+          return CqlDecimal.of(new Decimal(lv.toString()).div(new Decimal(rv.toString())).toString());
+        case BinaryOp.Div:
+          if (rv === 0n) return null;
+          return new CqlLong(lv / rv);
+        case BinaryOp.Mod:
+          if (rv === 0n) return null;
+          return new CqlLong(lv % rv);
+        case BinaryOp.Power:
+          return new CqlLong(lv ** rv);
+      }
+    }
+
+    // Integer arithmetic
     if (left instanceof CqlInteger && right instanceof CqlInteger) {
       const lv = left.value;
       const rv = right.value;
@@ -1448,11 +1564,165 @@ export class CqlEvaluator
         if (source instanceof CqlInteger) {
           return new CqlInteger(Math.abs(source.value));
         }
+        if (source instanceof CqlLong) {
+          const val = source.value < 0n ? -source.value : source.value;
+          return new CqlLong(val);
+        }
+        if (source instanceof CqlQuantity) {
+          return new CqlQuantity(source.value.abs(), source.unit);
+        }
         return CqlDecimal.of(toDecimal(source).abs().toString());
+      }
+      case 'ceiling': {
+        if (source === null) return null;
+        return new CqlInteger(toDecimal(source).ceil().toNumber());
+      }
+      case 'floor': {
+        if (source === null) return null;
+        return new CqlInteger(toDecimal(source).floor().toNumber());
+      }
+      case 'truncate': {
+        if (source === null) return null;
+        return new CqlInteger(toDecimal(source).trunc().toNumber());
+      }
+      case 'exp': {
+        if (source === null) return null;
+        return new CqlDecimal(toDecimal(source).exp());
+      }
+      case 'ln': {
+        if (source === null) return null;
+        const d = toDecimal(source);
+        if (d.lte(0)) return null;
+        return new CqlDecimal(d.ln());
+      }
+      case 'round': {
+        if (source === null) return null;
+        const d = toDecimal(source);
+        let prec = 0;
+        if (expr.operands.length > 0) {
+          const precArg = await this.evaluate(expr.operands[0]);
+          if (precArg instanceof CqlInteger) prec = precArg.value;
+        }
+        return new CqlDecimal(d.toDecimalPlaces(prec, Decimal.ROUND_HALF_CEIL));
+      }
+      case 'power': {
+        if (expr.operands.length > 0) {
+          const base = source;
+          const expArg = await this.evaluate(expr.operands[0]);
+          if (base === null || expArg === null) return null;
+          const b = toDecimal(base);
+          const e = toDecimal(expArg);
+          return new CqlDecimal(b.pow(e));
+        }
+        return null;
+      }
+      case 'log': {
+        if (expr.operands.length > 0) {
+          const val = source;
+          const baseArg = await this.evaluate(expr.operands[0]);
+          if (val === null || baseArg === null) return null;
+          const v = toDecimal(val);
+          const b = toDecimal(baseArg);
+          if (v.lte(0) || b.lte(0) || b.eq(1)) return null;
+          return new CqlDecimal(v.ln().div(b.ln()));
+        }
+        return null;
+      }
+      case 'precision': {
+        const fn = this.registry.resolve('precision');
+        if (fn) {
+          const a: (CqlValue | null)[] = [source];
+          for (const op of expr.operands) a.push(await this.evaluate(op));
+          return await fn(a, this.ctx);
+        }
+        return null;
+      }
+      case 'lowboundary': {
+        const fn = this.registry.resolve('lowboundary');
+        if (fn) {
+          const a: (CqlValue | null)[] = [source];
+          for (const op of expr.operands) a.push(await this.evaluate(op));
+          return await fn(a, this.ctx);
+        }
+        return null;
+      }
+      case 'highboundary': {
+        const fn = this.registry.resolve('highboundary');
+        if (fn) {
+          const a: (CqlValue | null)[] = [source];
+          for (const op of expr.operands) a.push(await this.evaluate(op));
+          return await fn(a, this.ctx);
+        }
+        return null;
+      }
+      case 'indexer': {
+        if (expr.operands.length > 0) {
+          const idx = await this.evaluate(expr.operands[0]);
+          if (source === null || idx === null) return null;
+          if (source instanceof CqlString && idx instanceof CqlInteger) {
+            const i = idx.value;
+            if (i < 0 || i >= source.value.length) return null;
+            return new CqlString(source.value[i]);
+          }
+          const items = toList(source);
+          if (idx instanceof CqlInteger) {
+            const i = idx.value;
+            if (i < 0 || i >= items.length) return null;
+            return items[i];
+          }
+        }
+        return null;
+      }
+      case 'concatenate': {
+        const parts: string[] = [];
+        if (source !== null) parts.push(source.toString());
+        for (const op of expr.operands) {
+          const val = await this.evaluate(op);
+          if (val === null) return null;
+          parts.push(val.toString());
+        }
+        return new CqlString(parts.join(''));
+      }
+      case 'totime': {
+        const fn = this.registry.resolve('totime');
+        if (fn) {
+          const a: (CqlValue | null)[] = source !== null ? [source] : [];
+          for (const op of expr.operands) a.push(await this.evaluate(op));
+          return await fn(a, this.ctx);
+        }
+        return null;
+      }
+      case 'message': {
+        // Message(source, condition, code, severity, message) -> source
+        return source ?? (expr.operands.length > 0 ? await this.evaluate(expr.operands[0]) : null);
       }
       case 'sum': {
         const items = toList(source);
         if (items.length === 0) return null;
+        // Detect type from first element
+        const first = items[0];
+        if (first instanceof CqlLong) {
+          let sum = 0n;
+          for (const item of items) {
+            if (item instanceof CqlLong) sum += item.value;
+          }
+          return new CqlLong(sum);
+        }
+        if (first instanceof CqlQuantity) {
+          let sum = new Decimal(0);
+          const unit = first.unit;
+          for (const item of items) {
+            if (item instanceof CqlQuantity) sum = sum.plus(item.value);
+          }
+          return new CqlQuantity(sum, unit);
+        }
+        if (first instanceof CqlInteger) {
+          let sum = 0;
+          for (const item of items) {
+            if (item instanceof CqlInteger) sum += item.value;
+          }
+          return new CqlInteger(sum);
+        }
         let sum = new Decimal(0);
         for (const item of items) {
           sum = sum.plus(toDecimal(item));

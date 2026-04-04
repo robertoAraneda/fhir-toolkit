@@ -10,6 +10,7 @@ import {
   CqlDateTime,
   CqlDecimal,
   CqlInteger,
+  CqlLong,
   CqlString,
   CqlTime,
 } from '../types/index.js';
@@ -66,6 +67,7 @@ export function numericVal(v: CqlValue | null): Decimal {
   if (v === null) return new Decimal(0);
   if (v instanceof CqlInteger) return new Decimal(v.value);
   if (v instanceof CqlDecimal) return v.value;
+  if (v instanceof CqlLong) return new Decimal(v.value.toString());
   return new Decimal(0);
 }
 

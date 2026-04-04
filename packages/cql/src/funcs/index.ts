@@ -7,4 +7,5 @@ export { registerClinicalFunctions } from './clinical.js';
 export { registerDateTimeFunctions } from './datetime.js';
 export { registerIntervalFunctions } from './interval.js';
 export { registerListFunctions } from './list.js';
+export { registerMathFunctions } from './math.js';
 export { registerTypeFunctions } from './type.js';
