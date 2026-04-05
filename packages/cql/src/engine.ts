@@ -81,10 +81,11 @@ export class CqlEngine {
   }
 
   /**
-   * Parse CQL source and return the AST Library (cached).
-   *
-   * @throws CqlTooCostlyError when source exceeds maxExpressionLen.
-   * @throws CqlSyntaxError when the input has syntax errors.
+   * Parses CQL source text and returns the compiled AST Library (result is cached).
+   * @param source - CQL source text to compile
+   * @returns Compiled `Library` AST
+   * @throws {CqlTooCostlyError} If source length exceeds `maxExpressionLen`
+   * @throws {CqlSyntaxError} If the source contains syntax errors
    */
   compile(source: string): Library {
     if (source.length > this.maxExpressionLen) {
@@ -100,9 +101,13 @@ export class CqlEngine {
   }
 
   /**
-   * Parse, compile, and evaluate all named expressions in a CQL library.
-   *
-   * Returns a record mapping each expression name to its evaluated result.
+   * Parses, compiles, and evaluates all named expressions in a CQL library.
+   * @param source - CQL source text containing the library
+   * @param context - Patient/resource context object passed to data retrieval
+   * @param params - Optional map of parameter name to value for CQL parameters
+   * @returns A record mapping each expression name to its evaluated `CqlValue`
+   * @throws {CqlTimeoutError} If evaluation exceeds the configured timeout
+   * @throws {CqlSyntaxError} If the source contains syntax errors
    */
   async evaluateLibrary(
     source: string,
@@ -121,7 +126,14 @@ export class CqlEngine {
   }
 
   /**
-   * Parse, compile, and evaluate a single named expression from a CQL library.
+   * Parses, compiles, and evaluates a single named expression from a CQL library.
+   * @param source - CQL source text containing the library
+   * @param name - Name of the expression definition to evaluate
+   * @param context - Patient/resource context object passed to data retrieval
+   * @param params - Optional map of parameter name to value for CQL parameters
+   * @returns The evaluated `CqlValue`, or `null` if the expression yields null
+   * @throws {CqlTimeoutError} If evaluation exceeds the configured timeout
+   * @throws {CqlSyntaxError} If the source contains syntax errors
    */
   async evaluateExpression(
     source: string,
@@ -144,9 +156,10 @@ export class CqlEngine {
   }
 
   /**
-   * Register a handler for engine events.
-   * Currently supports the 'trace' event, which fires after each CQL definition is evaluated.
-   * Returns `this` for chaining.
+   * Registers a handler for engine events.
+   * @param event - Event name; currently only `'trace'` is supported
+   * @param handler - Callback invoked with a `TraceEvent` after each CQL definition is evaluated
+   * @returns `this` for fluent chaining
    */
   on(event: 'trace', handler: TraceHandler): this {
     if (event === 'trace') this.traceHandlers.push(handler);

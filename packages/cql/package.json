@@ -33,7 +33,8 @@
     "test:browser": "vitest run --config vitest.browser.config.ts",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "docs": "typedoc"
   },
   "dependencies": {
     "antlr4ng": "^3.0.4",
@@ -52,6 +53,7 @@
     "antlr4ng-cli": "^2.0.0",
     "happy-dom": "^20.8.9",
     "tsup": "^8.0.2",
+    "typedoc": "^0.28.18",
     "typescript": "^5.4.0",
     "vitest": "^1.4.0"
   },

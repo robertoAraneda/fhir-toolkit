@@ -49,7 +49,11 @@ export class UcumService {
     return t;
   }
 
-  /** Check if the given code is a valid UCUM expression. Throws UcumValidationError on failure. */
+  /**
+   * Validates a UCUM unit code expression.
+   * @param code - A UCUM unit code string (e.g. 'mg/dL', 'Cel', 'km/h')
+   * @throws {UcumValidationError} If the code is not a valid UCUM expression
+   */
   validate(code: string): void {
     try {
       this.parseCached(code);
@@ -58,7 +62,13 @@ export class UcumService {
     }
   }
 
-  /** Return the canonical (base-unit) form of a value+code pair. */
+  /**
+   * Returns the canonical (base-unit) form of a value+code pair.
+   * @param value - The numeric magnitude
+   * @param code - A valid UCUM unit code string
+   * @returns A `Pair` with the value expressed in base units and the composed base-unit code
+   * @throws {UcumValidationError} If the code cannot be parsed
+   */
   canonical(value: number, code: string): Pair {
     const can = this.getCanonical(code);
     const v = value * can.value.toNumber();
@@ -66,7 +76,14 @@ export class UcumService {
     return { value: v, code: units };
   }
 
-  /** Convert a value from one unit to another. */
+  /**
+   * Converts a numeric value from one UCUM unit to another.
+   * @param value - The numeric magnitude in the source unit
+   * @param from - Source UCUM unit code (e.g. 'mg')
+   * @param to - Target UCUM unit code (e.g. 'g')
+   * @returns The converted numeric value in the target unit
+   * @throws {UcumConversionError} If either unit is invalid or the units are not comparable
+   */
   convert(value: number, from: string, to: string): number {
     let srcTerm: Term;
     let dstTerm: Term;
@@ -121,7 +138,12 @@ export class UcumService {
     return result;
   }
 
-  /** Returns true if the two unit codes have the same canonical units. */
+  /**
+   * Returns true if the two unit codes resolve to the same canonical base units.
+   * @param code1 - First UCUM unit code
+   * @param code2 - Second UCUM unit code
+   * @returns `true` if both codes are dimensionally equivalent
+   */
   isComparable(code1: string, code2: string): boolean {
     const can1 = this.getCanonical(code1);
     const can2 = this.getCanonical(code2);
@@ -333,7 +355,12 @@ export class UcumService {
     return this.model.baseUnits.find((bu) => bu.code === code);
   }
 
-  /** Return unit suggestions whose code starts with or name contains the given prefix. */
+  /**
+   * Returns unit suggestions whose code starts with or whose name contains the given prefix.
+   * @param prefix - Search string to match against unit codes and names
+   * @param limit - Maximum number of suggestions to return (default: 20)
+   * @returns Array of matching `{ code, name }` objects
+   */
   suggest(prefix: string, limit = 20): Array<{ code: string; name: string }> {
     const lower = prefix.toLowerCase()
     const seen = new Set<string>()
@@ -377,7 +404,12 @@ export class UcumService {
     return results
   }
 
-  /** Return a human-readable description of a UCUM unit expression. */
+  /**
+   * Returns a human-readable description of a UCUM unit expression.
+   * @param code - A valid UCUM unit code string (e.g. 'mg/dL')
+   * @returns A human-readable string (e.g. 'milligram per deciliter')
+   * @throws {UcumValidationError} If the code cannot be parsed
+   */
   analyze(code: string): string {
     const t = this.parseCached(code);
     return this.analyzeTermHuman(t);

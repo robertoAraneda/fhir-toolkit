@@ -1,0 +1,8 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs",
+  "name": "@fhir-toolkit/ucum",
+  "readme": "none",
+  "excludeInternal": true,
+  "plugin": []
+}
