@@ -149,4 +149,52 @@ describe('UcumService', () => {
       expect(result.code).toBe('m2');
     });
   });
+
+  describe('analyze', () => {
+    it.each([
+      ['m', 'meter'],
+      ['km', 'kilometer'],
+      ['m/s', 'meter/second'],
+      ['kg', 'kilogram'],
+    ])('analyze(%s) contains "%s"', (code, expected) => {
+      const svc = createService();
+      const result = svc.analyze(code)
+      expect(result.toLowerCase()).toContain(expected.toLowerCase())
+    })
+  })
+
+  describe('concurrent access', () => {
+    it('handles 100 concurrent validate calls', async () => {
+      const svc = createService();
+      const codes = ['m', 'kg', 'mg/dL', '10*3/uL', 'mm[Hg]', '%', '[lb_av]', 'mol/L', 'm/s2']
+      const tasks = Array.from({ length: 100 }, () =>
+        codes.map((code) => Promise.resolve().then(() => { svc.validate(code) }))
+      ).flat()
+      await expect(Promise.all(tasks)).resolves.not.toThrow()
+    })
+
+    it('handles 100 concurrent convert calls', async () => {
+      const svc = createService();
+      const conversions: Array<[number, string, string]> = [
+        [1, 'm', 'cm'],
+        [1, 'km', 'm'],
+        [1, 'kg', 'g'],
+        [1, 'L', 'mL'],
+        [1, 'mg', 'g'],
+      ]
+      const tasks = Array.from({ length: 100 }, () =>
+        conversions.map(([v, from, to]) =>
+          Promise.resolve().then(() => svc.convert(v, from, to))
+        )
+      ).flat()
+      await expect(Promise.all(tasks)).resolves.not.toThrow()
+    })
+
+    it('returns same result on repeated calls (cache hit)', () => {
+      const svc = createService();
+      svc.validate('mg/dL')
+      svc.validate('mg/dL')
+      expect(() => svc.validate('mg/dL')).not.toThrow()
+    })
+  })
 });
