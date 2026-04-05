@@ -807,7 +807,7 @@ export class CqlBuilder extends cqlVisitor<unknown> {
 
     if (phrase instanceof BeforeOrAfterIntervalOperatorPhraseContext) {
       const isBefore = text.includes('before');
-      const isOnOr = text.includes('onor') || text.includes('oron');
+      const isOnOr = text.includes('on or') || text.includes('or on') || text.includes('onor') || text.includes('oron');
       // "on or before" = SameOrBefore (<=), "on or after" = SameOrAfter (>=)
       // plain "before" = strictly before (<), plain "after" = strictly after (>)
       if (isOnOr) {
@@ -1182,11 +1182,27 @@ export class CqlBuilder extends cqlVisitor<unknown> {
   override visitSetAggregateExpressionTerm = (ctx: SetAggregateExpressionTermContext): Expression => {
     const exprs = ctx.expression();
     const text = ctx.getText();
+
+    // per can be either an expression or a dateTimePrecision keyword (e.g., 'per day', 'per minute')
+    let per: Expression | null = exprs.length > 1 ? this.visitExpr(exprs[1]) : null;
+    if (per === null) {
+      const dtp = ctx.dateTimePrecision();
+      if (dtp) {
+        // Convert dateTimePrecision keyword to a Quantity literal: 1 <unit>
+        const unit = dtp.getText(); // e.g., 'day', 'minute', 'hour'
+        per = {
+          kind: 'Literal',
+          valueType: LiteralType.Quantity,
+          value: `1 ${unit}`,
+        };
+      }
+    }
+
     return {
       kind: 'SetAggregate',
       setKind: text.startsWith('expand') ? 'expand' : 'collapse',
       operand: exprs.length > 0 ? this.visitExpr(exprs[0])! : null!,
-      per: exprs.length > 1 ? this.visitExpr(exprs[1]) : null,
+      per,
     };
   };
 
@@ -1659,7 +1675,17 @@ export class CqlBuilder extends cqlVisitor<unknown> {
       } else {
         const sl = startC.simpleLiteral();
         if (sl) {
-          starting = { kind: 'Literal', valueType: LiteralType.String, value: sl.getText() };
+          const slText = sl.getText();
+          // Detect if it's a number or string literal
+          if (slText.startsWith("'") && slText.endsWith("'")) {
+            starting = { kind: 'Literal', valueType: LiteralType.String, value: slText.slice(1, -1) };
+          } else if (/^-?\d+$/.test(slText)) {
+            starting = { kind: 'Literal', valueType: LiteralType.Integer, value: slText };
+          } else if (/^-?[\d.]+$/.test(slText)) {
+            starting = { kind: 'Literal', valueType: LiteralType.Decimal, value: slText };
+          } else {
+            starting = { kind: 'Literal', valueType: LiteralType.String, value: slText };
+          }
         }
       }
     }

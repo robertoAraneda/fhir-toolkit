@@ -28,8 +28,8 @@ describe('aggregate functions', () => {
   });
 
   it('Sum sums integers', () => {
-    const result = call('Sum', intList(1, 2, 3)) as CqlDecimal;
-    expect(result.value.toNumber()).toBe(6);
+    const result = call('Sum', intList(1, 2, 3)) as CqlInteger;
+    expect(result.value).toBe(6);
   });
 
   it('Sum returns null for empty list', () => {

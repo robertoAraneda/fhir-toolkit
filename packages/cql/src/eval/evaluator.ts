@@ -131,7 +131,12 @@ function compareValues(a: CqlValue | null, b: CqlValue | null): number {
   if (!isComparable(a)) {
     throw new Error(`cannot compare type ${a.type} for sorting`);
   }
-  return a.compareTo(b);
+  try {
+    return a.compareTo(b);
+  } catch {
+    // Ambiguous comparison (e.g., different precisions) - use string comparison as fallback
+    return a.toString().localeCompare(b.toString());
+  }
 }
 
 function convertToType(
@@ -448,6 +453,18 @@ export class CqlEvaluator
       case BinaryOp.LessOrEqual:
       case BinaryOp.Greater:
       case BinaryOp.GreaterOrEqual: {
+        // Uncertainty interval comparison: Interval[a,b] op x
+        if (left instanceof CqlInterval && isComparable(right)) {
+          return this.evalUncertaintyComparison(expr.operator, left as CqlInterval<CqlComparable>, right);
+        }
+        if (right instanceof CqlInterval && isComparable(left)) {
+          // Flip: x op Interval[a,b] => Interval[a,b] flipped_op x
+          const flipOp = expr.operator === BinaryOp.Less ? BinaryOp.Greater
+            : expr.operator === BinaryOp.LessOrEqual ? BinaryOp.GreaterOrEqual
+            : expr.operator === BinaryOp.Greater ? BinaryOp.Less
+            : BinaryOp.LessOrEqual;
+          return this.evalUncertaintyComparison(flipOp, right as CqlInterval<CqlComparable>, left);
+        }
         if (!isComparable(left)) {
           throw new Error(`cannot compare ${left.type}`);
         }
@@ -477,6 +494,10 @@ export class CqlEvaluator
       case BinaryOp.Div:
       case BinaryOp.Mod:
       case BinaryOp.Power:
+        // Uncertainty interval arithmetic
+        if (left instanceof CqlInterval || right instanceof CqlInterval) {
+          return this.evalIntervalArithmetic(expr.operator, left, right);
+        }
         return this.evalArithmetic(expr.operator, left, right);
 
       case BinaryOp.Concatenate:
@@ -573,7 +594,9 @@ export class CqlEvaluator
         return this.evalSuccessorPredecessor(expr.operator, operand);
 
       case UnaryOp.PointFrom: {
+        if (operand === null) return null;
         if (operand instanceof CqlInterval) {
+          if (operand.low === null && operand.high === null) return null;
           if (
             operand.low !== null &&
             operand.high !== null &&
@@ -807,25 +830,90 @@ export class CqlEvaluator
   async visitQuery(expr: QueryExpr): Promise<CqlResult> {
     if (expr.sources.length === 0) return new CqlList([]);
 
+    // Multi-source query: compute cross product
+    if (expr.sources.length > 1 && expr.aggregate === null) {
+      return this.evalMultiSourceQuery(expr);
+    }
+
     // Evaluate first source
     const source = await this.evaluate(expr.sources[0].source);
     const items = toList(source);
 
     let results: CqlValue[] = [];
 
-    // Process aggregate clause if present
+    // Process aggregate clause if present — multi-source aggregate
+    if (expr.aggregate !== null && expr.sources.length > 1) {
+      // Compute cross product of all sources
+      const allSourceItems: Array<{ alias: string; items: CqlValue[] }> = [];
+      for (const src of expr.sources) {
+        const srcVal = await this.evaluate(src.source);
+        allSourceItems.push({ alias: src.alias, items: toList(srcVal) });
+      }
+      // Generate cross product tuples
+      const crossItems: Map<string, CqlValue>[] = [new Map()];
+      for (const src of allSourceItems) {
+        const newCross: Map<string, CqlValue>[] = [];
+        for (const existing of crossItems) {
+          for (const item of src.items) {
+            const row = new Map(existing);
+            row.set(src.alias, item);
+            newCross.push(row);
+          }
+        }
+        crossItems.length = 0;
+        crossItems.push(...newCross);
+      }
+
+      let total: CqlResult = null;
+      if (expr.aggregate.starting !== null) {
+        total = await this.evaluate(expr.aggregate.starting);
+      }
+
+      for (let i = 0; i < crossItems.length; i++) {
+        const child = this.ctx.childScope();
+        for (const [alias, val] of crossItems[i]) {
+          child.aliases.set(alias, val);
+        }
+        child.totalValue = total;
+        child.aliases.set(expr.aggregate.identifier, total!);
+        const childEval = this.withContext(child);
+
+        if (expr.where !== null) {
+          const cond = await childEval.evaluate(expr.where);
+          if (!isTrue(cond)) continue;
+        }
+
+        total = await childEval.evaluate(expr.aggregate.expression);
+      }
+      return total;
+    }
+
     if (expr.aggregate !== null) {
       let total: CqlResult = null;
       if (expr.aggregate.starting !== null) {
         total = await this.evaluate(expr.aggregate.starting);
       }
 
-      for (let i = 0; i < items.length; i++) {
+      // Handle distinct/all on the items
+      let aggItems = items;
+      if (expr.aggregate.distinct) {
+        const seen = new Set<string>();
+        aggItems = items.filter(v => {
+          const key = v?.toString() ?? 'null';
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+      }
+
+      for (let i = 0; i < aggItems.length; i++) {
         const child = this.ctx.childScope();
-        child.aliases.set(expr.sources[0].alias, items[i]);
-        child.thisValue = items[i];
+        child.aliases.set(expr.sources[0].alias, aggItems[i]);
+        child.thisValue = aggItems[i];
         child.indexValue = i;
         child.totalValue = total;
+        // Also set the aggregate identifier as an alias so it resolves via identifierRef
+        child.aliases.set(expr.aggregate.identifier, total!);
         const childEval = this.withContext(child);
 
         // Process let bindings
@@ -949,14 +1037,21 @@ export class CqlEvaluator
       }
     }
 
+    // CQL spec: if the source was a non-list (singleton), return the single result directly
+    const isSingleton = !(source instanceof CqlList);
+    if (isSingleton && results.length === 1) {
+      return results[0];
+    }
+    if (isSingleton && results.length === 0) {
+      return null;
+    }
+
     return new CqlList(results);
   }
 
   async visitInterval(expr: IntervalExpr): Promise<CqlResult> {
     const low = await this.evaluate(expr.low);
     const high = await this.evaluate(expr.high);
-    // CQL spec: Interval[null, null] evaluates to null
-    if (low === null && high === null) return null;
     return new CqlInterval(
       low as CqlComparable | null,
       high as CqlComparable | null,
@@ -1688,28 +1783,44 @@ export class CqlEvaluator
       case 'expand': {
         const expandFn = this.registry.resolve('expand');
         if (expandFn) {
+          // CQL spec: when input is a single Interval (not a list), return list of points.
+          // When input is a list of intervals, return list of unit intervals.
+          const isSingleInterval = operand instanceof CqlInterval;
+          const per = expr.per !== null ? await this.evaluate(expr.per) : null;
+
+          if (isSingleInterval) {
+            // Single interval overload: return points directly
+            const expanded = await expandFn([operand, per], this.ctx);
+            if (expanded instanceof CqlList) {
+              return expanded; // already a list of points from the Expand function
+            }
+            return new CqlList([]);
+          }
+
+          // List of intervals overload: wrap each point in a step-sized unit interval
           const result: CqlValue[] = [];
           for (const item of items) {
             if (item instanceof CqlInterval) {
-              const per = expr.per !== null ? await this.evaluate(expr.per) : null;
               const expanded = await expandFn([item, per], this.ctx);
               if (expanded instanceof CqlList) {
-                // When expanding a list of intervals, wrap each point in a step-sized unit interval
-                const step = per instanceof CqlQuantity ? per.value.toNumber() :
-                             per instanceof CqlInteger ? per.value : 1;
-                for (let pi = 0; pi < expanded.values.length; pi++) {
-                  const point = expanded.values[pi];
+                for (const point of expanded.values) {
                   if (point instanceof CqlInterval) {
                     result.push(point);
-                  } else if (point instanceof CqlInteger) {
-                    // For integer expand with step, each element becomes Interval[v, v+step-1]
-                    // But must fit within the original interval
-                    const hi = item.high as CqlComparable;
-                    const endVal = new CqlInteger(point.value + step - 1);
-                    if (hi !== null && endVal.compareTo(hi) > 0) continue; // Skip if doesn't fit
-                    result.push(new CqlInterval(point, step === 1 ? point : endVal as CqlComparable, true, true));
                   } else {
-                    result.push(new CqlInterval(point as CqlComparable, point as CqlComparable, true, true));
+                    const unitIv = this.makeUnitInterval(point, per);
+                    if (unitIv && unitIv.high !== null) {
+                      // For list-of-intervals expand, filter out unit intervals
+                      // that exceed the original interval bounds (same-type check)
+                      const origHigh = item.high as CqlComparable;
+                      if (origHigh !== null && unitIv.high.type === origHigh.type) {
+                        try {
+                          if (unitIv.high.compareTo(origHigh) > 0) continue;
+                        } catch { /* skip filtering on comparison error */ }
+                      }
+                      result.push(unitIv);
+                    } else if (unitIv) {
+                      result.push(unitIv);
+                    }
                   }
                 }
               }
@@ -2095,6 +2206,257 @@ export class CqlEvaluator
       return CqlBoolean.of(strictLow || strictHigh);
     }
     return CqlBoolean.TRUE;
+  }
+
+  /**
+   * Multi-source query: compute cross product of all sources.
+   */
+  private async evalMultiSourceQuery(expr: QueryExpr): Promise<CqlResult> {
+    // Evaluate all sources
+    const allSourceItems: Array<{ alias: string; items: CqlValue[] }> = [];
+    for (const src of expr.sources) {
+      const srcVal = await this.evaluate(src.source);
+      allSourceItems.push({ alias: src.alias, items: toList(srcVal) });
+    }
+
+    // Generate cross product
+    let crossRows: Map<string, CqlValue>[] = [new Map()];
+    for (const src of allSourceItems) {
+      const newCross: Map<string, CqlValue>[] = [];
+      for (const existing of crossRows) {
+        for (const item of src.items) {
+          const row = new Map(existing);
+          row.set(src.alias, item);
+          newCross.push(row);
+        }
+      }
+      crossRows = newCross;
+    }
+
+    let results: CqlValue[] = [];
+    for (let i = 0; i < crossRows.length; i++) {
+      const child = this.ctx.childScope();
+      for (const [alias, val] of crossRows[i]) {
+        child.aliases.set(alias, val);
+      }
+      child.indexValue = i;
+      const childEval = this.withContext(child);
+
+      // Process let bindings
+      for (const let_ of expr.let) {
+        const val = await childEval.evaluate(let_.expression);
+        child.letBindings.set(let_.identifier, val);
+      }
+
+      // Check with clauses
+      let withOk = true;
+      for (const w of expr.with) {
+        const ok = await childEval.evalWithClause(w);
+        if (!ok) { withOk = false; break; }
+      }
+      if (!withOk) continue;
+
+      // Check without clauses
+      let withoutOk = true;
+      for (const w of expr.without) {
+        const ok = await childEval.evalWithoutClause(w);
+        if (!ok) { withoutOk = false; break; }
+      }
+      if (!withoutOk) continue;
+
+      // Apply where filter
+      if (expr.where !== null) {
+        const cond = await childEval.evaluate(expr.where);
+        if (!isTrue(cond)) continue;
+      }
+
+      // Apply return clause
+      if (expr.return !== null) {
+        const val = await childEval.evaluate(expr.return.expression);
+        if (val !== null) results.push(val);
+      } else {
+        // Default: create a tuple from the cross product row
+        const elements = new Map<string, CqlValue | null>();
+        for (const [alias, val] of crossRows[i]) {
+          elements.set(alias, val);
+        }
+        results.push(new CqlTuple(elements));
+      }
+    }
+
+    // Apply distinct if specified
+    if (expr.return !== null && expr.return.distinct) {
+      const distinct: CqlValue[] = [];
+      for (const v of results) {
+        if (!distinct.some((d) => d.equals(v))) distinct.push(v);
+      }
+      results = distinct;
+    }
+
+    // Apply sort
+    if (expr.sort !== null) {
+      // Use simple sort for now
+      const sort = expr.sort;
+      results.sort((a, b) => {
+        const cmp = compareValues(a, b);
+        if (sort.direction === SortDirection.Desc) return -cmp;
+        return cmp;
+      });
+    }
+
+    return new CqlList(results);
+  }
+
+  /**
+   * Arithmetic on uncertainty intervals.
+   * Interval[a,b] op x => Interval[a op x, b op x]
+   * x op Interval[a,b] => Interval[x op a, x op b]
+   * Interval[a,b] op Interval[c,d] => Interval[min(all combos), max(all combos)]
+   */
+  private evalIntervalArithmetic(op: BinaryOp, left: CqlValue, right: CqlValue): CqlResult {
+    if (left instanceof CqlInterval && right instanceof CqlInterval) {
+      const ivL = left as CqlInterval<CqlComparable>;
+      const ivR = right as CqlInterval<CqlComparable>;
+      if (ivL.low === null || ivL.high === null || ivR.low === null || ivR.high === null) return null;
+      // Compute all 4 combinations and take min/max
+      const combos = [
+        this.evalArithmetic(op, ivL.low, ivR.low),
+        this.evalArithmetic(op, ivL.low, ivR.high),
+        this.evalArithmetic(op, ivL.high, ivR.low),
+        this.evalArithmetic(op, ivL.high, ivR.high),
+      ].filter((v): v is CqlValue => v !== null);
+      if (combos.length === 0) return null;
+      let lo = combos[0] as CqlComparable;
+      let hi = combos[0] as CqlComparable;
+      for (let i = 1; i < combos.length; i++) {
+        try {
+          if (lo.compareTo(combos[i]) > 0) lo = combos[i] as CqlComparable;
+          if (hi.compareTo(combos[i]) < 0) hi = combos[i] as CqlComparable;
+        } catch { /* skip incomparable */ }
+      }
+      return new CqlInterval(lo, hi, true, true);
+    }
+    if (left instanceof CqlInterval) {
+      const iv = left as CqlInterval<CqlComparable>;
+      if (iv.low === null || iv.high === null) return null;
+      const newLow = this.evalArithmetic(op, iv.low, right);
+      const newHigh = this.evalArithmetic(op, iv.high, right);
+      if (newLow === null || newHigh === null) return null;
+      return new CqlInterval(newLow as CqlComparable, newHigh as CqlComparable, iv.lowClosed, iv.highClosed);
+    }
+    if (right instanceof CqlInterval) {
+      const iv = right as CqlInterval<CqlComparable>;
+      if (iv.low === null || iv.high === null) return null;
+      const newLow = this.evalArithmetic(op, left, iv.low);
+      const newHigh = this.evalArithmetic(op, left, iv.high);
+      if (newLow === null || newHigh === null) return null;
+      return new CqlInterval(newLow as CqlComparable, newHigh as CqlComparable, iv.lowClosed, iv.highClosed);
+    }
+    return this.evalArithmetic(op, left, right);
+  }
+
+  /**
+   * Compare an uncertainty interval with a point value.
+   * Returns true if the comparison is definitely true, false if definitely false, null if uncertain.
+   */
+  private evalUncertaintyComparison(
+    op: BinaryOp,
+    interval: CqlInterval<CqlComparable>,
+    point: CqlValue,
+  ): CqlResult {
+    const lo = interval.low;
+    const hi = interval.high;
+    if (lo === null || hi === null) return null;
+    const pc = point as CqlComparable;
+    try {
+      const cmpLo = lo.compareTo(pc);
+      const cmpHi = hi.compareTo(pc);
+      switch (op) {
+        case BinaryOp.Greater:
+          // Interval > point: true if lo > point, false if hi <= point, else null
+          if (cmpLo > 0) return CqlBoolean.TRUE;
+          if (cmpHi <= 0) return CqlBoolean.FALSE;
+          return null;
+        case BinaryOp.GreaterOrEqual:
+          if (cmpLo >= 0) return CqlBoolean.TRUE;
+          if (cmpHi < 0) return CqlBoolean.FALSE;
+          return null;
+        case BinaryOp.Less:
+          if (cmpHi < 0) return CqlBoolean.TRUE;
+          if (cmpLo >= 0) return CqlBoolean.FALSE;
+          return null;
+        case BinaryOp.LessOrEqual:
+          if (cmpHi <= 0) return CqlBoolean.TRUE;
+          if (cmpLo > 0) return CqlBoolean.FALSE;
+          return null;
+        default:
+          return null;
+      }
+    } catch {
+      return null;
+    }
+  }
+
+  /**
+   * Create a unit interval from a point value and a per step.
+   * For list-of-intervals expand: each point becomes Interval[point, point + step - 1_unit].
+   */
+  private makeUnitInterval(point: CqlValue, per: CqlValue | null): CqlInterval<CqlComparable> | null {
+    if (point instanceof CqlInteger) {
+      const step = per instanceof CqlQuantity ? per.value.toNumber() :
+                   per instanceof CqlInteger ? per.value :
+                   per instanceof CqlDecimal ? per.value.toNumber() : 1;
+      // If step is decimal, produce decimal intervals
+      if (per instanceof CqlDecimal || (per instanceof CqlQuantity && !per.value.isInteger())) {
+        return new CqlInterval(point, point as CqlComparable, true, true);
+      }
+      const endVal = new CqlInteger(point.value + step - 1);
+      return new CqlInterval(point, endVal as CqlComparable, true, true);
+    }
+    if (point instanceof CqlDecimal) {
+      const step = per instanceof CqlQuantity ? per.value :
+                   per instanceof CqlDecimal ? per.value :
+                   per instanceof CqlInteger ? new Decimal(per.value) : new Decimal(1);
+      if (step.isInteger()) {
+        // For decimal expand per integer step (like per 1), produce integer bounds
+        if (point.value.isInteger()) {
+          const lo = new CqlInteger(point.value.toNumber());
+          const hi = new CqlInteger(point.value.plus(step).minus(1).toNumber());
+          return new CqlInterval(lo, hi as CqlComparable, true, true);
+        }
+        const endVal = new CqlDecimal(point.value.plus(step).minus(new Decimal('1e-8')));
+        return new CqlInterval(point, endVal as CqlComparable, true, true);
+      }
+      // For fractional step, unit interval is [point, point]
+      return new CqlInterval(point, point as CqlComparable, true, true);
+    }
+    if (point instanceof CqlDate) {
+      // Add step-1 units to get the end of the unit interval
+      const unit = per instanceof CqlQuantity ? per.unit.toLowerCase().replace(/s$/, '') : 'day';
+      const step = per instanceof CqlQuantity ? per.value.toNumber() :
+                   per instanceof CqlInteger ? per.value : 1;
+      if (step <= 1) {
+        return new CqlInterval(point, point as CqlComparable, true, true);
+      }
+      // Add (step-1) units to the date
+      const d = new Date(Date.UTC(point.year, (point.month || 1) - 1, point.day || 1));
+      const pad = (n: number, w: number) => String(n).padStart(w, '0');
+      switch (unit) {
+        case 'year': d.setUTCFullYear(d.getUTCFullYear() + step - 1); break;
+        case 'month': d.setUTCMonth(d.getUTCMonth() + step - 1); break;
+        case 'week': d.setUTCDate(d.getUTCDate() + (step - 1) * 7); break;
+        default: d.setUTCDate(d.getUTCDate() + step - 1); break;
+      }
+      const endDate = new CqlDate(`${pad(d.getUTCFullYear(), 4)}-${pad(d.getUTCMonth() + 1, 2)}-${pad(d.getUTCDate(), 2)}`);
+      return new CqlInterval(point, endDate as CqlComparable, true, true);
+    }
+    if (point instanceof CqlTime) {
+      return new CqlInterval(point, point as CqlComparable, true, true);
+    }
+    if (point instanceof CqlDateTime) {
+      return new CqlInterval(point, point as CqlComparable, true, true);
+    }
+    return new CqlInterval(point as CqlComparable, point as CqlComparable, true, true);
   }
 
   /** Check if successor(a) === b (a is immediately adjacent to b). */

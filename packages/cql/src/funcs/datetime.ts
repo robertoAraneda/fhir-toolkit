@@ -4,13 +4,17 @@
  * Ported from Go: funcs/datetime_advanced.go, funcs/temporal.go
  */
 
+import type { CqlComparable } from '../types/index.js';
 import {
   CqlDate,
   CqlDateTime,
   CqlInteger,
   CqlString,
   CqlTime,
+  DateTimePrecision,
+  DatePrecision,
 } from '../types/index.js';
+import { CqlInterval } from '../types/index.js';
 import { asInteger, asString, toDate } from './helpers.js';
 import type { FunctionRegistry } from './registry.js';
 
@@ -24,9 +28,12 @@ function pad(n: number, w: number): string {
 
 function yearsBetween(low: Date, high: Date): number {
   let years = high.getUTCFullYear() - low.getUTCFullYear();
-  const lowDOY = dayOfYear(low);
-  const highDOY = dayOfYear(high);
-  if (highDOY < lowDOY) years--;
+  // Check if the anniversary hasn't been reached yet
+  const lowM = low.getUTCMonth();
+  const highM = high.getUTCMonth();
+  if (highM < lowM || (highM === lowM && high.getUTCDate() < low.getUTCDate())) {
+    years--;
+  }
   return years;
 }
 
@@ -40,19 +47,19 @@ function monthsBetween(low: Date, high: Date): number {
 }
 
 function daysBetween(low: Date, high: Date): number {
-  return Math.floor((high.getTime() - low.getTime()) / (1000 * 60 * 60 * 24));
+  return Math.trunc((high.getTime() - low.getTime()) / (1000 * 60 * 60 * 24));
 }
 
 function hoursBetween(low: Date, high: Date): number {
-  return Math.floor((high.getTime() - low.getTime()) / (1000 * 60 * 60));
+  return Math.trunc((high.getTime() - low.getTime()) / (1000 * 60 * 60));
 }
 
 function minutesBetween(low: Date, high: Date): number {
-  return Math.floor((high.getTime() - low.getTime()) / (1000 * 60));
+  return Math.trunc((high.getTime() - low.getTime()) / (1000 * 60));
 }
 
 function secondsBetween(low: Date, high: Date): number {
-  return Math.floor((high.getTime() - low.getTime()) / 1000);
+  return Math.trunc((high.getTime() - low.getTime()) / 1000);
 }
 
 function millisecondsBetween(low: Date, high: Date): number {
@@ -65,54 +72,134 @@ function dayOfYear(d: Date): number {
 }
 
 // ---------------------------------------------------------------------------
+// Duration computation helper
+// ---------------------------------------------------------------------------
+
+function computeDuration(low: Date, high: Date, precision: string): number {
+  switch (precision) {
+    case 'year': case 'years': return yearsBetween(low, high);
+    case 'month': case 'months': return monthsBetween(low, high);
+    case 'week': case 'weeks': return Math.trunc(daysBetween(low, high) / 7);
+    case 'day': case 'days': return daysBetween(low, high);
+    case 'hour': case 'hours': return hoursBetween(low, high);
+    case 'minute': case 'minutes': return minutesBetween(low, high);
+    case 'second': case 'seconds': return secondsBetween(low, high);
+    case 'millisecond': case 'milliseconds': return millisecondsBetween(low, high);
+    default: return daysBetween(low, high);
+  }
+}
+
+/**
+ * Map precision string to a numeric level aligned with DateTimePrecision enum.
+ * Year=0, Month=1, Day=2, Hour=3, Minute=4, Second=5, Millisecond=6
+ */
+function getPrecisionLevel(prec: string): number {
+  switch (prec) {
+    case 'year': case 'years': return 0;
+    case 'month': case 'months': return 1;
+    case 'week': case 'weeks': return 2; // week requires day precision
+    case 'day': case 'days': return 2;
+    case 'hour': case 'hours': return 3;
+    case 'minute': case 'minutes': return 4;
+    case 'second': case 'seconds': return 5;
+    case 'millisecond': case 'milliseconds': return 6;
+    default: return 2;
+  }
+}
+
+/** Get the precision level of a temporal value. */
+function getTemporalPrecision(v: unknown): number | null {
+  if (v instanceof CqlDateTime) {
+    return v.precision; // 0=Year, 1=Month, 2=Day, 3=Hour, ...
+  }
+  if (v instanceof CqlDate) {
+    return v.precision; // 0=Year, 1=Month, 2=Day
+  }
+  return null;
+}
+
+/** Convert a temporal value to a Date at its low or high boundary. */
+function toDateAtBound(v: unknown, bound: 'low' | 'high'): Date | null {
+  if (v instanceof CqlDateTime) {
+    const year = v.year;
+    const month = v.month || (bound === 'low' ? 1 : 12);
+    let day: number;
+    if (v.day) {
+      day = v.day;
+    } else if (bound === 'low') {
+      day = 1;
+    } else {
+      day = new Date(Date.UTC(year, month, 0)).getUTCDate(); // last day of month
+    }
+    const hour = v.precision >= DateTimePrecision.Hour ? v.hour : (bound === 'low' ? 0 : 23);
+    const minute = v.precision >= DateTimePrecision.Minute ? v.minute : (bound === 'low' ? 0 : 59);
+    const second = v.precision >= DateTimePrecision.Second ? v.second : (bound === 'low' ? 0 : 59);
+    const millis = v.precision >= DateTimePrecision.Millisecond ? v.millis : (bound === 'low' ? 0 : 999);
+    return new Date(Date.UTC(year, month - 1, day, hour, minute, second, millis));
+  }
+  if (v instanceof CqlDate) {
+    const year = v.year;
+    const month = v.month || (bound === 'low' ? 1 : 12);
+    let day: number;
+    if (v.day) {
+      day = v.day;
+    } else if (bound === 'low') {
+      day = 1;
+    } else {
+      day = new Date(Date.UTC(year, month, 0)).getUTCDate();
+    }
+    return new Date(Date.UTC(year, month - 1, day));
+  }
+  return null;
+}
+
+// ---------------------------------------------------------------------------
 // Registration
 // ---------------------------------------------------------------------------
 
 export function registerDateTimeFunctions(registry: FunctionRegistry): void {
-  // DurationBetween(low, high, precision) -> integer
+  // DurationBetween(low, high, precision) -> integer | Interval[integer, integer]
+  // CQL spec: when inputs have different precisions, returns an uncertainty interval
   registry.register('DurationBetween', (args) => {
-    const low = toDate(args[0]);
-    const high = toDate(args[1]);
-    if (low === null || high === null) return null;
+    const lowVal = args[0];
+    const highVal = args[1];
+    if (lowVal === null || highVal === null) return null;
     const precision = asString(args[2]) ?? 'day';
-    let result: number;
-    switch (precision) {
-      case 'year':
-      case 'years':
-        result = yearsBetween(low, high);
-        break;
-      case 'month':
-      case 'months':
-        result = monthsBetween(low, high);
-        break;
-      case 'week':
-      case 'weeks':
-        result = Math.trunc(daysBetween(low, high) / 7);
-        break;
-      case 'day':
-      case 'days':
-        result = daysBetween(low, high);
-        break;
-      case 'hour':
-      case 'hours':
-        result = hoursBetween(low, high);
-        break;
-      case 'minute':
-      case 'minutes':
-        result = minutesBetween(low, high);
-        break;
-      case 'second':
-      case 'seconds':
-        result = secondsBetween(low, high);
-        break;
-      case 'millisecond':
-      case 'milliseconds':
-        result = millisecondsBetween(low, high);
-        break;
-      default:
-        result = daysBetween(low, high);
+
+    // Determine if we need uncertainty interval
+    const precisionLevel = getPrecisionLevel(precision);
+    const lowPrec = getTemporalPrecision(lowVal);
+    const highPrec = getTemporalPrecision(highVal);
+
+    // CQL spec: result is uncertain when either operand's precision
+    // is at or below the requested precision (insufficient detail)
+    if (lowPrec !== null && highPrec !== null &&
+        (lowPrec <= precisionLevel || highPrec <= precisionLevel)) {
+      const lowDateLo = toDateAtBound(lowVal, 'low');
+      const lowDateHi = toDateAtBound(lowVal, 'high');
+      const highDateLo = toDateAtBound(highVal, 'low');
+      const highDateHi = toDateAtBound(highVal, 'high');
+      if (!lowDateLo || !lowDateHi || !highDateLo || !highDateHi) return null;
+
+      // Min duration: low at highest possible, high at lowest possible
+      // Max duration: low at lowest possible, high at highest possible
+      const dMin = computeDuration(lowDateHi, highDateLo, precision);
+      const dMax = computeDuration(lowDateLo, highDateHi, precision);
+      const lo = Math.min(dMin, dMax);
+      const hi = Math.max(dMin, dMax);
+
+      if (lo === hi) return new CqlInteger(lo);
+      return new CqlInterval(
+        new CqlInteger(lo) as CqlComparable,
+        new CqlInteger(hi) as CqlComparable,
+        true, true,
+      );
     }
-    return new CqlInteger(result);
+
+    const low = toDate(lowVal);
+    const high = toDate(highVal);
+    if (low === null || high === null) return null;
+    return new CqlInteger(computeDuration(low, high, precision));
   });
 
   // DifferenceBetween(low, high, precision) -> integer
@@ -135,9 +222,10 @@ export function registerDateTimeFunctions(registry: FunctionRegistry): void {
         break;
       case 'week':
       case 'weeks': {
-        // Count number of whole weeks in the duration
-        const diffMs = high.getTime() - low.getTime();
-        result = Math.trunc(diffMs / (7 * 24 * 60 * 60 * 1000));
+        // Difference in weeks: truncate to dates, then count 7-day spans
+        const lowDate = Date.UTC(low.getUTCFullYear(), low.getUTCMonth(), low.getUTCDate());
+        const highDate = Date.UTC(high.getUTCFullYear(), high.getUTCMonth(), high.getUTCDate());
+        result = Math.trunc(Math.round((highDate - lowDate) / (24 * 60 * 60 * 1000)) / 7);
         break;
       }
       case 'day':

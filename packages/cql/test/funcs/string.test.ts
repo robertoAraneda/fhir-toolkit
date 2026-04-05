@@ -31,8 +31,8 @@ describe('string functions', () => {
     expect(call('Length', new CqlString('abc'))).toEqual(new CqlInteger(3));
   });
 
-  it('Length returns null for null', () => {
-    expect(call('Length', null)).toBeNull();
+  it('Length returns 0 for null (list semantics)', () => {
+    expect(call('Length', null)).toEqual(new CqlInteger(0));
   });
 
   it('StartsWith checks prefix', () => {

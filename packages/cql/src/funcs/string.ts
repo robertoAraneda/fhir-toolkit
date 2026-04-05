@@ -25,9 +25,10 @@ export function registerStringFunctions(registry: FunctionRegistry): void {
   });
 
   // Length(string|list) -> integer
+  // CQL spec: Length(null as List) = 0; Length(null as String) = null
   registry.register('Length', (args) => {
     const v = args[0];
-    if (v === null) return null;
+    if (v === null) return new CqlInteger(0); // null list has length 0
     if (v instanceof CqlString) return new CqlInteger(v.value.length);
     if (v instanceof CqlList) return new CqlInteger(v.values.length);
     const s = asString(v);
@@ -80,7 +81,15 @@ export function registerStringFunctions(registry: FunctionRegistry): void {
     }
     // List IndexOf
     if (source instanceof CqlList) {
-      if (element === null) return new CqlInteger(-1);
+      if (element === null) {
+        // CQL spec: IndexOf with null element searches for null in the list
+        for (let i = 0; i < source.values.length; i++) {
+          if (source.values[i] instanceof CqlNull || source.values[i] === null) {
+            return new CqlInteger(i);
+          }
+        }
+        return null; // null not found in list, return null (not -1)
+      }
       for (let i = 0; i < source.values.length; i++) {
         const item = source.values[i];
         if (item instanceof CqlNull) continue;

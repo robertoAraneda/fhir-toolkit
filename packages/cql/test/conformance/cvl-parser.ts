@@ -79,9 +79,18 @@ export function parseCvl(text: string): CqlValue | null {
     return parseList(text);
   }
 
-  // Tuple: Tuple { id: 5, name: 'Chris'}
+  // Tuple: Tuple { id: 5, name: 'Chris'} or just { A: 2, B: 5 } (bare tuple)
   if (text.startsWith('Tuple')) {
     return parseTuple(text);
+  }
+
+  // Bare tuple (without Tuple prefix): { key: value, ... }
+  // Distinguish from list by checking if first element has a colon
+  if (text.startsWith('{') && text.endsWith('}')) {
+    const inner = text.slice(1, -1).trim();
+    if (inner !== '' && /^[A-Za-z_]\w*\s*:/.test(inner)) {
+      return parseTuple('Tuple ' + text);
+    }
   }
 
   // Decimal: 3.14
@@ -100,11 +109,13 @@ export function parseCvl(text: string): CqlValue | null {
 /** Check if a single-quoted string is balanced (handle escaped quotes). */
 function isBalancedString(text: string): boolean {
   if (!text.startsWith("'") || !text.endsWith("'")) return false;
-  // Walk through checking for escaped quotes ('')
+  // Walk through checking for escaped quotes ('' or \')
   let i = 1;
   while (i < text.length - 1) {
-    if (text[i] === "'" && text[i + 1] === "'") {
-      i += 2; // skip escaped quote
+    if (text[i] === '\\' && text[i + 1] === "'") {
+      i += 2; // skip backslash-escaped quote
+    } else if (text[i] === "'" && text[i + 1] === "'") {
+      i += 2; // skip double-quote escaped quote
     } else if (text[i] === "'") {
       return false; // unescaped quote in middle
     } else {

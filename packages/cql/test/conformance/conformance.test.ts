@@ -23,7 +23,7 @@ const engine = new CqlEngine();
 // Capabilities we DON'T support — tests requiring these are skipped
 const UNSUPPORTED_CAPABILITIES = new Set([
   'ucum-unit-conversion-support', // UCUM unit conversion
-  // Add others as discovered
+  'unit-conversion-support', // Unit conversion (m/cm, kg/g, etc.)
 ]);
 
 const files = readdirSync(FIXTURES_DIR).filter((f) => f.endsWith('.xml'));

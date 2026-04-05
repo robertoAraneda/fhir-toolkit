@@ -46,6 +46,11 @@ function expandDateInterval(
   const step = per ? getQuantityValue(per) : 1;
   if (step <= 0) return new CqlList([]);
 
+  // Determine output precision from unit
+  const outputPrecision = unit === 'year' ? DatePrecision.Year
+    : unit === 'month' ? DatePrecision.Month
+    : DatePrecision.Day;
+
   const result: CqlValue[] = [];
   let d = new Date(Date.UTC(low.year, (low.month || 1) - 1, low.day || 1));
   if (!lowClosed) addDateUnit(d, unit, step);
@@ -53,7 +58,15 @@ function expandDateInterval(
   if (!highClosed) endD.setUTCDate(endD.getUTCDate() - 1);
   const MAX = 10000;
   while (d <= endD && result.length < MAX) {
-    result.push(new CqlDate(`${pad(d.getUTCFullYear(), 4)}-${pad(d.getUTCMonth() + 1, 2)}-${pad(d.getUTCDate(), 2)}`));
+    let dateStr: string;
+    if (outputPrecision === DatePrecision.Year) {
+      dateStr = pad(d.getUTCFullYear(), 4);
+    } else if (outputPrecision === DatePrecision.Month) {
+      dateStr = `${pad(d.getUTCFullYear(), 4)}-${pad(d.getUTCMonth() + 1, 2)}`;
+    } else {
+      dateStr = `${pad(d.getUTCFullYear(), 4)}-${pad(d.getUTCMonth() + 1, 2)}-${pad(d.getUTCDate(), 2)}`;
+    }
+    result.push(new CqlDate(dateStr));
     addDateUnit(d, unit, step);
   }
   return new CqlList(result);
@@ -92,20 +105,32 @@ function expandTimeInterval(
   const step = per ? getQuantityValue(per) : 1;
   if (step <= 0) return new CqlList([]);
 
+  // Determine output precision based on the unit
+  const unitPrec = unit === 'hour' ? TimePrecision.Hour
+    : unit === 'minute' ? TimePrecision.Minute
+    : unit === 'second' ? TimePrecision.Second
+    : TimePrecision.Millisecond;
+
+  // If the per unit is finer than the input precision, result is empty
+  // e.g., expand Interval[@T10, @T10] per minute — @T10 is hour-precision
+  if (unitPrec > low.precision) return new CqlList([]);
+
   const result: CqlValue[] = [];
   let totalMs = low.hour * 3600000 + low.minute * 60000 + low.second * 1000 + low.millis;
   if (!lowClosed) totalMs += stepToMs(unit, step);
-  const endMs = high.hour * 3600000 + high.minute * 60000 + high.second * 1000 + high.millis;
+  let endMs = high.hour * 3600000 + high.minute * 60000 + high.second * 1000 + high.millis;
+  if (!highClosed) endMs -= 1; // Subtract 1ms for open upper bound
   const MAX = 10000;
   while (totalMs <= endMs && result.length < MAX) {
     const h = Math.floor(totalMs / 3600000);
     const m = Math.floor((totalMs % 3600000) / 60000);
     const s = Math.floor((totalMs % 60000) / 1000);
     const ms = totalMs % 1000;
+    // Build string at the unit precision level
     let str = pad(h, 2);
-    if (low.precision >= TimePrecision.Minute) str += `:${pad(m, 2)}`;
-    if (low.precision >= TimePrecision.Second) str += `:${pad(s, 2)}`;
-    if (low.precision >= TimePrecision.Millisecond) str += `.${pad(ms, 3)}`;
+    if (unitPrec >= TimePrecision.Minute) str += `:${pad(m, 2)}`;
+    if (unitPrec >= TimePrecision.Second) str += `:${pad(s, 2)}`;
+    if (unitPrec >= TimePrecision.Millisecond) str += `.${pad(ms, 3)}`;
     result.push(new CqlTime(str));
     totalMs += stepToMs(unit, step);
   }
@@ -267,18 +292,50 @@ export function registerIntervalFunctions(registry: FunctionRegistry): void {
 
     // Integer intervals
     if (iv.low instanceof CqlInteger && iv.high instanceof CqlInteger) {
+      // Check if per is a decimal step (e.g., per 0.1) — if so, use decimal expand
+      const perArg = args[1];
+      if (perArg instanceof CqlDecimal || perArg instanceof CqlQuantity) {
+        const step = perArg instanceof CqlQuantity ? perArg.value : perArg.value;
+        if (!step.isInteger()) {
+          // Decimal step on integer interval: expand as decimals
+          // Integer interval [10, 10] with per 0.1 expands to [10.0, 10.1, ..., 10.9]
+          // because integer 10 covers the range [10.0, 10.9999...] in decimal space
+          let lo = new Decimal(iv.low.value);
+          let hi = new Decimal(iv.high.value).plus(1).minus(step);
+          if (!iv.lowClosed) lo = lo.plus(step);
+          if (!iv.highClosed) hi = new Decimal(iv.high.value).minus(step);
+          if (step.lte(0)) return new CqlList([]);
+          const result: CqlValue[] = [];
+          let current = lo;
+          const MAX = 10000;
+          // Determine decimal places from step
+          const stepStr = step.toFixed();
+          const dotIdx = stepStr.indexOf('.');
+          const dp = dotIdx >= 0 ? stepStr.length - dotIdx - 1 : 0;
+          while (current.lte(hi) && result.length < MAX) {
+            result.push(new CqlDecimal(current.toDecimalPlaces(dp)));
+            current = current.plus(step);
+          }
+          return new CqlList(result);
+        }
+      }
+
       let perVal: number | null = null;
-      if (args[1] != null) {
-        if (args[1] instanceof CqlQuantity) perVal = args[1].value.toNumber();
-        else perVal = asInteger(args[1]);
+      if (perArg != null) {
+        if (perArg instanceof CqlQuantity) perVal = perArg.value.toNumber();
+        else if (perArg instanceof CqlDecimal) perVal = perArg.value.toNumber();
+        else perVal = asInteger(perArg);
       }
       const step = perVal !== null && perVal > 0 ? perVal : 1;
       let lo = iv.low.value;
       let hi = iv.high.value;
       if (!iv.lowClosed) lo++;
       if (!iv.highClosed) hi--;
+      // For step > 1 with open bounds, ensure entire step-sized span fits
+      // For closed intervals, allow partial span at the end
+      const effectiveHi = (step > 1 && !iv.highClosed) ? hi - step + 1 : hi;
       const result: CqlValue[] = [];
-      for (let v = lo; v <= hi; v += step) {
+      for (let v = lo; v <= effectiveHi; v += step) {
         result.push(new CqlInteger(v));
       }
       return new CqlList(result);
@@ -293,17 +350,27 @@ export function registerIntervalFunctions(registry: FunctionRegistry): void {
       if (args[1] != null) {
         if (args[1] instanceof CqlQuantity) step = args[1].value;
         else step = numericVal(args[1]);
-      } else if (args[1] === null || args[1] === undefined) {
-        // Default step: use successor distance (1e-8) for decimals, 1 for integers
-        step = new Decimal(1);
       }
       if (step.lte(0)) return new CqlList([]);
+
+      // When step is integer (1), produce CqlInteger results if they make sense
+      const stepIsInt = step.isInteger() && step.eq(1);
       const result: CqlValue[] = [];
       let current = iv.lowClosed ? lo : lo.plus(step);
       const limit = iv.highClosed ? hi : hi.minus(new Decimal('1e-8'));
       const MAX = 10000;
+
+      // Determine decimal places for output
+      const stepStr = step.toFixed();
+      const dotIdx = stepStr.indexOf('.');
+      const dp = dotIdx >= 0 ? stepStr.length - dotIdx - 1 : 0;
+
       while (current.lte(limit) && result.length < MAX) {
-        result.push(new CqlDecimal(current));
+        if (stepIsInt && current.isInteger()) {
+          result.push(new CqlInteger(current.toNumber()));
+        } else {
+          result.push(new CqlDecimal(dp > 0 ? current.toDecimalPlaces(dp) : current));
+        }
         current = current.plus(step);
       }
       return new CqlList(result);
