@@ -1,5 +1,12 @@
 # @fhir-toolkit/cli
 
+## 0.1.8
+
+### Patch Changes
+
+- @fhir-toolkit/yafv@2.0.0
+- @fhir-toolkit/r4-models@2.0.0
+
 ## 0.1.7
 
 ### Patch Changes

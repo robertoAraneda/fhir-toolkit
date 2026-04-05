@@ -1,5 +1,12 @@
 # @fhir-toolkit/yafv
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @fhir-toolkit/ucum@0.2.0
+
 ## 1.2.0
 
 ### Minor Changes

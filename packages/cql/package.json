@@ -1,6 +1,6 @@
 {
   "name": "@fhir-toolkit/cql",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Native Clinical Quality Language (CQL) engine for TypeScript",
   "keywords": [
     "cql",
@@ -41,7 +41,7 @@
     "decimal.js": "^10.4.3"
   },
   "peerDependencies": {
-    "@fhir-toolkit/ucum": ">=0.1.0"
+    "@fhir-toolkit/ucum": ">=0.2.0"
   },
   "peerDependenciesMeta": {
     "@fhir-toolkit/ucum": {

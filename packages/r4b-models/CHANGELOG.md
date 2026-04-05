@@ -1,5 +1,11 @@
 # @fhir-toolkit/r4b-models
 
+## 2.0.0
+
+### Patch Changes
+
+- @fhir-toolkit/yafv@2.0.0
+
 ## 1.0.0
 
 ### Patch Changes
