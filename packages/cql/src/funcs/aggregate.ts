@@ -98,13 +98,16 @@ export function registerAggregateFunctions(registry: FunctionRegistry): void {
   });
 
   // Min(list) -> value
+  // CQL spec: Min ignores null values
   registry.register('Min', (args) => {
     const list = listArg(args);
     if (list === null || list.length === 0) return null;
-    let result = list[0];
+    const isNullish = (v: CqlValue | null) => v === null || v instanceof CqlNull;
+    let result: CqlValue | null = list[0];
     for (let i = 1; i < list.length; i++) {
       const item = list[i];
-      if (result === null || item === null) continue;
+      if (isNullish(item)) continue;
+      if (isNullish(result)) { result = item; continue; }
       try {
         const cmp = (result as CqlComparable).compareTo(item);
         if (cmp > 0) result = item;
@@ -112,17 +115,20 @@ export function registerAggregateFunctions(registry: FunctionRegistry): void {
         // incomparable types — skip
       }
     }
-    return result;
+    return isNullish(result) ? null : result;
   });
 
   // Max(list) -> value
+  // CQL spec: Max ignores null values
   registry.register('Max', (args) => {
     const list = listArg(args);
     if (list === null || list.length === 0) return null;
-    let result = list[0];
+    const isNullish = (v: CqlValue | null) => v === null || v instanceof CqlNull;
+    let result: CqlValue | null = list[0];
     for (let i = 1; i < list.length; i++) {
       const item = list[i];
-      if (result === null || item === null) continue;
+      if (isNullish(item)) continue;
+      if (isNullish(result)) { result = item; continue; }
       try {
         const cmp = (result as CqlComparable).compareTo(item);
         if (cmp < 0) result = item;
@@ -130,7 +136,7 @@ export function registerAggregateFunctions(registry: FunctionRegistry): void {
         // incomparable types — skip
       }
     }
-    return result;
+    return isNullish(result) ? null : result;
   });
 
   // AllTrue(list) -> boolean

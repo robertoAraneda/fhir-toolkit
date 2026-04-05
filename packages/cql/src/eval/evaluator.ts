@@ -656,6 +656,18 @@ export class CqlEvaluator
     const operandType = operand.type.toLowerCase();
     const targetType = expr.type.name.toLowerCase().replace(/^system\./, '');
     if (operandType === targetType) return CqlBoolean.TRUE;
+    // For tuples constructed via Instance expressions, also check the instance type name
+    if (operand instanceof CqlTuple && operand.instanceType) {
+      const instType = operand.instanceType.toLowerCase();
+      if (instType === targetType) return CqlBoolean.TRUE;
+      // Check hierarchy using the instance type
+      const typeHierarchy: Record<string, string[]> = {
+        'vocabulary': ['valueset', 'codesystem'],
+        'any': ['boolean', 'integer', 'long', 'decimal', 'string', 'date', 'datetime', 'time', 'quantity', 'code', 'concept', 'interval', 'list', 'tuple'],
+      };
+      const subtypes = typeHierarchy[targetType];
+      if (subtypes && subtypes.includes(instType)) return CqlBoolean.TRUE;
+    }
     // CQL type hierarchy
     const typeHierarchy: Record<string, string[]> = {
       'vocabulary': ['valueset', 'codesystem'],
@@ -1182,7 +1194,11 @@ export class CqlEvaluator
       }
     }
 
-    return new CqlTuple(elements);
+    const tuple = new CqlTuple(elements);
+    // Preserve the instance type name for type-checking (e.g. `is Vocabulary`)
+    const rawName = expr.type.name.replace(/^System\./, '');
+    tuple.instanceType = rawName;
+    return tuple;
   }
 
   async visitCode(expr: CodeExpr): Promise<CqlResult> {

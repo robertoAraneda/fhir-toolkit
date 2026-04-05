@@ -217,6 +217,12 @@ export class CqlList implements CqlValue {
 export class CqlTuple implements CqlValue {
   readonly type = 'Tuple' as const;
 
+  /**
+   * Optional named instance type (e.g. 'ValueSet', 'CodeSystem').
+   * Set when the tuple was constructed via Instance expression for a known CQL type.
+   */
+  instanceType?: string;
+
   constructor(readonly elements: Map<string, CqlValue | null>) {}
 
   /** Get the value for a named element. */
