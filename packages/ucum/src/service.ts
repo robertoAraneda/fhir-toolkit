@@ -1,5 +1,6 @@
 import { Decimal } from 'decimal.js';
-import type { Term } from './ast.js';
+import type { Component, Term } from './ast.js';
+import { operatorToString } from './ast.js';
 import type { Canonical } from './canonical.js';
 import {
   divideCanonicals,
@@ -330,6 +331,39 @@ export class UcumService {
 
   private findBaseUnit(code: string): BaseUnit | undefined {
     return this.model.baseUnits.find((bu) => bu.code === code);
+  }
+
+  /** Return a human-readable description of a UCUM unit expression. */
+  analyze(code: string): string {
+    const t = this.parseCached(code);
+    return this.analyzeTermHuman(t);
+  }
+
+  private analyzeTermHuman(t: Term): string {
+    const parts: string[] = [];
+    this.analyzeTermTo(t, parts);
+    return parts.join('');
+  }
+
+  private analyzeTermTo(t: Term, parts: string[]): void {
+    this.analyzeComponentHuman(t.comp, parts);
+    if (t.term !== null) {
+      parts.push(operatorToString(t.op));
+      this.analyzeTermTo(t.term, parts);
+    }
+  }
+
+  private analyzeComponentHuman(comp: Component, parts: string[]): void {
+    if (comp.kind === 'factor') {
+      parts.push(String(comp.value));
+    } else if (comp.kind === 'symbol') {
+      if (comp.prefix !== null) parts.push(comp.prefix.name);
+      parts.push(comp.unit.name);
+      if (comp.exponent !== 1) parts.push(String(comp.exponent));
+    } else {
+      // nested term
+      this.analyzeTermTo(comp, parts);
+    }
   }
 
   /**
