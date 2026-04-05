@@ -1,5 +1,6 @@
 import { Decimal } from 'decimal.js';
-import type { Term } from './ast.js';
+import type { Component, Term } from './ast.js';
+import { operatorToString } from './ast.js';
 import type { Canonical } from './canonical.js';
 import {
   divideCanonicals,
@@ -12,9 +13,9 @@ import {
   BASE_UNITS as RAW_BASE_UNITS,
   DEFINED_UNITS as RAW_DEFINED_UNITS,
 } from './definitions.js';
-import type { PrefixDef, BaseUnitDef, UnitDef } from './definitions.js';
 import { UcumConversionError, UcumValidationError } from './errors.js';
-import type { BaseUnit, Prefix, DefinedUnit } from './model.js';
+import { buildModel } from './model-builder.js';
+import type { BaseUnit } from './model.js';
 import { Model } from './model.js';
 import { Parser } from './parser.js';
 import type { SpecialHandler } from './special.js';
@@ -24,45 +25,6 @@ import { SPECIAL_HANDLERS } from './special.js';
 export interface Pair {
   value: number;
   code: string;
-}
-
-/** Convert raw definitions into Model-compatible types. */
-function buildModel(
-  rawPrefixes: readonly PrefixDef[],
-  rawBaseUnits: readonly BaseUnitDef[],
-  rawDefinedUnits: readonly UnitDef[],
-): Model {
-  const prefixes: Prefix[] = rawPrefixes.map((p) => ({
-    code: p.code,
-    name: p.name,
-    value: new Decimal(p.value),
-  }));
-
-  const baseUnits: BaseUnit[] = rawBaseUnits.map((bu) => ({
-    code: bu.code,
-    name: bu.name,
-    property: bu.property,
-    dim: bu.dim,
-  }));
-
-  const definedUnits: DefinedUnit[] = rawDefinedUnits.map((du) => ({
-    code: du.code,
-    name: du.name,
-    property: du.property,
-    isMetric: du.isMetric,
-    isSpecial: du.isSpecial,
-    isArbitrary: du.isArbitrary,
-    class: du.class,
-    value: du.value
-      ? {
-          unit: du.value.unit,
-          text: '',
-          value: du.value.value === '' ? new Decimal(1) : new Decimal(du.value.value),
-        }
-      : null,
-  }));
-
-  return new Model(prefixes, baseUnits, definedUnits);
 }
 
 /**
@@ -87,7 +49,11 @@ export class UcumService {
     return t;
   }
 
-  /** Check if the given code is a valid UCUM expression. Throws UcumValidationError on failure. */
+  /**
+   * Validates a UCUM unit code expression.
+   * @param code - A UCUM unit code string (e.g. 'mg/dL', 'Cel', 'km/h')
+   * @throws {UcumValidationError} If the code is not a valid UCUM expression
+   */
   validate(code: string): void {
     try {
       this.parseCached(code);
@@ -96,7 +62,13 @@ export class UcumService {
     }
   }
 
-  /** Return the canonical (base-unit) form of a value+code pair. */
+  /**
+   * Returns the canonical (base-unit) form of a value+code pair.
+   * @param value - The numeric magnitude
+   * @param code - A valid UCUM unit code string
+   * @returns A `Pair` with the value expressed in base units and the composed base-unit code
+   * @throws {UcumValidationError} If the code cannot be parsed
+   */
   canonical(value: number, code: string): Pair {
     const can = this.getCanonical(code);
     const v = value * can.value.toNumber();
@@ -104,7 +76,14 @@ export class UcumService {
     return { value: v, code: units };
   }
 
-  /** Convert a value from one unit to another. */
+  /**
+   * Converts a numeric value from one UCUM unit to another.
+   * @param value - The numeric magnitude in the source unit
+   * @param from - Source UCUM unit code (e.g. 'mg')
+   * @param to - Target UCUM unit code (e.g. 'g')
+   * @returns The converted numeric value in the target unit
+   * @throws {UcumConversionError} If either unit is invalid or the units are not comparable
+   */
   convert(value: number, from: string, to: string): number {
     let srcTerm: Term;
     let dstTerm: Term;
@@ -159,7 +138,12 @@ export class UcumService {
     return result;
   }
 
-  /** Returns true if the two unit codes have the same canonical units. */
+  /**
+   * Returns true if the two unit codes resolve to the same canonical base units.
+   * @param code1 - First UCUM unit code
+   * @param code2 - Second UCUM unit code
+   * @returns `true` if both codes are dimensionally equivalent
+   */
   isComparable(code1: string, code2: string): boolean {
     const can1 = this.getCanonical(code1);
     const can2 = this.getCanonical(code2);
@@ -369,6 +353,93 @@ export class UcumService {
 
   private findBaseUnit(code: string): BaseUnit | undefined {
     return this.model.baseUnits.find((bu) => bu.code === code);
+  }
+
+  /**
+   * Returns unit suggestions whose code starts with or whose name contains the given prefix.
+   * @param prefix - Search string to match against unit codes and names
+   * @param limit - Maximum number of suggestions to return (default: 20)
+   * @returns Array of matching `{ code, name }` objects
+   */
+  suggest(prefix: string, limit = 20): Array<{ code: string; name: string }> {
+    const lower = prefix.toLowerCase()
+    const seen = new Set<string>()
+    const results: Array<{ code: string; name: string }> = []
+
+    const addIfMatch = (code: string, name: string) => {
+      if (results.length >= limit) return
+      if (seen.has(code)) return
+      if (code.toLowerCase().startsWith(lower) || name.toLowerCase().includes(lower)) {
+        seen.add(code)
+        results.push({ code, name })
+      }
+    }
+
+    for (const unit of this.model.definedUnits) {
+      addIfMatch(unit.code, unit.name)
+    }
+
+    for (const base of this.model.baseUnits) {
+      addIfMatch(base.code, base.name)
+    }
+
+    // Also generate prefix+unit combinations for metric units
+    for (const pfx of this.model.prefixes) {
+      if (results.length >= limit) break
+      for (const unit of this.model.definedUnits) {
+        if (!unit.isMetric) continue
+        if (results.length >= limit) break
+        const compoundCode = pfx.code + unit.code
+        const compoundName = pfx.name + unit.name
+        addIfMatch(compoundCode, compoundName)
+      }
+      for (const base of this.model.baseUnits) {
+        if (results.length >= limit) break
+        const compoundCode = pfx.code + base.code
+        const compoundName = pfx.name + base.name
+        addIfMatch(compoundCode, compoundName)
+      }
+    }
+
+    return results
+  }
+
+  /**
+   * Returns a human-readable description of a UCUM unit expression.
+   * @param code - A valid UCUM unit code string (e.g. 'mg/dL')
+   * @returns A human-readable string (e.g. 'milligram per deciliter')
+   * @throws {UcumValidationError} If the code cannot be parsed
+   */
+  analyze(code: string): string {
+    const t = this.parseCached(code);
+    return this.analyzeTermHuman(t);
+  }
+
+  private analyzeTermHuman(t: Term): string {
+    const parts: string[] = [];
+    this.analyzeTermTo(t, parts);
+    return parts.join('');
+  }
+
+  private analyzeTermTo(t: Term, parts: string[]): void {
+    this.analyzeComponentHuman(t.comp, parts);
+    if (t.term !== null) {
+      parts.push(operatorToString(t.op));
+      this.analyzeTermTo(t.term, parts);
+    }
+  }
+
+  private analyzeComponentHuman(comp: Component, parts: string[]): void {
+    if (comp.kind === 'factor') {
+      parts.push(String(comp.value));
+    } else if (comp.kind === 'symbol') {
+      if (comp.prefix !== null) parts.push(comp.prefix.name);
+      parts.push(comp.unit.name);
+      if (comp.exponent !== 1) parts.push(String(comp.exponent));
+    } else {
+      // nested term
+      this.analyzeTermTo(comp, parts);
+    }
   }
 
   /**

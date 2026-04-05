@@ -1,0 +1,5 @@
+{
+  "cql": "library ListOps version '1.0'\ndefine \"Items\": { 1, 2, 3, 4, 5 }\ndefine \"Total\": Sum(Items)\ndefine \"Count\": Count(Items)",
+  "expectedDefinitions": ["Items", "Total", "Count"],
+  "expectedResult": { "Total": "15", "Count": "5" }
+}

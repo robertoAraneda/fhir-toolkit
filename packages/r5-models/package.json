@@ -1,6 +1,6 @@
 {
   "name": "@fhir-toolkit/r5-models",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "FHIR R5 models and builders for TypeScript",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -46,7 +46,7 @@
     "@fhir-toolkit/r5-types": "workspace:*"
   },
   "peerDependencies": {
-    "@fhir-toolkit/yafv": ">=1.2.0"
+    "@fhir-toolkit/yafv": ">=2.0.0"
   },
   "peerDependenciesMeta": {
     "@fhir-toolkit/yafv": {

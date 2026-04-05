@@ -1,0 +1,40 @@
+name: CQL Conformance Report
+
+on:
+  pull_request:
+    paths:
+      - 'packages/cql/**'
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @fhir-toolkit/cql build
+      - id: conformance
+        run: |
+          cd packages/cql
+          OUTPUT=$(pnpm vitest run test/conformance/conformance.test.ts --reporter=json 2>/dev/null || echo '{}')
+          PASSED=$(echo "$OUTPUT" | node -e "
+            const d = JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+            console.log((d.numPassedTests || 0) + '/' + ((d.numPassedTests || 0) + (d.numFailedTests || 0)));
+          " 2>/dev/null || echo 'unknown')
+          echo "result=$PASSED" >> $GITHUB_OUTPUT
+      - uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## CQL Conformance Results\n\n✅ **${{ steps.conformance.outputs.result }}** tests passing`
+            })

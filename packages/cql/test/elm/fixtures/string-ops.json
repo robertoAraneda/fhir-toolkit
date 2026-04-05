@@ -1,0 +1,5 @@
+{
+  "cql": "library StringOps version '1.0'\ndefine \"Upper\": Upper('hello')\ndefine \"Len\": Length('world')",
+  "expectedDefinitions": ["Upper", "Len"],
+  "expectedResult": { "Upper": "HELLO", "Len": "5" }
+}

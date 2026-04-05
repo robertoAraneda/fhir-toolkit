@@ -7,6 +7,7 @@
 
 import { compile } from './compiler/compiler.js';
 import { CqlEvaluator } from './eval/evaluator.js';
+import type { IncludeDef } from './ast/library.js';
 import { EvalContext } from './eval/context.js';
 import { FunctionRegistry } from './funcs/registry.js';
 import { registerBuiltins } from './funcs/builtins.js';
@@ -44,7 +45,16 @@ export interface CqlEngineOptions {
   maxDepth?: number;
   /** Optional UCUM service for unit conversion in Quantity operations. */
   ucumService?: UcumServiceLike;
+  /**
+   * Resolver for included CQL libraries.
+   * Called with the library name and version; must return the CQL source text.
+   * Required when evaluating CQL that uses `include` statements.
+   */
+  libraryResolver?: (name: string, version: string) => Promise<string>;
 }
+
+export type TraceEvent = { expression: string; value: unknown; definition?: string }
+export type TraceHandler = (event: TraceEvent) => void
 
 export class CqlEngine {
   private readonly cache = new Map<string, Library>();
@@ -55,6 +65,8 @@ export class CqlEngine {
   private readonly timeout: number;
   private readonly maxExpressionLen: number;
   private readonly ucumService: UcumServiceLike | null;
+  private readonly libraryResolver: ((name: string, version: string) => Promise<string>) | null;
+  private readonly traceHandlers: TraceHandler[] = [];
 
   constructor(options?: CqlEngineOptions) {
     this.timeout = options?.timeout ?? 30_000;
@@ -63,15 +75,17 @@ export class CqlEngine {
     this.dataProvider = options?.dataProvider ?? null;
     this.terminologyProvider = options?.terminologyProvider ?? null;
     this.ucumService = options?.ucumService ?? null;
+    this.libraryResolver = options?.libraryResolver ?? null;
     this.registry = new FunctionRegistry();
     registerBuiltins(this.registry);
   }
 
   /**
-   * Parse CQL source and return the AST Library (cached).
-   *
-   * @throws CqlTooCostlyError when source exceeds maxExpressionLen.
-   * @throws CqlSyntaxError when the input has syntax errors.
+   * Parses CQL source text and returns the compiled AST Library (result is cached).
+   * @param source - CQL source text to compile
+   * @returns Compiled `Library` AST
+   * @throws {CqlTooCostlyError} If source length exceeds `maxExpressionLen`
+   * @throws {CqlSyntaxError} If the source contains syntax errors
    */
   compile(source: string): Library {
     if (source.length > this.maxExpressionLen) {
@@ -87,9 +101,13 @@ export class CqlEngine {
   }
 
   /**
-   * Parse, compile, and evaluate all named expressions in a CQL library.
-   *
-   * Returns a record mapping each expression name to its evaluated result.
+   * Parses, compiles, and evaluates all named expressions in a CQL library.
+   * @param source - CQL source text containing the library
+   * @param context - Patient/resource context object passed to data retrieval
+   * @param params - Optional map of parameter name to value for CQL parameters
+   * @returns A record mapping each expression name to its evaluated `CqlValue`
+   * @throws {CqlTimeoutError} If evaluation exceeds the configured timeout
+   * @throws {CqlSyntaxError} If the source contains syntax errors
    */
   async evaluateLibrary(
     source: string,
@@ -99,11 +117,23 @@ export class CqlEngine {
     const lib = this.compile(source);
     const ctx = this.createContext(lib, context, params);
     const evaluator = new CqlEvaluator(ctx, this.registry);
-    return this.withTimeout(evaluator.evaluateLibrary());
+    await this.resolveIncludes(lib, evaluator, context);
+    const results = await this.withTimeout(evaluator.evaluateLibrary());
+    for (const [defName, value] of Object.entries(results)) {
+      this.emit('trace', { expression: defName, value, definition: defName });
+    }
+    return results;
   }
 
   /**
-   * Parse, compile, and evaluate a single named expression from a CQL library.
+   * Parses, compiles, and evaluates a single named expression from a CQL library.
+   * @param source - CQL source text containing the library
+   * @param name - Name of the expression definition to evaluate
+   * @param context - Patient/resource context object passed to data retrieval
+   * @param params - Optional map of parameter name to value for CQL parameters
+   * @returns The evaluated `CqlValue`, or `null` if the expression yields null
+   * @throws {CqlTimeoutError} If evaluation exceeds the configured timeout
+   * @throws {CqlSyntaxError} If the source contains syntax errors
    */
   async evaluateExpression(
     source: string,
@@ -114,7 +144,10 @@ export class CqlEngine {
     const lib = this.compile(source);
     const ctx = this.createContext(lib, context, params);
     const evaluator = new CqlEvaluator(ctx, this.registry);
-    return this.withTimeout(evaluator.evaluateExpression(name));
+    await this.resolveIncludes(lib, evaluator, context);
+    const value = await this.withTimeout(evaluator.evaluateExpression(name));
+    this.emit('trace', { expression: name, value, definition: name });
+    return value;
   }
 
   /** Access the function registry for custom function registration. */
@@ -122,9 +155,52 @@ export class CqlEngine {
     return this.registry;
   }
 
+  /**
+   * Registers a handler for engine events.
+   * @param event - Event name; currently only `'trace'` is supported
+   * @param handler - Callback invoked with a `TraceEvent` after each CQL definition is evaluated
+   * @returns `this` for fluent chaining
+   */
+  on(event: 'trace', handler: TraceHandler): this {
+    if (event === 'trace') this.traceHandlers.push(handler);
+    return this;
+  }
+
   // ---------------------------------------------------------------------------
   // Private helpers
   // ---------------------------------------------------------------------------
+
+  private emit(event: 'trace', data: TraceEvent): void {
+    for (const handler of this.traceHandlers) {
+      handler(data);
+    }
+  }
+
+  /**
+   * Resolves included libraries from the main library's `includes` list and registers
+   * each included library's evaluator under its alias in the main evaluator.
+   */
+  private async resolveIncludes(
+    lib: Library,
+    evaluator: CqlEvaluator,
+    context: unknown,
+  ): Promise<void> {
+    if (!lib.includes || lib.includes.length === 0) return;
+    for (const inc of lib.includes) {
+      if (!this.libraryResolver) {
+        throw new Error(
+          `CQL library '${inc.name}' is included but no libraryResolver was provided`,
+        );
+      }
+      const includedSource = await this.libraryResolver(inc.name, inc.version);
+      const includedLib = this.compile(includedSource);
+      const includedCtx = this.createContext(includedLib, context);
+      const includedEvaluator = new CqlEvaluator(includedCtx, this.registry);
+      // Recursively resolve includes in the included library
+      await this.resolveIncludes(includedLib, includedEvaluator, context);
+      evaluator.registerIncludedLibrary(inc.alias, includedEvaluator);
+    }
+  }
 
   private createContext(
     lib: Library,

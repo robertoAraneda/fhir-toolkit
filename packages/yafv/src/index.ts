@@ -92,6 +92,7 @@ export {
 
 export type {
   ValidatorOptions,
+  UcumValidationService,
 } from './core/validator.js';
 
 // Bundle validator

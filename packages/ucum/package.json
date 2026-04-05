@@ -1,8 +1,14 @@
 {
   "name": "@fhir-toolkit/ucum",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "UCUM (Unified Code for Units of Measure) parser and converter for TypeScript",
-  "keywords": ["ucum", "fhir", "units", "measurement", "healthcare"],
+  "keywords": [
+    "ucum",
+    "fhir",
+    "units",
+    "measurement",
+    "healthcare"
+  ],
   "author": "Roberto Araneda <robaraneda@gmail.com>",
   "license": "MIT",
   "type": "module",
@@ -16,24 +22,32 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "test": "vitest run",
+    "test:browser": "vitest run --config vitest.browser.config.ts",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "docs": "typedoc"
   },
   "dependencies": {
     "decimal.js": "^10.4.3"
   },
   "devDependencies": {
+    "happy-dom": "^20.8.9",
     "tsup": "^8.0.2",
+    "typedoc": "^0.28.18",
     "typescript": "^5.4.0",
     "vitest": "^1.4.0"
   },
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "sideEffects": false,
   "repository": {
     "type": "git",

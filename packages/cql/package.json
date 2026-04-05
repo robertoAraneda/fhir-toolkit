@@ -1,8 +1,15 @@
 {
   "name": "@fhir-toolkit/cql",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Native Clinical Quality Language (CQL) engine for TypeScript",
-  "keywords": ["cql", "fhir", "hl7", "clinical-quality-language", "elm", "healthcare"],
+  "keywords": [
+    "cql",
+    "fhir",
+    "hl7",
+    "clinical-quality-language",
+    "elm",
+    "healthcare"
+  ],
   "author": "Roberto Araneda <robaraneda@gmail.com>",
   "license": "MIT",
   "type": "module",
@@ -16,29 +23,37 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "test": "vitest run",
+    "test:browser": "vitest run --config vitest.browser.config.ts",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "docs": "typedoc"
   },
   "dependencies": {
     "antlr4ng": "^3.0.4",
     "decimal.js": "^10.4.3"
   },
   "peerDependencies": {
-    "@fhir-toolkit/ucum": ">=0.1.0"
+    "@fhir-toolkit/ucum": ">=0.2.0"
   },
   "peerDependenciesMeta": {
-    "@fhir-toolkit/ucum": { "optional": true }
+    "@fhir-toolkit/ucum": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@fhir-toolkit/ucum": "workspace:*",
     "antlr4ng-cli": "^2.0.0",
+    "happy-dom": "^20.8.9",
     "tsup": "^8.0.2",
+    "typedoc": "^0.28.18",
     "typescript": "^5.4.0",
     "vitest": "^1.4.0"
   },

@@ -85,6 +85,7 @@ import {
   CqlConcept,
 } from '../types/complex.js';
 import { Decimal } from 'decimal.js';
+import { CqlEvalError } from '../errors.js';
 
 // CQL spec requires at least 28 digits of precision for decimals.
 // Default decimal.js precision is 20, which is insufficient.
@@ -106,6 +107,34 @@ function toList(v: CqlValue | null): CqlValue[] {
   if (v === null) return [];
   if (v instanceof CqlList) return v.values;
   return [v];
+}
+
+/**
+ * Recursively wrap a plain JSON value (from a FHIR resource) into a CqlValue.
+ * Arrays become CqlList, objects become CqlTuple, primitives map directly.
+ */
+export function wrapFhirValue(v: unknown): CqlValue | null {
+  if (v === null || v === undefined) return null;
+  if (typeof v === 'string') return new CqlString(v);
+  if (typeof v === 'number')
+    return Number.isInteger(v) ? new CqlInteger(v) : CqlDecimal.of(v);
+  if (typeof v === 'boolean') return CqlBoolean.of(v);
+  if (Array.isArray(v)) {
+    const items: CqlValue[] = [];
+    for (const item of v) {
+      const wrapped = wrapFhirValue(item);
+      if (wrapped !== null) items.push(wrapped);
+    }
+    return new CqlList(items);
+  }
+  if (typeof v === 'object') {
+    const elements = new Map<string, CqlValue | null>();
+    for (const [k, val] of Object.entries(v as Record<string, unknown>)) {
+      elements.set(k, wrapFhirValue(val));
+    }
+    return new CqlTuple(elements);
+  }
+  return new CqlString(String(v));
 }
 
 function toDecimal(v: CqlValue | null): Decimal {
@@ -242,6 +271,8 @@ export class CqlEvaluator
 {
   private readonly registry: FunctionRegistry;
   private readonly userFunctions: Map<string, FunctionDef>;
+  /** Map of library alias -> CqlEvaluator for included libraries. */
+  private readonly includedLibraries: Map<string, CqlEvaluator> = new Map();
 
   constructor(
     private ctx: EvalContext,
@@ -255,6 +286,14 @@ export class CqlEvaluator
         this.userFunctions.set(fn.name, fn);
       }
     }
+  }
+
+  /**
+   * Registers an evaluator for an included library under its alias.
+   * Called by the engine when resolving `include` statements.
+   */
+  registerIncludedLibrary(alias: string, evaluator: CqlEvaluator): void {
+    this.includedLibraries.set(alias, evaluator);
   }
 
   /**
@@ -277,12 +316,18 @@ export class CqlEvaluator
 
   /** Evaluate all named statements in the library. */
   async evaluateLibrary(): Promise<Record<string, CqlResult>> {
-    if (!this.ctx.library) throw new Error('no library to evaluate');
+    if (!this.ctx.library) throw new CqlEvalError('no library to evaluate');
     const results: Record<string, CqlResult> = {};
     for (const stmt of this.ctx.library.statements) {
-      const val = await this.evaluate(stmt.expression);
-      this.ctx.definitions.set(stmt.name, val);
-      results[stmt.name] = val;
+      try {
+        const val = await this.evaluate(stmt.expression);
+        this.ctx.definitions.set(stmt.name, val);
+        results[stmt.name] = val;
+      } catch (e) {
+        if (e instanceof CqlEvalError) throw e;
+        const msg = e instanceof Error ? e.message : String(e);
+        throw new CqlEvalError(msg, stmt.name);
+      }
     }
     return results;
   }
@@ -294,13 +339,19 @@ export class CqlEvaluator
     if (this.ctx.library) {
       for (const stmt of this.ctx.library.statements) {
         if (stmt.name === name) {
-          const val = await this.evaluate(stmt.expression);
-          this.ctx.definitions.set(name, val);
-          return val;
+          try {
+            const val = await this.evaluate(stmt.expression);
+            this.ctx.definitions.set(name, val);
+            return val;
+          } catch (e) {
+            if (e instanceof CqlEvalError) throw e;
+            const msg = e instanceof Error ? e.message : String(e);
+            throw new CqlEvalError(msg, name);
+          }
         }
       }
     }
-    throw new Error(`expression '${name}' not found`);
+    throw new CqlEvalError(`expression '${name}' not found`);
   }
 
   // -----------------------------------------------------------------------
@@ -318,6 +369,8 @@ export class CqlEvaluator
       case LiteralType.Integer: {
         const v = parseInt(expr.value, 10);
         if (isNaN(v)) throw new Error(`invalid integer: ${expr.value}`);
+        // CQL integers are 32-bit: valid range is -2^31 to 2^31-1
+        if (v < -2147483648 || v > 2147483647) throw new Error(`integer overflow: ${expr.value}`);
         return new CqlInteger(v);
       }
       case LiteralType.Long: {
@@ -329,8 +382,19 @@ export class CqlEvaluator
         return new CqlDate(expr.value);
       case LiteralType.DateTime:
         return new CqlDateTime(expr.value);
-      case LiteralType.Time:
-        return new CqlTime(expr.value);
+      case LiteralType.Time: {
+        // Validate raw millisecond string length before CqlTime truncates it
+        const msMatch = /^T?\d{2}(?::\d{2}(?::\d{2}(?:\.(\d+))?)?)?$/.exec(expr.value);
+        if (msMatch && msMatch[1] && msMatch[1].length > 3) {
+          throw new Error(`invalid time: milliseconds exceed 999 in ${expr.value}`);
+        }
+        const t = new CqlTime(expr.value);
+        // Validate time component ranges
+        if (t.hour > 23 || t.minute > 59 || t.second > 59 || t.millis > 999) {
+          throw new Error(`invalid time: ${expr.value}`);
+        }
+        return t;
+      }
       case LiteralType.Quantity: {
         // Expected format: "value unit" e.g. "10 mg"
         const parts = expr.value.split(/\s+/);
@@ -357,6 +421,14 @@ export class CqlEvaluator
           this.ctx.definitions.set(expr.name, result);
           return result;
         }
+      }
+      // Resolve context identifier (e.g. "Patient") to the context resource
+      if (
+        this.ctx.contextResource !== null &&
+        this.ctx.contextResource !== undefined &&
+        this.ctx.library.contexts.some((c) => c.name === expr.name)
+      ) {
+        return wrapFhirValue(this.ctx.contextResource);
       }
     }
     // Could be a resource type name used in query context
@@ -463,12 +535,27 @@ export class CqlEvaluator
         return CqlBoolean.of(!left.equals(right));
       }
       case BinaryOp.Equivalent:
+        // Tuples with different keys cannot be compared for equivalence
+        if (left instanceof CqlTuple && right instanceof CqlTuple) {
+          const leftKeys = [...left.elements.keys()].sort().join(',');
+          const rightKeys = [...right.elements.keys()].sort().join(',');
+          if (leftKeys !== rightKeys) {
+            throw new Error(`Could not resolve call to operator Equivalent with incompatible tuple types`);
+          }
+        }
         // UCUM-aware Quantity equivalence
         if (left instanceof CqlQuantity && right instanceof CqlQuantity && left.unit.toLowerCase() !== right.unit.toLowerCase()) {
           return CqlBoolean.of(this.quantityEquivalent(left, right));
         }
         return CqlBoolean.of(left.equivalent(right));
       case BinaryOp.NotEquivalent:
+        if (left instanceof CqlTuple && right instanceof CqlTuple) {
+          const leftKeys = [...left.elements.keys()].sort().join(',');
+          const rightKeys = [...right.elements.keys()].sort().join(',');
+          if (leftKeys !== rightKeys) {
+            throw new Error(`Could not resolve call to operator NotEquivalent with incompatible tuple types`);
+          }
+        }
         if (left instanceof CqlQuantity && right instanceof CqlQuantity && left.unit.toLowerCase() !== right.unit.toLowerCase()) {
           return CqlBoolean.of(!this.quantityEquivalent(left, right));
         }
@@ -537,6 +624,10 @@ export class CqlEvaluator
       case BinaryOp.Power:
         // Uncertainty interval arithmetic
         if (left instanceof CqlInterval || right instanceof CqlInterval) {
+          // div and mod are not supported on uncertainty intervals
+          if (expr.operator === BinaryOp.Div || expr.operator === BinaryOp.Mod) {
+            throw new Error('integer division (div/mod) is not supported on uncertainty intervals');
+          }
           return this.evalIntervalArithmetic(expr.operator, left, right);
         }
         return this.evalArithmetic(expr.operator, left, right);
@@ -763,6 +854,26 @@ export class CqlEvaluator
   }
 
   async visitFunctionCall(expr: FunctionCallExpr): Promise<CqlResult> {
+    // Check for library-qualified function call: H.Double(5)
+    // In this case, expr.source is an IdentifierRef whose name matches a library alias.
+    if (expr.source !== null && expr.source.kind === 'IdentifierRef') {
+      const libAlias = (expr.source as IdentifierRefExpr).name;
+      const libEvaluator = this.includedLibraries.get(libAlias);
+      if (libEvaluator) {
+        const libFn = libEvaluator.userFunctions.get(expr.name);
+        if (libFn) {
+          // Evaluate operands in the current (caller) context, then invoke the function
+          // in the included library's context with the pre-evaluated values.
+          const argVals: CqlResult[] = [];
+          for (const op of expr.operands) {
+            argVals.push(await this.evaluate(op));
+          }
+          return libEvaluator.evalUserFunctionWithValues(libFn, argVals);
+        }
+        throw new Error(`function '${expr.name}' not found in library '${libAlias}'`);
+      }
+    }
+
     // Check user-defined functions first
     const userFn = this.userFunctions.get(expr.name);
     if (userFn) {
@@ -823,13 +934,16 @@ export class CqlEvaluator
       return val === undefined ? null : val;
     }
 
-    // List member access: map over collection
+    // List member access: map over collection (singleton promotion: return list)
     if (source instanceof CqlList) {
       const result: CqlValue[] = [];
       for (const item of source.values) {
         if (item instanceof CqlTuple) {
           const v = item.get(expr.member);
           if (v !== null && v !== undefined) result.push(v);
+        } else if (item instanceof CqlList) {
+          // Flatten nested lists (e.g. given is already a list of strings)
+          result.push(...item.values);
         }
       }
       return new CqlList(result);
@@ -884,21 +998,11 @@ export class CqlEvaluator
       dateRange,
     );
 
-    // Wrap each result as a CqlTuple (generic JSON object representation)
+    // Wrap each result recursively as a CqlTuple
     const values: CqlValue[] = [];
     for (const raw of results) {
-      if (raw !== null && typeof raw === 'object') {
-        const elements = new Map<string, CqlValue | null>();
-        for (const [k, v] of Object.entries(raw as Record<string, unknown>)) {
-          if (typeof v === 'string') elements.set(k, new CqlString(v));
-          else if (typeof v === 'number')
-            elements.set(k, Number.isInteger(v) ? new CqlInteger(v) : CqlDecimal.of(v));
-          else if (typeof v === 'boolean') elements.set(k, CqlBoolean.of(v));
-          else if (v === null) elements.set(k, null);
-          else elements.set(k, new CqlString(String(v)));
-        }
-        values.push(new CqlTuple(elements));
-      }
+      const wrapped = wrapFhirValue(raw);
+      if (wrapped !== null) values.push(wrapped);
     }
     return new CqlList(values);
   }
@@ -1148,6 +1252,30 @@ export class CqlEvaluator
       const highIsLiteralNull = expr.high.kind === 'Literal' && (expr.high as LiteralExpr).valueType === LiteralType.Null;
       if (lowIsLiteralNull && highIsLiteralNull) return null;
     }
+    // Compute effective low/high (adjusting for open bounds on discrete types)
+    let effectiveLow = low as CqlComparable | null;
+    let effectiveHigh = high as CqlComparable | null;
+    if (!expr.lowClosed && low !== null) {
+      const succ = this.evalSuccessorPredecessor(UnaryOp.SuccessorOf, low as CqlComparable);
+      if (succ !== null) effectiveLow = succ as CqlComparable;
+    }
+    if (!expr.highClosed && high !== null) {
+      const pred = this.evalSuccessorPredecessor(UnaryOp.PredecessorOf, high as CqlComparable);
+      if (pred !== null) effectiveHigh = pred as CqlComparable;
+    }
+    // Validate: effective low must be <= effective high
+    if (effectiveLow !== null && effectiveHigh !== null && isComparable(effectiveLow)) {
+      try {
+        const cmp = effectiveLow.compareTo(effectiveHigh);
+        if (cmp > 0) {
+          throw new Error('Invalid Interval - the ending boundary must be greater than or equal to the starting boundary.');
+        }
+      } catch (e) {
+        // Rethrow invalid interval errors, but ignore ambiguous comparison errors
+        if (e instanceof Error && e.message.startsWith('Invalid Interval')) throw e;
+        // For ambiguous comparisons (different temporal precisions), allow interval creation
+      }
+    }
     return new CqlInterval(
       low as CqlComparable | null,
       high as CqlComparable | null,
@@ -1364,6 +1492,8 @@ export class CqlEvaluator
           return new CqlDate('0001-01-01');
         case 'time':
           return new CqlTime('00:00:00.000');
+        case 'boolean':
+          throw new Error('minimum is not defined for Boolean');
         default:
           return null;
       }
@@ -1382,6 +1512,8 @@ export class CqlEvaluator
         return new CqlDate('9999-12-31');
       case 'time':
         return new CqlTime('23:59:59.999');
+      case 'boolean':
+        throw new Error('maximum is not defined for Boolean');
       default:
         return null;
     }
@@ -2361,6 +2493,9 @@ export class CqlEvaluator
         default: throw new Error(`unsupported temporal unit: ${quantity.unit}`);
       }
 
+      // Validate year range
+      if (yr < 1 || yr > 9999) throw new Error(`DateTime arithmetic result year out of range: ${yr}`);
+
       // Reconstruct at original precision
       let s = pad(yr, 4);
       if (temporal.precision >= DateTimePrecision.Month) s += `-${pad(mo + 1, 2)}`;
@@ -3033,16 +3168,27 @@ export class CqlEvaluator
       let mi = operand.minute;
       let se = operand.second;
       let ms = operand.millis;
+      // Helper to create a Date with proper handling of years 0-99
+      // (Date.UTC treats 0-99 as 1900+n, so we use setUTCFullYear instead)
+      const mkDate = (y: number, m: number, d: number, h=0, mn=0, s=0, ms=0): Date => {
+        const dt = new Date(0);
+        dt.setUTCFullYear(y, m, d);
+        dt.setUTCHours(h, mn, s, ms);
+        return dt;
+      };
       // Add/subtract at the finest precision of the input
       switch (operand.precision) {
         case DateTimePrecision.Year: yr += amt; break;
         case DateTimePrecision.Month: { const t = yr*12+mo+amt; yr = Math.floor(t/12); mo = ((t%12)+12)%12; break; }
-        case DateTimePrecision.Day: { const d = new Date(Date.UTC(yr, mo, dy)); d.setUTCDate(d.getUTCDate()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); break; }
-        case DateTimePrecision.Hour: { const d = new Date(Date.UTC(yr, mo, dy, hr)); d.setUTCHours(d.getUTCHours()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); break; }
-        case DateTimePrecision.Minute: { const d = new Date(Date.UTC(yr, mo, dy, hr, mi)); d.setUTCMinutes(d.getUTCMinutes()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); break; }
-        case DateTimePrecision.Second: { const d = new Date(Date.UTC(yr, mo, dy, hr, mi, se)); d.setUTCSeconds(d.getUTCSeconds()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); se=d.getUTCSeconds(); break; }
-        default: { const d = new Date(Date.UTC(yr, mo, dy, hr, mi, se, ms)); d.setUTCMilliseconds(d.getUTCMilliseconds()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); se=d.getUTCSeconds(); ms=d.getUTCMilliseconds(); break; }
+        case DateTimePrecision.Day: { const d = mkDate(yr, mo, dy); d.setUTCDate(d.getUTCDate()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); break; }
+        case DateTimePrecision.Hour: { const d = mkDate(yr, mo, dy, hr); d.setUTCHours(d.getUTCHours()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); break; }
+        case DateTimePrecision.Minute: { const d = mkDate(yr, mo, dy, hr, mi); d.setUTCMinutes(d.getUTCMinutes()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); break; }
+        case DateTimePrecision.Second: { const d = mkDate(yr, mo, dy, hr, mi, se); d.setUTCSeconds(d.getUTCSeconds()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); se=d.getUTCSeconds(); break; }
+        default: { const d = mkDate(yr, mo, dy, hr, mi, se, ms); d.setUTCMilliseconds(d.getUTCMilliseconds()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); se=d.getUTCSeconds(); ms=d.getUTCMilliseconds(); break; }
       }
+      // Check for overflow/underflow
+      if (isSuc && yr > 9999) throw new Error('successor overflow: DateTime exceeds maximum');
+      if (!isSuc && yr < 1) throw new Error('predecessor underflow: DateTime below minimum');
       let s = pad(yr, 4);
       if (operand.precision >= DateTimePrecision.Month) s += `-${pad(mo + 1, 2)}`;
       if (operand.precision >= DateTimePrecision.Day) s += `-${pad(dy, 2)}`;
@@ -3079,14 +3225,17 @@ export class CqlEvaluator
     if (operand instanceof CqlTime) {
       const pad = (n: number, w: number) => String(n).padStart(w, '0');
       const amt = isSuc ? 1 : -1;
-      let totalMs = operand.hour * 3600000 + operand.minute * 60000 + operand.second * 1000 + operand.millis;
+      const origTotalMs = operand.hour * 3600000 + operand.minute * 60000 + operand.second * 1000 + operand.millis;
+      let totalMs = origTotalMs;
       switch (operand.precision) {
         case TimePrecision.Hour: totalMs += amt * 3600000; break;
         case TimePrecision.Minute: totalMs += amt * 60000; break;
         case TimePrecision.Second: totalMs += amt * 1000; break;
         default: totalMs += amt; break;
       }
-      totalMs = ((totalMs % 86400000) + 86400000) % 86400000;
+      // Detect overflow (successor wraps past 23:59:59.999) or underflow (predecessor wraps below 00:00:00.000)
+      if (isSuc && totalMs >= 86400000) throw new Error('successor overflow: Time exceeds maximum');
+      if (!isSuc && totalMs < 0) throw new Error('predecessor underflow: Time below minimum');
       const h = Math.floor(totalMs / 3600000);
       const m = Math.floor((totalMs % 3600000) / 60000);
       const sec = Math.floor((totalMs % 60000) / 1000);
@@ -3115,6 +3264,30 @@ export class CqlEvaluator
       if (i < args.length) {
         const val = await this.evaluate(args[i]);
         child.aliases.set(fd.operands[i].name, val);
+      }
+    }
+    return this.withContext(child).evaluate(fd.body);
+  }
+
+  /**
+   * Invoke a user-defined function with pre-evaluated argument values.
+   * Used when calling functions across library boundaries where arguments
+   * were evaluated in the caller's context.
+   */
+  async evalUserFunctionWithValues(
+    fd: FunctionDef,
+    argVals: CqlResult[],
+  ): Promise<CqlResult> {
+    if (fd.external) {
+      throw new Error(`external function '${fd.name}' not implemented`);
+    }
+    if (fd.body === null) {
+      throw new Error(`function '${fd.name}' has no body`);
+    }
+    const child = this.ctx.childScope();
+    for (let i = 0; i < fd.operands.length; i++) {
+      if (i < argVals.length) {
+        child.aliases.set(fd.operands[i].name, argVals[i]);
       }
     }
     return this.withContext(child).evaluate(fd.body);
@@ -3294,12 +3467,21 @@ export class CqlEvaluator
       }
       case 'exp': {
         if (source === null) return null;
-        return new CqlDecimal(toDecimal(source).exp());
+        const expD = toDecimal(source);
+        const expF = expD.toNumber();
+        const expResult = Math.exp(expF);
+        if (!isFinite(expResult) || isNaN(expResult)) {
+          throw new Error(`Exp: overflow for value ${expD}`);
+        }
+        return new CqlDecimal(new Decimal(expResult));
       }
       case 'ln': {
         if (source === null) return null;
         const d = toDecimal(source);
-        if (d.lte(0)) return null;
+        // CQL spec: Ln(0) is an error (results in negative infinity)
+        if (d.isZero()) throw new Error(`Ln: undefined for zero`);
+        // CQL spec: Ln of negative values returns null
+        if (d.lt(0)) return null;
         return new CqlDecimal(d.ln());
       }
       case 'round': {
@@ -3401,7 +3583,38 @@ export class CqlEvaluator
       }
       case 'message': {
         // Message(source, condition, code, severity, message) -> source
-        return source ?? (expr.operands.length > 0 ? await this.evaluate(expr.operands[0]) : null);
+        // When called as a function (source is null), operands are [source, condition, code, severity, message]
+        // When called as a method (source is not null), operands are [condition, code, severity, message]
+        let msgSource: CqlResult;
+        let condVal: CqlResult;
+        let codeVal: CqlResult;
+        let severityVal: CqlResult;
+        let messageVal: CqlResult;
+        if (source !== null) {
+          // Method call: source.Message(condition, code, severity, message)
+          msgSource = source;
+          condVal = expr.operands.length > 0 ? await this.evaluate(expr.operands[0]) : null;
+          codeVal = expr.operands.length > 1 ? await this.evaluate(expr.operands[1]) : null;
+          severityVal = expr.operands.length > 2 ? await this.evaluate(expr.operands[2]) : null;
+          messageVal = expr.operands.length > 3 ? await this.evaluate(expr.operands[3]) : null;
+        } else {
+          // Function call: Message(source, condition, code, severity, message)
+          msgSource = expr.operands.length > 0 ? await this.evaluate(expr.operands[0]) : null;
+          condVal = expr.operands.length > 1 ? await this.evaluate(expr.operands[1]) : null;
+          codeVal = expr.operands.length > 2 ? await this.evaluate(expr.operands[2]) : null;
+          severityVal = expr.operands.length > 3 ? await this.evaluate(expr.operands[3]) : null;
+          messageVal = expr.operands.length > 4 ? await this.evaluate(expr.operands[4]) : null;
+        }
+        // When condition is true and severity is 'Error', throw
+        if (isTrue(condVal)) {
+          const sev = severityVal instanceof CqlString ? severityVal.value.toLowerCase() : '';
+          if (sev === 'error') {
+            const code = codeVal instanceof CqlString ? codeVal.value : '';
+            const msg = messageVal instanceof CqlString ? messageVal.value : '';
+            throw new Error(`${code}: ${msg}`);
+          }
+        }
+        return msgSource;
       }
       case 'sum': {
         const items = toList(source);
@@ -3722,6 +3935,10 @@ export class CqlEvaluator
     component: string,
   ): CqlResult {
     const comp = component.toLowerCase();
+    // 'timezone' keyword was removed in CQL 1.4; use 'timezoneoffset' instead
+    if (comp === 'timezone') {
+      throw new Error(`'timezone' component is not valid in CQL 1.4+; use 'timezoneoffset'`);
+    }
 
     if (operand instanceof CqlDate) {
       switch (comp) {

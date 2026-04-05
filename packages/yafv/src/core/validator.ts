@@ -41,6 +41,15 @@ import { buildLocationMap, enrichIssuesWithLocation } from '../validators/json-l
 // Re-export FhirVersion for convenience
 export type { FhirVersion };
 
+/**
+ * Minimal interface for a UCUM validation service.
+ * Compatible with UcumService from @fhir-toolkit/ucum.
+ */
+export interface UcumValidationService {
+  /** Validate a UCUM code. Throws on failure. */
+  validate(code: string): void;
+}
+
 export interface ValidatorOptions {
   /** Custom SpecRegistry instance (uses default if not provided) */
   registry?: SpecRegistry;
@@ -58,6 +67,12 @@ export interface ValidatorOptions {
   terminologyCacheSize?: number;
   /** External profile resolver for profiles not in the local registry */
   externalProfileResolver?: (url: string) => Promise<StructureDefinition | null>;
+  /**
+   * Optional UCUM validation service (e.g., from @fhir-toolkit/ucum).
+   * When provided, Quantity.code fields are validated against UCUM when
+   * Quantity.system is 'http://unitsofmeasure.org'.
+   */
+  ucumService?: UcumValidationService;
 }
 
 export class FhirValidator {
@@ -67,6 +82,7 @@ export class FhirValidator {
   private terminologyService?: TerminologyService;
   private fhirVersion: FhirVersion;
   private externalProfileResolver?: (url: string) => Promise<StructureDefinition | null>;
+  private ucumService?: UcumValidationService;
 
   constructor(options: ValidatorOptions = {}) {
     this.fhirVersion = options.fhirVersion || 'R4';
@@ -80,6 +96,9 @@ export class FhirValidator {
 
     // Store external profile resolver
     this.externalProfileResolver = options.externalProfileResolver;
+
+    // Store optional UCUM service
+    this.ucumService = options.ucumService;
 
     // Create terminology service if configured
     if (options.terminologyServer) {
@@ -1664,6 +1683,34 @@ export class FhirValidator {
             'structure',
             `Unknown element '${key}' in ${typeCode}`,
             `${path}.${key}`
+          )
+        );
+      }
+    }
+
+    // UCUM validation for Quantity types
+    if (
+      this.ucumService &&
+      (typeCode === 'Quantity' ||
+        typeCode === 'SimpleQuantity' ||
+        typeCode === 'Age' ||
+        typeCode === 'Distance' ||
+        typeCode === 'Duration' ||
+        typeCode === 'Count' ||
+        typeCode === 'MoneyQuantity') &&
+      typeof value.code === 'string' &&
+      value.code.length > 0 &&
+      value.system === 'http://unitsofmeasure.org'
+    ) {
+      try {
+        this.ucumService.validate(value.code);
+      } catch {
+        issues.push(
+          this.createIssue(
+            'error',
+            'code-invalid',
+            `UCUM validation failed for code '${value.code}': not a valid UCUM expression`,
+            `${path}.code`
           )
         );
       }

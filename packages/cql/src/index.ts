@@ -44,6 +44,8 @@ export { translateLibrary } from './elm/translator.js';
 // Providers
 export type { DataProvider } from './providers/data.js';
 export type { TerminologyProvider } from './providers/terminology.js';
+export { InMemoryDataProvider } from './providers/in-memory-data.js';
+export { InMemoryTerminologyProvider } from './providers/in-memory-terminology.js';
 
 // Model
 export type { ModelInfo } from './model/model-info.js';

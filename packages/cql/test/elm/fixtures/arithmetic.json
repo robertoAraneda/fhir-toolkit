@@ -1,0 +1,5 @@
+{
+  "cql": "library Arithmetic version '1.0'\ndefine \"Value\": 1 + 1",
+  "expectedDefinitions": ["Value"],
+  "expectedResult": { "Value": "2" }
+}
