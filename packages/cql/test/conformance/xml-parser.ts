@@ -71,7 +71,7 @@ export function parseTestFile(xml: string, fileName: string): ConformanceTest[] 
 
       const exprAttrs = exprMatch[1];
       const expression = decodeXmlEntities(exprMatch[2].trim());
-      const invalid = /invalid\s*=\s*"true"/.test(exprAttrs);
+      const invalid = /invalid\s*=\s*"(true|semantic)"/.test(exprAttrs);
 
       // Extract output (may not exist for invalid expressions)
       const outputMatch = testBody.match(/<output>([\s\S]*?)<\/output>/);

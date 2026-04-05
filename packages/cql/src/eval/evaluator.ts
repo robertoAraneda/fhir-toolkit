@@ -1597,7 +1597,18 @@ export class CqlEvaluator
         ? new CqlInterval(right as CqlComparable, right as CqlComparable, true, true)
         : null;
 
-    if (leftIv === null || rightIv === null) return null;
+    // Special handling for properly includes/included in with null intervals.
+    // CQL: null interval treated as unbounded (universal) for properly includes/included in.
+    // Mirrors Go: eval/evaluator.go:3058
+    if (leftIv === null || rightIv === null) {
+      if (op.timingKind === TimingKind.IncludedIn || op.timingKind === TimingKind.During) {
+        if (op.properly && rightIv === null && leftIv !== null) return CqlBoolean.TRUE
+      }
+      if (op.timingKind === TimingKind.Includes) {
+        if (op.properly && leftIv === null && rightIv !== null) return CqlBoolean.TRUE
+      }
+      return null
+    }
 
     switch (op.timingKind) {
       case TimingKind.SameAs: {
