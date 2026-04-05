@@ -313,6 +313,11 @@ export function registerIntervalFunctions(registry: FunctionRegistry): void {
     const iv = asInterval(args[0]);
     if (iv === null || iv.low === null || iv.high === null) return null;
 
+    // DateTime and Time intervals: Width is not defined
+    if (iv.low instanceof CqlDateTime || iv.low instanceof CqlTime) {
+      throw new Error(`Width is not defined for ${iv.low.type} intervals`);
+    }
+
     // Integer intervals
     if (iv.low instanceof CqlInteger && iv.high instanceof CqlInteger) {
       let lo = iv.low.value;

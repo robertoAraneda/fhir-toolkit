@@ -310,7 +310,9 @@ export function registerDateTimeFunctions(registry: FunctionRegistry): void {
   // DateTime(year, month?, day?, hour?, minute?, second?, millisecond?, tzOffset?) -> DateTime
   registry.register('DateTime', (args) => {
     const y = asInteger(args[0]);
-    if (y === null || y === 0) return null;
+    if (y === null) return null;
+    // CQL spec: DateTime year must be in 0001-9999
+    if (y < 1 || y > 9999) throw new Error(`DateTime year out of range: ${y}`);
 
     // Build string with precision based on which arguments are provided
     let s = pad(y, 4);

@@ -9,6 +9,7 @@
 import { Decimal } from 'decimal.js';
 import type { CqlValue } from '../types/index.js';
 import {
+  CqlBoolean,
   CqlDate,
   CqlDateTime,
   CqlDecimal,
@@ -100,7 +101,10 @@ export function registerMathFunctions(registry: FunctionRegistry): void {
     const v = args[0];
     if (v === null) return null;
     const d = numericVal(v);
-    if (d.lte(0)) return null;
+    // CQL spec: Ln(0) is an error (results in negative infinity)
+    if (d.isZero()) throw new Error(`Ln: undefined for zero`);
+    // CQL spec: Ln of negative values returns null
+    if (d.lt(0)) return null;
     return new CqlDecimal(d.ln());
   });
 
@@ -109,7 +113,12 @@ export function registerMathFunctions(registry: FunctionRegistry): void {
     const v = args[0];
     if (v === null) return null;
     const d = numericVal(v);
-    return new CqlDecimal(d.exp());
+    const f = d.toNumber();
+    const result = Math.exp(f);
+    if (!isFinite(result) || isNaN(result)) {
+      throw new Error(`Exp: overflow for value ${d}`);
+    }
+    return new CqlDecimal(new Decimal(result));
   });
 
   // Abs(value) -> Integer|Decimal|Long|Quantity
@@ -371,6 +380,21 @@ export function registerMathFunctions(registry: FunctionRegistry): void {
   // Message(source, condition, code, severity, message) -> source
   // CQL spec: returns the first argument (for debugging/tracing)
   registry.register('Message', (args) => {
-    return args[0] ?? null;
+    // Message(source, condition, code, severity, message) -> source
+    // When condition is true and severity is 'Error', throw
+    const source = args[0] ?? null;
+    const condition = args[1];
+    const code = args[2];
+    const severity = args[3];
+    const message = args[4];
+    if (condition instanceof CqlBoolean && condition.value === true) {
+      const sev = severity instanceof CqlString ? severity.value.toLowerCase() : '';
+      if (sev === 'error') {
+        const codeStr = code instanceof CqlString ? code.value : '';
+        const msgStr = message instanceof CqlString ? message.value : '';
+        throw new Error(`${codeStr}: ${msgStr}`);
+      }
+    }
+    return source;
   });
 }
