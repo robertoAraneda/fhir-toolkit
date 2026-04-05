@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { Parser } from '../src/parser.js';
+import type { Symbol as UcumSymbol } from '../src/ast.js';
 import type { Model } from '../src/model.js';
 import { createTestModel } from './test-utils.js';
 
@@ -30,7 +31,7 @@ describe('Parser', () => {
 
   it('resolves km as prefix k + unit m', () => {
     const ast = parser.parse('km');
-    const sym = ast.comp as any;
+    const sym = ast.comp as UcumSymbol;
     expect(sym.kind).toBe('symbol');
     expect(sym.prefix?.code).toBe('k');
     expect(sym.unit?.code).toBe('m');
@@ -38,14 +39,14 @@ describe('Parser', () => {
 
   it('parses positive exponent m2', () => {
     const ast = parser.parse('m2');
-    const sym = ast.comp as any;
+    const sym = ast.comp as UcumSymbol;
     expect(sym.kind).toBe('symbol');
     expect(sym.exponent).toBe(2);
   });
 
   it('parses negative exponent m-2', () => {
     const ast = parser.parse('m-2');
-    const sym = ast.comp as any;
+    const sym = ast.comp as UcumSymbol;
     expect(sym.kind).toBe('symbol');
     expect(sym.exponent).toBe(-2);
   });
