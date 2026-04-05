@@ -30,6 +30,9 @@ export interface ConformanceTest {
 export function parseTestFile(xml: string, fileName: string): ConformanceTest[] {
   const tests: ConformanceTest[] = [];
 
+  // Strip XML comments before parsing so commented-out tests are not included
+  xml = xml.replace(/<!--[\s\S]*?-->/g, '')
+
   // Collect file-level capabilities
   const fileCapabilities = extractFileCapabilities(xml);
 
