@@ -12,7 +12,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
-import { CqlEngine } from '../../src/index.js';
+import { CqlEngine, CqlDateTime } from '../../src/index.js';
 import { createUcumService } from '@fhir-toolkit/ucum';
 import { parseTestFile } from './xml-parser.js';
 import { parseCvl } from './cvl-parser.js';
@@ -54,11 +54,21 @@ for (const file of files) {
       }
 
       // Skip known irreducible failures
-      // - Issue34A: expected output is Now() which is dynamic and cannot be compared statically
       // - IntegerIntervalProperlyIncludedInNullBoundaries: contradicts the spec test that
       //   Interval[null,null] evaluates to null (both tests cannot pass simultaneously)
-      if (test.name === 'Issue34A' || test.name === 'IntegerIntervalProperlyIncludedInNullBoundaries') {
+      if (test.name === 'IntegerIntervalProperlyIncludedInNullBoundaries') {
         it.skip(`${test.group} > ${test.name} (known irreducible — see TODO.md)`, () => {});
+        continue;
+      }
+
+      // Issue34A: Now() returns a dynamic DateTime — verify type instead of exact value
+      if (test.name === 'Issue34A') {
+        it(`[Issue34A] Now() returns a DateTime value`, async () => {
+          const result = await runConformanceTest(engine, test.expression);
+          expect(result).not.toBeNull();
+          expect(result?.type).toBe('DateTime');
+          expect(result).toBeInstanceOf(CqlDateTime);
+        });
         continue;
       }
 
