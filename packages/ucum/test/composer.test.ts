@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
+import { Decimal } from 'decimal.js';
 import { Parser } from '../src/parser.js';
 import { composeTerm, composeCanonicalUnits } from '../src/composer.js';
 import type { Canonical } from '../src/canonical.js';
@@ -61,13 +62,13 @@ describe('composeCanonicalUnits', () => {
   });
 
   it('returns "1" for empty units array', () => {
-    const canon: Canonical = { value: null as any, units: [] };
+    const canon: Canonical = { value: new Decimal(1), units: [] };
     expect(composeCanonicalUnits(canon)).toBe('1');
   });
 
   it('returns "m" for single base unit m with exponent 1', () => {
     const canon: Canonical = {
-      value: null as any,
+      value: new Decimal(1),
       units: [{ base: mBase, exponent: 1 }],
     };
     expect(composeCanonicalUnits(canon)).toBe('m');
@@ -75,7 +76,7 @@ describe('composeCanonicalUnits', () => {
 
   it('returns "m.s-1" for velocity (m exp=1, s exp=-1)', () => {
     const canon: Canonical = {
-      value: null as any,
+      value: new Decimal(1),
       units: [
         { base: mBase, exponent: 1 },
         { base: sBase, exponent: -1 },
@@ -86,7 +87,7 @@ describe('composeCanonicalUnits', () => {
 
   it('returns "m2" for area (m exp=2)', () => {
     const canon: Canonical = {
-      value: null as any,
+      value: new Decimal(1),
       units: [{ base: mBase, exponent: 2 }],
     };
     expect(composeCanonicalUnits(canon)).toBe('m2');
@@ -94,7 +95,7 @@ describe('composeCanonicalUnits', () => {
 
   it('skips zero-exponent units: m(exp=1) + s(exp=0) → "m"', () => {
     const canon: Canonical = {
-      value: null as any,
+      value: new Decimal(1),
       units: [
         { base: mBase, exponent: 1 },
         { base: sBase, exponent: 0 },
