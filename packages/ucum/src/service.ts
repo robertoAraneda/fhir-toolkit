@@ -333,6 +333,50 @@ export class UcumService {
     return this.model.baseUnits.find((bu) => bu.code === code);
   }
 
+  /** Return unit suggestions whose code starts with or name contains the given prefix. */
+  suggest(prefix: string, limit = 20): Array<{ code: string; name: string }> {
+    const lower = prefix.toLowerCase()
+    const seen = new Set<string>()
+    const results: Array<{ code: string; name: string }> = []
+
+    const addIfMatch = (code: string, name: string) => {
+      if (results.length >= limit) return
+      if (seen.has(code)) return
+      if (code.toLowerCase().startsWith(lower) || name.toLowerCase().includes(lower)) {
+        seen.add(code)
+        results.push({ code, name })
+      }
+    }
+
+    for (const unit of this.model.definedUnits) {
+      addIfMatch(unit.code, unit.name)
+    }
+
+    for (const base of this.model.baseUnits) {
+      addIfMatch(base.code, base.name)
+    }
+
+    // Also generate prefix+unit combinations for metric units
+    for (const pfx of this.model.prefixes) {
+      if (results.length >= limit) break
+      for (const unit of this.model.definedUnits) {
+        if (!unit.isMetric) continue
+        if (results.length >= limit) break
+        const compoundCode = pfx.code + unit.code
+        const compoundName = pfx.name + unit.name
+        addIfMatch(compoundCode, compoundName)
+      }
+      for (const base of this.model.baseUnits) {
+        if (results.length >= limit) break
+        const compoundCode = pfx.code + base.code
+        const compoundName = pfx.name + base.name
+        addIfMatch(compoundCode, compoundName)
+      }
+    }
+
+    return results
+  }
+
   /** Return a human-readable description of a UCUM unit expression. */
   analyze(code: string): string {
     const t = this.parseCached(code);
