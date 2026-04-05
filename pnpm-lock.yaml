@@ -384,6 +384,9 @@ importers:
       '@fhir-toolkit/r5-specs':
         specifier: workspace:*
         version: link:../r5-specs
+      '@fhir-toolkit/ucum':
+        specifier: workspace:*
+        version: link:../ucum
       '@types/node':
         specifier: ^20.11.0
         version: 20.19.25
