@@ -53,6 +53,9 @@ export interface CqlEngineOptions {
   libraryResolver?: (name: string, version: string) => Promise<string>;
 }
 
+export type TraceEvent = { expression: string; value: unknown; definition?: string }
+export type TraceHandler = (event: TraceEvent) => void
+
 export class CqlEngine {
   private readonly cache = new Map<string, Library>();
   private readonly dataProvider: DataProvider | null;
@@ -63,6 +66,7 @@ export class CqlEngine {
   private readonly maxExpressionLen: number;
   private readonly ucumService: UcumServiceLike | null;
   private readonly libraryResolver: ((name: string, version: string) => Promise<string>) | null;
+  private readonly traceHandlers: TraceHandler[] = [];
 
   constructor(options?: CqlEngineOptions) {
     this.timeout = options?.timeout ?? 30_000;
@@ -109,7 +113,11 @@ export class CqlEngine {
     const ctx = this.createContext(lib, context, params);
     const evaluator = new CqlEvaluator(ctx, this.registry);
     await this.resolveIncludes(lib, evaluator, context);
-    return this.withTimeout(evaluator.evaluateLibrary());
+    const results = await this.withTimeout(evaluator.evaluateLibrary());
+    for (const [defName, value] of Object.entries(results)) {
+      this.emit('trace', { expression: defName, value, definition: defName });
+    }
+    return results;
   }
 
   /**
@@ -125,7 +133,9 @@ export class CqlEngine {
     const ctx = this.createContext(lib, context, params);
     const evaluator = new CqlEvaluator(ctx, this.registry);
     await this.resolveIncludes(lib, evaluator, context);
-    return this.withTimeout(evaluator.evaluateExpression(name));
+    const value = await this.withTimeout(evaluator.evaluateExpression(name));
+    this.emit('trace', { expression: name, value, definition: name });
+    return value;
   }
 
   /** Access the function registry for custom function registration. */
@@ -133,9 +143,25 @@ export class CqlEngine {
     return this.registry;
   }
 
+  /**
+   * Register a handler for engine events.
+   * Currently supports the 'trace' event, which fires after each CQL definition is evaluated.
+   * Returns `this` for chaining.
+   */
+  on(event: 'trace', handler: TraceHandler): this {
+    if (event === 'trace') this.traceHandlers.push(handler);
+    return this;
+  }
+
   // ---------------------------------------------------------------------------
   // Private helpers
   // ---------------------------------------------------------------------------
+
+  private emit(event: 'trace', data: TraceEvent): void {
+    for (const handler of this.traceHandlers) {
+      handler(data);
+    }
+  }
 
   /**
    * Resolves included libraries from the main library's `includes` list and registers
