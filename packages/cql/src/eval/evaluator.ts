@@ -108,6 +108,34 @@ function toList(v: CqlValue | null): CqlValue[] {
   return [v];
 }
 
+/**
+ * Recursively wrap a plain JSON value (from a FHIR resource) into a CqlValue.
+ * Arrays become CqlList, objects become CqlTuple, primitives map directly.
+ */
+export function wrapFhirValue(v: unknown): CqlValue | null {
+  if (v === null || v === undefined) return null;
+  if (typeof v === 'string') return new CqlString(v);
+  if (typeof v === 'number')
+    return Number.isInteger(v) ? new CqlInteger(v) : CqlDecimal.of(v);
+  if (typeof v === 'boolean') return CqlBoolean.of(v);
+  if (Array.isArray(v)) {
+    const items: CqlValue[] = [];
+    for (const item of v) {
+      const wrapped = wrapFhirValue(item);
+      if (wrapped !== null) items.push(wrapped);
+    }
+    return new CqlList(items);
+  }
+  if (typeof v === 'object') {
+    const elements = new Map<string, CqlValue | null>();
+    for (const [k, val] of Object.entries(v as Record<string, unknown>)) {
+      elements.set(k, wrapFhirValue(val));
+    }
+    return new CqlTuple(elements);
+  }
+  return new CqlString(String(v));
+}
+
 function toDecimal(v: CqlValue | null): Decimal {
   if (v === null) return new Decimal(0);
   if (v instanceof CqlInteger) return new Decimal(v.value);
@@ -370,6 +398,14 @@ export class CqlEvaluator
           this.ctx.definitions.set(expr.name, result);
           return result;
         }
+      }
+      // Resolve context identifier (e.g. "Patient") to the context resource
+      if (
+        this.ctx.contextResource !== null &&
+        this.ctx.contextResource !== undefined &&
+        this.ctx.library.contexts.some((c) => c.name === expr.name)
+      ) {
+        return wrapFhirValue(this.ctx.contextResource);
       }
     }
     // Could be a resource type name used in query context
@@ -855,13 +891,16 @@ export class CqlEvaluator
       return val === undefined ? null : val;
     }
 
-    // List member access: map over collection
+    // List member access: map over collection (singleton promotion: return list)
     if (source instanceof CqlList) {
       const result: CqlValue[] = [];
       for (const item of source.values) {
         if (item instanceof CqlTuple) {
           const v = item.get(expr.member);
           if (v !== null && v !== undefined) result.push(v);
+        } else if (item instanceof CqlList) {
+          // Flatten nested lists (e.g. given is already a list of strings)
+          result.push(...item.values);
         }
       }
       return new CqlList(result);
@@ -916,21 +955,11 @@ export class CqlEvaluator
       dateRange,
     );
 
-    // Wrap each result as a CqlTuple (generic JSON object representation)
+    // Wrap each result recursively as a CqlTuple
     const values: CqlValue[] = [];
     for (const raw of results) {
-      if (raw !== null && typeof raw === 'object') {
-        const elements = new Map<string, CqlValue | null>();
-        for (const [k, v] of Object.entries(raw as Record<string, unknown>)) {
-          if (typeof v === 'string') elements.set(k, new CqlString(v));
-          else if (typeof v === 'number')
-            elements.set(k, Number.isInteger(v) ? new CqlInteger(v) : CqlDecimal.of(v));
-          else if (typeof v === 'boolean') elements.set(k, CqlBoolean.of(v));
-          else if (v === null) elements.set(k, null);
-          else elements.set(k, new CqlString(String(v)));
-        }
-        values.push(new CqlTuple(elements));
-      }
+      const wrapped = wrapFhirValue(raw);
+      if (wrapped !== null) values.push(wrapped);
     }
     return new CqlList(values);
   }
