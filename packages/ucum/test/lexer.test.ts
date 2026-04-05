@@ -207,7 +207,7 @@ describe('Lexer', () => {
       [TokenType.Open, 'open'],
       [TokenType.Close, 'close'],
       [TokenType.Annotation, 'annotation'],
-      [99 as TokenType, 'unknown'],
+      [99 as TokenType, 'unknown'], // 99 is not a real TokenType member — exercises the default branch
     ])('TokenType %i → "%s"', (type, expected) => {
       expect(tokenTypeToString(type)).toBe(expected)
     })
