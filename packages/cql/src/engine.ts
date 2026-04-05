@@ -26,6 +26,8 @@ import type { ModelInfo } from './model/model-info.js';
 export interface UcumServiceLike {
   convert(value: number, from: string, to: string): number;
   isComparable(code1: string, code2: string): boolean;
+  multiply?(v1: { value: number; code: string }, v2: { value: number; code: string }): { value: number; code: string };
+  divide?(v1: { value: number; code: string }, v2: { value: number; code: string }): { value: number; code: string };
 }
 
 export interface CqlEngineOptions {

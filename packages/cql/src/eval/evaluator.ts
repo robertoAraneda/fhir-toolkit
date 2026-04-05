@@ -2132,6 +2132,23 @@ export class CqlEvaluator
 
     // Quantity arithmetic (same or convertible units)
     if (left instanceof CqlQuantity && right instanceof CqlQuantity) {
+      // Multiply and Divide compose units via UCUM
+      if (op === BinaryOp.Multiply && this.ctx.ucumService?.multiply) {
+        const result = this.ctx.ucumService.multiply(
+          { value: left.value.toNumber(), code: left.unit },
+          { value: right.value.toNumber(), code: right.unit },
+        );
+        return new CqlQuantity(new Decimal(result.value), result.code);
+      }
+      if (op === BinaryOp.Divide && this.ctx.ucumService?.divide) {
+        if (right.value.isZero()) return null;
+        const result = this.ctx.ucumService.divide(
+          { value: left.value.toNumber(), code: left.unit },
+          { value: right.value.toNumber(), code: right.unit },
+        );
+        return new CqlQuantity(new Decimal(result.value), result.code);
+      }
+
       let effectiveRight = right;
       if (left.unit !== right.unit) {
         // Try UCUM conversion to left's unit

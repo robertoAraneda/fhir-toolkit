@@ -166,15 +166,102 @@ export class UcumService {
     return composeCanonicalUnits(can1) === composeCanonicalUnits(can2);
   }
 
-  /** Multiply two value/unit pairs. */
+  /** Multiply two value/unit pairs, composing units in their original form. */
   multiply(v1: Pair, v2: Pair): Pair {
-    const can1 = this.getCanonical(v1.code);
-    const can2 = this.getCanonical(v2.code);
-
-    const val = v1.value * can1.value.toNumber() * v2.value * can2.value.toNumber();
-    const merged = mergeCanonicalUnits(can1, can2);
-    const code = composeCanonicalUnits(merged);
+    const val = v1.value * v2.value;
+    const code = this.composeUnits(v1.code, v2.code, 1);
     return { value: val, code };
+  }
+
+  /** Divide two value/unit pairs, composing units in their original form. */
+  divide(v1: Pair, v2: Pair): Pair {
+    const val = v1.value / v2.value;
+    const code = this.composeUnits(v1.code, v2.code, -1);
+    return { value: val, code };
+  }
+
+  /**
+   * Compose two unit codes by merging their symbol exponents.
+   * sign=1 for multiply, sign=-1 for divide.
+   * Returns the composed UCUM code (e.g. cm.cm → cm2, g/cm3 / g/cm3 → 1).
+   */
+  private composeUnits(code1: string, code2: string, sign: 1 | -1): string {
+    const syms1 = this.flattenTermSymbols(this.parseCached(code1), 1);
+    const syms2 = this.flattenTermSymbols(this.parseCached(code2), sign);
+
+    // Merge by (prefixCode + unitCode)
+    const map = new Map<string, { prefixCode: string; unitCode: string; exponent: number }>();
+    for (const s of [...syms1, ...syms2]) {
+      const key = s.prefixCode + s.unitCode;
+      const existing = map.get(key);
+      if (existing) {
+        existing.exponent += s.exponent;
+      } else {
+        map.set(key, { ...s });
+      }
+    }
+
+    // Remove zero-exponent entries
+    const parts: string[] = [];
+    for (const entry of map.values()) {
+      if (entry.exponent === 0) continue;
+      let s = entry.prefixCode + entry.unitCode;
+      if (entry.exponent !== 1) s += String(entry.exponent);
+      parts.push(s);
+    }
+
+    if (parts.length === 0) return '1';
+    parts.sort();
+    return parts.join('.');
+  }
+
+  /**
+   * Flatten a parsed Term into a list of (prefixCode, unitCode, exponent) tuples.
+   * The outerSign is applied to all exponents (1 for as-is, -1 for inversion).
+   */
+  private flattenTermSymbols(
+    t: Term | null,
+    outerSign: number,
+  ): Array<{ prefixCode: string; unitCode: string; exponent: number }> {
+    if (!t) return [];
+
+    const result: Array<{ prefixCode: string; unitCode: string; exponent: number }> = [];
+    this.collectSymbols(t, outerSign, result);
+    return result;
+  }
+
+  private collectSymbols(
+    t: Term,
+    sign: number,
+    out: Array<{ prefixCode: string; unitCode: string; exponent: number }>,
+  ): void {
+    this.collectComponentSymbols(t.comp, sign, out);
+    if (t.term) {
+      // Division flips the sign for the right-hand side
+      const rhsSign = t.op === 1 /* Division */ ? -sign : sign;
+      this.collectSymbols(t.term, rhsSign, out);
+    }
+  }
+
+  private collectComponentSymbols(
+    c: { kind: string; [key: string]: any },
+    sign: number,
+    out: Array<{ prefixCode: string; unitCode: string; exponent: number }>,
+  ): void {
+    switch (c.kind) {
+      case 'symbol': {
+        const prefixCode = c.prefix ? c.prefix.code : '';
+        const unitCode = c.unit.code;
+        out.push({ prefixCode, unitCode, exponent: (c.exponent as number) * sign });
+        break;
+      }
+      case 'term':
+        this.collectSymbols(c as Term, sign, out);
+        break;
+      case 'factor':
+        // Numeric factors don't contribute to unit composition
+        break;
+    }
   }
 
   /** Compute the canonical form of a UCUM code. */
