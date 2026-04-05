@@ -271,6 +271,8 @@ export class CqlEvaluator
 {
   private readonly registry: FunctionRegistry;
   private readonly userFunctions: Map<string, FunctionDef>;
+  /** Map of library alias -> CqlEvaluator for included libraries. */
+  private readonly includedLibraries: Map<string, CqlEvaluator> = new Map();
 
   constructor(
     private ctx: EvalContext,
@@ -284,6 +286,14 @@ export class CqlEvaluator
         this.userFunctions.set(fn.name, fn);
       }
     }
+  }
+
+  /**
+   * Registers an evaluator for an included library under its alias.
+   * Called by the engine when resolving `include` statements.
+   */
+  registerIncludedLibrary(alias: string, evaluator: CqlEvaluator): void {
+    this.includedLibraries.set(alias, evaluator);
   }
 
   /**
@@ -844,6 +854,26 @@ export class CqlEvaluator
   }
 
   async visitFunctionCall(expr: FunctionCallExpr): Promise<CqlResult> {
+    // Check for library-qualified function call: H.Double(5)
+    // In this case, expr.source is an IdentifierRef whose name matches a library alias.
+    if (expr.source !== null && expr.source.kind === 'IdentifierRef') {
+      const libAlias = (expr.source as IdentifierRefExpr).name;
+      const libEvaluator = this.includedLibraries.get(libAlias);
+      if (libEvaluator) {
+        const libFn = libEvaluator.userFunctions.get(expr.name);
+        if (libFn) {
+          // Evaluate operands in the current (caller) context, then invoke the function
+          // in the included library's context with the pre-evaluated values.
+          const argVals: CqlResult[] = [];
+          for (const op of expr.operands) {
+            argVals.push(await this.evaluate(op));
+          }
+          return libEvaluator.evalUserFunctionWithValues(libFn, argVals);
+        }
+        throw new Error(`function '${expr.name}' not found in library '${libAlias}'`);
+      }
+    }
+
     // Check user-defined functions first
     const userFn = this.userFunctions.get(expr.name);
     if (userFn) {
@@ -3234,6 +3264,30 @@ export class CqlEvaluator
       if (i < args.length) {
         const val = await this.evaluate(args[i]);
         child.aliases.set(fd.operands[i].name, val);
+      }
+    }
+    return this.withContext(child).evaluate(fd.body);
+  }
+
+  /**
+   * Invoke a user-defined function with pre-evaluated argument values.
+   * Used when calling functions across library boundaries where arguments
+   * were evaluated in the caller's context.
+   */
+  async evalUserFunctionWithValues(
+    fd: FunctionDef,
+    argVals: CqlResult[],
+  ): Promise<CqlResult> {
+    if (fd.external) {
+      throw new Error(`external function '${fd.name}' not implemented`);
+    }
+    if (fd.body === null) {
+      throw new Error(`function '${fd.name}' has no body`);
+    }
+    const child = this.ctx.childScope();
+    for (let i = 0; i < fd.operands.length; i++) {
+      if (i < argVals.length) {
+        child.aliases.set(fd.operands[i].name, argVals[i]);
       }
     }
     return this.withContext(child).evaluate(fd.body);

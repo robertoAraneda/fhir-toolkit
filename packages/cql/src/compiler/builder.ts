@@ -470,8 +470,10 @@ export class CqlBuilder extends cqlVisitor<unknown> {
     }
     const fb = ctx.functionBody();
     const text = ctx.getText();
+    const iof = ctx.identifierOrFunctionIdentifier();
+    const fnName = iof.identifier() ? identifierText(iof.identifier()) : iof.getText();
     return {
-      name: ctx.identifierOrFunctionIdentifier().getText(),
+      name: fnName,
       operands,
       returnType: this.visitTypeSpec(ctx.typeSpecifier()),
       body: fb ? this.visitExpr(fb.expression()) : null,

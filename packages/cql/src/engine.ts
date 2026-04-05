@@ -7,6 +7,7 @@
 
 import { compile } from './compiler/compiler.js';
 import { CqlEvaluator } from './eval/evaluator.js';
+import type { IncludeDef } from './ast/library.js';
 import { EvalContext } from './eval/context.js';
 import { FunctionRegistry } from './funcs/registry.js';
 import { registerBuiltins } from './funcs/builtins.js';
@@ -44,6 +45,12 @@ export interface CqlEngineOptions {
   maxDepth?: number;
   /** Optional UCUM service for unit conversion in Quantity operations. */
   ucumService?: UcumServiceLike;
+  /**
+   * Resolver for included CQL libraries.
+   * Called with the library name and version; must return the CQL source text.
+   * Required when evaluating CQL that uses `include` statements.
+   */
+  libraryResolver?: (name: string, version: string) => Promise<string>;
 }
 
 export class CqlEngine {
@@ -55,6 +62,7 @@ export class CqlEngine {
   private readonly timeout: number;
   private readonly maxExpressionLen: number;
   private readonly ucumService: UcumServiceLike | null;
+  private readonly libraryResolver: ((name: string, version: string) => Promise<string>) | null;
 
   constructor(options?: CqlEngineOptions) {
     this.timeout = options?.timeout ?? 30_000;
@@ -63,6 +71,7 @@ export class CqlEngine {
     this.dataProvider = options?.dataProvider ?? null;
     this.terminologyProvider = options?.terminologyProvider ?? null;
     this.ucumService = options?.ucumService ?? null;
+    this.libraryResolver = options?.libraryResolver ?? null;
     this.registry = new FunctionRegistry();
     registerBuiltins(this.registry);
   }
@@ -99,6 +108,7 @@ export class CqlEngine {
     const lib = this.compile(source);
     const ctx = this.createContext(lib, context, params);
     const evaluator = new CqlEvaluator(ctx, this.registry);
+    await this.resolveIncludes(lib, evaluator, context);
     return this.withTimeout(evaluator.evaluateLibrary());
   }
 
@@ -114,6 +124,7 @@ export class CqlEngine {
     const lib = this.compile(source);
     const ctx = this.createContext(lib, context, params);
     const evaluator = new CqlEvaluator(ctx, this.registry);
+    await this.resolveIncludes(lib, evaluator, context);
     return this.withTimeout(evaluator.evaluateExpression(name));
   }
 
@@ -125,6 +136,32 @@ export class CqlEngine {
   // ---------------------------------------------------------------------------
   // Private helpers
   // ---------------------------------------------------------------------------
+
+  /**
+   * Resolves included libraries from the main library's `includes` list and registers
+   * each included library's evaluator under its alias in the main evaluator.
+   */
+  private async resolveIncludes(
+    lib: Library,
+    evaluator: CqlEvaluator,
+    context: unknown,
+  ): Promise<void> {
+    if (!lib.includes || lib.includes.length === 0) return;
+    for (const inc of lib.includes) {
+      if (!this.libraryResolver) {
+        throw new Error(
+          `CQL library '${inc.name}' is included but no libraryResolver was provided`,
+        );
+      }
+      const includedSource = await this.libraryResolver(inc.name, inc.version);
+      const includedLib = this.compile(includedSource);
+      const includedCtx = this.createContext(includedLib, context);
+      const includedEvaluator = new CqlEvaluator(includedCtx, this.registry);
+      // Recursively resolve includes in the included library
+      await this.resolveIncludes(includedLib, includedEvaluator, context);
+      evaluator.registerIncludedLibrary(inc.alias, includedEvaluator);
+    }
+  }
 
   private createContext(
     lib: Library,
