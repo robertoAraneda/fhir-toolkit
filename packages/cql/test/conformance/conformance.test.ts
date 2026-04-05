@@ -41,23 +41,19 @@ for (const file of files) {
         continue;
       }
 
-      // Skip tests marked as invalid (expression should cause an error)
+      // Tests marked as invalid: evaluate and expect an error (mirrors Go conformance runner)
       if (test.invalid) {
-        it.skip(`${test.group} > ${test.name} (invalid expression)`, () => {});
+        it(`${test.group} > ${test.name} (invalid=${test.invalid})`, async () => {
+          await expect(runConformanceTest(engine, test.expression)).rejects.toThrow();
+        });
         continue;
       }
 
-      // Skip tests with no expected output
+      // Tests with no expected output: evaluate and just verify no error (mirrors Go)
       if (!test.expectedOutput) {
-        it.skip(`${test.group} > ${test.name} (no expected output)`, () => {});
-        continue;
-      }
-
-      // Skip known irreducible failures
-      // - IntegerIntervalProperlyIncludedInNullBoundaries: contradicts the spec test that
-      //   Interval[null,null] evaluates to null (both tests cannot pass simultaneously)
-      if (test.name === 'IntegerIntervalProperlyIncludedInNullBoundaries') {
-        it.skip(`${test.group} > ${test.name} (known irreducible — see TODO.md)`, () => {});
+        it(`${test.group} > ${test.name} (no output check)`, async () => {
+          await expect(runConformanceTest(engine, test.expression)).resolves.not.toThrow();
+        });
         continue;
       }
 

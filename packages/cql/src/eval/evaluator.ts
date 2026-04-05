@@ -85,7 +85,7 @@ import {
   CqlConcept,
 } from '../types/complex.js';
 import { Decimal } from 'decimal.js';
-import { CqlEvalError } from '../errors.js';
+import { CqlEvalError, CqlSyntaxError } from '../errors.js';
 
 // CQL spec requires at least 28 digits of precision for decimals.
 // Default decimal.js precision is 20, which is insufficient.
@@ -376,8 +376,15 @@ export class CqlEvaluator
       case LiteralType.Long: {
         return new CqlLong(BigInt(expr.value));
       }
-      case LiteralType.Decimal:
-        return CqlDecimal.of(expr.value);
+      case LiteralType.Decimal: {
+        const clean = expr.value.replace(/^[+-]/, '')
+        const parts = clean.split('.')
+        if (parts[0] && parts[0].length > 28)
+          throw new CqlSyntaxError(`decimal overflow: too many integer digits in ${expr.value}`)
+        if (parts[1] && parts[1].length > 8)
+          throw new CqlSyntaxError(`decimal overflow: too many fractional digits in ${expr.value}`)
+        return CqlDecimal.of(expr.value)
+      }
       case LiteralType.Date:
         return new CqlDate(expr.value);
       case LiteralType.DateTime:
@@ -1590,7 +1597,18 @@ export class CqlEvaluator
         ? new CqlInterval(right as CqlComparable, right as CqlComparable, true, true)
         : null;
 
-    if (leftIv === null || rightIv === null) return null;
+    // Special handling for properly includes/included in with null intervals.
+    // CQL: null interval treated as unbounded (universal) for properly includes/included in.
+    // Mirrors Go: eval/evaluator.go:3058
+    if (leftIv === null || rightIv === null) {
+      if (op.timingKind === TimingKind.IncludedIn || op.timingKind === TimingKind.During) {
+        if (op.properly && rightIv === null && leftIv !== null) return CqlBoolean.TRUE
+      }
+      if (op.timingKind === TimingKind.Includes) {
+        if (op.properly && leftIv === null && rightIv !== null) return CqlBoolean.TRUE
+      }
+      return null
+    }
 
     switch (op.timingKind) {
       case TimingKind.SameAs: {
