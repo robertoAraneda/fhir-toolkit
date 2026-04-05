@@ -85,6 +85,7 @@ import {
   CqlConcept,
 } from '../types/complex.js';
 import { Decimal } from 'decimal.js';
+import { CqlEvalError } from '../errors.js';
 
 // CQL spec requires at least 28 digits of precision for decimals.
 // Default decimal.js precision is 20, which is insufficient.
@@ -305,12 +306,18 @@ export class CqlEvaluator
 
   /** Evaluate all named statements in the library. */
   async evaluateLibrary(): Promise<Record<string, CqlResult>> {
-    if (!this.ctx.library) throw new Error('no library to evaluate');
+    if (!this.ctx.library) throw new CqlEvalError('no library to evaluate');
     const results: Record<string, CqlResult> = {};
     for (const stmt of this.ctx.library.statements) {
-      const val = await this.evaluate(stmt.expression);
-      this.ctx.definitions.set(stmt.name, val);
-      results[stmt.name] = val;
+      try {
+        const val = await this.evaluate(stmt.expression);
+        this.ctx.definitions.set(stmt.name, val);
+        results[stmt.name] = val;
+      } catch (e) {
+        if (e instanceof CqlEvalError) throw e;
+        const msg = e instanceof Error ? e.message : String(e);
+        throw new CqlEvalError(msg, stmt.name);
+      }
     }
     return results;
   }
@@ -322,13 +329,19 @@ export class CqlEvaluator
     if (this.ctx.library) {
       for (const stmt of this.ctx.library.statements) {
         if (stmt.name === name) {
-          const val = await this.evaluate(stmt.expression);
-          this.ctx.definitions.set(name, val);
-          return val;
+          try {
+            const val = await this.evaluate(stmt.expression);
+            this.ctx.definitions.set(name, val);
+            return val;
+          } catch (e) {
+            if (e instanceof CqlEvalError) throw e;
+            const msg = e instanceof Error ? e.message : String(e);
+            throw new CqlEvalError(msg, name);
+          }
         }
       }
     }
-    throw new Error(`expression '${name}' not found`);
+    throw new CqlEvalError(`expression '${name}' not found`);
   }
 
   // -----------------------------------------------------------------------
