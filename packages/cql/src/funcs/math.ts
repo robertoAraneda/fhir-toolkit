@@ -90,8 +90,9 @@ export function registerMathFunctions(registry: FunctionRegistry): void {
     const val = numericVal(v);
     const b = numericVal(base);
     if (val.lte(0) || b.lte(0) || b.eq(1)) return null;
-    // log_b(x) = ln(x) / ln(b)
-    return new CqlDecimal(val.ln().div(b.ln()));
+    // log_b(x) = ln(x) / ln(b), round to CQL decimal precision (8 places)
+    const result = val.ln().div(b.ln());
+    return new CqlDecimal(result.toDecimalPlaces(8));
   });
 
   // Ln(value) -> Decimal

@@ -25,14 +25,16 @@ export function registerStringFunctions(registry: FunctionRegistry): void {
   });
 
   // Length(string|list) -> integer
-  // CQL spec: Length(null as List) = 0; Length(null as String) = null
+  // CQL spec: Length(null as String) = null; Length(null as List) = 0
+  // When called with null, we can't distinguish String vs List context,
+  // so we return null (the safer choice per CQL spec).
   registry.register('Length', (args) => {
     const v = args[0];
-    if (v === null) return new CqlInteger(0); // null list has length 0
+    if (v === null) return null;
     if (v instanceof CqlString) return new CqlInteger(v.value.length);
     if (v instanceof CqlList) return new CqlInteger(v.values.length);
     const s = asString(v);
-    if (s === null) return new CqlInteger(0);
+    if (s === null) return null;
     return new CqlInteger(s.length);
   });
 
@@ -82,13 +84,8 @@ export function registerStringFunctions(registry: FunctionRegistry): void {
     // List IndexOf
     if (source instanceof CqlList) {
       if (element === null) {
-        // CQL spec: IndexOf with null element searches for null in the list
-        for (let i = 0; i < source.values.length; i++) {
-          if (source.values[i] instanceof CqlNull || source.values[i] === null) {
-            return new CqlInteger(i);
-          }
-        }
-        return null; // null not found in list, return null (not -1)
+        // CQL spec: IndexOf with null element returns null
+        return null;
       }
       for (let i = 0; i < source.values.length; i++) {
         const item = source.values[i];

@@ -24,7 +24,7 @@ import {
   CqlQuantity,
   CqlNull,
 } from '../../src/types/primitives.js';
-import { CqlInterval, CqlList, CqlTuple } from '../../src/types/complex.js';
+import { CqlInterval, CqlList, CqlTuple, CqlCode, CqlConcept } from '../../src/types/complex.js';
 import type { CqlValue, CqlComparable } from '../../src/types/value.js';
 
 export function parseCvl(text: string): CqlValue | null {
@@ -74,11 +74,6 @@ export function parseCvl(text: string): CqlValue | null {
     return parseInterval(text);
   }
 
-  // List: {1, 2, 3}
-  if (text.startsWith('{') && text.endsWith('}')) {
-    return parseList(text);
-  }
-
   // Tuple: Tuple { id: 5, name: 'Chris'} or just { A: 2, B: 5 } (bare tuple)
   if (text.startsWith('Tuple')) {
     return parseTuple(text);
@@ -91,6 +86,16 @@ export function parseCvl(text: string): CqlValue | null {
     if (inner !== '' && /^[A-Za-z_]\w*\s*:/.test(inner)) {
       return parseTuple('Tuple ' + text);
     }
+  }
+
+  // Concept: Concept { codes: [...], display: '...' }
+  if (text.startsWith('Concept')) {
+    return parseConcept(text);
+  }
+
+  // List: {1, 2, 3}
+  if (text.startsWith('{') && text.endsWith('}')) {
+    return parseList(text);
   }
 
   // Decimal: 3.14
@@ -276,4 +281,85 @@ function parseTuple(text: string): CqlTuple {
   }
 
   return new CqlTuple(elements);
+}
+
+function parseCodeInstance(text: string): CqlCode | null {
+  const trimmed = text.trim();
+  if (!trimmed.startsWith('Code')) return null;
+  // Instance-style: Code { code: '...', ... }
+  const braceIdx = trimmed.indexOf('{');
+  if (braceIdx >= 0 && trimmed.endsWith('}')) {
+    const inner = trimmed.slice(braceIdx + 1, -1).trim();
+    const parts = splitTopLevel(inner);
+    let code = '', system = '';
+    let display: string | undefined;
+    for (const p of parts) {
+      const t = p.trim();
+      const kv = t.match(/^(\w+)\s*:\s*(.+)$/s);
+      if (kv) {
+        let val = kv[2].trim();
+        if (val.startsWith("'") && val.endsWith("'")) val = val.slice(1, -1);
+        const key = kv[1].toLowerCase();
+        if (key === 'code') code = val;
+        else if (key === 'system') system = val;
+        else if (key === 'display') display = val;
+      }
+    }
+    return new CqlCode(code, system, display);
+  }
+  // CQL-style: Code 'code' from system
+  const cqlMatch = trimmed.match(/Code\s+'([^']*)'/);
+  const sysMatch = trimmed.match(/from\s+(\S+)/);
+  const dispMatch = trimmed.match(/display\s+'([^']*)'/);
+  if (cqlMatch) {
+    return new CqlCode(cqlMatch[1], sysMatch ? sysMatch[1] : '', dispMatch ? dispMatch[1] : undefined);
+  }
+  return null;
+}
+
+function parseConcept(text: string): CqlConcept {
+  let body = text.slice('Concept'.length).trim();
+  if (body.startsWith('{') && body.endsWith('}')) {
+    body = body.slice(1, -1).trim();
+  }
+  const codes: CqlCode[] = [];
+  let display: string | undefined;
+
+  // Check for tuple-style: "codes: ..."
+  if (/^codes\s*:/.test(body)) {
+    const parts = splitTopLevel(body);
+    for (const part of parts) {
+      const trimmed = part.trim();
+      if (trimmed.startsWith('codes')) {
+        const codesBody = trimmed.replace(/^codes\s*:\s*/, '').trim();
+        if (codesBody.startsWith('{') && codesBody.endsWith('}') && !codesBody.startsWith('{Code')) {
+          // List of codes
+          const inner = codesBody.slice(1, -1).trim();
+          const codeParts = splitTopLevel(inner);
+          for (const cp of codeParts) {
+            const c = parseCodeInstance(cp.trim());
+            if (c) codes.push(c);
+          }
+        } else {
+          const c = parseCodeInstance(codesBody);
+          if (c) codes.push(c);
+        }
+      } else if (trimmed.startsWith('display')) {
+        const dm = trimmed.match(/display\s*:\s*'([^']*)'/);
+        if (dm) display = dm[1];
+      }
+    }
+  } else {
+    const parts = splitTopLevel(body);
+    for (const part of parts) {
+      const trimmed = part.trim();
+      const c = parseCodeInstance(trimmed);
+      if (c) codes.push(c);
+      if (trimmed.startsWith('display')) {
+        const dm = trimmed.match(/display\s+'([^']*)'/);
+        if (dm) display = dm[1];
+      }
+    }
+  }
+  return new CqlConcept(codes, display);
 }

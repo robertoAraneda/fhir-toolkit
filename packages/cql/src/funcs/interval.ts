@@ -22,6 +22,75 @@ import { CqlInterval, CqlList } from '../types/index.js';
 import { asInteger, asInterval, numericVal } from './helpers.js';
 import type { FunctionRegistry } from './registry.js';
 
+/**
+ * Compute successor of a CqlComparable value, respecting precision.
+ */
+function successor(val: CqlComparable): CqlComparable | null {
+  if (val instanceof CqlInteger) return new CqlInteger(val.value + 1);
+  if (val instanceof CqlDecimal) return new CqlDecimal(val.value.plus(new Decimal('1e-8')));
+  if (val instanceof CqlDate) {
+    const amt = 1;
+    let yr = val.year;
+    let mo = (val.month || 1) - 1;
+    let dy = val.day || 1;
+    switch (val.precision) {
+      case DatePrecision.Year: yr += amt; break;
+      case DatePrecision.Month: { const t = yr*12+mo+amt; yr = Math.floor(t/12); mo = ((t%12)+12)%12; break; }
+      default: { const d = new Date(Date.UTC(yr, mo, dy)); d.setUTCDate(d.getUTCDate()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); break; }
+    }
+    let s = pad(yr, 4);
+    if (val.precision >= DatePrecision.Month) s += `-${pad(mo + 1, 2)}`;
+    if (val.precision >= DatePrecision.Day) s += `-${pad(dy, 2)}`;
+    return new CqlDate(s);
+  }
+  if (val instanceof CqlDateTime) {
+    const amt = 1;
+    let yr = val.year;
+    let mo = (val.month || 1) - 1;
+    let dy = val.day || 1;
+    let hr = val.hour;
+    let mi = val.minute;
+    let se = val.second;
+    let ms = val.millis;
+    switch (val.precision) {
+      case DateTimePrecision.Year: yr += amt; break;
+      case DateTimePrecision.Month: { const t = yr*12+mo+amt; yr = Math.floor(t/12); mo = ((t%12)+12)%12; break; }
+      case DateTimePrecision.Day: { const d = new Date(Date.UTC(yr, mo, dy)); d.setUTCDate(d.getUTCDate()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); break; }
+      case DateTimePrecision.Hour: { const d = new Date(Date.UTC(yr, mo, dy, hr)); d.setUTCHours(d.getUTCHours()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); break; }
+      case DateTimePrecision.Minute: { const d = new Date(Date.UTC(yr, mo, dy, hr, mi)); d.setUTCMinutes(d.getUTCMinutes()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); break; }
+      case DateTimePrecision.Second: { const d = new Date(Date.UTC(yr, mo, dy, hr, mi, se)); d.setUTCSeconds(d.getUTCSeconds()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); se=d.getUTCSeconds(); break; }
+      default: { const d = new Date(Date.UTC(yr, mo, dy, hr, mi, se, ms)); d.setUTCMilliseconds(d.getUTCMilliseconds()+amt); yr=d.getUTCFullYear(); mo=d.getUTCMonth(); dy=d.getUTCDate(); hr=d.getUTCHours(); mi=d.getUTCMinutes(); se=d.getUTCSeconds(); ms=d.getUTCMilliseconds(); break; }
+    }
+    let s = pad(yr, 4);
+    if (val.precision >= DateTimePrecision.Month) s += `-${pad(mo + 1, 2)}`;
+    if (val.precision >= DateTimePrecision.Day) s += `-${pad(dy, 2)}`;
+    if (val.precision >= DateTimePrecision.Hour) s += `T${pad(hr, 2)}`;
+    if (val.precision >= DateTimePrecision.Minute) s += `:${pad(mi, 2)}`;
+    if (val.precision >= DateTimePrecision.Second) s += `:${pad(se, 2)}`;
+    if (val.precision >= DateTimePrecision.Millisecond) s += `.${pad(ms, 3)}`;
+    return new CqlDateTime(s);
+  }
+  if (val instanceof CqlTime) {
+    let totalMs = val.hour * 3600000 + val.minute * 60000 + val.second * 1000 + val.millis;
+    switch (val.precision) {
+      case TimePrecision.Hour: totalMs += 3600000; break;
+      case TimePrecision.Minute: totalMs += 60000; break;
+      case TimePrecision.Second: totalMs += 1000; break;
+      default: totalMs += 1; break;
+    }
+    const h = Math.floor(totalMs / 3600000);
+    const m = Math.floor((totalMs % 3600000) / 60000);
+    const s = Math.floor((totalMs % 60000) / 1000);
+    const ms = totalMs % 1000;
+    let str = pad(h, 2);
+    if (val.precision >= TimePrecision.Minute) str += `:${pad(m, 2)}`;
+    if (val.precision >= TimePrecision.Second) str += `:${pad(s, 2)}`;
+    if (val.precision >= TimePrecision.Millisecond) str += `.${pad(ms, 3)}`;
+    return new CqlTime(str);
+  }
+  return null;
+}
+
 function pad(n: number, w: number): string {
   return String(n).padStart(w, '0');
 }
@@ -424,31 +493,13 @@ export function registerIntervalFunctions(registry: FunctionRegistry): void {
       let meets = false;
       if (last.high !== null && cur.low !== null) {
         meets = last.high.equals(cur.low);
-        // Successor-based adjacency check
-        if (!meets) {
-          if (last.high instanceof CqlInteger && cur.low instanceof CqlInteger) {
-            meets = last.high.value + 1 === cur.low.value;
-          } else if (last.high instanceof CqlDecimal && cur.low instanceof CqlDecimal) {
-            const suc = last.high.value.plus(new Decimal('1e-8'));
-            meets = suc.equals(cur.low.value);
-          } else if (last.high instanceof CqlDateTime && cur.low instanceof CqlDateTime) {
-            // DateTime successor: add 1ms
-            const d = new Date(Date.UTC(
-              last.high.year, (last.high.month || 1) - 1, last.high.day || 1,
-              last.high.hour, last.high.minute, last.high.second, last.high.millis));
-            d.setUTCMilliseconds(d.getUTCMilliseconds() + 1);
-            const sucDt = new CqlDateTime(
-              `${pad(d.getUTCFullYear(), 4)}-${pad(d.getUTCMonth() + 1, 2)}-${pad(d.getUTCDate(), 2)}T${pad(d.getUTCHours(), 2)}:${pad(d.getUTCMinutes(), 2)}:${pad(d.getUTCSeconds(), 2)}.${pad(d.getUTCMilliseconds(), 3)}`);
-            meets = sucDt.equals(cur.low);
-          } else if (last.high instanceof CqlTime && cur.low instanceof CqlTime) {
-            let totalMs = last.high.hour * 3600000 + last.high.minute * 60000 + last.high.second * 1000 + last.high.millis;
-            totalMs += 1;
-            const h = Math.floor(totalMs / 3600000);
-            const m = Math.floor((totalMs % 3600000) / 60000);
-            const s = Math.floor((totalMs % 60000) / 1000);
-            const ms = totalMs % 1000;
-            const sucTime = new CqlTime(`${pad(h, 2)}:${pad(m, 2)}:${pad(s, 2)}.${pad(ms, 3)}`);
-            meets = sucTime.equals(cur.low);
+        // Successor-based adjacency check (precision-aware)
+        if (!meets && last.high !== null) {
+          const suc = successor(last.high);
+          if (suc !== null) {
+            try {
+              meets = suc.equals(cur.low!);
+            } catch { /* ignore precision mismatch */ }
           }
         }
       }

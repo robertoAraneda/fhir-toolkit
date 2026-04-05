@@ -86,6 +86,10 @@ import {
 } from '../types/complex.js';
 import { Decimal } from 'decimal.js';
 
+// CQL spec requires at least 28 digits of precision for decimals.
+// Default decimal.js precision is 20, which is insufficient.
+Decimal.set({ precision: 50 });
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -413,8 +417,15 @@ export class CqlEvaluator
           return CqlBoolean.of(left === null && right === null);
         case BinaryOp.NotEquivalent:
           return CqlBoolean.of(left !== null || right !== null);
-        case BinaryOp.Union:
-          return left === null ? right : left;
+        case BinaryOp.Union: {
+          // For list union: null union list = list, list union null = list
+          // For interval union: null union interval = null
+          const nonNull = left ?? right;
+          if (nonNull instanceof CqlInterval) return null;
+          if (nonNull instanceof CqlList) return nonNull;
+          // If both null or non-null is something else, return null
+          return nonNull ?? null;
+        }
         case BinaryOp.Except:
           // list except null = list; null except list = null
           return left !== null ? left : null;
@@ -716,6 +727,29 @@ export class CqlEvaluator
       return this.evalUserFunction(userFn, expr.operands);
     }
 
+    // Special case: Length with null operand needs type context
+    // CQL: Length(null as String) = null, Length(null as List) = 0
+    if (expr.name.toLowerCase() === 'length') {
+      const argExpr = expr.source ?? (expr.operands.length > 0 ? expr.operands[0] : null);
+      const argVal = argExpr ? await this.evaluate(argExpr) : null;
+      if (argVal === null) {
+        // Check if the argument is typed as a List (via As expression)
+        if (argExpr && argExpr.kind === 'As') {
+          const asExpr = argExpr as AsExpr;
+          if (asExpr.type.specKind === 'NamedType' && asExpr.type.name.toLowerCase().startsWith('list')) {
+            return new CqlInteger(0);
+          }
+          if (asExpr.type.specKind === 'ListType') {
+            return new CqlInteger(0);
+          }
+        }
+        return null; // String or unknown type: null
+      }
+      if (argVal instanceof CqlString) return new CqlInteger(argVal.value.length);
+      if (argVal instanceof CqlList) return new CqlInteger(argVal.values.length);
+      return new CqlInteger(0);
+    }
+
     // Built-in via registry
     const builtinFn = this.registry.resolve(expr.name);
     if (builtinFn) {
@@ -864,14 +898,26 @@ export class CqlEvaluator
         crossItems.push(...newCross);
       }
 
+      // Apply distinct if specified on aggregate
+      let effectiveCrossItems = crossItems;
+      if (expr.aggregate.distinct) {
+        const seen = new Set<string>();
+        effectiveCrossItems = crossItems.filter(row => {
+          const key = [...row.entries()].map(([k, v]) => `${k}=${v?.toString() ?? 'null'}`).sort().join(',');
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+      }
+
       let total: CqlResult = null;
       if (expr.aggregate.starting !== null) {
         total = await this.evaluate(expr.aggregate.starting);
       }
 
-      for (let i = 0; i < crossItems.length; i++) {
+      for (let i = 0; i < effectiveCrossItems.length; i++) {
         const child = this.ctx.childScope();
-        for (const [alias, val] of crossItems[i]) {
+        for (const [alias, val] of effectiveCrossItems[i]) {
           child.aliases.set(alias, val);
         }
         child.totalValue = total;
@@ -1052,6 +1098,14 @@ export class CqlEvaluator
   async visitInterval(expr: IntervalExpr): Promise<CqlResult> {
     const low = await this.evaluate(expr.low);
     const high = await this.evaluate(expr.high);
+    // CQL spec: Interval[null, null] with literal untyped nulls evaluates to null.
+    // But Interval[null as T, null as T] with typed nulls produces a valid interval with null bounds.
+    if (low === null && high === null) {
+      // Check if the nulls come from literal null (untyped) — not from typed casts
+      const lowIsLiteralNull = expr.low.kind === 'Literal' && (expr.low as LiteralExpr).valueType === LiteralType.Null;
+      const highIsLiteralNull = expr.high.kind === 'Literal' && (expr.high as LiteralExpr).valueType === LiteralType.Null;
+      if (lowIsLiteralNull && highIsLiteralNull) return null;
+    }
     return new CqlInterval(
       low as CqlComparable | null,
       high as CqlComparable | null,
@@ -1084,6 +1138,50 @@ export class CqlEvaluator
       const val = await this.evaluate(elem.expression);
       elements.set(elem.name, val);
     }
+
+    // Handle Code instance: Code { code: 'X', system: 'Y', display: 'Z' } -> CqlCode
+    if (expr.type.name.toLowerCase() === 'code') {
+      const codeElem = elements.get('code');
+      const systemElem = elements.get('system');
+      const displayElem = elements.get('display');
+      const versionElem = elements.get('version');
+      if (codeElem instanceof CqlString) {
+        return new CqlCode(
+          codeElem.value,
+          systemElem instanceof CqlString ? systemElem.value : '',
+          displayElem instanceof CqlString ? displayElem.value : undefined,
+          versionElem instanceof CqlString ? versionElem.value : undefined,
+        );
+      }
+    }
+
+    // Handle Concept instance: Concept { codes: [...], display: 'Z' } -> CqlConcept
+    if (expr.type.name.toLowerCase() === 'concept') {
+      const codesElem = elements.get('codes');
+      const displayElem = elements.get('display');
+      const codes: CqlCode[] = [];
+      if (codesElem instanceof CqlList) {
+        for (const c of codesElem.values) {
+          if (c instanceof CqlCode) codes.push(c);
+        }
+      }
+      return new CqlConcept(
+        codes,
+        displayElem instanceof CqlString ? displayElem.value : undefined,
+      );
+    }
+
+    // Handle Quantity instance: Quantity { value: X, unit: 'Y' } -> CqlQuantity
+    if (expr.type.name.toLowerCase() === 'quantity') {
+      const valElem = elements.get('value');
+      const unitElem = elements.get('unit');
+      if (valElem !== null && valElem !== undefined) {
+        const unit = unitElem instanceof CqlString ? unitElem.value : '1';
+        if (valElem instanceof CqlInteger) return CqlQuantity.of(valElem.value, unit);
+        if (valElem instanceof CqlDecimal) return new CqlQuantity(valElem.value, unit);
+      }
+    }
+
     return new CqlTuple(elements);
   }
 
@@ -1257,6 +1355,35 @@ export class CqlEvaluator
     }
   }
 
+  /**
+   * Normalize an interval by converting open bounds to closed bounds using
+   * successor/predecessor for discrete types (Integer, Date, DateTime, Time).
+   * This is needed for correct overlap/contains semantics with open bounds.
+   */
+  private normalizeInterval(iv: CqlInterval<CqlComparable>): CqlInterval<CqlComparable> {
+    let low = iv.low;
+    let high = iv.high;
+    let lowClosed = iv.lowClosed;
+    let highClosed = iv.highClosed;
+
+    // Only normalize for discrete types
+    const isDiscrete = low instanceof CqlInteger || low instanceof CqlDate ||
+                       low instanceof CqlDateTime || low instanceof CqlTime ||
+                       high instanceof CqlInteger || high instanceof CqlDate ||
+                       high instanceof CqlDateTime || high instanceof CqlTime;
+    if (!isDiscrete) return iv;
+
+    if (!lowClosed && low !== null) {
+      const suc = this.evalSuccessorPredecessor(UnaryOp.SuccessorOf, low);
+      if (suc !== null) { low = suc as CqlComparable; lowClosed = true; }
+    }
+    if (!highClosed && high !== null) {
+      const pred = this.evalSuccessorPredecessor(UnaryOp.PredecessorOf, high);
+      if (pred !== null) { high = pred as CqlComparable; highClosed = true; }
+    }
+    return new CqlInterval(low, high, lowClosed, highClosed);
+  }
+
   private evalTimingInner(
     left: CqlValue | null,
     right: CqlValue | null,
@@ -1290,29 +1417,33 @@ export class CqlEvaluator
     switch (op.timingKind) {
       case TimingKind.SameAs: {
         if (op.before) {
-          // "on or before": for interval, use end/high; for point (promoted), low=high
-          const leftEnd = leftIv.high;
-          const rightEnd = rightIv.high;
-          if (leftEnd === null || rightEnd === null) return null;
+          // "on or before": left <= start of right
+          // For "point on or before Interval" → point <= start of Interval
+          // For "Interval on or before Interval" → end of left <= start of right
+          const leftVal = leftIv.high;  // end of left (for points, high=low)
+          const rightVal = rightIv.low; // start of right
+          if (leftVal === null || rightVal === null) return null;
           try {
             if (op.precision) {
-              const cmp = this.compareTemporal(leftEnd, rightEnd, op.precision);
+              const cmp = this.compareTemporal(leftVal, rightVal, op.precision);
               return cmp === null ? null : CqlBoolean.of(cmp <= 0);
             }
-            return CqlBoolean.of(leftEnd.compareTo(rightEnd) <= 0);
+            return CqlBoolean.of(leftVal.compareTo(rightVal) <= 0);
           } catch { return null; }
         }
         if (op.after) {
-          // "on or after": for interval, use start/low; for point (promoted), low=high
-          const leftStart = leftIv.low;
-          const rightStart = rightIv.low;
-          if (leftStart === null || rightStart === null) return null;
+          // "on or after": left >= end of right
+          // For "point on or after Interval" → point >= end of Interval
+          // For "Interval on or after Interval" → start of left >= end of right
+          const leftVal = leftIv.low;   // start of left (for points, low=high)
+          const rightVal = rightIv.high; // end of right
+          if (leftVal === null || rightVal === null) return null;
           try {
             if (op.precision) {
-              const cmp = this.compareTemporal(leftStart, rightStart, op.precision);
+              const cmp = this.compareTemporal(leftVal, rightVal, op.precision);
               return cmp === null ? null : CqlBoolean.of(cmp >= 0);
             }
-            return CqlBoolean.of(leftStart.compareTo(rightStart) >= 0);
+            return CqlBoolean.of(leftVal.compareTo(rightVal) >= 0);
           } catch { return null; }
         }
         return CqlBoolean.of(leftIv.equals(rightIv));
@@ -1326,15 +1457,20 @@ export class CqlEvaluator
         if (op.properly) {
           // For properly includes with a point (promoted to unit interval):
           // The point must be strictly inside (not on a boundary)
-          if (left !== null && !(left instanceof CqlInterval)) {
+          if (right !== null && !(right instanceof CqlInterval)) {
             // right is a point promoted to unit interval
             const point = rightIv.low!;
-            const contains = leftIv.contains(point);
-            if (!contains) return CqlBoolean.FALSE;
-            // Check it's not on a boundary
-            const onLow = leftIv.low !== null && leftIv.low.equals(point);
-            const onHigh = leftIv.high !== null && leftIv.high.equals(point);
-            return CqlBoolean.of(!onLow && !onHigh);
+            try {
+              const contains = leftIv.contains(point);
+              if (!contains) return CqlBoolean.FALSE;
+              // Check it's not on a boundary
+              const onLow = leftIv.low !== null && leftIv.low.equals(point);
+              const onHigh = leftIv.high !== null && leftIv.high.equals(point);
+              return CqlBoolean.of(!onLow && !onHigh);
+            } catch {
+              // Ambiguous comparison (different precision) returns null
+              return null;
+            }
           }
           return CqlBoolean.of(leftIv.includes(rightIv) && !rightIv.includes(leftIv));
         }
@@ -1347,13 +1483,19 @@ export class CqlEvaluator
           return this.evalPrecisionIncludes(rightIv, leftIv, op.precision, op.properly || false);
         }
         if (op.properly) {
-          if (right !== null && !(right instanceof CqlInterval)) {
+          if (left !== null && !(left instanceof CqlInterval)) {
+            // left is a point promoted to unit interval
             const point = leftIv.low!;
-            const contains = rightIv.contains(point);
-            if (!contains) return CqlBoolean.FALSE;
-            const onLow = rightIv.low !== null && rightIv.low.equals(point);
-            const onHigh = rightIv.high !== null && rightIv.high.equals(point);
-            return CqlBoolean.of(!onLow && !onHigh);
+            try {
+              const contains = rightIv.contains(point);
+              if (!contains) return CqlBoolean.FALSE;
+              // Check it's not on a boundary
+              const onLow = rightIv.low !== null && rightIv.low.equals(point);
+              const onHigh = rightIv.high !== null && rightIv.high.equals(point);
+              return CqlBoolean.of(!onLow && !onHigh);
+            } catch {
+              return null;
+            }
           }
           return CqlBoolean.of(rightIv.includes(leftIv) && !leftIv.includes(rightIv));
         }
@@ -1374,10 +1516,22 @@ export class CqlEvaluator
         // Also handle MeetsBefore and MeetsAfter
         if (op.before !== undefined && op.before) {
           // MeetsBefore: A.high is immediately before B.low (successor(A.high) = B.low)
+          // If A starts after B ends, they can't meet before -> false
+          if (leftIv.low !== null && rightIv.high !== null) {
+            try {
+              if (leftIv.low.compareTo(rightIv.high) > 0) return CqlBoolean.FALSE;
+            } catch { /* ignore precision issues */ }
+          }
           return this.evalMeetsAdjacent(leftIv.high, rightIv.low);
         }
         if (op.after !== undefined && op.after) {
           // MeetsAfter: A.low is immediately after B.high (A.low = successor(B.high))
+          // If A ends before B starts, they can't meet after -> false
+          if (leftIv.high !== null && rightIv.low !== null) {
+            try {
+              if (leftIv.high.compareTo(rightIv.low) < 0) return CqlBoolean.FALSE;
+            } catch { /* ignore precision issues */ }
+          }
           return this.evalMeetsAdjacent(rightIv.high, leftIv.low);
         }
         // Meets (either direction)
@@ -1390,29 +1544,33 @@ export class CqlEvaluator
       }
 
       case TimingKind.Overlaps: {
+        // Normalize intervals to closed bounds for discrete types
+        const leftNorm = this.normalizeInterval(leftIv);
+        const rightNorm = this.normalizeInterval(rightIv);
+
         if (op.before !== undefined && op.before) {
           // OverlapsBefore: left starts before right AND left ends within right
           // left.low < right.low AND right.low <= left.high AND left.high <= right.high
-          if (leftIv.low === null || rightIv.low === null || leftIv.high === null || rightIv.high === null) return null;
+          if (leftNorm.low === null || rightNorm.low === null || leftNorm.high === null || rightNorm.high === null) return null;
           try {
-            const startsBefore = leftIv.low.compareTo(rightIv.low) < 0;
-            const endsInOrBefore = leftIv.high.compareTo(rightIv.high) <= 0;
-            const overlapExists = leftIv.overlaps(rightIv);
+            const startsBefore = leftNorm.low.compareTo(rightNorm.low) < 0;
+            const endsInOrBefore = leftNorm.high.compareTo(rightNorm.high) <= 0;
+            const overlapExists = leftNorm.overlaps(rightNorm);
             return CqlBoolean.of(startsBefore && endsInOrBefore && overlapExists);
           } catch { return null; }
         }
         if (op.after !== undefined && op.after) {
           // OverlapsAfter: left ends after right AND left starts within right
           // left.high > right.high AND left.low >= right.low AND left.low <= right.high
-          if (leftIv.low === null || rightIv.low === null || leftIv.high === null || rightIv.high === null) return null;
+          if (leftNorm.low === null || rightNorm.low === null || leftNorm.high === null || rightNorm.high === null) return null;
           try {
-            const endsAfter = leftIv.high.compareTo(rightIv.high) > 0;
-            const startsInOrAfter = leftIv.low.compareTo(rightIv.low) >= 0;
-            const overlapExists = leftIv.overlaps(rightIv);
+            const endsAfter = leftNorm.high.compareTo(rightNorm.high) > 0;
+            const startsInOrAfter = leftNorm.low.compareTo(rightNorm.low) >= 0;
+            const overlapExists = leftNorm.overlaps(rightNorm);
             return CqlBoolean.of(endsAfter && startsInOrAfter && overlapExists);
           } catch { return null; }
         }
-        return CqlBoolean.of(leftIv.overlaps(rightIv));
+        return CqlBoolean.of(leftNorm.overlaps(rightNorm));
       }
 
       case TimingKind.Starts: {
@@ -1447,29 +1605,40 @@ export class CqlEvaluator
     right: CqlValue | null,
     op: TimingOp,
   ): CqlResult {
-    // For list includes/included-in, null element checks are valid
+    // For list includes/included-in, null element checks
     if (left === null && right === null) return null;
-    if (left === null && (op.timingKind === TimingKind.Includes || op.timingKind === TimingKind.IncludedIn || op.timingKind === TimingKind.During)) {
-      return CqlBoolean.FALSE;
-    }
+
+    // null includes {list}: CQL spec says null list operand returns null
+    // But: {list} includes null element and null element included in {list} check for null membership
     if (right === null && (op.timingKind === TimingKind.Includes)) {
-      // List properly includes null: check if list has a CqlNull element
+      // List includes null element: check if list has a CqlNull element
       if (left instanceof CqlList) {
         const hasNull = left.values.some(v => v instanceof CqlNull);
-        if (op.properly) return CqlBoolean.of(hasNull && left.values.length > 1);
-        return CqlBoolean.of(hasNull);
+        if (hasNull) {
+          if (op.properly) return CqlBoolean.of(left.values.length > 1);
+          return CqlBoolean.TRUE;
+        }
+        // null not found: for properly, definitively false; for regular, uncertain (null)
+        if (op.properly) return CqlBoolean.FALSE;
+        return null;
       }
-      return CqlBoolean.FALSE;
+      return null;
     }
     if (left === null && (op.timingKind === TimingKind.IncludedIn || op.timingKind === TimingKind.During)) {
-      // null properly included in list
+      // null element included in list: check if list has a CqlNull element
       if (right instanceof CqlList) {
         const hasNull = right.values.some(v => v instanceof CqlNull);
-        if (op.properly) return CqlBoolean.of(hasNull && right.values.length > 1);
-        return CqlBoolean.of(hasNull);
+        if (hasNull) {
+          if (op.properly) return CqlBoolean.of(right.values.length > 1);
+          return CqlBoolean.TRUE;
+        }
+        // null not found: for properly, definitively false; for regular, uncertain (null)
+        if (op.properly) return CqlBoolean.FALSE;
+        return null;
       }
-      return CqlBoolean.FALSE;
+      return null;
     }
+    // null as the list/collection operand returns null per CQL spec
     if (left === null || right === null) return null;
 
     switch (op.timingKind) {
@@ -1513,8 +1682,15 @@ export class CqlEvaluator
         let found = false;
         let hasAmbiguous = false;
         for (const l of lItems) {
-          if (l === null) continue;
+          if (l === null || l instanceof CqlNull) continue;
           try {
+            // Check for temporal precision mismatch (ambiguous comparison)
+            if ((l instanceof CqlTime && right instanceof CqlTime && l.precision !== right.precision) ||
+                (l instanceof CqlDate && right instanceof CqlDate && l.precision !== right.precision) ||
+                (l instanceof CqlDateTime && right instanceof CqlDateTime && l.precision !== right.precision)) {
+              hasAmbiguous = true;
+              continue;
+            }
             if (l.equals(right)) { found = true; break; }
           } catch {
             hasAmbiguous = true;
@@ -1563,8 +1739,15 @@ export class CqlEvaluator
         let found = false;
         let hasAmbiguous = false;
         for (const r of rItems) {
-          if (r === null) continue;
+          if (r === null || r instanceof CqlNull) continue;
           try {
+            // Check for temporal precision mismatch (ambiguous comparison)
+            if ((r instanceof CqlTime && left instanceof CqlTime && r.precision !== left.precision) ||
+                (r instanceof CqlDate && left instanceof CqlDate && r.precision !== left.precision) ||
+                (r instanceof CqlDateTime && left instanceof CqlDateTime && r.precision !== left.precision)) {
+              hasAmbiguous = true;
+              continue;
+            }
             if (r.equals(left)) { found = true; break; }
           } catch {
             hasAmbiguous = true;
@@ -1853,6 +2036,9 @@ export class CqlEvaluator
     left: CqlValue,
     right: CqlValue,
   ): CqlResult {
+    // CqlNull sentinel should be treated as null (return null)
+    if (left instanceof CqlNull || right instanceof CqlNull) return null;
+
     // String concatenation: CQL '+' on strings is concatenation
     if (op === BinaryOp.Add && left instanceof CqlString && right instanceof CqlString) {
       return new CqlString(left.value + right.value);
@@ -2181,28 +2367,30 @@ export class CqlEvaluator
     properly: boolean,
   ): CqlResult {
     // Check that inner's low >= outer's low and inner's high <= outer's high at given precision
+    let lowCmp: number | null = null;
+    let highCmp: number | null = null;
     if (outer.low !== null && inner.low !== null) {
-      const cmp = this.compareTemporal(outer.low, inner.low, precision);
-      if (cmp === null) return null;
-      if (cmp > 0) return CqlBoolean.FALSE;
+      lowCmp = this.compareTemporal(outer.low, inner.low, precision);
+      if (lowCmp === null) return null;
+      if (lowCmp > 0) return CqlBoolean.FALSE;
     }
     if (outer.high !== null && inner.high !== null) {
-      const cmp = this.compareTemporal(outer.high, inner.high, precision);
-      if (cmp === null) return null;
-      if (cmp < 0) return CqlBoolean.FALSE;
+      highCmp = this.compareTemporal(outer.high, inner.high, precision);
+      if (highCmp === null) return null;
+      if (highCmp < 0) return CqlBoolean.FALSE;
     }
     if (properly) {
-      // At least one boundary must be strictly inside
-      let strictLow = false;
-      let strictHigh = false;
-      if (outer.low !== null && inner.low !== null) {
-        const cmp = this.compareTemporal(outer.low, inner.low, precision);
-        if (cmp !== null && cmp < 0) strictLow = true;
+      // For properly includes at precision: the inner must be strictly inside the outer.
+      // Check if inner is a unit interval (point promoted) — if so, both bounds must be strict.
+      const isPoint = inner.low !== null && inner.high !== null &&
+                      (inner.low === inner.high || inner.low.equals(inner.high));
+      const strictLow = lowCmp !== null && lowCmp < 0;
+      const strictHigh = highCmp !== null && highCmp > 0;
+      if (isPoint) {
+        // Point: must be strictly inside on BOTH sides at the given precision
+        return CqlBoolean.of(strictLow && strictHigh);
       }
-      if (outer.high !== null && inner.high !== null) {
-        const cmp = this.compareTemporal(outer.high, inner.high, precision);
-        if (cmp !== null && cmp > 0) strictHigh = true;
-      }
+      // Interval: at least one side must be strictly inside
       return CqlBoolean.of(strictLow || strictHigh);
     }
     return CqlBoolean.TRUE;
@@ -2550,25 +2738,29 @@ export class CqlEvaluator
       case BinaryOp.Intersect: {
         if (!a.overlaps(b)) return null;
         // Take max low, min high
+        // When one bound is null (unknown), the result bound is null (unknown)
+        // because we can't determine the actual max/min with an unknown value.
         let newLow = a.low;
         let newLowClosed = a.lowClosed;
         let newHigh = a.high;
         let newHighClosed = a.highClosed;
-        if (a.low !== null && b.low !== null) {
+        if (a.low === null || b.low === null) {
+          // Unknown low: keep null
+          newLow = null; newLowClosed = a.low === null ? a.lowClosed : b.lowClosed;
+        } else {
           const cmp = a.low.compareTo(b.low);
           if (cmp < 0 || (cmp === 0 && !b.lowClosed && a.lowClosed)) {
             newLow = b.low; newLowClosed = b.lowClosed;
           }
-        } else if (b.low !== null) {
-          newLow = b.low; newLowClosed = b.lowClosed;
         }
-        if (a.high !== null && b.high !== null) {
+        if (a.high === null || b.high === null) {
+          // Unknown high: keep null
+          newHigh = null; newHighClosed = a.high === null ? a.highClosed : b.highClosed;
+        } else {
           const cmp = a.high.compareTo(b.high);
           if (cmp > 0 || (cmp === 0 && !b.highClosed && a.highClosed)) {
             newHigh = b.high; newHighClosed = b.highClosed;
           }
-        } else if (b.high !== null) {
-          newHigh = b.high; newHighClosed = b.highClosed;
         }
         return new CqlInterval(newLow, newHigh, newLowClosed, newHighClosed);
       }
@@ -3152,7 +3344,7 @@ export class CqlEvaluator
         return CqlDecimal.of(sum.div(items.length).toString());
       }
       case 'min': {
-        const items = toList(source);
+        const items = toList(source).filter(v => v !== null && !(v instanceof CqlNull));
         if (items.length === 0) return null;
         let result = items[0];
         for (let i = 1; i < items.length; i++) {
@@ -3163,7 +3355,7 @@ export class CqlEvaluator
         return result;
       }
       case 'max': {
-        const items = toList(source);
+        const items = toList(source).filter(v => v !== null && !(v instanceof CqlNull));
         if (items.length === 0) return null;
         let result = items[0];
         for (let i = 1; i < items.length; i++) {
@@ -3306,16 +3498,33 @@ export class CqlEvaluator
         if (val instanceof CqlInteger) return CqlQuantity.of(val.value, '1');
         if (val instanceof CqlDecimal) return new CqlQuantity(val.value, '1');
         if (val instanceof CqlString) {
-          // Try parsing "value unit"
+          // Try parsing "value 'unit'" or "value unit"
           const m = val.value.match(/^(-?[\d.]+)\s*(.*)$/);
-          if (m) return CqlQuantity.of(m[1], m[2] || '1');
+          if (m) {
+            let unit = m[2] || '1';
+            // Strip surrounding single quotes from unit if present
+            if (unit.startsWith("'") && unit.endsWith("'")) {
+              unit = unit.slice(1, -1);
+            }
+            return CqlQuantity.of(m[1], unit);
+          }
         }
         return null;
       }
+      case 'toconcept': {
+        const val = source ?? (expr.operands.length > 0 ? await this.evaluate(expr.operands[0]) : null);
+        if (val === null) return null;
+        if (val instanceof CqlConcept) return val;
+        if (val instanceof CqlCode) return new CqlConcept([val]);
+        return null;
+      }
       case 'descendents':
-      case 'descendants':
-        // FHIRPath function - return empty list for CQL standalone
+      case 'descendants': {
+        // FHIRPath function - return null if source is null, else empty list
+        const descSource = source ?? (expr.operands.length > 0 ? await this.evaluate(expr.operands[0]) : null);
+        if (descSource === null) return null;
         return new CqlList([]);
+      }
       default:
         throw new Error(`unknown function: ${expr.name}`);
     }

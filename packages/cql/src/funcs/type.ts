@@ -10,6 +10,7 @@ import {
   CqlDateTime,
   CqlDecimal,
   CqlInteger,
+  CqlQuantity,
   CqlString,
 } from '../types/index.js';
 import type { CqlValue } from '../types/index.js';
@@ -17,8 +18,14 @@ import type { FunctionRegistry } from './registry.js';
 
 export function registerTypeFunctions(registry: FunctionRegistry): void {
   // ToString(value) -> string
+  // CQL spec: Quantity toString uses escaped quotes: "125 'cm'"
   registry.register('ToString', (args) => {
     if (args[0] === null) return null;
+    if (args[0] instanceof CqlQuantity) {
+      const q = args[0];
+      if (q.unit === '' || q.unit === '1') return new CqlString(q.value.toString());
+      return new CqlString(`${q.value.toString()} '${q.unit}'`);
+    }
     return new CqlString(args[0].toString());
   });
 
