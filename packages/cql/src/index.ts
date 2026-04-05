@@ -2,7 +2,7 @@ export const VERSION = '0.1.0';
 
 // Engine
 export { CqlEngine } from './engine.js';
-export type { CqlEngineOptions } from './engine.js';
+export type { CqlEngineOptions, UcumServiceLike } from './engine.js';
 
 // Types
 export type { CqlValue, CqlComparable, CqlType } from './types/value.js';

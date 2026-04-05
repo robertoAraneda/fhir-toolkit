@@ -3,6 +3,7 @@ import type { CqlCode } from '../types/index.js';
 import type { Library } from '../ast/library.js';
 import type { DataProvider } from '../providers/data.js';
 import type { TerminologyProvider } from '../providers/terminology.js';
+import type { UcumServiceLike } from '../engine.js';
 
 export class EvalContext {
   readonly aliases = new Map<string, CqlValue | null>();
@@ -21,6 +22,7 @@ export class EvalContext {
     readonly dataProvider: DataProvider | null = null,
     readonly terminologyProvider: TerminologyProvider | null = null,
     private readonly parent: EvalContext | null = null,
+    readonly ucumService: UcumServiceLike | null = null,
   ) {}
 
   childScope(): EvalContext {
@@ -30,6 +32,7 @@ export class EvalContext {
       this.dataProvider,
       this.terminologyProvider,
       this,
+      this.ucumService,
     );
     return child;
   }

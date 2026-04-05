@@ -19,6 +19,15 @@ import type { DataProvider } from './providers/data.js';
 import type { TerminologyProvider } from './providers/terminology.js';
 import type { ModelInfo } from './model/model-info.js';
 
+/**
+ * Minimal interface for UCUM unit conversion.
+ * Accepts any object that satisfies this contract (e.g. @fhir-toolkit/ucum UcumService).
+ */
+export interface UcumServiceLike {
+  convert(value: number, from: string, to: string): number;
+  isComparable(code1: string, code2: string): boolean;
+}
+
 export interface CqlEngineOptions {
   dataProvider?: DataProvider;
   terminologyProvider?: TerminologyProvider;
@@ -31,6 +40,8 @@ export interface CqlEngineOptions {
   maxRetrieveSize?: number;
   /** Maximum recursion depth for nested expressions (default: 100). */
   maxDepth?: number;
+  /** Optional UCUM service for unit conversion in Quantity operations. */
+  ucumService?: UcumServiceLike;
 }
 
 export class CqlEngine {
@@ -41,6 +52,7 @@ export class CqlEngine {
   private readonly registry: FunctionRegistry;
   private readonly timeout: number;
   private readonly maxExpressionLen: number;
+  private readonly ucumService: UcumServiceLike | null;
 
   constructor(options?: CqlEngineOptions) {
     this.timeout = options?.timeout ?? 30_000;
@@ -48,6 +60,7 @@ export class CqlEngine {
     this.modelInfo = resolveModelInfo(options?.modelInfo ?? 'R4');
     this.dataProvider = options?.dataProvider ?? null;
     this.terminologyProvider = options?.terminologyProvider ?? null;
+    this.ucumService = options?.ucumService ?? null;
     this.registry = new FunctionRegistry();
     registerBuiltins(this.registry);
   }
@@ -121,6 +134,8 @@ export class CqlEngine {
       context,
       this.dataProvider,
       this.terminologyProvider,
+      null,
+      this.ucumService,
     );
 
     // Register code systems from library definitions

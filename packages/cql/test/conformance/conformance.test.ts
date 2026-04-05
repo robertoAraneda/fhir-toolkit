@@ -13,17 +13,17 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { CqlEngine } from '../../src/index.js';
+import { createUcumService } from '@fhir-toolkit/ucum';
 import { parseTestFile } from './xml-parser.js';
 import { parseCvl } from './cvl-parser.js';
 import { runConformanceTest, compareValues } from './runner.js';
 
 const FIXTURES_DIR = join(__dirname, 'fixtures');
-const engine = new CqlEngine();
+const ucumService = createUcumService();
+const engine = new CqlEngine({ ucumService });
 
 // Capabilities we DON'T support — tests requiring these are skipped
-const UNSUPPORTED_CAPABILITIES = new Set([
-  'ucum-unit-conversion-support', // UCUM unit conversion
-  'unit-conversion-support', // Unit conversion (m/cm, kg/g, etc.)
+const UNSUPPORTED_CAPABILITIES = new Set<string>([
 ]);
 
 const files = readdirSync(FIXTURES_DIR).filter((f) => f.endsWith('.xml'));

@@ -124,6 +124,9 @@ importers:
         specifier: ^10.4.3
         version: 10.6.0
     devDependencies:
+      '@fhir-toolkit/ucum':
+        specifier: workspace:*
+        version: link:../ucum
       antlr4ng-cli:
         specifier: ^2.0.0
         version: 2.0.0
@@ -321,6 +324,22 @@ importers:
       '@fhir-toolkit/client':
         specifier: workspace:*
         version: link:../client
+    devDependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.1(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+      vitest:
+        specifier: ^1.4.0
+        version: 1.6.1(@types/node@20.19.25)(jsdom@28.1.0)
+
+  packages/ucum:
+    dependencies:
+      decimal.js:
+        specifier: ^10.4.3
+        version: 10.6.0
     devDependencies:
       tsup:
         specifier: ^8.0.2

@@ -29,7 +29,14 @@
     "antlr4ng": "^3.0.4",
     "decimal.js": "^10.4.3"
   },
+  "peerDependencies": {
+    "@fhir-toolkit/ucum": ">=0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@fhir-toolkit/ucum": { "optional": true }
+  },
   "devDependencies": {
+    "@fhir-toolkit/ucum": "workspace:*",
     "antlr4ng-cli": "^2.0.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.0",

@@ -446,6 +446,10 @@ export class CqlEvaluator
           const eqResult = this.tupleEqualWithNull(left, right);
           return eqResult === null ? null : CqlBoolean.of(eqResult);
         }
+        // UCUM-aware Quantity equality: convert to common unit before comparing
+        if (left instanceof CqlQuantity && right instanceof CqlQuantity && left.unit !== right.unit) {
+          return CqlBoolean.of(this.quantityEquals(left, right));
+        }
         return CqlBoolean.of(left.equals(right));
       }
       case BinaryOp.NotEqual: {
@@ -453,11 +457,21 @@ export class CqlEvaluator
           const eqResult = this.tupleEqualWithNull(left, right);
           return eqResult === null ? null : CqlBoolean.of(!eqResult);
         }
+        if (left instanceof CqlQuantity && right instanceof CqlQuantity && left.unit !== right.unit) {
+          return CqlBoolean.of(!this.quantityEquals(left, right));
+        }
         return CqlBoolean.of(!left.equals(right));
       }
       case BinaryOp.Equivalent:
+        // UCUM-aware Quantity equivalence
+        if (left instanceof CqlQuantity && right instanceof CqlQuantity && left.unit.toLowerCase() !== right.unit.toLowerCase()) {
+          return CqlBoolean.of(this.quantityEquivalent(left, right));
+        }
         return CqlBoolean.of(left.equivalent(right));
       case BinaryOp.NotEquivalent:
+        if (left instanceof CqlQuantity && right instanceof CqlQuantity && left.unit.toLowerCase() !== right.unit.toLowerCase()) {
+          return CqlBoolean.of(!this.quantityEquivalent(left, right));
+        }
         return CqlBoolean.of(!left.equivalent(right));
 
       case BinaryOp.Less:
@@ -480,6 +494,22 @@ export class CqlEvaluator
           throw new Error(`cannot compare ${left.type}`);
         }
         try {
+          // UCUM-aware Quantity comparison: convert to common unit
+          if (left instanceof CqlQuantity && right instanceof CqlQuantity && left.unit !== right.unit) {
+            const converted = this.convertQuantityToUnit(right, left.unit);
+            if (converted === null) return null; // incompatible units
+            const cmp = left.value.comparedTo(converted.value);
+            switch (expr.operator) {
+              case BinaryOp.Less:
+                return CqlBoolean.of(cmp < 0);
+              case BinaryOp.LessOrEqual:
+                return CqlBoolean.of(cmp <= 0);
+              case BinaryOp.Greater:
+                return CqlBoolean.of(cmp > 0);
+              case BinaryOp.GreaterOrEqual:
+                return CqlBoolean.of(cmp >= 0);
+            }
+          }
           const cmp = left.compareTo(right);
           switch (expr.operator) {
             case BinaryOp.Less:
@@ -2047,6 +2077,39 @@ export class CqlEvaluator
   // Private helpers
   // -----------------------------------------------------------------------
 
+  /**
+   * Convert a CqlQuantity to a target unit using UCUM service.
+   * Returns null if no ucumService is available or units are incompatible.
+   */
+  private convertQuantityToUnit(qty: CqlQuantity, targetUnit: string): CqlQuantity | null {
+    const svc = this.ctx.ucumService;
+    if (!svc) return null;
+    try {
+      if (!svc.isComparable(qty.unit, targetUnit)) return null;
+      const converted = svc.convert(qty.value.toNumber(), qty.unit, targetUnit);
+      return new CqlQuantity(new Decimal(converted), targetUnit);
+    } catch {
+      return null;
+    }
+  }
+
+  /** UCUM-aware Quantity equality: convert to common unit then compare values. */
+  private quantityEquals(left: CqlQuantity, right: CqlQuantity): boolean {
+    const converted = this.convertQuantityToUnit(right, left.unit);
+    if (converted === null) return false;
+    return left.value.equals(converted.value);
+  }
+
+  /** UCUM-aware Quantity equivalence: convert to canonical form then compare. */
+  private quantityEquivalent(left: CqlQuantity, right: CqlQuantity): boolean {
+    const converted = this.convertQuantityToUnit(right, left.unit);
+    if (converted === null) return false;
+    // For equivalence, compare with tolerance (8 decimal digits per CQL spec)
+    const diff = left.value.minus(converted.value).abs();
+    const tolerance = new Decimal('0.00000001');
+    return diff.lessThanOrEqualTo(tolerance);
+  }
+
   private evalArithmetic(
     op: BinaryOp,
     left: CqlValue,
@@ -2067,27 +2130,33 @@ export class CqlEvaluator
       return this.evalTemporalArithmetic(op, left, right);
     }
 
-    // Quantity arithmetic (same unit)
+    // Quantity arithmetic (same or convertible units)
     if (left instanceof CqlQuantity && right instanceof CqlQuantity) {
+      let effectiveRight = right;
       if (left.unit !== right.unit) {
-        throw new Error(`incompatible units: ${left.unit} and ${right.unit}`);
+        // Try UCUM conversion to left's unit
+        const converted = this.convertQuantityToUnit(right, left.unit);
+        if (converted === null) {
+          return null; // incompatible units → null per CQL spec
+        }
+        effectiveRight = converted;
       }
       switch (op) {
         case BinaryOp.Add:
-          return new CqlQuantity(left.value.plus(right.value), left.unit);
+          return new CqlQuantity(left.value.plus(effectiveRight.value), left.unit);
         case BinaryOp.Subtract:
-          return new CqlQuantity(left.value.minus(right.value), left.unit);
+          return new CqlQuantity(left.value.minus(effectiveRight.value), left.unit);
         case BinaryOp.Multiply:
-          return new CqlQuantity(left.value.times(right.value), left.unit);
+          return new CqlQuantity(left.value.times(effectiveRight.value), left.unit);
         case BinaryOp.Divide:
-          if (right.value.isZero()) return null;
-          return new CqlQuantity(left.value.div(right.value), left.unit);
+          if (effectiveRight.value.isZero()) return null;
+          return new CqlQuantity(left.value.div(effectiveRight.value), left.unit);
         case BinaryOp.Div:
-          if (right.value.isZero()) return null;
-          return new CqlQuantity(left.value.div(right.value).truncated(), left.unit);
+          if (effectiveRight.value.isZero()) return null;
+          return new CqlQuantity(left.value.div(effectiveRight.value).truncated(), left.unit);
         case BinaryOp.Mod:
-          if (right.value.isZero()) return null;
-          return new CqlQuantity(left.value.mod(right.value), left.unit);
+          if (effectiveRight.value.isZero()) return null;
+          return new CqlQuantity(left.value.mod(effectiveRight.value), left.unit);
       }
     }
 
