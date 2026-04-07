@@ -1,5 +1,11 @@
 # @fhir-toolkit/cql
 
+## 1.0.1
+
+### Patch Changes
+
+- Achieve 100% CQL conformance — 2536/2536 HL7 CQL spec tests passing. Validates decimal precision limits (max 28 integer digits, 8 fractional digits per spec).
+
 ## 1.0.0
 
 ### Minor Changes
