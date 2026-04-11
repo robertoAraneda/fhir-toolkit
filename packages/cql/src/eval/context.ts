@@ -4,6 +4,7 @@ import type { Library } from '../ast/library.js';
 import type { DataProvider } from '../providers/data.js';
 import type { TerminologyProvider } from '../providers/terminology.js';
 import type { UcumServiceLike } from '../engine.js';
+import type { ModelInfo } from '../model/model-info.js';
 
 export class EvalContext {
   readonly aliases = new Map<string, CqlValue | null>();
@@ -23,6 +24,7 @@ export class EvalContext {
     readonly terminologyProvider: TerminologyProvider | null = null,
     private readonly parent: EvalContext | null = null,
     readonly ucumService: UcumServiceLike | null = null,
+    readonly modelInfo: ModelInfo | null = null,
   ) {}
 
   childScope(): EvalContext {
@@ -33,6 +35,7 @@ export class EvalContext {
       this.terminologyProvider,
       this,
       this.ucumService,
+      this.modelInfo,
     );
     return child;
   }

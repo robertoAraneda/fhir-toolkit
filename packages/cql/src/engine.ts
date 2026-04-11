@@ -214,6 +214,7 @@ export class CqlEngine {
       this.terminologyProvider,
       null,
       this.ucumService,
+      this.modelInfo,
     );
 
     // Register code systems from library definitions
