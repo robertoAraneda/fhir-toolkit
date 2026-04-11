@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { CqlEvaluator } from '../../src/eval/evaluator.js';
+import { CqlEvaluator, wrapFhirResource } from '../../src/eval/evaluator.js';
+import { createR4ModelInfo } from '../../src/model/r4.js';
 import { EvalContext } from '../../src/eval/context.js';
 import type { Expression } from '../../src/ast/nodes.js';
 import {
@@ -1720,5 +1721,84 @@ describe('CqlEvaluator', () => {
     it('null < 5 returns null', async () => {
       expect(await mkEval().evaluate(binary(BinaryOp.Less, nullLit(), intLit(5)))).toBeNull();
     });
+  });
+});
+
+// ---------------------------------------------------------------------------
+// wrapFhirResource
+// ---------------------------------------------------------------------------
+
+describe('wrapFhirResource', () => {
+  const mi = createR4ModelInfo();
+
+  it('sets instanceType on top-level resource', () => {
+    const obs = { resourceType: 'Observation', id: 'obs1', status: 'final' };
+    const result = wrapFhirResource(obs, 'Observation', mi);
+    expect(result).toBeInstanceOf(CqlTuple);
+    expect(result.instanceType).toBe('Observation');
+  });
+
+  it('adds abstract alias for choice type (value -> valueQuantity)', () => {
+    const obs = {
+      resourceType: 'Observation',
+      id: 'obs1',
+      status: 'final',
+      valueQuantity: { value: 165, unit: 'cm', system: 'http://unitsofmeasure.org' },
+    };
+    const result = wrapFhirResource(obs, 'Observation', mi);
+    const abstractVal = result.get('value');
+    const concreteVal = result.get('valueQuantity');
+    expect(abstractVal).not.toBeNull();
+    expect(abstractVal).toBe(concreteVal); // same reference
+  });
+
+  it('sets instanceType on choice type value (Quantity)', () => {
+    const obs = {
+      resourceType: 'Observation',
+      valueQuantity: { value: 165, unit: 'cm' },
+    };
+    const result = wrapFhirResource(obs, 'Observation', mi);
+    const val = result.get('value');
+    expect(val).toBeInstanceOf(CqlTuple);
+    expect((val as CqlTuple).instanceType).toBe('Quantity');
+  });
+
+  it('sets instanceType on nested FHIR complex types', () => {
+    const obs = {
+      resourceType: 'Observation',
+      code: { coding: [{ system: 'http://loinc.org', code: '8302-2' }] },
+    };
+    const result = wrapFhirResource(obs, 'Observation', mi);
+    const code = result.get('code');
+    expect(code).toBeInstanceOf(CqlTuple);
+    expect((code as CqlTuple).instanceType).toBe('CodeableConcept');
+  });
+
+  it('handles choice type with System type (valueString stays CqlString)', () => {
+    const obs = {
+      resourceType: 'Observation',
+      valueString: 'positive',
+    };
+    const result = wrapFhirResource(obs, 'Observation', mi);
+    const val = result.get('value');
+    expect(val).toBeInstanceOf(CqlString);
+  });
+
+  it('handles missing choice type gracefully (no abstract alias added)', () => {
+    const obs = {
+      resourceType: 'Observation',
+      id: 'obs1',
+      status: 'final',
+    };
+    const result = wrapFhirResource(obs, 'Observation', mi);
+    expect(result.get('value')).toBeUndefined();
+  });
+
+  it('handles unknown type name gracefully (falls back to generic wrapping)', () => {
+    const resource = { resourceType: 'CustomResource', foo: 'bar' };
+    const result = wrapFhirResource(resource, 'CustomResource', mi);
+    expect(result).toBeInstanceOf(CqlTuple);
+    expect(result.instanceType).toBe('CustomResource');
+    expect(result.get('foo')).toBeInstanceOf(CqlString);
   });
 });
