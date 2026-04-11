@@ -6,6 +6,7 @@ import { CqlCode } from '../../src/types/complex.js';
 import type { Library } from '../../src/ast/library.js';
 import type { DataProvider } from '../../src/providers/data.js';
 import type { TerminologyProvider } from '../../src/providers/terminology.js';
+import { createR4ModelInfo } from '../../src/model/r4.js';
 
 const dummyLibrary: Library = {
   identifier: { name: 'TestLib', version: '1.0.0' },
@@ -90,6 +91,24 @@ describe('EvalContext', () => {
     expect(child.contextResource).toBe(dummyResource);
     expect(child.dataProvider).toBe(dp);
     expect(child.terminologyProvider).toBe(tp);
+  });
+
+  it('exposes modelInfo when provided', () => {
+    const mi = createR4ModelInfo();
+    const ctx = new EvalContext(null, null, null, null, null, null, mi);
+    expect(ctx.modelInfo).toBe(mi);
+  });
+
+  it('modelInfo defaults to null', () => {
+    const ctx = new EvalContext(null, null);
+    expect(ctx.modelInfo).toBeNull();
+  });
+
+  it('childScope inherits modelInfo', () => {
+    const mi = createR4ModelInfo();
+    const ctx = new EvalContext(null, null, null, null, null, null, mi);
+    const child = ctx.childScope();
+    expect(child.modelInfo).toBe(mi);
   });
 
   it('should prefer aliases over definitions with the same name', () => {

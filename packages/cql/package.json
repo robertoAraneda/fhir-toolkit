@@ -1,6 +1,6 @@
 {
   "name": "@fhir-toolkit/cql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Native Clinical Quality Language (CQL) engine for TypeScript",
   "keywords": [
     "cql",

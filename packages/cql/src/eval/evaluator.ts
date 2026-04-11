@@ -5,6 +5,7 @@
  * Ported from Go: eval/evaluator.go
  */
 
+import type { ModelInfo, ElementInfo } from '../model/model-info.js';
 import type { ExpressionVisitor } from './visitor.js';
 import { visit } from './visitor.js';
 import { EvalContext } from './context.js';
@@ -135,6 +136,119 @@ export function wrapFhirValue(v: unknown): CqlValue | null {
     return new CqlTuple(elements);
   }
   return new CqlString(String(v));
+}
+
+/**
+ * Strip namespace prefix from a qualified type name.
+ * "FHIR.Quantity" -> "Quantity", "System.String" -> "String"
+ */
+function stripNamespace(qualifiedType: string): string {
+  const dot = qualifiedType.lastIndexOf('.');
+  return dot >= 0 ? qualifiedType.substring(dot + 1) : qualifiedType;
+}
+
+/**
+ * Wrap a single element value using its ElementInfo type from ModelInfo.
+ * FHIR complex types are recursively wrapped with type info; System types
+ * and primitives delegate to wrapFhirValue.
+ */
+function wrapFhirElement(
+  val: unknown,
+  elemInfo: ElementInfo,
+  modelInfo: ModelInfo,
+): CqlValue | null {
+  if (val === null || val === undefined) return null;
+  const typeName = stripNamespace(elemInfo.type);
+
+  // List element: wrap each item
+  if (elemInfo.isList && Array.isArray(val)) {
+    const items: CqlValue[] = [];
+    for (const item of val) {
+      const wrapped =
+        typeof item === 'object' && item !== null && !Array.isArray(item)
+          ? wrapFhirElement(item, { ...elemInfo, isList: false }, modelInfo)
+          : wrapFhirValue(item);
+      if (wrapped !== null) items.push(wrapped);
+    }
+    return new CqlList(items);
+  }
+
+  // FHIR complex type: recurse with type info
+  if (
+    elemInfo.type.startsWith('FHIR.') &&
+    typeof val === 'object' &&
+    val !== null &&
+    !Array.isArray(val)
+  ) {
+    return wrapFhirResource(
+      val as Record<string, unknown>,
+      typeName,
+      modelInfo,
+    );
+  }
+
+  // System type or primitive: generic wrap
+  return wrapFhirValue(val);
+}
+
+/**
+ * Wrap a FHIR JSON resource into a typed CqlTuple using ModelInfo.
+ *
+ * - Sets `instanceType` on the tuple and all nested FHIR complex sub-objects
+ * - Resolves choice types: adds abstract key aliases (e.g., "value" for "valueQuantity")
+ * - Falls back to generic `wrapFhirValue` for elements not in ModelInfo
+ */
+export function wrapFhirResource(
+  json: Record<string, unknown>,
+  typeName: string,
+  modelInfo: ModelInfo,
+): CqlTuple {
+  const typeInfo = modelInfo.typeInfo(typeName);
+  const elements = new Map<string, CqlValue | null>();
+
+  // Build element lookup for this type
+  const elemByName = new Map<string, ElementInfo>();
+  if (typeInfo) {
+    for (const e of typeInfo.elements) {
+      elemByName.set(e.name, e);
+    }
+  }
+
+  // Wrap each JSON key
+  for (const [key, val] of Object.entries(json)) {
+    const elemInfo = elemByName.get(key);
+    if (elemInfo && !elemInfo.isChoice) {
+      elements.set(key, wrapFhirElement(val, elemInfo, modelInfo));
+    } else {
+      elements.set(key, wrapFhirValue(val));
+    }
+  }
+
+  // Resolve choice types: find concrete keys and add abstract aliases
+  if (typeInfo) {
+    for (const elem of typeInfo.elements) {
+      if (!elem.isChoice) continue;
+      if (elements.has(elem.name)) continue;
+
+      for (const choiceType of elem.choiceTypes) {
+        const suffix = stripNamespace(choiceType);
+        const concreteKey = elem.name + suffix;
+        if (elements.has(concreteKey)) {
+          const val = elements.get(concreteKey);
+          // Tag FHIR complex types with instanceType
+          if (val instanceof CqlTuple) {
+            val.instanceType = suffix;
+          }
+          elements.set(elem.name, val ?? null);
+          break;
+        }
+      }
+    }
+  }
+
+  const tuple = new CqlTuple(elements);
+  tuple.instanceType = typeName;
+  return tuple;
 }
 
 function toDecimal(v: CqlValue | null): Decimal {
@@ -435,6 +549,15 @@ export class CqlEvaluator
         this.ctx.contextResource !== undefined &&
         this.ctx.library.contexts.some((c) => c.name === expr.name)
       ) {
+        if (
+          this.ctx.modelInfo &&
+          typeof this.ctx.contextResource === 'object' &&
+          this.ctx.contextResource !== null
+        ) {
+          const ctxObj = this.ctx.contextResource as Record<string, unknown>;
+          const ctxType = (ctxObj['resourceType'] as string) ?? expr.name;
+          return wrapFhirResource(ctxObj, ctxType, this.ctx.modelInfo);
+        }
         return wrapFhirValue(this.ctx.contextResource);
       }
     }
@@ -782,7 +905,7 @@ export class CqlEvaluator
     if (operand === null) return CqlBoolean.FALSE;
     if (expr.type.specKind !== 'NamedType') return CqlBoolean.FALSE;
     const operandType = operand.type.toLowerCase();
-    const targetType = expr.type.name.toLowerCase().replace(/^system\./, '');
+    const targetType = expr.type.name.toLowerCase().replace(/^(fhir\.|system\.)/, '');
     if (operandType === targetType) return CqlBoolean.TRUE;
     // For tuples constructed via Instance expressions, also check the instance type name
     if (operand instanceof CqlTuple && operand.instanceType) {
@@ -810,8 +933,12 @@ export class CqlEvaluator
     const operand = await this.evaluate(expr.operand);
     if (operand === null) return null;
     if (expr.type.specKind !== 'NamedType') return null;
-    if (operand.type.toLowerCase() === expr.type.name.toLowerCase()) {
-      return operand;
+    const targetType = expr.type.name.toLowerCase().replace(/^(fhir\.|system\.)/, '');
+    // Check base type
+    if (operand.type.toLowerCase() === targetType) return operand;
+    // Check instanceType for typed FHIR tuples
+    if (operand instanceof CqlTuple && operand.instanceType) {
+      if (operand.instanceType.toLowerCase() === targetType) return operand;
     }
     return null; // safe cast returns null
   }
@@ -1008,7 +1135,21 @@ export class CqlEvaluator
     // Wrap each result recursively as a CqlTuple
     const values: CqlValue[] = [];
     for (const raw of results) {
-      const wrapped = wrapFhirValue(raw);
+      let wrapped: CqlValue | null;
+      if (
+        this.ctx.modelInfo &&
+        typeof raw === 'object' &&
+        raw !== null &&
+        !Array.isArray(raw)
+      ) {
+        wrapped = wrapFhirResource(
+          raw as Record<string, unknown>,
+          resourceType,
+          this.ctx.modelInfo,
+        );
+      } else {
+        wrapped = wrapFhirValue(raw);
+      }
       if (wrapped !== null) values.push(wrapped);
     }
     return new CqlList(values);

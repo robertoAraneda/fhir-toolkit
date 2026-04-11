@@ -34,6 +34,9 @@ export {
   CqlTooCostlyError,
 } from './errors.js';
 
+// Evaluator utilities
+export { wrapFhirResource } from './eval/evaluator.js';
+
 // Compiler
 export { compile } from './compiler/compiler.js';
 
