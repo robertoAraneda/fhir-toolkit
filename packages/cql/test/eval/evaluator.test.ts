@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { CqlEngine, InMemoryDataProvider, CqlTuple } from '../../src/index.js';
 import { CqlEvaluator, wrapFhirResource } from '../../src/eval/evaluator.js';
 import { createR4ModelInfo } from '../../src/model/r4.js';
 import { EvalContext } from '../../src/eval/context.js';
@@ -25,7 +26,6 @@ import {
 import {
   CqlInterval,
   CqlList,
-  CqlTuple,
   CqlCode,
   CqlConcept,
 } from '../../src/types/complex.js';
@@ -1800,5 +1800,38 @@ describe('wrapFhirResource', () => {
     expect(result).toBeInstanceOf(CqlTuple);
     expect(result.instanceType).toBe('CustomResource');
     expect(result.get('foo')).toBeInstanceOf(CqlString);
+  });
+});
+
+describe('visitAs with instanceType', () => {
+  it('as cast succeeds when instanceType matches target type', async () => {
+    const engine = new CqlEngine({
+      dataProvider: new InMemoryDataProvider({
+        resourceType: 'Bundle',
+        entry: [
+          {
+            resource: {
+              resourceType: 'Observation',
+              id: 'obs1',
+              code: { coding: [{ system: 'http://loinc.org', code: '8302-2' }] },
+              status: 'final',
+              valueQuantity: { value: 165, unit: 'cm', system: 'http://unitsofmeasure.org', code: 'cm' },
+            },
+          },
+        ],
+      }),
+    });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Obs: [Observation] O
+      define Val: (First(Obs).value as FHIR.Quantity)
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    const val = results['Val'];
+    expect(val).not.toBeNull();
+    expect(val).toBeInstanceOf(CqlTuple);
+    expect((val as CqlTuple).instanceType).toBe('Quantity');
   });
 });

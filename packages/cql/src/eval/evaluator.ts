@@ -924,8 +924,12 @@ export class CqlEvaluator
     const operand = await this.evaluate(expr.operand);
     if (operand === null) return null;
     if (expr.type.specKind !== 'NamedType') return null;
-    if (operand.type.toLowerCase() === expr.type.name.toLowerCase()) {
-      return operand;
+    const targetType = expr.type.name.toLowerCase().replace(/^(fhir\.|system\.)/, '');
+    // Check base type
+    if (operand.type.toLowerCase() === targetType) return operand;
+    // Check instanceType for typed FHIR tuples
+    if (operand instanceof CqlTuple && operand.instanceType) {
+      if (operand.instanceType.toLowerCase() === targetType) return operand;
     }
     return null; // safe cast returns null
   }
