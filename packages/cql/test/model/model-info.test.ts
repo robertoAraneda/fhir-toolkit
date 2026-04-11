@@ -26,7 +26,7 @@ describe('R4 ModelInfo', () => {
     const ti = mi.typeInfo('Patient');
     const birthDate = ti!.elements.find((e) => e.name === 'birthDate');
     expect(birthDate).toBeDefined();
-    expect(birthDate!.type).toBe('System.Date');
+    expect(birthDate!.type).toBe('FHIR.date');
     expect(birthDate!.isList).toBe(false);
   });
 
@@ -39,7 +39,7 @@ describe('R4 ModelInfo', () => {
   });
 
   it('returns elementType for Patient.birthDate', () => {
-    expect(mi.elementType('Patient.birthDate')).toBe('System.Date');
+    expect(mi.elementType('Patient.birthDate')).toBe('FHIR.date');
   });
 
   it('returns null for unknown element', () => {
@@ -224,6 +224,52 @@ describe('FHIR complex types', () => {
       expect(ti).not.toBeNull();
       expect(ti!.baseName).toBe('FHIR.Quantity');
     }
+  });
+});
+
+describe('Resource element types use FHIR primitives', () => {
+  const mi = createR4ModelInfo();
+
+  it('Patient.birthDate is FHIR.date', () => {
+    expect(mi.elementType('Patient.birthDate')).toBe('FHIR.date');
+  });
+
+  it('Patient.gender is FHIR.code', () => {
+    expect(mi.elementType('Patient.gender')).toBe('FHIR.code');
+  });
+
+  it('Patient.active is FHIR.boolean', () => {
+    expect(mi.elementType('Patient.active')).toBe('FHIR.boolean');
+  });
+
+  it('Patient.id is FHIR.id', () => {
+    expect(mi.elementType('Patient.id')).toBe('FHIR.id');
+  });
+
+  it('Observation.status is FHIR.code', () => {
+    expect(mi.elementType('Observation.status')).toBe('FHIR.code');
+  });
+
+  it('MedicationRequest.authoredOn is FHIR.dateTime', () => {
+    expect(mi.elementType('MedicationRequest.authoredOn')).toBe('FHIR.dateTime');
+  });
+
+  it('Observation.value choice types use FHIR prefixes', () => {
+    const ti = mi.typeInfo('Observation');
+    const valueElem = ti!.elements.find(e => e.name === 'value');
+    expect(valueElem!.choiceTypes).toContain('FHIR.string');
+    expect(valueElem!.choiceTypes).toContain('FHIR.boolean');
+    expect(valueElem!.choiceTypes).toContain('FHIR.integer');
+    expect(valueElem!.choiceTypes).toContain('FHIR.dateTime');
+    expect(valueElem!.choiceTypes).not.toContain('System.String');
+  });
+
+  it('Patient.deceased choice types use FHIR prefixes', () => {
+    const ti = mi.typeInfo('Patient');
+    const elem = ti!.elements.find(e => e.name === 'deceased');
+    expect(elem!.choiceTypes).toContain('FHIR.boolean');
+    expect(elem!.choiceTypes).toContain('FHIR.dateTime');
+    expect(elem!.choiceTypes).not.toContain('System.Boolean');
   });
 });
 

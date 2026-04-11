@@ -43,13 +43,13 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: '',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'birthDate', type: 'System.Date', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'gender', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'birthDate', type: 'FHIR.date', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'gender', type: 'FHIR.code', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'name', type: 'FHIR.HumanName', isList: true, isChoice: false, choiceTypes: [] },
       { name: 'identifier', type: 'FHIR.Identifier', isList: true, isChoice: false, choiceTypes: [] },
-      { name: 'active', type: 'System.Boolean', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'deceased', type: '', isList: false, isChoice: true, choiceTypes: ['System.Boolean', 'System.DateTime'] },
+      { name: 'active', type: 'FHIR.boolean', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'deceased', type: '', isList: false, isChoice: true, choiceTypes: ['FHIR.boolean', 'FHIR.dateTime'] },
       { name: 'address', type: 'FHIR.Address', isList: true, isChoice: false, choiceTypes: [] },
       { name: 'telecom', type: 'FHIR.ContactPoint', isList: true, isChoice: false, choiceTypes: [] },
     ],
@@ -61,10 +61,10 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'code',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'code', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'subject', type: 'FHIR.Reference', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'onset', type: '', isList: false, isChoice: true, choiceTypes: ['System.DateTime', 'FHIR.Age', 'FHIR.Period', 'FHIR.Range', 'System.String'] },
+      { name: 'onset', type: '', isList: false, isChoice: true, choiceTypes: ['FHIR.dateTime', 'FHIR.Age', 'FHIR.Period', 'FHIR.Range', 'FHIR.string'] },
       { name: 'clinicalStatus', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'verificationStatus', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'category', type: 'FHIR.CodeableConcept', isList: true, isChoice: false, choiceTypes: [] },
@@ -77,12 +77,12 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'code',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'code', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'subject', type: 'FHIR.Reference', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'value', type: '', isList: false, isChoice: true, choiceTypes: ['FHIR.Quantity', 'FHIR.CodeableConcept', 'System.String', 'System.Boolean', 'System.Integer', 'FHIR.Range', 'FHIR.Ratio', 'FHIR.SampledData', 'System.DateTime', 'FHIR.Period', 'FHIR.Attachment'] },
-      { name: 'effective', type: '', isList: false, isChoice: true, choiceTypes: ['System.DateTime', 'FHIR.Period', 'FHIR.Timing', 'System.DateTime'] },
-      { name: 'status', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'value', type: '', isList: false, isChoice: true, choiceTypes: ['FHIR.Quantity', 'FHIR.CodeableConcept', 'FHIR.string', 'FHIR.boolean', 'FHIR.integer', 'FHIR.Range', 'FHIR.Ratio', 'FHIR.SampledData', 'FHIR.dateTime', 'FHIR.Period', 'FHIR.Attachment'] },
+      { name: 'effective', type: '', isList: false, isChoice: true, choiceTypes: ['FHIR.dateTime', 'FHIR.Period', 'FHIR.Timing', 'FHIR.dateTime'] },
+      { name: 'status', type: 'FHIR.code', isList: false, isChoice: false, choiceTypes: [] },
     ],
   });
 
@@ -93,10 +93,10 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'type',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'type', type: 'FHIR.CodeableConcept', isList: true, isChoice: false, choiceTypes: [] },
       { name: 'class', type: 'FHIR.CodeableConcept', isList: true, isChoice: false, choiceTypes: [] },
-      { name: 'status', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'status', type: 'FHIR.code', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'actualPeriod', type: 'FHIR.Period', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'subject', type: 'FHIR.Reference', isList: false, isChoice: false, choiceTypes: [] },
     ],
@@ -108,11 +108,11 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'code',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'code', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'subject', type: 'FHIR.Reference', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'occurrence', type: '', isList: false, isChoice: true, choiceTypes: ['System.DateTime', 'FHIR.Period', 'System.String', 'FHIR.Age', 'FHIR.Range', 'FHIR.Timing'] },
-      { name: 'status', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'occurrence', type: '', isList: false, isChoice: true, choiceTypes: ['FHIR.dateTime', 'FHIR.Period', 'FHIR.string', 'FHIR.Age', 'FHIR.Range', 'FHIR.Timing'] },
+      { name: 'status', type: 'FHIR.code', isList: false, isChoice: false, choiceTypes: [] },
     ],
   });
 
@@ -123,11 +123,11 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'medication',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'medication', type: 'FHIR.CodeableReference', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'subject', type: 'FHIR.Reference', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'status', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'authoredOn', type: 'System.DateTime', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'status', type: 'FHIR.code', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'authoredOn', type: 'FHIR.dateTime', isList: false, isChoice: false, choiceTypes: [] },
     ],
   });
 
@@ -137,9 +137,9 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'code',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'code', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'status', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'status', type: 'FHIR.code', isList: false, isChoice: false, choiceTypes: [] },
     ],
   });
 
@@ -149,11 +149,11 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'code',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'code', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'subject', type: 'FHIR.Reference', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'effective', type: '', isList: false, isChoice: true, choiceTypes: ['System.DateTime', 'FHIR.Period'] },
-      { name: 'status', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'effective', type: '', isList: false, isChoice: true, choiceTypes: ['FHIR.dateTime', 'FHIR.Period'] },
+      { name: 'status', type: 'FHIR.code', isList: false, isChoice: false, choiceTypes: [] },
     ],
   });
 
@@ -163,7 +163,7 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'code',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'code', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'patient', type: 'FHIR.Reference', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'clinicalStatus', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
@@ -177,11 +177,11 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'vaccineCode',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'vaccineCode', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'patient', type: 'FHIR.Reference', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'occurrence', type: '', isList: false, isChoice: true, choiceTypes: ['System.DateTime', 'System.String'] },
-      { name: 'status', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'occurrence', type: '', isList: false, isChoice: true, choiceTypes: ['FHIR.dateTime', 'FHIR.string'] },
+      { name: 'status', type: 'FHIR.code', isList: false, isChoice: false, choiceTypes: [] },
     ],
   });
 
@@ -191,11 +191,11 @@ export function createR5ModelInfo(): StaticModelInfo {
     baseName: 'FHIR.DomainResource',
     primaryKey: 'code',
     elements: [
-      { name: 'id', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'id', type: 'FHIR.id', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'code', type: 'FHIR.CodeableConcept', isList: false, isChoice: false, choiceTypes: [] },
       { name: 'subject', type: 'FHIR.Reference', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'status', type: 'System.String', isList: false, isChoice: false, choiceTypes: [] },
-      { name: 'authoredOn', type: 'System.DateTime', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'status', type: 'FHIR.code', isList: false, isChoice: false, choiceTypes: [] },
+      { name: 'authoredOn', type: 'FHIR.dateTime', isList: false, isChoice: false, choiceTypes: [] },
     ],
   });
 
