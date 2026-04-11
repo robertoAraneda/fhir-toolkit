@@ -141,6 +141,92 @@ describe('R5 ModelInfo', () => {
   });
 });
 
+describe('FHIR primitive types', () => {
+  const mi = createR4ModelInfo();
+
+  it('registers FHIR.decimal with a value element of System.Decimal', () => {
+    const ti = mi.typeInfo('decimal');
+    expect(ti).not.toBeNull();
+    expect(ti!.namespace).toBe('FHIR');
+    expect(ti!.elements).toHaveLength(1);
+    expect(ti!.elements[0].name).toBe('value');
+    expect(ti!.elements[0].type).toBe('System.Decimal');
+  });
+
+  it('registers FHIR.string with a value element of System.String', () => {
+    const ti = mi.typeInfo('string');
+    expect(ti).not.toBeNull();
+    expect(ti!.elements[0].type).toBe('System.String');
+  });
+
+  it('registers FHIR.dateTime with a value element of System.DateTime', () => {
+    const ti = mi.typeInfo('dateTime');
+    expect(ti).not.toBeNull();
+    expect(ti!.elements[0].type).toBe('System.DateTime');
+  });
+
+  it('registers all 20 FHIR primitive types', () => {
+    const primitives = [
+      'boolean', 'integer', 'decimal', 'string', 'date', 'dateTime', 'time',
+      'instant', 'uri', 'url', 'canonical', 'code', 'id', 'oid', 'uuid',
+      'markdown', 'base64Binary', 'unsignedInt', 'positiveInt', 'xhtml',
+    ];
+    for (const p of primitives) {
+      expect(mi.typeInfo(p)).not.toBeNull();
+    }
+  });
+});
+
+describe('FHIR complex types', () => {
+  const mi = createR4ModelInfo();
+
+  it('registers Quantity with FHIR-typed elements', () => {
+    const ti = mi.typeInfo('Quantity');
+    expect(ti).not.toBeNull();
+    const valueElem = ti!.elements.find(e => e.name === 'value');
+    expect(valueElem!.type).toBe('FHIR.decimal');
+    const unitElem = ti!.elements.find(e => e.name === 'unit');
+    expect(unitElem!.type).toBe('FHIR.string');
+  });
+
+  it('registers Coding with FHIR-typed elements', () => {
+    const ti = mi.typeInfo('Coding');
+    expect(ti).not.toBeNull();
+    const codeElem = ti!.elements.find(e => e.name === 'code');
+    expect(codeElem!.type).toBe('FHIR.code');
+  });
+
+  it('registers CodeableConcept with coding list', () => {
+    const ti = mi.typeInfo('CodeableConcept');
+    expect(ti).not.toBeNull();
+    const codingElem = ti!.elements.find(e => e.name === 'coding');
+    expect(codingElem!.type).toBe('FHIR.Coding');
+    expect(codingElem!.isList).toBe(true);
+  });
+
+  it('registers Period with FHIR.dateTime elements', () => {
+    const ti = mi.typeInfo('Period');
+    expect(ti).not.toBeNull();
+    const startElem = ti!.elements.find(e => e.name === 'start');
+    expect(startElem!.type).toBe('FHIR.dateTime');
+  });
+
+  it('registers Reference with FHIR-typed elements', () => {
+    const ti = mi.typeInfo('Reference');
+    expect(ti).not.toBeNull();
+    const refElem = ti!.elements.find(e => e.name === 'reference');
+    expect(refElem!.type).toBe('FHIR.string');
+  });
+
+  it('registers Quantity profiles (Age, Duration, etc.)', () => {
+    for (const name of ['Age', 'Count', 'Distance', 'Duration', 'SimpleQuantity', 'MoneyQuantity']) {
+      const ti = mi.typeInfo(name);
+      expect(ti).not.toBeNull();
+      expect(ti!.baseName).toBe('FHIR.Quantity');
+    }
+  });
+});
+
 describe('resolveModelInfo', () => {
   it('resolves R4 string to R4 model', () => {
     const mi = resolveModelInfo('R4');

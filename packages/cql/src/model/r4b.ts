@@ -1,4 +1,5 @@
 import { StaticModelInfo } from './model-info.js';
+import { registerFhirPrimitiveTypes, registerFhirComplexTypes } from './fhir-types.js';
 
 /**
  * Returns a minimal R4B (4.3.0) model info with common clinical types.
@@ -28,6 +29,10 @@ export function createR4BModelInfo(): StaticModelInfo {
   mi.setCodePath('AllergyIntolerance', 'code');
   mi.setCodePath('Immunization', 'vaccineCode');
   mi.setCodePath('ServiceRequest', 'code');
+
+  // FHIR primitive and complex types (shared across versions)
+  registerFhirPrimitiveTypes(mi);
+  registerFhirComplexTypes(mi);
 
   // --- Type registrations (structurally identical to R4) ---
 

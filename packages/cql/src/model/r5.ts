@@ -1,4 +1,5 @@
 import { StaticModelInfo } from './model-info.js';
+import { registerFhirPrimitiveTypes, registerFhirComplexTypes } from './fhir-types.js';
 
 /**
  * Returns a minimal R5 (5.0.0) model info with common clinical types.
@@ -29,6 +30,10 @@ export function createR5ModelInfo(): StaticModelInfo {
   mi.setCodePath('AllergyIntolerance', 'code');
   mi.setCodePath('Immunization', 'vaccineCode');
   mi.setCodePath('ServiceRequest', 'code');
+
+  // FHIR primitive and complex types (shared across versions)
+  registerFhirPrimitiveTypes(mi);
+  registerFhirComplexTypes(mi);
 
   // --- Type registrations ---
 
