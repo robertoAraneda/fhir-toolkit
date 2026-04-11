@@ -1,5 +1,11 @@
 # @fhir-toolkit/cql
 
+## 1.1.0
+
+### Minor Changes
+
+- 89f86a2: Resolve FHIR value[x] polymorphic fields in CQL evaluation. Standard CQL patterns like `obs.value as FHIR.Quantity` now work correctly against FHIR Bundles. Added typed FHIR wrapping via `wrapFhirResource` that uses ModelInfo to recursively assign types and resolve choice type aliases.
+
 ## 1.0.1
 
 ### Patch Changes
