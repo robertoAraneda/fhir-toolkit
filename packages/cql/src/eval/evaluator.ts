@@ -239,9 +239,19 @@ export function wrapFhirResource(
 
   // Build element lookup for this type
   const elemByName = new Map<string, ElementInfo>();
+  // Map concrete choice keys (e.g., "valueString") to { abstractName, choiceType }
+  const choiceKeyMap = new Map<string, { abstractName: string; choiceType: string }>();
   if (typeInfo) {
     for (const e of typeInfo.elements) {
       elemByName.set(e.name, e);
+      if (e.isChoice) {
+        for (const ct of e.choiceTypes) {
+          const suffix = stripNamespace(ct);
+          const capitalizedSuffix = suffix.charAt(0).toUpperCase() + suffix.slice(1);
+          const concreteKey = e.name + capitalizedSuffix;
+          choiceKeyMap.set(concreteKey, { abstractName: e.name, choiceType: ct });
+        }
+      }
     }
   }
 
@@ -251,7 +261,21 @@ export function wrapFhirResource(
     if (elemInfo && !elemInfo.isChoice) {
       elements.set(key, wrapFhirElement(val, elemInfo, modelInfo));
     } else {
-      elements.set(key, wrapFhirValue(val));
+      // Check if this is a concrete choice key (e.g., valueString, valueQuantity)
+      const choiceInfo = choiceKeyMap.get(key);
+      if (choiceInfo) {
+        // Wrap with proper type info via a synthetic ElementInfo
+        const syntheticElemInfo: ElementInfo = {
+          name: key,
+          type: choiceInfo.choiceType,
+          isChoice: false,
+          choiceTypes: [],
+          isList: false,
+        };
+        elements.set(key, wrapFhirElement(val, syntheticElemInfo, modelInfo));
+      } else {
+        elements.set(key, wrapFhirValue(val));
+      }
     }
   }
 
@@ -263,11 +287,12 @@ export function wrapFhirResource(
 
       for (const choiceType of elem.choiceTypes) {
         const suffix = stripNamespace(choiceType);
-        const concreteKey = elem.name + suffix;
+        const capitalizedSuffix = suffix.charAt(0).toUpperCase() + suffix.slice(1);
+        const concreteKey = elem.name + capitalizedSuffix;
         if (elements.has(concreteKey)) {
           const val = elements.get(concreteKey);
-          // Tag FHIR complex types with instanceType
-          if (val instanceof CqlTuple) {
+          // Tag with instanceType
+          if (val instanceof CqlTuple && !val.instanceType) {
             val.instanceType = suffix;
           }
           elements.set(elem.name, val ?? null);

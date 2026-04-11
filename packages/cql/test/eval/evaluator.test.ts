@@ -1774,14 +1774,17 @@ describe('wrapFhirResource', () => {
     expect((code as CqlTuple).instanceType).toBe('CodeableConcept');
   });
 
-  it('handles choice type with System type (valueString stays CqlString)', () => {
+  it('handles choice type with System type (valueString wraps as FHIR.string tuple)', () => {
     const obs = {
       resourceType: 'Observation',
       valueString: 'positive',
     };
     const result = wrapFhirResource(obs, 'Observation', mi);
     const val = result.get('value');
-    expect(val).toBeInstanceOf(CqlString);
+    expect(val).toBeInstanceOf(CqlTuple);
+    expect((val as CqlTuple).instanceType).toBe('string');
+    expect((val as CqlTuple).get('value')).toBeInstanceOf(CqlString);
+    expect((val as CqlTuple).get('value')?.toString()).toBe('positive');
   });
 
   it('handles missing choice type gracefully (no abstract alias added)', () => {
@@ -1864,7 +1867,10 @@ describe('choice type end-to-end', () => {
     `;
     const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
     expect(results['Val']).not.toBeNull();
-    expect(results['Height']?.toString()).toBe('165');
+    // Val.value is now a FHIR.decimal wrapper tuple
+    expect(results['Height']).toBeInstanceOf(CqlTuple);
+    expect((results['Height'] as CqlTuple).instanceType).toBe('decimal');
+    expect((results['Height'] as CqlTuple).get('value')?.toString()).toBe('165');
   });
 
   it('obs.value resolves even without as cast', async () => {
@@ -1896,7 +1902,9 @@ describe('choice type end-to-end', () => {
     `;
     const patient = { resourceType: 'Patient', id: 'p1', deceasedBoolean: false };
     const results = await engine.evaluateLibrary(cql, patient);
-    expect(results['IsDeceased']).not.toBeNull();
+    expect(results['IsDeceased']).toBeInstanceOf(CqlTuple);
+    expect((results['IsDeceased'] as CqlTuple).instanceType).toBe('boolean');
+    expect((results['IsDeceased'] as CqlTuple).get('value')).toBeInstanceOf(CqlBoolean);
   });
 });
 
@@ -1924,7 +1932,8 @@ describe('choice type edge cases', () => {
       define Onset: Cond.onset
     `;
     const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
-    expect(results['Onset']).not.toBeNull();
+    expect(results['Onset']).toBeInstanceOf(CqlTuple);
+    expect((results['Onset'] as CqlTuple).instanceType).toBe('dateTime');
   });
 
   it('MedicationRequest.medication choice type resolves medicationCodeableConcept', async () => {
@@ -1955,7 +1964,7 @@ describe('choice type edge cases', () => {
     expect((results['Med'] as CqlTuple).instanceType).toBe('CodeableConcept');
   });
 
-  it('valueString choice type resolves to CqlString', async () => {
+  it('valueString choice type resolves to FHIR.string tuple', async () => {
     const bundle = {
       resourceType: 'Bundle' as const,
       entry: [
@@ -1979,7 +1988,9 @@ describe('choice type edge cases', () => {
       define Val: Obs.value
     `;
     const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
-    expect(results['Val']?.toString()).toBe('positive');
+    expect(results['Val']).toBeInstanceOf(CqlTuple);
+    expect((results['Val'] as CqlTuple).instanceType).toBe('string');
+    expect((results['Val'] as CqlTuple).get('value')?.toString()).toBe('positive');
   });
 });
 
@@ -2040,5 +2051,57 @@ describe('FHIR primitive wrapping', () => {
     expect(items[0]).toBeInstanceOf(CqlTuple);
     expect((items[0] as CqlTuple).instanceType).toBe('string');
     expect((items[0] as CqlTuple).get('value')?.toString()).toBe('John');
+  });
+});
+
+describe('FHIRHelpers.ToQuantity pattern end-to-end', () => {
+  const bundle = {
+    resourceType: 'Bundle' as const,
+    entry: [
+      {
+        resource: {
+          resourceType: 'Observation',
+          id: 'obs1',
+          code: { coding: [{ system: 'http://loinc.org', code: '8302-2' }] },
+          status: 'final',
+          valueQuantity: { value: 128, unit: 'cm', system: 'http://unitsofmeasure.org', code: 'cm' },
+        },
+      },
+    ],
+  };
+
+  it('quantity.value.value resolves through FHIR wrapper (FHIRHelpers pattern)', async () => {
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Obs: First([Observation])
+      define Qty: (Obs.value as FHIR.Quantity)
+      define QtyValueWrapper: Qty.value
+      define QtyValueInner: Qty.value.value
+      define QtyUnitInner: Qty.unit.value
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['QtyValueWrapper']).toBeInstanceOf(CqlTuple);
+    expect((results['QtyValueWrapper'] as CqlTuple).instanceType).toBe('decimal');
+    expect(results['QtyValueInner']?.toString()).toBe('128');
+    expect(results['QtyUnitInner']?.toString()).toBe('cm');
+  });
+
+  it('coding.code.value resolves through FHIR wrapper', async () => {
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Obs: First([Observation])
+      define ObsCoding: Obs.code.coding[0]
+      define CodeValue: ObsCoding.code.value
+      define SystemValue: ObsCoding.system.value
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['CodeValue']?.toString()).toBe('8302-2');
+    expect(results['SystemValue']?.toString()).toBe('http://loinc.org');
   });
 });
