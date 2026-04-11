@@ -549,6 +549,15 @@ export class CqlEvaluator
         this.ctx.contextResource !== undefined &&
         this.ctx.library.contexts.some((c) => c.name === expr.name)
       ) {
+        if (
+          this.ctx.modelInfo &&
+          typeof this.ctx.contextResource === 'object' &&
+          this.ctx.contextResource !== null
+        ) {
+          const ctxObj = this.ctx.contextResource as Record<string, unknown>;
+          const ctxType = (ctxObj['resourceType'] as string) ?? expr.name;
+          return wrapFhirResource(ctxObj, ctxType, this.ctx.modelInfo);
+        }
         return wrapFhirValue(this.ctx.contextResource);
       }
     }
@@ -1126,7 +1135,21 @@ export class CqlEvaluator
     // Wrap each result recursively as a CqlTuple
     const values: CqlValue[] = [];
     for (const raw of results) {
-      const wrapped = wrapFhirValue(raw);
+      let wrapped: CqlValue | null;
+      if (
+        this.ctx.modelInfo &&
+        typeof raw === 'object' &&
+        raw !== null &&
+        !Array.isArray(raw)
+      ) {
+        wrapped = wrapFhirResource(
+          raw as Record<string, unknown>,
+          resourceType,
+          this.ctx.modelInfo,
+        );
+      } else {
+        wrapped = wrapFhirValue(raw);
+      }
       if (wrapped !== null) values.push(wrapped);
     }
     return new CqlList(values);

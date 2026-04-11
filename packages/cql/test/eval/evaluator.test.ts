@@ -1835,3 +1835,67 @@ describe('visitAs with instanceType', () => {
     expect((val as CqlTuple).instanceType).toBe('Quantity');
   });
 });
+
+describe('choice type end-to-end', () => {
+  const bundle = {
+    resourceType: 'Bundle' as const,
+    entry: [
+      {
+        resource: {
+          resourceType: 'Observation',
+          id: 'height1',
+          code: { coding: [{ system: 'http://loinc.org', code: '8302-2' }] },
+          status: 'final',
+          valueQuantity: { value: 165, unit: 'cm', system: 'http://unitsofmeasure.org', code: 'cm' },
+        },
+      },
+    ],
+  };
+
+  it('obs.value as FHIR.Quantity resolves valueQuantity', async () => {
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Obs: First([Observation])
+      define Val: (Obs.value as FHIR.Quantity)
+      define Height: Val.value
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['Val']).not.toBeNull();
+    expect(results['Height']?.toString()).toBe('165');
+  });
+
+  it('obs.value resolves even without as cast', async () => {
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Obs: First([Observation])
+      define Val: Obs.value
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['Val']).not.toBeNull();
+    expect(results['Val']).toBeInstanceOf(CqlTuple);
+  });
+
+  it('Patient.deceased choice type resolves deceasedBoolean', async () => {
+    const engine = new CqlEngine({
+      dataProvider: new InMemoryDataProvider({
+        resourceType: 'Bundle',
+        entry: [],
+      }),
+    });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define IsDeceased: Patient.deceased
+    `;
+    const patient = { resourceType: 'Patient', id: 'p1', deceasedBoolean: false };
+    const results = await engine.evaluateLibrary(cql, patient);
+    expect(results['IsDeceased']).not.toBeNull();
+  });
+});
