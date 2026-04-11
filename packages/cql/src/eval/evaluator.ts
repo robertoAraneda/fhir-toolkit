@@ -905,7 +905,7 @@ export class CqlEvaluator
     if (operand === null) return CqlBoolean.FALSE;
     if (expr.type.specKind !== 'NamedType') return CqlBoolean.FALSE;
     const operandType = operand.type.toLowerCase();
-    const targetType = expr.type.name.toLowerCase().replace(/^system\./, '');
+    const targetType = expr.type.name.toLowerCase().replace(/^(fhir\.|system\.)/, '');
     if (operandType === targetType) return CqlBoolean.TRUE;
     // For tuples constructed via Instance expressions, also check the instance type name
     if (operand instanceof CqlTuple && operand.instanceType) {
