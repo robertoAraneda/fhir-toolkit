@@ -1982,3 +1982,63 @@ describe('choice type edge cases', () => {
     expect(results['Val']?.toString()).toBe('positive');
   });
 });
+
+describe('FHIR primitive wrapping', () => {
+  const mi = createR4ModelInfo();
+
+  it('wraps Quantity.value as FHIR.decimal tuple', () => {
+    const qty = { value: 128, unit: 'cm', system: 'http://unitsofmeasure.org', code: 'cm' };
+    const result = wrapFhirResource(qty, 'Quantity', mi);
+    const val = result.get('value');
+    expect(val).toBeInstanceOf(CqlTuple);
+    expect((val as CqlTuple).instanceType).toBe('decimal');
+    expect((val as CqlTuple).get('value')).toBeInstanceOf(CqlInteger);
+  });
+
+  it('wraps Quantity.unit as FHIR.string tuple', () => {
+    const qty = { value: 128, unit: 'cm' };
+    const result = wrapFhirResource(qty, 'Quantity', mi);
+    const unit = result.get('unit');
+    expect(unit).toBeInstanceOf(CqlTuple);
+    expect((unit as CqlTuple).instanceType).toBe('string');
+    expect((unit as CqlTuple).get('value')?.toString()).toBe('cm');
+  });
+
+  it('quantity.value.value resolves to the number (FHIRHelpers pattern)', () => {
+    const qty = { value: 128, unit: 'cm' };
+    const result = wrapFhirResource(qty, 'Quantity', mi);
+    const fhirDecimal = result.get('value') as CqlTuple;
+    const systemDecimal = fhirDecimal.get('value');
+    expect(systemDecimal).not.toBeNull();
+    expect(systemDecimal?.toString()).toBe('128');
+  });
+
+  it('wraps Coding.code as FHIR.code tuple', () => {
+    const coding = { system: 'http://loinc.org', code: '8302-2', display: 'Body height' };
+    const result = wrapFhirResource(coding, 'Coding', mi);
+    const code = result.get('code');
+    expect(code).toBeInstanceOf(CqlTuple);
+    expect((code as CqlTuple).instanceType).toBe('code');
+    expect((code as CqlTuple).get('value')?.toString()).toBe('8302-2');
+  });
+
+  it('wraps Period.start as FHIR.dateTime tuple', () => {
+    const period = { start: '2023-01-01', end: '2023-12-31' };
+    const result = wrapFhirResource(period, 'Period', mi);
+    const start = result.get('start');
+    expect(start).toBeInstanceOf(CqlTuple);
+    expect((start as CqlTuple).instanceType).toBe('dateTime');
+  });
+
+  it('wraps list of FHIR primitives (HumanName.given)', () => {
+    const name = { family: 'Smith', given: ['John', 'Michael'] };
+    const result = wrapFhirResource(name, 'HumanName', mi);
+    const given = result.get('given');
+    expect(given).toBeInstanceOf(CqlList);
+    const items = (given as any).values;
+    expect(items).toHaveLength(2);
+    expect(items[0]).toBeInstanceOf(CqlTuple);
+    expect((items[0] as CqlTuple).instanceType).toBe('string');
+    expect((items[0] as CqlTuple).get('value')?.toString()).toBe('John');
+  });
+});

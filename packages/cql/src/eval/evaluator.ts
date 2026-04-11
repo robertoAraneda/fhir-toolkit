@@ -147,6 +147,15 @@ function stripNamespace(qualifiedType: string): string {
   return dot >= 0 ? qualifiedType.substring(dot + 1) : qualifiedType;
 }
 
+/** FHIR primitive types that should be wrapped as typed tuples with a .value element. */
+const FHIR_PRIMITIVE_TYPES = new Set([
+  'FHIR.boolean', 'FHIR.integer', 'FHIR.decimal', 'FHIR.string',
+  'FHIR.date', 'FHIR.dateTime', 'FHIR.time', 'FHIR.instant',
+  'FHIR.uri', 'FHIR.url', 'FHIR.canonical', 'FHIR.code',
+  'FHIR.id', 'FHIR.oid', 'FHIR.uuid', 'FHIR.markdown',
+  'FHIR.base64Binary', 'FHIR.unsignedInt', 'FHIR.positiveInt', 'FHIR.xhtml',
+]);
+
 /**
  * Wrap a single element value using its ElementInfo type from ModelInfo.
  * FHIR complex types are recursively wrapped with type info; System types
@@ -159,6 +168,28 @@ function wrapFhirElement(
 ): CqlValue | null {
   if (val === null || val === undefined) return null;
   const typeName = stripNamespace(elemInfo.type);
+
+  // FHIR primitive type: wrap as typed tuple with .value
+  if (FHIR_PRIMITIVE_TYPES.has(elemInfo.type)) {
+    if (elemInfo.isList && Array.isArray(val)) {
+      const items: CqlValue[] = [];
+      for (const item of val) {
+        const inner = wrapFhirValue(item);
+        if (inner !== null) {
+          const elems = new Map<string, CqlValue | null>([['value', inner]]);
+          const t = new CqlTuple(elems);
+          t.instanceType = stripNamespace(elemInfo.type);
+          items.push(t);
+        }
+      }
+      return new CqlList(items);
+    }
+    const inner = wrapFhirValue(val);
+    const elems = new Map<string, CqlValue | null>([['value', inner]]);
+    const t = new CqlTuple(elems);
+    t.instanceType = stripNamespace(elemInfo.type);
+    return t;
+  }
 
   // List element: wrap each item
   if (elemInfo.isList && Array.isArray(val)) {
