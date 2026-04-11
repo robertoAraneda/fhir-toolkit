@@ -1899,3 +1899,86 @@ describe('choice type end-to-end', () => {
     expect(results['IsDeceased']).not.toBeNull();
   });
 });
+
+describe('choice type edge cases', () => {
+  it('Condition.onset as DateTime resolves onsetDateTime', async () => {
+    const bundle = {
+      resourceType: 'Bundle' as const,
+      entry: [
+        {
+          resource: {
+            resourceType: 'Condition',
+            id: 'c1',
+            code: { coding: [{ system: 'http://snomed.info/sct', code: '44054006' }] },
+            onsetDateTime: '2023-06-15',
+          },
+        },
+      ],
+    };
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Cond: First([Condition])
+      define Onset: Cond.onset
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['Onset']).not.toBeNull();
+  });
+
+  it('MedicationRequest.medication choice type resolves medicationCodeableConcept', async () => {
+    const bundle = {
+      resourceType: 'Bundle' as const,
+      entry: [
+        {
+          resource: {
+            resourceType: 'MedicationRequest',
+            id: 'mr1',
+            status: 'active',
+            medicationCodeableConcept: { coding: [{ system: 'http://www.nlm.nih.gov/research/umls/rxnorm', code: '1049502' }] },
+          },
+        },
+      ],
+    };
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define MR: First([MedicationRequest])
+      define Med: MR.medication
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['Med']).not.toBeNull();
+    expect(results['Med']).toBeInstanceOf(CqlTuple);
+    expect((results['Med'] as CqlTuple).instanceType).toBe('CodeableConcept');
+  });
+
+  it('valueString choice type resolves to CqlString', async () => {
+    const bundle = {
+      resourceType: 'Bundle' as const,
+      entry: [
+        {
+          resource: {
+            resourceType: 'Observation',
+            id: 'obs1',
+            code: { coding: [{ system: 'http://loinc.org', code: '8302-2' }] },
+            status: 'final',
+            valueString: 'positive',
+          },
+        },
+      ],
+    };
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Obs: First([Observation])
+      define Val: Obs.value
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['Val']?.toString()).toBe('positive');
+  });
+});
