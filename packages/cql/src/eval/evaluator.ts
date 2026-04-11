@@ -239,7 +239,7 @@ export function wrapFhirResource(
           if (val instanceof CqlTuple) {
             val.instanceType = suffix;
           }
-          elements.set(elem.name, val);
+          elements.set(elem.name, val ?? null);
           break;
         }
       }
