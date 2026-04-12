@@ -348,10 +348,12 @@ export class CqlBuilder extends cqlVisitor<unknown> {
     const qi = ctx.qualifiedIdentifier();
     const vs = ctx.versionSpecifier();
     const li = ctx.localIdentifier();
+    const name = qi ? qi.getText() : '';
     return {
-      name: qi ? qi.getText() : '',
+      name,
       version: vs ? unquoteString(vs.getText()) : '',
-      alias: li ? li.getText() : '',
+      // CQL spec: if no 'called' clause, default alias is the library name
+      alias: li ? li.getText() : name,
     };
   };
 
