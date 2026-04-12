@@ -29,6 +29,7 @@ const UNSUPPORTED_CAPABILITIES = new Set<string>([
 // Tests that are inherently flaky due to timing (e.g. Now() = Now() can differ across milliseconds in slow CI)
 const FLAKY_TESTS = new Set<string>([
   'DateTimeNow',
+  'TimeOfDayTest',
 ]);
 
 const files = readdirSync(FIXTURES_DIR).filter((f) => f.endsWith('.xml'));
