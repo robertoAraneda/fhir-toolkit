@@ -118,6 +118,11 @@ const FHIR_PRIMITIVE_INSTANCE_TYPES = new Set([
   'markdown', 'base64Binary', 'unsignedInt', 'positiveInt', 'xhtml',
 ]);
 
+/** FHIR Quantity subtypes recognised for overload scoring (all lowercase). */
+const QUANTITY_SUBTYPES = new Set([
+  'simplequantity', 'age', 'count', 'distance', 'duration', 'moneyquantity',
+]);
+
 /**
  * Implicitly coerce a FHIR primitive tuple to its inner System value.
  * E.g. CqlTuple{ value: CqlString("male"), instanceType: 'code' } → CqlString("male")
@@ -522,6 +527,9 @@ export class CqlEvaluator
       }
     }
 
+    // If no overload matched by arity (bestScore still -1), fall back to the
+    // first overload.  This is intentional: CQL functions may accept optional
+    // parameters or generic arguments whose arity doesn't line up exactly.
     return bestFn;
   }
 
@@ -532,13 +540,12 @@ export class CqlEvaluator
   private scoreArgMatch(arg: CqlResult, paramType: TypeSpecifier): number {
     if (arg === null) return 0;
     if (paramType.specKind !== 'NamedType') return 0;
-    const paramName = paramType.name.toLowerCase();
+    const paramName = stripNamespace(paramType.name).toLowerCase();
 
     // Check CqlTuple instanceType (FHIR typed tuples)
     if (arg instanceof CqlTuple && arg.instanceType) {
       if (arg.instanceType.toLowerCase() === paramName) return 2;
-      const quantitySubtypes = ['simplequantity', 'age', 'count', 'distance', 'duration', 'moneyquantity'];
-      if (paramName === 'quantity' && quantitySubtypes.includes(arg.instanceType.toLowerCase())) return 1;
+      if (paramName === 'quantity' && QUANTITY_SUBTYPES.has(arg.instanceType.toLowerCase())) return 1;
       return 0;
     }
 
