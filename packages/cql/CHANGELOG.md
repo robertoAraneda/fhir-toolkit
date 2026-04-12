@@ -1,5 +1,11 @@
 # @fhir-toolkit/cql
 
+## 1.3.0
+
+### Minor Changes
+
+- baa72cf: Implement type-scored function overload resolution for user-defined functions. Fixes included library functions (e.g., FHIRHelpers) selecting the wrong overload when multiple functions share the same name with different FHIR type parameters.
+
 ## 1.2.1
 
 ### Patch Changes
