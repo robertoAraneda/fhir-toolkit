@@ -110,6 +110,29 @@ function toList(v: CqlValue | null): CqlValue[] {
   return [v];
 }
 
+/** FHIR primitive instanceType names (unqualified) for implicit coercion. */
+const FHIR_PRIMITIVE_INSTANCE_TYPES = new Set([
+  'boolean', 'integer', 'decimal', 'string', 'date', 'dateTime', 'time',
+  'instant', 'uri', 'url', 'canonical', 'code', 'id', 'oid', 'uuid',
+  'markdown', 'base64Binary', 'unsignedInt', 'positiveInt', 'xhtml',
+]);
+
+/**
+ * Implicitly coerce a FHIR primitive tuple to its inner System value.
+ * E.g. CqlTuple{ value: CqlString("male"), instanceType: 'code' } → CqlString("male")
+ * Non-FHIR-primitive values pass through unchanged.
+ */
+function coerceFhirPrimitive(v: CqlValue | null): CqlValue | null {
+  if (
+    v instanceof CqlTuple &&
+    v.instanceType &&
+    FHIR_PRIMITIVE_INSTANCE_TYPES.has(v.instanceType)
+  ) {
+    return v.get('value') ?? null;
+  }
+  return v;
+}
+
 /**
  * Recursively wrap a plain JSON value (from a FHIR resource) into a CqlValue.
  * Arrays become CqlList, objects become CqlTuple, primitives map directly.
@@ -658,8 +681,8 @@ export class CqlEvaluator
       }
     }
 
-    const left = await this.evaluate(expr.left);
-    const right = await this.evaluate(expr.right);
+    const left = coerceFhirPrimitive(await this.evaluate(expr.left));
+    const right = coerceFhirPrimitive(await this.evaluate(expr.right));
 
     // Null propagation
     if (left === null || right === null) {
@@ -842,7 +865,7 @@ export class CqlEvaluator
   }
 
   async visitUnary(expr: UnaryExpr): Promise<CqlResult> {
-    const operand = await this.evaluate(expr.operand);
+    const operand = coerceFhirPrimitive(await this.evaluate(expr.operand));
 
     switch (expr.operator) {
       case UnaryOp.Not:
@@ -931,23 +954,23 @@ export class CqlEvaluator
   }
 
   async visitIfThenElse(expr: IfThenElseExpr): Promise<CqlResult> {
-    const cond = await this.evaluate(expr.condition);
+    const cond = coerceFhirPrimitive(await this.evaluate(expr.condition));
     if (isTrue(cond)) return this.evaluate(expr.then);
     return this.evaluate(expr.else);
   }
 
   async visitCase(expr: CaseExpr): Promise<CqlResult> {
     if (expr.comparand !== null) {
-      const comp = await this.evaluate(expr.comparand);
+      const comp = coerceFhirPrimitive(await this.evaluate(expr.comparand));
       for (const item of expr.items) {
-        const when = await this.evaluate(item.when);
+        const when = coerceFhirPrimitive(await this.evaluate(item.when));
         if (comp !== null && when !== null && comp.equals(when)) {
           return this.evaluate(item.then);
         }
       }
     } else {
       for (const item of expr.items) {
-        const when = await this.evaluate(item.when);
+        const when = coerceFhirPrimitive(await this.evaluate(item.when));
         if (isTrue(when)) {
           return this.evaluate(item.then);
         }
@@ -1275,7 +1298,7 @@ export class CqlEvaluator
         const childEval = this.withContext(child);
 
         if (expr.where !== null) {
-          const cond = await childEval.evaluate(expr.where);
+          const cond = coerceFhirPrimitive(await childEval.evaluate(expr.where));
           if (!isTrue(cond)) continue;
         }
 
@@ -1320,7 +1343,7 @@ export class CqlEvaluator
 
         // Apply where filter
         if (expr.where !== null) {
-          const cond = await childEval.evaluate(expr.where);
+          const cond = coerceFhirPrimitive(await childEval.evaluate(expr.where));
           if (!isTrue(cond)) continue;
         }
 
@@ -1368,7 +1391,7 @@ export class CqlEvaluator
 
       // Apply where filter
       if (expr.where !== null) {
-        const cond = await childEval.evaluate(expr.where);
+        const cond = coerceFhirPrimitive(await childEval.evaluate(expr.where));
         if (!isTrue(cond)) continue;
       }
 
@@ -2906,7 +2929,7 @@ export class CqlEvaluator
 
       // Apply where filter
       if (expr.where !== null) {
-        const cond = await childEval.evaluate(expr.where);
+        const cond = coerceFhirPrimitive(await childEval.evaluate(expr.where));
         if (!isTrue(cond)) continue;
       }
 
@@ -3513,7 +3536,7 @@ export class CqlEvaluator
     const items = toList(source);
     for (const item of items) {
       this.ctx.aliases.set(w.source.alias, item);
-      const cond = await this.evaluate(w.condition);
+      const cond = coerceFhirPrimitive(await this.evaluate(w.condition));
       if (isTrue(cond)) return true;
     }
     return false;
@@ -3524,7 +3547,7 @@ export class CqlEvaluator
     const items = toList(source);
     for (const item of items) {
       this.ctx.aliases.set(w.source.alias, item);
-      const cond = await this.evaluate(w.condition);
+      const cond = coerceFhirPrimitive(await this.evaluate(w.condition));
       if (isTrue(cond)) return false; // exclude if any match
     }
     return true;
@@ -4071,7 +4094,7 @@ export class CqlEvaluator
       const child = this.ctx.childScope();
       child.thisValue = items[i];
       child.indexValue = i;
-      const cond = await this.withContext(child).evaluate(operands[0]);
+      const cond = coerceFhirPrimitive(await this.withContext(child).evaluate(operands[0]));
       if (isTrue(cond)) results.push(items[i]);
     }
     return new CqlList(results);

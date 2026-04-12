@@ -2105,3 +2105,76 @@ describe('FHIRHelpers.ToQuantity pattern end-to-end', () => {
     expect(results['SystemValue']?.toString()).toBe('http://loinc.org');
   });
 });
+
+describe('implicit FHIR primitive coercion', () => {
+  const bundle = {
+    resourceType: 'Bundle' as const,
+    entry: [
+      {
+        resource: {
+          resourceType: 'Observation',
+          id: 'obs1',
+          code: { coding: [{ system: 'http://loinc.org', code: '8302-2' }] },
+          status: 'final',
+          valueQuantity: { value: 165, unit: 'cm', system: 'http://unitsofmeasure.org', code: 'cm' },
+        },
+      },
+    ],
+  };
+
+  it('string equality: obs.status = \'final\' works via implicit coercion', async () => {
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Obs: First([Observation])
+      define IsFinal: Obs.status = 'final'
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['IsFinal']?.toString()).toBe('true');
+  });
+
+  it('string concatenation works with FHIR primitives', async () => {
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Obs: First([Observation])
+      define Msg: 'Status: ' + Obs.status
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['Msg']?.toString()).toBe('Status: final');
+  });
+
+  it('where clause filters with FHIR primitive comparison', async () => {
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define FinalObs: [Observation] O where O.status = 'final'
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    expect(results['FinalObs']).not.toBeNull();
+  });
+
+  it('FHIRHelpers .value.value still works alongside coercion', async () => {
+    const engine = new CqlEngine({ dataProvider: new InMemoryDataProvider(bundle) });
+    const cql = `
+      library T version '1.0'
+      using FHIR version '4.0.1'
+      context Patient
+      define Obs: First([Observation])
+      define Qty: (Obs.value as FHIR.Quantity)
+      define QtyValueWrapper: Qty.value
+      define QtyValueInner: Qty.value.value
+    `;
+    const results = await engine.evaluateLibrary(cql, { resourceType: 'Patient', id: 'p1' });
+    // .value returns FHIR.decimal wrapper (NOT coerced — member access doesn't coerce)
+    expect(results['QtyValueWrapper']).toBeInstanceOf(CqlTuple);
+    // .value.value returns the inner System type
+    expect(results['QtyValueInner']?.toString()).toBe('165');
+  });
+});
