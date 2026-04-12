@@ -1,5 +1,11 @@
 # @fhir-toolkit/cql
 
+## 1.3.2
+
+### Patch Changes
+
+- 3f0853b: Fix member access `.value` and `.unit` on `System.Quantity` (CqlQuantity) returning null. `visitMemberAccess` now handles CqlQuantity, returning CqlDecimal for `.value` and CqlString for `.unit`.
+
 ## 1.3.1
 
 ### Patch Changes
