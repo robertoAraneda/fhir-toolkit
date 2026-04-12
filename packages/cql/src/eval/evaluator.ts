@@ -1227,6 +1227,13 @@ export class CqlEvaluator
       return val === undefined ? null : val;
     }
 
+    // System.Quantity member access: .value → Decimal, .unit → String
+    if (source instanceof CqlQuantity) {
+      if (expr.member === 'value') return new CqlDecimal(source.value);
+      if (expr.member === 'unit') return new CqlString(source.unit);
+      return null;
+    }
+
     // List member access: map over collection (singleton promotion: return list)
     if (source instanceof CqlList) {
       const result: CqlValue[] = [];
