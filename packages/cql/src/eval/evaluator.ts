@@ -54,6 +54,7 @@ import type {
   WithClause,
   WithoutClause,
   SortByItem,
+  TypeSpecifier,
 } from '../ast/nodes.js';
 import {
   LiteralType,
@@ -463,7 +464,7 @@ export class CqlEvaluator
   implements ExpressionVisitor<Promise<CqlResult>>
 {
   private readonly registry: FunctionRegistry;
-  private readonly userFunctions: Map<string, FunctionDef>;
+  private readonly userFunctions: Map<string, FunctionDef[]>;
   /** Map of library alias -> CqlEvaluator for included libraries. */
   private readonly includedLibraries: Map<string, CqlEvaluator> = new Map();
 
@@ -476,7 +477,12 @@ export class CqlEvaluator
     this.userFunctions = new Map();
     if (ctx.library) {
       for (const fn of ctx.library.functions) {
-        this.userFunctions.set(fn.name, fn);
+        const existing = this.userFunctions.get(fn.name);
+        if (existing) {
+          existing.push(fn);
+        } else {
+          this.userFunctions.set(fn.name, [fn]);
+        }
       }
     }
   }
@@ -490,14 +496,74 @@ export class CqlEvaluator
   }
 
   /**
+   * Resolve the best-matching overload for a function call.
+   * Scores each overload by argument-type match; returns the highest scorer.
+   */
+  private resolveOverload(
+    overloads: FunctionDef[],
+    argVals: CqlResult[],
+  ): FunctionDef {
+    if (overloads.length === 1) return overloads[0];
+
+    let bestFn = overloads[0];
+    let bestScore = -1;
+
+    for (const fn of overloads) {
+      if (fn.operands.length !== argVals.length) continue;
+
+      let score = 0;
+      for (let i = 0; i < fn.operands.length; i++) {
+        score += this.scoreArgMatch(argVals[i], fn.operands[i].type);
+      }
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestFn = fn;
+      }
+    }
+
+    return bestFn;
+  }
+
+  /**
+   * Score how well a runtime argument matches a declared parameter type.
+   * 2 = exact match, 1 = subtype, 0 = unknown/no match.
+   */
+  private scoreArgMatch(arg: CqlResult, paramType: TypeSpecifier): number {
+    if (arg === null) return 0;
+    if (paramType.specKind !== 'NamedType') return 0;
+    const paramName = paramType.name.toLowerCase();
+
+    // Check CqlTuple instanceType (FHIR typed tuples)
+    if (arg instanceof CqlTuple && arg.instanceType) {
+      if (arg.instanceType.toLowerCase() === paramName) return 2;
+      const quantitySubtypes = ['simplequantity', 'age', 'count', 'distance', 'duration', 'moneyquantity'];
+      if (paramName === 'quantity' && quantitySubtypes.includes(arg.instanceType.toLowerCase())) return 1;
+      return 0;
+    }
+
+    // Check CQL primitive type name
+    if (arg.type.toLowerCase() === paramName) return 2;
+
+    return 0;
+  }
+
+  /**
    * Creates a lightweight evaluator sharing the same function registries
    * but using a different context.
    */
   private withContext(ctx: EvalContext): CqlEvaluator {
     const e = new CqlEvaluator(ctx, this.registry);
-    // Share user functions map (avoid re-building)
+    // Share user functions (merge, don't overwrite — constructor already loaded ctx.library.functions)
     for (const [k, v] of this.userFunctions) {
-      e.userFunctions.set(k, v);
+      const existing = e.userFunctions.get(k);
+      if (existing) {
+        for (const fn of v) {
+          if (!existing.includes(fn)) existing.push(fn);
+        }
+      } else {
+        e.userFunctions.set(k, [...v]);
+      }
     }
     return e;
   }
@@ -1073,14 +1139,15 @@ export class CqlEvaluator
       const libAlias = (expr.source as IdentifierRefExpr).name;
       const libEvaluator = this.includedLibraries.get(libAlias);
       if (libEvaluator) {
-        const libFn = libEvaluator.userFunctions.get(expr.name);
-        if (libFn) {
+        const libOverloads = libEvaluator.userFunctions.get(expr.name);
+        if (libOverloads && libOverloads.length > 0) {
           // Evaluate operands in the current (caller) context, then invoke the function
           // in the included library's context with the pre-evaluated values.
           const argVals: CqlResult[] = [];
           for (const op of expr.operands) {
             argVals.push(await this.evaluate(op));
           }
+          const libFn = libEvaluator.resolveOverload(libOverloads, argVals);
           return libEvaluator.evalUserFunctionWithValues(libFn, argVals);
         }
         throw new Error(`function '${expr.name}' not found in library '${libAlias}'`);
@@ -1088,9 +1155,15 @@ export class CqlEvaluator
     }
 
     // Check user-defined functions first
-    const userFn = this.userFunctions.get(expr.name);
-    if (userFn) {
-      return this.evalUserFunction(userFn, expr.operands);
+    const userOverloads = this.userFunctions.get(expr.name);
+    if (userOverloads && userOverloads.length > 0) {
+      // Evaluate args first to enable overload resolution
+      const argVals: CqlResult[] = [];
+      for (const op of expr.operands) {
+        argVals.push(await this.evaluate(op));
+      }
+      const userFn = this.resolveOverload(userOverloads, argVals);
+      return this.evalUserFunctionWithValues(userFn, argVals);
     }
 
     // Special case: Length with null operand needs type context
